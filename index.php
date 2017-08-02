@@ -12,7 +12,7 @@
                     <button type="button" class="navbar-toggle collapse" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only"></span>
                     </button>
-                    <a class="navbar-nav" href="#">el primero</a>
+                    <a class="navbar-nav" href="#">el primero, modifique esto tambien</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="navbar-nav">
