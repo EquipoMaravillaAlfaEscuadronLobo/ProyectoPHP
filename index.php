@@ -13,6 +13,7 @@
                         <span class="sr-only"></span>
                     </button>
                     <a class="navbar-nav" href="#">el primero, modifique esto tambien</a>
+                    <a class="navbar-nav" href="#">Que ondas con esto</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="navbar-nav">
