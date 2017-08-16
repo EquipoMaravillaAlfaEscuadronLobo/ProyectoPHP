@@ -31,7 +31,7 @@
     <body>
         <nav class="nav-extended">
             <div class="nav-wrapper">
-                <a class="brand-logo" href="#">
+                <a class="brand-logo" href="../home.html">
                     Logo
                 </a>
                 <a class="button-collapse" data-activates="mobile-demo" href="#">
@@ -41,7 +41,7 @@
                 </a>
                 <ul class="right hide-on-med-and-down" id="nav-mobile">
                     <li>
-                        <a href="ActivoFijo/inicio.php">
+                        <a href="#">
                             Activo Fijo
                         </a>
                     </li>
@@ -68,7 +68,7 @@
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
                     <li>
-                        <a href="ActivoFijo/inicio.php">
+                        <a href="#">
                             Activo Fijo
                         </a>
                     </li>
@@ -94,6 +94,66 @@
                     </li>
                 </ul>
             </div>
+            <div class="nav-content" name="">
+                <ul class="tabs tabs-transparent">
+                    <li class="tab">
+                        <a href="#test1">
+                            Registro de Activo Fijo
+                        </a>
+                    </li>
+                    <li class="tab">
+                        <a class="active" href="#test2">
+                            Modificacion de Activo Fijo
+                        </a>
+                    </li>
+                    <li class="tab">
+                        <a href="#test3">
+                            Alta - Baja
+                        </a>
+                    </li>
+                    <li class="tab">
+                        <a href="#test4">
+                            Mantenimiento
+                        </a>
+                    </li>
+                    <li class="tab">
+                        <a href="#test5">
+                            Prestamo
+                        </a>
+                    </li>
+                    <li class="tab">
+                        <a href="#test6">
+                            Consultas
+                        </a>
+                    </li>
+                    <li class="tab">
+                        <a href="#test7">
+                            Reportes
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </nav>
+        <div class="col s12" id="test1">
+            Test 1
+        </div>
+        <div class="col s12" id="test2">
+            Test 2
+        </div>
+        <div class="col s12" id="test3">
+            Test 3
+        </div>
+        <div class="col s12" id="test4">
+            Test 4
+        </div>
+        <div class="col s12" id="test5">
+            Test 5
+        </div>
+        <div class="col s12" id="test6">
+            Test 6
+        </div>
+        <div class="col s12" id="test7">
+            Test 7
+        </div>
     </body>
 </html>
