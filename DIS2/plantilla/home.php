@@ -29,7 +29,7 @@
                 <ul class="right hide-on-med-and-down" id="nav-mobile">
                     <li>
                         <a href="activofijo/inicio_af.php">
-                            Activo Fijo
+                            <?php include_once './activofijo/registrar_af.php';?>
                         </a>
                     </li>
                     <li>
