@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <title>Document</title>
      <link href="../css/materialize.min.css" rel="stylesheet">
+     <link href="../css/style.css" rel="stylesheet">
+     <link href="../css/jquery.dataTables.min.css" rel="stylesheet">
+     
+     
+     
 </head>
 <body>
      <!--DataTables example-->
             <div id="table-datatables">
               <h4 class="header">DataTables example</h4>
               <div class="row">
-                <div class="col s12 m4 l3">
-                  <p>DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function.</p>
-
-                  <p>Searching, ordering, paging etc goodness will be immediately added to the table, as shown in this example.</p>
-                </div>
+                
                 <div class="col s12 m8 l9">
                   <table id="data-table-simple" class="responsive-table display" cellspacing="0">
                     <thead>
@@ -504,4 +505,13 @@
             <br>
 </body>
 <script src="../js/jquery.min.js"></script>
+<script src="../js/materialize.min.js"></script>
+
+
+<script src="../js/jquery.dataTables.min.js"></script>
+<script src="../js/data-tables-script.js"></script>
+
+
+
+
 </html>
