@@ -1,5 +1,5 @@
 <?php
-$titulo1 = 'Gestion de Usuario';
+$titulo1 = 'Seguridad';
 include_once '../plantillas/cabecera.php';
 include_once '../plantillas/menu.php';
 ?>
@@ -7,25 +7,25 @@ include_once '../plantillas/menu.php';
     <ul class="tabs tabs-transparent">
         <li class="tab">
             <a class="active" href="#test1">
-                <i class="fa fa-plus" aria-hidden="true"></i>Registro
+                <i class="fa fa-user" aria-hidden="true"></i> Administradores
             </a>
         </li>
         <li class="tab">
             <a href="#test2">
-                <i class="fa fa-book" aria-hidden="true"></i>  Modificacion
+                <i class="fa fa-book" aria-hidden="true"></i> Clasificacion De Activos
             </a>
         </li>
 
 
         <li class="tab">
             <a href="#test3">
-                <i class="fa fa-list-alt" aria-hidden="true"></i> Consulta
+                <i class="fa fa-save" aria-hidden="true"></i> Backup
             </a>
         </li>
         <li class="tab">
             <a href="#test4">
-                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                Reporte
+                <i class="fa fa-compass" aria-hidden="true"></i> Bitacora
+                
             </a>
         </li>
 
@@ -34,9 +34,8 @@ include_once '../plantillas/menu.php';
 </nav>
 
 <div class="col s12" id="test1">
-
-  <?php include('registro_usuario.php'); ?>
-</div>
+    <?php include_once './registro_administrador.php'; ?>
+  </div>
 <div class="col s12" id="test2">
     <h3>modificancion</h3>
 </div>

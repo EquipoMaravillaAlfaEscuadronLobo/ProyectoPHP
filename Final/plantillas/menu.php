@@ -25,7 +25,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="../seguridad/inicio_seguridad.php">
                     <i class="fa fa-lock" aria-hidden="true"></i>  Seguridad
                 </a>
             </li>
@@ -58,7 +58,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="../seguridad/inicio_seguridad.php">
                     <i class="fa fa-lock" aria-hidden="true"></i>  Seguridad
                 </a>
             </li>

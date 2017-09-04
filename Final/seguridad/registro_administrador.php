@@ -1,10 +1,10 @@
 <div class="container-fluid">
-    <form name="FormuluarioUsuario" method="post" action="">
+    <form name="FormuluarioUsuario" method="post" action="" autocomplete="off" >
 
         <div class="panel" name="libros">
             <div class="row panel-heading text-center">
                 <div class="col s12">
-                    <h4>Registro De Usuarios</h4>
+                    <h4>Registro De Administradores</h4>
                 </div>
             </div>
 
@@ -22,44 +22,27 @@
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="input-field col m5">
-                    <input type="text" id="idTelefono" name="nameTelefono" class="text-center">
-                    <label for="idTelefono">Numero Telefonico <small>(Ej: 2255-5555)</small></label>
+                    <input type="text" id="idDui" name="nameDui" class="text-center">
+                    <label for="idTelefono">Dui <small>(Ej: 02436390-9)</small></label>
                 </div>
                 <div class="input-field col m5">
-                    <input type="text" id="idEmail" name="nameEmail" class="text-center">
-                    <label for="idEmail">Email <small>(Ej: correo@gmail.com)</small> </label>
+                    <input type="text" id="idUser" name="nameUser" class="text-center" >
+                    <label for="idUser">Nmbre De Usuario<small>(Ej: juan01)</small> </label>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="input-field col m5">
-                    <input type="text" id="idEmail" name="nameEmail" class="text-center">
-                    <label for="idEmail">Direccion <small>(Ej: Verapaz, Colonia Mercenenes)</small> </label>
+                    <input type="password" id="idPass" name="namePass" class="text-center">
+                    <label for="idPass">Contraseña</label>
                 </div>
                 <div class="input-field col m5">
-                    <input type="text" id="idInstitucion" name="nameInstitucion" class="text-center">
-                    <label for="idInstitucion">Institucion <small>(Ej: Centro Escolar Presbitero Norberto Marroquín)</small></label>
+                    <input type="password" id="idPass2" name="namePass2" class="text-center">
+                    <label for="idPass">Repita Contraseña</label>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-1"></div>
-                <div class="input-field col m5">
-                    <input type="date" id="idFecha" name="nameFecha" class="text-center datepicker">
-                    <label for="idFecha">Fecha de Nacimiento</label>
-                </div>
-                <div class="input-field col m5">
-                    <input type="text" id="idInstitucion" name="nameInstitucion" class="text-center">
-                    <label for="idInstitucion">Institucion <small>(Ej: Centro Escolar Presbitero Norberto Marroquín)</small></label>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-1"></div>
-                <div class="input-field col m5">
-                    <input type="date" id="idFecha" name="nameFecha" class="text-center datepicker">
-                    <label for="idFecha">Fecha de Nacimiento</label>
-                </div>
-
                 <div class="input-field col m5">
                     <div class="row">
 
@@ -71,26 +54,20 @@
                             <input type="radio" id="idSexo" name="nameFemenino">
                             <label for="idSexo">Femenino</label>
                         </div>
-
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="row">
-
-                <div class="col-md-4"></div>
-                <div class="file-field input-field col-md-4">
-                    <div class="btn">
-                        <span>Foto</span>
-                        <input type="file">
-                    </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text">
-                        <input type="file" id="files" name="files[]">
                     </div>
                 </div>
-
+                <div class="col-md-5">
+                    <div class="file-field input-field col-md-12">
+                        <div class="btn">
+                            <span>Foto</span>
+                            <input type="file">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                            <input type="file" id="files" name="files[]">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-5"></div>
@@ -98,6 +75,9 @@
                     <output id="list"></output>                
                 </div>
             </div>
+
+
+
             <div class="row text-center">
                 <button class="btn btn-success">Guardar</button>
                 <button type="reset" class="btn btn-danger">Cancelar</button>
