@@ -1,20 +1,14 @@
-<?php
-$titulo1 = 'Registro de Usuario';
-include_once '../plantillas/cabecera.php';
-include_once '../plantillas/menu.php';
-?>
-</nav>
-
 <div class="container-fluid">
+    <form name="FormuluarioUsuario" method="post" action="">
 
-    <div class="panel" name="libros">
-        <div class="row panel-heading text-center">
-            <div class="col s12">
-                <h4>Registro De Usuarios</h4>
+        <div class="panel" name="libros">
+            <div class="row panel-heading text-center">
+                <div class="col s12">
+                    <h4>Registro De Usuarios</h4>
+                </div>
             </div>
-        </div>
-        <form name="FormuluarioUsuario" method="post" action="">
-            <div class="row text-center">
+
+            <div class="row text-center panel-body">
                 <div class="col-md-1"></div>
                 <div class="input-field col m5">
                     <input type="text" id="idNombre" name="nameNombre"  class="text-center">
@@ -93,7 +87,7 @@ include_once '../plantillas/menu.php';
                         </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate" type="text">
-                            <input type="file" id="files" name="files[]" />
+                            <input type="file" id="files" name="files[]">
                         </div>
                     </div>
                 </form>
@@ -104,17 +98,10 @@ include_once '../plantillas/menu.php';
                     <output id="list"></output>                
                 </div>
             </div>
-
-        </form>
-    </div>
-
-
-
+            <div class="row text-center">
+                <button class="btn btn-success">Guardar</button>
+                <button type="reset" class="btn btn-danger">Cancelar</button>
+            </div>
+        </div>
+    </form>
 </div>
-
-
-<?php
-include_once '../plantillas/pie_de_pagina.php';
-?>
-
-
