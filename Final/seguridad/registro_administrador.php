@@ -10,7 +10,7 @@
 
             <div class="row text-center panel-body">
                 <div class="col-md-1"></div>
-                <div class="input-field col m5">
+                <div class="input-field col m5 input-group">
                     <input type="text" id="idNombre" name="nameNombre"  class="text-center">
                     <label for="idNombre">Nombre <small> (Ej: Nombre1 Nombre2)</small></label>
                 </div>

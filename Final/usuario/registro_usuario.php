@@ -26,7 +26,7 @@
                     <label for="idTelefono">Numero Telefonico <small>(Ej: 2255-5555)</small></label>
                 </div>
                 <div class="input-field col m5">
-                    <input type="text" id="idEmail" name="nameEmail" class="text-center">
+                    <input type="email" id="idEmail" name="nameEmail" class="text-center">
                     <label for="idEmail">Email <small>(Ej: correo@gmail.com)</small> </label>
                 </div>
             </div>
@@ -62,15 +62,23 @@
 
                 <div class="input-field col m5">
                     <div class="row">
+                        
+                        <div class="input-group" radio>
+                            <input type="radio" name="sexo" id="hombre" value="Hombre">
+                            <label for="hombre">Hombre</label>
+                            
+                            <input type="radio" name="sexo" id="mujer" value="Mujer">
+                            <label for="mujer">Mujer</label>
+                        </div>
 
-                        <div class="input-field col m6">
-                            <input type="radio" id="idSexo" name="nameMasculino"  >
-                            <label for="idSexo">Masculino</label>
+<!--                        <div class="input-group radio col m6">
+                            <input type="radio" id="idMasculino" name="nameMasculino"  >
+                            <label for="idMasculino">Masculino</label>
                         </div>
                         <div class="input-field col m6">
-                            <input type="radio" id="idSexo" name="nameFemenino">
-                            <label for="idSexo">Femenino</label>
-                        </div>
+                            <input type="radio" id="iFemenino" name="nameFemenino">
+                            <label for="idFemenino">Femenino</label>
+                        </div>-->
 
                     </div>
 
