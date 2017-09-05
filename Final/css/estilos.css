@@ -1,0 +1,99 @@
+
+
+footer{
+	background-color: #0097a7 !important;
+	position:fixed;
+   left:0px;
+   bottom:0px;
+   height:30px;
+   width:100%;
+   color: white;
+   
+}
+.login{
+	padding-top: 7em;
+}
+.panel-heading{
+	background-color: #0097a7 !important;
+	color: white !important;
+}
+
+.panel{
+	box-shadow: 5px 5px 5px 5px;
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+
+.btn-primary{
+	background-color: #0097a7 !important;
+	color: white !important;
+}
+.btn:hover{
+	background-color: #1F1F1F !important;
+	border-color: #1f1f1f !important;
+	color: white !important;
+}
+.panel-body{
+	background-color: white;
+	color: black;
+}
+.panel-footer{
+	background-color: white;
+	color: black;
+}
+a{
+	text-decoration-line: none !important;
+	color: white;
+}
+a:hover{
+	color:white;
+}
+nav{
+	background-color: #0097a7 !important;
+}
+.modal{
+	opacity: 0 ;
+	max-height: 90% !important; 
+}
+.activo{
+	background-color: #9F9D9D !important;
+	color: #040404; 
+}
+.buscar{
+	background-color: white !important;
+	color: black;  
+}
+.btn-buscar{
+	color: white !important;
+	background-color: #00BC00;  
+}
+label{
+	color: black; 	
+}
+.datepicker{
+	color: black;
+}
+#foto{
+	height: 100px;
+	background-color: red !important;
+}
+.btn_nuevo{
+	color: white !important;
+	background-color: #00D4D7 !important;  
+}
+nav ul li a{
+	font-size: 1em;
+}
+#nuevo{
+	 max-height: 90vh !important; 
+	width: 80% !important;
+	margin-top: 3em !important;
+	margin-bottom: 5em !important;
+	
+}
+#ojo:hover{
+	cursor: pointer;
+}
+input{
+	font-size: 1em !important;
+}
