@@ -97,3 +97,11 @@ nav ul li a{
 input{
 	font-size: 1em !important;
 }
+
+#busqueda-tabla{
+	background-color: #B6B0B0
+}
+
+.caret{
+	opacity: 0;
+}

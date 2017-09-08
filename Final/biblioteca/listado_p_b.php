@@ -7,13 +7,10 @@
                     <div class="row">
                         <div class="col-md-8"><h3>Listado de Prestamos</h3>
                         </div>
-                        <div class="col-md-2"><input class="buscar" type="text" placeholder="Buscar"></div><div class="col-md-2"><button class="btn btn-success"><i class="fa fa-search" aria-hidden="true"></i>
-                                Buscar</button></div>
-                    </div>
-
+                    </div>       
                 </div>
                 <div class="panel-body">				
-                    <table padding="20px">
+                    <table padding="20px" class="responsive-table display" id="data-table-simple">
                         <thead>
                         <th>Codigo</th>
                         <th>Libro</th>

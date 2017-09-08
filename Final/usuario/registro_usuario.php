@@ -1,14 +1,17 @@
-<div class="container-fluid">
+<div class="container">
     <form name="FormuluarioUsuario" method="post" action="">
-
+    <div class="row">
         <div class="panel" name="libros">
-            <div class="row panel-heading text-center">
-                <div class="col s12">
+            <div class="panel-heading text-center">
+            <div class="row">
+                <div class="col-md-12">
                     <h4>Registro De Usuarios</h4>
                 </div>
+                </div>
             </div>
-
-            <div class="row text-center panel-body">
+            
+            <div class=" text-center panel-body">
+            <div class="row">
                 <div class="col-md-1"></div>
                 <div class="input-field col m5">
                     <input type="text" id="idNombre" name="nameNombre"  class="text-center">
@@ -18,7 +21,9 @@
                     <input type="text" id="idNombre" name="nameNombre"  class="text-center">
                     <label for="idNombre">Apellido <small>(Ej: Apellido1 Apellido2)</small></label>
                 </div>
+                </div>
             </div>
+          
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="input-field col m5">
@@ -110,6 +115,7 @@
                 <button class="btn btn-success">Guardar</button>
                 <button type="reset" class="btn btn-danger">Cancelar</button>
             </div>
+        </div>
         </div>
     </form>
 </div>
