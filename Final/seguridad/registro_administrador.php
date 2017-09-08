@@ -13,10 +13,12 @@
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="input-field col m5 input-group">
+                        <i class="Medium material-icons prefix">account_circle</i> 
                         <input type="text" id="idNombre" name="nameNombre"  class="text-center">
                         <label for="idNombre">Nombre <small> (Ej: Nombre1 Nombre2)</small></label>
                     </div>
                     <div class="input-field col m5">
+                        <i class="Medium material-icons prefix">account_circle</i> 
                         <input type="text" id="idNombre" name="nameNombre"  class="text-center">
                         <label for="idNombre">Apellido <small>(Ej: Apellido1 Apellido2)</small></label>
                     </div>
@@ -24,10 +26,12 @@
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="input-field col m5">
+                        <i class="Medium material-icons prefix">credit_card</i> 
                         <input type="text" id="idDui" name="nameDui" class="text-center">
                         <label for="idTelefono">Dui <small>(Ej: 02436390-9)</small></label>
                     </div>
                     <div class="input-field col m5">
+                        <i class="Medium material-icons prefix">face</i> 
                         <input type="text" id="idUser" name="nameUser" class="text-center" >
                         <label for="idUser">Nmbre De Usuario<small>(Ej: juan01)</small> </label>
                     </div>
@@ -35,10 +39,12 @@
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="input-field col m5">
+                        <i class="Medium material-icons prefix">remove_red_eye</i> 
                         <input type="password" id="idPass" name="namePass" class="text-center">
                         <label for="idPass">Contraseña</label>
                     </div>
                     <div class="input-field col m5">
+                        <i class="Medium material-icons prefix">remove_red_eye</i> 
                         <input type="password" id="idPass2" name="namePass2" class="text-center">
                         <label for="idPass">Repita Contraseña</label>
                     </div>
@@ -46,12 +52,14 @@
                 <div class="row">
                     <div class="col m1"></div>
                     <div class="input-field col m5">
+                        <i class="Medium material-icons prefix">today</i> 
                         <input type="date" id="idFecha" name="nameFecha" class="text-center datepicker">
                         <label for="idFecha">Fecha de Nacimiento</label>
                     </div>
 
                     <div class="col m3">
                         <div class="row">
+                          
                             <div class="col m2"><label for="">Sexo</label></div>
                             <div class="col m10">
                             <div class="radio-inline">
@@ -101,8 +109,13 @@
                 </div>
                 <div class="row">
                     <div class="col m5"></div>
-                    <div class="col m5 ">
-                        <output id="list"></output>                
+                    <div class="col m2 ">
+                        <div class="row">
+                            <div class="col m12 ">
+                                <output id="list"></output>                
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
                 <div class="row text-center">

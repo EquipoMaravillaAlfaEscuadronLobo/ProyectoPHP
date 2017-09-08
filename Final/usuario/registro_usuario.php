@@ -68,7 +68,7 @@
                     </div>
                     <div class="row">
                         <div class="col m5">
-                            <i class="Medium material-icons prefix">face</i> 
+                            <i class="Medium material-icons prefix">wc</i> 
                             
                             <div class="radio-inline">
                                 <span>Genero</span>
