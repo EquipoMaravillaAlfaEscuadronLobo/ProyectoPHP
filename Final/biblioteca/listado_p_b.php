@@ -6,6 +6,8 @@
                     <div class="row">
                         <div class="col-md-8"><h3>Listado de Prestamos</h3>
                         </div>
+                        <div class="col-md-2">  <a class="btn btn_primary"  target="_blank" onclick="abrirModal()"><span aria-hidden="true" class="glyphicon glyphicon-plus">
+                        </span>Nuevo Prestamo</a></div>
                     </div>       
                 </div>
                 <div class="panel-body">				
@@ -39,8 +41,7 @@
                     </table>
                 </div>
                 <div class="panel-footer">
-                    <a class="btn btn_primary"  target="_blank" onclick="abrirModal()"><span aria-hidden="true" class="glyphicon glyphicon-plus">
-                        </span>Nuevo Prestamo</a>
+                  
                 </div>
             </div>
         </div>
