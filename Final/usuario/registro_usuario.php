@@ -86,7 +86,6 @@
                             <div class="file-field input-field col m10">
                                 <i class="material-icons prefix">camera_alt</i>
                                 <div class="btn">
-                                    
                                     <span>Foto</span>
                                     <input type="file">
                                 </div>
