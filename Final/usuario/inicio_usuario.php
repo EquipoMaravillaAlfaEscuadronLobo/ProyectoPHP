@@ -38,7 +38,7 @@ include_once '../plantillas/menu.php';
   <?php include('registro_usuario.php'); ?>
 </div>
 <div class="col s12" id="test2">
-    <h3>modificancion</h3>
+    <?php include_once './listado_usuario.php';?>
 </div>
 
 <div class="col s12" id="test3">

@@ -7,16 +7,18 @@
             <?php echo $titulo1; ?>
         </title>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="../css/jquery.dataTables.min.css" rel="stylesheet">
 
-          <link href="../css/jquery.dataTables.min.css" rel="stylesheet">
-        
-          <link href="../css/materialize.min.css" rel="stylesheet">
+        <link href="../css/materialize.min.css" rel="stylesheet">
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/estilos.css" rel="stylesheet">
         <link rel="stylesheet" href="../css/font-awesome.min.css">
         <link href="../css/foto.css" rel="stylesheet">
+        <link href="../css/materialdesignicons.min.css" rel="stylesheet">
         
 
-        
+
+
     </head>
     <body>
