@@ -42,10 +42,10 @@ include_once '../plantillas/menu.php';
 </div>
 
 <div class="col s12" id="test3">
-    <h1>Consultas</h1>
+    <h1>ConsultasZ</h1>
 </div>
 <div class="col s12" id="test4">
-    <h1>Reportes</h1>
+    <h1>ReportesZ</h1>
 </div>
 
 
