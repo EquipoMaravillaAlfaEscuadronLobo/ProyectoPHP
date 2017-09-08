@@ -72,11 +72,13 @@
                             
                             <div class="radio-inline">
                                 <span>Genero</span>
+                               
                                 <input type="radio" id="hombre" name="sexo"  class="text-center">
                                 <label for="hombre">Masculino</label>
-
-                                <input type="radio" id="hombre" name="sexo"  class="text-center">
-                                <label for="hombre">Masculino</label>
+                                
+                                <input type="radio" id="mujer" name="sexo"  class="text-center">
+                                <label for="mujer">Femenino</label>
+                                
                             </div>
 
                             <div class="col 1"></div>
