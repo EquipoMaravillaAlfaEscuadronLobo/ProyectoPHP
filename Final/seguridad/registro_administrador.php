@@ -50,28 +50,35 @@
                         <label for="idFecha">Fecha de Nacimiento</label>
                     </div>
 
-                    <div class="input-field col m3">
+                    <div class="col m3">
                         <div class="row">
-                            <div class="col m1"><label for="">Sexo</label></div>
-                            <div class="input-group col m11 radio-inline">
-                                <input type="radio" name="sexo" id="hombre" value="Hombre">
-                                <label for="hombre">Hombre </label>
-
+                            <div class="col m2"><label for="">Sexo</label></div>
+                            <div class="col m10">
+                            <div class="radio-inline">
+                            <p>
+                                <input type="radio" name="sexo" id="hombre" value="Hombre" >
+                                <label for="hombre"><i class="fa fa-mars"></i>Hombre </label>
+                            </p><p> 
                                 <input type="radio" name="sexo" id="mujer" value="Mujer">
-                                <label for="mujer">Mujer </label>
+                                <label for="mujer"><i class="fa fa-venus"></i>Mujer </label>
+                            </p>    
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="input-field col m2">
+                    <div class="col m2">
                         <div class="row">
                             <div class="col m2"><label for="">Nivel </label></div>
-                            <div class="input-group col m10 radio-inline">
-
-                                <input type="checkbox" name="nameNivel" id="IdAdmin" value="admin">
-                                <label for="idAdmin">Admin  .</label>
-
+                            <div class="col m10">
+                                <div class="radio-inline">
+                                <p>
+                                <input type="checkbox" name="nameNivel" id="idAdmin" value="admin">
+                                <label for="idAdmin">Admin</label>
+                                </p><p>
                                 <input type="checkbox" name="nameNivel" id="idRoot" value="root">
-                                <label for="idRoot">Root </label>
+                                <label for="idRoot">Root</label>
+                                </p>
+                                </div>
                             </div>
                         </div>
                     </div>
