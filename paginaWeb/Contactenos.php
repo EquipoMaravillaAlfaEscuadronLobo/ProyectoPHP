@@ -142,7 +142,7 @@
         <section class="content">
             <div class="container-fluid">
                 <!-- Google Maps -->
-                <div class="alert alert-warning text-center">
+                <div class="alert alert-danger text-center">
                     <h3>Contactenos</h3> 
                 </div>
                 <!-- Ubicacion -->
@@ -187,7 +187,7 @@
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
-                            <div class="header text-center alert-danger">
+                            <div class="header text-center alert-warning">
                                 <h2 style="color: white">
                                     Numeros telefonicos
                                 </h2>
@@ -209,7 +209,7 @@
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
-                            <div class="header text-center alert-warning">
+                            <div class="header text-center alert-danger">
                                 <h2 style="color: white">
                                     Correo Electronico
                                 </h2>
