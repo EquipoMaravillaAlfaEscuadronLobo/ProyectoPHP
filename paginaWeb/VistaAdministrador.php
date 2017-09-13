@@ -196,27 +196,27 @@
                     <li class="header text-center">MENU</li>
                     <li>
                         <a href="#">
-                            <i class="material-icons">home</i>
+                            <i class="material-icons col-green">home</i>
                             <span>Inicio</span>
                         </a>
                     </li>
                     
                     <li>
                         <a href="#">
-                            <i class="material-icons">collections</i>
+                            <i class="material-icons col-blue">collections</i>
                             <span>Nueva Galeria</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <i class="material-icons">description</i>
+                            <i class="material-icons col-deep-orange">description</i>
                             <span>Nueva Noticia</span>
                         </a>
                     </li>
                                         
                     <li>
                         <a href="#">
-                            <i class="material-icons">event</i>
+                            <i class="material-icons col-deep-purple">event</i>
                             <span>Nuevo Evento</span>
                         </a>
                     </li>

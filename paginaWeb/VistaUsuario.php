@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -45,7 +44,7 @@
             <div class="navbar-header">
                 <a href="#" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="#" class="bars"></a>
-                <a class="navbar-brand" href="index.html">Casa de Encuentro Juevenil</a>
+                <a class="navbar-brand" href="#">Casa de Encuentro Juevenil</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -81,32 +80,32 @@
                     <li class="header text-center">MENU</li>
                     <li>
                         <a href="#">
-                            <i class="material-icons">explore</i>
+                            <i class="material-icons col-green">explore</i>
                             <span>Historia</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <i class="material-icons">collections</i>
+                            <i class="material-icons col-blue">collections</i>
                             <span>Galerias</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <i class="material-icons">description</i>
+                            <i class="material-icons col-blue-grey">description</i>
                             <span>Noticias</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <i class="material-icons">book</i>
+                            <i class="material-icons col-deep-orange">book</i>
                             <span>Catalogo de libros</span>
                         </a>
                     </li>
                     
                     <li>
                         <a href="#">
-                            <i class="material-icons">event</i>
+                            <i class="material-icons col-deep-purple">event</i>
                             <span>Proximos Eventos</span>
                         </a>
                     </li>
@@ -119,7 +118,7 @@
                     </li>
                     <li>
                         <a href="#">
-                            <i class="material-icons col-deep-orange">mail</i>
+                            <i class="material-icons col-amber">mail</i>
                             <span>Sugerencias</span>
                         </a>
                     </li>
