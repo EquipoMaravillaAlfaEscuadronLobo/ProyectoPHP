@@ -1,4 +1,11 @@
+@font-face{
+    font-family: "NueMerriweather";
+}
 
+body{
+    font-family: "NueMerriweather";
+    src: url ("../fonts/NueMerriweather/PermanentMarker-Regular.ttf");
+}
 
 footer{
 	background-color: #0097a7 !important;

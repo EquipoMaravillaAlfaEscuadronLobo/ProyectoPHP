@@ -71,12 +71,12 @@
                             <i class="Medium material-icons prefix">wc</i> 
                             
                             <div class="radio-inline">
-                                <span>Genero</span>
+                                <span>Sexo</span>
                                
-                                <input type="radio" id="hombre" name="sexo"  class="text-center">
+                                <input type="radio" id="hombre"  name="sexo"  class="text-center with-gap">
                                 <label for="hombre">Masculino</label>
                                 
-                                <input type="radio" id="mujer" name="sexo"  class="text-center">
+                                <input type="radio" id="mujer" name="sexo"  class="text-center with-gap">
                                 <label for="mujer">Femenino</label>
                                 
                             </div>
@@ -86,9 +86,8 @@
                         <div class="col m6">
                             <div class="col m2"></div>
                             <div class="file-field input-field col m10">
-                                <i class="material-icons prefix">camera_alt</i>
-                                <div class="btn">
-                                    <span>Foto</span>
+                                <div class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-picture" aria="hidden"></span> Foto                          
                                     <input type="file">
                                 </div>
                                 <div class="file-path-wrapper">
@@ -97,22 +96,17 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
-
-
-
-
                     <div class="row">
-                        
-                        
                             <output id="list"></output>                
-                        
                     </div>
                     <div class="row text-center">
-                        <button class="btn btn-success"><i class="material-icons prefix">save</i>Guardar</button>
-                        <button type="reset" class="btn btn-danger"><i class="material-icons prefix">cancel</i>Cancelar</button>
+                        <button class="btn btn-success">
+                            <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>                            
+                            Guardar</button>
+                        <button type="reset" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar
+                        </button>
                     </div>
                 </div>
             </div>

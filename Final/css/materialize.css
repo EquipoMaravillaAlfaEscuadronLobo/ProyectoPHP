@@ -6353,6 +6353,11 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
   width: calc(100% - 3rem - 1.5rem);
 }
 
+@font-face{
+    font-family: "NueMerriweather";
+}
+
+
 .input-field label {
   color: #9e9e9e;
   position: absolute;
@@ -6360,6 +6365,7 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
   left: 0;
   height: 100%;
   font-size: 1.3rem;
+  font-family: "NueMerriweather";
   cursor: text;
   -webkit-transition: -webkit-transform .2s ease-out;
   transition: -webkit-transform .2s ease-out;
