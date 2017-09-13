@@ -1,10 +1,13 @@
-<div class="container">
+<div class="row">
+    
+    <div class="col m4">
+        <div class="container">
     <form name="FormuluarioUsuario" method="post" action="" autocomplete="off" >
         <div class="panel" name="libros">
             <div class="panel-heading text-center">
                 <div class="row"> 
                     <div class="col s12">
-                        <h3>Registro De Administradores</h3>
+                        <h3>Editar Administradores</h3>
                     </div>
                 </div>
             </div>
@@ -134,4 +137,6 @@
             </div>
         </div>
     </form>
+</div>
+    </div>
 </div>

@@ -28,12 +28,12 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="text-center"><button class="btn btn-success btn-block btn-large" onclick="abrirModal()"> <i class="Medium material-icons prefix">edit</i> </button></td>
+                            <td class="text-center"><button class="btn btn-success btn-block btn-large" onclick="abrirEdicion()"> <i class="Medium material-icons prefix">edit</i> </button></td>
                             <td class="text-center">jhon Cefhdsk hfkadhfkj fhafkjahkjna</td>
                             <td class="text-center">jhon01</td>
                             <td class="text-center">Admin</td>
                             <td class="text-center"><img src="../imagenes/imagenes.jpg" class="presentacionXZ" alt=""></td>
-                            <td class="text-center"><button class="btn btn-danger btn-block btn-large"> <i class="Medium material-icons prefix">delete</i> </button></td>
+                            <td class="text-center"><button class="btn btn-danger btn-block btn-large" onclick="abrirEdicion()"> <i class="Medium material-icons prefix">delete</i> </button></td>
                         </tr>
 
                         <tr>
@@ -44,12 +44,17 @@
                             <td class="text-center"><img src="../imagenes/imagenes.jpg" class="presentacionXZ" alt=""></td>
                             <td class="text-center"><button class="btn btn-danger btn-block btn-large"> <i class="Medium material-icons prefix">delete</i> </button></td>
                         </tr>
-
-
                     </tbody>
                 </table>
             </div>
         </div>
+    </div>
+</div>
+
+<!--esta es para abrir la ventana de edicion-->
+<div id="edicion" class="modal modal-fixed-footer ">
+    <div class="modal-content modal-lg">
+        <?php include('./editar_administrador.php'); ?>
     </div>
 </div>
 

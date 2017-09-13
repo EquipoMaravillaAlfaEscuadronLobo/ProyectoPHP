@@ -52,6 +52,13 @@
     function abrirModal() {
         $('#nuevo').modal('open');
     }
+    
+    
+    
+    function abrirEdicion() {
+        $('#edicion').modal('open');
+    }
+    
 </script>
 </body>
 <footer class="text-center">
