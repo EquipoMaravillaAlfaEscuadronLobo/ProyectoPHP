@@ -26,8 +26,8 @@ include_once('../plantillas/cabecera.php');
                         		<div class="col-md-9"> <div class="row"><div class="col-md-11"><input type="password" name="clave" id="clave" class="form-control" /></div><div class="col-md-1"><i id="ojo" class="fa fa-eye" aria-hidden="true"></i></div></div>
                         	</div>
                         	<div class="row">
-                        	<div class="col-md-6"><button type="button" class="form-control btn btn-primary" onclick="validar()"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Ingresar</button></div>
-                        	<div class="col-md-6"><button type="reset" class="form-control btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancelar</button></div>
+                        	<div class="col-md-6"><button type="button" class="form-control btn btn-primary" onclick="validar()"><span class="fa fa-sign-in" aria-hidden="true"></span> Ingresar</button></div>
+                        	<div class="col-md-6"><button type="reset" class="form-control btn btn-danger"><span class="fa fa-times" aria-hidden="true"></span> Cancelar</button></div>
                         	
                         
                     </div>

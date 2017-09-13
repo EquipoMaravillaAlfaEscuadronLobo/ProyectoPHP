@@ -20,7 +20,7 @@ include_once('../plantillas/menu.php');
 
         <li class="tab">
             <a class="active" href="#test3">
-                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Prestamo
+             <i class="fa fa-handshake-o" aria-hidden="true"></i> Prestamo
             </a>
         </li>
         <li class="tab">
