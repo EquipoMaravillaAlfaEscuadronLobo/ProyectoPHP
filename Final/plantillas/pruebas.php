@@ -13,59 +13,14 @@ include_once './menu.php';
     <div class="panel-heading">
         <h3 class="panel-title">Using feedback icons</h3>
     </div>
-    <div class="panel-body">
-        <form id="signupForm1" method="post" class="form-horizontal" action="">
-            <div class="form-group">
-                <label class="col-sm-4 control-label" for="firstname1">First name</label>
+    
+        <form id="FORMULARIO" method="post" class="form-horizontal" action="">
+            
+                <label class="col-sm-4" for="firstname1">First name</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" id="firstname1" name="firstname1" placeholder="First name" />
+                    <input type="text"id="idNombre" name="nameNombre" placeholder="Escriba su nombre" />
                 </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-4 control-label" for="lastname1">Last name</label>
-                <div class="col-sm-5">
-                    <input type="text" class="form-control" id="lastname1" name="lastname1" placeholder="Last name" />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-4 control-label" for="username1">Username</label>
-                <div class="col-sm-5">
-                    <input type="text" class="form-control" id="username1" name="username1" placeholder="Username" />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-4 control-label" for="email1">Email</label>
-                <div class="col-sm-5">
-                    <input type="text" class="form-control" id="email1" name="email1" placeholder="Email" />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-4 control-label" for="password1">Password</label>
-                <div class="col-sm-5">
-                    <input type="password" class="form-control" id="password1" name="password1" placeholder="Password" />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-4 control-label" for="confirm_password1">Confirm password</label>
-                <div class="col-sm-5">
-                    <input type="password" class="form-control" id="confirm_password1" name="confirm_password1" placeholder="Confirm password" />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-sm-5 col-sm-offset-4">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" id="agree1" name="agree1" value="agree" />Please agree to our policy
-                        </label>
-                    </div>
-                </div>
-            </div>
+             
 
             <div class="form-group">
                 <div class="col-sm-9 col-sm-offset-4">
@@ -73,81 +28,18 @@ include_once './menu.php';
                 </div>
             </div>
         </form>
-    </div>
+    
 </div>
 
 <script type="text/javascript">
-            $.validator.setDefaults({
-                submitHandler: function () {
-                    alert("submitted!");
-                }
-            });
+          
 
             $(document).ready(function () {
-                $("#signupForm").validate({
-                    rules: {
-                        firstname: "required",
-                        lastname: "required",
-                        username: {
-                            required: true,
-                            minlength: 2
-                        },
-                        password: {
-                            required: true,
-                            minlength: 5
-                        },
-                        confirm_password: {
-                            required: true,
-                            minlength: 5,
-                            equalTo: "#password"
-                        },
-                        email: {
-                            required: true,
-                            email: true
-                        },
-                        agree: "required"
-                    },
-                    messages: {
-                        firstname: "Please enter your firstname",
-                        lastname: "Please enter your lastname",
-                        username: {
-                            required: "Please enter a username",
-                            minlength: "Your username must consist of at least 2 characters"
-                        },
-                        password: {
-                            required: "Please provide a password",
-                            minlength: "Your password must be at least 5 characters long"
-                        },
-                        confirm_password: {
-                            required: "Please provide a password",
-                            minlength: "Your password must be at least 5 characters long",
-                            equalTo: "Please enter the same password as above"
-                        },
-                        email: "Please enter a valid email address",
-                        agree: "Please accept our policy"
-                    },
-                    errorElement: "em",
-                    errorPlacement: function (error, element) {
-                        // Add the `help-block` class to the error element
-                        error.addClass("help-block");
+                
 
-                        if (element.prop("type") === "checkbox") {
-                            error.insertAfter(element.parent("label"));
-                        } else {
-                            error.insertAfter(element);
-                        }
-                    },
-                    highlight: function (element, errorClass, validClass) {
-                        $(element).parents(".col-sm-5").addClass("has-error").removeClass("has-success");
-                    },
-                    unhighlight: function (element, errorClass, validClass) {
-                        $(element).parents(".col-sm-5").addClass("has-success").removeClass("has-error");
-                    }
-                });
-
-                $("#signupForm1").validate({
+                $("#FORMULARIO").validate({
                     rules: {
-                        firstname1: "required",
+                        nameNombre: "required",
                         lastname1: "required",
                         username1: {
                             required: true,
@@ -169,7 +61,7 @@ include_once './menu.php';
                         agree1: "required"
                     },
                     messages: {
-                        firstname1: "Please enter your firstname",
+                        nameNombre: "por favor ingrese su primer nombre",
                         lastname1: "Please enter your lastname",
                         username1: {
                             required: "Please enter a username",
