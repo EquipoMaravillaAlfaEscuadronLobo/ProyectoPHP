@@ -1,5 +1,5 @@
 <div class="container">
-    <form name="FormuluarioUsuario" method="post" action="">
+    <form name="signupForm" method="post" action="">
         <div class="row">
             <div class="panel" name="libros">
                 <div class="panel-heading text-center">
@@ -15,9 +15,9 @@
                         <div class="col m1"></div>
                         <div class="input-field col m5">
                             <i class="Medium material-icons prefix">account_circle</i> 
-                            <input type="text" id="idNombre" name="nameNombre"  class="text-center validate" length="10">
+                            <input type="text" id="firstname" name="nameNombre"  class="text-center validate" maxlength="10" minlength="3" required>
 
-                            <label for="idNombre">Nombre <small> (Ej: Nombre1 Nombre2)</small></label>
+                            <label for="firstname">Nombre <small> (Ej: Nombre1 Nombre2)</small></label>
                         </div>
                         <div class="input-field col m5">
                             <i class="material-icons prefix">account_circle</i> 

@@ -5,6 +5,8 @@
 <script src="../js/foto.js"></script>
 <script src="../js/jquery.dataTables.min.js"></script>
 <script src="../js/data-tables-script.js"></script>
+<script src="../js/jquery.validate.js"></script>
+
 <script>
     $(document).ready(function () {
         $('.datepicker').pickadate();
