@@ -1,131 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="utf-8">
-            <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
-                <title>
-                    Activo Fijo
-                </title>
-                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-                <link href="../css/bootstrap.min.css" rel="stylesheet">
-                    <link href="../css/materialize.min.css" rel="stylesheet">
-                    </link>
-                </link>
-                <link href="../css/estilos.css" rel="stylesheet">
-                </link>
-            </meta>
-        </meta>
-         <script crossorigin="a
-    nonymous" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" src="https://code.jquery.com/jquery-2.2.4.min.js">
-        </script>
-    </head>
-<body>
-	 <nav class="nav-extended">
-            <div class="nav-wrapper">
-                <a class="brand-logo" href="../home.php">
-                   <img src="../imagenes/logo.png" alt="" width="150px">
-                </a>
-                <a class="button-collapse" data-activates="mobile-demo" href="#">
-                    <i class="material-icons">
-                        menu
-                    </i>
-                </a>
-                <ul class="right hide-on-med-and-down" id="nav-mobile">
-                    <li>
-                        <a href="inicio_af.php">
-                            Activo Fijo
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../biblioteca/inicio_b.php">
-                            Gestión de Biblioteca
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            Gestión de Usuarios
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            Seguridad
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            Ayuda
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../index.php">
-                            Cerrar Sesión
-                        </a>
-                    </li>
-                </ul>
-                <ul class="side-nav" id="mobile-demo">
-                    <li>
-                        <a href="inicio_af.php">
-                            Activo Fijo
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            Gestión de Biblioteca
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            Gestión de Usuarios
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            Seguridad
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            Ayuda
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../index.php">
-                            Cerrar Sesión
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="nav-content" name="">
+ <?php
+$titulo1 = "Activo Fijo";
+include_once('../plantillas/cabecera.php');
+include_once('../plantillas/menu.php');
+?>
+        
+
+
+            <div class="nav-content nav-pills" name="">
                 <ul class="tabs tabs-transparent">
                     <li class="tab">
                         <a class="active" href="#test2">
-                            Inventario
+                         <i class="fa fa-server" aria-hidden="true"></i>    Inventario
                         </a>
                     </li>
                     <li class="tab">
                         <a href="#test1">
-                            Registro de Activo Fijo
+                            <i class="fa fa-plus" aria-hidden="true"></i>  Registro de Activo Fijo
                         </a>
                     </li>
                     
                     
                     <li class="tab">
                         <a href="#test3">
-                            Mantenimiento
+                          <i class="fa fa-wrench" aria-hidden="true"></i>  Mantenimiento
                         </a>
                     </li>
                     <li class="tab">
                         <a href="#test4">
-                            Prestamo
+                           <i class="fa fa-handshake-o" aria-hidden="true"></i> Prestamo
                         </a>
                     </li>
                     <li class="tab">
                         <a href="#test5">
+                            <i class="fa fa-list-alt" aria-hidden="true"></i>
                             Consultas
                         </a>
                     </li>
                     <li class="tab">
                         <a href="#test6">
+                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
                             Reportes
                         </a>
                     </li>
@@ -133,18 +46,20 @@
             </div>
         </nav>
 
-        <div class="col s12" id="test1">
+      
+   
+   <div class="col s12" id="test1">
            
-           <?php include('registrar_af2.php');?>
+           <?php include('./registrar_af2.php');?>
         </div>
         <div class="col s12" id="test2">
-           <h1>Inventario</h1>
+           <?php include('./listado_act.php');?>
         </div>
         <div class="col s12" id="test3">
-           <h1>Mantenimiento</h1>
+           < <?php include('./listado_act_mant.php');?>
         </div>
         <div class="col s12" id="test4">
-           <h1>prestamos</h1>
+            <?php include('./listado_prest_act.php');?>
         </div>
         <div class="col s12" id="test5">
             <h1>Consultas</h1>
@@ -152,48 +67,7 @@
         <div class="col s12" id="test6">
             <h1>Reportes</h1>
         </div>
-        
-        <script crossorigin="a
-	nonymous" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" src="https://code.jquery.com/jquery-2.2.4.min.js">
-        </script>
-        <script src="../js/bootstrap.js">
-        </script>
-        <script src="../js/materialize.js">
-        </script>
-        <script>
-  
-  	 $(document).ready(function(){
- 
-    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-    $('.modal').modal({
-      dismissible: false, // Modal can be dismissed by clicking outside of the modal
-      opacity: .8, // Opacity of modal background
-      inDuration: 300, // Transition in duration
-      outDuration: 200, // Transition out duration
-      startingTop: '4%', // Starting top style attribute
-      endingTop: '10%' // Ending top style attribute
-     
-    }
-  );
-     $('.datepicker').pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: false, // Creates a dropdown of 15 years to control year,
-    today: 'Hoy',
-    clear: 'Borrar',
-    close: 'Aceptar',
-    format: 'dd/mm/yyyy',
-     max: new Date(),
-    closeOnSelect: true // Close upon selecting a date,
-  });
-     document.getElementById('entrada').val=new Date();
-     $("#entrada").val(new Date().getDate()+"/"+(new Date().getgetMonth()+1)+"/"+new Date().getFullYear());
-     $(document).ready(function() {
-    $('select').material_select();
-  });
-  });
- 		
- 	
 
-  </script>
-</body>
-</html>
+<?php
+include_once('../plantillas/pie_de_pagina.php');
+?>
