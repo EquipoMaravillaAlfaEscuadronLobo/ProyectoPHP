@@ -66,6 +66,9 @@
     function nuevoPretamoAct() {        
         $('#nuevoPrestamoAct').modal('open');
     }
+     function nuevoMant() {        
+        $('#nuevoMant').modal('open');
+    }
 
     
 </script>

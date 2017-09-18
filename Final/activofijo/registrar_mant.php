@@ -1,70 +1,42 @@
 <div class="row">
+	<!--  panel de mantenimiento     -->
 	<div class="col-md-6">
 		<div class="panel">
-			<div class="panel-heading"> Mantenimiento</div>
-			<div class="panel-body"><div class="row">
+			<div class="panel-heading">	Datos de Mantenimiento</div>
+			<div class="panel-body">
 
-			<div class="row">
-				<div class="col-md-8input-field">
-					<span class="glyphicon glyphicon-user prefix" aria="hidden"></span>
-					<select>
-				      <option value="0" disabled selected>Seleccione Encargado</option>
-				      <option value="1">Silla</option>
-				      <option value="2">Mesa</option>
-				      <option value="3">Computadora</option>
-				    </select>
-				    <label>  Categoria</label>
-				    <div class="col-md-4" >
-					<button class="btn" onclick="abrirModal()"><i class="material-icons" >add</i> <b class="text-center">Nuevo Encargado</b></button>
-				</div>
-				</div>
+				<i class="fa fa-calendar">&nbspFecha</i><input type="text" name="fecha" value="<?php echo date("d-m-Y");?>">
+				<i  class="fa fa-usd" aria-hidden="true"> &nbspPrecio<input type="text" name="$$$" placeholder="Costo"></i>
 				
-			</div>
-
-				<div class="col-md-12 input-field">
-				<span class="glyphicon glyphicon-usd prefix" aria="hidden"></span>
-					<label for="">Costo</label>
-					<input type="number">
+				<div class="row">
+				<i class="	fa fa-pencil-square-o"> &nbspDescripcion</i>
+					<textarea rows="6" cols="50" placeholder="Costo">
+						
+					</textarea>
 				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-12 input-field">
-				<span class="glyphicon glyphicon-pencil prefix" aria="hidden"></span>
-					<label for="">  Detalle</label><br>
-					<textarea>...</textarea>
-					
-				</div>
-			</div>
-			
-			
 			</div>
 		</div>
 	</div>
-	<div class="col-md-3">
-        
 
-        <div class="row">
-        	<div class="panel">
-        		<div class="panel-heading">Activo</div>
 
-        		<div class="panel-body">
-        		<label>Codigo</label>
-        			<input type="text" id="entrada"  value="1995-150-001" >
-        			<label>Tipo</label>
-        			<input type="text" id="entrada"  value="Mesa" ></div>
-        		</div></div>
-        </div>
-        <div class="col-md-3">
-        <div class="row">
-        	<div class="panel">
-        		<div class="panel-heading">Fecha</div>
-        		<div class="panel-body"><input type="date" id="entrada" class="datepicker" value="<?php echo date("d/m/Y", strtotime($hoy)) ?>" ></div>
-        	</div>
-        </div>
-</div>
-       
-        
+	<!--  panel de activo    -->
+	<div class="col-md-4">
+		<div class="panel">
+			<div class="panel-heading">	Datos del Activo</div>
+			<div class="panel-body">
+ 					<label>Codigo</label>
+                    <input type="text" id="entrada"  value="1995-150-001" >
+                    <label>Tipo</label>
+                    <input type="text" id="entrada"  value="Mesa" >
+				
+			</div>
+		</div>
+		
+	</div>
+	<!--  panel de fecha    -->
+	<div class="col-md-4">
+		
+	</div>
 </div>
 
 <div id="nuevo" class="modal modal-sm " >
