@@ -1,3 +1,4 @@
+
  <div>
     <row>
         <div class="col-md-12">
@@ -26,7 +27,8 @@
                                 <td>Carlos Antonio Torres Martinez</td>
                                 <td>12/08/2017</td>
                                 <td>31/08/2017</td>
-                                <td class="alert alert-warning">Pendiente</td>
+                                <td class="alert alert-warning"><a class="btn btn_primary"  target="_blank" onclick="nuevoMant()"><span aria-hidden="true" class="glyphicon glyphicon-plus">
+                        </span>MANTENIMIENTO</a></td>
                             </tr>
                             <tr>
                                 <td>2</td>
@@ -59,4 +61,5 @@
       	<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Salir</a>
     </div>
 </div>
+
 

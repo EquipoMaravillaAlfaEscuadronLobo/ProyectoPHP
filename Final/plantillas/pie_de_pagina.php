@@ -66,9 +66,15 @@
     function nuevoPretamoAct() {        
         $('#nuevoPrestamoAct').modal('open');
     }
-     function nuevoMant() {        
+    
+        function nuevoMant() { 
         $('#nuevoMant').modal('open');
     }
+      function nuevoEnc() { 
+
+        $('#nuevoEncargado').modal('open');
+    }
+     
 
     
 </script>

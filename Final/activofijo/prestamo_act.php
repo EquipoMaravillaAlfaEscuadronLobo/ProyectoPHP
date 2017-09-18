@@ -14,7 +14,7 @@
 				</div>
 			</div>
 			</div>
-			<but class="btn" onClick="addLibro()"><span aria-hidden="true" class="glyphicon glyphicon-plus">
+			<button class="btn" onClick="addLibro()"><span aria-hidden="true" class="glyphicon glyphicon-plus">
                         </span>Agregar Activo</button>
 		</div>
 
