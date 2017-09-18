@@ -58,6 +58,15 @@
     function abrirEdicion() {
         $('#edicion').modal('open');
     }
+//  FUNCIONES QUE SE OCUPAN PARA ACTIVO FIJO
+    function nuevaCat() {        
+        $('#nuevaCat').modal('open');
+    }
+
+    function nuevoPretamoAct() {        
+        $('#nuevoPrestamoAct').modal('open');
+    }
+
     
 </script>
 </body>

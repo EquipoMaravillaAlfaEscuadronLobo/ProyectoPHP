@@ -21,7 +21,7 @@
 				    <label>  Categoria</label>
 				</div>
 				<div class="col-md-4" >
-					<button class="btn" onclick="abrirModal()"><i class="material-icons" >add</i> <b class="text-center">Nueva Categoria</b></button>
+					<button class="btn" onclick="nuevaCat()"><i class="material-icons" >add</i> <b class="text-center">Nueva Categoria</b></button>
 				</div>
 			</div>
 			<div class="row">
@@ -118,12 +118,14 @@
         </div>
 </div>
 
-<div id="nuevo" class="modal modal-sm " >
-	<div class="modal-conten ">
 
-	<?php include('nueva_categoria.php');?>
+
+<div id="nuevaCat" class="modal modal-fixed-footer" >
+	<div class="modal-content ">
+			 <?php include('nueva_categoria.php');?>
+	
 	</div>
-	 <div class="modal-footer modal-sm">
+	 <div class="modal-footer">
 		<a href="#" class="modal-action modal-close waves-effect btn btn-success">Guardar</a>
       <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Salir</a>
     </div>

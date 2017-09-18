@@ -4,9 +4,7 @@ include_once('../plantillas/cabecera.php');
 include_once('../plantillas/menu.php');
 ?>
         
-
-
-            <div class="nav-content nav-pills" name="">
+    <div class="nav-content" name="">
                 <ul class="tabs tabs-transparent">
                     <li class="tab">
                         <a class="active" href="#test2">
