@@ -17,8 +17,8 @@
         <link href="../css/foto.css" rel="stylesheet">
         <link href="../css/materialdesignicons.min.css" rel="stylesheet">
         
-
-
+        <script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery.validate.js"></script>
 
     </head>
     <body>
