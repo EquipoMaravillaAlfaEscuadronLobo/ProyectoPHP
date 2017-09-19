@@ -61,9 +61,12 @@
 </div>
 
 <!--esta es para abrir la ventana de edicion-->
-<div id="edicion" class="modal modal-fixed-footer ">
-    <div class="modal-content modal-lg">
-        <?php include('./registro_usuario.php'); ?>
+<div id="edicion" class="modal modal-fixed-footer nuevo">
+    <div class="modal-content">
+        <div class="row">
+            <div class="col-md-12">   <?php include('editar_usuario.php'); ?></div>
+        </div>
+     
     </div>
 </div>
 

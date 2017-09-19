@@ -92,7 +92,7 @@ label{
 nav ul li a{
 	font-size: 1em;
 }
-#nuevo{
+.nuevo{
 	 max-height: 90vh !important; 
 	width: 80% !important;
 	margin-top: 3em !important;
@@ -112,4 +112,13 @@ input{
 
 .caret{
 	opacity: 0;
+}
+
+.p_libro{
+	background-color: white !important;
+	color: black !important;
+
+}
+#despliegue{
+	color: black !important;
 }
