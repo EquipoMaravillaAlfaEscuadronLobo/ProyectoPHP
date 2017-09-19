@@ -73,9 +73,9 @@
         $('#nuevoMant').modal('open');
     }
       function nuevoEnc() { 
-
         $('#nuevoEncargado').modal('open');
     }
+
      
 
     

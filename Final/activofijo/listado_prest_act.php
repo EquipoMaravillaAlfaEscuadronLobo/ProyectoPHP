@@ -50,13 +50,15 @@
 
 
 
-<div id="nuevoPrestamoAct" class="modal modal-fixed nuevo ">
- <div class="modal-footer ">
+<div id="nuevoPrestamoAct" class="modal modal-fixed-footer nuevo ">
+
+    <div class="modal-content">
+    
+        <?php   include('prestamo_act.php'); ?>
+ 
+    </div>
+   <div class="modal-footer ">
         <a href="#" class="modal-action modal-close waves-effect btn btn-success">Guardar</a>
         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Salir</a>
     </div>
-    <div class="modal-content">
-        <?php   include('prestamo_act.php'); ?>
-    </div>
-   
 </div>

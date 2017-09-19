@@ -5,11 +5,22 @@
 	<div class="col-md-4">
 		<div class="panel-group" id="accordion">
 			<div class="panel" name="libros">
-				<div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion" href="#activo1">Encargado </a></div>
-				<div id="activo1" class="panel-collapse collapse in">
+				<div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion" href="#encarg1">Encargado </a></div>
+				<div id="encarg1" class="panel-collapse collapse in">
 				<div class="panel-body">
-				<div class="col-md-8"><input class="buscar" type="text" placeholder="Buscar"></div>
-				<div class="col-md-2"><button class="btn btn-buscar-md" onclick="nuevoEnc() ">Buscar</button></div>
+				<div class="row">
+				<div class="col-md-5">
+					<input class="buscar" type="text" placeholder="Buscar">
+					
+				</div>
+				<div class="col-md-4">
+				<button class="btn btn-buscar-md" o ">Buscar</button>
+				</div>
+				<div class="col-md-2">
+				<a class="btn btn_primary"  target="_blank" onclick="nuevoEnc()"><span aria-hidden="true" class="glyphicon glyphicon-plus"></span></a>
+				</div>
+				
+				</div>
 					<input type="text" id="codigo" placeholder="Nombre" autofocus onkeypress="buscarLibro(event)">
 					<input type="text" id="titulo" placeholder="Telefono" disabled>
 					<input type="text" id="encargado" placeholder="Correo" disabled>
@@ -44,15 +55,20 @@
 
 
 	<!--  panel de activo    -->
-	<div class="col-md-3">
+	<div class="col-md-4">
 		<div class="panel">
 			<div class="panel-heading">	Datos del Activo</div>
 			<div class="panel-body">
+			<div class="row" id="para buscar activo">
+				<div class="col-md-8"><input class="buscar" type="text" placeholder="Buscar"></div>
+				<div class="col-md-2"><button class="btn btn-buscar-md" onclick="nuevoEnc() ">Buscar</button></div>
+			</div>
+				<div class="row">
  					<label>Codigo</label>
                     <input type="text" id="entrada"  value="1995-150-001" >
                     <label>Tipo</label>
                     <input type="text" id="entrada"  value="Mesa" >
-				
+				</div>
 			</div>
 		</div>
 		
@@ -97,12 +113,12 @@
  		
 </script>
 
-<div id="nuevoEncargado" class="modal modal-fixed-footer " tabindex="-1" data-focus-on="input:first" >
+<div id="nuevoEncargadoo" class="modal modal-fixed-footer " >
 
 	<div class="modal-content">	
-	<?php include('nueva_categoria.php');?>
+	<?php include('nuevo_encargado.php');?>
 	</div>
-	 <div class="modal-footer modal-sm">
+	 <div class="modal-footer ">
 		<a href="#" class="modal-action modal-close waves-effect btn btn-success">Guardar</a>
       <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Salir</a>
     </div>

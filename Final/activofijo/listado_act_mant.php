@@ -36,7 +36,7 @@
                                 <td>Carlos Antonio Torres Martinez</td>
                                 <td>12/08/2017</td>
                                 <td>29/08/2017</td>
-                                <td class="alert alert-success"><a class="btn btn_primary"  target="_blank" onclick="nuevoMant()"><span aria-hidden="true" class="glyphicon glyphicon-plus">
+                                <td class="alert alert-success"><a class="btn btn_primary"   onclick="nuevoEnc() "><span aria-hidden="true" class="glyphicon glyphicon-plus">
                         </span>MANTENIMIENTO</a></td>
                             </tr>
                         </tbody>
@@ -62,4 +62,13 @@
     </div>
 </div>
 
+<div id="nuevoEncargado" class="modal modal-fixed-footer " >
 
+	<div class="modal-content">	
+	<?php include('nuevo_encargado.php');?>
+	</div>
+	 <div class="modal-footer ">
+		<a href="#" class="modal-action modal-close waves-effect btn btn-success">Guardar</a>
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Salir</a>
+    </div>
+</div>
