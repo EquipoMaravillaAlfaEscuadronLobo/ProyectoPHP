@@ -8504,7 +8504,7 @@ if (jQuery) {
         weekdaysShort: [ 'Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab' ],
 
 // Materialize modified
-        weekdaysLetter: [ 'D', 'L', 'M', 'X', 'J', 'V', 'S' ],
+        weekdaysLetter: [ 'D', 'L', 'M', 'M', 'J', 'V', 'S' ],
 
 // Today and clear
         today: 'Hoy',
