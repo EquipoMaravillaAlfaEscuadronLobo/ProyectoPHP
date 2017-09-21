@@ -21,8 +21,8 @@
                         </div>
                         <div class="input-field col m5">
                             <i class="material-icons prefix">account_circle</i> 
-                            <input type="text" id="idNombre" name="nameApellido"  class="text-center validate" maxlength="25" minlength="3" required>
-                            <label for="nameApellido">Apellido <small>(Ej: Apellido1 Apellido2)</small></label>
+                            <input type="text" id="idApellido" name="nameApellido"  class="text-center validate" maxlength="25" minlength="3" required>
+                            <label for="idApellido">Apellido <small>(Ej: Apellido1 Apellido2)</small></label>
                         </div>
                     </div>
                     <div class="row">
@@ -42,7 +42,7 @@
                         <div class="col m1"></div>
                         <div class="input-field col m5">
                             <i class="material-icons prefix">location_on</i> 
-                            <input type="text" id="idEmail" name="nameDireccion" class="text-center validate" minlength="10" required="">
+                            <input type="text" id="idDireccion" name="nameDireccion" class="text-center validate" minlength="10" required="">
                             <label for="nameDireccion">Direccion <small>(Ej: Verapaz, Colonia Mercenenes)</small> </label>
                         </div>
 
@@ -66,18 +66,14 @@
                     <div class="row">
                         <div class="col m5">
                             <i class="Medium material-icons prefix">wc</i> 
-
                             <div class="radio-inline">
                                 <span>Sexo</span>
-
                                 <input type="radio" id="hombre"  name="sexo"  class="text-center with-gap">
                                 <label for="hombre">Masculino</label>
 
                                 <input type="radio" id="mujer" name="sexo"  class="text-center with-gap">
                                 <label for="mujer">Femenino</label>
-
                             </div>
-
                             <div class="col 1"></div>
                         </div>
                         <div class="col m6">
@@ -88,7 +84,7 @@
                                     <input type="file">
                                 </div>
                                 <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text">
+                                    <input class="file-path validate" type="text" name="nameFoto" id="idFoto">
                                     <input type="file" id="files" name="files[]">
                                 </div>
                             </div>
@@ -101,7 +97,7 @@
                         <button class="btn btn-success">
                             <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>                            
                             Guardar</button>
-                        <button type="reset" class="btn btn-danger">
+                        <button type="reset" class="btn btn-danger" onclick="AlertaExttoZZZ()">
                             <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar
                         </button>
                     </div>
@@ -132,36 +128,40 @@
                     minlength: 3
                 },
                 nameApellido: {
-                     required: true,
+                    required: true,
                     minlength: 3
                 },
                 nameDireccion: {
                     required: true,
                     minlength: 10
                 },
-                password1: {
+                original_pasword: {
                     required: true,
                     minlength: 5
                 },
                 confirm_password1: {
                     required: true,
                     minlength: 5,
-                    equalTo: "#password1"
+                    equalTo: "#original_pasword"
+                },
+                nameFoto: {
+                    required: true
                 },
                 nameEmail: {
                     required: true,
                     email: true
                 },
+                
                 agree1: "required"
             },
             messages: {
                 nameNombre: {
-                   required: "Por favor ingrese su Nombre",
-                   minlength: "El nombre debe de tener por lo menos 3 caracteres" 
+                    required: "Por favor ingrese su Nombre",
+                    minlength: "El nombre debe de tener por lo menos 3 caracteres"
                 },
                 nameApellido: {
-                   required: "Por favor ingrese su Apellido",
-                   minlength: "El apellido debe de tener por lo menos 3 caracteres" 
+                    required: "Por favor ingrese su Apellido",
+                    minlength: "El apellido debe de tener por lo menos 3 caracteres"
                 },
                 nameDireccion: {
                     required: "Por favor ingrese la direccion",
@@ -175,6 +175,9 @@
                     required: "Please provide a password",
                     minlength: "Your password must be at least 5 characters long",
                     equalTo: "Please enter the same password as above"
+                },
+                nameFoto: {
+                    required: "favor ingrese una foto"
                 },
                 email1: "Por favor ingrese un correo valido",
                 agree1: "Please accept our policy"
