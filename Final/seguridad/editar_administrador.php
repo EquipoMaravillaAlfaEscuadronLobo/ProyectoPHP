@@ -1,8 +1,5 @@
-<div class="row">
-    
-    <div class="col m4">
-        <div class="container">
-    <form name="FormuluarioUsuario" method="post" action="" autocomplete="off" >
+<form name="FormuluarioUsuario" method="post" action="" autocomplete="off" >
+    <div class="row">
         <div class="panel" name="libros">
             <div class="panel-heading text-center">
                 <div class="row"> 
@@ -11,10 +8,9 @@
                     </div>
                 </div>
             </div>
-
             <div class="text-center panel-body">
                 <div class="row">
-                    <div class="col-md-1"></div>
+                    <!--<div class="col-md-1"></div>-->
                     <div class="input-field col m5 input-group">
                         <i class="Medium material-icons prefix">account_circle</i> 
                         <input type="text" id="idNombre" name="nameNombre"  class="text-center">
@@ -62,21 +58,21 @@
 
                     <div class="col m3">
                         <div class="row">
-                                                 
-                            
+
+
                             <div class="col m1"><i class="Medium material-icons prefix">wc</i> </div>
                             <div class="col m2"><label for="">Sexo</label></div>
                             <div class="col m9">
-                                
-                            <div class="radio-inline">
-                                 
-                            <p>
-                                <input type="radio" name="sexo" id="hombre" value="Hombre" class="text-center with-gap">
-                                <label for="hombre"><i class="fa fa-mars"></i>Hombre </label>
-                            </p><p> 
-                                <input type="radio" name="sexo" id="mujer" value="Mujer" class="text-center with-gap">
-                                <label for="mujer"><i class="fa fa-venus"></i>Mujer </label>
-                            </p>    
+
+                                <div class="radio-inline">
+
+                                    <p>
+                                        <input type="radio" name="sexo" id="hombre" value="Hombre" class="text-center with-gap">
+                                        <label for="hombre"><i class="fa fa-mars"></i>Hombre </label>
+                                    </p><p> 
+                                        <input type="radio" name="sexo" id="mujer" value="Mujer" class="text-center with-gap">
+                                        <label for="mujer"><i class="fa fa-venus"></i>Mujer </label>
+                                    </p>    
                                 </div>
                             </div>
                         </div>
@@ -87,13 +83,13 @@
                             <div class="col m2"><label for="">Nivel </label></div>
                             <div class="col m8">
                                 <div class="radio-inline">
-                                <p>
-                                    <input type="checkbox" name="nameNivel" id="idAdmin" value="admin" >
-                                <label for="idAdmin">Admin</label>
-                                </p><p>
-                                <input type="checkbox" name="nameNivel" id="idRoot" value="root" disabled="">
-                                <label for="idRoot">Root</label>
-                                </p>
+                                    <p>
+                                        <input type="checkbox" name="nameNivel" id="idAdmin" value="admin" >
+                                        <label for="idAdmin">Admin</label>
+                                    </p><p>
+                                        <input type="checkbox" name="nameNivel" id="idRoot" value="root" disabled="">
+                                        <label for="idRoot">Root</label>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -106,9 +102,9 @@
                     <div class="col m4"></div>
                     <div class="file-field input-field col m4">
                         <div class="btn btn-primary">
-                                    <span class="glyphicon glyphicon-picture" aria="hidden"></span> Foto                          
-                                    <input type="file">
-                                </div>
+                            <span class="glyphicon glyphicon-picture" aria="hidden"></span> Foto                          
+                            <input type="file">
+                        </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate" type="text">
                             <input type="file" id="files" name="files[]">
@@ -123,20 +119,20 @@
                                 <output id="list"></output>                
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
-                 <div class="row text-center">
-                        <button class="btn btn-success">
-                            <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>                            
-                            Guardar</button>
-                        <button type="reset" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar
-                        </button>
-                    </div>
+                <div class="row text-center">
+                    <button class="btn btn-success">
+                        <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>                            
+                        Guardar</button>
+                    <button type="reset" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar
+                    </button>
+                </div>
             </div>
         </div>
-    </form>
-</div>
     </div>
-</div>
+</form>
+
+

@@ -1,8 +1,5 @@
 <div class="container">
 
-    <div id="nuevo" class="modal">
-        <?php include('../plantillas/pruebas.php'); ?>
-    </div>
 
     <div class="row">
         <div class="panel" name="libros">

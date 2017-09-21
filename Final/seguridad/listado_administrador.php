@@ -1,9 +1,4 @@
 <div class="container">
-   
-    <div id="nuevo" class="modal">
-    <?php include('../plantillas/pruebas.php'); ?>
-</div>
-
     <div class="row">
         <div class="panel" name="libros">
             <div class="panel-heading text-center">
@@ -13,7 +8,7 @@
                     </div>
                 </div>
             </div>
-            
+
 
             <div class="panel-body">
                 <table padding="20px" class="responsive-table display" id="data-table-simple">
@@ -50,7 +45,6 @@
         </div>
     </div>
 </div>
-
 <!--esta es para abrir la ventana de edicion-->
 <div id="edicion" class="modal modal-fixed-footer ">
     <div class="modal-content modal-lg">
