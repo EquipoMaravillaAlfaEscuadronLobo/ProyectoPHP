@@ -6,7 +6,7 @@
 		<div class="col-md-4">
 			<div class="panel">
 				<div class="panel-heading">Datos Generales</div>
-				<div class="panel=body">
+				<div class="panel-body">
 					<label><i class="fa fa-calendar"></i> Fecha</label>
 					<input type="text" name="fecha" value="<?php echo date("d-m-Y");?>">
 					<label><i class="fa fa-microchip"></i>Categoria</label>

@@ -42,7 +42,7 @@
 				<i  class="fa fa-usd" aria-hidden="true"> &nbspPrecio<input type="text" name="$$$" placeholder="Costo"></i>
 				
 				<div class="row">
-				<div class="col=md-12">
+				<div class="col-md-12">
 				<i class="	fa fa-pencil-square-o"> &nbspDescripcion</i>
 					<textarea rows="50" cols="50" placeholder="Costo">
 						

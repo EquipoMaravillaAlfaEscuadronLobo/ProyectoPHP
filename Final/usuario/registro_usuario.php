@@ -1,6 +1,6 @@
 <!--formulario usuario-->
 <div class="container">
-    <form id="FORMULARIO" method="post" class="form-horizontal" action="">
+    <form id="FORMULARIO" method="post" class="form-horizontal" action="" autocomplete="off">
         <div class="row">
             <div class="panel" name="libros">
                 <div class="panel-heading text-center">
