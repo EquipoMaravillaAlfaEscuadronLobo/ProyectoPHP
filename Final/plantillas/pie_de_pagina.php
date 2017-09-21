@@ -7,6 +7,7 @@
 <script src="../js/jquery.validate.js"></script>
 <script src="../js/foto.js"></script>
 <script src="../js/alertaPersonalizadas.js"></script>
+<script src="../js/miValidacion.js"></script>
 
 <script>
     $(document).ready(function () {
