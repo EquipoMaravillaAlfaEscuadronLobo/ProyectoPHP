@@ -40,9 +40,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="panel-footer">
-                  
-                </div>
+              
             </div>
         </div>
     </row>
@@ -50,7 +48,7 @@
 
 <div id="nuevo" class="modal modal-fixed-footer ">
     <div class="modal-content modal-lg">
-        <?php include('prestamo_b.php'); ?>
+        <?php include('prestamo2.php'); ?>
     </div>
     <div class="modal-footer">
         <a href="#" class="modal-action modal-close waves-effect btn btn-success">Guardar</a>
