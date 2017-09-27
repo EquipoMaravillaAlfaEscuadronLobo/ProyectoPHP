@@ -1,5 +1,5 @@
 <div class="container">
-    <form name="FormuluarioUsuario" method="post" action="" autocomplete="off" >
+    <form id="FORMULARIO" name="FormuluarioUsuario" method="post" action="" autocomplete="off" >
         <div class="panel" name="libros">
             <div class="panel-heading text-center">
                 <div class="row"> 
@@ -14,21 +14,21 @@
                     <div class="col-md-1"></div>
                     <div class="input-field col m5 input-group">
                         <i class="Medium material-icons prefix">account_circle</i> 
-                        <input type="text" id="idNombre" name="nameNombre"  class="text-center">
-                        <label for="idNombre">Nombre <small> (Ej: Nombre1 Nombre2)</small></label>
+                        <input type="text" id="idNombre" name="nameNombre"  class="text-center validate" maxlength="25" minlength="3" required>
+                        <label for="idNombre" class="col-sm-4 control-labe">Nombre <small> (Ej: Nombre1 Nombre2)</small></label>
                     </div>
                     <div class="input-field col m5">
                         <i class="Medium material-icons prefix">account_circle</i> 
-                        <input type="text" id="idNombre" name="nameNombre"  class="text-center">
-                        <label for="idNombre">Apellido <small>(Ej: Apellido1 Apellido2)</small></label>
+                        <input type="text" id="idApellido" name="nameApellido"  class="text-center validate" maxlength="25" minlength="3" required>
+                            <label for="idApellido">Apellido <small>(Ej: Apellido1 Apellido2)</small></label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="input-field col m5">
                         <i class="Medium material-icons prefix">credit_card</i> 
-                        <input type="text" id="idDui" name="nameDui" class="text-center">
-                        <label for="idTelefono">Dui <small>(Ej: 02436390-9)</small></label>
+                        <input type="text" id="idDui" name="nameDui" class="text-center validate">
+                        <label for="idDui">Dui <small>(Ej: 02436390-9)</small></label>
                     </div>
                     <div class="input-field col m5">
                         <i class="Medium material-icons prefix">face</i> 
@@ -40,13 +40,13 @@
                     <div class="col-md-1"></div>
                     <div class="input-field col m5">
                         <i class="Medium material-icons prefix">remove_red_eye</i> 
-                        <input type="password" id="idPass" name="namePass" class="text-center">
-                        <label for="idPass">Contraseña</label>
+                        <input type="password" id="idPass1" name="namePass2" class="text-center">
+                        <label for="idPass1">Contraseña</label>
                     </div>
                     <div class="input-field col m5">
                         <i class="Medium material-icons prefix">remove_red_eye</i> 
                         <input type="password" id="idPass2" name="namePass2" class="text-center">
-                        <label for="idPass">Repita Contraseña</label>
+                        <label for="idPass2">Repita Contraseña</label>
                     </div>
                 </div>
                 <div class="row">
@@ -59,19 +59,16 @@
 
                     <div class="col m3">
                         <div class="row">
-
-
                             <div class="col m1"><i class="Medium material-icons prefix">wc</i> </div>
                             <div class="col m2"><label for="">Sexo</label></div>
                             <div class="col m9">
-
                                 <div class="radio-inline">
-
                                     <p>
-                                        <input type="radio" name="sexo" id="hombre" value="Hombre" class="text-center with-gap">
+                                        <input type="radio" name="NameSexo" id="hombre" value="Hombre" class="text-center with-gap">
                                         <label for="hombre"><i class="fa fa-mars"></i>Hombre </label>
-                                    </p><p> 
-                                        <input type="radio" name="sexo" id="mujer" value="Mujer" class="text-center with-gap">
+                                    </p>
+                                    <p> 
+                                        <input type="radio" name="NameSexo" id="mujer" value="Mujer" class="text-center with-gap">
                                         <label for="mujer"><i class="fa fa-venus"></i>Mujer </label>
                                     </p>    
                                 </div>
@@ -108,7 +105,7 @@
                             <input type="file">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text">
+                            <input class="file-path validate" type="text" name="nameFoto" id="idFoto">
                             <input type="file" id="files" name="files[]">
                         </div>
                     </div>
