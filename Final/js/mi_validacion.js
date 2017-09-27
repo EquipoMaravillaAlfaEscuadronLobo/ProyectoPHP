@@ -50,8 +50,11 @@ $(document).ready(function () {
                 maxlength: 14
             },
             nameTelefono: {
-//                required: true,
+                required: true,
                 minlength: 8
+            },
+            nameNivel: {
+                  required: true
             }
         },
         messages: {
@@ -96,6 +99,9 @@ $(document).ready(function () {
             nameTelefono:{
                required: "favor ingrese su teléfono",
                 minlength: "ingrese un numero telefónico valido"
+            },
+            NameNivel :{
+                required: "Seleccione un Nivel"
             }
             
         },

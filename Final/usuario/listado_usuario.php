@@ -1,6 +1,4 @@
 <div class="container">
-
-
     <div class="row">
         <div class="panel" name="libros">
             <div class="panel-heading text-center">
@@ -11,8 +9,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="panel-body">
                 <table padding="20px" class="responsive-table display" id="data-table-simple">
                     <thead class="">
@@ -61,7 +57,7 @@
 <div id="edicion" class="modal modal-fixed-footer nuevo">
     <div class="modal-content">
         <div class="row">
-            <div class="col-md-12">   <?php include('editar_usuario.php'); ?></div>
+            <div class="col-md-12">   <?php include('./editar_usuario.php'); ?></div>
         </div>
      
     </div>
