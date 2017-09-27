@@ -36,8 +36,8 @@
                 </a>
             </li>
             <li>
-                <a href="../index.php">
-                    <i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar Sesión
+                <a href="#">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i> Mi Cuenta
                 </a>
             </li>
         </ul>
@@ -69,8 +69,8 @@
                 </a>
             </li>
             <li>
-                <a href="../index.php">
-                    <i class="fa fa-sign-out" aria-hidden="true"></i>  Cerrar Sesión
+                <a href="#">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>  Mi Cuenta
                 </a>
             </li>
         </ul>
