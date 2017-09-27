@@ -8,7 +8,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="text-center panel-body">
                 <div class="row">
                     <div class="col-md-1"></div>
