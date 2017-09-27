@@ -48,6 +48,10 @@ $(document).ready(function () {
                 required: true,
                 minlength: 3,
                 maxlength: 14
+            },
+            nameTelefono: {
+//                required: true,
+                minlength: 8
             }
         },
         messages: {
@@ -88,7 +92,12 @@ $(document).ready(function () {
             nameUser : {
                 required: "ingrese un nombre de usuario ",
                 minlength: "debe de poseer por lo menos 4 caracteres "
+            },
+            nameTelefono:{
+               required: "favor ingrese su teléfono",
+                minlength: "ingrese un numero telefónico valido"
             }
+            
         },
         errorElement: "em",
         errorPlacement: function (error, element) {

@@ -25,10 +25,10 @@
                 </div>
                 <div class="row">
                     <div class="col-md-1"></div>
-                    <div class="input-field col m5">
-                        <i class="Medium material-icons prefix">credit_card</i> 
-                        <input type="text" id="idDui" name="nameDui" class="text-center validate" minlength="10" required="">
-                        <label for="idDui">Dui <small>(Ej: 02436390-9)</small></label>
+                     <div class="input-field col m5">
+                        <i class="Medium material-icons prefix">today</i> 
+                        <input type="text" id="idFecha" name="nameFecha" class="text-center datepicker" required="">
+                        <label for="idFecha">Fecha de Nacimiento</label>
                     </div>
                     <div class="input-field col m5">
                         <i class="Medium material-icons prefix">face</i> 
@@ -45,17 +45,18 @@
                     </div>
                     <div class="input-field col m5">
                         <i class="Medium material-icons prefix">remove_red_eye</i> 
-                        <input type="password" id="idPass2" name="namePass2" class="text-center validate">
+                        <input type="password" id="idPass2" name="namePass2" class="text-center validate" autocomplete="off"  minlength="5">
                         <label for="idPass2">Repita Contraseña</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col m1"></div>
-                    <div class="input-field col m5">
-                        <i class="Medium material-icons prefix">today</i> 
-                        <input type="date" id="idFecha" name="nameFecha" class="text-center datepicker">
-                        <label for="idFecha">Fecha de Nacimiento</label>
+                   <div class="input-field col m5">
+                        <i class="Medium material-icons prefix">credit_card</i> 
+                        <input type="text" id="idDui" name="nameDui" class="text-center" minlength="10" required="">
+                        <label for="idDui">Dui <small>(Ej: 02436390-9)</small></label>
                     </div>
+
 
                     <div class="col m3">
                         <div class="row">

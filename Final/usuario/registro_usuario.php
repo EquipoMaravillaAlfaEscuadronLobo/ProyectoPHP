@@ -28,22 +28,23 @@
                     <div class="row">
                         <div class="col m1"></div>
                         <div class="input-field col m5">
-                            <i class="material-icons prefix">local_phone</i> 
-                            <input type="text" id="idTelefono" name="nameTelefono" class="text-center" required="">
-                            <label for="idTelefono">Numero Telefonico <small>(Ej: 2255-5555)</small></label>
+                            <i class="material-icons prefix">location_on</i> 
+                            <input type="text" id="idDireccion" name="nameDireccion" class="text-center validate" minlength="10" required="">
+                            <label for="nameDireccion">Direccion <small>(Ej: Verapaz, Colonia Mercenenes)</small> </label>
                         </div>
+                        
                         <div class="input-field col m5">
                             <i class="material-icons prefix">mail</i> 
-                            <input type="email" id="idEmail" name="nameEmail" class="text-center validate" required="">
+                            <input type="email" id="idEmail" name="nameEmail" class="text-center validate" required="" >
                             <label for="idEmail">Email <small>(Ej: correo@gmail.com)</small> </label>
-                        </div>
+                        </div> 
                     </div>
                     <div class="row">
                         <div class="col m1"></div>
                         <div class="input-field col m5">
-                            <i class="material-icons prefix">location_on</i> 
-                            <input type="text" id="idDireccion" name="nameDireccion" class="text-center validate" minlength="10" required="">
-                            <label for="nameDireccion">Direccion <small>(Ej: Verapaz, Colonia Mercenenes)</small> </label>
+                            <i class="material-icons prefix">local_phone</i> 
+                            <input type="text" id="idTelefono" name="nameTelefono" class="text-center" required="" minlength="8" >
+                            <label for="idTelefono">Numero Telefonico <small>(Ej: 2255-5555)</small></label>
                         </div>
 
                         <div class="input-field col m1">
