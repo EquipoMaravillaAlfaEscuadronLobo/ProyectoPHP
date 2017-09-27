@@ -1,7 +1,7 @@
 
 
 <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-6">
         <div class="panel-group" id="accordion">
             <div class="panel panel-default" name="libros">
                 <div class="panel-heading p_libro">
@@ -9,7 +9,7 @@
                 <div class="row">
                 <div class="col-md-10">
 
-                 <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="">Buscar Libro</label><input type="text" id="codigo" list="list_lib" class="icons" autofocus onkeypress="buscarLibro2(event)"></div>
+                 <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="">Buscar Libro</label><input type="text" id="codigo" autofocus onkeypress="buscarLibro2(event)"></div>
                 
                 </div>
                 <div class="col-md-1">
@@ -54,73 +54,23 @@
     </div>
 
 
-    <div class="col-md-5">
+    <div class="col-md-6">
         <div class="panel">
-            <div class="panel-heading p_libro">
-
+            <div class="panel-heading">Datos de Usuario</div>
+            <div class="panel-body">
                 <div class="row">
-                <div class="col-md-10">
+                    <div class="col-md-4" id="foto">
 
-                 <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="">Buscar Usuario</label><input type="text" id="codigo" list="list_user"  onkeypress="buscarLibro2(event)"></div>
-                
-                </div>
-               
-                
                     </div>
                 </div>
-            <div class="panel-body">
-                        <table class="table table-striped table-bordered">
-                            <tr>
-                                <td width="60%"><b>Nombre:</b></td>
-                                <td width="40%"><div id="nombre"></div></td>
-                            </tr>
-                            <tr>
-                                <td><b>Apellido:</b></td>
-                                <td><div id="apellido"></div></td>
-                            </tr>
-                            <tr>
-                                <td><b>Telefono:</b></td>
-                                <td><div id="telefono"></div></td>
-                            </tr>
-                            <tr>
-                                <td><b>Edad:</b></td>
-                                <td><div id="edad"></div></td>
-                            </tr>
-                            <tr>
-                                <td><b>Ultimo:</b></td>
-                                <td class="alert alert-success"><div id="ultimo">Finalizado</div></td>
-                            </tr>
-                        </table>
-                    </div>
-        </div>
-    </div>
-    <div class="col-md-2">
-        <div class="panel">
-            <div class="panel-heading">Fechas</div>
-            <div class="panel-body">
-                <label for="fecha_sal">Fecha de Salida</label>
-                <input type="date" id="fecha_sal" class="datepicker" value="<?php echo (String)date("Y-m-d H:i:s") ?>">
-                <label for="fecha_dev">Fecha de Devolucion</label>
-                <input type="date" id="fecha_dev" class="datepicker">
-               
+                <input type="text" id="codigo" placeholder="codigo" autofocus>
+                <input type="text" id="nombre" placeholder="Nombre" readonly="">
+                <input type="text" id="edad" placeholder="Edad" disabled>
+                <input type="text" id="telefono" placeholder="Telefono" disabled>
+                <input type="text" id="fecha_sal" placeholder="Fecha de Salida" value="31/08/2017">
+                <input type="date" id="fecha_dev" placeholder="Fecha de Devolucion" >
             </div>
         </div>
     </div>
 </div>
 
-<datalist id="list_lib">
-    
-    <option value="0001-001-003-001"><img src="" alt="">Papirusa- Hugo Aguirre</option>
-    <option value="2">Iliada- Homero</option>
-    <option value="3">Odisea- Homero</option>
-    <option value="4">Cuentos de Barro- Salarrue</option>
-    <option value="5">Otro...</option>
-</datalist>
-
-<datalist id="list_user">
-    
-    <option value="0001-001-003-001"><img src="" alt="">Carlos Antonio Torres</option>
-    <option value="2">Boris Ricardo Miranda</option>
-    <option value="3">Romario Abelardo Villalobos</option>
-    
-</datalist>

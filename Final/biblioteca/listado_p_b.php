@@ -46,12 +46,12 @@
     </row>
 </div>
 
-<div id="nuevo" class="modal modal-fixed-footer nuevo">
+<div id="nuevo" class="modal modal-fixed-footer ">
     <div class="modal-content modal-lg">
         <?php include('prestamo2.php'); ?>
     </div>
     <div class="modal-footer">
         <a href="#" class="modal-action modal-close waves-effect btn btn-success">Guardar</a>
-        <a href="#" class="modal-action modal-close waves-effect btn btn-danger">Salir</a>
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Salir</a>
     </div>
 </div>
