@@ -27,12 +27,12 @@
                     <div class="col-md-1"></div>
                     <div class="input-field col m5">
                         <i class="Medium material-icons prefix">credit_card</i> 
-                        <input type="text" id="idDui" name="nameDui" class="text-center validate">
+                        <input type="text" id="idDui" name="nameDui" class="text-center validate" minlength="10" required="">
                         <label for="idDui">Dui <small>(Ej: 02436390-9)</small></label>
                     </div>
                     <div class="input-field col m5">
                         <i class="Medium material-icons prefix">face</i> 
-                        <input type="text" id="idUser" name="nameUser" class="text-center" >
+                        <input type="text" id="idUser" name="nameUser" class="text-center validate" minlength="4" maxlength="14" required="">
                         <label for="idUser">Nmbre De Usuario<small>(Ej: juan01)</small> </label>
                     </div>
                 </div>
@@ -40,12 +40,12 @@
                     <div class="col-md-1"></div>
                     <div class="input-field col m5">
                         <i class="Medium material-icons prefix">remove_red_eye</i> 
-                        <input type="password" id="idPass1" name="namePass2" class="text-center">
+                        <input type="password" id="idPass1" name="namePass1" class="text-center validate" autocomplete="off" minlength="5">
                         <label for="idPass1">Contraseña</label>
                     </div>
                     <div class="input-field col m5">
                         <i class="Medium material-icons prefix">remove_red_eye</i> 
-                        <input type="password" id="idPass2" name="namePass2" class="text-center">
+                        <input type="password" id="idPass2" name="namePass2" class="text-center validate">
                         <label for="idPass2">Repita Contraseña</label>
                     </div>
                 </div>
@@ -133,3 +133,8 @@
         </div>
     </form>
 </div>
+
+<script>
+    $('#FORMULARIO').attr('autocomplete', 'off');
+document.getElementById('FORMULARIO').setAttribute('autocomplete','off');
+</script>

@@ -4,17 +4,16 @@ include_once './menu.php';
 ?>
 </nav>
 
-<body>
-    <form action="">
-        <button type="button" class="btn-block btn-sm btn-success" id="btnGuardar" name="btnGuardar" onClick="AlertaExttoZZZ()">Guardar</button>
-        
-    </form>
-    
-    
-    
-        
-        
-    </body>
+
+
+
+ 
+<form action="">
+    <input type="text" name="namePhone" id="idPhone"><br>
+    <input type="text" name="namePhone" id="idDui">
+</form>
+
+
 
 <?php
 include_once './pie_de_pagina.php';

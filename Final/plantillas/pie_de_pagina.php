@@ -7,7 +7,9 @@
 <script src="../js/jquery.validate.js"></script>
 <script src="../js/foto.js"></script>
 <script src="../js/alertaPersonalizadas.js"></script>
-<script src="../js/miValidacion.js"></script>
+<script src="../js/mi_validacion.js"></script>
+<script src="../js/jquery.inputmask.bundle.js"></script>
+<script src="../js/Mascara.js"></script>
 
 <script>
     $(document).ready(function () {

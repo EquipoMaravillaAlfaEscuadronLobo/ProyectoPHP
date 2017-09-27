@@ -21,14 +21,14 @@ $(document).ready(function () {
                 required: true,
                 minlength: 10
             },
-            original_pasword: {
+            namePass1: {
                 required: true,
                 minlength: 5
             },
-            confirm_password1: {
+            namePass2: {
                 required: true,
                 minlength: 5,
-                equalTo: "#original_pasword"
+                equalTo: "#namePass1"
             },
             nameFoto: {
                 required: true
@@ -41,7 +41,13 @@ $(document).ready(function () {
                 required: true
             },
             nameDui: {
-              rangelength: [2, 11]
+                required: true,
+                minlength: 10
+            },
+            nameUser: {
+                required: true,
+                minlength: 3,
+                maxlength: 14
             }
         },
         messages: {
@@ -57,14 +63,14 @@ $(document).ready(function () {
                 required: "Por favor ingrese la direccion",
                 minlength: "ingrese una direccion real"
             },
-            password1: {
-                required: "Please provide a password",
-                minlength: "Your password must be at least 5 characters long"
+            namePass1: {
+                required: "Ingrese una contraseña",
+                minlength: "La contraseña debe de tener por lo menos 5 caracteres"
             },
-            confirm_password1: {
-                required: "Please provide a password",
-                minlength: "Your password must be at least 5 characters long",
-                equalTo: "Please enter the same password as above"
+            namePass2: {
+                required: "Repita la contraseña",
+                minlength: "Your passwo",
+                equalTo: "Por favor ingrese la misma contraseña"
             },
             nameFoto: {
                 required: "favor ingrese una foto"
@@ -75,14 +81,15 @@ $(document).ready(function () {
             nameEmail: {
                 required: "Por favor ingrese un correo"
             },
-             nameDui: {
-                rangelength: "ingrese un dui validoZ"
-                
-                
+            nameDui: {
+                minlength: "ingrese un dui valido",
+                required: "ingrese un dui valido"
+            },
+            nameUser : {
+                required: "ingrese un nombre de usuario ",
+                minlength: "debe de poseer por lo menos 4 caracteres "
             }
         },
-        
-        
         errorElement: "em",
         errorPlacement: function (error, element) {
             // Add the `help-block` class to the error element
