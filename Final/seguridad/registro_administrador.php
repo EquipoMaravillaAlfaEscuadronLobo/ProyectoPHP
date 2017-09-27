@@ -101,6 +101,7 @@
                             </div>
                         </div> 
                     </div>
+                </div>
                     <div class="row">
                         <div class="col m5"></div>
                         <div class="col m2 ">
