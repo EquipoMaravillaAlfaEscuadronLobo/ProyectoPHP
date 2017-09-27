@@ -46,9 +46,11 @@
     </div>
 </div>
 <!--esta es para abrir la ventana de edicion-->
-<div id="edicion" class="modal modal-fixed-footer ">
+<div id="edicion" class="modal modal-fixed-footer nuevo">
     <div class="modal-content modal-lg">
-        <?php include('./editar_administrador.php'); ?>
+        <div class="row">
+            <div class="col-md-12">   <?php include('./editar_administrador.php'); ?></div>
+        </div>
     </div>
 </div>
 

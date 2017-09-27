@@ -93,10 +93,10 @@
                             <div class="col m1"><label>Nivel</label></div>
                             <div class="col m10">
                                 <div class="radio-inline">
-                                    <input type="checkbox" id="idRoot"  name="NameNivel"  class="text-center with-gap" required="">
+                                    <input type="checkbox" id="idRoot"  name="NameNivel"  class="text-center with-gap" >
                                     <label for="idRoot">Root</label>
 
-                                    <input type="checkbox" id="idAdministrador" name="NameNivel"  class="text-center with-gap" required="">
+                                    <input type="checkbox" id="idAdministrador" name="NameNivel"  class="text-center with-gap" >
                                     <label for="idAdministrador">Administrador</label>
                                 </div>
                             </div>
