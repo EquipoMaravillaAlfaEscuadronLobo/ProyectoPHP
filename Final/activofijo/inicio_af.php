@@ -48,7 +48,7 @@ include_once('../plantillas/menu.php');
    
    <div class="col s12" id="test1">
            
-           <?php include('./registro_activo.php');?>
+           <?php include('./registro_act.php');?>
         </div>
         <div class="col s12" id="test2">
            <?php include('./listado_act.php');?>
@@ -63,7 +63,7 @@ include_once('../plantillas/menu.php');
              <?php include('./registrar_af2.php');?>
         </div>
         <div class="col s12" id="test6">
-            <h1>Reportes</h1>
+           <?php include('./registro_activo.php');?>
         </div>
 
 <?php

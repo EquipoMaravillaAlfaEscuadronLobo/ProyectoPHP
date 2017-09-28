@@ -58,7 +58,7 @@
 					<div class="panel">
 					<div class="panel-heading">Generales</div>	
 					<div class="panel-body">
-						<i class="fa fa-barcode"></i>
+						<i class="fa fa-barcode prefix"></i>
 						<input type="text" name="" placeholder="serie">
 						<i class="fa fa-adjust"></i>
 						<input type="text" name="" placeholder="color">
