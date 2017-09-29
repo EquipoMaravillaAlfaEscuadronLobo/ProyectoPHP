@@ -5,7 +5,7 @@
 <script src="../js/jquery.dataTables.min.js"></script>
 <script src="../js/data-tables-script.js"></script>
 <script src="../js/jquery.validate.js"></script>
-<script src="../js/foto.js"></script>
+
 <script src="../js/alertaPersonalizadas.js"></script>
 <script src="../js/mi_validacion.js"></script>
 <script src="../js/jquery.inputmask.bundle.js"></script>
@@ -107,35 +107,7 @@ $(document).ready(function () {
         var fila = document.getElementById("accordion");
         fila.appendChild(script);
     }
-    function buscarLibro(event) {
-        if (event.keyCode == 13) {
-            document.getElementById('titulo').value = "Iliada";
-            document.getElementById('autor').value = "Homero";
-            document.getElementById('genero').value = "Epopeya";
-            document.getElementById('fecha_pub').value = "762 A.C";
-
-            document.getElementById('titulo').disabled = false;
-            document.getElementById('autor').disabled = false;
-            document.getElementById('genero').disabled = false;
-            document.getElementById('fecha_pub').disabled = false;
-
-            $('#titulo').prop('readonly', true);
-            $('#autor').prop('readonly', true);
-            $('#genero').prop('readonly', true);
-            $('#fecha_pub').prop('readonly', true);
-            //$("#collapse1").removeClass("out");
-             //$("#collapse1").removeClass("in");
-             $("#collapse1").addClass("in");
-             $("#collapse1").attr('aria-expanded', true)
-
-            // $("#despliegue").removeClass("fa-sort-desc");
-            // $("#despliegue").addClass("fa-sort-asc");
-
-        }
-
-
-    }
-    function buscarLibro2(){
+       function buscarLibro2(){
         document.getElementById('titulo').innerHTML='Iliada';
         document.getElementById('autor').innerHTML='Homero';
         document.getElementById('genero').innerHTML='Epopeya';
@@ -149,7 +121,7 @@ $(document).ready(function () {
 
     
 </script>
-
+<script src="../js/foto.js"></script>
 </body>
 <footer class="text-center">
     <div class="container">
