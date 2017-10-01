@@ -1,8 +1,17 @@
 <nav class="nav-extended">
     <div class="nav-wrapper">
         <a class="brand-logo" href="../app/home.php">
-            <img src="../imagenes/libros.png" alt="" width="215px" height="122px">
+
+           
+
+            <img src="../imagenes/libros.png" alt="" width="30%" height="100%">
+
+
+
+
+
         </a>
+
         <a class="button-collapse" data-activates="mobile-demo" href="#">
             <i class="material-icons">
                 menu
