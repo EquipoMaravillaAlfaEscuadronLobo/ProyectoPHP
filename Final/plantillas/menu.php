@@ -2,6 +2,9 @@
     <div class="nav-wrapper">
         <a class="brand-logo" href="../app/home.php">
 <<<<<<< HEAD
+            <img src="../imagenes/libros.png" alt="" width="215px" height="122px">
+=======
+<<<<<<< HEAD
 
             <img src="../imagenes/libros.png" alt="" width="30%" height="100%">
 
@@ -10,6 +13,7 @@
 =======
             <img src="../imagenes/libros.png" alt="" width="215px" height="122px">
 >>>>>>> parent of 4a7bc50... Revert "Merge branch 'master' of https://github.com/EquipoMaravillaAlfaEscuadronLobo/ProyectosEquipoMaravilla"
+>>>>>>> df4e458d4b21752eaec8d026eb2ffd32ba32978a
         </a>
         <a class="button-collapse" data-activates="mobile-demo" href="#">
             <i class="material-icons">

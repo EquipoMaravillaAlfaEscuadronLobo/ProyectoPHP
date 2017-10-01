@@ -14,7 +14,7 @@
                 <div class=" text-center panel-body">
                     <div class="row">
                         <div class="col m4"></div>
-                        <div class="input-field col m5">
+                        <div class="input-field col m4">
                             <i class="fa fa-calendar prefix"></i> 
                             <input type="text" id="fecha" name="nameNombre"  class="text-center validate" maxlength="25" minlength="3" required value="<?php echo date("d-m-Y"); ?>" readonly> 
                             <label for="idNombre" class="col-sm-4 control-labe">Fecha</label>
@@ -85,6 +85,10 @@
                             </div>
                         </div>
                         <!-- termina foto -->
+
+                    </div>
+                    <div class="row">
+                        <output id="list"></output>                
                     </div>
                     <div class="row"><!--  panel de Caracteristicas   -->
                         
@@ -206,6 +210,7 @@
 
 
 <div id="nuevaCat" class="modal modal-fixed-footer" ><!-- para llamar al modal -->
+    
     <div class="modal-content ">
              <?php include('nueva_categoria.php');?>
     
