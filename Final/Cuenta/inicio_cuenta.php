@@ -7,36 +7,31 @@ include_once '../plantillas/menu.php';
     <ul class="tabs tabs-transparent">
         <li class="tab">
             <a class="active" href="#test1">
-                <i class="fa fa-user" aria-hidden="true"></i> Modificar Mis Datos
+                <i class="fa fa-edit" aria-hidden="true"></i> Modificar Mis Datos
             </a>
         </li>
         <li class="tab">
             <a class="" href="#test2">
-                <i class="fa fa-user" aria-hidden="true"></i> Notificaciones
+                <i class="fa fa-bell" aria-hidden="true"></i> Notificaciones
             </a>
         </li>
         
         
-        <li class="tab">
-            <a href="#test3">
-                <i class="fa fa-book" aria-hidden="true"></i> Cerrar Sesion
-            </a>
-        </li>
+       
 
     </ul>
 </div>
 </nav>
 
 <div class="col s12" id="test1">
-    <?php include_once './registro_administrador.php'; ?>
+<?php
+include_once './editar_mis_datos.php';
+?>
   </div>
 <div class="col s12" id="test2">
-     <?php include_once './listado_administrador.php'; ?>
+     
 </div>
 
-<div class="col s12" id="test3">
-    <h3>modificancion</h3>
-</div>
 
 
 <?php
