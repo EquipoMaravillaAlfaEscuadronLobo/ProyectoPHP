@@ -54,7 +54,7 @@
                     </div>
                     <div class="input-field col m5">
                         <i class="Medium material-icons prefix">remove_red_eye</i> 
-                        <input type="password" id="idPass2" name="namePass2" class="text-center validate" autocomplete="off"  minlength="5">
+                        <input type="password" id="idPass2" name="namePass2" class="text-center validate" autocomplete="off" >
                         <label for="idPass2">Repita Contraseña</label>
                     </div>
                 </div>

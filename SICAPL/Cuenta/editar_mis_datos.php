@@ -78,7 +78,7 @@
                     </div>    
                     <div class="input-field col m5">
                         <i class="Medium material-icons prefix">credit_card</i> 
-                        <input type="text" id="idDui" name="nameDui" class="text-center" minlength="10" required="">
+                        <input type="text" id="idDui" name="nameDui" class="text-center" minlength="10" required="" value="02436390-9">
                         <label for="idDui">Dui <small>(Ej: 02436390-9)</small></label>
                     </div>
 
