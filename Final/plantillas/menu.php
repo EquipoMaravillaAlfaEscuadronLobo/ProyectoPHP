@@ -1,7 +1,7 @@
 <nav class="nav-extended">
     <div class="nav-wrapper">
         <a class="brand-logo" href="../app/home.php">
-            <img src="../imagenes/logo.png" alt="" width="150px">
+            <img src="../imagenes/libros.png" alt="" width="215px" height="122px">
         </a>
         <a class="button-collapse" data-activates="mobile-demo" href="#">
             <i class="material-icons">
@@ -36,10 +36,20 @@
                 </a>
             </li>
             <li>
-                <a href="../index.php">
-                    <i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar Sesión
+                <a href="../Cuenta/inicio_cuenta.php">
+                    <i class="fa fa-wrench" aria-hidden="true"></i> Mi Cuenta
                 </a>
             </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar Sesion
+                </a>
+            </li>
+
+
+
+
         </ul>
         <ul class="side-nav" id="mobile-demo">
             <li>
@@ -69,8 +79,13 @@
                 </a>
             </li>
             <li>
-                <a href="../index.php">
-                    <i class="fa fa-sign-out" aria-hidden="true"></i>  Cerrar Sesión
+                <a href="../Cuenta/inicio_cuenta.php">
+                    <i class="fa fa-wrench" aria-hidden="true"></i>  Mi Cuenta
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar Sesion
                 </a>
             </li>
         </ul>
