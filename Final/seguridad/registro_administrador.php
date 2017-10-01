@@ -1,8 +1,6 @@
-<!--inicio de container-->
 <div class="container">
     <form id="FORMULARIO" name="FormuluarioUsuario" method="post" action="" autocomplete="off" >
         <div class="panel" name="libros">
-            <!--inicio cabecera de panel-->
             <div class="panel-heading text-center">
                 <div class="row"> 
                     <div class="col s12">
@@ -10,11 +8,7 @@
                     </div>
                 </div>
             </div>
-            <!--fin de cabecer de panel-->
-
-            <!--inicio de body-->
             <div class="text-center panel-body">
-                <!--inicio fila nombres-->
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="input-field col m5 input-group">
@@ -28,8 +22,6 @@
                         <label for="idApellido">Apellido <small>(Ej: Apellido1 Apellido2)</small></label>
                     </div>
                 </div>
-                <!--fin fila nombres-->
-                <!--inicio fila fecha y usuario-->
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="input-field col m5">
@@ -43,8 +35,6 @@
                         <label for="idUser">Nmbre De Usuario<small>(Ej: juan01)</small> </label>
                     </div>
                 </div>
-                <!--fin fila fecha y usuario-->
-                <!--inicio contrase;as-->
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="input-field col m5">
@@ -58,8 +48,6 @@
                         <label for="idPass2">Repita Contraseña</label>
                     </div>
                 </div>
-                <!--fin contrase;ase-->
-                <!--inicio dui y sexo-->
                 <div class="row">
                     <div class="col m1"></div>
                     <div class="input-field col m5">
@@ -84,8 +72,6 @@
                         </div>
                     </div>    
                 </div>
-                <!--fin dui y sexo-->
-                <!--inicio foto y nivel-->
                 <div class="row">
 
                     <div class="col m1"></div>
@@ -115,40 +101,31 @@
                             </div>
                         </div> 
                     </div>
-                </div>
-                <!--fin foto y nivel-->
-                <!--inicio mostrar foto-->
-                <div class="row">
-                    <div class="col m5"></div>
-                    <div class="col m2 ">
-                        <div class="row">
-                            <div class="col m12 ">
-                                <output id="list"></output>                
+                    <div class="row">
+                        <div class="col m5"></div>
+                        <div class="col m2 ">
+                            <div class="row">
+                                <div class="col m12 ">
+                                    <output id="list"></output>                
+                                </div>
                             </div>
-                        </div>
 
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <button class="btn btn-success">
+                            <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>                            
+                            Guardar</button>
+                        <button type="reset" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar
+                        </button>
                     </div>
                 </div>
-                <!--fin mostrar foto-->
-                <!--inicio botones-->
-                <div class="row text-center">
-                    <button class="btn btn-success">
-                        <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>                            
-                        Guardar</button>
-                    <button type="reset" class="btn btn-danger">
-                        <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar
-                    </button>
-                </div>
-                <!--fin botones-->
-
             </div>
-            <!--fin de body-->
         </div>
-        <!--fin de panel-->
     </form>
-<!--fin de formulario-->
 </div>
-<!--fin de container-->
+
 
 <script>
     $('#FORMULARIO').attr('autocomplete', 'off');
