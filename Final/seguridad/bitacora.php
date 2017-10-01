@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 <div class="container">
     <div class="panel">
         <div class="panel-heading text-center">
@@ -60,3 +62,4 @@
 
 
 
+>>>>>>> parent of 4a7bc50... Revert "Merge branch 'master' of https://github.com/EquipoMaravillaAlfaEscuadronLobo/ProyectosEquipoMaravilla"
