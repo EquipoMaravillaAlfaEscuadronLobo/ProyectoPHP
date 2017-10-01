@@ -1,20 +1,19 @@
-<!--inicio de container-->
+<!--inicio de container -->
 <div class="container">
-    <form id="FORMULARIO" name="FormuluarioUsuario" method="post" action="" autocomplete="off" >
+    <!--    inicio de formulario-->
+    <form id="FORMULARIO" method="post" action="" autocomplete="off" >
+        <!-- inicio de panel-->
         <div class="panel" name="libros">
-            <!--inicio cabecera de panel-->
             <div class="panel-heading text-center">
                 <div class="row"> 
                     <div class="col s12">
-                        <h3>Registro De Administradores</h3>
+                        <h3>Mis Datos</h3>
                     </div>
                 </div>
             </div>
-            <!--fin de cabecer de panel-->
-
-            <!--inicio de body-->
+            <!--inicio de panel body-->
             <div class="text-center panel-body">
-                <!--inicio fila nombres-->
+                <!--inicio fila de nombre y apellido -->
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="input-field col m5 input-group">
@@ -28,8 +27,8 @@
                         <label for="idApellido">Apellido <small>(Ej: Apellido1 Apellido2)</small></label>
                     </div>
                 </div>
-                <!--fin fila nombres-->
-                <!--inicio fila fecha y usuario-->
+                <!--fin de fila nombre y apellido-->
+                <!--inciio de fecha y usuario-->
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="input-field col m5">
@@ -43,31 +42,25 @@
                         <label for="idUser">Nmbre De Usuario<small>(Ej: juan01)</small> </label>
                     </div>
                 </div>
-                <!--fin fila fecha y usuario-->
-                <!--inicio contrase;as-->
+                <!--fin de fecha y usuario-->
+                <!--inicio de contrase;a-->
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="input-field col m5">
                         <i class="Medium material-icons prefix">remove_red_eye</i> 
                         <input type="password" id="idPass1" name="namePass1" class="text-center validate" autocomplete="off" minlength="5">
-                        <label for="idPass1">Contraseña</label>
+                        <label for="idPass1">Escriba la ingrese Nueva contraseña</label>
                     </div>
                     <div class="input-field col m5">
                         <i class="Medium material-icons prefix">remove_red_eye</i> 
                         <input type="password" id="idPass2" name="namePass2" class="text-center validate" autocomplete="off"  minlength="5">
-                        <label for="idPass2">Repita Contraseña</label>
+                        <label for="idPass2">repita nueva contraseña</label>
                     </div>
                 </div>
-                <!--fin contrase;ase-->
-                <!--inicio dui y sexo-->
+                <!--fin de contrase;a-->
+                <!--inici de sexo y dui-->
                 <div class="row">
                     <div class="col m1"></div>
-                    <div class="input-field col m5">
-                        <i class="Medium material-icons prefix">credit_card</i> 
-                        <input type="text" id="idDui" name="nameDui" class="text-center" minlength="10" required="">
-                        <label for="idDui">Dui <small>(Ej: 02436390-9)</small></label>
-                    </div>
-
                     <div class="col m5">
                         <div class="row">
                             <div class="col m1"><i class="Medium material-icons prefix">wc</i> </div>
@@ -83,15 +76,21 @@
                             </div>
                         </div>
                     </div>    
-                </div>
-                <!--fin dui y sexo-->
-                <!--inicio foto y nivel-->
-                <div class="row">
+                    <div class="input-field col m5">
+                        <i class="Medium material-icons prefix">credit_card</i> 
+                        <input type="text" id="idDui" name="nameDui" class="text-center" minlength="10" required="">
+                        <label for="idDui">Dui <small>(Ej: 02436390-9)</small></label>
+                    </div>
 
-                    <div class="col m1"></div>
+
+                </div>
+                <!--fin de sexo y dui-->
+                <!--inicio de foto-->
+                <div class="row">
+                    <div class="col m3"></div>
                     <div class="file-field input-field col m5">
                         <div class="btn btn-primary">
-                            <span class="glyphicon glyphicon-picture" aria="hidden"></span> Foto                          
+                            <span class="glyphicon glyphicon-picture" aria="hidden"></span> Foto                        
                             <input type="file">
                         </div>
                         <div class="file-path-wrapper">
@@ -99,25 +98,9 @@
                             <input type="file" id="files" name="files[]">
                         </div>
                     </div>
-
-                    <div class="col m5">
-                        <div class="row">
-                            <div class="col m1"><i class="Medium material-icons prefix">star</i> </div>
-                            <div class="col m1"><label>Nivel</label></div>
-                            <div class="col m10">
-                                <div class="radio-inline">
-                                    <input type="checkbox" id="idRoot"  name="NameNivel"  class="text-center with-gap" >
-                                    <label for="idRoot">Root</label>
-
-                                    <input type="checkbox" id="idAdministrador" name="NameNivel"  class="text-center with-gap" >
-                                    <label for="idAdministrador">Administrador</label>
-                                </div>
-                            </div>
-                        </div> 
-                    </div>
                 </div>
-                <!--fin foto y nivel-->
-                <!--inicio mostrar foto-->
+                <!--fin de foto-->
+                <!--inicio mostrar foto -->
                 <div class="row">
                     <div class="col m5"></div>
                     <div class="col m2 ">
@@ -130,7 +113,6 @@
                     </div>
                 </div>
                 <!--fin mostrar foto-->
-                <!--inicio botones-->
                 <div class="row text-center">
                     <button class="btn btn-success">
                         <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>                            
@@ -139,18 +121,14 @@
                         <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar
                     </button>
                 </div>
-                <!--fin botones-->
-
             </div>
-            <!--fin de body-->
+            <!--fin de panel body-->
         </div>
         <!--fin de panel-->
     </form>
-<!--fin de formulario-->
+    <!--fin de formulario-->
 </div>
 <!--fin de container-->
 
-<script>
-    $('#FORMULARIO').attr('autocomplete', 'off');
-    document.getElementById('FORMULARIO').setAttribute('autocomplete', 'off');
-</script>
+
+

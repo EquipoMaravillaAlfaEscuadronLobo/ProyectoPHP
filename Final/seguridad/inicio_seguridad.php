@@ -55,7 +55,7 @@ include_once '../plantillas/menu.php';
     <h1>Consultas</h1>
 </div>
 <div class="col s12" id="test4">
-    <h1>Reportes</h1>
+    <?php include_once './backup.php'; ?>
 </div>
 
 
