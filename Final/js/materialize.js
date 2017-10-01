@@ -8509,7 +8509,7 @@ if (jQuery) {
 // Today and clear
         today: 'Hoy',
         clear: 'Limpiar',
-        close: 'Ok',
+        close: 'Cerrar',
 
       // Picker close behavior (Prevent a change in behaviour for backwards compatibility)
       closeOnSelect: false,
