@@ -1,4 +1,4 @@
-<form name="FormuluarioUsuario" method="post" action="" autocomplete="off" >
+<form id="FORMULARIO" method="post" action="" autocomplete="off" >
     <div class="row">
         <div class="panel" name="libros">
             <div class="panel-heading text-center">

@@ -24,7 +24,7 @@
                     <tbody>
                         <tr>
                             <td class="text-center"><button class="btn btn-success" onclick="abrirEdicion()"> <i class="Medium material-icons prefix">edit</i> </button></td>
-                            <td class="text-center">jhon Cefhdsk hfkadhfkj fhafkjahkjna</td>
+                            <td class="text-center">Ligia Alferez Muños</td>
                             <td class="text-center">jhon01</td>
                             <td class="text-center">Admin</td>
                             <td class="text-center"><img src="../imagenes/imagenes.jpg" class="presentacionXZ" alt=""></td>
@@ -33,7 +33,7 @@
 
                         <tr>
                             <td class="text-center"><button class="btn btn-success "> <i class="Medium material-icons prefix">edit</i> </button></td>
-                            <td class="text-center">albertano Cefhdsk hfkadhfkj fhafkjahkjna</td>
+                            <td class="text-center">Alberto Pérez Guzman</td>
                             <td class="text-center">albert 02</td>
                             <td class="text-center">root </td>
                             <td class="text-center"><img src="../imagenes/imagenes.jpg" class="presentacionXZ" alt=""></td>
