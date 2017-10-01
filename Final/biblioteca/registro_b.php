@@ -5,16 +5,15 @@
             <div id="collapse-libros" class="panel-collapse collapse">
                 <div class="panel-body"><form action="">
 						<div class="row">
-                        	<div class="col-md-12">
+                        	<div class="col-md-6">
                         		<div class="input-field">
                         			<i class="fa fa-list-ol prefix" aria-hidden="true"></i>
                         			<label for="codigo">Codigo</label>
                         			<input type="text" id="codigo" class="form-control" disabled>
                         		</div>
                         	</div>
-                        </div>
-                        <div class="row">
-                        	<div class="col-md-12">
+                        
+                        	<div class="col-md-6">
                         		<div class="input-field">
                         			<i class="fa fa-bookmark prefix" aria-hidden="true"></i>
                         			<label for="Titulo">Titulo</label>
@@ -23,7 +22,7 @@
                         	</div>
                         </div>
                         <div class="row">
-                        	<div class="col-md-12">
+                        	<div class="col-md-6">
                         		<div class="input-field">
                         		<i class="fa fa-pencil prefix" aria-hidden="true"></i>
                         			<select multiple>
@@ -35,9 +34,8 @@
 								    <label>Autores</label>
                         		</div>
                         	</div>
-                        </div>
-                        <div class="row">
-                        	<div class="col-md-12">
+                        
+                        	<div class="col-md-6">
                         		<div class="input-field">
                         			<i class="fa fa-sort prefix" aria-hidden="true"></i>
                         			<label for="cantidad">Cantidad</label>
@@ -46,7 +44,7 @@
                         	</div>
                         </div>
                         <div class="row">
-                        	<div class="col-md-12">
+                        	<div class="col-md-6">
                         		<div class="input-field">
                         		<i class="fa fa-bookmark-o prefix" aria-hidden="true"></i>
                         			<select>
@@ -58,9 +56,8 @@
 								    <label>Editorial</label>
                         		</div>
                         	</div>
-                        </div>
-                        <div class="row">
-                        	<div class="col-md-12">
+                       
+                        	<div class="col-md-6">
                         	<i class="fa fa-shopping-cart prefix" aria-hidden="true"></i>
                         		<div class="radio-inline">
                         			<input type="radio" name="origen" id="donado" value="Donado" class=" with-gap">
@@ -71,16 +68,15 @@
                         	</div>
                         </div>
                         <div class="row">
-                        	<div class="col-md-12">
+                        	<div class="col-md-6">
                         		<div class="input-field">
                         			<i class="fa fa-calendar prefix" aria-hidden="true"></i>
                         			<label for="fecha_pub" class="active">Fecha de Publicacion</label>
                         			<input type="date" id="fecha_pub" class="form-control datepicker">
                         		</div>
                         	</div>
-                        </div>
-                        <div class="row">
-                        	<div class="col-md-12">
+                        
+                        	<div class="col-md-6">
                         		<div class="file-field input-field">
                         			<div class="btn">
         									<span><i class="fa fa-camera" aria-hidden="true"></i>Foto</span>
@@ -130,16 +126,15 @@
                         	</div>
                         </div>
                         <div class="row">
-                        	<div class="col-md-12">
+                        	<div class="col-md-6">
                         		<div class="input-field">
                         			<i class="fa fa-calendar prefix" aria-hidden="true"></i>
                         			<label for="fecha_nac" class="active">Fecha de Nacimiento</label>
                         			<input type="date" id="fecha_nac" class="form-control datepicker">
                         		</div>
                         	</div>
-                        </div>
-                        <div class="row">
-                        	<div class="col-md-12">
+                        
+                        	<div class="col-md-6">
                         		<div class="file-field input-field">
                         			
                         			
@@ -165,16 +160,15 @@
             <div id="collapse-editoriales" class="panel-collapse collapse">
                 <div class="panel-body"><form action="">
 					<div class="row">
-                        	<div class="col-md-12">
+                        	<div class="col-md-6">
                         		<div class="input-field">
                         			<i class="fa fa-list-ol prefix" aria-hidden="true"></i>
                         			<label for="codigo">Codigo</label>
                         			<input type="text" id="codigo" class="form-control" disabled>
                         		</div>
                         	</div>
-                        </div>
-                        <div class="row">
-                        	<div class="col-md-12">
+                        
+                        	<div class="col-md-6">
                         		<div class="input-field">
                         			<i class="fa fa-user-circle prefix" aria-hidden="true"></i>
                         			<label for="nombre">Nombre</label>
@@ -183,16 +177,15 @@
                         	</div>
                         </div>
                         <div class="row">
-                        	<div class="col-md-12">
-                        		<div class="input-field">
-                        			<i class="fa fa-map-marker prefix" aria-hidden="true"></i>
-                        			<label for="fecha_nac" class="active">Direccion</label>
-                        			<textarea id="direccion" name="direccion" class="materialize-textarea"></textarea>
-                        		</div>
-                        	</div>
-                        </div>
-                        <div class="row">
-                        	<div class="col-md-12">
+                        	<div class="col-md-6">
+                                <div class="input-field">
+                                    <i class="fa fa-phone prefix" aria-hidden="true"></i>
+                                    <label for="telefono">Telefono</label>
+                                    <input type="text" id="telefono" class="form-control">
+                                </div>
+                            </div>
+                       
+                        	<div class="col-md-6">
                         		<div class="input-field">
                         			<i class="fa fa-envelope-o prefix" aria-hidden="true"></i>
                         			<label for="email" data-error="wrong" data-success="right">Email</label>
@@ -201,13 +194,14 @@
                         	</div>
                         </div>
                         <div class="row">
-                        	<div class="col-md-12">
-                        		<div class="input-field">
-                        			<i class="fa fa-phone prefix" aria-hidden="true"></i>
-                        			<label for="telefono">Telefono</label>
-                        			<input type="text" id="telefono" class="form-control">
-                        		</div>
-                        	</div>
+                        	
+                        <div class="col-md-12">
+                                <div class="input-field">
+                                    <i class="fa fa-map-marker prefix" aria-hidden="true"></i>
+                                    <label for="fecha_nac" class="active">Direccion</label>
+                                    <textarea id="direccion" name="direccion" class="materialize-textarea"></textarea>
+                                </div>
+                            </div>
                         </div>
 
                 </div>

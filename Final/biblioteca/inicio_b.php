@@ -41,7 +41,7 @@ include_once('../plantillas/menu.php');
 
 <div class="col s12" id="test1">
 
-    <h1>Bibliografia</h1>
+  <?php include('modificar_b.php'); ?>
 </div>
 <div class="col s12" id="test2">
     <?php include('registro_b.php'); ?>
