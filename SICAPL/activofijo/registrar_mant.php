@@ -181,18 +181,23 @@
 	<?php include('nuevo_encargado.php');?>
 	</div>
 	 <div class="modal-footer ">
-		<a href="#" class="modal-action modal-close waves-effect btn btn-success">Guardar</a>
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Salir</a>
+		<div class="row">
+        <div class="col-md-6 text-right"><a href="#" class="modal-action modal-close waves-effect btn btn-success"><i class="glyphicon glyphicon-floppy-disk"></i>  Guardar</a></div>
+        <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>
+        </div>
     </div>
 </div>
 
 <div id="actualizarCaracteristicas" class="modal modal-fixed-footer " >
 
 	<div class="modal-content">	
+		
 	<?php include('actualizar_caracteristicas.php');?>
 	</div>
 	 <div class="modal-footer ">
-		<a href="#" class="modal-action modal-close waves-effect btn btn-success">Guardar</a>
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Salir</a>
+		<div class="row">
+        <div class="col-md-6 text-right"><a href="#" class="modal-action modal-close waves-effect btn btn-success"><i class="glyphicon glyphicon-floppy-disk"></i>  Guardar</a></div>
+        <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>
+        </div>
     </div>
 </div>

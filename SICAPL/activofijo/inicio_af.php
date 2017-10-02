@@ -60,7 +60,7 @@ include_once('../plantillas/menu.php');
             <?php include('./listado_prest_act.php');?>
         </div>
         <div class="col s12" id="test5">
-             <?php include('./registrar_af2.php');?>
+         <!--    <?php include('./registrar_af2.php');?> -->
         </div>
         <div class="col s12" id="test6">
            <?php include('./registro_activo.php');?>

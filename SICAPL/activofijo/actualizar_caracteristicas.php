@@ -4,8 +4,8 @@
                         
                         <div class="col-md-12"> <!--  div para centralizar      -->
                            
-                                <div class="panel" name="caracteristicas">
-                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion" href="#sf">Actualizar Detalles Activo Fijo</a></div>
+                                <div class="panel" >
+                                    <div class="panel-heading">Actualizar Detalles Activo Fijo</a></div>
                                    
                                         <div class="panel-body">                                            
 
