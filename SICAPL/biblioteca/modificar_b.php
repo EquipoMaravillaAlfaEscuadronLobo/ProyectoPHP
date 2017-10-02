@@ -15,7 +15,7 @@
             <div id="collapse-mautores" class="panel-collapse collapse">
                  <div class="panel-body">
                  <?php
-                    include("listad_lib.php");
+                    include("listad_autor.php");
                  ?>
                 </div>
             </div>
@@ -25,7 +25,7 @@
             <div id="collapse-meditoriales" class="panel-collapse collapse">
                  <div class="panel-body">
                  <?php
-                    include("listad_lib.php");
+                    include("listad_edit.php");
                  ?>
                 </div>
             </div>

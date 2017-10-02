@@ -44,7 +44,7 @@ $(document).ready(function () {
 
         // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
         $('.modal').modal({
-            dismissible: true, // Modal can be dismissed by clicking outside of the modal
+            dismissible: false, // Modal can be dismissed by clicking outside of the modal
             opacity: .5, // Opacity of modal background
             inDuration: 300, // Transition in duration
             outDuration: 200, // Transition out duration
@@ -63,7 +63,7 @@ $(document).ready(function () {
             max: new Date(),
             closeOnSelect: true // Close upon selecting a date,
         });
-
+              $('#tabla-paginada2').DataTable();
 
         $('select').material_select();
 
