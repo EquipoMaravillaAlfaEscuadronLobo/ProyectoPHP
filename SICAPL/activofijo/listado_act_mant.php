@@ -51,7 +51,7 @@
 </div>
 
 
-<div id="nuevoMant" class="modal  nuevo">
+<div id="nuevoMant" class="modal modal-fixed-footer nuevo">
 	
 	<div class="modal-content ">	
 		<?php include('registrar_mant.php');?>

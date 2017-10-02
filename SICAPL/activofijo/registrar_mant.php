@@ -5,80 +5,142 @@
 	<div class="col-md-4">
 		<div class="panel-group" id="accordion">
 			<div class="panel" name="libros">
-				<div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion" href="#encarg1">Encargado </a></div>
+				<div class="panel-heading p_libro">
+
+                <div class="row">
+                <div class="col-md-8">
+
+                 <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="" style="font-size:17px">Buscar Encargado</label><input type="text" id="codigo" autofocus onkeypress="buscarLibro2(event)"></div>
+                
+                </div>
+                <div class="col-md-2">
+				<a class="btn btn_primary"  target="_blank" onclick="nuevaCat(3)"><span aria-hidden="true" class="glyphicon glyphicon-plus"></span></a>
+				</div>
+                <div class="col-md-1">
+                   <a data-toggle="collapse" data-parent="#accordion" href="#encarg1">
+                   <i class="fa fa-sort-desc" id="despliegue" aria-hidden="true"></i>
+                </a>
+                </div>
+                <div class="col-md-1">                   
+                  <i class="fa fa-minus" id="despliegue" aria-hidden="true"></i>                
+                </div>
+                    </div>
+                </div>
 				<div id="encarg1" class="panel-collapse collapse in">
 				<div class="panel-body">
-				<div class="row">
-				<div class="col-md-5">
-					<input class="buscar" type="text" placeholder="Buscar">
-					
-				</div>
-				<div class="col-md-4">
-				<button class="btn btn-buscar-md" o ">Buscar</button>
-				</div>
-				<div class="col-md-2">
-				<a class="btn btn_primary"  target="_blank" onclick="nuevoEnc()"><span aria-hidden="true" class="glyphicon glyphicon-plus"></span></a>
-				</div>
-				
-				</div>
-					<input type="text" id="codigo" placeholder="Nombre" autofocus onkeypress="buscarLibro(event)">
-					<input type="text" id="titulo" placeholder="Telefono" disabled>
-					<input type="text" id="encargado" placeholder="Correo" disabled>
+					<table class="table table-striped table-bordered">
+						 <tr>
+                                <td width="40%"><b>Nombre:</b></td>
+                                <td width="60%"><div id="nombre"></div></td>
+                         </tr>
+                         <tr>
+                                <td width="40%"><b>Telefono:</b></td>
+                                <td width="60%"><div id="nombre"></div></td>
+                         </tr>
+                         <tr>
+                                <td width="40%"><b>Correo:</b></td>
+                                <td width="60%"><div id="nombre"></div></td>
+                         </tr>
+					</table>
 					
 				</div>
 				</div>
 			</div>
 			</div>
 			<button class="btn" onClick="addLibro()"><span aria-hidden="true" class="glyphicon glyphicon-plus">
-                        </span>Agregar Activo</button>
+                        </span>Agregar Encargado</button>
 		</div>
+	
+	<!--  panel de activo    -->
+	<div class="col-md-4">
+		<div class="panel">
+			 <div class="panel-heading p_libro">
+                 <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="" style="font-size:16px">Buscar Activo</label><input type="text" id="codigo" autofocus onkeypress="buscarLibro2(event)">
+                 </div>              
+                
+                </div>
+
+			<div class="panel-body">
+			<table class="table table-striped table-bordered">		
+				 <tr>
+                                <td width="40%"><b>Codigo:</b></td>
+                                <td  colspan="3"><div id="codigo"></div></td>
+                            </tr>
+                            <tr>
+                                <td ><b>Tipo:</b></td>
+                                <td colspan="3"><div id="tipo"></div></td>
+                            </tr>
+                            <tr>
+                            	<td colspan="4">
+	                                <div class="row"><!-- seccion para elegir varios activos -->
+										<div class="input-field col m3">
+		                        			<i class="fa fa-arrow-left prefix"></i> 
+		                        			<label for="Titulo">Desde</label>
+		                        			<input type="text" id="Titulo" class="form-control">
+		                        		</div>
+		                        		<div class="col m1"></div>
+										<div class="input-field col m3">
+		                        			<i class="fa fa-arrow-right prefix"></i> 
+		                        			<label for="Titulo">Hasta</label>                        		
+		                        			<input type="text" id="Titulo" class="form-control">
+		                        			
+		                        		</div>
+		                        		<div class="col m5"></div>
+									</div><!-- termina seccion -->
+								</td>
+                            </tr>
+                            
+                            </table>	
+			</div>
+		</div>
+		
+	</div>
+
 	<!--  panel de mantenimiento     -->
 	<div class="col-md-4">
 		<div class="panel">
 			<div class="panel-heading">	Datos de Mantenimiento</div>
 			<div class="panel-body">
 
-				<i class="fa fa-calendar">&nbspFecha</i><input type="text" name="fecha" value="<?php echo date("d-m-Y");?>">
-				<i  class="fa fa-usd" aria-hidden="true"> &nbspPrecio<input type="text" name="$$$" placeholder="Costo"></i>
-				
 				<div class="row">
+				<div class="col m12">
+					<div class="input-field">
+                        			<i class="fa fa-calendar prefix" aria-hidden="true"></i>
+                        			<label for="fecha_pub" class="active" style="font-size:16px">Fecha de Mantenimiento</label>
+                        			<input type="date" id="fecha_pub" class="form-control datepicker" >
+                        		</div>
+				</div>	
+					</div>
+				<div class="row">
+					<div class="input-field col m12">
+                            <i class="fa fa-usd prefix"></i> 
+                            <input type="text" id="precioUnitario" name="precioUnitario" class="text-center validate" required="">
+                            <label for="precioUnitario" style="font-size:16px">Precio <small></small> </label>
+                        </div>
+				</div>
+				
+				<div class="textarea">
 				<div class="col-md-12">
 				<i class="	fa fa-pencil-square-o"> &nbspDescripcion</i>
-					<textarea rows="50" cols="50" placeholder="Costo">
+					<textarea rows="20" cols="30" placeholder="Costo">
 						
 					</textarea>
 					</div>
 				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<!--  panel de activo    -->
-	<div class="col-md-4">
-		<div class="panel">
-			<div class="panel-heading">	Datos del Activo</div>
-			<div class="panel-body">
-			<div class="row" id="para buscar activo">
-				<div class="col-md-8"><input class="buscar" type="text" placeholder="Buscar"></div>
-				<div class="col-md-2"><button class="btn btn-buscar-md" onclick="nuevoEnc() ">Buscar</button></div>
-			</div>
 				<div class="row">
- 					<label>Codigo</label>
-                    <input type="text" id="entrada"  value="1995-150-001" >
-                    <label>Tipo</label>
-                    <input type="text" id="entrada"  value="Mesa" >
+				<div class="col-md-12">
+				<a class="btn btn_primary"  target="_blank" onclick="nuevaCat(4)"><span aria-hidden="true" >Actualizar Detalles</span></a>
 				</div>
+				</div>
+
+
 			</div>
 		</div>
-		
 	</div>
 
 </div>
 
-<script crossorigin="a
-    nonymous" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" src="https://code.jquery.com/jquery-2.2.4.min.js">
-        </script>
+
 	<script>
 		function addLibro(){
 			var imagenes=document.getElementsByName('libros').length+1;
@@ -117,6 +179,17 @@
 
 	<div class="modal-content">	
 	<?php include('nuevo_encargado.php');?>
+	</div>
+	 <div class="modal-footer ">
+		<a href="#" class="modal-action modal-close waves-effect btn btn-success">Guardar</a>
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Salir</a>
+    </div>
+</div>
+
+<div id="actualizarCaracteristicas" class="modal modal-fixed-footer " >
+
+	<div class="modal-content">	
+	<?php include('actualizar_caracteristicas.php');?>
 	</div>
 	 <div class="modal-footer ">
 		<a href="#" class="modal-action modal-close waves-effect btn btn-success">Guardar</a>

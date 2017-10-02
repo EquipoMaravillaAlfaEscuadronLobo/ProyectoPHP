@@ -80,8 +80,12 @@ $(document).ready(function () {
         $('#edicion').modal('open');
     }
 //  FUNCIONES QUE SE OCUPAN PARA ACTIVO FIJO
-    function nuevaCat() {        
-        $('#nuevaCat').modal('open');
+    function nuevaCat(opcion) { 
+        if(opcion==1){ $('#nuevaCat').modal('open');}
+        if(opcion==2){ $('#nuevoProv').modal('open');}
+        if(opcion==3){$('#nuevoEncargado').modal('open');}
+        if(opcion==4){$('#actualizarCaracteristicas').modal('open');}
+        if(opcion==5){$('#actPres').modal('open');}
     }
 
     function nuevoPretamoAct() {        

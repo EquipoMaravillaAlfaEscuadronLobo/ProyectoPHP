@@ -5,12 +5,26 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel">
-				<div class="panel-heading">Registrar categoria</div>
+				<div class="panel-heading"><i class="fa fa-sitemap prefix"></i> &nbsp;Registrar categoria</div>
 				<div class="panel-body">
-					<label>Nombre</label>
-					<input type="text" id="nombre" placeholder="Nombre" autofocus>
-					<label>Codigo</label>
-					<input type="text" id="codigo" placeholder="Codigo" readonly="">
+					 <div class="row">
+                        	<div class="col-md-12">
+                        		<div class="input-field">
+                        			<i class="fa fa-sitemap prefix"></i> 
+                        			<label for="Titulo">Nombre</label>
+                        			<input type="text" id="Titulo" class="form-control">
+                        		</div>
+                        	</div>
+                        </div>
+                        <div class="row">
+                        	<div class="col-md-12">
+                        		<div class="input-field">
+                        			<i class="fa fa-barcode prefix" aria-hidden="true"></i>
+                        			<label for="Titulo">Código</label>
+                        			<input type="text" id="Titulo" class="form-control">
+                        		</div>
+                        	</div>
+                        </div>
 				
 				</div>
 			</div>
