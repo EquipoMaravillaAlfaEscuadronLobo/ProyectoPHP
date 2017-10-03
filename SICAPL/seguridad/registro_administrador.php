@@ -68,7 +68,18 @@
                         <input type="text" id="idFecha" name="nameFecha" class="text-center datepicker" required="">
                         <label for="idFecha">Fecha de Nacimiento</label>
                     </div>
-                    <div class="col m5">
+                 <div class="input-field col m5">
+                            <i class="fa fa-envelope-o prefix"></i> 
+                            <input type="email" id="idEmail" name="nameEmail" class="text-center validate" required="" >
+                            <label for="idEmail">Email <small>(Ej: correo@gmail.com)</small> </label>
+                        </div>     
+                </div>
+                <!--fin dui y sexo-->
+                <!--inicio foto y nivel-->
+                <div class="row">
+
+                    <div class="col m1"></div>
+                       <div class="col m5">
                         <div class="row">
                             <div class="col m1">
                                 <i class="fa fa-intersex prefix"></i> 
@@ -84,23 +95,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>    
-                </div>
-                <!--fin dui y sexo-->
-                <!--inicio foto y nivel-->
-                <div class="row">
-
-                    <div class="col m1"></div>
-                    <div class="file-field input-field col m5">
-                        <div class="btn btn-primary">
-                            <span class="glyphicon glyphicon-picture" aria="hidden"></span> Foto                          
-                            <input type="file">
-                        </div>
-                        <div class="file-path-wrapper">
-                            <input class="file-path" type="text" name="nameFoto" id="idFoto">
-                            <input type="file" id="files" name="files[]">
-                        </div>
                     </div>
+
 
                     <div class="col m5">
                         <div class="row">
@@ -118,6 +114,21 @@
                                 </div>
                             </div>
                         </div> 
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col m4"></div>
+                    
+                    <div class="file-field input-field col m5">
+                        <div class="btn btn-primary">
+                            <span class="glyphicon glyphicon-picture" aria="hidden"></span> Foto                          
+                            <input type="file">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path" type="text" name="nameFoto" id="idFoto">
+                            <input type="file" id="files" name="files[]">
+                        </div>
                     </div>
                 </div>
                 <!--fin foto y nivel-->
