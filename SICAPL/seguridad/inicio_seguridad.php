@@ -70,14 +70,13 @@ include_once '../plantillas/menu.php';
     </div>
     </div>
 </div>
-
+</div>
 <div class="col s12" id="test3">
       <?php include_once './bitacora.php'; ?>
 </div>
 <div class="col s12" id="test4">
     <?php include_once './backup.php'; ?>
 </div>
-
 
 <?php
 include_once '../plantillas/pie_de_pagina.php';
