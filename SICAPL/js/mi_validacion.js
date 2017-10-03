@@ -1,6 +1,6 @@
 $.validator.setDefaults({
     submitHandler: function () {
-        alert("se envio el formulario!");
+       
         document.getElementById('bandera').value="ok";    
         document.FORMULARIO.submit();
         

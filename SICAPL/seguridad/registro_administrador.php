@@ -43,9 +43,7 @@
                         <input type="text" id="idDui" name="nameDui" class="text-center validate" minlength="10" required="">
                         <label for="idDui">Dui <small>(Ej: 02436390-9)</small></label>
                     </div>
-                    
                 </div>
-              
                 <!--fin fila fecha y usuario-->
                 <!--inicio contrase;as-->
                 <div class="row">
@@ -65,15 +63,11 @@
                 <!--inicio dui y sexo-->
                 <div class="row">
                     <div class="col m1"></div>
-                     <div class="input-field col m5">
+                    <div class="input-field col m5">
                         <i class="fa fa-calendar prefix"></i> 
                         <input type="text" id="idFecha" name="nameFecha" class="text-center datepicker" required="">
                         <label for="idFecha">Fecha de Nacimiento</label>
                     </div>
-                    
-                    
-                    
-
                     <div class="col m5">
                         <div class="row">
                             <div class="col m1">
@@ -156,7 +150,7 @@
         </div>
         <!--fin de panel-->
     </form>
-<!--fin de formulario-->
+    <!--fin de formulario-->
 </div>
 <!--fin de container-->
 
@@ -165,3 +159,26 @@
     document.getElementById('FORMULARIO').setAttribute('autocomplete', 'off');
 </script>
 
+<?php
+if (isset($_REQUEST["bandera"])) {
+    include_once '../app/Conexion.php';
+    include_once '../modelos/Administrador.inc.php';
+    include_once '../repositorios/repositorio_administrador.inc.php';
+
+    Conexion::abrir_conexion();
+
+    $administrador = new Administrador();
+    $administrador->setApellido($_REQUEST["nameApellido"]);
+    $administrador->setCodigo_administrador($_REQUEST["nameUser"]);
+    $administrador->setDui($_REQUEST["nameDui"]);
+    $administrador->setEstado(1);
+    $administrador->setNombre($_REQUEST["nameNombre"]);
+    $administrador->setNivel(3);
+    $administrador->setObservacion("este bicho es malo");
+    $administrador->setPasword($_REQUEST["namePass1"]);
+    $administrador->setSexo(TRUE);
+
+    Repositorio_administrador::insertar_administrador(Conexion::obtener_conexion(), $administrador);
+    Conexion::cerrar_conexion();
+}
+?>
