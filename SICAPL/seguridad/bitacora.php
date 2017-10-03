@@ -19,13 +19,13 @@
             <div class="row">
                 <div class=" col m1"></div>
                 <div class="input-field col m5">
-                    <i class="Medium material-icons prefix">today</i> 
+                    <i class="fa fa-calendar prefix"></i> 
                     <input type="text" id="idFechaInicio" name="nameFechaInicio" class="text-center datepicker" required="">
                     <label for="idFechaInicio">Fecha de Inicial</label>
                 </div>
 
                 <div class="input-field col m5">
-                    <i class="Medium material-icons prefix">today</i> 
+                    <i class="fa fa-calendar prefix"></i> 
                     <input type="text" id="idFechaFinal" name="nameFechaFinal" class="text-center datepicker" required="">
                     <label for="idFechaFinal">Fecha Final</label>
                 </div>
@@ -41,7 +41,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="text-center ">jhon CenaZ</td>
+                        <td class="text-center ">jhon Cena</td>
                         <td class="text-center ">Inicio de sesión</td>
                         <td class="text-center ">23 de Febrero 2018</td>
                         <td class="text-center ">3:32 PM</td>

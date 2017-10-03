@@ -79,7 +79,7 @@
                         	<div class="col-md-6">
                         		<div class="file-field input-field">
                         			<div class="btn">
-        									<span><i class="fa fa-camera" aria-hidden="true"></i>Foto</span>
+        									<span><i class="glyphicon glyphicon-picture" aria-hidden="true"></i>Foto</span>
         									<input type="file">
       									</div>
       									<div class="file-path-wrapper">
