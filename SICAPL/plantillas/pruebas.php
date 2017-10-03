@@ -18,6 +18,7 @@ $administrador->setCodigo_administrador("juan01");
 $administrador->setDui("11111111-1");
 $administrador->setEstado(1);
 $administrador->setNombre("Jose Luis");
+$administrador->setNivel(3);
 $administrador->setObservacion("este bicho es malo");
 $administrador->setPasword("1234");
 $administrador->setSexo(TRUE);

@@ -1,6 +1,10 @@
 $.validator.setDefaults({
     submitHandler: function () {
-        alert("submitted!");
+        alert("se envio el formulario!");
+        document.getElementById('bandera').value="ok";    
+        document.FORMULARIO.submit();
+        
+        
     }
 });
 ///////////////////////////////////////////////////////////este es para los formularios de ingreso

@@ -1,6 +1,7 @@
 <!--inicio de container-->
 <div class="container">
     <form id="FORMULARIO" name="FormuluarioUsuario" method="post" action="" autocomplete="off" >
+        <input type="hidden" name="bandera" id="bandera"/>
         <div class="panel" name="libros">
             <!--inicio cabecera de panel-->
             <div class="panel-heading text-center">
@@ -33,16 +34,18 @@
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="input-field col m5">
-                        <i class="fa fa-calendar prefix"></i> 
-                        <input type="text" id="idFecha" name="nameFecha" class="text-center datepicker" required="">
-                        <label for="idFecha">Fecha de Nacimiento</label>
-                    </div>
-                    <div class="input-field col m5">
                         <i class="fa fa-vcard prefix"></i> 
                         <input type="text" id="idUser" name="nameUser" class="text-center validate" minlength="4" maxlength="14" required="">
                         <label for="idUser">Nmbre De Usuario<small>(Ej: juan01)</small> </label>
+                    </div> 
+                    <div class="input-field col m5">
+                        <i class="fa fa-credit-card prefix"></i> 
+                        <input type="text" id="idDui" name="nameDui" class="text-center validate" minlength="10" required="">
+                        <label for="idDui">Dui <small>(Ej: 02436390-9)</small></label>
                     </div>
+                    
                 </div>
+              
                 <!--fin fila fecha y usuario-->
                 <!--inicio contrase;as-->
                 <div class="row">
@@ -62,11 +65,14 @@
                 <!--inicio dui y sexo-->
                 <div class="row">
                     <div class="col m1"></div>
-                    <div class="input-field col m5">
-                        <i class="fa fa-credit-card prefix"></i> 
-                        <input type="text" id="idDui" name="nameDui" class="text-center" minlength="10" required="">
-                        <label for="idDui">Dui <small>(Ej: 02436390-9)</small></label>
+                     <div class="input-field col m5">
+                        <i class="fa fa-calendar prefix"></i> 
+                        <input type="text" id="idFecha" name="nameFecha" class="text-center datepicker" required="">
+                        <label for="idFecha">Fecha de Nacimiento</label>
                     </div>
+                    
+                    
+                    
 
                     <div class="col m5">
                         <div class="row">
@@ -97,7 +103,7 @@
                             <input type="file">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text" name="nameFoto" id="idFoto">
+                            <input class="file-path" type="text" name="nameFoto" id="idFoto">
                             <input type="file" id="files" name="files[]">
                         </div>
                     </div>
@@ -136,7 +142,7 @@
                 <!--fin mostrar foto-->
                 <!--inicio botones-->
                 <div class="row text-center">
-                    <button class="btn btn-success">
+                    <button class="btn btn-success" type="submit">
                         <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>                            
                         Guardar</button>
                     <button type="reset" class="btn btn-danger">
@@ -158,3 +164,4 @@
     $('#FORMULARIO').attr('autocomplete', 'off');
     document.getElementById('FORMULARIO').setAttribute('autocomplete', 'off');
 </script>
+
