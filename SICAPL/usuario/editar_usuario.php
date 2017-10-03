@@ -12,12 +12,12 @@
                 <div class="row">
                     <div class="col m1"></div>
                     <div class="input-field col m5">
-                        <i class="Medium material-icons prefix">account_circle</i> 
+                        <i class="fa fa-user-circle prefix"></i> 
                         <input type="text" id="idNombreE" name="nameNombreE"  class="text-center validate" maxlength="25" minlength="3" required value="Jenniffer Joanna">
                         <label for="idNombreE" class="col-sm-4 control-labe">Nombre <small> (Ej: Nombre1 Nombre2)</small></label>
                     </div>
                     <div class="input-field col m5">
-                        <i class="material-icons prefix">account_circle</i> 
+                        <i class="fa fa-user-circle prefix"></i> 
                         <input type="text" id="idApellidoE" name="nameApellidoE"  class="text-center validate" maxlength="25" minlength="3" required value="Abarca">
                         <label for="idApellidoE">Apellido <small>(Ej: Apellido1 Apellido2)</small></label>
                     </div>
@@ -25,13 +25,13 @@
                 <div class="row">
                     <div class="col m1"></div>
                     <div class="input-field col m5">
-                        <i class="material-icons prefix">location_on</i> 
+                        <i class="fa fa-map-marker  prefix"></i> 
                         <input type="text" id="idDireccionE" name="nameDireccionE" class="text-center validate" minlength="10" minlength="100" required="" value="CALLE AGUSTIN LARA NO. 69-B COL. EX-NORMAL TUXTEPEC">
                         <label for="nameDireccionE">Direccion <small>(Ej: Verapaz, Colonia Mercenenes)</small> </label>
                     </div>
 
                     <div class="input-field col m5">
-                        <i class="material-icons prefix">mail</i> 
+                        <i class="fa fa-envelope-o prefix"></i> 
                         <input type="email" id="idEmailE" name="nameEmailE" class="text-center validate" maxlength="35" required="" value="juribe@idiomas.udea.edu.co">
                         <label for="idEmailE">Email <small>(Ej: correo@gmail.com)</small> </label>
                     </div> 
@@ -39,14 +39,14 @@
                 <div class="row">
                     <div class="col m1"></div>
                     <div class="input-field col m5">
-                        <i class="material-icons prefix">local_phone</i> 
+                        <i class="fa fa-phone prefix"></i> 
                         <input type="text" id="idTelefonoE" name="nameTelefonoE" class="text-center" required="" minlength="8"  value="2449-7352">
                         <label for="idTelefonoE">Numero Telefonico <small>(Ej: 2255-5555)</small></label>
                     </div>
 
                     <div class="input-field col m1">
                         <div class="input-field col m1">
-                            <i class="material-icons prefix">location_city</i>     
+                           <i class="fa fa-hospital-o prefix"></i> 
                         </div>
                     </div>
                     <div class="input-field col m4">
@@ -63,7 +63,7 @@
                 </div>
                 <div class="row">
                     <div class="col m5">
-                        <i class="Medium material-icons prefix">wc</i> 
+                        <i class="fa fa-intersex prefix"></i> 
                         <div class="radio-inline">
                             <span>Sexo</span>
                             <input type="radio" id="hombreE"  name="NameSexoE"  class="text-center with-gap" checked="">
