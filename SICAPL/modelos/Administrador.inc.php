@@ -95,9 +95,5 @@ function __construct() {
     function setObservacion($observacion) {
         $this->observacion = $observacion;
     }
-
-
-
 }
-
 ?>
