@@ -1,6 +1,7 @@
 <?php
-define('NOMBRE_SERVIDOR', 'localhost');
-define('NOMBRE_USUARIO', 'root');
-define('PASSWORD', '');
-define('NOMBRE_DB', 'diseno1');
+
+$nombre_servidor = 'localhost';
+$nombre_usuario = 'root';
+$password = '';
+$nombre_base_datos = 'diseno1';
 ?>
