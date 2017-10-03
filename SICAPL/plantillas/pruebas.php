@@ -4,14 +4,13 @@ include_once './menu.php';
 ?>
 </nav>
 
+<?php
+include_once '../app/Conexion.php';
+Conexion::abrir_conexion();
+Conexion::cerrar_conexion();
 
+?>
 
-
- 
-<form action="">
-    <input type="text" name="namePhone" id="idPhone"><br>
-    <input type="text" name="namePhone" id="idDui">
-</form>
 
 
 
