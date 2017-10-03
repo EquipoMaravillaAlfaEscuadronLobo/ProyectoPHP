@@ -41,7 +41,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="text-center ">jhon CenaZ</td>
+                        <td class="text-center ">jhon Cena</td>
                         <td class="text-center ">Inicio de sesión</td>
                         <td class="text-center ">23 de Febrero 2018</td>
                         <td class="text-center ">3:32 PM</td>

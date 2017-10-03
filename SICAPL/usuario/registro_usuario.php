@@ -14,12 +14,12 @@
                     <div class="row">
                         <div class="col m1"></div>
                         <div class="input-field col m5">
-                            <i class="Medium material-icons prefix">account_circle</i> 
+                            <i class="fa fa-user-circle prefix"></i> 
                             <input type="text" id="idNombre" name="nameNombre"  class="text-center validate" maxlength="25" minlength="3" required>
                             <label for="idNombre" class="col-sm-4 control-labe">Nombre <small> (Ej: Nombre1 Nombre2)</small></label>
                         </div>
                         <div class="input-field col m5">
-                            <i class="material-icons prefix">account_circle</i> 
+                            <i class="fa fa-user-circle  prefix"></i> 
                             <input type="text" id="idApellido" name="nameApellido"  class="text-center validate" maxlength="25" minlength="3" required>
                             <label for="idApellido">Apellido <small>(Ej: Apellido1 Apellido2)</small></label>
                         </div>
@@ -27,7 +27,7 @@
                     <div class="row">
                         <div class="col m1"></div>
                         <div class="input-field col m5">
-                            <i class="material-icons prefix">location_on</i> 
+                            <i class="fa fa-  prefix"></i> 
                             <input type="text" id="idDireccion" name="nameDireccion" class="text-center validate" minlength="10" required="">
                             <label for="nameDireccion">Direccion <small>(Ej: Verapaz, Colonia Mercenenes)</small> </label>
                         </div>
