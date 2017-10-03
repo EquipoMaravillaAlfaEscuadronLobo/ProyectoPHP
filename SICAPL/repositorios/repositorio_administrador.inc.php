@@ -4,10 +4,7 @@ class Repositorio_administrador {
 
     public static function insertar_administrador($conexion , $administrador) {
         $administrador_insertado = false;
-        
-        
-
-        if (isset($conexion)) {
+       if (isset($conexion)) {
             try {
                 
                 $codigo_administrador = $administrador->getCodigo_administrador();
@@ -19,10 +16,12 @@ class Repositorio_administrador {
                 $dui = $administrador->getDui();
                 $estado = $administrador->getEstado();
                 $observacion = $administrador->getObservacion();
+                $foto = $administrador->getFoto();
                 
                 
-                $sql = 'INSERT INTO administradores(codigo_administrador,pasword,nivel,nombre,apellido,sexo,dui,estado,observacion)'
-                        . ' values (:codigo_administrador,:pasword,:nivel,:nombre,:apellido,:sexo,:dui,:estado,:observacion)';///estos son alias para que PDO pueda trabajar 
+                $sql = 'INSERT INTO administradores(codigo_administrador,pasword,nivel,nombre,apellido,sexo,dui,estado,observacion,foto)'
+                        . ' values (:codigo_administrador,:pasword,:nivel,:nombre,:apellido,:sexo,:dui,:estado,:observacion,:foto)';
+                                ///estos son alias para que PDO pueda trabajar 
                 $sentencia = $conexion->prepare($sql);
                 
                 
@@ -36,6 +35,7 @@ class Repositorio_administrador {
                 $sentencia->bindParam(':dui', $dui, PDO::PARAM_STR);
                 $sentencia->bindParam(':estado', $estado, PDO::PARAM_STR);
                 $sentencia->bindParam(':observacion', $observacion, PDO::PARAM_STR);
+                $sentencia->bindParam(':foto', $observacion, PDO::PARAM_STR);
                                              
                 
                 $administrador_insertado = $sentencia->execute();

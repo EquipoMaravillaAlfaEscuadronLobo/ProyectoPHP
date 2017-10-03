@@ -1,12 +1,12 @@
 <?php
-    session_start();
-    if (!isset($_SESSION['user'])&&$titulo1!="Inicio de Sesion") {
-        header("Location: ../index.php");
-    }else{
-        if (isset($_SESSION['user'])&&$titulo1=="Inicio de Sesion") {
-        header("Location: home.php");
-    }
-    }
+//    session_start();
+//    if (!isset($_SESSION['user'])&&$titulo1!="Inicio de Sesion") {
+//        header("Location: ../index.php");
+//    }else{
+//        if (isset($_SESSION['user'])&&$titulo1=="Inicio de Sesion") {
+//        header("Location: home.php");
+//    }
+//    }
 ?>
 <!DOCTYPE html>
 <html lang="es">

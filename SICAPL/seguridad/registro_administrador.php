@@ -1,6 +1,6 @@
 <!--inicio de container-->
 <div class="container">
-    <form id="FORMULARIO" name="FormuluarioUsuario" method="post" action="" autocomplete="off" >
+    <form id="FORMULARIO" name="FormuluarioUsuario" method="post" action="" autocomplete="off" enctype="multipart/form-data">
         <input type="hidden" name="bandera" id="bandera"/>
         <div class="panel" name="libros">
             <!--inicio cabecera de panel-->
@@ -188,6 +188,8 @@ if (isset($_REQUEST["bandera"])) {
     $administrador->setObservacion("este bicho es malo");
     $administrador->setPasword($_REQUEST["namePass1"]);
     $administrador->setSexo(TRUE);
+    $administrador->setSexo(TRUE);
+    $administrador->setFoto(addcslashes(file_get_contents($_FILES['nameFoto']['tmp_name'])));
 
     Repositorio_administrador::insertar_administrador(Conexion::obtener_conexion(), $administrador);
     Conexion::cerrar_conexion();
