@@ -60,10 +60,10 @@
                         	<div class="col-md-6">
                         	<i class="fa fa-shopping-cart prefix" aria-hidden="true"></i>
                         		<div class="radio-inline">
-                        			<input type="radio" name="origen" id="donado" value="Donado" class=" with-gap">
-                        			<label for="donado">Donado</label>
-                        			<input type="radio" name="origen" id="comprado" value="Comprado" class="with-gap">
-                        			<label for="comprado">Comprado</label>
+                        			<input type="radio" name="origen" id="donador" value="Donado" class=" with-gap">
+                        			<label for="donador">Donado</label>
+                        			<input type="radio" name="origen" id="comprador" value="Comprado" class="with-gap">
+                        			<label for="comprador">Comprado</label>
                         		</div>
                         	</div>
                         </div>

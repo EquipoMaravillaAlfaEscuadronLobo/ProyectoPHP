@@ -75,7 +75,15 @@ $(document).ready(function () {
     }
     
     
-    
+    function abrirEdicionLib() {
+        $('#edicionLib').modal('open');
+    }
+     function abrirEdicionAut() {
+        $('#edicionAut').modal('open');
+    }
+     function abrirEdicionEdi() {
+        $('#edicionEdi').modal('open');
+    }
     function abrirEdicion() {
         $('#edicion').modal('open');
     }
