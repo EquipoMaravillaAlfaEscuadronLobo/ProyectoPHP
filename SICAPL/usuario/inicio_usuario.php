@@ -12,7 +12,7 @@ include_once '../plantillas/menu.php';
         </li>
         <li class="tab">
             <a href="#test2">
-                <i class="fa fa-book" aria-hidden="true"></i>  Editar Usuarios
+                <i class="fa fa-edit" aria-hidden="true"></i>  Editar Usuarios
             </a>
         </li>
 

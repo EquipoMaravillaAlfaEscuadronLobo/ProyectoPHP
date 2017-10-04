@@ -10,7 +10,7 @@
                     </div>       
                 </div>
                 <div class="panel-body">                
-                    <table padding="20px" class="responsive-table display" id="data-table-simple">
+                    <table padding="20px" class="responsive-table display" id="tabla-paginada">
                         <thead>
                         <th>Codigo</th>
                         <th>Tipo</th>

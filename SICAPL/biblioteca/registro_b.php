@@ -60,10 +60,10 @@
                         	<div class="col-md-6">
                         	<i class="fa fa-shopping-cart prefix" aria-hidden="true"></i>
                         		<div class="radio-inline">
-                        			<input type="radio" name="origen" id="donado" value="Donado" class=" with-gap">
-                        			<label for="donado">Donado</label>
-                        			<input type="radio" name="origen" id="comprado" value="Comprado" class="with-gap">
-                        			<label for="comprado">Comprado</label>
+                        			<input type="radio" name="origen" id="donador" value="Donado" class=" with-gap">
+                        			<label for="donador">Donado</label>
+                        			<input type="radio" name="origen" id="comprador" value="Comprado" class="with-gap">
+                        			<label for="comprador">Comprado</label>
                         		</div>
                         	</div>
                         </div>
@@ -79,7 +79,7 @@
                         	<div class="col-md-6">
                         		<div class="file-field input-field">
                         			<div class="btn">
-        									<span><i class="fa fa-camera" aria-hidden="true"></i>Foto</span>
+        									<span><i class="glyphicon glyphicon-picture" aria-hidden="true"></i>Foto</span>
         									<input type="file">
       									</div>
       									<div class="file-path-wrapper">
