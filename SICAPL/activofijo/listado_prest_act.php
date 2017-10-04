@@ -78,7 +78,7 @@
         <div class="col-md-2 text-right"></div>
         <div class="col-md-6">
             <a href="#" class="modal-action modal-close waves-effect btn btn-success"><i class="fa fa-check"></i> Finalizar</a>
-            <a href="#" class="modal-action modal-close waves-effect btn btn-warning "> <i class="fa fa-refresh"></i> Actualizar</a>
+            <a href="#" class="modal-action modal-close waves-effect btn btn-warning " disabled> <i class="fa fa-refresh" ></i> Actualizar</a>
             <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a>
         </div>
         <div class="col-md-3 text-right"></div>

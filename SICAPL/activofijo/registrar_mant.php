@@ -81,10 +81,10 @@
 		                        		<div class="col m1"></div>
 										<div class="input-field col m3">
 		                        			<i class="fa fa-arrow-right prefix"></i> 
-		                        			<label for="Titulo">Hasta</label>                        		
-		                        			<input type="text" id="Titulo" class="form-control">
-		                        			
+		                        			<label for="Titulo">Hasta</label>
+		                        			<input type="text" id="Titulo" class="form-control">	                        			
 		                        		</div>
+
 		                        		<div class="col m5"></div>
 									</div><!-- termina seccion -->
 								</td>
