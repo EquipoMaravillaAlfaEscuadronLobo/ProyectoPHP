@@ -122,3 +122,11 @@ input{
 #despliegue{
 	color: black !important;
 }
+
+a.pass{
+	text-decoration-line: none !important;
+	color: blue !important;
+}
+a.ass:hover{
+	color:white !important;
+}

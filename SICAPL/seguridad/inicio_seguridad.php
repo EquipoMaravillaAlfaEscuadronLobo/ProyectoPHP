@@ -19,7 +19,7 @@ include_once '../plantillas/menu.php';
         
         <li class="tab">
             <a href="#test2">
-                <i class="fa fa-book" aria-hidden="true"></i> Clasificacion De Activos
+                <i class="fa fa-book" aria-hidden="true"></i> Categorias De Activos
             </a>
         </li>
 
@@ -47,7 +47,28 @@ include_once '../plantillas/menu.php';
 </div>
 
 <div class="col s12" id="test2">
-    <h3>modificancion</h3>
+<div class="container">
+    <div class="panel">
+        <div class="panel-heading">
+        <h3>Ingresar Categoria</h3>
+
+    </div>
+   
+        
+ <?php include_once '../activofijo/nueva_categoria.php'; ?>
+    
+    <div class="panel-footer">
+        <!-- botones -->
+                <div class="row text-center" name="botones">
+                    <button class="btn btn-success">
+                        <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>                            
+                        Guardar</button>
+                    <button type="reset" class="btn btn-danger" onclick="AlertaExttoZZZ()">
+                        <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar
+                    </button>
+                </div><!-- Termina botones -->
+    </div>
+    </div>
 </div>
 
 <div class="col s12" id="test3">

@@ -2,7 +2,7 @@
   	<div class="row">
 		<div class="col-md-12">
 			<div class="panel">
-				<div class="panel-heading"> <i class="fa fa-truck prefix" aria-hidden="true"></i>&nbsp;Registrar Proveedo</div>
+				
 				<div class="panel-body">
 					 <div class="row">
                         	<div class="col-md-12">

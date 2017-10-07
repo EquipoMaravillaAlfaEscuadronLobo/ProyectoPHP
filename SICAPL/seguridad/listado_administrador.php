@@ -52,6 +52,12 @@
             <div class="col-md-12">   <?php include('./editar_administrador.php'); ?></div>
         </div>
     </div>
+    <div class="modal-footer">
+    <div class="row">
+        <div class="col-md-6 text-right"><a href="#" class="modal-action modal-close waves-effect btn btn-success">Guardar</a></div>
+        <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger">Salir</a></div>
+        </div>
+    </div>
 </div>
 
 

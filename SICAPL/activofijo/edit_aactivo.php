@@ -1,15 +1,7 @@
 <!--formulario usuario-->
-<div class="container">
-    <form id="FORMULARIO" method="post" class="form-horizontal" action="" autocomplete="off">
-        <div class="row" name="filaForm">
+
             <div class="panel" name="regisroAct">
-                <div class="panel-heading text-center">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3>Registro De Activo Fijo</h3>
-                        </div>
-                    </div>
-                </div>
+                
 
                 <div class=" text-center panel-body">
                     <div class="row">
@@ -23,69 +15,13 @@
                         <div class="input-field col m3">
                             <select required="">
                                 <option value = "" disabled selected>Seleccione Encargado</option>
-                                <option value="1">Ligia Alferez Muños</option>
+                                <option value="1" selected>Ligia Alferez Muños</option>
                                 <option value="2">Alberto Pérez Guzman</option>
                             </select>
                         </div>
                          <div class="col m1"></div>
                         <!-- termona el combo de encargado   -->
-                        <div class="input-field col m4">
-                            <i class="fa fa-calendar prefix"></i> 
-                            <input type="text" id="fecha" name="nameNombre"  class="text-center validate" maxlength="25" minlength="3" required value="<?php echo date("d-m-Y"); ?>" readonly> 
-                            <label for="idNombre" class="col-sm-4 control-labe">Fecha</label>
-                        </div>
-                       
-                    </div>
-                    <div class="row">
-                        <div class="col m1"></div>
-                        <!--seccion del combo para categoria  -->
-                        <div class="input-field col m1">
-                            <div class="input-field col m1">
-                                <i class="fa fa-sitemap prefix"></i>   
-                            </div>
-                        </div>
-                        <div class="input-field col m2">
-                            <select required="">
-                                <option value = "" disabled selected>Seleccione Categoria</option>
-                                <option value="1">Silla</option>
-                                <option value="2">Mesa</option>
-                                <option value="3">Computadora</option>
-                            </select>
-                        </div>
-                        <div class="input-field col m1">
-                            <input type="text" name="cantidad" placeholder="Cantidad">
-                        </div>
-                        <div class="input-field col m1">
-                            <a class="btn btn_primary"  target="_blank" onclick="nuevaCat(1)"><span aria-hidden="true" class="glyphicon glyphicon-plus"></span></a>
-                        </div>
-                        <!-- termona el combo de categoria   -->
-                        <div class="input-field col m5">
-                            <i class="fa fa-usd prefix"></i> 
-                            <input type="text" id="precioUnitario" name="precioUnitario" class="text-center validate" required="">
-                            <label for="precioUnitario">Precio Unitario <small></small> </label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col m1"></div>
-                        <!--seccion del combo para proveedor  -->
-                        <div class="input-field col m1">
-                            <div class="input-field col m1">
-                                <i class="fa fa-truck prefix"></i>   
-                            </div>
-                        </div>
-                        <div class="input-field col m3">
-                            <select required="">
-                                <option value="0" disabled selected>Seleccione Proveedor</option>
-                                <option value="1">AESIP</option>
-                                <option value="2">BREA</option>
-                                <option value="3">COMPUMUNDO</option>
-                            </select>
-                        </div>
-                        <div class="input-field col m1">
-                            <a class="btn btn_primary"  target="_blank" onclick="nuevaCat(2)"><span aria-hidden="true" class="glyphicon glyphicon-plus"></span></a>
-                        </div>
-
-                        <!-- termina el combo de proveedor   -->
+                        
                         <!-- foto  -->
                         <div class="col m6">
                             <div class="file-field input-field col m10">
@@ -100,8 +36,8 @@
                             </div>
                         </div>
                         <!-- termina foto -->
-
-                    </div>
+                        </div>
+                    
                     <div class="row">
                         <output id="list"></output>                
                     </div>
@@ -111,8 +47,8 @@
                         <div class="col-md-10"> <!--  div para centralizar      -->
                             <div class="panel-group" id="accordion">
                                 <div class="panel" name="caracteristicas">
-                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion" href="#caracteristicas">Detalles  </a></div>
-                                    <div id="caracteristicas" class="panel-collapse collapse ">
+                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion" href="#caracteristicasMod">Detalles  </a></div>
+                                    <div id="caracteristicasMod" class="panel-collapse collapse ">
                                         <div class="panel-body">                                            
 
                                                 <div class="row">
@@ -203,19 +139,15 @@
                 </div>
                 <!-- botones -->
                 <div class="row text-center" name="botones">
-                    <button class="btn btn-success">
-                        <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>                            
-                        Guardar</button>
-                    <button type="reset" class="btn btn-danger" onclick="AlertaExttoZZZ()">
-                        <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar
-                    </button>
+                    <button class="alert alert-success"><a class="btn btn_primary"   onclick="nuevoMant()"><span aria-hidden="true" class="glyphicon glyphicon-plus">
+                        </span>MANTENIMIENTO</a></button>
+                        <button class="btn btn-danger"> <i class="Medium material-icons prefix" onclick="AlertaExttoZZZ()">delete</i> </button>
+                       
+                    
                 </div><!-- Termina botones -->
                 
             </div> <!-- Termina panel regisroAct -->
-        </div><!-- Termina filaForm -->
-</form><!--fin formulario usuario-->
-
-</div><!--fin container-->
+        
 
 
 
@@ -224,38 +156,5 @@
 </script>
 
 
-<div id="nuevaCat" class="modal modal-fixed-footer" ><!-- para llamar al modal -->
-    <div class="modal-heading panel-heading">
-         <i class="fa fa-sitemap prefix"></i> &nbsp;Registrar categoria
-    </div>
-   
-    <div class="modal-content ">
-             <?php include('nueva_categoria.php');?>
-    
-    </div>
-     <div class="modal-footer">
-        <div class="row">
-        <div class="col-md-6 text-right"><a href="#" class="modal-action modal-close waves-effect btn btn-success"><i class="glyphicon glyphicon-floppy-disk"></i>  Guardar</a></div>
-        <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>
-        </div>
-    </div>
-</div>
 
-
-<div id="nuevoProv" class="modal modal-fixed-footer" ><!-- para llamar al modal -->
- <div class="modal-heading panel-heading">
-         <i class="fa fa-truck prefix" aria-hidden="true"></i>&nbsp;Registrar Proveedo
-    </div>
-     
-    <div class="modal-content ">
-             <?php include('nuevo_proveedor.php');?>
-    
-    </div>
-     <div class="modal-footer">
-        <div class="row">
-        <div class="col-md-6 text-right"><a href="#" class="modal-action modal-close waves-effect btn btn-success"><i class="glyphicon glyphicon-floppy-disk"></i>  Guardar</a></div>
-        <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>
-        </div>
-    </div>
-</div>
 

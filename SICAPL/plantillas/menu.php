@@ -51,7 +51,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="../index.php">
                     <i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar Sesion
                 </a>
             </li>

@@ -2,7 +2,7 @@
   	<div class="row">
 		<div class="col-md-12">
 			<div class="panel">
-				<div class="panel-heading">Registrar Encargado de Mantenimiento</div>
+				
 				<div class="panel-body">
 					<div class="row">
                         	<div class="col-md-12">

@@ -114,14 +114,7 @@
 
                         </div>
                     </div>
-                    <div class="row text-center">
-                        <button class="btn btn-success">
-                            <span class="glyphicon glyphicon-edit" aria="hidden"></span>                            
-                            Modificar</button>
-                        <button type="reset" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar
-                        </button>
-                    </div>
+                    
                 </div>
             </div>
         </div>

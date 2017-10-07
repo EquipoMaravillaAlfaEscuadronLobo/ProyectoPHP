@@ -18,7 +18,7 @@ include_once('../plantillas/cabecera.php');
                         </div>
                         <div class="panel-body">
                         	<div class="row">
-                        		<div class="col-md-3"><h4>Nombre:</h4></div>
+                        		<div class="col-md-3"><h4>Correo:</h4></div>
                         		<div class="col-md-9"><input type="text" name="nombre" id="nombre" class="form-control" autofocus/></div>
                         	</div>
                         	<div class="row">
@@ -37,6 +37,9 @@ include_once('../plantillas/cabecera.php');
                 </div>
             </div>
             </form>
+            <div class="panel-footer">  
+                    <a href="#" class="pass">Olvide mi contraseña</a>
+            </div>  
         </div>
         
         <script>

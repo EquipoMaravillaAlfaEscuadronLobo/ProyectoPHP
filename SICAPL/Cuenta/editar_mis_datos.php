@@ -49,12 +49,12 @@
                     <div class="input-field col m5">
                         <i class="fa fa-eye prefix"></i> 
                         <input type="password" id="idPass1" name="namePass1" class="text-center validate" autocomplete="off" minlength="5">
-                        <label for="idPass1">Escriba la ingrese Nueva contraseña</label>
+                        <label for="idPass1">Ingrese Nueva Contraseña</label>
                     </div>
                     <div class="input-field col m5">
                         <i class="fa fa-eye prefix"></i> 
                         <input type="password" id="idPass2" name="namePass2" class="text-center validate" autocomplete="off"  minlength="5">
-                        <label for="idPass2">repita nueva contraseña</label>
+                        <label for="idPass2">Repita Nueva Contraseña</label>
                     </div>
                 </div>
                 <!--fin de contrase;a-->

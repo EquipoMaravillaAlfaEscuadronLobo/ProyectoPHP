@@ -94,6 +94,7 @@ $(document).ready(function () {
         if(opcion==3){$('#nuevoEncargado').modal('open');}
         if(opcion==4){$('#actualizarCaracteristicas').modal('open');}
         if(opcion==5){$('#actPres').modal('open');}
+        if(opcion==6){$('#editActivo').modal('open');}
     }
 
     function nuevoPretamoAct() {        
@@ -104,7 +105,7 @@ $(document).ready(function () {
         $('#nuevoMant').modal('open');
     }
       function nuevoEnc() { 
-        $('#nuevoEncargado').modal('open');
+        $('#actualizarCaracteristicas').modal('open');
     }
 
      
@@ -158,7 +159,22 @@ $(document).ready(function () {
             $("#despliegue").addClass("fa-sort-asc");
 
     }
+     function buscarUser(){
+        document.getElementById('carnet').innerHTML='TM17000';
+        document.getElementById('nombreUser').innerHTML='Carlos Antonio Torres Martinez';
+        document.getElementById('edad').innerHTML='10';
+        document.getElementById('sexo').innerHTML="Masculino";
+        document.getElementById('fot').setAttribute("src","../imagenes/tipo.jpg")          
 
+    }
+    
+    function buscarActivo(){
+        document.getElementById('codigoActivo').innerHTML='1995-25-05';
+        document.getElementById('tipoActivo').innerHTML='Silla';
+        document.getElementById('encargado').innerHTML='Boris Ricardo Miranda Ayala';
+        document.getElementById('estado').innerHTML="Disponible";         
+
+    }
     
 </script>
 

@@ -1,27 +1,26 @@
 
 	<div class="row ">
-		<div class="col-md-5">
+		<div class="col-md-6">
 		<div class="panel-group" id="accordion">
 			<div class="panel panel-default" name="libros">
 				<div class="panel-heading p_libro">
-
-                <div class="row">
-                <div class="col-md-10">
-
-                 <i class="fa fa-user-o prefix" aria-hidden="true"></i><label for="" style="font-size:17px"> Activos </label>                
-                </div>
-                
-                
+                    <div class="row">
+                        <div class="col-md-10">
+                         <i class="fa fa-user-o prefix" aria-hidden="true"></i><label for="" style="font-size:17px"> Activos </label>
+                        </div>
                     </div>
                 </div>
 				<div id="activo1" class="panel-collapse collapse in">
 				<div class="panel-body">
-					<div class="panel-body">
-                        <table class="table table-striped table-bordered">
+
+                        <table class="table table-striped table-bordered responsive-table display">
                             <thead>
-                            <th>Codigo</th>
+                            <th>Código</th>
                             <th>Tipo</th>
-                            <th>&nbsp;</th>
+                            <th align="text-center"> 
+                                <input type="checkbox" id="todos"  name="NameNivel"  class="text-center with-gap" >
+                                <label for="todos">Devolver</label>
+                            </th>
                             
                             </thead>                            
                             <tr>
@@ -29,19 +28,17 @@
                                 <td ><b>Silla</b></td>
                                 <td >
                                     <p>
-                                      <input type="checkbox" id="test5" />
-                                      <label for="test5">Devolver</label>
+                                      <input type="checkbox" id="test0" />
+                                      <label for="test0"></label>
                                     </p>
                                 </td>
                             </tr>
                             <tr>
-                                <td ><b>1995-25-05</b></td>
+                                <td ><b>1995-25-06</b></td>
                                 <td ><b>Silla</b></td>
                                 <td >
-                                    <p>
-                                      <input type="checkbox" id="test5" />
-                                      <label for="test5">Devolver</label>
-                                    </p>
+                                    <input type="checkbox" id="5"  name="NameNivel"  class="text-center with-gap" >
+                                <label for="5"></label>
                                 </td>
                             </tr>
                            
@@ -49,83 +46,74 @@
                     </div>
 					
 				</div>
-				</div>
 			</div>
-			</div>
-			
 		</div>
+		</div>
+			
+		
 
 
 
-		 <div class="col-md-4"><!-- panel datos de usuario -->        
+		 <div class="col-md-6"><!-- panel datos de usuario -->        
             <div class="panel panel-default" name="user">
                 <div class="panel-heading p_libro">
                  <i class="fa fa-user-o prefix" aria-hidden="true"></i><label for="" style="font-size:16px"> Usuario</label>
-                              
-                
                 </div>
                 
                     <div class="panel-body">
-                         <table class="table table-striped table-bordered">
-                            <tr>
-                                <td width="40%"><b>Nombre:</b></td>
-                                <td width="60%"><div id="nombre"></div></td>
-                            </tr>
-                            <tr>
-                                <td><b>Edad:</b></td>
-                                <td><div id="edad"></div></td>
-                            </tr>
-                            <tr>
-                                <td><b>Sexo:</b></td>
-                                <td><div id="sexo"></div></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                      <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                      <label for="textarea1">Observaciones</label>
-                                    </div>
+                        <div class="row">
+                            <div class="col m6">
+                                <div class="input-field ">
+                                        <i class="fa fa-calendar-check-o prefix" style="color: green"></i> 
+                                        <input type="text" id="fecha" name="nameNombre"  class="text-center validate" maxlength="25" minlength="3" required value="12/08/2017" readonly> 
+                                        <label for="idNombre" class="col-sm-4 control-labe" style="font-size:18px">Fecha de Salida</label>
                                 </div>
-                                </td>
                                 
-                            </tr>
-                            
-                        </table>
+                            </div>
+                           
+                            <div class="col m6">
+                                <div class="input-field">
+                                                <i class="fa fa-calendar prefix" aria-hidden="true"></i>
+                                                <label for="fecha_pub" class="active" style="font-size:16px">Fecha de Devolución</label>
+                                                <input type="date" id="fecha_pub" class="form-control datepicker" >
+                                </div>
+                            </div>  
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3" >
+                                <img src="../imagenes/tipo.jpg" class="presentacionXZ" >
+                            </div>
+                            <div class="col-md-9">
+                                 <table class="table table-striped table-bordered">
+                                    <tr>
+                                        <td width="30%"><b>Carnet:</b></td>
+                                        <td width="70%" colspan="3"> <div id="sexo">TM17000</div></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>Nombre:</b></td>
+                                        <td colspan="3">Carlos Antonio Torres Martinez<div id="nombre"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Edad:</b></td>
+                                        <td><div id="edad">10</div></td>
+                                        <td><b>Sexo:</b></td>
+                                        <td><div id="sexo">Masculino</div></td>
+                                    </tr>
+                                    
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                      <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                      <label for="textarea1" style="font-size:15px">Observaciones</label>
+                                    </div>
+                        </div>
 
 
                     </div>
                 </div>
             </div>
-	
-
-	<div class="col-md-3">
-		<div class="panel">
-		<div class="panel-heading">Fechas</div>
-			<div class="panel-body">
-				<div class="row">
-				<div class="col m12">
-					<div class="input-field ">
-                            <i class="fa fa-calendar-check-o prefix" style="color: green"></i> 
-                            <input type="text" id="fecha" name="nameNombre"  class="text-center validate" maxlength="25" minlength="3" required value="12/08/2017" readonly> 
-                            <label for="idNombre" class="col-sm-4 control-labe" style="font-size:18px">Fecha de Salida</label>
-                    </div>
-                    </div>
-				</div>
-				<div class="row">
-				<div class="col m12">
-					<div class="input-field">
-                        			<i class="fa fa-calendar prefix" aria-hidden="true"></i>
-                        			<label for="fecha_pub" class="active" style="font-size:16px">Fecha de Devolución</label>
-                        			<input type="date" id="fecha_pub" class="form-control datepicker" >
-                        		</div>
-				</div>	
-					</div>
-			</div>
-		</div>
-	</div>
-
-	
 	</div>
 
  

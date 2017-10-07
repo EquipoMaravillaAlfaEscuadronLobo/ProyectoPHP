@@ -63,7 +63,7 @@
 			<div class="panel-body">
 			<table class="table table-striped table-bordered">		
 				 <tr>
-                                <td width="40%"><b>Codigo:</b></td>
+                                <td width="40%"><b>Código:</b></td>
                                 <td  colspan="3"><div id="codigo"></div></td>
                             </tr>
                             <tr>
@@ -115,18 +115,16 @@
 					<div class="input-field col m12">
                             <i class="fa fa-usd prefix"></i> 
                             <input type="text" id="precioUnitario" name="precioUnitario" class="text-center validate" required="">
-                            <label for="precioUnitario" style="font-size:16px">Precio <small></small> </label>
+                            <label for="precioUnitario" style="font-size:16px">Precio Total<small></small> </label>
                         </div>
 				</div>
+				  <div class="row">
+                            <div class="input-field col s12">
+                                      <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                      <label for="textarea1" style="font-size:15px"><i class="	fa fa-pencil-square-o"></i>&nbspDescripción</label>
+                                    </div>
+                        </div>
 				
-				<div class="textarea">
-				<div class="col-md-12">
-				<i class="	fa fa-pencil-square-o"> &nbspDescripcion</i>
-					<textarea rows="20" cols="30" placeholder="Costo">
-						
-					</textarea>
-					</div>
-				</div>
 				<div class="row">
 				<div class="col-md-12">
 				<a class="btn btn_primary"  target="_blank" onclick="nuevaCat(4)"><span aria-hidden="true" >Actualizar Detalles</span></a>
@@ -175,29 +173,5 @@
  		
 </script>
 
-<div id="nuevoEncargadoo" class="modal modal-fixed-footer " >
 
-	<div class="modal-content">	
-	<?php include('nuevo_encargado.php');?>
-	</div>
-	 <div class="modal-footer ">
-		<div class="row">
-        <div class="col-md-6 text-right"><a href="#" class="modal-action modal-close waves-effect btn btn-success"><i class="glyphicon glyphicon-floppy-disk"></i>  Guardar</a></div>
-        <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>
-        </div>
-    </div>
-</div>
 
-<div id="actualizarCaracteristicas" class="modal modal-fixed-footer " >
-
-	<div class="modal-content">	
-		
-	<?php include('actualizar_caracteristicas.php');?>
-	</div>
-	 <div class="modal-footer ">
-		<div class="row">
-        <div class="col-md-6 text-right"><a href="#" class="modal-action modal-close waves-effect btn btn-success"><i class="glyphicon glyphicon-floppy-disk"></i>  Guardar</a></div>
-        <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>
-        </div>
-    </div>
-</div>
