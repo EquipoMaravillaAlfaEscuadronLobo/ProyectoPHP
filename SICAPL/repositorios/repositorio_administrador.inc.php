@@ -46,6 +46,31 @@ class Repositorio_administrador {
         return $administrador_insertado;
     }
 
+    public static function obtener_administrador($conexion , $codigo_administrador) {
+        $administrador=new Administrador();
+        
+        
+
+        if (isset($conexion)) {
+            try {
+                
+                
+                
+                
+                $sql = "SELECT * FROM administradores WHERE codigo_administrador='$codigo_administrador'";///estos son alias para que PDO pueda trabajar 
+               foreach ($conexion->query($sql) as $row) {
+                $administrador->setCodigo_administrador($row["codigo_administrador"]);
+                $administrador->setpasword($row["pasword"]);
+
+               }
+
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $administrador;
+    }    
+
 }
 
 ?>

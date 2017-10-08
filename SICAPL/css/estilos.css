@@ -130,3 +130,12 @@ a.pass{
 a.ass:hover{
 	color:white !important;
 }
+
+ .validado {
+     border-bottom: 1px solid #03CC03 !important;
+     box-shadow: 0 1px 0 0 #03CC03 !important;
+}
+.invalidado {
+    border-bottom: 1px solid #FF0000 !important;
+    box-shadow: 0 1px 0 0 #FF0000 !important;
+}

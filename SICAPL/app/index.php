@@ -18,15 +18,15 @@ include_once('../plantillas/cabecera.php');
                         </div>
                         <div class="panel-body">
                         	<div class="row">
-                        		<div class="col-md-3"><h4>Correo:</h4></div>
-                        		<div class="col-md-9"><input type="text" name="nombre" id="nombre" class="form-control" autofocus/></div>
+                        		<div class="col-md-3"><h4>Usuario:</h4></div>
+                        		<div class="col-md-9"><input type="text" name="nombre" id="nombre" class="form-control" onkeyup="buscarAdmin()" autofocus/></div>
                         	</div>
                         	<div class="row">
                         		<div class="col-md-3"><h4>Contraseña:</h4></div>
-                        		<div class="col-md-9"> <div class="row"><div class="col-md-11"><input type="password" name="clave" id="clave" class="form-control" /></div><div class="col-md-1"><i id="ojo" class="fa fa-eye" aria-hidden="true"></i></div></div>
+                        		<div class="col-md-9"> <div class="row"><div class="col-md-11"><input type="password" name="clave" id="clave" class="form-control" disabled/></div><div class="col-md-1"><i id="ojo" class="fa fa-eye" aria-hidden="true"></i></div></div>
                         	</div>
                         	<div class="row">
-                        	<div class="col-md-6"><button type="button" class="form-control btn btn-primary" onclick="validar()"><span class="fa fa-sign-in" aria-hidden="true"></span> Ingresar</button></div>
+                        	<div class="col-md-6"><button type="button" id="enviar" class="form-control btn btn-primary" onclick="validar()" disabled><span class="fa fa-sign-in" aria-hidden="true"></span> Ingresar</button></div>
                         	<div class="col-md-6"><button type="reset" class="form-control btn btn-danger"><span class="fa fa-times" aria-hidden="true"></span> Cancelar</button></div>
                         	
                         
@@ -46,6 +46,24 @@ include_once('../plantillas/cabecera.php');
         	function validar(){
         		location.href='home.php'
         	}
+
+            function buscarAdmin() {
+    var depto = $("input#nombre").val();
+
+    if (depto != "") {
+        $.post("getUser.php", {user: depto}, function(mensaje) {
+            
+            if(mensaje=="ENCONTRADO"){
+            $('#clave').removeAttr("disabled");
+             $('#enviar').removeAttr("disabled");
+            $('input#nombre').removeClass("invalidado");
+            $('input#nombre').addClass("validado");
+         }else{
+             $('input#nombre').addClass("invalidado");
+         }
+        }); 
+    } 
+};
         </script>
     
 <?php
