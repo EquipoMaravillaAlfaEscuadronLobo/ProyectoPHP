@@ -2,6 +2,8 @@
 $titulo1="Inicio de Sesion";
 include_once('../plantillas/cabecera.php');
 
+
+
 ?>
 
         <div class="container login">
@@ -17,13 +19,14 @@ include_once('../plantillas/cabecera.php');
                             </h3>
                         </div>
                         <div class="panel-body">
+                        <form action="" method="post" name="login" id="login">
                         	<div class="row">
                         		<div class="col-md-3"><h4>Usuario:</h4></div>
                         		<div class="col-md-9"><input type="text" name="nombre" id="nombre" class="form-control" onkeyup="buscarAdmin()" autofocus/></div>
                         	</div>
                         	<div class="row">
                         		<div class="col-md-3"><h4>Contraseña:</h4></div>
-                        		<div class="col-md-9"> <div class="row"><div class="col-md-11"><input type="password" name="clave" id="clave" class="form-control" disabled/></div><div class="col-md-1"><i id="ojo" class="fa fa-eye" aria-hidden="true"></i></div></div>
+                        		<div class="col-md-9"> <div class="row"><div class="col-md-11"><input type="password" name="clave" id="clave" class="form-control" onkeyup="activarBoton()" disabled/></div><div class="col-md-1"><i id="ojo" class="fa fa-eye" aria-hidden="true"></i></div></div>
                         	</div>
                         	<div class="row">
                         	<div class="col-md-6"><button type="button" id="enviar" class="form-control btn btn-primary" onclick="validar()" disabled><span class="fa fa-sign-in" aria-hidden="true"></span> Ingresar</button></div>
@@ -35,6 +38,7 @@ include_once('../plantillas/cabecera.php');
                         
                 <div class="col-md-3">
                 </div>
+                </form>
             </div>
             </form>
             <div class="panel-footer">  
@@ -44,8 +48,44 @@ include_once('../plantillas/cabecera.php');
         
         <script>
         	function validar(){
-        		location.href='home.php'
+        		var pass = $("input#clave").val();
+                var user = $("input#nombre").val();
+
+    if (pass != "") {
+        $.post("iniciar.php", {clave: pass, user: user}, function(mensaje) {
+            
+            if(mensaje=="ENCONTRADO"){
+                swal({
+                    title: "Exito",
+                    text: "Sesion Iniciada Correctamente",
+                    type: "success"},
+                    function(){
+                        location.href="home.php";
+                    }
+
+                    );
+            
+                
+
+
+                
+           
+         }else{
+                swal ( "Oops" ,  "Contraseña Incorrecta" ,  "error" )
+             $('input#clave').addClass("invalidado");
+         }
+        }); 
+    }
         	}
+
+            function activarBoton(){
+                var pass = $("input#clave").val();
+                if(pass.length>5){
+                     $('#enviar').removeAttr("disabled");
+                }else{
+                     $('#enviar').addAttr("disabled");
+                }
+            }
 
             function buscarAdmin() {
     var depto = $("input#nombre").val();
@@ -55,7 +95,7 @@ include_once('../plantillas/cabecera.php');
             
             if(mensaje=="ENCONTRADO"){
             $('#clave').removeAttr("disabled");
-             $('#enviar').removeAttr("disabled");
+            
             $('input#nombre').removeClass("invalidado");
             $('input#nombre').addClass("validado");
          }else{

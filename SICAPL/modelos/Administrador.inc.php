@@ -10,6 +10,7 @@ class Administrador{
     private $foto;
     private $estado;
     private $observacion;
+    private $email;
     
     
    
@@ -56,6 +57,10 @@ function __construct() {
         return $this->observacion;
     }
 
+    function getEmail() {
+        return $this->email;
+    }
+
     function setCodigo_administrador($codigo_administrador) {
         $this->codigo_administrador = $codigo_administrador;
     }
@@ -94,6 +99,10 @@ function __construct() {
 
     function setObservacion($observacion) {
         $this->observacion = $observacion;
+    }
+
+    function setEmail($email) {
+        $this->email = $email;
     }
 }
 ?>

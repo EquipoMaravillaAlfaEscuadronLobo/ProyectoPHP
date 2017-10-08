@@ -5,7 +5,7 @@
 <script src="../js/jquery.dataTables.min.js"></script>
 <script src="../js/data-tables-script.js"></script>
 <script src="../js/jquery.validate.js"></script>
-<script src="../js/foto.js"></script>
+
 <script src="../js/alertaPersonalizadas.js"></script>
 <script src="../js/mi_validacion.js"></script>
 <script src="../js/jquery.inputmask.bundle.js"></script>
@@ -13,7 +13,7 @@
 <script src="../js/inicializaciones.js"></script>
 <script src="../js/modales.js"></script>
 <script src="../js/Libros.js"></script>
-
+<script src="../js/foto.js"></script>
 
 </body>
 <footer class="text-center">

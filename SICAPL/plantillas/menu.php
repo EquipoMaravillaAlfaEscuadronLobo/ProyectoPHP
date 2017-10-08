@@ -42,7 +42,7 @@
             </li>
 
             <li>
-                <a href="../index.php">
+                <a href="../sesiones/cerrar.php">
                     <i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar Sesion
                 </a>
             </li>
@@ -84,7 +84,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="../sesiones/cerrar.php">
                     <i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar Sesion
                 </a>
             </li>

@@ -1,3 +1,13 @@
+<?php
+    session_start();
+    if (!isset($_SESSION['user'])&&$titulo1!="Inicio de Sesion") {
+        header("Location: ../index.php");
+    }else{
+        if (isset($_SESSION['user'])&&$titulo1=="Inicio de Sesion") {
+        header("Location: home.php");
+    }
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -16,9 +26,9 @@
         <link href="../css/materialdesignicons.min.css" rel="stylesheet">
         <link href="../css/sweetalert.css" rel="stylesheet">
         
-        <script src="../js/sweetalert.min.js"></script>
         <script type="text/javascript" src="../js/jquery.min.js"></script>
         <script type="text/javascript" src="../js/jquery.validate.js"></script>
+        <script src="../js/sweetalert.min.js"></script>
       
 
     </head>
