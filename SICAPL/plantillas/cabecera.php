@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php  session_start(); 
     if (!isset($_SESSION['user'])&&$titulo1!="Inicio de Sesion") {
         header("Location: ../index.php");
@@ -6,6 +7,17 @@
         header("Location: home.php");
     }
     }
+=======
+<?php
+//    session_start();
+//    if (!isset($_SESSION['user'])&&$titulo1!="Inicio de Sesion") {
+//        header("Location: ../index.php");
+//    }else{
+//        if (isset($_SESSION['user'])&&$titulo1=="Inicio de Sesion") {
+//        header("Location: home.php");
+//    }
+//    }
+>>>>>>> e258c8581f0973586c14e50acd33f518fabac066
 ?>
 <!DOCTYPE html>
 <html lang="es">
