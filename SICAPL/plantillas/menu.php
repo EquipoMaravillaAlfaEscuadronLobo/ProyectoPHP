@@ -10,7 +10,8 @@
         </a>
         <ul class="right hide-on-med-and-down" id="nav-mobile">
             <li>
-                <a href="../activofijo/inicio_af.php">
+                <a href="../activofijo/inicio_activo.php"> 
+
                     <i class="fa fa-television" aria-hidden="true"></i>  Activo Fijo
                 </a>
             </li>

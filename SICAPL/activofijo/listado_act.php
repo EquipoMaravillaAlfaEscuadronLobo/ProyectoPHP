@@ -72,55 +72,14 @@
 	<div class="modal-content">
 	<?php include('edit_aactivo.php');?>
 	</div>
-	 <div class="modal-footer">
-		<a href="#" class="modal-action modal-close waves-effect btn btn-success">Guardar</a>
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Salir</a>
-    </div>
-</div>
-
-
-<div id="nuevoMant" class="modal modal-fixed-footer nuevo">
-	<div class="modal-heading panel-heading">
-        Registrar Mantenimiento
-    </div>
-	<div class="modal-content ">	
-		<?php include('registrar_mant.php');?>
-	</div>
-	 <div class="modal-footer">
-		<div class="row">
-        <div class="col-md-6 text-right"><a href="#" class="modal-action modal-close waves-effect btn btn-success"><i class="glyphicon glyphicon-floppy-disk"></i>  Guardar</a></div>
-        
-        <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>
-        </div>
-    </div>
-</div>
-
-<div id="nuevoEncargado" class="modal modal-fixed-footer " >
-    <div class="modal-heading panel-heading">
-        Registrar Encargado de Mantenimiento 
-    </div>
-    <div class="modal-content"> 
-    <?php include('nuevo_encargado.php');?>
-    </div>
-     <div class="modal-footer ">
+	 <div class="modal-footer ">
         <div class="row">
         <div class="col-md-6 text-right"><a href="#" class="modal-action modal-close waves-effect btn btn-success"><i class="glyphicon glyphicon-floppy-disk"></i>  Guardar</a></div>
         <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>
         </div>
     </div>
 </div>
-<div id="actualizarCaracteristicas" class="modal modal-fixed-footer " >
-    <div class="modal-heading panel-heading">
-       Actualizar Detalles Activo Fijo
-    </div>
-    <div class="modal-content"> 
-        
-    <?php include('actualizar_caracteristicas.php');?>
-    </div>
-     <div class="modal-footer ">
-        <div class="row">
-        <div class="col-md-6 text-right"><a href="#" class="modal-action modal-close waves-effect btn btn-success"><i class="glyphicon glyphicon-floppy-disk"></i>  Guardar</a></div>
-        <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>
-        </div>
-    </div>
-</div>
+
+
+
+

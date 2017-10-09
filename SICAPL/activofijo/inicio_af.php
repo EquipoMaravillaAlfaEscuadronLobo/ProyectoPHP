@@ -1,5 +1,5 @@
  <?php
-$titulo1 = "Activo Fijo";
+$titulo1 = "Biblioteca";
 include_once('../plantillas/cabecera.php');
 include_once('../plantillas/menu.php');
 ?>
@@ -48,22 +48,22 @@ include_once('../plantillas/menu.php');
    
    <div class="col s12" id="test1">
            
-           <?php include('./registro_act.php');?>
+          <?php include('./registro_act.php');?> 
         </div>
         <div class="col s12" id="test2">
-           <?php include('./listado_act.php');?>
+            <?php include('./listado_act.php');?> 
         </div>
         <div class="col s12" id="test3">
-           < <?php include('./listado_act_mant.php');?>
+            <?php include('./listado_act_mant.php');?> 
         </div>
         <div class="col s12" id="test4">
-            <?php include('./listado_prest_act.php');?>
+            <?php include('./listado_prest_act.php');?> 
         </div>
         <div class="col s12" id="test5">
-         <!--    <?php include('./registrar_af2.php');?> -->
+             
         </div>
         <div class="col s12" id="test6">
-           <?php include('./registro_activo.php');?>
+            
         </div>
 
 <?php

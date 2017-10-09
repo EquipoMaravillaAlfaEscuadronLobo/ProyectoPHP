@@ -1,5 +1,4 @@
-<?php
-    session_start();
+<?php  session_start(); 
     if (!isset($_SESSION['user'])&&$titulo1!="Inicio de Sesion") {
         header("Location: ../index.php");
     }else{
