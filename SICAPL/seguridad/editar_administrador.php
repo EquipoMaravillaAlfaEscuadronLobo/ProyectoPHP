@@ -1,4 +1,5 @@
-<form id="FORMULARIO" method="post" action="" autocomplete="off" >
+<form id="editar-formulario" method="post" action="" autocomplete="off" >
+    <input type="hidden" value="111111" id="idSecreto">
     <div class="row">
         <div class="panel" name="libros">
             <div class="panel-heading text-center">
@@ -13,49 +14,57 @@
                     <div class="col-md-1"></div>
                     <div class="input-field col m5 input-group">
                         <i class="fa fa-user-circle prefix"></i> 
-                        <input type="text" id="idNombre" name="nameNombre"  class="text-center validate" maxlength="25" minlength="3" required value="Ligia Alferez">
-                        <label for="idNombre" class="col-sm-4 control-labe">Nombre <small> (Ej: Nombre1 Nombre2)</small></label>
+                        <input type="text" id="idNombreE" name="nameNombreE"  class="text-center validate" maxlength="25" minlength="3" required="" value="Ligia Alferez">
+                        <label for="idNombreE" class="col-sm-4 control-labe">Nombre <small> (Ej: Nombre1 Nombre2)</small></label>
                     </div>
                     <div class="input-field col m5">
                         <i class="fa fa-user-circle prefix"></i> 
-                        <input type="text" id="idApellido" name="nameApellido"  class="text-center validate" maxlength="25" minlength="3" required value="Muñoz">
-                        <label for="idApellido">Apellido <small>(Ej: Apellido1 Apellido2)</small></label>
+                        <input type="text" id="idApellidoE" name="nameApellidoE"  class="text-center validate" maxlength="25" minlength="3" required="" value="Muñoz">
+                        <label for="idApellidoE">Apellido <small>(Ej: Apellido1 Apellido2)</small></label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-1"></div>
-                    <div class="input-field col m5">
-                        <i class="fa fa-calendar prefix"></i> 
-                        <input type="text" id="idFecha" name="nameFecha" class="text-center datepicker" required="" value="2 de Octubre, 1990">
-                        <label for="idFecha">Fecha de Nacimiento</label>
-                    </div>
                     <div class="input-field col m5">
                         <i class="fa fa-vcard prefix"></i> 
-                        <input type="text" id="idUser" name="nameUser" class="text-center validate" minlength="4" maxlength="14" required="" value="jhon01">
-                        <label for="idUser">Nmbre De Usuario<small>(Ej: juan01)</small> </label>
+                        <input type="text" id="idUserE" name="nameUserE" class="text-center validate" minlength="4" maxlength="14" value="jhon01" required="">
+                        <label for="idUserE">Nmbre De Usuario<small>(Ej: juan01)</small> </label>
                     </div>
+                    <div class="input-field col m5">
+                        <i class="fa fa-credit-card prefix"></i> 
+                        <input type="text" id="idDuiE" name="idDuiE" class="text-center validate" minlength="10" required="">
+                        <label for="idDuiE">Dui <small>(Ej: 02436390-9)</small></label>
+                    </div>
+                                       
                 </div>
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="input-field col m5">
                         <i class="fa fa-eye prefix"></i> 
-                        <input type="password" id="idPass1" name="namePass1" class="text-center validate" autocomplete="off" minlength="5">
-                        <label for="idPass1">Contraseña</label>
+                        <input type="password" id="idPass1E" name="namePass1E" class="text-center validate" autocomplete="off" minlength="5" maxlength="10" >
+                        <label for="idPass1E">Contraseña(opcional)</label>
                     </div>
                     <div class="input-field col m5">
                         <i class="fa fa-eye prefix"></i> 
-                        <input type="password" id="idPass2" name="namePass2" class="text-center validate" autocomplete="off"  minlength="5">
-                        <label for="idPass2">Repita Contraseña</label>
+                        <input type="password" id="idPass2E" name="namePass2E" class="text-center validate" autocomplete="off"  minlength="5" maxlength="10">
+                        <label for="idPass2E">Repita Contraseña</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col m1"></div>
                     <div class="input-field col m5">
-                        <i class="fa fa-credit-card prefix"></i> 
-                        <input type="text" id="idDui" name="nameDui" class="text-center" minlength="10" required="" value="0000000-0">
-                        <label for="idDui">Dui <small>(Ej: 02436390-9)</small></label>
+                        <i class="fa fa-calendar prefix"></i> 
+                        <input type="text" id="idFechaE" name="nameFechaE" class="text-center datepicker" required="" value="2 de Octubre, 1990">
+                        <label for="idFechaE">Fecha de Nacimiento</label>
                     </div>
-
+                    <div class="input-field col m5">
+                        <i class="fa fa-envelope-o prefix"></i> 
+                        <input type="email" id="idEmail" name="nameEmail" class="text-center validate" required="" >
+                        <label for="idEmail">Email <small>(Ej: correo@gmail.com)</small> </label>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="col m1"></div>
                     <div class="col m5">
                         <div class="row">
                             <div class="col m1">
@@ -64,15 +73,30 @@
                             <div class="col m1"><span>Sexo</span></div>
                             <div class="col m10">
                                 <div class="radio-inline">
-                                    <input type="radio" id="idHombre"  name="NameSexo" class="text-center with-gap" >
-                                    <label for="idHombre">Masculino</label>
+                                    <input type="radio" id="idHombreE"  name="NameSexoE" class="text-center with-gap" >
+                                    <label for="idHombreE">Masculino</label>
 
-                                    <input type="radio" id="idMujer" name="NameSexo" class="text-center with-gap" checked="">
-                                    <label for="idMujer">Femenino</label>
+                                    <input type="radio" id="idMujerE" name="NameSexoE" class="text-center with-gap" checked="">
+                                    <label for="idMujerE">Femenino</label>
                                 </div>
                             </div>
                         </div>
                     </div>    
+                    <div class="col m5">
+                        <div class="row">
+                            <div class="col m1"><i class="Medium material-icons prefix">star</i> </div>
+                            <div class="col m1"><label>Nivel</label></div>
+                            <div class="col m10">
+                                <div class="radio-inline">
+                                    <input type="radio" id="idRootE"  name="NameNivelE"  class="text-center with-gap" >
+                                    <label for="idRootE">Root</label>
+
+                                    <input type="radio" id="idAdministrador" name="NameNivel"  class="text-center with-gap" checked="">
+                                    <label for="idAdministrador">Administrador</label>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
                 </div>
                 <div class="row">
 
@@ -83,26 +107,16 @@
                             <input type="file">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text" name="nameFoto" id="idFoto" value="imagenes.jpg">
+                            <input class="file-path validate" type="text" name="nameFotoE" id="idFoto" value="imagenes.jpg">
                             <input type="file" id="files" name="files[]">
                         </div>
                     </div>
-
-                    <div class="col m5">
-                        <div class="row">
-                            <div class="col m1"><i class="Medium material-icons prefix">star</i> </div>
-                            <div class="col m1"><label>Nivel</label></div>
-                            <div class="col m10">
-                                <div class="radio-inline">
-                                    <input type="checkbox" id="idRoot"  name="NameNivel"  class="text-center with-gap" >
-                                    <label for="idRoot">Root</label>
-
-                                    <input type="checkbox" id="idAdministrador" name="NameNivel"  class="text-center with-gap" checked="">
-                                    <label for="idAdministrador">Administrador</label>
-                                </div>
-                            </div>
-                        </div> 
+                     <div class="input-field col m5">
+                        <i class="fa fa-eye prefix"></i> 
+                        <input type="password" id="idValidacionX" name="nameValidacionX" class="text-center validate" autocomplete="off">
+                        <label for="idValidacionX">Contraseña Actual</label>
                     </div>
+                             
                     <div class="row">
                         <div class="col m5"></div>
                         <div class="col m2 ">
@@ -111,10 +125,9 @@
                                     <output id="list"></output>                
                                 </div>
                             </div>
-
                         </div>
-                    </div>
-                    
+                   </div>
+               
                 </div>
             </div>
         </div>

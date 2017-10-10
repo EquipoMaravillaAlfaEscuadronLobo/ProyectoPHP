@@ -1,4 +1,4 @@
- <div>
+<div>
     <row>
         <div class="col-md-12">
             <div class="panel">
@@ -7,7 +7,7 @@
                         <div class="col-md-8"><h3>Listado de Prestamos</h3>
                         </div>
                         <div class="col-md-2">  <a class="btn btn_primary"  target="_blank" onclick="abrirModal()"><span aria-hidden="true" class="glyphicon glyphicon-plus">
-                        </span>Nuevo Prestamo</a></div>
+                                </span>Nuevo Prestamo</a></div>
                     </div>       
                 </div>
                 <div class="panel-body">				
@@ -40,7 +40,7 @@
                         </tbody>
                     </table>
                 </div>
-              
+
             </div>
         </div>
     </row>
@@ -51,9 +51,9 @@
         <?php include('prestamo2.php'); ?>
     </div>
     <div class="modal-footer">
-    <div class="row">
-        <div class="col-md-6 text-right"><a href="#" class="modal-action modal-close waves-effect btn btn-success">Guardar</a></div>
-        <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger">Salir</a></div>
+        <div class="row">
+            <div class="col-md-6 text-right"><a href="#" class="modal-action modal-close waves-effect btn btn-success">Guardar</a></div>
+            <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger">Salir</a></div>
         </div>
     </div>
 </div>

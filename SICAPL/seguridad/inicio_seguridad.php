@@ -51,9 +51,7 @@ include_once '../plantillas/menu.php';
         <div class="panel">
             <div class="panel-heading">
                 <h3>Ingresar Categoria</h3>
-
             </div>
-
 
             <?php include_once '../activofijo/nueva_categoria.php'; ?>
 

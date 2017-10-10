@@ -7,10 +7,8 @@ $.validator.setDefaults({
         
     }
 });
-///////////////////////////////////////////////////////////este es para los formularios de ingreso
+///////////////////////////////////////////////////////////este es para los formularios de ingresozz
 $(document).ready(function () {
-
-
     $("#FORMULARIO").validate({
         rules: {
             nameNombre: {
@@ -149,14 +147,10 @@ $(document).ready(function () {
             $(element).next("span").addClass("glyphicon-ok").removeClass("glyphicon-remove");
         }
     });
-});
-
-////////////////////////////////////////////////////////este es para los formularios de edicion
-
-$(document).ready(function () {
-
-
-    $("#editar-formulario").validate({
+    
+    ////////////////////////////////////////////////////////este es para los formularios de edicion
+    
+     $("#editar-formulario").validate({
         rules: {
             nameNombreE: {
                 required: true,
@@ -171,11 +165,11 @@ $(document).ready(function () {
                 minlength: 10
             },
             namePass1E: {
-                required: true,
+                
                 minlength: 5
             },
             namePass2E: {
-                required: true,
+                
                 equalTo: "#idPass1E"
             },
             nameFotoE: {
@@ -203,7 +197,12 @@ $(document).ready(function () {
             },
             nameNivelE: {
                   required: true
+            },
+            nameValidacionX:{
+                  required: true,
+                  equalTo: "#idSecreto"
             }
+            
         },
         messages: {
             nameNombreE: {
@@ -219,12 +218,11 @@ $(document).ready(function () {
                 minlength: "ingrese una direccion real"
             },
             namePass1E: {
-                required: "Ingrese una contraseña",
+            
                 minlength: "La contraseña debe de tener por lo menos 5 caracteres"
             },
             namePass2E: {
-                required: "Repita la contraseña",
-                minlength: "Your passwo",
+                
                 equalTo: "Por favor ingrese la misma contraseña"
             },
             nameFotoE: {
@@ -250,6 +248,10 @@ $(document).ready(function () {
             },
             NameNivelE :{
                 required: "Seleccione un Nivel"
+            },
+            nameValidacionX:{
+              required: "debe proporcionar su actual contraseña para modificar",
+              equalTo: "debe proporcionar su actual contraseña para modificar"
             }
                         
         },
@@ -288,4 +290,10 @@ $(document).ready(function () {
             $(element).next("span").addClass("glyphicon-ok").removeClass("glyphicon-remove");
         }
     });
+    
+    
+    
 });
+
+
+

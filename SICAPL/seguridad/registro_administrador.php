@@ -111,10 +111,10 @@ include_once '../repositorios/repositorio_administrador.inc.php';
                             <div class="col m1"><label>Nivel</label></div>
                             <div class="col m10">
                                 <div class="radio-inline">
-                                    <input type="radio" id="idRoot"  name="NameNivel" value="0"  class="text-center with-gap" >
+                                    <input type="radio" id="idRoot"  name="NameNivel" value="0"  class="text-center with-gap" checked="">
                                     <label for="idRoot">Root</label>
 
-                                    <input type="radio" id="idAdministrador" name="NameNivel" value="1"  class="text-center with-gap" >
+                                    <input type="radio" id="idAdministrador" name="NameNivel" value="1"  class="text-center with-gap" checked="">
                                     <label for="idAdministrador">Administrador</label>
                                 </div>
                             </div>

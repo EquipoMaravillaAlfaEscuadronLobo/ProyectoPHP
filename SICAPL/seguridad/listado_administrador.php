@@ -50,7 +50,9 @@ $lista_admnistradores = Repositorio_administrador::lista_administradores(Conexio
 <div id="edicion" class="modal modal-fixed-footer nuevo">
     <div class="modal-content modal-lg">
         <div class="row">
-            <div class="col-md-12">   <?php include('./editar_administrador.php'); ?></div>
+            <div class="col-md-12">
+   <?php include('./editar_administrador.php'); ?>
+            </div>
         </div>
     </div>
     <div class="modal-footer">
