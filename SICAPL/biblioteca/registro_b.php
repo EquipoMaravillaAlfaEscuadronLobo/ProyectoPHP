@@ -106,7 +106,7 @@
         <div class="panel">
             <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion" href="#collapse-autores">Registro de Autores</a></div>
             <div id="collapse-autores" class="panel-collapse collapse">
-                <div class="panel-body"><form  name="frmAutor" method="post" id="frmAutor">
+                <div class="panel-body"><form action="newAutor.php" name="frmAutor" method="post" id="frmAutor" target="_blank">
                         <div class="row">
                         	<div class="col-md-12">
                         		<div class="input-field">
@@ -157,7 +157,7 @@
                         </div>
                 </div>
                 <div class="panel-footer text-center">
-                    <button type="submit" class="btn btn-success" onclick="guardarAutor()">Guardar</button><button type="reset" class="btn btn-danger">Cancelar</button>
+                    <button type="submit" class="btn btn-success" >Guardar</button><button type="reset" class="btn btn-danger">Cancelar</button>
                     </form>
                 </div>
             </div>
@@ -213,7 +213,7 @@
 
                 </div>
                 <div class="panel-footer text-center">
-                    <button class="btn btn-success">Guardar</button><button type="reset" class="btn btn-danger">Cancelar</button>
+                    <button id="btn_enviar" class="btn btn-success">Guardar</button><button type="reset" class="btn btn-danger">Cancelar</button>
                     </form>
                 </div>
             </div>
@@ -223,6 +223,24 @@
 
 
 <script type="text/javascript">
+$(function(){
+ $("#btn_enviar").click(function(){
+ var url = "newAutor.php"; // El script a dónde se realizará la petición.
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#frmAutor").serialize(), // Adjuntar los campos del formulario enviado.
+           success: function(data)
+           {
+                swal ( "Oops" ,  data ,  "error" ) // Mostrar la respuestas del script PHP.
+           }
+         });
+
+    return false; // Evitar ejecutar el submit del formulario.
+ });
+});
+
+
     function guardarAutor() {
     
 
