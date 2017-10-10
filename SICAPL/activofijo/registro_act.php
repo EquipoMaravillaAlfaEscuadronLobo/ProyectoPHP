@@ -1,6 +1,6 @@
 <!--formulario usuario-->
 <div class="container">
-    <form id="FORMULARIO" method="post" class="form-horizontal" action="" autocomplete="off">
+    <form id="FORMULAR" method="post" class="form-horizontal" action="" autocomplete="off">
         <div class="row" name="filaForm">
             <div class="panel" name="regisroAct">
                 <div class="panel-heading text-center">
@@ -235,7 +235,7 @@
     </div>
      <div class="modal-footer">
         <div class="row">
-        <div class="col-md-6 text-right"><a href="#" class="modal-action modal-close waves-effect btn btn-success"><i class="glyphicon glyphicon-floppy-disk"></i>  Guardar</a></div>
+        <div class="col-md-6 text-right"><a href="#" class="modal-action modal-close waves-effect btn btn-success"><i class="glyphicon glyphicon-floppy-disk" ></i>  Guardar</a></div>
         <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>
         </div>
     </div>
@@ -259,3 +259,20 @@
     </div>
 </div>
 
+<?php
+if (isset($_REQUEST["bandera"])) {
+    echo "paso";
+    include_once '../app/Conexion.php';
+    include_once '../modelos/categoria.inc.php';
+    include_once '../repositorios/repositorio_categoria.php';
+
+    Conexion::abrir_conexion();
+
+    $categoria = new Categoria();
+    $administrador->setCodigo_categoria($_REQUEST["nameUser"]);
+    $categoria->setNombre($_REQUEST["nameNombre"]);
+
+    Repositorio_categoria::insertar_categoria(Conexion::obtener_conexion(), $categoria);
+    Conexion::cerrar_conexion();
+}
+?>

@@ -7,23 +7,16 @@ include_once './menu.php';
 
 <?php
 include_once '../app/Conexion.php';
-include_once '../modelos/Administrador.inc.php';
-include_once '../repositorios/repositorio_administrador.inc.php';
+include_once '../modelos/Categoria.php';
+include_once '../repositorios/repositorio_categoria.php';
 
 Conexion::abrir_conexion();
 
-$administrador = new Administrador();
-$administrador->setApellido("perez Montana");
-$administrador->setCodigo_administrador("juan01");
-$administrador->setDui("11111111-1");
-$administrador->setEstado(1);
-$administrador->setNombre("Jose Luis");
-$administrador->setNivel(3);
-$administrador->setObservacion("este bicho es malo");
-$administrador->setPasword("1234");
-$administrador->setSexo(TRUE);
+$categoria = new Categoria();
+$categoria->setCodigo_tipo('666');
+$categoria->setNombre("VVVVV");
 
-Repositorio_administrador::insertar_administrador(Conexion::obtener_conexion(), $administrador);
+Repositorio_categoria::insertar_categoria(Conexion::abrir_conexion(), $categoria);
 Conexion::cerrar_conexion();
         
 ?>
