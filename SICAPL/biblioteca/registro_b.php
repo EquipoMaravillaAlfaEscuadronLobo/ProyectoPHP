@@ -1,3 +1,10 @@
+<?php
+     include_once '../app/Conexion.php';
+      include_once '../repositorios/repositorio_autores.inc.php';
+      Conexion::abrir_conexion();
+      $ultimoAutor=repositorio_autores::ObtenerUltimo(Conexion::abrir_conexion());
+?>
+
 <div class="container">
     <div class="panel-group" id="accordion">
         <div class="panel">
@@ -99,13 +106,13 @@
         <div class="panel">
             <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion" href="#collapse-autores">Registro de Autores</a></div>
             <div id="collapse-autores" class="panel-collapse collapse">
-                <div class="panel-body"><form action="">
+                <div class="panel-body"><form  name="frmAutor" method="post" id="frmAutor">
                         <div class="row">
                         	<div class="col-md-12">
                         		<div class="input-field">
                         			<i class="fa fa-list-ol prefix" aria-hidden="true"></i>
                         			<label for="codigo">Codigo</label>
-                        			<input type="text" id="codigo" class="form-control" disabled>
+                        			<input type="text" id="codigo" class="form-control" disabled value="<?php echo $ultimoAutor ?>">
                         		</div>
                         	</div>
                         </div>
@@ -114,14 +121,14 @@
                         		<div class="input-field">
                         			<i class="fa fa-user-circle prefix" aria-hidden="true"></i>
                         			<label for="nombre">Nombre</label>
-                        			<input type="text" id="nombre" class="form-control">
+                        			<input type="text" id="nombre" name="nombre" class="form-control">
                         		</div>
                         	</div>
                         	<div class="col-md-6">
                         		<div class="input-field">
                         			<i class="fa fa-user-circle prefix" aria-hidden="true"></i>
                         			<label for="apellido">Apellido</label>
-                        			<input type="text" id="apellido" class="form-control">
+                        			<input type="text" id="apellido" name="apellido" class="form-control">
                         		</div>
                         	</div>
                         </div>
@@ -130,7 +137,7 @@
                         		<div class="input-field">
                         			<i class="fa fa-calendar prefix" aria-hidden="true"></i>
                         			<label for="fecha_nac" class="active">Fecha de Nacimiento</label>
-                        			<input type="date" id="fecha_nac" class="form-control datepicker">
+                        			<input type="date" id="fecha_nac" name="fecha_nac" class="form-control datepicker">
                         		</div>
                         	</div>
                         
@@ -143,14 +150,14 @@
         									<input type="file">
       									</div>
       									<div class="file-path-wrapper">
-                        					<input type="text" id="bio" class="form-control file-path validate">
+                        					<input type="text" id="bio" name="bio" class="form-control file-path validate">
                         				</div>
                         		</div>
                         	</div>
                         </div>
                 </div>
                 <div class="panel-footer text-center">
-                    <button class="btn btn-success">Guardar</button><button type="reset" class="btn btn-danger">Cancelar</button>
+                    <button type="submit" class="btn btn-success" onclick="guardarAutor()">Guardar</button><button type="reset" class="btn btn-danger">Cancelar</button>
                     </form>
                 </div>
             </div>
@@ -213,3 +220,34 @@
         </div>
     </div>
 </div>
+
+
+<script type="text/javascript">
+    function guardarAutor() {
+    
+
+    if (AutorValidado()) {
+        $.post("newAutor.php", {nombre: nombre, apellido:apellido, fecha_nac:fecha_nac, bio:bio}, function(mensaje) {
+            
+            if(mensaje=="1"){
+           swal({
+                    title: "Exito",
+                    text: "Autor Registrado",
+                    type: "success"},
+                    function(){
+                        //location.href="home.php";
+                    }
+
+                    );
+         }else{
+            swal ( "Oops" ,  "Contraseña Incorrecta" ,  "error" )
+            // $('input#nombre').addClass("invalidado");
+         }
+         return false;
+        }); 
+    } 
+};
+function AutorValidado(){
+    return true;
+}
+</script>
