@@ -1,3 +1,8 @@
+<?php
+include_once '../app/Conexion.php';
+include_once '../modelos/Administrador.inc.php';
+include_once '../repositorios/repositorio_administrador.inc.php';
+?>
 <!--inicio de container-->
 <div class="container">
     <form id="FORMULARIO" name="FormuluarioUsuario" method="post" action="" autocomplete="off" enctype="multipart/form-data">
@@ -68,18 +73,18 @@
                         <input type="text" id="idFecha" name="nameFecha" class="text-center datepicker" required="">
                         <label for="idFecha">Fecha de Nacimiento</label>
                     </div>
-                 <div class="input-field col m5">
-                            <i class="fa fa-envelope-o prefix"></i> 
-                            <input type="email" id="idEmail" name="nameEmail" class="text-center validate" required="" >
-                            <label for="idEmail">Email <small>(Ej: correo@gmail.com)</small> </label>
-                        </div>     
+                    <div class="input-field col m5">
+                        <i class="fa fa-envelope-o prefix"></i> 
+                        <input type="email" id="idEmail" name="nameEmail" class="text-center validate" required="" >
+                        <label for="idEmail">Email <small>(Ej: correo@gmail.com)</small> </label>
+                    </div>     
                 </div>
                 <!--fin dui y sexo-->
                 <!--inicio foto y nivel-->
                 <div class="row">
 
                     <div class="col m1"></div>
-                       <div class="col m5">
+                    <div class="col m5">
                         <div class="row">
                             <div class="col m1">
                                 <i class="fa fa-intersex prefix"></i> 
@@ -87,10 +92,10 @@
                             <div class="col m1"><span>Sexo</span></div>
                             <div class="col m10">
                                 <div class="radio-inline">
-                                    <input type="radio" id="idHombre"  name="NameSexo" class="text-center with-gap">
+                                    <input type="radio" id="idHombre"  name="NameSexo" value="Masculino" class="text-center with-gap">
                                     <label for="idHombre">Masculino</label>
 
-                                    <input type="radio" id="idMujer" name="NameSexo" class="text-center with-gap">
+                                    <input type="radio" id="idMujer" name="NameSexo" value="Femenino" class="text-center with-gap">
                                     <label for="idMujer">Femenino</label>
                                 </div>
                             </div>
@@ -106,20 +111,20 @@
                             <div class="col m1"><label>Nivel</label></div>
                             <div class="col m10">
                                 <div class="radio-inline">
-                                    <input type="checkbox" id="idRoot"  name="NameNivel"  class="text-center with-gap" >
+                                    <input type="radio" id="idRoot"  name="NameNivel" value="0"  class="text-center with-gap" >
                                     <label for="idRoot">Root</label>
 
-                                    <input type="checkbox" id="idAdministrador" name="NameNivel"  class="text-center with-gap" >
+                                    <input type="radio" id="idAdministrador" name="NameNivel" value="1"  class="text-center with-gap" >
                                     <label for="idAdministrador">Administrador</label>
                                 </div>
                             </div>
                         </div> 
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="col m4"></div>
-                    
+
                     <div class="file-field input-field col m5">
                         <div class="btn btn-primary">
                             <span class="glyphicon glyphicon-picture" aria="hidden"></span> Foto                          
@@ -141,6 +146,7 @@
                                 <output id="list"></output>                
                             </div>
                         </div>
+
 
                     </div>
                 </div>
@@ -169,31 +175,24 @@
     $('#FORMULARIO').attr('autocomplete', 'off');
     document.getElementById('FORMULARIO').setAttribute('autocomplete', 'off');
 </script>
-
 <?php
 if (isset($_REQUEST["bandera"])) {
-    include_once '../app/Conexion.php';
-    include_once '../modelos/Administrador.inc.php';
-    include_once '../repositorios/repositorio_administrador.inc.php';
-
     Conexion::abrir_conexion();
-
     $administrador = new Administrador();
+
     $administrador->setApellido($_REQUEST["nameApellido"]);
     $administrador->setCodigo_administrador($_REQUEST["nameUser"]);
     $administrador->setDui($_REQUEST["nameDui"]);
     $administrador->setEstado(1);
     $administrador->setNombre($_REQUEST["nameNombre"]);
-    $administrador->setNivel(3);
+    $administrador->setNivel($_REQUEST['NameNivel']);
     $administrador->setObservacion("este bicho es malo");
     $administrador->setPasword($_REQUEST["namePass1"]);
-    $administrador->setSexo(TRUE);
-    $administrador->setSexo(TRUE);
-    $administrador->setFoto(addslashes(file_get_contents($_FILES['nameFoto']['tmp_name'])));
-    
-    
+    $administrador->setSexo($_REQUEST['NameSexo']);
+    $administrador->setEmail($_REQUEST['nameEmail']);
 
+    // $administrador->setFoto(addslashes(file_get_contents($_FILES['nameFoto']['tmp_name'])));
     Repositorio_administrador::insertar_administrador(Conexion::obtener_conexion(), $administrador);
-    Conexion::cerrar_conexion();
+
 }
 ?>

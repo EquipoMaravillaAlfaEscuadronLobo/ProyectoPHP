@@ -15,8 +15,8 @@ include_once '../plantillas/menu.php';
                 <i class="fa fa-edit" aria-hidden="true"></i> Editar Administradores
             </a>
         </li>
-        
-        
+
+
         <li class="tab">
             <a href="#test2">
                 <i class="fa fa-book" aria-hidden="true"></i> Categorias De Activos
@@ -41,24 +41,24 @@ include_once '../plantillas/menu.php';
 
 <div class="col s12" id="test1">
     <?php include_once './registro_administrador.php'; ?>
-  </div>
+</div>
 <div class="col s12" id="test5">
-     <?php include_once './listado_administrador.php'; ?>
+    <?php include_once './listado_administrador.php'; ?>
 </div>
 
 <div class="col s12" id="test2">
-<div class="container">
-    <div class="panel">
-        <div class="panel-heading">
-        <h3>Ingresar Categoria</h3>
+    <div class="container">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3>Ingresar Categoria</h3>
 
-    </div>
-   
-        
- <?php include_once '../activofijo/nueva_categoria.php'; ?>
-    
-    <div class="panel-footer">
-        <!-- botones -->
+            </div>
+
+
+            <?php include_once '../activofijo/nueva_categoria.php'; ?>
+
+            <div class="panel-footer">
+                <!-- botones -->
                 <div class="row text-center" name="botones">
                     <button class="btn btn-success">
                         <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>                            
@@ -67,12 +67,12 @@ include_once '../plantillas/menu.php';
                         <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar
                     </button>
                 </div><!-- Termina botones -->
+            </div>
+        </div>
     </div>
-    </div>
-</div>
 </div>
 <div class="col s12" id="test3">
-      <?php include_once './bitacora.php'; ?>
+    <?php include_once './bitacora.php'; ?>
 </div>
 <div class="col s12" id="test4">
     <?php include_once './backup.php'; ?>

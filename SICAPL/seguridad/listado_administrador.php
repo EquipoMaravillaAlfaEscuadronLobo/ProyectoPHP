@@ -1,3 +1,7 @@
+<?php
+Conexion::abrir_conexion();
+$lista_admnistradores = Repositorio_administrador::lista_administradores(Conexion::obtener_conexion());
+?>
 <div class="container">
     <div class="row">
         <div class="panel" name="libros">
@@ -8,8 +12,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="panel-body">
                 <table padding="20px" class="responsive-table table-sm display" id="data-table-simple">
                     <thead class="">
@@ -22,23 +24,22 @@
 
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="text-center"><button class="btn btn-success" onclick="abrirEdicion()"> <i class="Medium material-icons prefix">edit</i> </button></td>
-                            <td class="text-center">Ligia Alferez Muños</td>
-                            <td class="text-center">jhon01</td>
-                            <td class="text-center">Admin</td>
-                            <td class="text-center"><img src="../imagenes/imagenes.jpg" class="presentacionXZ" alt=""></td>
-                            <td class="text-center"><button class="btn btn-danger" onclick="abrirEdicion()"> <i class="Medium material-icons prefix">delete</i> </button></td>
-                        </tr>
+                        <?php foreach ($lista_admnistradores as $lista) { ?>
 
-                        <tr>
-                            <td class="text-center"><button class="btn btn-success "> <i class="Medium material-icons prefix">edit</i> </button></td>
-                            <td class="text-center">Alberto Pérez Guzman</td>
-                            <td class="text-center">albert 02</td>
-                            <td class="text-center">root </td>
-                            <td class="text-center"><img src="../imagenes/imagenes.jpg" class="presentacionXZ" alt=""></td>
-                            <td class="text-center"><button class="btn btn-danger"> <i class="Medium material-icons prefix">delete</i> </button></td>
-                        </tr>
+                            <tr>
+                                <td class="text-center"><button class="btn btn-success" onclick="abrirEdicion()"> <i class="Medium material-icons prefix">edit</i> </button></td>
+                                <td class="text-center"><?php echo $lista->getNombre() . " " . $lista->getApellido(); ?></td>
+                                <td class="text-center"><?php echo $lista->getCodigo_administrador(); ?></td>
+                                <td class="text-center"><?php if ($lista->getNivel() == '0') {
+                            echo 'Root';
+                        } else {
+                            echo 'Administradro';
+                        } ?></td>
+                                <td class="text-center"><img src="../imagenes/imagenes.jpg" class="presentacionXZ" alt=""></td>
+                                <td class="text-center"><button class="btn btn-danger" onclick="abrirEdicion()"> <i class="Medium material-icons prefix">delete</i> </button></td>
+                            </tr>
+<?php } Conexion::cerrar_conexion(); ?>
+
                     </tbody>
                 </table>
             </div>
@@ -53,9 +54,9 @@
         </div>
     </div>
     <div class="modal-footer">
-    <div class="row">
-        <div class="col-md-6 text-right"><a href="#" class="modal-action modal-close waves-effect btn btn-success">Guardar</a></div>
-        <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger">Salir</a></div>
+        <div class="row">
+            <div class="col-md-6 text-right"><a href="#" class="modal-action modal-close waves-effect btn btn-success">Guardar</a></div>
+            <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger">Salir</a></div>
         </div>
     </div>
 </div>
