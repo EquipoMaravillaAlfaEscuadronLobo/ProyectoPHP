@@ -23,7 +23,7 @@ class Conexion {
     public static function cerrar_conexion() {
         if (isset(self::$conexion)) {
             self::$conexion = null;
-            print 'conexion cerrada';
+            //print 'conexion cerrada';
         }
     }
 
