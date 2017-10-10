@@ -189,7 +189,9 @@ if (isset($_REQUEST["bandera"])) {
     $administrador->setPasword($_REQUEST["namePass1"]);
     $administrador->setSexo(TRUE);
     $administrador->setSexo(TRUE);
-    $administrador->setFoto(addcslashes(file_get_contents($_FILES['nameFoto']['tmp_name'])));
+    $administrador->setFoto(addslashes(file_get_contents($_FILES['nameFoto']['tmp_name'])));
+    
+    
 
     Repositorio_administrador::insertar_administrador(Conexion::obtener_conexion(), $administrador);
     Conexion::cerrar_conexion();
