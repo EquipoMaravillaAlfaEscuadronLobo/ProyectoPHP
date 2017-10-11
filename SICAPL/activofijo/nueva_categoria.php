@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
-        <form id="FORMULARIO" name="FormuluarioUsuario" method="post" action="" autocomplete="off" enctype="multipart/form-data">
-            <input type="hidden" name="bandera" id="bandera">
+        <form id="FORMULARIO2" name="FormuluarioUsuario" method="post" action="" autocomplete="off" enctype="multipart/form-data">
+            <input type="hidden" name="bandera2" id="bandera">
             <div class="panel">				
                 <div class="panel-body">
                     <div class="row">
@@ -25,29 +25,27 @@
 
                 </div>
             </div>
-            <button class="btn btn-success" type="submit">
-                <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>                            
-                Guardar</button>
+            
         </form>
     </div>
 </div>
 <script>
-    $('#FORMULARIO').attr('autocomplete', 'off');
-    document.getElementById('FORMULARIO').setAttribute('autocomplete', 'off');
+    $('#FORMULARIO2').attr('autocomplete', 'off');
+    document.getElementById('FORMULARIO2').setAttribute('autocomplete', 'off');
 
 
 </script>
 
 <?php
-if (isset($_REQUEST["bandera"])) {
-    echo "paso";
+if (isset($_REQUEST["bandera2"])) {
+    
         
     include_once '../app/Conexion.php';
-    include_once '../modelos/categoria.inc.php';
+    include_once '../modelos/Categoria.php';
     include_once '../repositorios/repositorio_categoria.php';
 
-    echo '<script language="javascript">alert("paso");</script>'; 
-    Conexion::abrir_conexion();
+    
+    Conexion::abrir_conexion(); 
 
     $categoria = new Categoria();
     $categoria->setCodigo_tipo($_REQUEST["nameNombre"]);

@@ -8,6 +8,9 @@
 
 <script src="../js/alertaPersonalizadas.js"></script>
 <script src="../js/mi_validacion.js"></script>
+<script src="../js/mi_validacion1.js"></script>
+<script src="../js/mi_validacion2.js"></script>
+<script src="../js/mi_validacion3.js"></script>
 <script src="../js/jquery.inputmask.bundle.js"></script>
 <script src="../js/Mascara.js"></script>
 <script src="../js/inicializaciones.js"></script>

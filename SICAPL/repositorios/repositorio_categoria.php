@@ -3,6 +3,7 @@
 class Repositorio_categoria {
 
     public static function insertar_categoria($conexion, $categoria ) {
+
         $categoria_insertada = false;
         if (isset($conexion)) {
             try {
@@ -18,7 +19,7 @@ class Repositorio_categoria {
                 $sentencia->bindParam(':codigo_tipo', $codigo_cat, PDO::PARAM_STR);
                 $sentencia->bindParam(':nombre', $nombre, PDO::PARAM_STR);
 
-                echo $codigo_cat .'jjj';
+                
                 $categoria_insertada = $sentencia->execute();
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();
@@ -27,26 +28,23 @@ class Repositorio_categoria {
         return $categoria_insertada;
     }
 
-    public static function obtener_administrador($conexion, $codigo_categoria) {
+    public static function obtener_categorias($conexion) {
         $categoria = new Categoria();
 
 
 
-        if (isset($conexion)) {
+        if (isset($conexion)) { 
             try {
+                $query="SELECT * FROM categoria"; 
+                $r=mssql_query($query,$conexion); echo '<script language="javascript">alert("'.$query.'");</script>';   
 
-
-
-
-                $sql = "SELECT * FROM categoria WHERE codigo_tipo='$codigo_categoria' "; ///estos son alias para que PDO pueda trabajar 
-                foreach ($conexion->query($sql) as $row) {
-                    $administrador->setCodigo_categoria($row["codigo_tipo"]);
-                }
+                 return $r;   
+                
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();
             }
         }
-        return $administrador;
+        return $r;
     }
 
 }

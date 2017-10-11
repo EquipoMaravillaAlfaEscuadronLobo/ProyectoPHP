@@ -1,6 +1,12 @@
+<?php
+include_once '../repositorios/repositorio_categoria.php';   
+include_once '../app/Conexion.php'; 
+include_once '../modelos/Categoria.php';
+?>
 <!--formulario usuario-->
 <div class="container">
-    <form id="FORMULAR" method="post" class="form-horizontal" action="" autocomplete="off">
+    <form id="FORMULARIO1" method="post" class="form-horizontal" action="" autocomplete="off">
+    <input type="hidden" name="bandera1" id="bandera">
         <div class="row" name="filaForm">
             <div class="panel" name="regisroAct">
                 <div class="panel-heading text-center">
@@ -47,9 +53,18 @@
                         <div class="input-field col m2">
                             <select required="">
                                 <option value = "" disabled selected>Seleccione Categoria</option>
-                                <option value="1">Silla</option>
-                                <option value="2">Mesa</option>
-                                <option value="3">Computadora</option>
+                                <?php 
+
+                                Conexion::abrir_conexion(); 
+
+                                    $r=Repositorio_categoria::obtener_categorias(Conexion::obtener_conexion());
+                                   
+                                   while($registro=mssql_fetch_row($r)) 
+                                    { 
+                                    echo"<option value='".$registro[0]."'>".$registro[1]."</option>"; 
+                                    } 
+                                ?>
+                            
                             </select>
                         </div>
                         <div class="input-field col m1">
@@ -224,7 +239,7 @@
 </script>
 
 
-<div id="nuevaCat" class="modal modal-fixed-footer" ><!-- para llamar al modal -->
+<div id="nuevaCat" class="modal modal-fixed-footer" ><!-- para llamar al modal PARA REGISTRAR CATEGORIA-->
     <div class="modal-heading panel-heading">
          <i class="fa fa-sitemap prefix"></i> &nbsp;Registrar categoria
     </div>
@@ -235,14 +250,16 @@
     </div>
      <div class="modal-footer">
         <div class="row">
-        <div class="col-md-6 text-right"><a href="#" class="modal-action modal-close waves-effect btn btn-success"><i class="glyphicon glyphicon-floppy-disk" ></i>  Guardar</a></div>
+        <div class="col-md-6 text-right"><button class="btn btn-success modal-action modal-close" type="submit" form="FORMULARIO2">
+                <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>                            
+                Guardar</button></div>
         <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>
         </div>
     </div>
 </div>
 
 
-<div id="nuevoProv" class="modal modal-fixed-footer" ><!-- para llamar al modal -->
+<div id="nuevoProv" class="modal modal-fixed-footer" ><!-- para llamar al modal PARA REGISTRAR PROVEEDOR-->
  <div class="modal-heading panel-heading">
          <i class="fa fa-truck prefix" aria-hidden="true"></i>&nbsp;Registrar Proveedo
     </div>
@@ -259,20 +276,29 @@
     </div>
 </div>
 
-<?php
-if (isset($_REQUEST["bandera"])) {
-    echo "paso";
-    include_once '../app/Conexion.php';
-    include_once '../modelos/categoria.inc.php';
-    include_once '../repositorios/repositorio_categoria.php';
-
-    Conexion::abrir_conexion();
-
-    $categoria = new Categoria();
-    $administrador->setCodigo_categoria($_REQUEST["nameUser"]);
-    $categoria->setNombre($_REQUEST["nameNombre"]);
-
-    Repositorio_categoria::insertar_categoria(Conexion::obtener_conexion(), $categoria);
-    Conexion::cerrar_conexion();
-}
-?>
+<script language="javascript">// <![CDATA[ PARA QUE NO SE ACTUALICE CUANDO GUARDA EN LOS MODALES
+$(document).ready(function() {
+   // Esta primera parte crea un loader no es necesaria
+    $().ajaxStart(function() {
+        $('#loading').show();
+        $('#result').hide();
+    }).ajaxStop(function() {
+        $('#loading').hide();
+        $('#result').fadeIn('slow');
+    });
+   // Interceptamos el evento submit
+    $('#FORMULARIO2, #fat, #fo3').submit(function() {
+  // Enviamos el formulario usando AJAX
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            // Mostramos un mensaje con la respuesta de PHP
+            success: function(data) {
+                $('#result').html(data);
+            }
+        })        
+        return false;
+    }); 
+})
+// FUENTE: http://www.miguelmanchego.com/2009/ajax-enviar-formularios-sin-recargar-jquery/ ]]></script>
