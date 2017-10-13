@@ -29,22 +29,35 @@ class Repositorio_categoria {
     }
 
     public static function obtener_categorias($conexion) {
-        $categoria = new Categoria();
-
-
-
         if (isset($conexion)) { 
             try {
-                $query="SELECT * FROM categoria"; 
-                $r=mssql_query($query,$conexion); echo '<script language="javascript">alert("'.$query.'");</script>';   
-
-                 return $r;   
+                $sql="SELECT * FROM categoria";               
+                echo "<select name='menu'>\n<option selected>Selecciona:</option>"; 
+                foreach ($conexion->query($sql) as $row) {
+                   echo"<option value='".$row["codigo_tipo"]."'>".$row["nombre"]."</option>"; 
+                   echo '<script language="javascript">alert("'.$row["nombre"].'");</script>'; 
+                }
+                echo "\n</select>";
                 
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();
             }
         }
-        return $r;
+        return ;
+    }
+     public static function obtener_categorias2($conexion) {
+        if (isset($conexion)) { 
+            try {
+                $sql="SELECT * FROM categoria"; 
+                foreach ($conexion->query($sql) as $row) {
+                   echo"<option value='".$row["codigo_tipo"]."'>".$row["nombre"]."</option>"; 
+                   //echo '<script language="javascript">alert("paso");</script>'; 
+                } 
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return ;
     }
 
 }

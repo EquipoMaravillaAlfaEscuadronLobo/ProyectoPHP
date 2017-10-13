@@ -3,6 +3,10 @@ include_once '../repositorios/repositorio_categoria.php';
 include_once '../app/Conexion.php'; 
 include_once '../modelos/Categoria.php';
 ?>
+<script src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load("jquery", "1.2", {uncompressed:true}); 
+</script>
 <!--formulario usuario-->
 <div class="container">
     <form id="FORMULARIO1" method="post" class="form-horizontal" action="" autocomplete="off">
@@ -42,7 +46,7 @@ include_once '../modelos/Categoria.php';
                         </div>
                        
                     </div>
-                    <div class="row">
+                    <div class="row" >
                         <div class="col m1"></div>
                         <!--seccion del combo para categoria  -->
                         <div class="input-field col m1">
@@ -50,22 +54,11 @@ include_once '../modelos/Categoria.php';
                                 <i class="fa fa-sitemap prefix"></i>   
                             </div>
                         </div>
-                        <div class="input-field col m2">
-                            <select required="">
-                                <option value = "" disabled selected>Seleccione Categoria</option>
-                                <?php 
-
-                                Conexion::abrir_conexion(); 
-
-                                    $r=Repositorio_categoria::obtener_categorias(Conexion::obtener_conexion());
-                                   
-                                   while($registro=mssql_fetch_row($r)) 
-                                    { 
-                                    echo"<option value='".$registro[0]."'>".$registro[1]."</option>"; 
-                                    } 
-                                ?>
-                            
-                            </select>
+                        <div class="input-field col m2" > 
+                        <select id="selectCat" name="selectCat">
+                            <?php include('select_categoria.php'); ?>  
+                        </select>
+                             
                         </div>
                         <div class="input-field col m1">
                             <input type="text" name="cantidad" placeholder="Cantidad">
@@ -89,7 +82,7 @@ include_once '../modelos/Categoria.php';
                             </div>
                         </div>
                         <div class="input-field col m3">
-                            <select required="">
+                            <select required="" >
                                 <option value="0" disabled selected>Seleccione Proveedor</option>
                                 <option value="1">AESIP</option>
                                 <option value="2">BREA</option>
@@ -279,13 +272,7 @@ include_once '../modelos/Categoria.php';
 <script language="javascript">// <![CDATA[ PARA QUE NO SE ACTUALICE CUANDO GUARDA EN LOS MODALES
 $(document).ready(function() {
    // Esta primera parte crea un loader no es necesaria
-    $().ajaxStart(function() {
-        $('#loading').show();
-        $('#result').hide();
-    }).ajaxStop(function() {
-        $('#loading').hide();
-        $('#result').fadeIn('slow');
-    });
+    
    // Interceptamos el evento submit
     $('#FORMULARIO2, #fat, #fo3').submit(function() {
   // Enviamos el formulario usando AJAX
@@ -294,11 +281,30 @@ $(document).ready(function() {
             url: $(this).attr('action'),
             data: $(this).serialize(),
             // Mostramos un mensaje con la respuesta de PHP
-            success: function(data) {
-                $('#result').html(data);
+            success: function() {
+                  recargarS2('selectCat');
             }
         })        
         return false;
     }); 
 })
-// FUENTE: http://www.miguelmanchego.com/2009/ajax-enviar-formularios-sin-recargar-jquery/ ]]></script>
+// FUENTE: http://www.miguelmanchego.com/2009/ajax-enviar-formularios-sin-recargar-jquery/ ]]>
+    
+
+function recargarS2(val){
+ 
+   //esperando la carga...
+   
+   //realizo la call via jquery ajax
+   $.ajax({
+        url: 'select_categoria.php',
+        data: 'id='+val,
+        success: function(resp){
+
+         $('#selectCat').html(resp) 
+         }
+    });
+}
+
+</script>
+

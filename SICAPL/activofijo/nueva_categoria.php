@@ -48,10 +48,12 @@ if (isset($_REQUEST["bandera2"])) {
     Conexion::abrir_conexion(); 
 
     $categoria = new Categoria();
-    $categoria->setCodigo_tipo($_REQUEST["nameNombre"]);
-    $categoria->setNombre($_REQUEST["nameApellido"]);
+    $categoria->setCodigo_tipo($_REQUEST["nameApellido"]);
+    $categoria->setNombre($_REQUEST["nameNombre"]);
 
     Repositorio_categoria::insertar_categoria(Conexion::obtener_conexion(), $categoria);
     Conexion::cerrar_conexion();
+   
+   
 }
 ?>
