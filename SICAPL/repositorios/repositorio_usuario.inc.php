@@ -180,10 +180,11 @@ class Repositorio_usuario {
         if (isset($conexion)) {
             try {
                 echo 'hay conexion<br>';
+                echo 'el carnet es'. $carnet;
                 $observacion = $usuario->getObservacion();
                 $estado = 0;
                 
-                $sql = 'UPDATE usuarios SET estado=:estado,obsevacione=:observaciones where codigo_usuario = :carnet';
+                $sql = 'UPDATE usuarios SET estado=:estado,observaciones=:observaciones where codigo_usuario = :carnet';
 
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->bindParam(':carnet', $carnet, PDO::PARAM_STR);
@@ -200,7 +201,7 @@ class Repositorio_usuario {
                     closeOnConfirm: false
                 },
                 function () {
-                    
+                    location.href="inicio_usuario.php";
                     
                 });</script>';
             } catch (PDOException $ex) {

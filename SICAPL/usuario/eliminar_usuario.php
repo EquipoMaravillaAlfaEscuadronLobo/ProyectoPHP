@@ -1,6 +1,8 @@
 <form  method="post" action="" autocomplete="off" id="eliminar_formulario">
     <input type="hidden" name="banderaEliminacion" id="banderaEliminacion"/>
     <input type="hidden" id="idSecretoEL" value="" name="nameSecretoELiminar">
+    <input type="hidden" id="idOtroCarnet" name="nameOtroCarnet">
+    
     <!--este es el modal-->
     <div id="eliminacion_usuario" class="modal modal-fixed-footer nuevo">
         <div class="modal-heading panel-heading">
@@ -20,7 +22,7 @@
                             </div>
                             <div class="input-field col m5">
                                 <i class="fa fa-vcard prefix prefix"></i> 
-                                <input type="text" id="idCarnetEliminado" name="nameCarnetEliminado"  class="text-center validate" maxlength="25" minlength="3" required value="Abarca" disabled="">
+                                <input type="text" id="idCarnetEliminado" name="idCarnetEliminado"  class="text-center validate" maxlength="25" minlength="3" required value="Abarca" disabled="">
                                 <label for="idCarnetEliminado">Carnet</label>
                             </div>
                         </div>
@@ -60,18 +62,20 @@
 </form>
 <?php
 if (isset($_REQUEST["banderaEliminacion"])) {
-    include_once '../app/Conexion.php';
-    include_once '../modelos/Usuario.php';
-    include_once '../repositorios/repositorio_usuario.inc.php';
-    
-    echo "tenemos bandera<br>";
-    
+//    include_once '../app/Conexion.php';
+//    include_once '../modelos/Usuario.php';
+//    include_once '../repositorios/repositorio_usuario.inc.php';
+//    
+//    echo "tenemos bandera<br>";
+//    
     $usuario = new Usuario();
     $usuario->setObservacion($_REQUEST['nameMotivoEliminacion']);
-    $carnet = $_REQUEST['nameCarnetE'];
+  $carnet = $_REQUEST['nameOtroCarnet'];
+    
+    echo $_REQUEST['nameOtroCarnet'];
 
     //echo $_REQUEST['NameSexoE'];
-    Repositorio_usuario::eliminar_usuario(Conexion::obtener_conexion(), $usuario, $carnet);
+  Repositorio_usuario::eliminar_usuario(Conexion::obtener_conexion(), $usuario, $carnet);
     //Conexion::cerrar_conexion();
 }
 ?>

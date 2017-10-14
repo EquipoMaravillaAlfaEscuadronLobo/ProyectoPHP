@@ -95,8 +95,11 @@ function abrir_edicion_usuario(nombre,apellido,direccion,email,telefono,sexo,pas
  $('#edicion_usuario').modal('open');
 }
 function abrir_eliminacion_usuario(nombre,apellido,carnet,password) {
+    $("#idOtroCarnet").val(carnet);
     $("#idNombreEliminado").val(nombre+ " "+ apellido);
      $("#idCarnetEliminado").val(carnet);
+     
+     $("#idCarnetEl").val(carnet);
      $("#idSecretoEL").val(password);
  $('#eliminacion_usuario').modal('open');
 }
