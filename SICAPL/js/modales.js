@@ -43,7 +43,7 @@ $(document).ready(function () {
 
 });
 
-function abrir_edicion_administrador(nombre, apellido, user, dui, fecha, email,password) {
+function abrir_edicion_administrador(nombre, apellido, user, dui, fecha, email, password, nivel, sexo) {
     $('#idNombreE').val(nombre);
     $('#idApellidoE').val(apellido);
     $('#idUserE').val(user);
@@ -51,6 +51,18 @@ function abrir_edicion_administrador(nombre, apellido, user, dui, fecha, email,p
     $('#idFechaE').val(fecha);
     $('#idEmailE').val(email);
     $('#idSecreto').val(password);
+    if (nivel == '0') {
+        $("#idRootE").attr('checked', 'checked');
+    } else {
+        $("#idAdministradorE").attr('checked', 'checked');
+    }
+    if (sexo == 'Masculino') {
+        $("#idHombreE").attr('checked', 'checked');
+
+    } else {
+        $("#idMujerE").attr('checked', 'checked');
+    }
+
 
 
 
