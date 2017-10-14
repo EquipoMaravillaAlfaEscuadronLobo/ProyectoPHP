@@ -1,8 +1,5 @@
 <?php
-include_once '../app/Conexion.php';
-include_once '../modelos/Administrador.inc.php';
-include_once '../repositorios/repositorio_administrador.inc.php';
-Conexion::abrir_conexion();
+$lista_admnistradores = Repositorio_administrador::lista_administradores(Conexion::obtener_conexion(), 'perez');
 ?>
 <form id="eliminar_formulario" method="post" action="" autocomplete="off" name="eliminar_formulario">
     <input type="hidden" name="banderaEliminacion" id="banderaEliminacion"/>
@@ -51,40 +48,43 @@ Conexion::abrir_conexion();
                                 <select  class="validate" required="" id="idSelectedAdministrador" name="nameSelectedAdministrador">
                                     <option value = "" disabled selected>Seleccione Nuevo encargado de Activos</option>
                                     <?php
-                                    $lista_admnistradores = Repositorio_administrador::lista_administradores(Conexion::obtener_conexion(),'perez');
-                                    foreach ($lista_admnistradores as $filaz) {
-                                        ?>
-                                    <option value="<?php echo $filaz->getCodigo_administrador(); ?>"><?php echo $filaz->getNombre() . ' ' . $lista->getApellido(); ?></option>
-                                    <?php } ?>
-                                </select>
-                            </div>
-                            <div class="input-field col m5">
-                                <i class="fa fa-expeditedssl prefix"></i> 
-                                <input type="password" id="idPass1El" name="namePass1El" class="text-center validate" autocomplete="off"  minlength="5" maxlength="10">
-                                <label for="idPass1El">Para continuar por favor ingrese su contraseña</label>
+                                    if (empty($lista_admnistradores)) {
+                                        foreach ($lista_admnistradores as $filaz) {?>
+                                            
+                                            <option value="<?php echo $filaz->getCodigo_administrador(); ?>"><?php echo $filaz->getNombre() . ' ' . $lista->getApellido(); ?></option>
+                                        <?php  } 
+                                        }  ?>
+                                       
+
+                                    </select>
+                                </div>
+                                <div class="input-field col m5">
+                                    <i class="fa fa-expeditedssl prefix"></i> 
+                                    <input type="password" id="idPass1El" name="namePass1El" class="text-center validate" autocomplete="off"  minlength="5" maxlength="10">
+                                    <label for="idPass1El">Para continuar por favor ingrese su contraseña</label>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="modal-footer">
-            <div class="row">
-                <div class="col-md-6 text-right"><button href="#" class="btn btn-success">Guardar</button></div>
-                <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger">Salir</a></div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-6 text-right"><button href="#" class="btn btn-success">Guardar</button></div>
+                    <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger">Salir</a></div>
+                </div>
             </div>
         </div>
-    </div>
-</form>
-<?php
-if (isset($_REQUEST["banderaEliminacion"])) {
+    </form>
+    <?php
+    if (isset($_REQUEST["banderaEliminacion"])) {
 
-    $administrador = new Administrador();
-    $administrador->setObservacion($_REQUEST['nameMotivoEliminacion']);
-    $administrador->setEstado(0);
-    $codigo_eliminar = $_REQUEST['codigo_eliminacion'];
+        $administrador = new Administrador();
+        $administrador->setObservacion($_REQUEST['nameMotivoEliminacion']);
+        $administrador->setEstado(0);
+        $codigo_eliminar = $_REQUEST['codigo_eliminacion'];
 
-    Repositorio_administrador::eliminar_administrador(Conexion::obtener_conexion(), $administrador, $codigo_eliminar);
-    //Conexion::cerrar_conexion();
-}
-?>
+        Repositorio_administrador::eliminar_administrador(Conexion::obtener_conexion(), $administrador, $codigo_eliminar);
+        //Conexion::cerrar_conexion();
+    }
+    ?>
