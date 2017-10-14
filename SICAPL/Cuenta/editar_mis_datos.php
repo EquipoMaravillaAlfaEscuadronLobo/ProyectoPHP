@@ -3,7 +3,7 @@ include_once '../app/Conexion.php';
 include_once '../modelos/Administrador.inc.php';
 include_once '../repositorios/repositorio_administrador.inc.php';
 Conexion::abrir_conexion();
-$administradorActual = Repositorio_administrador::obtener_administrador_actual(Conexion::obtener_conexion(), 'admin01');
+$administradorActual = Repositorio_administrador::obtener_administrador_actual(Conexion::obtener_conexion(), $_SESSION['user']);
 
 $sexo = $administradorActual->getSexo();
 

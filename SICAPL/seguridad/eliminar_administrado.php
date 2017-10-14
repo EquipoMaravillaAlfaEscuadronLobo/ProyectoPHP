@@ -64,7 +64,7 @@
                             </div>
                             <div class="input-field col m5">
                                 <i class="fa fa-expeditedssl prefix"></i> 
-                                <input type="password" id="idValidacionXE" name="nameValidacionXE" class="text-center validate" autocomplete="off"  minlength="5" maxlength="10">
+                                <input type="password" id="idValidacionXE" name="nameValidacionXE" class="text-center validate" autocomplete="off" >
                                 <label for="idValidacionXE">Para continuar por favor ingrese su contraseña</label>
                             </div>
                         </div>
