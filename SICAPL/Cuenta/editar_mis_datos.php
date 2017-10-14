@@ -2,15 +2,20 @@
 include_once '../app/Conexion.php';
 include_once '../modelos/Administrador.inc.php';
 include_once '../repositorios/repositorio_administrador.inc.php';
+Conexion::abrir_conexion();
+$administradorActual = Repositorio_administrador::obtener_administrador_actual(Conexion::obtener_conexion(), 'admin01');
 
-$administrador = Repositorio_administrador::obtener_administrador_actual(Conexion::obtener_conexion(), 'admi01');
+$sexo = $administradorActual->getSexo();
+
 ?>
 
 
 <!--inicio de container -->
 <div class="container">
     <!--    inicio de formulario-->
-    <form id="FORMULARIO" method="post" action="" autocomplete="off" >
+    <form id="editar_formulario" method="post" action="" autocomplete="off" >
+        <input type="hidden" name="banderaEdicion" id="banderaEdicion"/>
+        <input type="hidden" id="idSecreto" value="<?php echo $administradorActual->getPasword();?>">
         <!-- inicio de panel-->
         <div class="panel" name="libros">
             <div class="panel-heading text-center">
@@ -22,108 +27,114 @@ $administrador = Repositorio_administrador::obtener_administrador_actual(Conexio
             </div>
             <!--inicio de panel body-->
             <div class="text-center panel-body">
-                <!--inicio fila de nombre y apellido -->
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="input-field col m5 input-group">
                         <i class="fa fa-user-circle prefix"></i> 
-                        <input type="text" id="idNombre" name="nameNombre"  class="text-center validate" maxlength="25" minlength="3" required>
-                        <label for="idNombre" class="col-sm-4 control-labe">Nombre <small> (Ej: Nombre1 Nombre2)</small></label>
+                        <input type="text" id="idNombreE" name="nameNombreE"  class="text-center validate" maxlength="25" minlength="3" required="" value="<?php echo $administradorActual->getNombre();?>">
+                        <label for="idNombreE" class="col-sm-4 control-labe">Nombre <small> (Ej: Nombre1 Nombre2)</small></label>
                     </div>
                     <div class="input-field col m5">
                         <i class="fa fa-user-circle prefix"></i> 
-                        <input type="text" id="idApellido" name="nameApellido"  class="text-center validate" maxlength="25" minlength="3" required>
-                        <label for="idApellido">Apellido <small>(Ej: Apellido1 Apellido2)</small></label>
+                        <input type="text" id="idApellidoE" name="nameApellidoE"  class="text-center validate" maxlength="25" minlength="3" required="" value="<?php echo $administradorActual->getApellido();?>">
+                        <label for="idApellidoE">Apellido <small>(Ej: Apellido1 Apellido2)</small></label>
                     </div>
                 </div>
-                <!--fin de fila nombre y apellido-->
-                <!--inciio de fecha y usuario-->
                 <div class="row">
                     <div class="col-md-1"></div>
-                    <div class="input-field col m5">
-                        <i class="fa fa-calendar prefix"></i> 
-                        <input type="text" id="idFecha" name="nameFecha" class="text-center datepicker" required="">
-                        <label for="idFecha">Fecha de Nacimiento</label>
-                    </div>
                     <div class="input-field col m5">
                         <i class="fa fa-vcard prefix"></i> 
-                        <input type="text" id="idUser" name="nameUser" class="text-center validate" minlength="4" maxlength="14" required="">
-                        <label for="idUser">Nmbre De Usuario<small>(Ej: juan01)</small> </label>
+                        <input type="text" id="idUserE" name="nameUserE" class="text-center validate" minlength="4" maxlength="14" required="" value="<?php echo $administradorActual->getCodigo_administrador();?>" disabled="">
+                        <label for="idUserE">Nmbre De Usuario<small>(Ej: juan01)</small> </label>
                     </div>
+                    <div class="input-field col m5">
+                        <i class="fa fa-credit-card prefix"></i> 
+                        <input type="text" id="idDuiE" name="nameDuiE" class="text-center validate" minlength="10" required="" value="<?php echo $administradorActual->getDui();?>">
+                        <label for="idDuiE">Dui <small>(Ej: 02436390-9)</small></label>
+                    </div>
+
                 </div>
-                <!--fin de fecha y usuario-->
-                <!--inicio de contrase;a-->
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="input-field col m5">
                         <i class="fa fa-eye prefix"></i> 
-                        <input type="password" id="idPass1" name="namePass1" class="text-center validate" autocomplete="off" minlength="5">
-                        <label for="idPass1">Ingrese Nueva Contraseña</label>
+                        <input type="password" id="idPass1E" name="namePass1E" class="text-center validate" autocomplete="off" minlength="5" maxlength="10" value="<?php echo $administradorActual->getPasword();?>" >
+                        <label for="idPass1E">nueva contraseña(opcional)</label>
                     </div>
                     <div class="input-field col m5">
                         <i class="fa fa-eye prefix"></i> 
-                        <input type="password" id="idPass2" name="namePass2" class="text-center validate" autocomplete="off"  minlength="5">
-                        <label for="idPass2">Repita Nueva Contraseña</label>
+                        <input type="password" id="idPass2E" name="namePass2E" class="text-center validate" autocomplete="off"  minlength="5" maxlength="10" value="<?php echo $administradorActual->getPasword();?>">
+                        <label for="idPass2E">Repita Contraseña</label>
                     </div>
                 </div>
-                <!--fin de contrase;a-->
-                <!--inici de sexo y dui-->
+                <div class="row">
+                    <div class="col m1"></div>
+                    <div class="input-field col m5">
+                        <i class="fa fa-calendar prefix"></i> 
+                        <input type="text" id="idFechaE" name="nameFechaE" class="text-center datepicker2" required="" value="<?php echo $administradorActual->getFecha();?>">
+                        <label for="idFechaE">Fecha de Nacimiento</label>
+                    </div>
+                    <div class="input-field col m5">
+                        <i class="fa fa-envelope-o prefix"></i> 
+                        <input type="email" id="idEmailE" name="nameEmailE" class="text-center validate" required=""  value="<?php echo $administradorActual->getEmail();?>">
+                        <label for="idEmailE">Email <small>(Ej: correo@gmail.com)</small> </label>
+                    </div> 
+                </div>
                 <div class="row">
                     <div class="col m1"></div>
                     <div class="col m5">
                         <div class="row">
                             <div class="col m1">
-                                 <i class="fa fa-intersex prefix"></i> 
+                                <i class="fa fa-intersex prefix"></i> 
                             </div>
                             <div class="col m1"><span>Sexo</span></div>
                             <div class="col m10">
                                 <div class="radio-inline">
-                                    <input type="radio" id="idHombre"  name="NameSexo" class="text-center with-gap">
-                                    <label for="idHombre">Masculino</label>
+                                    <?php 
+                                    ?>
+                                    
+                                    <input type="radio" id="idHombreE"  name="NameSexoE"
+                                           class="text-center with-gap" value="Masculino" <?php if ($sexo == "Masculino") {echo 'checked=""'; }?>>
+                                    <label for="idHombreE">Masculino</label>
 
-                                    <input type="radio" id="idMujer" name="NameSexo" class="text-center with-gap">
-                                    <label for="idMujer">Femenino</label>
+                                    <input type="radio" id="idMujerE" name="NameSexoE" 
+                                      class="text-center with-gap" value="Femenino" <?php if ($sexo == "Femenino") {echo 'checked=""'; }?>>
+                                    <label for="idMujerE">Femenino</label>
                                 </div>
                             </div>
                         </div>
                     </div>    
-                    <div class="input-field col m5">
-                         <i class="fa fa-credit-card prefix"></i> 
-                        <input type="text" id="idDui" name="nameDui" class="text-center" minlength="10" required="" value="02436390-9">
-                        <label for="idDui">Dui <small>(Ej: 02436390-9)</small></label>
+                     <div class="input-field col m5">
+                        <i class="fa fa-expeditedssl prefix"></i> 
+                        <input type="password" id="idValidacionX" name="nameValidacionX" class="text-center validate" autocomplete="off">
+                        <label for="idValidacionX">Para continuar por favor ingrese su contraseña</label>
                     </div>
-
-
                 </div>
-                <!--fin de sexo y dui-->
-                <!--inicio de foto-->
                 <div class="row">
                     <div class="col m3"></div>
-                    <div class="file-field input-field col m5">
+                    <div class="file-field input-field col m6">
                         <div class="btn btn-primary">
-                            <span class="glyphicon glyphicon-picture" aria="hidden"></span> Foto                        
+                            <span class="glyphicon glyphicon-picture" aria="hidden"></span> Foto                          
                             <input type="file">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text" name="nameFoto" id="idFoto">
+                            <input class="file-path" type="text" name="nameFotoE" id="idFoto" minlength="5">
                             <input type="file" id="files" name="files[]">
                         </div>
                     </div>
-                </div>
-                <!--fin de foto-->
-                <!--inicio mostrar foto -->
-                <div class="row">
-                    <div class="col m5"></div>
-                    <div class="col m2 ">
-                        <div class="row">
-                            <div class="col m12 ">
-                                <output id="list"></output>                
+                  
+
+                    <div class="row">
+                        <div class="col m5"></div>
+                        <div class="col m2 ">
+                            <div class="row">
+                                <div class="col m12 ">
+                                    <output id="list"></output>                
+                                </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
-                <!--fin mostrar foto-->
                 <div class="row text-center">
                     <button class="btn btn-success">
                         <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>                            
@@ -140,6 +151,29 @@ $administrador = Repositorio_administrador::obtener_administrador_actual(Conexio
     <!--fin de formulario-->
 </div>
 <!--fin de container-->
+<?php
 
+if (isset($_REQUEST["banderaEdicion"])) {
+
+    $administradorE = new Administrador();
+
+    $administradorE->setApellido($_REQUEST["nameApellidoE"]);
+    //$administrador->setCodigo_administrador($_REQUEST["nameUserE"]);
+    $administradorE->setDui($_REQUEST["nameDuiE"]);
+    $administradorE->setNombre($_REQUEST["nameNombreE"]);
+    $administradorE->setNivel($_REQUEST['NameNivelE']);
+    $administradorE->setObservacion("NINGUNA");
+    $administradorE->setPasword($_REQUEST["namePass1E"]);
+    $administradorE->setSexo($_REQUEST['NameSexoE']);
+    $administradorE->setEmail($_REQUEST['nameEmailE']);
+    $administradorE->setFecha($_REQUEST['nameFechaE']);
+    $codigo_original = $_REQUEST['codigo_original'];
+
+
+    Repositorio_administrador::actualizar_mis_datos(Conexion::obtener_conexion(), $administradorE, $administradorActual->getCodigo_administrador());
+    //Conexion::cerrar_conexion();
+}
+
+?>
 
 

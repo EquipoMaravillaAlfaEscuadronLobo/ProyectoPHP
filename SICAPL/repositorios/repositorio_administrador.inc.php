@@ -288,8 +288,9 @@ class Repositorio_administrador {
 
     public static function obtener_administrador_actual($conexion, $codigo) {
         $administrador = new Administrador();
-
+        //echo 'esta en administradodr actual<br>';
         if (isset($conexion)) {
+            //echo 'hay conexion<br>';
             try {
                 $sql = "select * from administradores where (codigo_administrador = '$codigo')";
                 $sentencia = $conexion->prepare($sql);
@@ -316,9 +317,70 @@ class Repositorio_administrador {
             } catch (PDOException $exc) {
                 print('ERROR' . $exc->getMessage());
             }
+        }else{
+            //echo 'no hay conexion<br>';
         }
         return $administrador;
     }
+    
+    public static function actualizar_mis_datos($conexion, $administrador, $codigo_original) {
+        $administrador_insertado = false;
+        // $administrador = new Administrador();
+
+        if (isset($conexion)) {
+            try {
+                echo 'hay conexion<br>';
+                $codigo_administrador = $administrador->getCodigo_administrador();
+                $pasword = $administrador->getPasword();
+                $nivel = $administrador->getNivel();
+                $nombre = $administrador->getNombre();
+                $apellido = $administrador->getApellido();
+                $sexo = $administrador->getSexo();
+                $dui = $administrador->getDui();
+                $observacion = $administrador->getObservacion();
+                $foto = $administrador->getFoto();
+                $email = $administrador->getEmail();
+                $fecha = $administrador->getFecha();
+
+                if ($codigo_original == $codigo_original) {
+                    $sql = 'UPDATE administradores SET nombre=:nombre,apellido=:apellido,pasword=:pasword,dui=:dui,nivel=:nivel, fecha=:fecha,email=:email,sexo=:sexo  WHERE codigo_administrador = :codigo_original';
+
+                    $sentencia = $conexion->prepare($sql);
+                    $sentencia->bindParam(':codigo_original', $codigo_original, PDO::PARAM_STR);
+                    $sentencia->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+                    $sentencia->bindParam(':apellido', $apellido, PDO::PARAM_STR);
+                    $sentencia->bindParam(':pasword', $pasword, PDO::PARAM_STR);
+                    $sentencia->bindParam(':dui', $dui, PDO::PARAM_STR);
+                    $sentencia->bindParam(':nivel', $nivel, PDO::PARAM_STR);
+                    $sentencia->bindParam(':fecha', $fecha, PDO::PARAM_STR);
+                    $sentencia->bindParam(':email', $email, PDO::PARAM_STR);
+                    $sentencia->bindParam(':sexo', $sexo, PDO::PARAM_STR);
+
+                    $administrador_insertado = $sentencia->execute();
+                    echo '<script>swal({
+                    title: "Exito",
+                    text: "El registro ha sido actualizado!",
+                    type: "success",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },
+                function () {
+                    location.href="inicio_cuenta.php";
+                    
+                });</script>';
+                } else {
+                    echo "<script>swal('Excelente!', 'hubo incombenientes '$sql' ', 'success');</script>";
+                }
+            } catch (PDOException $ex) {
+                echo "<script>swal('Excelente!', 'hubo incombenientes  '$sql' ', 'success');</script>";
+
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        } else {
+            echo "no hay conexion";
+        }
+    }
+    
 
 }
 
