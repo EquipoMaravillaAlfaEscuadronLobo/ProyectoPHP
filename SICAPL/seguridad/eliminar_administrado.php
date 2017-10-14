@@ -48,7 +48,7 @@ $lista_admnistradores = Repositorio_administrador::lista_administradores(Conexio
                                 <select  class="validate" required="" id="idSelectedAdministrador" name="nameSelectedAdministrador">
                                     <option value = "" disabled selected>Seleccione Nuevo encargado de Activos</option>
                                     <?php
-                                    if (empty($lista_admnistradores)) {
+                                    if (($lista_admnistradores)!= NULL) {
                                         foreach ($lista_admnistradores as $filaz) {?>
                                             
                                             <option value="<?php echo $filaz->getCodigo_administrador(); ?>"><?php echo $filaz->getNombre() . ' ' . $lista->getApellido(); ?></option>
