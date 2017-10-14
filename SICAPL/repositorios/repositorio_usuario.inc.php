@@ -137,7 +137,9 @@ class Repositorio_usuario {
                 $telefono = $usuario->getTelefono();
                 $instittucion = $usuario->getCodigo_institucion();
                 $sexo = $usuario->getSexo();
-
+                
+                echo 'el sexo sige siendo' . $sexo;
+               
                 $sql = 'UPDATE usuarios SET codigo_institucion=:institucion,nombre=:nombre,apellido=:apellido,telefono=:telefono,correo=:correo,direccion=:direccion,sexo=:sexo where codigo_usuario = :carnet';
 
                 $sentencia = $conexion->prepare($sql);
@@ -195,7 +197,7 @@ class Repositorio_usuario {
                 $usuario_insertado = $sentencia->execute();
                 echo '<script>swal({
                     title: "Exito",
-                    text: "El registro ha sido actualizado!",
+                    text: "El registro ha sido Eliminado!",
                     type: "success",
                     confirmButtonText: "ok",
                     closeOnConfirm: false

@@ -2,7 +2,7 @@
     <input type="hidden" name="banderaEliminacion" id="banderaEliminacion"/>
     <input type="hidden" id="idSecretoEL" value="" name="nameSecretoELiminar">
     <input type="hidden" id="idOtroCarnet" name="nameOtroCarnet">
-    
+
     <!--este es el modal-->
     <div id="eliminacion_usuario" class="modal modal-fixed-footer nuevo">
         <div class="modal-heading panel-heading">
@@ -45,7 +45,7 @@
                             </div>
 
                         </div>
-                     
+
                     </div>
                 </div>
             </div>
@@ -70,12 +70,12 @@ if (isset($_REQUEST["banderaEliminacion"])) {
 //    
     $usuario = new Usuario();
     $usuario->setObservacion($_REQUEST['nameMotivoEliminacion']);
-  $carnet = $_REQUEST['nameOtroCarnet'];
-    
+    $carnet = $_REQUEST['nameOtroCarnet'];
+
     echo $_REQUEST['nameOtroCarnet'];
 
     //echo $_REQUEST['NameSexoE'];
-  Repositorio_usuario::eliminar_usuario(Conexion::obtener_conexion(), $usuario, $carnet);
+    Repositorio_usuario::eliminar_usuario(Conexion::obtener_conexion(), $usuario, $carnet);
     //Conexion::cerrar_conexion();
 }
 ?>
