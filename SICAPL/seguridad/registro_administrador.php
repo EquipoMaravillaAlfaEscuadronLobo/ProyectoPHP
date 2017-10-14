@@ -117,8 +117,7 @@ include_once '../repositorios/repositorio_administrador.inc.php';
                                     
                                     <input type="radio" id="idRoot"  name="NameNivel" value="0"  class="text-center with-gap">
                                     <label for="idRoot">Root</label>
-
-                                    
+               
                                 </div>
                             </div>
                         </div> 
@@ -149,8 +148,6 @@ include_once '../repositorios/repositorio_administrador.inc.php';
                                 <output id="list"></output>                
                             </div>
                         </div>
-
-
                     </div>
                 </div>
                 <!--fin mostrar foto-->

@@ -20,8 +20,6 @@ class Repositorio_administrador {
                 $foto = $administrador->getFoto();
                 $email = $administrador->getEmail();
                 
-                
-
                 $sql = 'INSERT INTO administradores(codigo_administrador,pasword,nivel,nombre,apellido,sexo,dui,estado,observacion,foto,email)'
                         . ' values (:codigo_administrador,:pasword,:nivel,:nombre,:apellido,:sexo,:dui,:estado,:observacion,:foto,:email)';
                 ///estos son alias para que PDO pueda trabajar 
@@ -40,7 +38,11 @@ class Repositorio_administrador {
                 $sentencia->bindParam(':foto', $foto, PDO::PARAM_STR);
 
                 $administrador_insertado = $sentencia->execute();
+                
+                echo '<script>swal("Muy Bien!", "Lo haz logrado", "success");</script>';
+                
             } catch (PDOException $ex) {
+                echo '<script>swal("No se puedo realizar el registro", "El nombre de Usuario que usted ha ingresado no está disponible,por favor ingrese otro", "warning");</script>';
                 print 'ERROR: ' . $ex->getMessage();
             }
         }

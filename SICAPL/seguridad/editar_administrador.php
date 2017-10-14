@@ -1,4 +1,4 @@
-<form id="editar-formulario" method="post" action="" autocomplete="off" >
+
     <input type="hidden" id="idSecreto" value="">
     <div class="row">
         <div class="panel" name="libros">
