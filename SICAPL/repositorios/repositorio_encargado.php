@@ -37,6 +37,37 @@ class Repositorio_encargado {
         return $encargado_insertado;
     }
    
+    public static function obtener_encargado($conexion, $codigo_encargado) {
+        $encargado = new Encargado_mantenimiento();
+        if (isset($conexion)) {
+            try {
+
+                $sql = "SELECT * FROM encargado_mantenimiento WHERE codigo_emantenimiento='$codigo_encargado' "; ///estos son alias para que PDO pueda trabajar 
+                foreach ($conexion->query($sql) as $row) {
+                    //$encargado->setCodigo_emantenimiento($row["codigo_emantenimiento"]);
+                    $encargado->setNombre($row["nombre"]);
+                    $encargado->setTelefono($row["telefono"]);
+                    $encargado->setCorreo($row["correo"]);
+                }
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $encargado;
+    }
+    
+    public static function lista_encargado($conexion) {
+         $resultado = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT * from encargado_mantenimiento";
+                $resultado = $conexion->query($sql);
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
 
 }
 ?>

@@ -77,46 +77,31 @@ class Repositorio_detalle {
          
     }
 
-    public static function lista_administradores($conexion, $codigo) {
-        $lista_administradores = array();
-
+   public static function obtener_detalle($conexion, $codigo_detalle) {
+        $detalle = new Detalles();
         if (isset($conexion)) {
             try {
-                $sql = "select * from administradores where (codigo_administrador != '$codigo'  AND estado = 1)";
-                $sentencia = $conexion->prepare($sql);
-                $sentencia->execute();
-                $resultado = $sentencia->fetchAll();
 
-                if (count($resultado)) {
-                    foreach ($resultado as $fila) {
-                        $administrador = new Administrador();
-                        $administrador->setApellido($fila['apellido']);
-                        $administrador->setCodigo_administrador($fila['codigo_administrador']);
-                        $administrador->setDui($fila['dui']);
-                        $administrador->setEstado($fila['estado']);
-                        $administrador->setFoto($fila['foto']);
-                        $administrador->setNivel($fila['nivel']);
-                        $administrador->setNombre($fila['nombre']);
-                        $administrador->setObservacion($fila['observacion']);
-                        $administrador->setPasword($fila['pasword']);
-                        $administrador->setSexo($fila['sexo']);
-                        $administrador->setFecha($fila['fecha']);
-                        $administrador->setEmail($fila['email']);
-
-                        $lista_administradores[] = $administrador;
-                    }
+                $sql = "SELECT * FROM detalles WHERE codigo_detalle='$codigo_detalle' "; ///estos son alias para que PDO pueda trabajar 
+                foreach ($conexion->query($sql) as $row) {
+                    $detalle->setCodigo_detalle($row["codigo_detalle"]);
+                    $detalle->setSeri($row["serie"]);
+                    $detalle->setColor($row["color"]);
+                    $detalle->setMarca($row["marca"]);
+                    $detalle->setModelo($row["modelo"]);
+                    $detalle->setRam($row["ram"]);
+                    $detalle->setMemoria($row["memoria"]);
+                    $detalle->setSistema($row["sistema"]);
+                    $detalle->setDimencione($row["dimensiones"]);
+                    $detalle->setOtros($row["otros"]);
+                    $detalle->setProcesador($row["procesador"]);
+                    
                 }
-            } catch (PDOException $exc) {
-                print('ERROR' . $exc->getMessage());
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
             }
         }
-//        echo   'numero de registros en lista registros'. count($lista_administradores) . '<br>';
-        //foreach ($lista_administradores as $fila ){
-        //    echo $fila ->getNombre(). "<br>";
-        //   echo '<img src="data:image/jpg;base64,<?php echo base64_encode($fila["foto"]);';
-        // }
-
-        return $lista_administradores;
+        return $detalle;
     }
 
     public static function actualizar_administrador($conexion, $administrador, $codigo_original) {
@@ -196,32 +181,7 @@ class Repositorio_detalle {
         }
     }
 
-    public static function lista_administradores2($conexion) {
-        if (isset($conexion)) {
-            try {
-                $sql = "select * from administradores where (estado = 1)";
-                $sentencia = $conexion->prepare($sql);
-                $sentencia->execute();
-                $resultado = $sentencia->fetchAll();
-
-                if (count($resultado)) {
-                    foreach ($resultado as $fila) {
-
-                        echo"<option value='" . $fila['codigo_administrador'] . "'>" . $fila['nombre'] . " " . $fila['apellido'] . "</option>";
-                    }
-                }
-            } catch (PDOException $exc) {
-                print('ERROR' . $exc->getMessage());
-            }
-        }
-//        echo   'numero de registros en lista registros'. count($lista_administradores) . '<br>';
-        //foreach ($lista_administradores as $fila ){
-        //    echo $fila ->getNombre(). "<br>";
-        //   echo '<img src="data:image/jpg;base64,<?php echo base64_encode($fila["foto"]);';
-        // }
-
-       // return true;
-    }
+    
 
 }
 

@@ -186,6 +186,23 @@ function nuevoEnc() {
 }
 
 
+function abrirActivo(coda,codadm,foto,estado,codd,color,dimen,marca,memo,mode,otros,proce,ram,seri,siste) {
+   $('#codActivo').val(coda);
+   $('#codDetalle').val(codd);
+   $('#adminedit').val(codadm);
+   $('#idFoto').val(foto);
+   $('#nserieE').val(seri);
+   $('#colorE').val(color);
+   $('#marcaE').val(marca);
+   $('#soE').val(siste);
+   $('#dimensionesE').val(dimen);
+   $('#modeloE').val(mode);
+   $('#proE').val(proce);
+   $('#otroE').val(otros);
 
+
+
+   $('#editActivo').modal('open');
+}
 
     
