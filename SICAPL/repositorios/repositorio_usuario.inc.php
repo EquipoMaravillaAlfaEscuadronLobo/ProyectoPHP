@@ -197,7 +197,7 @@ class Repositorio_usuario {
                 $usuario_insertado = $sentencia->execute();
                 echo '<script>swal({
                     title: "Exito",
-                    text: "El registro ha sido Eliminado!",
+                    text: "El registro ha sido Eliminado con exito!",
                     type: "success",
                     confirmButtonText: "ok",
                     closeOnConfirm: false

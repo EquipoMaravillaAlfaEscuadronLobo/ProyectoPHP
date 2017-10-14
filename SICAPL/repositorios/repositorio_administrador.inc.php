@@ -142,7 +142,7 @@ class Repositorio_administrador {
 
         if (isset($conexion)) {
             try {
-
+                echo 'hay conexion<br>';
                 $codigo_administrador = $administrador->getCodigo_administrador();
                 $pasword = $administrador->getPasword();
                 $nivel = $administrador->getNivel();
@@ -155,8 +155,8 @@ class Repositorio_administrador {
                 $email = $administrador->getEmail();
                 $fecha = $administrador->getFecha();
 
-                if ($codigo_administrador == $codigo_original) {
-                    $sql = 'UPDATE administradores SET nombre=:nombre, apellido=:apellido,pasword=:pasword,dui=:dui,nivel=:nivel, fecha=:fecha,email=:email,sexo=:sexo  WHERE codigo_administrador = :codigo_original';
+                if ($codigo_original == $codigo_original) {
+                    $sql = 'UPDATE administradores SET nombre=:nombre,apellido=:apellido,pasword=:pasword,dui=:dui,nivel=:nivel, fecha=:fecha,email=:email,sexo=:sexo  WHERE codigo_administrador = :codigo_original';
 
                     $sentencia = $conexion->prepare($sql);
                     $sentencia->bindParam(':codigo_original', $codigo_original, PDO::PARAM_STR);
@@ -189,6 +189,8 @@ class Repositorio_administrador {
 
                 print 'ERROR: ' . $ex->getMessage();
             }
+        }else{
+            echo "no hay conexion";
         }
     }
 
@@ -248,12 +250,7 @@ class Repositorio_administrador {
                 print('ERROR' . $exc->getMessage());
             }
         }
-//        echo   'numero de registros en lista registros'. count($lista_administradores) . '<br>';
-        //foreach ($lista_administradores as $fila ){
-        //    echo $fila ->getNombre(). "<br>";
-        //   echo '<img src="data:image/jpg;base64,<?php echo base64_encode($fila["foto"]);';
-        // }
-        // return true;
+
     }
 
 }

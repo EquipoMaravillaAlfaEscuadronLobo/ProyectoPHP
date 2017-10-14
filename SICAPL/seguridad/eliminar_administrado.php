@@ -1,14 +1,15 @@
-<?php
-$lista_admnistradores = Repositorio_administrador::lista_administradores(Conexion::obtener_conexion(), 'perez');
-?>
-<form id="eliminar_formulario" method="post" action="" autocomplete="off" name="eliminar_formulario">
+<form  method="post" action="" autocomplete="off" id="eliminar_formulario">
     <input type="hidden" name="banderaEliminacion" id="banderaEliminacion"/>
-    <input type="hidden" name="codigo_eliminacion" id="codigo_eliminacion"/>
-    <input type="hidden" id="idSecretoEL" value="666666">
+    <input type="hidden" id="idSecretoEL" value="" name="nameSecretoELiminar">
+    <input type="hidden" id="idOtroCarnet" name="nameOtroCarnet">
 
-    <div id="eliminacion_administradores" class="modal modal-fixed-footer nuevo">
-        <div class="modal-heading panel-heading"><h3 class="text-center">Dar de Baja Administradores</h3></div>
-        <div class="modal-content modal-sm">
+    <!--este es el modal-->
+    <div id="edicion_administradores" class="modal modal-fixed-footer nuevo">
+        <div class="modal-heading panel-heading">
+            <h3 class="text-center">Dar de Baja Administradores</h3>
+        </div>
+
+        <div class="modal-content modal-lg">
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
@@ -48,35 +49,40 @@ $lista_admnistradores = Repositorio_administrador::lista_administradores(Conexio
                                 <select  class="validate" required="" id="idSelectedAdministrador" name="nameSelectedAdministrador">
                                     <option value = "" disabled selected>Seleccione Nuevo encargado de Activos</option>
                                     <?php
-                                    if (($lista_admnistradores)!= NULL) {
-                                        foreach ($lista_admnistradores as $filaz) {?>
-                                            
-                                            <option value="<?php echo $filaz->getCodigo_administrador(); ?>"><?php echo $filaz->getNombre() . ' ' . $lista->getApellido(); ?></option>
-                                        <?php  } 
-                                        }  ?>
-                                       
+                                    if (($lista_admnistradores) != NULL) {
+                                        foreach ($lista_admnistradores as $filaz) {
+                                            ?>
 
-                                    </select>
-                                </div>
-                                <div class="input-field col m5">
-                                    <i class="fa fa-expeditedssl prefix"></i> 
-                                    <input type="password" id="idValidacionXE" name="nameValidacionXE" class="text-center validate" autocomplete="off"  minlength="5" maxlength="10">
-                                    <label for="idValidacionXE">Para continuar por favor ingrese su contraseña</label>
-                                </div>
+                                            <option value="<?php echo $filaz->getCodigo_administrador(); ?>"><?php echo $filaz->getNombre() . ' ' . $lista->getApellido(); ?></option>
+                                        <?php }
+                                    }
+                                    ?>
+
+
+                                </select>
+                            </div>
+                            <div class="input-field col m5">
+                                <i class="fa fa-expeditedssl prefix"></i> 
+                                <input type="password" id="idValidacionXE" name="nameValidacionXE" class="text-center validate" autocomplete="off"  minlength="5" maxlength="10">
+                                <label for="idValidacionXE">Para continuar por favor ingrese su contraseña</label>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <div class="row">
-                    <div class="col-md-6 text-right"><button href="#" class="btn btn-success">Guardar</button></div>
-                    <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger">Salir</a></div>
-                </div>
-            </div>
         </div>
-    </form>
-    <?php
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col-md-6 text-right"><button href="#" class="btn btn-success">Guardar</button></div>
+            <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger" onclick="location.href = 'inicio_usuario.php';">Salir</a></div>
+        </div>
+    </div>
+</div>
+<!--este es el fin de modal-->
+
+</form>
+<?php
     if (isset($_REQUEST["banderaEliminacion"])) {
 
         $administrador = new Administrador();
@@ -85,6 +91,6 @@ $lista_admnistradores = Repositorio_administrador::lista_administradores(Conexio
         $codigo_eliminar = $_REQUEST['codigo_eliminacion'];
 
         Repositorio_administrador::eliminar_administrador(Conexion::obtener_conexion(), $administrador, $codigo_eliminar);
-        //Conexion::cerrar_conexion();
+      
     }
     ?>

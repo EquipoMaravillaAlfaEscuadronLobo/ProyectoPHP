@@ -146,16 +146,11 @@
 </form>
 <?php
 if (isset($_REQUEST["banderaEdicion"])) {
-//    include_once '../app/Conexion.php';    
-//    include_once '../modelos/Administrador.inc.php';    
-//    include_once '../repositorios/repositorio_administrador.inc.php';    
-//Repositorio_administrador::actualizar_administrador();
-//    Conexion::abrir_conexion();
 
     $administrador = new Administrador();
 
     $administrador->setApellido($_REQUEST["nameApellidoE"]);
-    $administrador->setCodigo_administrador($_REQUEST["nameUserE"]);
+    //$administrador->setCodigo_administrador($_REQUEST["nameUserE"]);
     $administrador->setDui($_REQUEST["nameDuiE"]);
     $administrador->setNombre($_REQUEST["nameNombreE"]);
     $administrador->setNivel($_REQUEST['NameNivelE']);
