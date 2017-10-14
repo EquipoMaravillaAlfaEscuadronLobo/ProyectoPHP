@@ -18,12 +18,13 @@ class Repositorio_administrador {
                 $estado = $administrador->getEstado();
                 $observacion = $administrador->getObservacion();
                 $foto = $administrador->getFoto();
+                $fecha = $administrador->getFecha();
                 $email = $administrador->getEmail();
                 
                 
 
-                $sql = 'INSERT INTO administradores(codigo_administrador,pasword,nivel,nombre,apellido,sexo,dui,estado,observacion,foto,email)'
-                        . ' values (:codigo_administrador,:pasword,:nivel,:nombre,:apellido,:sexo,:dui,:estado,:observacion,:foto,:email)';
+                $sql = 'INSERT INTO administradores(codigo_administrador,pasword,nivel,nombre,apellido,sexo,dui,estado,observacion,foto,email,fecha)'
+                        . ' values (:codigo_administrador,:pasword,:nivel,:nombre,:apellido,:sexo,:dui,:estado,:observacion,:foto,:email,:fecha)';
                 ///estos son alias para que PDO pueda trabajar 
                 $sentencia = $conexion->prepare($sql);
 
@@ -38,6 +39,7 @@ class Repositorio_administrador {
                 $sentencia->bindParam(':observacion', $observacion, PDO::PARAM_STR);
                 $sentencia->bindParam(':email', $email, PDO::PARAM_STR);
                 $sentencia->bindParam(':foto', $foto, PDO::PARAM_STR);
+                $sentencia->bindParam(':fecha', $fecha, PDO::PARAM_STR);
 
                 $administrador_insertado = $sentencia->execute();
             } catch (PDOException $ex) {

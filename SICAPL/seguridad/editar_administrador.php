@@ -76,7 +76,7 @@
                                     <input type="radio" id="idHombreE"  name="NameSexoE" class="text-center with-gap" >
                                     <label for="idHombreE">Masculino</label>
 
-                                    <input type="radio" id="idMujerE" name="NameSexoE" class="text-center with-gap" checked="">
+                                    <input type="radio" id="idMujerE" name="NameSexoE" class="text-center with-gap">
                                     <label for="idMujerE">Femenino</label>
                                 </div>
                             </div>
@@ -108,7 +108,7 @@
                         </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate" type="text" name="nameFotoE" id="idFoto" value="imagenes.jpg">
-                            <input type="file" id="files" name="files[]">
+                            <input type="file" id="files" name="filesE[]">
                         </div>
                     </div>
                      <div class="input-field col m5">
@@ -122,7 +122,7 @@
                         <div class="col m2 ">
                             <div class="row">
                                 <div class="col m12 ">
-                                    <output id="list"></output>                
+                                    <output id="listE"></output>                
                                 </div>
                             </div>
                         </div>
