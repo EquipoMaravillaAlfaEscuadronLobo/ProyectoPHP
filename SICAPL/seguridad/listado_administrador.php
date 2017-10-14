@@ -48,7 +48,9 @@ $lista_admnistradores = Repositorio_administrador::lista_administradores(Conexio
                                 <td class="text-center"><img src="../imagenes/imagenes.jpg" class="presentacionXZ" alt=""></td>
                                 <td class="text-center"><button class="btn btn-danger" onclick="abrirEdicion()"> <i class="Medium material-icons prefix">delete</i> </button></td>
                             </tr>
-                        <?php } Conexion::cerrar_conexion(); ?>
+                        <?php } 
+                        //Conexion::cerrar_conexion(); 
+                        ?>
 
                     </tbody>
                 </table>

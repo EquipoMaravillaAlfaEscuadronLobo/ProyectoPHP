@@ -136,7 +136,7 @@
                             </div>
                         </div>
                     </div>
-               </div>
+                </div>
             </div>
         </div>
         <div class="modal-footer">
@@ -149,8 +149,12 @@
 </form>
 <?php
 if (isset($_REQUEST["banderaEdicion"])) {
-    
-    //Repositorio_administrador::actualizar_administrador();
+//    include_once '../app/Conexion.php';    
+//    include_once '../modelos/Administrador.inc.php';    
+//    include_once '../repositorios/repositorio_administrador.inc.php';    
+//Repositorio_administrador::actualizar_administrador();
+//    Conexion::abrir_conexion();
+
     $administrador = new Administrador();
 
     $administrador->setApellido($_REQUEST["nameApellidoE"]);
@@ -163,8 +167,8 @@ if (isset($_REQUEST["banderaEdicion"])) {
     $administrador->setSexo($_REQUEST['NameSexoE']);
     $administrador->setEmail($_REQUEST['nameEmailE']);
     $administrador->setFecha($_REQUEST['nameFechaE']);
-    
-    
 
+    Repositorio_administrador::actualizar_administrador(Conexion::obtener_conexion(), $administrador);
+    Conexion::cerrar_conexion();
 }
 ?>
