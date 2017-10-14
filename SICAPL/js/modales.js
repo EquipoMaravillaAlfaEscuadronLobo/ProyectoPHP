@@ -56,6 +56,9 @@ function abrir_edicion_administrador(nombre, apellido, user, dui, fecha, email, 
     $("#idSecreto").val(password);
     $("#codigo_original").val(user);
     
+    $("#idListarAdmnistrador").removeClass("active");
+    $("#idRegistroAdministrador").addClass("active");
+    
     if (nivel == '0') {
         $("#idRootE").attr("checked", "checked");
     } else {

@@ -12,9 +12,10 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/activofijo/registro_act.php</file>
-            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/repositorios/repositorio_administrador.inc.php</file>
+            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/seguridad/editar_administrador.php</file>
             <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/seguridad/listado_administrador.php</file>
+            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/seguridad/eliminar_administrado.php</file>
+            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/plantillas/pruebas.php</file>
         </group>
     </open-files>
 </project-private>

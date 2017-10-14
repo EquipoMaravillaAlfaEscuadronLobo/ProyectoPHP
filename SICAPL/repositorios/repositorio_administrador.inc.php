@@ -53,7 +53,8 @@ class Repositorio_administrador {
                     . '$("#idFecha").val("' . $fecha . '"); $("#idEmail").val("' . $email . '");'
                     . 'if ("' . $nivel . '" == "0") {$("#idRoot").attr("checked", "checked");} else {$("#idAdministrador").attr("checked", "checked");}'
                     . 'if ("' . $sexo . '" == "Masculino") {$("#idHombre").attr("checked", "checked");} else {$("#idMujer").attr("checked", "checked");}'
-                    . '</script>';
+                    . '$("#idListarAdmnistrador").removeClass("active");  $("#idRegistroAdministrador").addClass("active"); '
+                    . '$("#idPass1").val("'.$pasword.'"); $("#idPass2").val("'.$pasword.'");  </script>';
                 }
             } catch (PDOException $ex) {
                 echo '<script>swal("No se puedo realizar el registro", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
