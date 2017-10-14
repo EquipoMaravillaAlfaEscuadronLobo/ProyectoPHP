@@ -8,7 +8,6 @@ class Administrador{
     private $sexo;
     private $dui;
     private $foto;
-    private $fecha;
     private $estado;
     private $observacion;
     private $email;
@@ -18,15 +17,6 @@ class Administrador{
 function __construct() {
      
     }
-    
-    function getFecha() {
-        return $this->fecha;
-    }
-
-    function setFecha($fecha) {
-        $this->fecha = $fecha;
-    }
-       
     function getCodigo_administrador() {
         return $this->codigo_administrador;
     }

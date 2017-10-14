@@ -70,7 +70,7 @@ include_once '../repositorios/repositorio_administrador.inc.php';
                     <div class="col m1"></div>
                     <div class="input-field col m5">
                         <i class="fa fa-calendar prefix"></i> 
-                        <input type="text" id="idFecha" name="nameFecha" class="text-center  datepicker" required="">
+                        <input type="text" id="idFecha" name="nameFecha" class="text-center datepicker" required="">
                         <label for="idFecha">Fecha de Nacimiento</label>
                     </div>
                     <div class="input-field col m5">
@@ -134,7 +134,7 @@ include_once '../repositorios/repositorio_administrador.inc.php';
                             <input type="file">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text" name="nameFoto" id="idFoto">
+                            <input class="file-path" type="text" name="nameFoto" id="idFoto">
                             <input type="file" id="files" name="files[]">
                         </div>
                     </div>
@@ -180,8 +180,6 @@ include_once '../repositorios/repositorio_administrador.inc.php';
 </script>
 <?php
 if (isset($_REQUEST["bandera"])) {
-    echo 'por aca paso';
-    
     Conexion::abrir_conexion();
     $administrador = new Administrador();
 
@@ -195,7 +193,6 @@ if (isset($_REQUEST["bandera"])) {
     $administrador->setPasword($_REQUEST["namePass1"]);
     $administrador->setSexo($_REQUEST['NameSexo']);
     $administrador->setEmail($_REQUEST['nameEmail']);
-    $administrador->setFecha($_REQUEST['nameFecha']);
 
     // $administrador->setFoto(addslashes(file_get_contents($_FILES['nameFoto']['tmp_name'])));
     Repositorio_administrador::insertar_administrador(Conexion::obtener_conexion(), $administrador);
