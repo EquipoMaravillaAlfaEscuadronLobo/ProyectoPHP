@@ -171,6 +171,47 @@ class Repositorio_usuario {
             echo 'no hay conexion';    
         }
     }
+    
+        public static function eliminar_usuario($conexion, $usuario, $carnet) {
+        
+        echo 'esta en eliminar usuario<br>';
+        $usuario_insertado = false;
+        //$usuario = new Usuario();
+        if (isset($conexion)) {
+            try {
+                echo 'hay conexion<br>';
+                $observacion = $usuario->getObservacion();
+                $estado = 0;
+                
+                $sql = 'UPDATE usuarios SET estado=:estado,obsevacione=:observaciones where codigo_usuario = :carnet';
+
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->bindParam(':carnet', $carnet, PDO::PARAM_STR);
+                $sentencia->bindParam(':estado', $estado, PDO::PARAM_INT);
+                $sentencia->bindParam(':observaciones', $observacion, PDO::PARAM_STR);
+                
+
+                $usuario_insertado = $sentencia->execute();
+                echo '<script>swal({
+                    title: "Exito",
+                    text: "El registro ha sido actualizado!",
+                    type: "success",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },
+                function () {
+                    
+                    
+                });</script>';
+            } catch (PDOException $ex) {
+                echo "<script>swal('Excelente!', 'hubo incombenientes  '$sql' ', 'success');</script>";
+                echo 'problemas con sql';
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }  else {
+            echo 'no hay conexion';    
+        }
+    }
 
 }
 

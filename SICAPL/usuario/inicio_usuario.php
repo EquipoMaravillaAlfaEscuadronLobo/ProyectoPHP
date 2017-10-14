@@ -6,12 +6,12 @@ include_once '../plantillas/menu.php';
 <div class="nav-content" name="">
     <ul class="tabs tabs-transparent">
         <li class="tab">
-            <a class="active" href="#test1">
+            <a class="" href="#test1">
                 <i class="fa fa-plus" aria-hidden="true"></i>Registro
             </a>
         </li>
         <li class="tab">
-            <a href="#test2">
+            <a href="#test2" class="active">
                 <i class="fa fa-edit" aria-hidden="true"></i>  Editar Usuarios
             </a>
         </li>

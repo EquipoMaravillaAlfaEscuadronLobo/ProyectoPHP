@@ -44,7 +44,7 @@ $lista_usuarios = Repositorio_usuario::lista_usuarios(Conexion::obtener_conexion
                                 <td class="text-center"><?php echo $lista_usu->getEmail(); ?></td>
                                 <td class="text-center"><img src="../imagenes/imagenes.jpg" class="presentacionXZ" alt=""></td>
                                 <td class="text-center">
-                                    <button class="btn btn-danger" onclick=""> 
+                                    <button class="btn btn-danger" onclick="abrir_eliminacion_usuario('<?php echo $lista_usu->getNombre();?>','<?php echo $lista_usu->getApellido();?>','<?php echo $lista_usu->getCodigo_usuario();?>','11111')"> 
                                         <i class="Medium material-icons prefix">delete</i> 
                                     </button>
                                 </td>
@@ -70,7 +70,7 @@ include_once './editar_usuario.php';
 
 <!--esta es la ventana de eliminacion-->
 <?php
-include_once './editar_usuario.php';
+include_once './eliminar_usuario.php';
 ?>
 <!--este es el fom ventana de eliminacion-->
 

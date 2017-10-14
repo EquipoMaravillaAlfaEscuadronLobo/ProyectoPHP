@@ -59,21 +59,19 @@
 
 </form>
 <?php
-if (isset($_REQUEST["banderaEdicion"])) {
-
+if (isset($_REQUEST["banderaEliminacion"])) {
+    include_once '../app/Conexion.php';
+    include_once '../modelos/Usuario.php';
+    include_once '../repositorios/repositorio_usuario.inc.php';
+    
+    echo "tenemos bandera<br>";
+    
     $usuario = new Usuario();
-
-    $usuario->setNombre($_REQUEST['nameNombreE']);
-    $usuario->setApellido($_REQUEST['nameApellidoE']);
-    $usuario->setDireccion($_REQUEST['nameDireccionE']);
-    $usuario->setEmail($_REQUEST['nameEmailE']);
-    $usuario->setTelefono($_REQUEST['nameTelefonoE']);
-    $usuario->setCodigo_institucion($_REQUEST['nameInstitucion']);
-    $usuario->setSexo($_REQUEST['NameSexoE']);
+    $usuario->setObservacion($_REQUEST['nameMotivoEliminacion']);
     $carnet = $_REQUEST['nameCarnetE'];
 
     //echo $_REQUEST['NameSexoE'];
-    Repositorio_usuario::actualizar_usuario(Conexion::obtener_conexion(), $usuario, $carnet);
+    Repositorio_usuario::eliminar_usuario(Conexion::obtener_conexion(), $usuario, $carnet);
     //Conexion::cerrar_conexion();
 }
 ?>
