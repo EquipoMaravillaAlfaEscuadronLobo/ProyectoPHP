@@ -5,16 +5,25 @@ class Usuario{
     private $nombre;
     private $apellido;
     private $telefono;
-    private $correo;
+    private $email;
     private $direccion;
     private $foto;
     private $sexo;
     private $estado;
-    
+    private $observacion;
 
     function __construct() {
         
     }
+    function getObservacion() {
+        return $this->observacion;
+    }
+
+    function setObservacion($observacion) {
+        $this->observacion = $observacion;
+    }
+
+        
     function getCodigo_usuario() {
         return $this->codigo_usuario;
     }
@@ -35,14 +44,14 @@ class Usuario{
         return $this->telefono;
     }
 
-    function getCorreo() {
-        return $this->correo;
+    function getEmail() {
+        return $this->email;
     }
 
-    function getDireccion() {
-        return $this->direccion;
+    function setEmail($email) {
+        $this->email = $email;
     }
-
+    
     function getFoto() {
         return $this->foto;
     }

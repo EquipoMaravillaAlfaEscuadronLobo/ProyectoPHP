@@ -21,43 +21,9 @@ $(document).ready(function () {
                 required: true,
                 minlength: 10
             },
-            namePass1E: {
-                
-                minlength: 5
-            },
-            namePass2E: {
-                
-                equalTo: "#idPass1E"
-            },
-            nameFotoE: {
-               minlength: 1
-            },
-            nameEmailE: {
-                required: true,
-                email: true
-            },
-            nameSexoE: {
-                required: true
-            },
-            nameDuiE: {
-                required: true,
-                minlength: 10
-            },
-            nameUserE: {
-                required: true,
-                minlength: 3,
-                maxlength: 14
-            },
-            nameTelefonoE: {
-                required: true,
-                minlength: 8
-            },
-            nameNivelE: {
-                  required: true
-            },
             nameValidacionX:{
                   required: true,
-                  equalTo: "#idSecreto"
+                  equalTo: "#idSecretoEL"
             }
             
         },

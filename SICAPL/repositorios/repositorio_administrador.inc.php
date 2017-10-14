@@ -7,7 +7,7 @@ class Repositorio_administrador {
         // $administrador = new Administrador();
         if (isset($conexion)) {
             try {
-
+                echo 'hay conexion';
                 $codigo_administrador = $administrador->getCodigo_administrador();
                 $pasword = $administrador->getPasword();
                 $nivel = $administrador->getNivel();
@@ -24,6 +24,7 @@ class Repositorio_administrador {
                 $administradorExistente = self::obtener_administrador($conexion, $codigo_administrador);
                 if ($administradorExistente->getCodigo_administrador() == "") {
 
+                    echo '<br>codigo valido';
                     $sql = 'INSERT INTO administradores(codigo_administrador,pasword,nivel,nombre,apellido,sexo,dui,estado,observacion,foto,email,fecha)'
                             . ' values (:codigo_administrador,:pasword,:nivel,:nombre,:apellido,:sexo,:dui,:estado,:observacion,:foto,:email,:fecha)';
                     ///estos son alias para que PDO pueda trabajar 

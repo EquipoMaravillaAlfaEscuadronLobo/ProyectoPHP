@@ -1,6 +1,17 @@
+<?php
+include_once '../app/Conexion.php';
+include_once '../modelos/Usuario.php';
+include_once '../modelos/Institucion.php';
+Conexion::abrir_conexion();
+include_once '../repositorios/repositorio_usuario.inc.php';
+include_once '../repositorios/repositorio_institucion.php';
+
+?>
+
 <!--formulario usuario-->
 <div class="container">
     <form id="FORMULARIO" method="post" class="form-horizontal" action="" autocomplete="off">
+        <input type="hidden" name="banderaRegistro" id="banderaRegistro"/>
         <div class="row">
             <div class="panel" name="libros">
                 <div class="panel-heading text-center">
@@ -29,9 +40,9 @@
                         <div class="input-field col m5">
                             <i class="fa fa-map-marker  prefix"></i> 
                             <input type="text" id="idDireccion" name="nameDireccion" class="text-center validate" minlength="10" required="">
-                            <label for="nameDireccion">Direccion <small>(Ej: Verapaz, Colonia Mercenenes)</small> </label>
+                            <label for="idDireccion">Direccion <small>(Ej: Verapaz, Colonia Mercenenes)</small> </label>
                         </div>
-                        
+
                         <div class="input-field col m5">
                             <i class="fa fa-envelope-o prefix"></i> 
                             <input type="email" id="idEmail" name="nameEmail" class="text-center validate" required="" >
@@ -52,14 +63,15 @@
                             </div>
                         </div>
                         <div class="input-field col m4">
-                            <select required="">
+                            <select required="" name="nameInstitucion" id="institucion">
                                 <option value = "" disabled selected>Seleccione Institucion</option>
-                                <option value = "1">Centro Escolar Presbitero Norberto Marroquín</option>
-                                <option value = "2">Instituto Nacional de San José Verapaz</option>
-                                <option value = "3">Instituto Nacional Dr. Sarvelio Navarrete</option>
-                                <option value = "4">Escuela católica, San Jose Verapaz</option>
-                                <option value = "5">Alcaldía Municial, San José Verapaz</option>
-                                <option value = "6">Otros</option>
+                                <?php
+                                $lista_instituciones = Repositorio_institucion::lista_institucion(Conexion::obtener_conexion());
+
+                                foreach ($lista_instituciones as $lista_ins) {
+                                    ?>
+                                <option value = <?php echo $lista_ins->getCodigo_institucion();?>><?php echo $lista_ins->getNombre(); ?></option>
+                                <?php } ?>
                             </select>
                         </div>
                     </div>
@@ -68,11 +80,11 @@
                             <i class="fa fa-intersex prefix"></i> 
                             <div class="radio-inline">
                                 <span>Sexo</span>
-                                <input type="radio" id="hombre"  name="NameSexo"  class="text-center with-gap">
-                                <label for="hombre">Masculino</label>
+                                <input type="radio" id="idHombre"  name="NameSexo"  class="text-center with-gap" checked="">
+                                <label for="idHombre">Masculino</label>
 
-                                <input type="radio" id="mujer" name="Namexo"  class="text-center with-gap">
-                                <label for="mujer">Femenino</label>
+                                <input type="radio" id="idMujer" name="Namexo"  class="text-center with-gap">
+                                <label for="idMujer">Femenino</label>
                             </div>
                             <div class="col 1"></div>
                         </div>
@@ -97,7 +109,7 @@
                         <button class="btn btn-success">
                             <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>                            
                             Guardar</button>
-                        <button type="reset" class="btn btn-danger" onclick="AlertaExttoZZZ()">
+                        <button type="reset" class="btn btn-danger" onclick="location.href='inicio_usuario.php';">
                             <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar
                         </button>
                     </div>
@@ -108,7 +120,31 @@
     </form>
 </div>
 <!--fin formulario usuario-->
+<script>
+    $('#FORMULARIO').attr('autocomplete', 'off');
+    document.getElementById('FORMULARIO').setAttribute('autocomplete', 'off');
+</script>
 
+<?php
+if (isset($_REQUEST["banderaRegistro"])) {
+    Conexion::abrir_conexion();
+    $usuario= new Usuario();
+
+    $usuario->setApellido($_REQUEST["nameApellido"]);
+    $usuario->setDireccion($_REQUEST["nameDireccion"]);
+    $usuario->setEstado(1);
+    $usuario->setNombre($_REQUEST["nameNombre"]);
+    $usuario->setObservacion("");
+    $usuario->setSexo($_REQUEST['NameSexo']);
+    $usuario->setEmail($_REQUEST['nameEmail']);
+    $usuario->setTelefono($_REQUEST['nameTelefono']);
+    $usuario->setCodigo_institucion($_REQUEST['nameInstitucion']);
+    
+
+    Repositorio_usuario::insertar_usuario(Conexion::obtener_conexion(), $usuario);
+
+}
+?>
 
 
 

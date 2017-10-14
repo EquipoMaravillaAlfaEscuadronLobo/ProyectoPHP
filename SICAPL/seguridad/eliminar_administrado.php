@@ -4,7 +4,7 @@ $lista_admnistradores = Repositorio_administrador::lista_administradores(Conexio
 <form id="eliminar_formulario" method="post" action="" autocomplete="off" name="eliminar_formulario">
     <input type="hidden" name="banderaEliminacion" id="banderaEliminacion"/>
     <input type="hidden" name="codigo_eliminacion" id="codigo_eliminacion"/>
-    <input type="hidden" id="idSecreto" value="">
+    <input type="hidden" id="idSecretoEL" value="">
 
     <div id="eliminacion_administradores" class="modal modal-fixed-footer nuevo">
         <div class="modal-heading panel-heading"><h3 class="text-center">Dar de Baja Administradores</h3></div>
@@ -77,7 +77,7 @@ $lista_admnistradores = Repositorio_administrador::lista_administradores(Conexio
         </div>
     </form>
     <?php
-    if (isset($_REQUEST["banderaEliminacion"])) {
+    if (isset($_REQUEST["banderaElimdinacion"])) {
 
         $administrador = new Administrador();
         $administrador->setObservacion($_REQUEST['nameMotivoEliminacion']);

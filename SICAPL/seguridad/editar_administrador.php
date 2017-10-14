@@ -143,11 +143,6 @@
 </form>
 <?php
 if (isset($_REQUEST["banderaEdicion"])) {
-//    include_once '../app/Conexion.php';    
-//    include_once '../modelos/Administrador.inc.php';    
-//    include_once '../repositorios/repositorio_administrador.inc.php';    
-//Repositorio_administrador::actualizar_administrador();
-//    Conexion::abrir_conexion();
 
     $administrador = new Administrador();
 
