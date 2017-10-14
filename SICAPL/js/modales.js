@@ -75,6 +75,35 @@ function abrir_edicion_administrador(nombre, apellido, user, dui, fecha, email, 
  $('#edicion_administradores').modal('open');
 }
 
+function abrir_edicion_usuario(nombre,apellido,direccion,email,telefono,sexo,password,carnet) {
+    $("#idSecreto").val(password);
+    $("#idCarnetE").val(carnet);
+    $("#idNombreE").val(nombre);
+    $("#idApellidoE").val(apellido);
+    $("#idDireccionE").val(direccion);
+    $("#idEmailE").val(email);
+    $("#idTelefonoE").val(telefono);
+    if (sexo == "Masculino") {
+      
+        $('#idHombreE').attr("checked", "checked");
+      } 
+    else {
+         $("#idMujerE").attr("checked", "checked");
+      
+    }
+     
+ $('#edicion_usuario').modal('open');
+}
+function abrir_eliminacion_usuario(nombre,apellido,carnet,password) {
+    $("#idNombreEliminado").val(nombre+ " "+ apellido);
+     $("#idCarnetEliminado").val(carnet);
+     $("#idSecretoEL").val(password);
+ $('#eliminacion_usuario').modal('open');
+}
+
+
+
+
 function abrir_eliminacion_administrador(nombre, apellido,usuario) {
     $("#idNombreEl").val(nombre +" " +apellido);
     $("#idUsuarioEl").val(usuario);

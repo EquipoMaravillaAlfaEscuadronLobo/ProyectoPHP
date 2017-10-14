@@ -137,7 +137,7 @@
         <div class="modal-footer">
             <div class="row">
                 <div class="col-md-6 text-right"><button href="#" class="btn btn-success">Guardar</button></div>
-                <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger">Salir</a></div>
+                <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger" onclick="location.href='inicio_seguridad.php';">Salir</a></div>
             </div>
         </div>
     </div>

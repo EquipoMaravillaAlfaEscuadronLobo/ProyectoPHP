@@ -1,4 +1,5 @@
 <form  method="post" action="" autocomplete="off" id="editar_formulario">
+<input type="hidden" name="banderaEdicion" id="banderaEdicion"/>
 <input type="hidden" id="idSecreto" value="">
     <!--este es el modal-->
     <div id="edicion_usuario" class="modal modal-fixed-footer nuevo">
@@ -70,7 +71,7 @@
                                     <input type="radio" id="hombreE"  name="NameSexoE"  class="text-center with-gap" checked="">
                                     <label for="hombreE">Masculino</label>
 
-                                    <input type="radio" id="mujerE" name="NamexoE"  class="text-center with-gap">
+                                    <input type="radio" id="mujerE" name="NameSexoE"  class="text-center with-gap">
                                     <label for="mujerE">Femenino</label>
                                 </div>
                                 <div class="col 1"></div>
@@ -98,11 +99,30 @@
          </div>
         <div class="modal-footer">
             <div class="row">
-                <div class="col-md-6 text-right"><a href="#" class="modal-action modal-close waves-effect btn btn-success">Guardar</a></div>
-                <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger">Salir</a></div>
+                <div class="col-md-6 text-right"><button href="#" class="btn btn-success">Guardar</button></div>
+                <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger" onclick="location.href = 'inicio_usuario.php';">Salir</a></div>
             </div>
         </div>
     </div>
     <!--este es el fin de modal-->
-
 </form>
+    <!--fin de formulario-->
+    
+    <?php
+if (isset($_REQUEST["banderaEdicion"])) {
+
+    $usuario = new Usuario();
+
+    $usuario->setNombre($_REQUEST['nameNombre']);
+    $usuario->setApellido($_REQUEST['nameApellido']);
+    $usuario->setDireccion($_REQUEST['nameDireccion']);
+    $usuario->setEmail($_REQUEST['nameEmail']);
+    $usuario->setTelefono($_REQUEST['nameTelefono']);
+    $usuario->setCodigo_institucion($_REQUEST['nameInstitucion']);
+    $usuario->setSexo($_REQUEST['NameSexo']);
+    
+        
+    Repositorio_usuario::actualizar_usuario(Conexion::obtener_conexion(), $usuario, $carnet);
+    //Conexion::cerrar_conexion();
+}
+?>

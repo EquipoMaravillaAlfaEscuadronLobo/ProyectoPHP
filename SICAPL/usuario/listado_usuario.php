@@ -66,6 +66,11 @@ $lista_usuarios = Repositorio_usuario::lista_usuarios(Conexion::obtener_conexion
 <?php
 include_once './editar_usuario.php';
 ?>
-este es ek fin de ventana edicion
+<!--este es el fin la ventana de edicion-->
 
+<!--esta es la ventana de eliminacion-->
+<?php
+include_once './editar_usuario.php';
+?>
+<!--este es el fom ventana de eliminacion-->
 
