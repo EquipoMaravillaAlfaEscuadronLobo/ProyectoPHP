@@ -15,7 +15,7 @@
    
     $Autor->setNacimiento($nacimiento);
     $Autor->setBiografia($biografia);
-echo Repositorio_autores::insertarAutor(Conexion::obtener_conexion(), $Autor);
+Repositorio_autores::insertarAutor(Conexion::obtener_conexion(), $Autor);
     Conexion::cerrar_conexion();
 
 
