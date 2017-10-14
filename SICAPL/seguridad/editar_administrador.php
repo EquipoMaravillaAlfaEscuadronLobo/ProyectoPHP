@@ -34,7 +34,7 @@
                                     <div class="col-md-1"></div>
                                     <div class="input-field col m5">
                                         <i class="fa fa-vcard prefix"></i> 
-                                        <input type="text" id="idUserE" name="nameUserE" class="text-center validate" minlength="4" maxlength="14" required="" value=" ">
+                                        <input type="text" id="idUserE" name="nameUserE" class="text-center validate" minlength="4" maxlength="14" required="" value=" " disabled="">
                                         <label for="idUserE">Nmbre De Usuario<small>(Ej: juan01)</small> </label>
                                     </div>
                                     <div class="input-field col m5">
@@ -48,7 +48,7 @@
                                     <div class="col-md-1"></div>
                                     <div class="input-field col m5">
                                         <i class="fa fa-eye prefix"></i> 
-                                        <input type="password" id="idPass1E" name="namePass1E" class="text-center validate" autocomplete="off" minlength="5" maxlength="10" >
+                                        <input type="password" id="idPass1E" name="namePass1E" class="text-center validate" autocomplete="off" minlength="5" maxlength="10"  >
                                         <label for="idPass1E">nueva contraseña(opcional)</label>
                                     </div>
                                     <div class="input-field col m5">
@@ -80,10 +80,10 @@
                                             <div class="col m1"><span>Sexo</span></div>
                                             <div class="col m10">
                                                 <div class="radio-inline">
-                                                    <input type="radio" id="idHombreE"  name="NameSexoE" class="text-center with-gap" >
+                                                    <input type="radio" id="idHombreE"  name="NameSexoE" class="text-center with-gap" value="Masculino">
                                                     <label for="idHombreE">Masculino</label>
 
-                                                    <input type="radio" id="idMujerE" name="NameSexoE" class="text-center with-gap">
+                                                    <input type="radio" id="idMujerE" name="NameSexoE" class="text-center with-gap" value="Femenino">
                                                     <label for="idMujerE">Femenino</label>
                                                 </div>
                                             </div>
@@ -95,10 +95,10 @@
                                             <div class="col m1"><label>Nivel</label></div>
                                             <div class="col m10">
                                                 <div class="radio-inline">
-                                                    <input type="radio" id="idRootE"  name="NameNivelE"  class="text-center with-gap" >
+                                                    <input type="radio" id="idRootE"  name="NameNivelE" value="0"  class="text-center with-gap" >
                                                     <label for="idRootE">Root</label>
 
-                                                    <input type="radio" id="idAdministradorE" name="NameNivelE"  class="text-center with-gap">
+                                                    <input type="radio" id="idAdministradorE" name="NameNivelE" value="1"  class="text-center with-gap">
                                                     <label for="idAdministradorE">Administrador</label>
                                                 </div>
                                             </div>
@@ -170,7 +170,8 @@ if (isset($_REQUEST["banderaEdicion"])) {
     $administrador->setFecha($_REQUEST['nameFechaE']);
     $codigo_original = $_REQUEST['codigo_original'];
     
-    Repositorio_administrador::actualizar_administrador(Conexion::obtener_conexion(), $administrador, $codigo_original);
-    Conexion::cerrar_conexion();
+     
+     Repositorio_administrador::actualizar_administrador(Conexion::obtener_conexion(), $administrador, $codigo_original);
+    //Conexion::cerrar_conexion();
 }
 ?>

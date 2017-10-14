@@ -6,12 +6,12 @@ include_once '../plantillas/menu.php';
 <div class="nav-content nav-pills" name="">
     <ul class="tabs tabs-transparent">
         <li class="tab">
-            <a class="active" href="#test1">
+            <a class="" href="#test1">
                 <i class="fa fa-user" aria-hidden="true"></i> Registro Administradores
             </a>
         </li>
         <li class="tab">
-            <a class="" href="#test5">
+            <a class="active" href="#test5">
                 <i class="fa fa-edit" aria-hidden="true"></i> Editar Administradores
             </a>
         </li>

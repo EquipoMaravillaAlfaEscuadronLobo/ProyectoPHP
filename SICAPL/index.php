@@ -1,3 +1,3 @@
 <script>
-	location.href="app/index.php";
+    location.href="app/index.php";
 </script>

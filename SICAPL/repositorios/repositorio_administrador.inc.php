@@ -144,13 +144,30 @@ class Repositorio_administrador {
                 $fecha = $administrador->getFecha();
                 
                 if ($codigo_administrador == $codigo_original) {
-                    echo '<script>swal("prueba", "es el mismo", "warning");</script>';
-                }
+                    $sql = 'UPDATE administradores SET nombre=:nombre, apellido=:apellido,pasword=:pasword,dui=:dui,nivel=:nivel, fecha=:fecha,email=:email,sexo=:sexo  WHERE codigo_administrador = :codigo_original';
+                    
+                    $sentencia = $conexion->prepare($sql);
+                    $sentencia->bindParam(':codigo_original', $codigo_original, PDO::PARAM_STR);
+                    $sentencia->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+                    $sentencia->bindParam(':apellido', $apellido, PDO::PARAM_STR);
+                    $sentencia->bindParam(':pasword', $pasword, PDO::PARAM_STR);
+                    $sentencia->bindParam(':dui', $dui, PDO::PARAM_STR);
+                    $sentencia->bindParam(':nivel', $nivel, PDO::PARAM_STR);
+                    $sentencia->bindParam(':fecha', $fecha, PDO::PARAM_STR);
+                    $sentencia->bindParam(':email', $email, PDO::PARAM_STR);
+                    $sentencia->bindParam(':sexo', $sexo, PDO::PARAM_STR);
+
+                    $administrador_insertado = $sentencia->execute();
+
+                    echo '<script>swal("Excelente!", "Registro actualizado con exito", "success");</script>';
+                    echo '<script>location.href="inicio_seguridad.php";</script>';
+}
                 else{
-                    echo '<script>swal("prueba", "no es el mismo "'.$codigo_administrador.'"  es "'.$codigo_original.'"   ", "warning");</script>';
+                   echo "<script>swal('Excelente!', 'hubo pedo '$sql' ', 'success');</script>";
                 }
             } catch (PDOException $ex) {
-                echo '<script>swal("No se puedo realizar la modificacion", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
+                echo "<script>swal('Excelente!', 'hubo pedo '$sql' ', 'success');</script>";
+                
                 print 'ERROR: ' . $ex->getMessage();
             }
         }

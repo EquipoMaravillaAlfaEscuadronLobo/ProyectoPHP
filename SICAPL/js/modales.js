@@ -51,13 +51,18 @@ function abrir_edicion_administrador(nombre, apellido, user, dui, fecha, email, 
     $("#idDuiE").val(dui);
     $("#idFechaE").val(fecha);
     $("#idEmailE").val(email);
+    $("#idPass1E").val(password);
+    $("#idPass2E").val(password);
     $("#idSecreto").val(password);
      $("#codigo_original").val(user);
+    
     if (nivel == '0') {
-        $("#idRoot").attr("checked", "checked");
+        $("#idRootE").attr("checked", "checked");
     } else {
         $("#idAdministradorE").attr("checked", "checked");
     }
+       
+    
     if (sexo == "Masculino") {
         $('#idHombreE').attr("checked", "checked");
 
