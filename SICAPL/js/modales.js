@@ -52,6 +52,7 @@ function abrir_edicion_administrador(nombre, apellido, user, dui, fecha, email, 
     $("#idFechaE").val(fecha);
     $("#idEmailE").val(email);
     $("#idSecreto").val(password);
+     $("#codigo_original").val(user);
     if (nivel == '0') {
         $("#idRoot").attr("checked", "checked");
     } else {

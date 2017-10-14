@@ -1,5 +1,6 @@
 <form id="editar_formulario" method="post" action="" autocomplete="off" >
-    <input type="hidden" name="banderaEdicion" id="bandera"/>
+    <input type="hidden" name="banderaEdicion" id="banderaEdicion"/>
+    <input type="hidden" name="codigo_original" id="codigo_original"/>
     <div id="edicion" class="modal modal-fixed-footer nuevo">
         <div class="modal-content modal-lg">
             <div class="row">
@@ -167,8 +168,9 @@ if (isset($_REQUEST["banderaEdicion"])) {
     $administrador->setSexo($_REQUEST['NameSexoE']);
     $administrador->setEmail($_REQUEST['nameEmailE']);
     $administrador->setFecha($_REQUEST['nameFechaE']);
-
-    Repositorio_administrador::actualizar_administrador(Conexion::obtener_conexion(), $administrador);
+    $codigo_original = $_REQUEST['codigo_original'];
+    
+    Repositorio_administrador::actualizar_administrador(Conexion::obtener_conexion(), $administrador, $codigo_original);
     Conexion::cerrar_conexion();
 }
 ?>
