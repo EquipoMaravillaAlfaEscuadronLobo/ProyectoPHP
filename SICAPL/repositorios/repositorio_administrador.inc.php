@@ -22,30 +22,33 @@ class Repositorio_administrador {
                 $fecha = $administrador->getFecha();
 
                 $administradorExistente = self::obtener_administrador($conexion, $codigo_administrador);
+                $EmailExistente = self::obtener_email($conexion, $email);
+
                 if ($administradorExistente->getCodigo_administrador() == "") {
+                    if ($EmailExistente->getEmail() == "") {
 
-                    echo '<br>codigo valido';
-                    $sql = 'INSERT INTO administradores(codigo_administrador,pasword,nivel,nombre,apellido,sexo,dui,estado,observacion,foto,email,fecha)'
-                            . ' values (:codigo_administrador,:pasword,:nivel,:nombre,:apellido,:sexo,:dui,:estado,:observacion,:foto,:email,:fecha)';
-                    ///estos son alias para que PDO pueda trabajar 
-                    $sentencia = $conexion->prepare($sql);
+                        echo '<br>codigo valido y correo valido<br>';
+                        $sql = 'INSERT INTO administradores(codigo_administrador,pasword,nivel,nombre,apellido,sexo,dui,estado,observacion,foto,email,fecha)'
+                                . ' values (:codigo_administrador,:pasword,:nivel,:nombre,:apellido,:sexo,:dui,:estado,:observacion,:foto,:email,:fecha)';
+                        ///estos son alias para que PDO pueda trabajar 
+                        $sentencia = $conexion->prepare($sql);
 
-                    $sentencia->bindParam(':codigo_administrador', $codigo_administrador, PDO::PARAM_STR);
-                    $sentencia->bindParam(':pasword', $pasword, PDO::PARAM_STR);
-                    $sentencia->bindParam(':nivel', $nivel, PDO::PARAM_INT);
-                    $sentencia->bindParam(':nombre', $nombre, PDO::PARAM_STR);
-                    $sentencia->bindParam(':apellido', $apellido, PDO::PARAM_STR);
-                    $sentencia->bindParam(':sexo', $sexo, PDO::PARAM_BOOL);
-                    $sentencia->bindParam(':dui', $dui, PDO::PARAM_STR);
-                    $sentencia->bindParam(':estado', $estado, PDO::PARAM_STR);
-                    $sentencia->bindParam(':observacion', $observacion, PDO::PARAM_STR);
-                    $sentencia->bindParam(':email', $email, PDO::PARAM_STR);
-                    $sentencia->bindParam(':foto', $foto, PDO::PARAM_STR);
-                    $sentencia->bindParam(':fecha', $fecha, PDO::PARAM_STR);
+                        $sentencia->bindParam(':codigo_administrador', $codigo_administrador, PDO::PARAM_STR);
+                        $sentencia->bindParam(':pasword', $pasword, PDO::PARAM_STR);
+                        $sentencia->bindParam(':nivel', $nivel, PDO::PARAM_INT);
+                        $sentencia->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+                        $sentencia->bindParam(':apellido', $apellido, PDO::PARAM_STR);
+                        $sentencia->bindParam(':sexo', $sexo, PDO::PARAM_BOOL);
+                        $sentencia->bindParam(':dui', $dui, PDO::PARAM_STR);
+                        $sentencia->bindParam(':estado', $estado, PDO::PARAM_STR);
+                        $sentencia->bindParam(':observacion', $observacion, PDO::PARAM_STR);
+                        $sentencia->bindParam(':email', $email, PDO::PARAM_STR);
+                        $sentencia->bindParam(':foto', $foto, PDO::PARAM_STR);
+                        $sentencia->bindParam(':fecha', $fecha, PDO::PARAM_STR);
 
-                    $administrador_insertado = $sentencia->execute();
+                        $administrador_insertado = $sentencia->execute();
 
-                    echo '<script>swal({
+                        echo '<script>swal({
                     title: "Exito",
                     text: "El registro ha sido Guardado!",
                     type: "success",
@@ -56,6 +59,17 @@ class Repositorio_administrador {
                     location.href="inicio_seguridad.php";
                     
                 });</script>';
+                    } else {
+                        echo '<script>'
+                        . 'swal("Advetencia!", "El correo que introdujo ya esta en uso, favor introdusca otro", "warning");'
+                        . '$("#idNombre").val("' . $nombre . '"); $("#idApellido").val("' . $apellido . '");'
+                        . '$("#idUser").val("' . $codigo_administrador . '"); $("#idDui").val("' . $dui . '");'
+                        . '$("#idFecha").val("' . $fecha . '"); $("#idEmail").val("' . $email . '");'
+                        . 'if ("' . $nivel . '" == "0") {$("#idRoot").attr("checked", "checked");} else {$("#idAdministrador").attr("checked", "checked");}'
+                        . 'if ("' . $sexo . '" == "Masculino") {$("#idHombre").attr("checked", "checked");} else {$("#idMujer").attr("checked", "checked");}'
+                        . '$("#idListarAdmnistrador").removeClass("active");  $("#idRegistroAdministrador").addClass("active"); '
+                        . '$("#idPass1").val("' . $pasword . '"); $("#idPass2").val("' . $pasword . '");  </script>';
+                    }
                 } else {
                     echo '<script>'
                     . 'swal("Advetencia!", "El nombre de usuario que introdujo ya esta en uso, favor introdusca otro", "warning");'
@@ -189,7 +203,7 @@ class Repositorio_administrador {
 
                 print 'ERROR: ' . $ex->getMessage();
             }
-        }else{
+        } else {
             echo "no hay conexion";
         }
     }
@@ -250,7 +264,26 @@ class Repositorio_administrador {
                 print('ERROR' . $exc->getMessage());
             }
         }
+    }
 
+    public static function obtener_email($conexion, $email) {
+        $administrador = new Administrador();
+        if (isset($conexion)) {
+            try {
+
+                $sql = "SELECT * FROM administradores WHERE email='$email'"; ///estos son alias para que PDO pueda trabajar 
+                foreach ($conexion->query($sql) as $row) {
+                    $administrador->setCodigo_administrador($row["codigo_administrador"]);
+                    $administrador->setPasword($row["pasword"]);
+                    $administrador->setNivel($row["nivel"]);
+                    $administrador->setEmail($row["email"]);
+                    $administrador->setNombre($row["nombre"]);
+                }
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $administrador;
     }
 
 }
