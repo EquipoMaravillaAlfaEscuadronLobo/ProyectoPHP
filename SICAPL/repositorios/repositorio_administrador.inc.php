@@ -4,7 +4,10 @@ class Repositorio_administrador {
 
     public static function insertar_administrador($conexion, $administrador) {
         $administrador_insertado = false;
-       // $administrador = new Administrador();
+        // $administrador = new Administrador();
+
+
+
         if (isset($conexion)) {
             try {
 
@@ -21,33 +24,39 @@ class Repositorio_administrador {
                 $email = $administrador->getEmail();
                 $fecha = $administrador->getFecha();
 
-                $sql = 'INSERT INTO administradores(codigo_administrador,pasword,nivel,nombre,apellido,sexo,dui,estado,observacion,foto,email,fecha)'
-                        . ' values (:codigo_administrador,:pasword,:nivel,:nombre,:apellido,:sexo,:dui,:estado,:observacion,:foto,:email,:fecha)';
-                ///estos son alias para que PDO pueda trabajar 
-                $sentencia = $conexion->prepare($sql);
+                $administradorExistente = self::obtener_administrador($conexion, $codigo_administrador);
+                if ($administradorExistente->getCodigo_administrador() == "") {
 
-                $sentencia->bindParam(':codigo_administrador', $codigo_administrador, PDO::PARAM_STR);
-                $sentencia->bindParam(':pasword', $pasword, PDO::PARAM_STR);
-                $sentencia->bindParam(':nivel', $nivel, PDO::PARAM_INT);
-                $sentencia->bindParam(':nombre', $nombre, PDO::PARAM_STR);
-                $sentencia->bindParam(':apellido', $apellido, PDO::PARAM_STR);
-                $sentencia->bindParam(':sexo', $sexo, PDO::PARAM_BOOL);
-                $sentencia->bindParam(':dui', $dui, PDO::PARAM_STR);
-                $sentencia->bindParam(':estado', $estado, PDO::PARAM_STR);
-                $sentencia->bindParam(':observacion', $observacion, PDO::PARAM_STR);
-                $sentencia->bindParam(':email', $email, PDO::PARAM_STR);
-                $sentencia->bindParam(':foto', $foto, PDO::PARAM_STR);
-                $sentencia->bindParam(':fecha', $fecha, PDO::PARAM_STR);
+                    $sql = 'INSERT INTO administradores(codigo_administrador,pasword,nivel,nombre,apellido,sexo,dui,estado,observacion,foto,email,fecha)'
+                            . ' values (:codigo_administrador,:pasword,:nivel,:nombre,:apellido,:sexo,:dui,:estado,:observacion,:foto,:email,:fecha)';
+                    ///estos son alias para que PDO pueda trabajar 
+                    $sentencia = $conexion->prepare($sql);
 
-                $administrador_insertado = $sentencia->execute();
+                    $sentencia->bindParam(':codigo_administrador', $codigo_administrador, PDO::PARAM_STR);
+                    $sentencia->bindParam(':pasword', $pasword, PDO::PARAM_STR);
+                    $sentencia->bindParam(':nivel', $nivel, PDO::PARAM_INT);
+                    $sentencia->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+                    $sentencia->bindParam(':apellido', $apellido, PDO::PARAM_STR);
+                    $sentencia->bindParam(':sexo', $sexo, PDO::PARAM_BOOL);
+                    $sentencia->bindParam(':dui', $dui, PDO::PARAM_STR);
+                    $sentencia->bindParam(':estado', $estado, PDO::PARAM_STR);
+                    $sentencia->bindParam(':observacion', $observacion, PDO::PARAM_STR);
+                    $sentencia->bindParam(':email', $email, PDO::PARAM_STR);
+                    $sentencia->bindParam(':foto', $foto, PDO::PARAM_STR);
+                    $sentencia->bindParam(':fecha', $fecha, PDO::PARAM_STR);
 
-                echo '<script>swal("Excelente!", "Registro guardado con exito", "success");</script>';
+                    $administrador_insertado = $sentencia->execute();
+
+                    echo '<script>swal("Excelente!", "Registro guardado con exito", "success");</script>';
+                } else {
+                    echo '<script>'
+                    . 'swal("Advetencia!", "El nombre de usuario que introdujo ya esta en uso, favor introdusca otro", "warning");    </script>';
+                }
             } catch (PDOException $ex) {
                 echo '<script>swal("No se puedo realizar el registro", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
                 print 'ERROR: ' . $ex->getMessage();
             }
         }
-        return $administrador_insertado;
     }
 
     public static function obtener_administrador($conexion, $codigo_administrador) {

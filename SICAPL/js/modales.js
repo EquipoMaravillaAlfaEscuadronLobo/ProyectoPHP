@@ -45,23 +45,23 @@ $(document).ready(function () {
 });
 
 function abrir_edicion_administrador(nombre, apellido, user, dui, fecha, email, password, nivel, sexo) {
-    $('#idNombreE').val(nombre);
-    $('#idApellidoE').val(apellido);
-    $('#idUserE').val(user);
-    $('#idDuiE').val(dui);
-    $('#idFechaE').val(fecha);
-    $('#idEmailE').val(email);
-    $('#idSecreto').val(password);
+    $("#idNombreE").val(nombre);
+    $("#idApellidoE").val(apellido);
+    $("#idUserE").val(user);
+    $("#idDuiE").val(dui);
+    $("#idFechaE").val(fecha);
+    $("#idEmailE").val(email);
+    $("#idSecreto").val(password);
     if (nivel == '0') {
-        $("#idRootE").attr('checked', 'checked');
+        $("#idRoot").attr("checked", "checked");
     } else {
-        $("#idAdministradorE").attr('checked', 'checked');
+        $("#idAdministradorE").attr("checked", "checked");
     }
-    if (sexo == 'Masculino') {
-        $("#idHombreE").attr('checked', 'checked');
+    if (sexo == "Masculino") {
+        $('#idHombreE').attr("checked", "checked");
 
     } else {
-        $("#idMujerE").attr('checked', 'checked');
+        $("#idMujerE").attr("checked", "checked");
     }
 
 

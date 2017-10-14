@@ -31,7 +31,7 @@ $(document).ready(function () {
                 equalTo: "#idPass1E"
             },
             nameFotoE: {
-                required: true
+               minlength: 1
             },
             nameEmailE: {
                 required: true,
@@ -84,7 +84,7 @@ $(document).ready(function () {
                 equalTo: "Por favor ingrese la misma contraseña"
             },
             nameFotoE: {
-                requiredE: "favor ingrese una foto"
+               // requiredE: "favor ingrese una foto"
             },
             nameSexo: {
                 requiredE: "Seleccione un campo"

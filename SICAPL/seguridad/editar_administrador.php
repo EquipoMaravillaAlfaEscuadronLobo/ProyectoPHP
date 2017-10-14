@@ -38,7 +38,7 @@
                                     </div>
                                     <div class="input-field col m5">
                                         <i class="fa fa-credit-card prefix"></i> 
-                                        <input type="text" id="idDuiE" name="idDuiE" class="text-center validate" minlength="10" required="" value=" ">
+                                        <input type="text" id="idDuiE" name="nameDuiE" class="text-center validate" minlength="10" required="" value=" ">
                                         <label for="idDuiE">Dui <small>(Ej: 02436390-9)</small></label>
                                     </div>
 
@@ -112,7 +112,7 @@
                                             <input type="file">
                                         </div>
                                         <div class="file-path-wrapper">
-                                            <input class="file-path validate" type="text" name="nameFotoE" id="idFoto">
+                                            <input class="file-path" type="text" name="nameFotoE" id="idFoto" minlength="5">
                                             <input type="file" id="files" name="files[]">
                                         </div>
                                     </div>
@@ -150,7 +150,21 @@
 <?php
 if (isset($_REQUEST["banderaEdicion"])) {
     
-    Repositorio_administrador::actualizar_administrador();
+    //Repositorio_administrador::actualizar_administrador();
+    $administrador = new Administrador();
+
+    $administrador->setApellido($_REQUEST["nameApellidoE"]);
+    $administrador->setCodigo_administrador($_REQUEST["nameUserE"]);
+    $administrador->setDui($_REQUEST["nameDuiE"]);
+    $administrador->setNombre($_REQUEST["nameNombreE"]);
+    $administrador->setNivel($_REQUEST['NameNivelE']);
+    $administrador->setObservacion("NINGUNA");
+    $administrador->setPasword($_REQUEST["namePass1E"]);
+    $administrador->setSexo($_REQUEST['NameSexoE']);
+    $administrador->setEmail($_REQUEST['nameEmailE']);
+    $administrador->setFecha($_REQUEST['nameFechaE']);
+    
+    
 
 }
 ?>
