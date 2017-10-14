@@ -1,5 +1,5 @@
-<form id="editar-formulario" method="post" action="" autocomplete="off" >
-    <input type="hidden" name="bandera" id="bandera"/>
+<form id="editar_formulario" method="post" action="" autocomplete="off" >
+    <input type="hidden" name="banderaEdicion" id="bandera"/>
     <div id="edicion" class="modal modal-fixed-footer nuevo">
         <div class="modal-content modal-lg">
             <div class="row">
@@ -65,8 +65,8 @@
                                     </div>
                                     <div class="input-field col m5">
                                         <i class="fa fa-envelope-o prefix"></i> 
-                                        <input type="email" id="idEmailE" name="nameEmail" class="text-center validate" required=""  value=" ">
-                                        <label for="idEmail">Email <small>(Ej: correo@gmail.com)</small> </label>
+                                        <input type="email" id="idEmailE" name="nameEmailE" class="text-center validate" required=""  value=" ">
+                                        <label for="idEmailE">Email <small>(Ej: correo@gmail.com)</small> </label>
                                     </div> 
                                 </div>
                                 <div class="row">
@@ -141,16 +141,16 @@
         </div>
         <div class="modal-footer">
             <div class="row">
-                <div class="col-md-6 text-right"><button href="#" class="btn btn-success" onclick="prueva()">Guardar</button></div>
+                <div class="col-md-6 text-right"><button href="#" class="btn btn-success">Guardar</button></div>
                 <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger">Salir</a></div>
             </div>
         </div>
     </div>
 </form>
-
-<script>
-function prueva(){
-    alert('bien hecho carajo');
+<?php
+if (isset($_REQUEST["banderaEdicion"])) {
     
+    Repositorio_administrador::actualizar_administrador();
+
 }
-</script>
+?>

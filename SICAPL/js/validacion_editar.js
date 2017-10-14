@@ -1,116 +1,117 @@
 $.validator.setDefaults({
     submitHandler: function () {
        
-        document.getElementById('banderaRegistro').value="ok";    
-        document.FORMULARIO.submit();
+        document.getElementById('banderaEdicion').value="ok";    
+        document.editar_formulario.submit();
         
-        
-    }
+        }
 });
 ///////////////////////////////////////////////////////////este es para los formularios de ingresozz
 $(document).ready(function () {
-    $("#FORMULARIO").validate({
+     $("#editar_formulario").validate({
         rules: {
-            nameNombre: {
+            nameNombreE: {
                 required: true,
                 minlength: 3
             },
-            nameApellido: {
+            nameApellidoE: {
                 required: true,
                 minlength: 3
             },
-            nameDireccion: {
+            nameDireccionE: {
                 required: true,
                 minlength: 10
             },
-            namePass1: {
-                required: true,
+            namePass1E: {
+                
                 minlength: 5
             },
-            namePass2: {
-                required: true,
-                equalTo: "#idPass1"
+            namePass2E: {
+                
+                equalTo: "#idPass1E"
             },
-            nameFoto: {
+            nameFotoE: {
                 required: true
             },
-            nameEmail: {
+            nameEmailE: {
                 required: true,
                 email: true
             },
-            nameSexo: {
+            nameSexoE: {
                 required: true
             },
-            nameDui: {
+            nameDuiE: {
                 required: true,
                 minlength: 10
             },
-            nameUser: {
+            nameUserE: {
                 required: true,
                 minlength: 3,
                 maxlength: 14
             },
-            nameTelefono: {
+            nameTelefonoE: {
                 required: true,
                 minlength: 8
             },
-            nameNivel: {
+            nameNivelE: {
                   required: true
             },
-            nameNombreX: {
-                  required: true
+            nameValidacionX:{
+                  required: true,
+                  equalTo: "#idSecreto"
             }
+            
         },
         messages: {
-            nameNombre: {
+            nameNombreE: {
                 required: "Por favor ingrese su Nombre",
                 minlength: "El nombre debe de tener por lo menos 3 caracteres"
             },
-            nameApellido: {
+            nameApellidoE: {
                 required: "Por favor ingrese su Apellido",
                 minlength: "El apellido debe de tener por lo menos 3 caracteres"
             },
-            nameDireccion: {
+            nameDireccionE: {
                 required: "Por favor ingrese la direccion",
                 minlength: "ingrese una direccion real"
             },
-            namePass1: {
-                required: "Ingrese una contraseña",
+            namePass1E: {
+            
                 minlength: "La contraseña debe de tener por lo menos 5 caracteres"
             },
-            namePass2: {
-                required: "Repita la contraseña",
-                minlength: "Por favor ingrese la misma contraseña",
+            namePass2E: {
+                
                 equalTo: "Por favor ingrese la misma contraseña"
             },
-            nameFoto: {
-                required: "por favor ingrese una foto"
+            nameFotoE: {
+                requiredE: "favor ingrese una foto"
             },
             nameSexo: {
-                required: "Seleccione un campo"
+                requiredE: "Seleccione un campo"
             },
-            nameEmail: {
+            nameEmailE: {
                 required: "Por favor ingrese un correo"
             },
-            nameDui: {
+            nameDuiE: {
                 minlength: "ingrese un dui valido",
                 required: "ingrese un dui valido"
             },
-            nameUser : {
+            nameUserE : {
                 required: "ingrese un nombre de usuario ",
                 minlength: "debe de poseer por lo menos 4 caracteres "
             },
-            nameTelefono:{
+            nameTelefonoE:{
                required: "favor ingrese su teléfono",
                 minlength: "ingrese un numero telefónico valido"
             },
-            NameNivel :{
+            NameNivelE :{
                 required: "Seleccione un Nivel"
             },
-            NameNombreX :{
-                required: "Seleccione un Nivel"
+            nameValidacionX:{
+              required: "debe proporcionar su actual contraseña para modificar",
+              equalTo: "debe proporcionar su actual contraseña para modificar"
             }
-            
+                        
         },
         errorElement: "em",
         errorPlacement: function (error, element) {
@@ -147,14 +148,6 @@ $(document).ready(function () {
             $(element).next("span").addClass("glyphicon-ok").removeClass("glyphicon-remove");
         }
     });
-    
-    ////////////////////////////////////////////////////////este es para los formularios de edicion
-    
-     
-    
-    
-    
 });
-
 
 

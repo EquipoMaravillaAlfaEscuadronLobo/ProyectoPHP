@@ -4,7 +4,7 @@ class Repositorio_administrador {
 
     public static function insertar_administrador($conexion, $administrador) {
         $administrador_insertado = false;
-        //$administrador = new Administrador();
+       // $administrador = new Administrador();
         if (isset($conexion)) {
             try {
 
@@ -19,9 +19,10 @@ class Repositorio_administrador {
                 $observacion = $administrador->getObservacion();
                 $foto = $administrador->getFoto();
                 $email = $administrador->getEmail();
-                
-                $sql = 'INSERT INTO administradores(codigo_administrador,pasword,nivel,nombre,apellido,sexo,dui,estado,observacion,foto,email)'
-                        . ' values (:codigo_administrador,:pasword,:nivel,:nombre,:apellido,:sexo,:dui,:estado,:observacion,:foto,:email)';
+                $fecha = $administrador->getFecha();
+
+                $sql = 'INSERT INTO administradores(codigo_administrador,pasword,nivel,nombre,apellido,sexo,dui,estado,observacion,foto,email,fecha)'
+                        . ' values (:codigo_administrador,:pasword,:nivel,:nombre,:apellido,:sexo,:dui,:estado,:observacion,:foto,:email,:fecha)';
                 ///estos son alias para que PDO pueda trabajar 
                 $sentencia = $conexion->prepare($sql);
 
@@ -36,13 +37,13 @@ class Repositorio_administrador {
                 $sentencia->bindParam(':observacion', $observacion, PDO::PARAM_STR);
                 $sentencia->bindParam(':email', $email, PDO::PARAM_STR);
                 $sentencia->bindParam(':foto', $foto, PDO::PARAM_STR);
+                $sentencia->bindParam(':fecha', $fecha, PDO::PARAM_STR);
 
                 $administrador_insertado = $sentencia->execute();
-                
-                echo '<script>swal("Muy Bien!", "Lo haz logrado", "success");</script>';
-                
+
+                echo '<script>swal("Excelente!", "Registro guardado con exito", "success");</script>';
             } catch (PDOException $ex) {
-                echo '<script>swal("No se puedo realizar el registro", "El nombre de Usuario que usted ha ingresado no está disponible,por favor ingrese otro", "warning");</script>';
+                echo '<script>swal("No se puedo realizar el registro", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
                 print 'ERROR: ' . $ex->getMessage();
             }
         }
@@ -77,7 +78,7 @@ class Repositorio_administrador {
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->execute();
                 $resultado = $sentencia->fetchAll();
-                             
+
                 if (count($resultado)) {
                     foreach ($resultado as $fila) {
                         $administrador = new Administrador();
@@ -104,11 +105,16 @@ class Repositorio_administrador {
 //        echo   'numero de registros en lista registros'. count($lista_administradores) . '<br>';
         //foreach ($lista_administradores as $fila ){
         //    echo $fila ->getNombre(). "<br>";
-         //   echo '<img src="data:image/jpg;base64,<?php echo base64_encode($fila["foto"]);';
-       // }
-        
-        
+        //   echo '<img src="data:image/jpg;base64,<?php echo base64_encode($fila["foto"]);';
+        // }
+
+
         return $lista_administradores;
+    }
+
+    public static function actualizar_administrador() {
+
+        echo '<script>swal("Muy Bien!", "esto es actializar", "success");</script>';
     }
 
 }

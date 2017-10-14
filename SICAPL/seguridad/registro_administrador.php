@@ -6,7 +6,7 @@ include_once '../repositorios/repositorio_administrador.inc.php';
 <!--inicio de container-->
 <div class="container">
     <form id="FORMULARIO" name="FormuluarioUsuario" method="post" action="" autocomplete="off" enctype="multipart/form-data">
-        <input type="hidden" name="bandera" id="bandera"/>
+        <input type="hidden" name="banderaRegistro" id="banderaRegistro"/>
         <div class="panel" name="libros">
             <!--inicio cabecera de panel-->
             <div class="panel-heading text-center">
@@ -106,7 +106,7 @@ include_once '../repositorios/repositorio_administrador.inc.php';
                     <div class="col m5">
                         <div class="row">
                             <div class="col m1">
-                                <i class="fa fa-star prefix"></i> 
+                                <i class="glyphicon glyphicon-star"></i> 
                             </div>
                             <div class="col m1"><label>Nivel</label></div>
                             <div class="col m10">
@@ -133,7 +133,7 @@ include_once '../repositorios/repositorio_administrador.inc.php';
                             <input type="file">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path" type="text" name="nameFoto" id="idFoto">
+                            <input class="file-path validate" type="text" name="nameFoto" id="idFoto" required="" >
                             <input type="file" id="files" name="files[]">
                         </div>
                     </div>
@@ -176,7 +176,7 @@ include_once '../repositorios/repositorio_administrador.inc.php';
     document.getElementById('FORMULARIO').setAttribute('autocomplete', 'off');
 </script>
 <?php
-if (isset($_REQUEST["bandera"])) {
+if (isset($_REQUEST["banderaRegistro"])) {
     Conexion::abrir_conexion();
     $administrador = new Administrador();
 
@@ -190,6 +190,7 @@ if (isset($_REQUEST["bandera"])) {
     $administrador->setPasword($_REQUEST["namePass1"]);
     $administrador->setSexo($_REQUEST['NameSexo']);
     $administrador->setEmail($_REQUEST['nameEmail']);
+    $administrador->setFecha($_REQUEST['nameFecha']);
 
     // $administrador->setFoto(addslashes(file_get_contents($_FILES['nameFoto']['tmp_name'])));
     Repositorio_administrador::insertar_administrador(Conexion::obtener_conexion(), $administrador);
