@@ -10,9 +10,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="panel" name="libros">
+                        
                           
-                            <div class="text-center panel-body">
+                            
                                 <div class="row">
                                     <div class="col-md-1"></div>
                                     <div class="input-field col m5 input-group">
@@ -130,8 +130,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            
+                        
                     </div>
                 </div>
             </div>

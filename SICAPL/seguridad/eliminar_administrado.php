@@ -1,72 +1,67 @@
 <?php
-    include_once '../app/Conexion.php';
-    include_once '../modelos/Administrador.inc.php';
-    include_once '../repositorios/repositorio_administrador.inc.php';
-    Conexion::abrir_conexion();
+include_once '../app/Conexion.php';
+include_once '../modelos/Administrador.inc.php';
+include_once '../repositorios/repositorio_administrador.inc.php';
+Conexion::abrir_conexion();
 ?>
 <form id="editar_formulario" method="post" action="" autocomplete="off" >
     <input type="hidden" name="banderaEliminacion" id="banderaEliminacion"/>
     <input type="hidden" name="codigo_eliminacion" id="codigo_eliminacion"/>
     <input type="hidden" id="idSecreto" value="">
-    
+
     <div id="eliminacion_administradores" class="modal modal-fixed-footer nuevo">
         <div class="modal-heading panel-heading"><h3 class="text-center">Dar de Baja Administradores</h3></div>
         <div class="modal-content modal-sm">
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="panel" name="libros">
-                           
-                            <div class="text-center panel-body">
-                                <div class="row">
-                                    <div class="col-md-1"></div>
-                                    <div class="input-field col m5 input-group">
-                                        <i class="fa fa-user-circle prefix"></i> 
-                                        <input type="text" id="idNombreEl" name="nameNombreEl"  class="text-center" value=" " disabled="">
-                                        <label for="idNombreEl" class="col-sm-4 control-labe">Nombre Completo</label>
-                                    </div>
-                                    <div class="input-field col m5">
-                                        <i class="fa fa-vcard prefix"></i> 
-                                        <input type="text" id="idUsuarioEl" name="nameUsuarioEl"  class="text-center" disabled="">
-                                        <label for="idUsuarioEl">Nombre de Usuario</label>
-                                    </div>
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="input-field col m5 input-group">
+                                <i class="fa fa-user-circle prefix"></i> 
+                                <input type="text" id="idNombreEl" name="nameNombreEl"  class="text-center" value=" " disabled="">
+                                <label for="idNombreEl" class="col-sm-4 control-labe">Nombre Completo</label>
+                            </div>
+                            <div class="input-field col m5">
+                                <i class="fa fa-vcard prefix"></i> 
+                                <input type="text" id="idUsuarioEl" name="nameUsuarioEl"  class="text-center" disabled="">
+                                <label for="idUsuarioEl">Nombre de Usuario</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-10">
+                                <div class="input-field">
+                                    <i class="fa fa-edit prefix" aria-hidden="true"></i>
+                                    <label for="idMotivoEliminacion" class="text-center">Escriba el motivo por el que se le da de baja</label>
+                                    <textarea id="idMotivoEliminacion" name="nameMotivoEliminacion" class="materialize-textarea text-center"></textarea>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-1"></div>
-                                    <div class="col-md-10">
-                                        <div class="input-field">
-                                            <i class="fa fa-edit prefix" aria-hidden="true"></i>
-                                            <label for="idMotivoEliminacion" class="text-center">Escriba el motivo por el que se le da de baja</label>
-                                            <textarea id="idMotivoEliminacion" name="nameMotivoEliminacion" class="materialize-textarea text-center"></textarea>
-                                        </div>
-                                    </div>
+                            </div>
 
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="input-field col m1">
+                                <div class="input-field col m1">
+                                    <i class="fa fa-star prefix"></i> 
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-1"></div>
-                                    <div class="input-field col m1">
-                                        <div class="input-field col m1">
-                                            <i class="fa fa-star prefix"></i> 
-                                        </div>
-                                    </div>
-                                    <div class="input-field col m4">
+                            </div>
+                            <div class="input-field col m4">
 
-                                        <select required="">
-                                            <option value = "" disabled selected>Seleccione Nuevo encargado de Activos</option>
-                                            <?php
-                                            $lista_admnistradores = Repositorio_administrador::lista_administradores(Conexion::obtener_conexion());
-                                            foreach ($lista_admnistradores as $filaz) {
-                                            ?>
-                                            <option value="<?php $filaz->getCodigo_administrador() ?>"><?php echo $filaz->getNombre() . ' ' . $lista->getApellido(); ?></option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-                                    <div class="input-field col m5">
-                                        <i class="fa fa-expeditedssl prefix"></i> 
-                                        <input type="password" id="idPass1El" name="namePass1El" class="text-center validate" autocomplete="off"  minlength="5" maxlength="10">
-                                        <label for="idPass1El">Para continuar por favor ingrese su contraseña</label>
-                                    </div>
-                                </div>
+                                <select required="">
+                                    <option value = "" disabled selected>Seleccione Nuevo encargado de Activos</option>
+                                    <?php
+                                    $lista_admnistradores = Repositorio_administrador::lista_administradores(Conexion::obtener_conexion());
+                                    foreach ($lista_admnistradores as $filaz) {
+                                        ?>
+                                        <option value="<?php $filaz->getCodigo_administrador() ?>"><?php echo $filaz->getNombre() . ' ' . $lista->getApellido(); ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="input-field col m5">
+                                <i class="fa fa-expeditedssl prefix"></i> 
+                                <input type="password" id="idPass1El" name="namePass1El" class="text-center validate" autocomplete="off"  minlength="5" maxlength="10">
+                                <label for="idPass1El">Para continuar por favor ingrese su contraseña</label>
                             </div>
                         </div>
                     </div>
@@ -84,12 +79,12 @@
 <?php
 if (isset($_REQUEST["banderaEliminacion"])) {
 
-$administrador = new Administrador();
-$administrador ->setObservacion($_REQUEST['nameMotivoEliminacion']);
-$administrador ->setEstado(0);
-$codigo_eliminar =$_REQUEST['codigo_eliminacion'];
-    
-      Repositorio_administrador::eliminar_administrador(Conexion::obtener_conexion(), $administrador, $codigo_eliminar);
+    $administrador = new Administrador();
+    $administrador->setObservacion($_REQUEST['nameMotivoEliminacion']);
+    $administrador->setEstado(0);
+    $codigo_eliminar = $_REQUEST['codigo_eliminacion'];
+
+    Repositorio_administrador::eliminar_administrador(Conexion::obtener_conexion(), $administrador, $codigo_eliminar);
     //Conexion::cerrar_conexion();
 }
 ?>
