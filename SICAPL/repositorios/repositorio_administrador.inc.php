@@ -81,12 +81,12 @@ class Repositorio_administrador {
         return $administrador;
     }
 
-    public static function lista_administradores($conexion) {
+    public static function lista_administradores($conexion,$codigo) {
         $lista_administradores = [];
 
         if (isset($conexion)) {
             try {
-                $sql = "select * from administradores";
+                $sql = "select * from administradores where (codigo_administrador != '$codigo'  AND estado = 1)" ;
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->execute();
                 $resultado = $sentencia->fetchAll();
