@@ -1,7 +1,7 @@
 <form id="editar_formulario" method="post" action="" autocomplete="off" >
-    <input type="hidden" name="banderaEdicion" id="banderaEdicion"/>
+    <input type="hidden" name="banderaEdicion" id="banderaEliminacion"/>
     <input type="hidden" name="codigo_original" id="codigo_original"/>
-    <div id="edicion" class="modal modal-fixed-footer nuevo">
+    <div id="edicion_administradores" class="modal modal-fixed-footer nuevo">
         <div class="modal-content modal-lg">
             <div class="row">
                 <div class="col-md-12">
@@ -118,7 +118,7 @@
                                         </div>
                                     </div>
                                     <div class="input-field col m5">
-                                        <i class="fa fa-eye prefix"></i> 
+                                        <i class="fa fa-expeditedssl prefix"></i> 
                                         <input type="password" id="idValidacionX" name="nameValidacionX" class="text-center validate" autocomplete="off">
                                         <label for="idValidacionX">Para continuar por favor ingrese su contraseña</label>
                                     </div>
