@@ -1,21 +1,17 @@
 <form id="editar_formulario" method="post" action="" autocomplete="off" >
     <input type="hidden" name="banderaEdicion" id="banderaEliminacion"/>
     <input type="hidden" name="codigo_original" id="codigo_original"/>
+    <input type="hidden" id="idSecreto" value="">
+    
     <div id="edicion_administradores" class="modal modal-fixed-footer nuevo">
+        <div class="modal-heading panel-heading"> <h4>Editar Administradores</h4></div>
+         
         <div class="modal-content modal-lg">
             <div class="row">
                 <div class="col-md-12">
-
-                    <input type="hidden" id="idSecreto" value="">
                     <div class="row">
                         <div class="panel" name="libros">
-                            <div class="panel-heading text-center">
-                                <div class="row"> 
-                                    <div class="col s12">
-                                        <h3>Editar Administradores</h3>
-                                    </div>
-                                </div>
-                            </div>
+                          
                             <div class="text-center panel-body">
                                 <div class="row">
                                     <div class="col-md-1"></div>

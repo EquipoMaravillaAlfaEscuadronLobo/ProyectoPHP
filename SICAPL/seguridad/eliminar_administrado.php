@@ -1,20 +1,22 @@
+<?php
+    include_once '../app/Conexion.php';
+    include_once '../modelos/Administrador.inc.php';
+    include_once '../repositorios/repositorio_administrador.inc.php';
+    Conexion::abrir_conexion();
+?>
 <form id="editar_formulario" method="post" action="" autocomplete="off" >
     <input type="hidden" name="banderaEliminacion" id="banderaEliminacion"/>
     <input type="hidden" name="codigo_eliminacion" id="codigo_eliminacion"/>
     <input type="hidden" id="idSecreto" value="">
+    
     <div id="eliminacion_administradores" class="modal modal-fixed-footer nuevo">
+        <div class="modal-heading panel-heading"><h3 class="text-center">Dar de Baja Administradores</h3></div>
         <div class="modal-content modal-sm">
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
                         <div class="panel" name="libros">
-                            <div class="panel-heading text-center">
-                                <div class="row"> 
-                                    <div class="col s12">
-                                        <h3>Dar de Baja Administradores</h3>
-                                    </div>
-                                </div>
-                            </div>
+                           
                             <div class="text-center panel-body">
                                 <div class="row">
                                     <div class="col-md-1"></div>
@@ -52,14 +54,10 @@
                                         <select required="">
                                             <option value = "" disabled selected>Seleccione Nuevo encargado de Activos</option>
                                             <?php
-                                            Conexion::abrir_conexion();
                                             $lista_admnistradores = Repositorio_administrador::lista_administradores(Conexion::obtener_conexion());
                                             foreach ($lista_admnistradores as $filaz) {
-                                                echo $filaz->getNombre();
-                                                ?>
-
-                                                <option value="<?php $filaz->getCodigo_administrador() ?>"><?php echo $filaz->getNombre() . ' ' . $lista->getApellido(); ?></option>
-
+                                            ?>
+                                            <option value="<?php $filaz->getCodigo_administrador() ?>"><?php echo $filaz->getNombre() . ' ' . $lista->getApellido(); ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -85,16 +83,13 @@
 </form>
 <?php
 if (isset($_REQUEST["banderaEliminacion"])) {
-    include_once '../app/Conexion.php';
-    include_once '../modelos/Administrador.inc.php';
-    include_once '../repositorios/repositorio_administrador.inc.php';
-    Conexion::abrir_conexion();
 
-    echo $_REQUEST['nameMotivoEliminacion'];
-    echo $_REQUEST['codigo_eliminacion'];
-
-
-    //  Repositorio_administrador::actualizar_administrador(Conexion::obtener_conexion(), $administrador, $codigo_original);
+$administrador = new Administrador();
+$administrador ->setObservacion($_REQUEST['nameMotivoEliminacion']);
+$administrador ->setEstado(0);
+$codigo_eliminar =$_REQUEST['codigo_eliminacion'];
+    
+      Repositorio_administrador::eliminar_administrador(Conexion::obtener_conexion(), $administrador, $codigo_eliminar);
     //Conexion::cerrar_conexion();
 }
 ?>
