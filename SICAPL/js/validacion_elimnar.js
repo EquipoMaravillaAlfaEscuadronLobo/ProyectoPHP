@@ -2,21 +2,20 @@ $.validator.setDefaults({
     submitHandler: function () {
        
         document.getElementById('banderaEliminacion').value="ok";    
-        document.editar_formulario.submit();
+        document.eliminar_formulario.submit();
         
         }
 });
 ///////////////////////////////////////////////////////////este es para los formularios de ingresozz
 $(document).ready(function () {
-     $("#editar_formulario").validate({
+     $("#eliminar_formulario").validate({
         rules: {
-            nameNombreE: {
+            nameMotivoEliminacion: {
                 required: true,
-                minlength: 3
+                minlength: 10
             },
-            nameApellidoE: {
-                required: true,
-                minlength: 3
+            nameSelectedAdministrador: {
+                required: true
             },
             nameDireccionE: {
                 required: true,
@@ -63,13 +62,13 @@ $(document).ready(function () {
             
         },
         messages: {
-            nameNombreE: {
-                required: "Por favor ingrese su Nombre",
-                minlength: "El nombre debe de tener por lo menos 3 caracteres"
+            nameMotivoEliminacion: {
+                required: "Por favor ingrese el motivo de la eliminacion de este administrador",
+                minlength: "ingrese por lo menos 10 caracteres"
             },
-            nameApellidoE: {
-                required: "Por favor ingrese su Apellido",
-                minlength: "El apellido debe de tener por lo menos 3 caracteres"
+            nameSelectedAdministrador: {
+                required: "Seleccione un nuevo administrador"
+               
             },
             nameDireccionE: {
                 required: "Por favor ingrese la direccion",

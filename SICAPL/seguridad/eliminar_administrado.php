@@ -4,7 +4,7 @@ include_once '../modelos/Administrador.inc.php';
 include_once '../repositorios/repositorio_administrador.inc.php';
 Conexion::abrir_conexion();
 ?>
-<form id="editar_formulario" method="post" action="" autocomplete="off" >
+<form id="eliminar_formulario" method="post" action="" autocomplete="off" name="eliminar_formulario">
     <input type="hidden" name="banderaEliminacion" id="banderaEliminacion"/>
     <input type="hidden" name="codigo_eliminacion" id="codigo_eliminacion"/>
     <input type="hidden" id="idSecreto" value="">
@@ -34,7 +34,7 @@ Conexion::abrir_conexion();
                                 <div class="input-field">
                                     <i class="fa fa-edit prefix" aria-hidden="true"></i>
                                     <label for="idMotivoEliminacion" class="text-center">Escriba el motivo por el que se le da de baja</label>
-                                    <textarea id="idMotivoEliminacion" name="nameMotivoEliminacion" class="materialize-textarea text-center"></textarea>
+                                    <textarea  id="idMotivoEliminacion" name="nameMotivoEliminacion" class="materialize-textarea text-center validate"></textarea>
                                 </div>
                             </div>
 
@@ -48,13 +48,13 @@ Conexion::abrir_conexion();
                             </div>
                             <div class="input-field col m4">
 
-                                <select required="">
+                                <select  class="validate" required="" id="idSelectedAdministrador" name="nameSelectedAdministrador">
                                     <option value = "" disabled selected>Seleccione Nuevo encargado de Activos</option>
                                     <?php
-                                    $lista_admnistradores = Repositorio_administrador::lista_administradores(Conexion::obtener_conexion());
+                                    $lista_admnistradores = Repositorio_administrador::lista_administradores(Conexion::obtener_conexion(),'perez');
                                     foreach ($lista_admnistradores as $filaz) {
                                         ?>
-                                        <option value="<?php $filaz->getCodigo_administrador() ?>"><?php echo $filaz->getNombre() . ' ' . $lista->getApellido(); ?></option>
+                                    <option value="<?php echo $filaz->getCodigo_administrador(); ?>"><?php echo $filaz->getNombre() . ' ' . $lista->getApellido(); ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
