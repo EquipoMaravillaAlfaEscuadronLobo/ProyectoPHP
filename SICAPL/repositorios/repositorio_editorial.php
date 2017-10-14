@@ -73,6 +73,43 @@ print 'ERROR: ' . $ex->getMessage();
 			}
 			return $resultado;
 		}
+
+		public static function editarEditorial($conexion, $editorial){
+			 $editorial_insertada = false;
+       if (isset($conexion)) {
+            try {
+                
+               
+                 
+                $nombre = $editorial->getNombre();
+                $codigo=$editorial->getCodigo_editorial();
+                $direccion = $editorial->getDireccion();
+                $email = $editorial->getEmail();            
+                $telefono = $editorial->getTelefono();
+                
+                
+                $sql = 'UPDATE editoriales SET nombre=:nombre, email=:email, telefono=:telefono, direccion=:direccion where codigo_editorial=:codigo';
+                        
+                                ///estos son alias para que PDO pueda trabajar 
+                $sentencia = $conexion->prepare($sql);
+                
+                
+                
+                $sentencia->bindParam(':codigo', $codigo, PDO::PARAM_STR);
+                $sentencia->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+                $sentencia->bindParam(':direccion', $direccion, PDO::PARAM_STR);
+                $sentencia->bindParam(':email', $email, PDO::PARAM_STR);
+                $sentencia->bindParam(':telefono', $telefono, PDO::PARAM_STR);
+                $sentencia->bindParam(':codigo', $codigo, PDO::PARAM_STR);
+                                             
+                
+                $editorial_insertada = $sentencia->execute();
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $editorial_insertada;
+		}
 	
 }
 ?>

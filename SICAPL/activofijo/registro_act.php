@@ -274,7 +274,7 @@ include_once '../app/Conexion.php';
 
 <div id="nuevoProv" class="modal modal-fixed-footer" ><!-- para llamar al modal PARA REGISTRAR PROVEEDOR-->
     <div class="modal-heading panel-heading text-center">
-        <i class="fa fa-truck prefix" aria-hidden="true"></i><h3>&nbsp;Registrar Proveedo</h3>
+        <i class="fa fa-truck prefix" aria-hidden="true"></i><h4>&nbsp;Registrar Proveedo</h4>
     </div>
 
     <div class="modal-content ">

@@ -26,14 +26,14 @@
 
     if (move_uploaded_file($_FILES['foto']['tmp_name'], $foto)) {
        $Libro->setFoto($foto);
-       echo "1";
+      // echo "1";
     }else{
         $Libro->setFoto("");
-        echo "2";
+        //echo "2";
     }
 
-//echo Repositorio_libros::insertarLibros(Conexion::obtener_conexion(), $Libro, $cantidad, $autores);
-    Conexion::cerrar_conexion();
+echo Repositorio_libros::insertarLibros(Conexion::obtener_conexion(), $Libro, $cantidad, $autores);
+ //   Conexion::cerrar_conexion();
 
 
 ?>

@@ -145,29 +145,3 @@ $(document).ready(function() {
     }); 
 })
 // ]]></script>
-<script type="text/javascript">
-
-    
-    
-    function recargarCombos() {
-        $.ajax({
-            url: 'select_categoria',
-            type: 'POST',
-            data: ''
-        }).done(function (resp) {
-            $('select').material_select('destroy');
-            $('select.selectCat').html(resp).fadeIn();
-            $('select').material_select();
-        })
-
-        $.ajax({
-            url: 'select_proveedor',
-            type: 'POST',
-            data: ''
-        }).done(function (resp) {
-            $('select').material_select('destroy');
-            $('select.selectPro').html(resp).fadeIn();
-            $('select').material_select();
-        })
-    }
-</script>

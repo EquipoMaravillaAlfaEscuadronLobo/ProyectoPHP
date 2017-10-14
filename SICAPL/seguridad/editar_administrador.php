@@ -3,6 +3,7 @@
     <input type="hidden" name="codigo_original" id="codigo_original"/>
     <input type="hidden" id="idSecreto" value="">
 
+<!--    este es el modal-->
     <div id="edicion_administradores" class="modal modal-fixed-footer nuevo">
         <div class="modal-heading panel-heading">
             <h3 class="text-center">Editar Administradores</h3>
@@ -140,9 +141,16 @@
             </div>
         </div>
     </div>
+<!--aqui termina el modal-->
+    
 </form>
 <?php
 if (isset($_REQUEST["banderaEdicion"])) {
+//    include_once '../app/Conexion.php';    
+//    include_once '../modelos/Administrador.inc.php';    
+//    include_once '../repositorios/repositorio_administrador.inc.php';    
+//Repositorio_administrador::actualizar_administrador();
+//    Conexion::abrir_conexion();
 
     $administrador = new Administrador();
 

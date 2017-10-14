@@ -24,7 +24,7 @@
         echo basename($FILES['bio1']['name']);
 }
 echo Repositorio_autores::insertarAutor(Conexion::obtener_conexion(), $Autor);
-    Conexion::cerrar_conexion();
+ //   Conexion::cerrar_conexion();
 
 
 ?>

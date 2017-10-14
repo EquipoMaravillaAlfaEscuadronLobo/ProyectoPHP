@@ -51,14 +51,14 @@ class Repositorio_libros
             if (isset($conexion)) {
                 try{
                 $sql="SELECT 
-libros.titulo as titulo,
+DISTINCT libros.titulo as titulo,
 editoriales.nombre AS editorial,
 libros.codigo_libro as codigo,
 libros.foto as foto,
 libros.codigo_editorial as cedit,
 libros.fecha_publicacion as fecha_publicacion,
-autores.nombre AS autor,
-COUNT(DISTINCT libros.titulo) as cantidad
+autores.nombre AS autor
+
 FROM
 libros
 INNER JOIN editoriales ON libros.codigo_editorial = editoriales.codigo_editorial
@@ -73,6 +73,49 @@ print 'ERROR: ' . $ex->getMessage();
             }
             return $resultado;
         }
-	
+	public static function BuscarLibro($conexion, $codigo)
+    {
+        $resultado="";
+            if (isset($conexion)) {
+                try{
+                $sql="SELECT * from libros where codigo_libro='$codigo'";
+                $resultado=$conexion->query($sql);
+            }catch(PDOException $ex){
+print 'ERROR: ' . $ex->getMessage();
+
+            }
+            }
+            return $resultado;
+    }
+
+    public static function BuscarUsuarios($conexion)
+    {
+        $resultado="";
+            if (isset($conexion)) {
+                try{
+                $sql="SELECT * from usuarios";
+                $resultado=$conexion->query($sql);
+            }catch(PDOException $ex){
+print 'ERROR: ' . $ex->getMessage();
+
+            }
+            }
+            return $resultado;
+    }
+
+    public static function BuscarUsuario($conexion, $codigo)
+    {
+        $resultado="";
+            if (isset($conexion)) {
+                try{
+                $sql="SELECT * from usuarios where codigo_usuario='$codigo'";
+                $resultado=$conexion->query($sql);
+            }catch(PDOException $ex){
+print 'ERROR: ' . $ex->getMessage();
+
+            }
+            }
+            return $resultado;
+    }
 }
  ?>

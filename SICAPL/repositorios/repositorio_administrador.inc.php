@@ -45,7 +45,17 @@ class Repositorio_administrador {
 
                     $administrador_insertado = $sentencia->execute();
 
-                    echo '<script>swal("Excelente!", "Registro guardado con exito", "success");</script>';
+                    echo '<script>swal({
+                    title: "Exito",
+                    text: "El registro ha sido Guardado!",
+                    type: "success",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },
+                function () {
+                    location.href="inicio_seguridad.php";
+                    
+                });</script>';
                 } else {
                     echo '<script>'
                     . 'swal("Advetencia!", "El nombre de usuario que introdujo ya esta en uso, favor introdusca otro", "warning");'
@@ -55,7 +65,7 @@ class Repositorio_administrador {
                     . 'if ("' . $nivel . '" == "0") {$("#idRoot").attr("checked", "checked");} else {$("#idAdministrador").attr("checked", "checked");}'
                     . 'if ("' . $sexo . '" == "Masculino") {$("#idHombre").attr("checked", "checked");} else {$("#idMujer").attr("checked", "checked");}'
                     . '$("#idListarAdmnistrador").removeClass("active");  $("#idRegistroAdministrador").addClass("active"); '
-                    . '$("#idPass1").val("'.$pasword.'"); $("#idPass2").val("'.$pasword.'");  </script>';
+                    . '$("#idPass1").val("' . $pasword . '"); $("#idPass2").val("' . $pasword . '");  </script>';
                 }
             } catch (PDOException $ex) {
                 echo '<script>swal("No se puedo realizar el registro", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
@@ -123,8 +133,6 @@ class Repositorio_administrador {
         // }
 
         return $lista_administradores;
-        
-        
     }
 
     public static function actualizar_administrador($conexion, $administrador, $codigo_original) {
@@ -172,7 +180,6 @@ class Repositorio_administrador {
                     location.href="inicio_seguridad.php";
                     
                 });</script>';
-                    
                 } else {
                     echo "<script>swal('Excelente!', 'hubo incombenientes '$sql' ', 'success');</script>";
                 }
@@ -214,7 +221,7 @@ class Repositorio_administrador {
                     location.href="inicio_seguridad.php";
                     
                 });</script>';
-                } catch (PDOException $ex) {
+            } catch (PDOException $ex) {
                 echo "<script>swal('Precaucion!', 'intente mas tarde '$sql' ', 'warning');</script>";
 
                 print 'ERROR: ' . $ex->getMessage();
@@ -245,8 +252,7 @@ class Repositorio_administrador {
         //    echo $fila ->getNombre(). "<br>";
         //   echo '<img src="data:image/jpg;base64,<?php echo base64_encode($fila["foto"]);';
         // }
-
-       // return true;
+        // return true;
     }
 
 }

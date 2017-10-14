@@ -19,7 +19,7 @@
     
 
     echo Repositorio_editorial::insertarEditorial(Conexion::obtener_conexion(), $Editorial);
-    Conexion::cerrar_conexion();
+ //   Conexion::cerrar_conexion();
 
 
 ?>

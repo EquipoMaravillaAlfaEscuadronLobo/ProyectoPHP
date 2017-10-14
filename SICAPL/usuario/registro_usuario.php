@@ -70,7 +70,7 @@ include_once '../repositorios/repositorio_institucion.php';
 
                                 foreach ($lista_instituciones as $lista_ins) {
                                     ?>
-                                <option value = <?php echo $lista_ins->getCodigo_institucion();?>><?php echo $lista_ins->getNombre(); ?></option>
+                                <option value = '<?php echo $lista_ins->getCodigo_institucion();?>' ><?php echo $lista_ins->getNombre(); ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -80,10 +80,10 @@ include_once '../repositorios/repositorio_institucion.php';
                             <i class="fa fa-intersex prefix"></i> 
                             <div class="radio-inline">
                                 <span>Sexo</span>
-                                <input type="radio" id="idHombre"  name="NameSexo"  class="text-center with-gap" checked="">
+                                <input type="radio" id="idHombre"  name="NameSexo"  class="text-center with-gap" checked="" value="Masculino">
                                 <label for="idHombre">Masculino</label>
 
-                                <input type="radio" id="idMujer" name="Namexo"  class="text-center with-gap">
+                                <input type="radio" id="idMujer" name="NameSexo"  class="text-center with-gap" value="Femenino">
                                 <label for="idMujer">Femenino</label>
                             </div>
                             <div class="col 1"></div>
@@ -132,7 +132,6 @@ if (isset($_REQUEST["banderaRegistro"])) {
 
     $usuario->setApellido($_REQUEST["nameApellido"]);
     $usuario->setDireccion($_REQUEST["nameDireccion"]);
-    $usuario->setEstado(1);
     $usuario->setNombre($_REQUEST["nameNombre"]);
     $usuario->setObservacion("");
     $usuario->setSexo($_REQUEST['NameSexo']);
@@ -141,7 +140,7 @@ if (isset($_REQUEST["banderaRegistro"])) {
     $usuario->setCodigo_institucion($_REQUEST['nameInstitucion']);
     
 
-    Repositorio_usuario::insertar_usuario(Conexion::obtener_conexion(), $usuario);
+     Repositorio_usuario::insertar_usuario(Conexion::obtener_conexion(), $usuario);
 
 }
 ?>

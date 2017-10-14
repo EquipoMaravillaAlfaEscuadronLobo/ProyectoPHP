@@ -25,7 +25,6 @@ $lista_admnistradores = Repositorio_administrador::lista_administradores(Conexio
                     </thead>
                     <tbody>
                         <?php foreach ($lista_admnistradores as $lista) { ?>
-
                             <tr>
                                 <td class="text-center">
                                     <button class="btn btn-success" onclick="abrir_edicion_administrador('<?php echo $lista->getNombre(); ?>',

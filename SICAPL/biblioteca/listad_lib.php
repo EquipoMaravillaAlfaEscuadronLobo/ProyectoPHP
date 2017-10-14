@@ -11,7 +11,7 @@ include_once '../app/Conexion.php';
                     <th class="text-center">Titulo</th>
                     <th class="text-center">Autores</th>
                     <th class="text-center">Editorial</th>
-                    <th class="text-center">Cantidad</th>
+                   
                     
                     <th class="text-center"></th>
 
@@ -28,7 +28,7 @@ include_once '../app/Conexion.php';
                             <td class="text-center"><?php echo $fila['titulo'] ?></td>
                             <td class="text-center"><?php echo $fila['autor'] ?></td>
                             <td class="text-center"><?php echo $fila['editorial'] ?></td>
-                            <td class="text-center"><?php echo $fila['cantidad'] ?></td>
+                           
                             
                             <td class="text-center"><button class="btn btn-danger"> <i class="Medium material-icons prefix">delete</i> </button></td>
                         </tr>

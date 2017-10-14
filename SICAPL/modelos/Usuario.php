@@ -6,11 +6,11 @@ class Usuario{
     private $apellido;
     private $telefono;
     private $email;
-    private $direccion;
     private $foto;
     private $sexo;
     private $estado;
     private $observacion;
+    private $direccion;
 
     function __construct() {
         
@@ -22,8 +22,11 @@ class Usuario{
     function setObservacion($observacion) {
         $this->observacion = $observacion;
     }
+    function getDireccion() {
+        return $this->direccion;
+    }
 
-        
+            
     function getCodigo_usuario() {
         return $this->codigo_usuario;
     }

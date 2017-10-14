@@ -21,7 +21,7 @@ $(document).ready(function () {
                 required: true,
                 minlength: 10
             },
-            nameValidacionX:{
+            nameValidacionXE:{
                   required: true,
                   equalTo: "#idSecretoEL"
             }
@@ -72,7 +72,7 @@ $(document).ready(function () {
             NameNivelE :{
                 required: "Seleccione un Nivel"
             },
-            nameValidacionX:{
+            nameValidacionXE:{
               required: "debe proporcionar su actual contraseña para modificar",
               equalTo: "debe proporcionar su actual contraseña para modificar"
             }
