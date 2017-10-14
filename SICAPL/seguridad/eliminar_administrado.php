@@ -4,7 +4,7 @@
     <input type="hidden" id="idOtroCarnet" name="nameOtroCarnet">
 
     <!--este es el modal-->
-    <div id="edicion_administradores" class="modal modal-fixed-footer nuevo">
+    <div id="eliminacion_administradores" class="modal modal-fixed-footer nuevo">
         <div class="modal-heading panel-heading">
             <h3 class="text-center">Dar de Baja Administradores</h3>
         </div>
@@ -54,7 +54,8 @@
                                             ?>
 
                                             <option value="<?php echo $filaz->getCodigo_administrador(); ?>"><?php echo $filaz->getNombre() . ' ' . $lista->getApellido(); ?></option>
-                                        <?php }
+                                            <?php
+                                        }
                                     }
                                     ?>
 
@@ -71,26 +72,24 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="modal-footer">
-        <div class="row">
-            <div class="col-md-6 text-right"><button href="#" class="btn btn-success">Guardar</button></div>
-            <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger" onclick="location.href = 'inicio_usuario.php';">Salir</a></div>
+        <div class="modal-footer">
+            <div class="row">
+                <div class="col-md-6 text-right"><button href="#" class="btn btn-success">Guardar</button></div>
+                <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger" onclick="location.href = 'inicio_seguridad.php';">Salir</a></div>
+            </div>
         </div>
     </div>
-</div>
-<!--este es el fin de modal-->
-
+    <!--este es el fin de modal-->
 </form>
+
 <?php
-    if (isset($_REQUEST["banderaEliminacion"])) {
+if (isset($_REQUEST["banderaEliminacion"])) {
 
-        $administrador = new Administrador();
-        $administrador->setObservacion($_REQUEST['nameMotivoEliminacion']);
-        $administrador->setEstado(0);
-        $codigo_eliminar = $_REQUEST['codigo_eliminacion'];
+    $administrador = new Administrador();
+    $administrador->setObservacion($_REQUEST['nameMotivoEliminacion']);
+    $administrador->setEstado(0);
+    $codigo_eliminar = $_REQUEST['nameOtroCarnet'];
 
-        Repositorio_administrador::eliminar_administrador(Conexion::obtener_conexion(), $administrador, $codigo_eliminar);
-      
-    }
-    ?>
+    Repositorio_administrador::eliminar_administrador(Conexion::obtener_conexion(), $administrador, $codigo_eliminar);
+}
+?>

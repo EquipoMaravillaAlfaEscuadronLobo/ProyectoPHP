@@ -94,6 +94,7 @@ function abrir_edicion_usuario(nombre,apellido,direccion,email,telefono,sexo,pas
      
  $('#edicion_usuario').modal('open');
 }
+
 function abrir_eliminacion_usuario(nombre,apellido,carnet,password) {
     $("#idOtroCarnet").val(carnet);
     $("#idNombreEliminado").val(nombre+ " "+ apellido);
@@ -104,13 +105,12 @@ function abrir_eliminacion_usuario(nombre,apellido,carnet,password) {
  $('#eliminacion_usuario').modal('open');
 }
 
-
-
-
-function abrir_eliminacion_administrador(nombre, apellido,usuario) {
+function abrir_eliminacion_administrador(nombre, apellido,usuario,password) {
     $("#idNombreEl").val(nombre +" " +apellido);
     $("#idUsuarioEl").val(usuario);
-    $("#codigo_eliminacion").val(usuario);
+    $("#idSecretoEL").val(password);
+    $("#idOtroCarnet").val(usuario);
+    
   
  $('#eliminacion_administradores').modal('open');
 }

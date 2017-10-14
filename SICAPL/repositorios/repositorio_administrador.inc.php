@@ -200,7 +200,7 @@ class Repositorio_administrador {
 
         if (isset($conexion)) {
             try {
-
+                echo 'hay conexion en eliminar administrador';
                 $observacion = $administrador->getObservacion();
                 $estado = $administrador->getEstado();
 
