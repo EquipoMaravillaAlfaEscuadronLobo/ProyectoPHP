@@ -50,7 +50,13 @@ class Repositorio_administrador {
                     echo '<script>swal("Excelente!", "Registro guardado con exito", "success");</script>';
                 } else {
                     echo '<script>'
-                    . 'swal("Advetencia!", "El nombre de usuario que introdujo ya esta en uso, favor introdusca otro", "warning");    </script>';
+                    . 'swal("Advetencia!", "El nombre de usuario que introdujo ya esta en uso, favor introdusca otro", "warning");'
+                    . '$("#idNombre").val("'.$nombre.'"); $("#idApellido").val("'.$apellido.'");'
+                    . '$("#idUser").val("'.$codigo_administrador.'"); $("#idDui").val("'.$dui.'");'
+                    . '$("#idFecha").val("'.$fecha.'"); $("#idEmail").val("'.$email.'");'
+                    . 'if ("'.$nivel.'" == "0") {$("#idRoot").attr("checked", "checked");} else {$("#idAdministrador").attr("checked", "checked");}'
+                    . 'if ("'.$sexo.'" == "Masculino") {$("#idHombre").attr("checked", "checked");} else {$("#idMujer").attr("checked", "checked");}'
+                    . '</script>';
                 }
             } catch (PDOException $ex) {
                 echo '<script>swal("No se puedo realizar el registro", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
