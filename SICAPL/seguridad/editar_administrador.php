@@ -57,7 +57,7 @@
                             <div class="col m1"></div>
                             <div class="input-field col m5">
                                 <i class="fa fa-calendar prefix"></i> 
-                                <input type="text" id="idFechaE" name="nameFechaE" class="text-center datepicker" required="" value=" ">
+                                <input type="text" id="idFechaE" name="nameFechaE" class="text-center datepicker2" required="" value=" ">
                                 <label for="idFechaE">Fecha de Nacimiento</label>
                             </div>
                             <div class="input-field col m5">

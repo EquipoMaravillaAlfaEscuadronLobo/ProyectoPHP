@@ -1,3 +1,12 @@
+<?php
+include_once '../app/Conexion.php';
+include_once '../modelos/Administrador.inc.php';
+include_once '../repositorios/repositorio_administrador.inc.php';
+
+$administrador = Repositorio_administrador::obtener_administrador_actual(Conexion::obtener_conexion(), 'admi01');
+?>
+
+
 <!--inicio de container -->
 <div class="container">
     <!--    inicio de formulario-->

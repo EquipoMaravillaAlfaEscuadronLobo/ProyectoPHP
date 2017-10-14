@@ -286,6 +286,40 @@ class Repositorio_administrador {
         return $administrador;
     }
 
+    public static function obtener_administrador_actual($conexion, $codigo) {
+        $administrador = new Administrador();
+
+        if (isset($conexion)) {
+            try {
+                $sql = "select * from administradores where (codigo_administrador = '$codigo')";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+                        $administrador = new Administrador();
+                        $administrador->setApellido($fila['apellido']);
+                        $administrador->setCodigo_administrador($fila['codigo_administrador']);
+                        $administrador->setDui($fila['dui']);
+                        $administrador->setEstado($fila['estado']);
+                        $administrador->setFoto($fila['foto']);
+                        $administrador->setNivel($fila['nivel']);
+                        $administrador->setNombre($fila['nombre']);
+                        $administrador->setObservacion($fila['observacion']);
+                        $administrador->setPasword($fila['pasword']);
+                        $administrador->setSexo($fila['sexo']);
+                        $administrador->setFecha($fila['fecha']);
+                        $administrador->setEmail($fila['email']);
+                    }
+                }
+            } catch (PDOException $exc) {
+                print('ERROR' . $exc->getMessage());
+            }
+        }
+        return $administrador;
+    }
+
 }
 
 ?>
