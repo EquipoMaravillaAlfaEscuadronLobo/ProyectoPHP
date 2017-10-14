@@ -89,6 +89,8 @@ class Repositorio_administrador {
                         $administrador->setObservacion($fila['observacion']);
                         $administrador->setPasword($fila['pasword']);
                         $administrador->setSexo($fila['sexo']);
+                        $administrador->setFecha($fila['fecha']);
+                        $administrador->setEmail($fila['email']);
 
                         $lista_administradores[] = $administrador;
                     }

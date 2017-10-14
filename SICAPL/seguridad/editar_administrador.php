@@ -1,5 +1,5 @@
 <form id="editar-formulario" method="post" action="" autocomplete="off" >
-    <input type="hidden" value="111111" id="idSecreto">
+    <input type="hidden" id="idSecreto" value="">
     <div class="row">
         <div class="panel" name="libros">
             <div class="panel-heading text-center">
@@ -14,12 +14,12 @@
                     <div class="col-md-1"></div>
                     <div class="input-field col m5 input-group">
                         <i class="fa fa-user-circle prefix"></i> 
-                        <input type="text" id="idNombreE" name="nameNombreE"  class="text-center validate" maxlength="25" minlength="3" required="" value="Ligia Alferez">
+                        <input type="text" id="idNombreE" name="nameNombreE"  class="text-center validate" maxlength="25" minlength="3" required="" value=" ">
                         <label for="idNombreE" class="col-sm-4 control-labe">Nombre <small> (Ej: Nombre1 Nombre2)</small></label>
                     </div>
                     <div class="input-field col m5">
                         <i class="fa fa-user-circle prefix"></i> 
-                        <input type="text" id="idApellidoE" name="nameApellidoE"  class="text-center validate" maxlength="25" minlength="3" required="" value="Muñoz">
+                        <input type="text" id="idApellidoE" name="nameApellidoE"  class="text-center validate" maxlength="25" minlength="3" required="" value=" ">
                         <label for="idApellidoE">Apellido <small>(Ej: Apellido1 Apellido2)</small></label>
                     </div>
                 </div>
@@ -27,12 +27,12 @@
                     <div class="col-md-1"></div>
                     <div class="input-field col m5">
                         <i class="fa fa-vcard prefix"></i> 
-                        <input type="text" id="idUserE" name="nameUserE" class="text-center validate" minlength="4" maxlength="14" value="jhon01" required="">
+                        <input type="text" id="idUserE" name="nameUserE" class="text-center validate" minlength="4" maxlength="14" required="" value=" ">
                         <label for="idUserE">Nmbre De Usuario<small>(Ej: juan01)</small> </label>
                     </div>
                     <div class="input-field col m5">
                         <i class="fa fa-credit-card prefix"></i> 
-                        <input type="text" id="idDuiE" name="idDuiE" class="text-center validate" minlength="10" required="">
+                        <input type="text" id="idDuiE" name="idDuiE" class="text-center validate" minlength="10" required="" value=" ">
                         <label for="idDuiE">Dui <small>(Ej: 02436390-9)</small></label>
                     </div>
                                        
@@ -54,12 +54,12 @@
                     <div class="col m1"></div>
                     <div class="input-field col m5">
                         <i class="fa fa-calendar prefix"></i> 
-                        <input type="text" id="idFechaE" name="nameFechaE" class="text-center datepicker" required="" value="2 de Octubre, 1990">
+                        <input type="text" id="idFechaE" name="nameFechaE" class="text-center datepicker" required="" value=" ">
                         <label for="idFechaE">Fecha de Nacimiento</label>
                     </div>
                     <div class="input-field col m5">
                         <i class="fa fa-envelope-o prefix"></i> 
-                        <input type="email" id="idEmail" name="nameEmail" class="text-center validate" required="" >
+                        <input type="email" id="idEmailE" name="nameEmail" class="text-center validate" required=""  value=" ">
                         <label for="idEmail">Email <small>(Ej: correo@gmail.com)</small> </label>
                     </div> 
                 </div>
@@ -76,7 +76,7 @@
                                     <input type="radio" id="idHombreE"  name="NameSexoE" class="text-center with-gap" >
                                     <label for="idHombreE">Masculino</label>
 
-                                    <input type="radio" id="idMujerE" name="NameSexoE" class="text-center with-gap" checked="">
+                                    <input type="radio" id="idMujerE" name="NameSexoE" class="text-center with-gap">
                                     <label for="idMujerE">Femenino</label>
                                 </div>
                             </div>
@@ -91,7 +91,7 @@
                                     <input type="radio" id="idRootE"  name="NameNivelE"  class="text-center with-gap" >
                                     <label for="idRootE">Root</label>
 
-                                    <input type="radio" id="idAdministrador" name="NameNivel"  class="text-center with-gap" checked="">
+                                    <input type="radio" id="idAdministrador" name="NameNivel"  class="text-center with-gap">
                                     <label for="idAdministrador">Administrador</label>
                                 </div>
                             </div>
@@ -107,7 +107,7 @@
                             <input type="file">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text" name="nameFotoE" id="idFoto" value="imagenes.jpg">
+                            <input class="file-path validate" type="text" name="nameFotoE" id="idFoto">
                             <input type="file" id="files" name="files[]">
                         </div>
                     </div>

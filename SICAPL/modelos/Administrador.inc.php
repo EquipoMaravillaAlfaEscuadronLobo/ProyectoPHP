@@ -11,12 +11,23 @@ class Administrador{
     private $estado;
     private $observacion;
     private $email;
+    private $fecha;
     
     
    
 function __construct() {
      
     }
+    
+    function getFecha() {
+        return $this->fecha;
+    }
+
+    function setFecha($fecha) {
+        $this->fecha = $fecha;
+    }
+
+        
     function getCodigo_administrador() {
         return $this->codigo_administrador;
     }

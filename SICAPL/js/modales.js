@@ -43,6 +43,22 @@ $(document).ready(function () {
 
 });
 
+function abrir_edicion_administrador(nombre, apellido, user, dui, fecha, email,password) {
+    $('#idNombreE').val(nombre);
+    $('#idApellidoE').val(apellido);
+    $('#idUserE').val(user);
+    $('#idDuiE').val(dui);
+    $('#idFechaE').val(fecha);
+    $('#idEmailE').val(email);
+    $('#idSecreto').val(password);
+
+
+
+
+    $('#edicion').modal('open');
+}
+
+
 
 function abrirModal() {
     $('#nuevo').modal('open');
@@ -58,9 +74,7 @@ function abrirEdicionAut() {
 function abrirEdicionEdi() {
     $('#edicionEdi').modal('open');
 }
-function abrirEdicion() {
-    $('#edicion').modal('open');
-}
+
 //  FUNCIONES QUE SE OCUPAN PARA ACTIVO FIJO
 function nuevaCat(opcion) {
     if (opcion == 1) {
@@ -93,6 +107,7 @@ function nuevoMant() {
 function nuevoEnc() {
     $('#actualizarCaracteristicas').modal('open');
 }
+
 
 
 
