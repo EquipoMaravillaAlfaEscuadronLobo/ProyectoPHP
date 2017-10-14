@@ -106,7 +106,7 @@
         <div class="panel">
             <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion" href="#collapse-autores">Registro de Autores</a></div>
             <div id="collapse-autores" class="panel-collapse collapse">
-                <div class="panel-body"><form action="newAutor.php" name="frmAutor" method="post" id="frmAutor" target="_blank">
+                <div class="panel-body"><form action="newAutor.php" name="frmAutor" method="post" id="frmAutor">
                         <div class="row">
                         	<div class="col-md-12">
                         		<div class="input-field">
@@ -157,7 +157,7 @@
                         </div>
                 </div>
                 <div class="panel-footer text-center">
-                    <button type="submit" class="btn btn-success" >Guardar</button><button type="reset" class="btn btn-danger">Cancelar</button>
+                    <button type="submit" class="btn btn-success" form="frmAutor">Guardar</button><button type="reset" class="btn btn-danger">Cancelar</button>
                     </form>
                 </div>
             </div>
@@ -221,50 +221,41 @@
     </div>
 </div>
 
-
+<script src="jquery-1.3.min.js" language="javascript"></script>
 <script type="text/javascript">
-$(function(){
- $("#btn_enviar").click(function(){
- var url = "newAutor.php"; // El script a dónde se realizará la petición.
-    $.ajax({
-           type: "POST",
-           url: url,
-           data: $("#frmAutor").serialize(), // Adjuntar los campos del formulario enviado.
-           success: function(data)
-           {
-                swal ( "Oops" ,  data ,  "error" ) // Mostrar la respuestas del script PHP.
-           }
-         });
-
-    return false; // Evitar ejecutar el submit del formulario.
- });
-});
-
-
-    function guardarAutor() {
-    
-
-    if (AutorValidado()) {
-        $.post("newAutor.php", {nombre: nombre, apellido:apellido, fecha_nac:fecha_nac, bio:bio}, function(mensaje) {
-            
-            if(mensaje=="1"){
-           swal({
+$(document).ready(function() {
+   // Esta primera parte crea un loader no es necesaria
+    $().ajaxStart(function() {
+        $('#loading').show();
+        $('#result').hide();
+    }).ajaxStop(function() {
+        $('#loading').hide();
+        $('#result').fadeIn('slow');
+    });
+   // Interceptamos el evento submit
+    $('#frmAutor, #fat, #fo3').submit(function() {
+  // Enviamos el formulario usando AJAX
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            // Mostramos un mensaje con la respuesta de PHP
+            success: function() {
+                   swal({
                     title: "Exito",
                     text: "Autor Registrado",
                     type: "success"},
                     function(){
                         //location.href="home.php";
                     }
+            }
+        })        
+        return false;
+    }); 
+})
 
-                    );
-         }else{
-            swal ( "Oops" ,  "Contraseña Incorrecta" ,  "error" )
-            // $('input#nombre').addClass("invalidado");
-         }
-         return false;
-        }); 
-    } 
-};
+
+    
 function AutorValidado(){
     return true;
 }
