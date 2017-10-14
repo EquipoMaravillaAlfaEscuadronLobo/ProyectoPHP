@@ -24,7 +24,7 @@ $(document).ready(function () {
             },
             namePass1E: {
                 
-                minlength: 5
+                minlength: 6
             },
             namePass2E: {
                 
@@ -77,7 +77,7 @@ $(document).ready(function () {
             },
             namePass1E: {
             
-                minlength: "La contraseña debe de tener por lo menos 5 caracteres"
+                minlength: "La contraseña debe de tener por lo menos 6 caracteres"
             },
             namePass2E: {
                 

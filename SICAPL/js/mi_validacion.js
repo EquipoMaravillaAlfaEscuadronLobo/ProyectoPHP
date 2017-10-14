@@ -25,7 +25,7 @@ $(document).ready(function () {
             },
             namePass1: {
                 required: true,
-                minlength: 5
+                minlength: 6
             },
             namePass2: {
                 required: true,
@@ -47,7 +47,7 @@ $(document).ready(function () {
             },
             nameUser: {
                 required: true,
-                minlength: 3,
+                minlength: 6,
                 maxlength: 14
             },
             nameTelefono: {
@@ -76,7 +76,7 @@ $(document).ready(function () {
             },
             namePass1: {
                 required: "Ingrese una contraseña",
-                minlength: "La contraseña debe de tener por lo menos 5 caracteres"
+                minlength: "La contraseña debe de tener por lo menos 6 caracteres"
             },
             namePass2: {
                 required: "Repita la contraseña",
@@ -98,7 +98,7 @@ $(document).ready(function () {
             },
             nameUser : {
                 required: "ingrese un nombre de usuario ",
-                minlength: "debe de poseer por lo menos 4 caracteres "
+                minlength: "debe de poseer por lo menos 6 caracteres "
             },
             nameTelefono:{
                required: "favor ingrese su teléfono",

@@ -30,7 +30,7 @@
                             <div class="col-md-1"></div>
                             <div class="input-field col m5">
                                 <i class="fa fa-vcard prefix"></i> 
-                                <input type="text" id="idUserE" name="nameUserE" class="text-center validate" minlength="4" maxlength="14" required="" value=" " disabled="">
+                                <input type="text" id="idUserE" name="nameUserE" class="text-center validate" minlength="6" maxlength="14" required="" value=" " disabled="">
                                 <label for="idUserE">Nmbre De Usuario<small>(Ej: juan01)</small> </label>
                             </div>
                             <div class="input-field col m5">
@@ -44,12 +44,12 @@
                             <div class="col-md-1"></div>
                             <div class="input-field col m5">
                                 <i class="fa fa-eye prefix"></i> 
-                                <input type="password" id="idPass1E" name="namePass1E" class="text-center validate" autocomplete="off" minlength="5" maxlength="10"  >
+                                <input type="password" id="idPass1E" name="namePass1E" class="text-center validate" autocomplete="off" minlength="6" maxlength="10"  >
                                 <label for="idPass1E">nueva contraseña(opcional)</label>
                             </div>
                             <div class="input-field col m5">
                                 <i class="fa fa-eye prefix"></i> 
-                                <input type="password" id="idPass2E" name="namePass2E" class="text-center validate" autocomplete="off"  minlength="5" maxlength="10">
+                                <input type="password" id="idPass2E" name="namePass2E" class="text-center validate" autocomplete="off"  minlength="6" maxlength="10">
                                 <label for="idPass2E">Repita Contraseña</label>
                             </div>
                         </div>
