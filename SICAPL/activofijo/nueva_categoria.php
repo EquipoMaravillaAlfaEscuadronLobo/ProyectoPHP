@@ -53,7 +53,7 @@ if (isset($_REQUEST["bandera2"])) {
 
     Repositorio_categoria::insertar_categoria(Conexion::obtener_conexion(), $categoria);
     Conexion::cerrar_conexion();
-   
+   echo '<script language="javascript">recargarS2('.selectCat.');</script>'; 
    
 }
 ?>

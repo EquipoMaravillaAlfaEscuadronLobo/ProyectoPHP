@@ -3,10 +3,7 @@ include_once '../repositorios/repositorio_categoria.php';
 include_once '../app/Conexion.php'; 
 include_once '../modelos/Categoria.php';
 ?>
-<script src="http://www.google.com/jsapi"></script>
-<script type="text/javascript">
-  google.load("jquery", "1.2", {uncompressed:true}); 
-</script>
+
 <!--formulario usuario-->
 <div class="container">
     <form id="FORMULARIO1" method="post" class="form-horizontal" action="" autocomplete="off">
@@ -56,7 +53,14 @@ include_once '../modelos/Categoria.php';
                         </div>
                         <div class="input-field col m2" > 
                         <select id="selectCat" name="selectCat">
-                            <?php include('select_categoria.php'); ?>  
+                           <option value="0" disabled selected>Seleccione Categoria</option>
+                           <?php
+                                Conexion::abrir_conexion();  
+                                $lista_cat =Repositorio_categoria::obtener_categorias(Conexion::obtener_conexion());
+                                 foreach ($lista_cat as $lista) { 
+                                    echo"<option value='".$lista->getCodigo_tipo()."'>".$lista->getNombre()."</option>"; 
+                                 }
+                           ?>
                         </select>
                              
                         </div>
@@ -294,7 +298,7 @@ $(document).ready(function() {
 function recargarS2(val){
  
    //esperando la carga...
-   
+   alert('paso');
    //realizo la call via jquery ajax
    $.ajax({
         url: 'select_categoria.php',
