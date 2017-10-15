@@ -1,4 +1,5 @@
 <form id="editar-formulario" method="post" action="" autocomplete="off" >
+    <input type="hidden" name="bandera" id="bandera"/>
     <div id="edicion" class="modal modal-fixed-footer nuevo">
         <div class="modal-content modal-lg">
             <div class="row">
@@ -47,7 +48,7 @@
                                     <div class="input-field col m5">
                                         <i class="fa fa-eye prefix"></i> 
                                         <input type="password" id="idPass1E" name="namePass1E" class="text-center validate" autocomplete="off" minlength="5" maxlength="10" >
-                                        <label for="idPass1E">Contraseña(opcional)</label>
+                                        <label for="idPass1E">nueva contraseña(opcional)</label>
                                     </div>
                                     <div class="input-field col m5">
                                         <i class="fa fa-eye prefix"></i> 
@@ -118,7 +119,7 @@
                                     <div class="input-field col m5">
                                         <i class="fa fa-eye prefix"></i> 
                                         <input type="password" id="idValidacionX" name="nameValidacionX" class="text-center validate" autocomplete="off">
-                                        <label for="idValidacionX">Contraseña Actual</label>
+                                        <label for="idValidacionX">Para continuar por favor ingrese su contraseña</label>
                                     </div>
 
                                     <div class="row">
