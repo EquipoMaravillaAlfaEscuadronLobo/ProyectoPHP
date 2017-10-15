@@ -9,8 +9,9 @@
     $estado=0;
 
     $titulo = $_POST["titulo"];
-    echo $titulo;
+    $autores = $_POST["autores"];
     $editorial = $_POST["editorial"];
+    //echo $editorial;
     $cantidad=$_POST["cantidad"];
     $publicacion = $_POST["fecha_pub"];
     $foto =$ruta.basename($_FILES["foto"]["name"]);
@@ -29,7 +30,7 @@
         $Libro->setFoto("");
     }
 
-echo Repositorio_libros::insertarLibros(Conexion::obtener_conexion(), $Libro, $cantidad);
+echo Repositorio_libros::insertarLibros(Conexion::obtener_conexion(), $Libro, $cantidad, $autores);
     Conexion::cerrar_conexion();
 
 

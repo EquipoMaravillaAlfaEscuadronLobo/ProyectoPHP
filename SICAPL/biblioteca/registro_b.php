@@ -12,7 +12,7 @@
         <div class="panel">
             <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion" href="#collapse-libros">Registro de Libros</a></div>
             <div id="collapse-libros" class="panel-collapse collapse">
-                <div class="panel-body"><form action="newLibro.php" id="frmLibro" name="frmLibro" method="post">
+                <div class="panel-body"><form action="newLibro.php" id="frmLibro" name="frmLibro" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="input-field">
