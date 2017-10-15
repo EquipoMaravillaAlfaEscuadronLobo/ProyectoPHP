@@ -97,7 +97,7 @@
 			);
 		
 			for ($i=0; $i <count($clasificacion) ; $i++) { 
-			echo "<option value='".$clasificacion[$i]."'>";
+			echo "<option onclick='llenarCodigo()' value='".$clasificacion[$i]."'>";
 			
 			}
 			

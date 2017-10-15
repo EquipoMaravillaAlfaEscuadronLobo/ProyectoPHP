@@ -11,14 +11,14 @@
     <div class="panel-group" id="accordion">
         <div class="panel">
             <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion" href="#collapse-libros">Registro de Libros</a></div>
-            <div id="collapse-libros" class="panel-collapse collapse in">
-                <div class="panel-body"><form action="">
+            <div id="collapse-libros" class="panel-collapse collapse">
+                <div class="panel-body"><form action="newLibro.php" id="frmLibro" name="frmLibro" method="post">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="input-field">
                                     <i class="fa fa-list-ol prefix" aria-hidden="true"></i>
                                     <label for="codigo">Codigo</label>
-                                    <input type="text" id="codigo" class="form-control" disabled>
+                                    <input type="text" id="codigol" name="codigo" class="form-control" value="CEJ-002-" readonly="true">
                                 </div>
                             </div>
                         </div>
@@ -28,17 +28,17 @@
                                 <div class="input-field">
                                     <i class="fa fa-bookmark prefix" aria-hidden="true"></i>
                                     <label for="Titulo">Titulo</label>
-                                    <input type="text" id="Titulo" class="form-control">
+                                    <input type="text" id="Titulo" name="titulo" class="form-control">
                                 </div>
                             </div>
                         	<div class="col-md-6">
                         		<div class="input-field">
                         			<i class="fa fa-list-ol prefix" aria-hidden="true"></i>
                         			<label for="clasificacion">Clasificacion</label>
-                        			<input type="text" id="clasificacion" list="clasificacionlist"class="form-control" >
+                        			<input onkeyup="llenarCodigo()" onchange="llenarCodigo()" onclick="llenarCodigo()" type="text" id="clasificacion" name="clasificacion" list="clasificacionlist"class="form-control" >
                         		</div>
                         	</div>
-                        <datalist id="clasificacionlist">
+                        <datalist id="clasificacionlist" onchange="llenarCodigo()">
                             <?php
                             include 'clasificacion.php';
                             //getOptions();
@@ -50,7 +50,7 @@
                         	<div class="col-md-6">
                         		<div class="input-field">
                         		<i class="fa fa-pencil prefix" aria-hidden="true"></i>
-                        			<select multiple>
+                        			<select name="autores[]" multiple id="autores">
 								     <?php 
                                       include 'opcionesAutores.php';   
                                      ?>
@@ -63,7 +63,7 @@
                         		<div class="input-field">
                         			<i class="fa fa-sort prefix" aria-hidden="true"></i>
                         			<label for="cantidad">Cantidad</label>
-                        			<input type="number" id="cantidad" class="form-control">
+                        			<input type="number" id="cantidad" name="cantidad" class="form-control">
                         		</div>
                         	</div>
                         </div>
@@ -71,7 +71,7 @@
                         	<div class="col-md-6">
                         		<div class="input-field">
                         		<i class="fa fa-bookmark-o prefix" aria-hidden="true"></i>
-                        			<select>
+                        			<select name="editorial" id="editorial">
 								     <?php 
                                       include 'opcionesEditorial.php';   
                                      ?>
@@ -95,7 +95,7 @@
                         		<div class="input-field">
                         			<i class="fa fa-calendar prefix" aria-hidden="true"></i>
                         			<label for="fecha_pub" class="active">Fecha de Publicacion</label>
-                        			<input type="date" id="fecha_pub" class="datepicker">
+                        			<input type="date" id="fecha_pub" name="fecha_pub" class="datepicker">
                         		</div>
                         	</div>
                         
@@ -106,7 +106,7 @@
         									<input type="file">
       									</div>
       									<div class="file-path-wrapper">
-                        					<input type="text" id="file_foto" class="form-control file-path validate">
+                        					<input type="file" accept="image/*" id="foto" name="foto" class="form-control file-path validate">
                         				</div>
                         		</div>
                         	</div>
@@ -128,7 +128,7 @@
                         		<div class="input-field">
                         			<i class="fa fa-list-ol prefix" aria-hidden="true"></i>
                         			<label for="codigo">Codigo</label>
-                        			<input type="text" id="codigo" class="form-control" disabled value="<?php echo $ultimoAutor ?>">
+                        			<input type="text" id="codigoa" class="form-control" disabled value="<?php echo $ultimoAutor ?>">
                         		</div>
                         	</div>
                         </div>
@@ -187,7 +187,7 @@
                         		<div class="input-field">
                         			<i class="fa fa-list-ol prefix" aria-hidden="true"></i>
                         			<label for="codigo">Codigo</label>
-                        			<input type="text" id="codigo" class="form-control" disabled value="<?php echo $ultimaEditorial ?>">
+                        			<input type="text" id="codigoe" class="form-control" disabled value="<?php echo $ultimaEditorial ?>">
                         		</div>
                         	</div>
                         
@@ -237,3 +237,13 @@
     </div>
 </div>
 
+<script type="text/javascript">
+    function llenarCodigo () {
+         document.getElementById('codigol').value="";
+        var texto="CEJ-002-";
+        var clas=document.getElementById('clasificacion').value.slice(0,3);
+        document.getElementById('codigol').value=texto+clas;
+
+    }
+
+</script>

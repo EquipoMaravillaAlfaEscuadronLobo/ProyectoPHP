@@ -69,7 +69,7 @@ $(document).ready(function() {
    // Esta primera parte crea un loader no es necesaria
     
    // Interceptamos el evento submit
-    $('#frmAutor, #frmEditorial').submit(function() {
+    $('#frmAutor, #frmEditorial, #frmLibro').submit(function() {
   // Enviamos el formulario usando AJAX
         $.ajax({
             type: 'POST',
