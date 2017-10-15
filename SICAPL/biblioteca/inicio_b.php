@@ -62,3 +62,37 @@ include_once('../plantillas/menu.php');
 <?php
 include_once('../plantillas/pie_de_pagina.php');
 ?>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+   // Esta primera parte crea un loader no es necesaria
+    
+   // Interceptamos el evento submit
+    $('#frmAutor, #frmEditorial').submit(function() {
+  // Enviamos el formulario usando AJAX
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            // Mostramos un mensaje con la respuesta de PHP
+            success: function() {
+                   swal({
+                    title: "Exito",
+                    text: "Autor Registrado",
+                    type: "success"},
+                    function(){
+                        //location.href="home.php";
+                    }
+            }
+        })        
+        return true;
+    }); 
+})
+
+
+    
+function AutorValidado(){
+    return true;
+}
+</script>

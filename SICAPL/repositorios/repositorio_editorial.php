@@ -1,26 +1,26 @@
-<?php 
-	/**
-	* 
-	*/
-	class Repositorio_autores 
-	{
-		
-		public static function insertarAutor($conexion, $autor){
-			 $autor_insertado = false;
+<?php
+/**
+* 
+*/
+class Repositorio_editorial
+{
+	
+	public static function insertarEditorial($conexion, $editorial){
+			 $editorial_insertada = false;
        if (isset($conexion)) {
             try {
                 
                
                  
-                $nombre = $autor->getNombre();
+                $nombre = $editorial->getNombre();
 
-                $apellido = $autor->getApellido();
-                $nacimiento = $autor->getNacimiento();            
-                $biografia = $autor->getBiografia();
+                $direccion = $editorial->getdireccion();
+                $email = $editorial->getemail();            
+                $telefono = $editorial->gettelefono();
                 
                 
-                $sql = 'INSERT INTO autores(nombre,apellido,nacimiento,biografia)'
-                        . ' values (:nombre,:apellido,:nacimiento,:biografia)';
+                $sql = 'INSERT INTO editoriales(nombre,direccion,email,telefono)'
+                        . ' values (:nombre,:direccion,:email,:telefono)';
                                 ///estos son alias para que PDO pueda trabajar 
                 $sentencia = $conexion->prepare($sql);
                 
@@ -28,17 +28,17 @@
                 
                 
                 $sentencia->bindParam(':nombre', $nombre, PDO::PARAM_STR);
-                $sentencia->bindParam(':apellido', $apellido, PDO::PARAM_STR);
-                $sentencia->bindParam(':nacimiento', $nacimiento, PDO::PARAM_STR);
-                $sentencia->bindParam(':biografia', $biografia, PDO::PARAM_STR);
+                $sentencia->bindParam(':direccion', $direccion, PDO::PARAM_STR);
+                $sentencia->bindParam(':email', $email, PDO::PARAM_STR);
+                $sentencia->bindParam(':telefono', $biografia, PDO::PARAM_STR);
                                              
                 
-                $autor_insertado = $sentencia->execute();
+                $editorial_insertada = $sentencia->execute();
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();
             }
         }
-        return $autor_insertado;
+        return $editorial_insertada;
 		}
 
 		public function ObtenerUltimo($conexion)
@@ -46,7 +46,7 @@
 			$ultimo=1;
 			if (isset($conexion)) {
 				try {
-				$sql="SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'diseno1' AND TABLE_NAME = 'autores'";
+				$sql="SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'diseno1' AND TABLE_NAME = 'editoriales'";
 
 				 foreach ($conexion->query($sql) as $row) {	
 				 	$ultimo=$row[0];
@@ -58,12 +58,13 @@
 			return $ultimo;
 		}
 
-		public function ListaAutores($conexion)
+
+		public function ListaEditorial($conexion)
 		{
 			$resultado="";
 			if (isset($conexion)) {
 				try{
-				$sql="Select * from autores";
+				$sql="Select * from editoriales";
 				$resultado=$conexion->query($sql);
 			}catch(PDOException $ex){
 print 'ERROR: ' . $ex->getMessage();
@@ -72,5 +73,6 @@ print 'ERROR: ' . $ex->getMessage();
 			}
 			return $resultado;
 		}
-	}
- ?>
+	
+}
+?>

@@ -2,6 +2,7 @@
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/materialize.js"></script>
+<script src="../js/modales.js"></script>
 <script src="../js/jquery.dataTables.min.js"></script>
 <script src="../js/data-tables-script.js"></script>
 <script src="../js/jquery.validate.js"></script>
@@ -14,7 +15,7 @@
 <script src="../js/jquery.inputmask.bundle.js"></script>
 <script src="../js/Mascara.js"></script>
 <script src="../js/inicializaciones.js"></script>
-<script src="../js/modales.js"></script>
+
 <script src="../js/Libros.js"></script>
 <script src="../js/foto.js"></script>
 

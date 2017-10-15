@@ -1,4 +1,14 @@
 $(document).ready(function () {
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: true, // Creates a dropdown of 15 years to control year,
+        today: 'Hoy',
+        clear: 'Borrar',
+        close: 'Aceptar',
+        format: 'dd/mm/yyyy',
+        max: new Date(),
+        closeOnSelect: true // Close upon selecting a date,
+    });
     $('.collapse')
             .on('shown.bs.collapse', function () {
                 $(this).parent()
@@ -27,20 +37,11 @@ $(document).ready(function () {
 
     }
     );
-    $('.datepicker').pickadate({
-        selectMonths: true, // Creates a dropdown to control month
-        selectYears: false, // Creates a dropdown of 15 years to control year,
-        today: 'Hoy',
-        clear: 'Borrar',
-        close: 'Aceptar',
-        format: 'dd/mm/yyyy',
-        max: new Date(),
-        closeOnSelect: true // Close upon selecting a date,
-    });
-    $('#tabla-paginada2').DataTable();
+   
+    
 
-    $('select').material_select();
 
+   
 });
 
 function abrir_edicion_administrador(nombre, apellido, user, dui, fecha, email, password, nivel, sexo) {
