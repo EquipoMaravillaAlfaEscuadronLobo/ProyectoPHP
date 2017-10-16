@@ -12,7 +12,8 @@
         <div class="panel">
             <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion" href="#collapse-libros">Registro de Libros</a></div>
             <div id="collapse-libros" class="panel-collapse collapse">
-                <div class="panel-body"><form action="newLibro.php" id="frmLibro" name="frmLibro" method="post" enctype="multipart/form-data">
+                <div class="panel-body">
+                <form action="newLibro.php" id="frmLibro" enctype="multipart/form-data" autocomplete="off" method="POST" class="librof">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="input-field">
@@ -28,7 +29,7 @@
                                 <div class="input-field">
                                     <i class="fa fa-bookmark prefix" aria-hidden="true"></i>
                                     <label for="Titulo">Titulo</label>
-                                    <input type="text" id="Titulo" name="titulo" class="form-control">
+                                    <input type="text" id="titulo" name="titulo" class="form-control">
                                 </div>
                             </div>
                         	<div class="col-md-6">
@@ -50,7 +51,7 @@
                         	<div class="col-md-6">
                         		<div class="input-field">
                         		<i class="fa fa-pencil prefix" aria-hidden="true"></i>
-                        			<select name="autores[]" multiple id="autores">
+                        			<select name="autores[]" multiple id="autores" class="autores">
 								     <?php 
                                       include 'opcionesAutores.php';   
                                      ?>
@@ -71,7 +72,7 @@
                         	<div class="col-md-6">
                         		<div class="input-field">
                         		<i class="fa fa-bookmark-o prefix" aria-hidden="true"></i>
-                        			<select name="editorial" id="editorial">
+                        			<select name="editorial" id="editorial" class="editorial">
 								     <?php 
                                       include 'opcionesEditorial.php';   
                                      ?>
@@ -114,15 +115,15 @@
                        
                 </div>
                 <div class="panel-footer text-center">
-                    <button class="btn btn-success">Guardar</button><button type="reset" class="btn btn-danger">Cancelar</button>
-                    </form>
+                    <button class="btn btn-success" onClick="enviar()">Guardar</button><button type="reset" class="btn btn-danger">Cancelar</button>
+                   </form>
                 </div>
             </div>
         </div>
         <div class="panel">
             <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion" href="#collapse-autores">Registro de Autores</a></div>
             <div id="collapse-autores" class="panel-collapse collapse">
-                <div class="panel-body"><form action="newAutor.php" name="frmAutor" method="post" id="frmAutor" enctype="multipart/form-data" >
+                <div class="panel-body"><form action="newAutor.php" class="autorf" name="frmAutor" method="post" id="frmAutor" enctype="multipart/form-data" >
                         <div class="row">
                         	<div class="col-md-12">
                         		<div class="input-field">
@@ -181,7 +182,7 @@
         <div class="panel">
             <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion" href="#collapse-editoriales">Registro de Editoriales</a></div>
             <div id="collapse-editoriales" class="panel-collapse collapse">
-                <div class="panel-body"><form action="newEditorial.php" name="frmEditoriales" id="frmEditoriales" method="post">
+                <div class="panel-body"><form action="newEditorial.php" class="editorialf" name="frmEditoriales" id="frmEditoriales" method="post">
 					<div class="row">
                         	<div class="col-md-6">
                         		<div class="input-field">
@@ -245,5 +246,7 @@
         document.getElementById('codigol').value=texto+clas;
 
     }
-
+  
+    
 </script>
+

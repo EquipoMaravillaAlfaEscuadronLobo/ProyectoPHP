@@ -1,5 +1,6 @@
 <!--<script crossorigin="anonymous" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" src="../js/jquery.min.js"></script>-->
-<script src="../js/jquery.min.js"></script>
+<!--<script crossorigin="anonymous" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" src="../js/jquery.min.js"></script>-->
+<script src="../js/jquery-1.11.2.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/materialize.js"></script>
 <script src="../js/modales.js"></script>

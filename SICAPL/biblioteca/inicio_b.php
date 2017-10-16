@@ -62,37 +62,61 @@ include_once('../plantillas/menu.php');
 <?php
 include_once('../plantillas/pie_de_pagina.php');
 ?>
-
-
 <script type="text/javascript">
 $(document).ready(function() {
-   // Esta primera parte crea un loader no es necesaria
-    
-   // Interceptamos el evento submit
-    $('#frmAutor, #frmEditorial, #frmLibro').submit(function() {
-  // Enviamos el formulario usando AJAX
-        $.ajax({
-            type: 'POST',
-            url: $(this).attr('action'),
-            data: $(this).serialize(),
-            // Mostramos un mensaje con la respuesta de PHP
-            success: function() {
-                   swal({
+     $('.librof, .autorf, .editorialf').submit(function(){
+        //var codigo=$('#codigol').val();
+   // alert(codigo);
+    $.ajax({
+        url:$(this).attr('action'),
+        type:'POST',
+        data:$(this).serialize()
+    }).done(function(resp){
+       if(resp==1){
+                swal({
                     title: "Exito",
-                    text: "Autor Registrado",
+                    text: "Libro Registrado",
                     type: "success"},
                     function(){
-                        //location.href="home.php";
+                       document.getElementById('frmLibro').reset();
+                       
+                       recargarCombos();
+                        
                     }
-            }
-        })        
-        return true;
-    }); 
+
+                    );
+            
+         }else{
+                swal ( "Oops" ,  "Libro no ingresado" ,  "error" )
+             
+         }
+    })
+    return false;
 })
-
-
     
-function AutorValidado(){
-    return true;
+
+});
+function recargarCombos () {
+    $.ajax({
+        url:'opcionesAutores.php',
+        type:'POST',
+        data:''
+    }).done(function(resp){
+         $('select').material_select('destroy');
+      $('select.autores').html(resp).fadeIn();
+      $('select').material_select();
+    })
+
+     $.ajax({
+        url:'opcionesEditorial.php',
+        type:'POST',
+        data:''
+    }).done(function(resp){
+         $('select').material_select('destroy');
+      $('select.editorial').html(resp).fadeIn();
+      $('select').material_select();
+    })
 }
 </script>
+
+
