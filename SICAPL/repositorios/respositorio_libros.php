@@ -19,7 +19,7 @@ class Repositorio_libros
                 $foto = $libro->getFoto();
                 $estado = $libro->getEstado();
                 
-                $sql = 'INSERT INTO libros(codigo_libro,titulo,editoriales_codigo,fecha_publicacion,foto,estado)'
+                $sql = 'INSERT INTO libros(codigo_libro,titulo,codigo_editorial,fecha_publicacion,foto,estado)'
                         . ' values (:codigo,:titulo,:editorial,:publicacion,:foto, :estado)';
                                 ///estos son alias para que PDO pueda trabajar 
                 $sentencia = $conexion->prepare($sql);
@@ -45,7 +45,30 @@ class Repositorio_libros
         }
         return $libro_insertado;
 	}
-	
+	public function ListaLibros($conexion)
+        {
+            $resultado="";
+            if (isset($conexion)) {
+                try{
+                $sql="SELECT 
+libros.titulo as titulo,
+editoriales.nombre AS editorial,
+autores.nombre AS autor,
+COUNT(DISTINCT libros.titulo) as cantidad
+FROM
+libros
+INNER JOIN editoriales ON libros.codigo_editorial = editoriales.codigo_editorial
+INNER JOIN movimiento_autores ON movimiento_autores.codigo_libro = libros.codigo_libro
+INNER JOIN autores ON movimiento_autores.codigo_autor = autores.codigo_autor
+";
+                $resultado=$conexion->query($sql);
+            }catch(PDOException $ex){
+print 'ERROR: ' . $ex->getMessage();
+
+            }
+            }
+            return $resultado;
+        }
 	
 }
  ?>

@@ -1,4 +1,10 @@
-
+<?php 
+    include_once '../app/Conexion.php';
+    include_once '../modelos/Autores.php';
+    include_once '../repositorios/repositorio_autores.inc.php';
+    Conexion::abrir_conexion();
+    $listado=Repositorio_autores::ListaAutores(Conexion::obtener_conexion());
+ ?>
 <table padding="20px" class="responsive-table display" id="tabla-paginada">
                     <thead class="">
                     <th class="text-center"></th>
@@ -11,35 +17,22 @@
 
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="text-center"><button class="btn btn-success" onclick="abrirEdicionAut()"> <i class="Medium material-icons prefix">edit</i> </button></td>
-                            <td class="text-center">Hugo</td>
-                            <td class="text-center">Aguirre</td>
-                            <td class="text-center">01-01-1700</td>
-                            <td class="text-center"><button class="btn btn-info">Biografia</button></td>
-                            
-                            <td class="text-center"><button class="btn btn-danger"> <i class="Medium material-icons prefix">delete</i> </button></td>
-                        </tr>
+                    <?php 
+                        foreach ($listado as $fila) {
+                            # code...
                         
+                     ?>
                         <tr>
                             <td class="text-center"><button class="btn btn-success" onclick="abrirEdicionAut()"> <i class="Medium material-icons prefix">edit</i> </button></td>
-                            <td class="text-center">Homero</td>
-                            <td class="text-center">---</td>
-                            <td class="text-center">700 AC</td>
-                            <td class="text-center"><button class="btn btn-info">Biografia</button></td>
+                            <td class="text-center"><?php echo $fila['nombre'] ?></td>
+                            <td class="text-center"><?php echo $fila['apellido'] ?></td>
+                            <td class="text-center"><?php echo $fila['nacimiento'] ?></td>
+                            <td class="text-center"><a class="btn btn-info" href="pdf.php?direccion=<?php echo $fila['biografia']; ?>" target="_blank">Biografia</a></td>
                             
                             <td class="text-center"><button class="btn btn-danger"> <i class="Medium material-icons prefix">delete</i> </button></td>
                         </tr>
-                        <tr>
-                            <td class="text-center"><button class="btn btn-success" onclick="abrirEdicionAut()"> <i class="Medium material-icons prefix">edit</i> </button></td>
-                            <td class="text-center">Salvador Salazar</td>
-                            <td class="text-center">Arrue</td>
-                            <td class="text-center">09-05-1925</td>
-                            <td class="text-center"><button class="btn btn-info">Biografia</button></td>
-                            
-                            <td class="text-center"><button class="btn btn-danger"> <i class="Medium material-icons prefix">delete</i> </button></td>
-                        </tr>
-                        
+                        <?php } ?>
+                    
                     </tbody>
                 </table>
 
@@ -55,3 +48,9 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function mostrarpdf (direccion) {
+      window.open()
+    }
+</script>

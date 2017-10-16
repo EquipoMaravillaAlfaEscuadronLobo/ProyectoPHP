@@ -1,3 +1,10 @@
+<?php 
+   include_once '../app/Conexion.php';
+    include_once '../repositorios/repositorio_prestamolib.inc.php';
+    Conexion::abrir_conexion();
+    $listado=Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion());
+
+ ?>
 <div>
     <row>
         <div class="col-md-12">
@@ -21,22 +28,19 @@
                         <th>Estado</th>
                         </thead>
                         <tbody>
+                        <?php 
+                            foreach ($listado as $fila) {
+                         ?>
                             <tr>
-                                <td>1</td>
-                                <td>Cuentos de Barro- Salarrue</td>
-                                <td>Carlos Antonio Torres Martinez</td>
-                                <td>12/08/2017</td>
-                                <td>31/08/2017</td>
+                                <td><?php echo $fila['codigo'] ?></td>
+                                <td><?php echo $fila['titulo'] ?></td>
+                                <td><?php echo $fila['nombre']." ".$fila['apellido'] ?></td>
+                                <td><?php echo $fila['salida'] ?></td>
+                                <td><?php echo $fila['devolucion'] ?></td>
                                 <td class="alert alert-warning">Pendiente</td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Iliada- Homero</td>
-                                <td>Carlos Antonio Torres Martinez</td>
-                                <td>12/08/2017</td>
-                                <td>29/08/2017</td>
-                                <td class="alert alert-success">Finalizado</td>
-                            </tr>
+                            <?php } ?>
+                            
                         </tbody>
                     </table>
                 </div>

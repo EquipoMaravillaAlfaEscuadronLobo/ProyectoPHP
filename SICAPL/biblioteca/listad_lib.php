@@ -1,4 +1,10 @@
-
+<?php 
+include_once '../app/Conexion.php';
+    include_once '../modelos/Libros.php';
+    include_once '../repositorios/respositorio_libros.php';
+    Conexion::abrir_conexion();
+    $listado=Repositorio_libros::ListaLibros(Conexion::obtener_conexion());
+ ?>
 <table padding="20px" class="responsive-table display" id="data-table-simple">
                     <thead class="">
                     <th class="text-center"></th>
@@ -11,43 +17,23 @@
 
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="text-center"><button class="btn btn-success" onclick="abrirEdicionLib()"> <i class="Medium material-icons prefix">edit</i> </button></td>
-                            <td class="text-center">Papirusa</td>
-                            <td class="text-center">Hugo Aguirre</td>
-                            <td class="text-center">Harday Electric</td>
-                            <td class="text-center">4</td>
-                            
-                            <td class="text-center"><button class="btn btn-danger"> <i class="Medium material-icons prefix">delete</i> </button></td>
-                        </tr>
+
+                    <?php 
+                        foreach ($listado as $fila) {
+                            # code...
                         
+                     ?>
                         <tr>
                             <td class="text-center"><button class="btn btn-success" onclick="abrirEdicionLib()"> <i class="Medium material-icons prefix">edit</i> </button></td>
-                            <td class="text-center">Iliada</td>
-                            <td class="text-center">Homero</td>
-                            <td class="text-center">Anaya</td>
-                            <td class="text-center"> 3</td>
+                            <td class="text-center"><?php echo $fila['titulo'] ?></td>
+                            <td class="text-center"><?php echo $fila['autor'] ?></td>
+                            <td class="text-center"><?php echo $fila['editorial'] ?></td>
+                            <td class="text-center"><?php echo $fila['cantidad'] ?></td>
                             
                             <td class="text-center"><button class="btn btn-danger"> <i class="Medium material-icons prefix">delete</i> </button></td>
                         </tr>
-                        <tr>
-                            <td class="text-center"><button class="btn btn-success" onclick="abrirEdicionLib()"> <i class="Medium material-icons prefix">edit</i> </button></td>
-                            <td class="text-center">Odisea</td>
-                            <td class="text-center">Homero</td>
-                            <td class="text-center">Anaya</td>
-                            <td class="text-center">3</td>
-                            
-                            <td class="text-center"><button class="btn btn-danger"> <i class="Medium material-icons prefix">delete</i> </button></td>
-                        </tr>
-                        <tr>
-                            <td class="text-center"><button class="btn btn-success" onclick="abrirEdicionLib()"> <i class="Medium material-icons prefix">edit</i> </button></td>
-                            <td class="text-center">Cuentos de Barro</td>
-                            <td class="text-center">Salarrue</td>
-                            <td class="text-center">Oceano</td>
-                            <td class="text-center">2</td>
-                            
-                            <td class="text-center"><button class="btn btn-danger"> <i class="Medium material-icons prefix">delete</i> </button></td>
-                        </tr>
+                        <?php } ?>
+                       
                     </tbody>
                 </table>
 

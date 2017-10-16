@@ -64,7 +64,7 @@ include_once('../plantillas/pie_de_pagina.php');
 ?>
 <script type="text/javascript">
 $(document).ready(function() {
-     $('.librof, .autorf, .editorialf').submit(function(){
+     $('.librof').submit(function(){
         //var codigo=$('#codigol').val();
    // alert(codigo);
     $.ajax({
@@ -88,6 +88,68 @@ $(document).ready(function() {
             
          }else{
                 swal ( "Oops" ,  "Libro no ingresado" ,  "error" )
+             
+         }
+    })
+    return false;
+})
+
+
+      $('.autorf').submit(function(){
+        //var codigo=$('#codigol').val();
+   // alert(codigo);
+    $.ajax({
+        url:$(this).attr('action'),
+        type:'POST',
+        data:$(this).serialize()
+    }).done(function(resp){
+       if(resp==1){
+                swal({
+                    title: "Exito",
+                    text: "Autor Registrado",
+                    type: "success"},
+                    function(){
+                       document.getElementById('frmAutor').reset();
+                       
+                       recargarCombos();
+                        
+                    }
+
+                    );
+            
+         }else{
+                swal ( "Oops" ,  resp ,  "error" )
+             
+         }
+    })
+    return false;
+})
+
+
+       $('.editorialf').submit(function(){
+        //var codigo=$('#codigol').val();
+   // alert(codigo);
+    $.ajax({
+        url:$(this).attr('action'),
+        type:'POST',
+        data:$(this).serialize()
+    }).done(function(resp){
+       if(resp==1){
+                swal({
+                    title: "Exito",
+                    text: "Editorial Registrado",
+                    type: "success"},
+                    function(){
+                       document.getElementById('frmEditorial').reset();
+                       
+                       recargarCombos();
+                        
+                    }
+
+                    );
+            
+         }else{
+                swal ( "Oops" ,  "Editorial no ingresada" ,  "error" )
              
          }
     })

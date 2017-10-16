@@ -6,7 +6,7 @@
     
     $nombre = $_POST["nombre"];
     $telefono = $_POST["telefono"];
-    $correo = $_POST["correo"];
+    $correo = $_POST["email"];
     $direccion =$_POST["direccion"];
     
     Conexion::abrir_conexion();
