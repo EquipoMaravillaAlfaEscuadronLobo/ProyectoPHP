@@ -5,7 +5,7 @@ class Repositorio_administrador {
     public static function insertar_administrador($conexion, $administrador) {
         $administrador_insertado = false;
         // $administrador = new Administrador();
-       if (isset($conexion)) {
+        if (isset($conexion)) {
             try {
 
                 $codigo_administrador = $administrador->getCodigo_administrador();
@@ -48,11 +48,11 @@ class Repositorio_administrador {
                 } else {
                     echo '<script>'
                     . 'swal("Advetencia!", "El nombre de usuario que introdujo ya esta en uso, favor introdusca otro", "warning");'
-                    . '$("#idNombre").val("'.$nombre.'"); $("#idApellido").val("'.$apellido.'");'
-                    . '$("#idUser").val("'.$codigo_administrador.'"); $("#idDui").val("'.$dui.'");'
-                    . '$("#idFecha").val("'.$fecha.'"); $("#idEmail").val("'.$email.'");'
-                    . 'if ("'.$nivel.'" == "0") {$("#idRoot").attr("checked", "checked");} else {$("#idAdministrador").attr("checked", "checked");}'
-                    . 'if ("'.$sexo.'" == "Masculino") {$("#idHombre").attr("checked", "checked");} else {$("#idMujer").attr("checked", "checked");}'
+                    . '$("#idNombre").val("' . $nombre . '"); $("#idApellido").val("' . $apellido . '");'
+                    . '$("#idUser").val("' . $codigo_administrador . '"); $("#idDui").val("' . $dui . '");'
+                    . '$("#idFecha").val("' . $fecha . '"); $("#idEmail").val("' . $email . '");'
+                    . 'if ("' . $nivel . '" == "0") {$("#idRoot").attr("checked", "checked");} else {$("#idAdministrador").attr("checked", "checked");}'
+                    . 'if ("' . $sexo . '" == "Masculino") {$("#idHombre").attr("checked", "checked");} else {$("#idMujer").attr("checked", "checked");}'
                     . '</script>';
                 }
             } catch (PDOException $ex) {
@@ -81,12 +81,12 @@ class Repositorio_administrador {
         return $administrador;
     }
 
-    public static function lista_administradores($conexion) {
-        $lista_administradores = [];
+    public static function lista_administradores($conexion,$codigo) {
+        $lista_administradores = array();
 
         if (isset($conexion)) {
             try {
-                $sql = "select * from administradores";
+                $sql = "select * from administradores where (codigo_administrador != '$codigo'  AND estado = 1)" ;
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->execute();
                 $resultado = $sentencia->fetchAll();
@@ -120,17 +120,16 @@ class Repositorio_administrador {
         //   echo '<img src="data:image/jpg;base64,<?php echo base64_encode($fila["foto"]);';
         // }
 
-
         return $lista_administradores;
     }
 
-    public static function actualizar_administrador($conexion, $administrador,$codigo_original) {
+    public static function actualizar_administrador($conexion, $administrador, $codigo_original) {
         $administrador_insertado = false;
         // $administrador = new Administrador();
 
         if (isset($conexion)) {
             try {
-               
+
                 $codigo_administrador = $administrador->getCodigo_administrador();
                 $pasword = $administrador->getPasword();
                 $nivel = $administrador->getNivel();
@@ -142,10 +141,10 @@ class Repositorio_administrador {
                 $foto = $administrador->getFoto();
                 $email = $administrador->getEmail();
                 $fecha = $administrador->getFecha();
-                
+
                 if ($codigo_administrador == $codigo_original) {
                     $sql = 'UPDATE administradores SET nombre=:nombre, apellido=:apellido,pasword=:pasword,dui=:dui,nivel=:nivel, fecha=:fecha,email=:email,sexo=:sexo  WHERE codigo_administrador = :codigo_original';
-                    
+
                     $sentencia = $conexion->prepare($sql);
                     $sentencia->bindParam(':codigo_original', $codigo_original, PDO::PARAM_STR);
                     $sentencia->bindParam(':nombre', $nombre, PDO::PARAM_STR);
@@ -161,17 +160,46 @@ class Repositorio_administrador {
 
                     echo '<script>swal("Excelente!", "Registro actualizado con exito", "success");</script>';
                     echo '<script>location.href="inicio_seguridad.php";</script>';
-}
-                else{
-                   echo "<script>swal('Excelente!', 'hubo pedo '$sql' ', 'success');</script>";
+                } else {
+                    echo "<script>swal('Excelente!', 'hubo pedo '$sql' ', 'success');</script>";
                 }
             } catch (PDOException $ex) {
                 echo "<script>swal('Excelente!', 'hubo pedo '$sql' ', 'success');</script>";
-                
+
                 print 'ERROR: ' . $ex->getMessage();
             }
         }
-   }
+    }
+
+    public static function eliminar_administrador($conexion, $administrador, $codigo_eliminar) {
+        $administrador_insertado = false;
+        //$administrador = new Administrador();
+
+        if (isset($conexion)) {
+            try {
+
+                $observacion = $administrador->getObservacion();
+                $estado = $administrador->getEstado();
+
+                $sql = 'UPDATE administradores SET observacion=:observacion, estado=:estado WHERE codigo_administrador = :codigo_eliminacion';
+
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->bindParam(':observacion', $observacion, PDO::PARAM_STR);
+                $sentencia->bindParam(':estado', $estado, PDO::PARAM_INT);
+                $sentencia->bindParam(':codigo_eliminacion', $codigo_eliminar, PDO::PARAM_INT);
+
+                $administrador_insertado = $sentencia->execute();
+
+                echo '<script>swal("Excelente!", "Registro Eliminado con exito", "success");</script>';
+                //echo '<script>location.href="inicio_seguridad.php";</script>';
+            } catch (PDOException $ex) {
+                echo "<script>swal('Excelente!', 'hubo pedo '$sql' ', 'success');</script>";
+
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+    }
+
 }
 
 ?>

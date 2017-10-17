@@ -54,15 +54,14 @@ function abrir_edicion_administrador(nombre, apellido, user, dui, fecha, email, 
     $("#idPass1E").val(password);
     $("#idPass2E").val(password);
     $("#idSecreto").val(password);
-     $("#codigo_original").val(user);
+    $("#codigo_original").val(user);
     
     if (nivel == '0') {
         $("#idRootE").attr("checked", "checked");
     } else {
         $("#idAdministradorE").attr("checked", "checked");
     }
-       
-    
+   
     if (sexo == "Masculino") {
         $('#idHombreE').attr("checked", "checked");
 
@@ -70,14 +69,16 @@ function abrir_edicion_administrador(nombre, apellido, user, dui, fecha, email, 
         $("#idMujerE").attr("checked", "checked");
     }
 
-
-
-
-
-    $('#edicion').modal('open');
+ $('#edicion_administradores').modal('open');
 }
 
-
+function abrir_eliminacion_administrador(nombre, apellido,usuario) {
+    $("#idNombreEl").val(nombre +" " +apellido);
+    $("#idUsuarioEl").val(usuario);
+    $("#codigo_eliminacion").val(usuario);
+  
+ $('#eliminacion_administradores').modal('open');
+}
 
 function abrirModal() {
     $('#nuevo').modal('open');
