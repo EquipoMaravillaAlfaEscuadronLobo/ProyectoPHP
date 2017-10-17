@@ -106,8 +106,8 @@
         									<span><i class="glyphicon glyphicon-picture" aria-hidden="true"></i>Foto</span>
         									<input type="file">
       									</div>
-      									<div class="file-path-wrapper">
-                        					<input type="file" accept="image/*" id="foto" name="foto" class="form-control file-path validate">
+      									<div class="">
+                        					<input type="file" accept="image/*" id="foto" name="foto" class="form-control  validate">
                         				</div>
                         		</div>
                         	</div>
@@ -123,7 +123,8 @@
         <div class="panel">
             <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion" href="#collapse-autores">Registro de Autores</a></div>
             <div id="collapse-autores" class="panel-collapse collapse">
-                <div class="panel-body"><form action="newAutor.php" class="autorf" name="frmAutor" method="post" id="frmAutor" enctype="multipart/form-data" >
+                <div class="panel-body">
+                <form action="newAutor.php" class="autorf" name="frmAutor" method="post" id="frmAutor" enctype="multipart/form-data">
                         <div class="row">
                         	<div class="col-md-12">
                         		<div class="input-field">
@@ -164,10 +165,10 @@
                         			
                         				<div class="btn">
         									<span><i class="fa fa-address-book" aria-hidden="true"></i>Biografia</span>
-        									<input type="file">
+        									<input type="file" accept=".pdf" name="bio1">
       									</div>
       									<div class="file-path-wrapper">
-                        					<input type="file" id="bio" accept=".pdf" name="bio" class="form-control validate">
+                        					<input type="text" id="bio" name="bio" class="form-control file-path validate">
                         				</div>
                         		</div>
                         	</div>

@@ -7,7 +7,7 @@
     $nombre = $_POST["nombre"];
     $apellido = $_POST["apellido"];
     $nacimiento = $_POST["fecha_nac"];
-    $biografia =$ruta.basename($_FILES["bio"]["name"]);
+    $biografia =$ruta.$_POST["bio"];
     
     Conexion::abrir_conexion();
 
@@ -16,13 +16,14 @@
     $Autor->setApellido($apellido);
    
     $Autor->setNacimiento($nacimiento);
-    if (move_uploaded_file($_FILES['bio']['tmp_name'], $biografia)) {
+    if (move_uploaded_file($_FILES['bio1']['tmp_name'], $biografia)) {
        $Autor->setBiografia($biografia);
+       echo 1;
     }else{
-        $Autor->setBiografia("");
-    }
-
-echo Repositorio_autores::insertarAutor(Conexion::obtener_conexion(), $Autor);
+        //$Autor->setBiografia("");
+        echo basename($FILES['bio1']['name']);
+}
+//echo Repositorio_autores::insertarAutor(Conexion::obtener_conexion(), $Autor);
     Conexion::cerrar_conexion();
 
 

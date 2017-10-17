@@ -11,7 +11,7 @@ class Repositorio_libros
             try {
                 
                
-                 for($i=0;$i<$a;$i++){
+                 for($i=1;$i<$a;$i++){
                 $titulo = $libro->getTitulo();
                 $codigo=$libro->getCodigo_libro()."-".str_pad($i, 4,"0", STR_PAD_LEFT);
                 $editorial = $libro->getEditoriales_codigo();
