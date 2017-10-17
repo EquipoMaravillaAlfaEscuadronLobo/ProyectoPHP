@@ -1,9 +1,9 @@
 $.validator.setDefaults({
     submitHandler: function () {
        
-        document.getElementById('bandera').value="ok";    
-        document.FORMULARIO.submit();
-        
+        document.getElementById('bandera2').value="ok";    
+        document.FORMULARIO3.submit();
+        swal ( "Exito" ,  "LRegistro Completado" ,  "success" );
         
     }
 });
@@ -11,7 +11,7 @@ $.validator.setDefaults({
 $(document).ready(function () {
 
 
-    $("#FORMULARIO3").validate({
+    $(".FORMULARIO3").validate({
         rules: {
             nameNombre: {
                 required: true,
@@ -61,6 +61,9 @@ $(document).ready(function () {
             },
             nameNombreX: {
                   required: true
+            },
+            nameFax: {
+                 minlength: 8
             }
         },
         messages: {
@@ -111,6 +114,9 @@ $(document).ready(function () {
             },
             NameNombreX :{
                 required: "Seleccione un Nivel"
+            },
+            nameFax: {
+                  minlength: "ingrese Fax valido"
             }
             
         },
@@ -150,4 +156,4 @@ $(document).ready(function () {
         }
     });
 });
-
+/// fin

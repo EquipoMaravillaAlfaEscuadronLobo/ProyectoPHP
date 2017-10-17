@@ -1,7 +1,7 @@
 $.validator.setDefaults({
     submitHandler: function () {
        
-        document.getElementById('bandera2').value="ok";    
+        document.getElementById('banderaCAtegoria').value="okk";    
         document.FORMULARIO2.submit();
         
         
@@ -11,7 +11,7 @@ $.validator.setDefaults({
 $(document).ready(function () {
 
 
-    $("#FORMULARIO2").validate({
+    $(".FORMULARIO2").validate({
         rules: {
             nameNombre: {
                 required: true,
@@ -69,8 +69,8 @@ $(document).ready(function () {
                 minlength: "El nombre debe de tener por lo menos 3 caracteres"
             },
             nameApellido: {
-                required: "Por favor ingrese su Apellido",
-                minlength: "El apellido debe de tener por lo menos 3 caracteres"
+                required: "Por favor ingrese codigo calido",
+                minlength: "El codigo debe de tener por lo menos 3 caracteres"
             },
             nameDireccion: {
                 required: "Por favor ingrese la direccion",
@@ -150,5 +150,4 @@ $(document).ready(function () {
         }
     });
 });
-
-////////////////////////////////////////////////////////fin
+/// fin

@@ -2,7 +2,6 @@
 class Proveedor{
 private $codigo_proveedor;
 private $nombre;
-private $apelido; 
 private $direccion;
 private $telefono;
 private $correo;
@@ -15,9 +14,7 @@ function getNombre() {
     return $this->nombre;
 }
 
-function getApelido() {
-    return $this->apelido;
-}
+
 
 function getDireccion() {
     return $this->direccion;
@@ -43,9 +40,7 @@ function setNombre($nombre) {
     $this->nombre = $nombre;
 }
 
-function setApelido($apelido) {
-    $this->apelido = $apelido;
-}
+
 
 function setDireccion($direccion) {
     $this->direccion = $direccion;

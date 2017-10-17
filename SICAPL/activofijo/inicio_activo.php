@@ -90,18 +90,20 @@ include_once('../plantillas/pie_de_pagina.php');
 
 <div id="nuevoEncargado" class="modal modal-fixed-footer " >
     <div class="modal-heading panel-heading">
-        Registrar Encargado de Mantenimiento 
+       <h3> Registrar Encargado de Mantenimiento </h3> 
     </div>
     <div class="modal-content"> 
     <?php include('nuevo_encargado.php');?>
     </div>
      <div class="modal-footer ">
         <div class="row">
-        <div class="col-md-6 text-right"><a href="#" class="modal-action modal-close waves-effect btn btn-success"><i class="glyphicon glyphicon-floppy-disk"></i>  Guardar</a></div>
+        <div class="col-md-6 text-right"></div>
         <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>
         </div>
     </div>
 </div>
+
+
 <div id="actualizarCaracteristicas" class="modal modal-fixed-footer " >
     <div class="modal-heading panel-heading">
        Actualizar Detalles Activo Fijo

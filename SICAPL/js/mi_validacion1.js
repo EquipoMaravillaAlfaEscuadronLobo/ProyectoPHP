@@ -2,7 +2,7 @@ $.validator.setDefaults({
     submitHandler: function () {
        
         document.getElementById('bandera1').value="ok";    
-        document.FORMULARIO.submit();
+        document.FORMULARIO1.submit();
         
         
     }

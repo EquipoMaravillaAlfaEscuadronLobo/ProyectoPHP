@@ -1,13 +1,7 @@
-<?php
-include_once '../repositorios/repositorio_categoria.php';   
-include_once '../app/Conexion.php'; 
-include_once '../modelos/Categoria.php';
-?>
-
 <!--formulario usuario-->
 <div class="container">
-    <form id="FORMULARIO1" method="post" class="form-horizontal" action="" autocomplete="off">
-    <input type="hidden" name="bandera1" id="bandera">
+    <form id="FORMULARIO1" class="FORMULARIO1" method="post" class="form-horizontal" action="" autocomplete="off">
+        <input type="hidden" name="bandera1" id="bandera1">
         <div class="row" name="filaForm">
             <div class="panel" name="regisroAct">
                 <div class="panel-heading text-center">
@@ -21,7 +15,7 @@ include_once '../modelos/Categoria.php';
                 <div class=" text-center panel-body">
                     <div class="row">
                         <div class="col m1"></div>
-                         <!--seccion del combo para encargado  -->
+                        <!--seccion del combo para encargado  -->
                         <div class="input-field col m1">
                             <div class="input-field col m1">
                                 <i class="fa fa-user-circle prefix"></i>   
@@ -34,14 +28,14 @@ include_once '../modelos/Categoria.php';
                                 <option value="2">Alberto Pérez Guzman</option>
                             </select>
                         </div>
-                         <div class="col m1"></div>
+                        <div class="col m1"></div>
                         <!-- termona el combo de encargado   -->
                         <div class="input-field col m4">
                             <i class="fa fa-calendar prefix"></i> 
                             <input type="text" id="fecha" name="nameNombre"  class="text-center validate" maxlength="25" minlength="3" required value="<?php echo date("d-m-Y"); ?>" readonly> 
                             <label for="idNombre" class="col-sm-4 control-labe">Fecha</label>
                         </div>
-                       
+
                     </div>
                     <div class="row" >
                         <div class="col m1"></div>
@@ -52,17 +46,13 @@ include_once '../modelos/Categoria.php';
                             </div>
                         </div>
                         <div class="input-field col m2" > 
-                        <select id="selectCat" name="selectCat">
-                           <option value="0" disabled selected>Seleccione Categoria</option>
-                           <?php
-                                Conexion::abrir_conexion();  
-                                $lista_cat =Repositorio_categoria::obtener_categorias(Conexion::obtener_conexion());
-                                 foreach ($lista_cat as $lista) { 
-                                    echo"<option value='".$lista->getCodigo_tipo()."'>".$lista->getNombre()."</option>"; 
-                                 }
-                           ?>
-                        </select>
-                             
+                            <select name="selectCat" id="selectCat" class="selectCat" required="">
+                                <option value="0" disabled selected>Seleccione Categoria</option>
+                                <?php
+                                include'select_categoria.php';
+                                ?>
+                            </select>
+
                         </div>
                         <div class="input-field col m1">
                             <input type="text" name="cantidad" placeholder="Cantidad">
@@ -86,11 +76,11 @@ include_once '../modelos/Categoria.php';
                             </div>
                         </div>
                         <div class="input-field col m3">
-                            <select required="" >
+                            <select required="" name="selectPro" id="selectCPro" class="selectPro">
                                 <option value="0" disabled selected>Seleccione Proveedor</option>
-                                <option value="1">AESIP</option>
-                                <option value="2">BREA</option>
-                                <option value="3">COMPUMUNDO</option>
+                                <?php
+                                include'select_proveedor.php';
+                                ?>
                             </select>
                         </div>
                         <div class="input-field col m1">
@@ -118,7 +108,7 @@ include_once '../modelos/Categoria.php';
                         <output id="list"></output>                
                     </div>
                     <div class="row"><!--  panel de Caracteristicas   -->
-                        
+
                         <div class="col m1"></div><!--  para dejar espacio en los lados   -->
                         <div class="col-md-10"> <!--  div para centralizar      -->
                             <div class="panel-group" id="accordion">
@@ -127,77 +117,77 @@ include_once '../modelos/Categoria.php';
                                     <div id="caracteristicas" class="panel-collapse collapse ">
                                         <div class="panel-body">                                            
 
-                                                <div class="row">
+                                            <div class="row">
 
-                                                    <div class="input-field col m5">
-                                                        <i class="fa fa-barcode prefix"></i> 
-                                                        <input type="text" id="precioUnitario" name="precioUnitario" class="text-center validate" required="">
-                                                        <label for="precioUnitario">Numero de Serie <small></small> </label>
-                                                    </div>
-                                                    <div class="col m1"></div>
-
-                                                    <div class="input-field col m5">
-                                                        <i class="fa fa-adjust prefix"></i> 
-                                                        <input type="email" id="idEmail" name="nameEmail" class="text-center validate" required="" >
-                                                        <label for="idEmail">Color<small></small> </label>
-                                                    </div>
+                                                <div class="input-field col m5">
+                                                    <i class="fa fa-barcode prefix"></i> 
+                                                    <input type="text" id="precioUnitario" name="precioUnitario" class="text-center validate" required="">
+                                                    <label for="precioUnitario">Numero de Serie <small></small> </label>
                                                 </div>
-                                                <div class="row">
+                                                <div class="col m1"></div>
 
-                                                    <div class="input-field col m5">
-                                                        <i class="fa fa-registered prefix"></i> 
-                                                        <input type="text" id="precioUnitario" name="precioUnitario" class="text-center validate" required="">
-                                                        <label for="precioUnitario">Marca <small></small> </label>
-                                                    </div>
-                                                    <div class="col m1"></div>
-
-                                                     <div class="input-field col m5">
-                                                        <i class="fa fa-windows prefix"></i> 
-                                                        <input type="email" id="idEmail" name="nameEmail" class="text-center validate" required="" >
-                                                        <label for="idEmail">Sistema Operativo <small></small> </label>
-                                                    </div>
-                                                    
+                                                <div class="input-field col m5">
+                                                    <i class="fa fa-adjust prefix"></i> 
+                                                    <input type="email" id="idEmail" name="nameEmail" class="text-center validate" required="" >
+                                                    <label for="idEmail">Color<small></small> </label>
                                                 </div>
-                                                <div class="row">
+                                            </div>
+                                            <div class="row">
 
-                                                    <div class="input-field col m5">
-                                                        <i class="fa fa-crop prefix"></i> 
-                                                        <input type="text" id="dimensiones" name="precioUnitario" class="text-center validate" required="">
-                                                        <label for="dimensines">Dimensiones <small></small> </label>
-                                                    </div>
-                                                    <div class="col m1"></div>
+                                                <div class="input-field col m5">
+                                                    <i class="fa fa-registered prefix"></i> 
+                                                    <input type="text" id="precioUnitario" name="precioUnitario" class="text-center validate" required="">
+                                                    <label for="precioUnitario">Marca <small></small> </label>
+                                                </div>
+                                                <div class="col m1"></div>
 
-                                                     <div class="input-field col m5">
-                                                        <i class="fa fa-circle-o-notch prefix"></i> 
-                                                        <input type="text" id="dimensiones" name="precioUnitario" class="text-center validate" required="">
-                                                        <label for="dimensines">Memoria Ram <small></small> </label>
-                                                    </div>
+                                                <div class="input-field col m5">
+                                                    <i class="fa fa-windows prefix"></i> 
+                                                    <input type="email" id="idEmail" name="nameEmail" class="text-center validate" required="" >
+                                                    <label for="idEmail">Sistema Operativo <small></small> </label>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="input-field col m5">
-                                                        <i class="fa fa-laptop prefix"></i> 
-                                                        <input type="email" id="idEmail" name="nameEmail" class="text-center validate" required="" >
-                                                        <label for="idEmail">Modelo<small></small> </label>
-                                                    </div>
-                                                   
 
-                                                    <div class="col m1"></div>
-                                                    <div class="input-field col m5">
-                                                        <i class="fa fa-hdd-o prefix"></i> 
-                                                        <input type="email" id="idEmail" name="nameEmail" class="text-center validate" required="" >
-                                                        <label for="idEmail">Disco Duro <small></small> </label>
-                                                    </div> 
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="input-field col m5">
+                                                    <i class="fa fa-crop prefix"></i> 
+                                                    <input type="text" id="dimensiones" name="precioUnitario" class="text-center validate" required="">
+                                                    <label for="dimensines">Dimensiones <small></small> </label>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col m4"></div>
-                                                     <div class="input-field col m5">
-                                                        <i class="fa fa-microchip prefix"></i> 
-                                                        <input type="email" id="idEmail" name="nameEmail" class="text-center validate" required="" >
-                                                        <label for="idEmail">Procesador <small></small> </label>
-                                                    </div>
-                                                    <div class="col m2"></div>
+                                                <div class="col m1"></div>
+
+                                                <div class="input-field col m5">
+                                                    <i class="fa fa-circle-o-notch prefix"></i> 
+                                                    <input type="text" id="dimensiones" name="precioUnitario" class="text-center validate" required="">
+                                                    <label for="dimensines">Memoria Ram <small></small> </label>
                                                 </div>
-                                                  
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col m5">
+                                                    <i class="fa fa-laptop prefix"></i> 
+                                                    <input type="email" id="idEmail" name="nameEmail" class="text-center validate" required="" >
+                                                    <label for="idEmail">Modelo<small></small> </label>
+                                                </div>
+
+
+                                                <div class="col m1"></div>
+                                                <div class="input-field col m5">
+                                                    <i class="fa fa-hdd-o prefix"></i> 
+                                                    <input type="email" id="idEmail" name="nameEmail" class="text-center validate" required="" >
+                                                    <label for="idEmail">Disco Duro <small></small> </label>
+                                                </div> 
+                                            </div>
+                                            <div class="row">
+                                                <div class="col m4"></div>
+                                                <div class="input-field col m5">
+                                                    <i class="fa fa-microchip prefix"></i> 
+                                                    <input type="email" id="idEmail" name="nameEmail" class="text-center validate" required="" >
+                                                    <label for="idEmail">Procesador <small></small> </label>
+                                                </div>
+                                                <div class="col m2"></div>
+                                            </div>
+
 
                                         </div>
                                     </div>
@@ -206,7 +196,7 @@ include_once '../modelos/Categoria.php';
 
                         </div>
                         <div class="col m1"></div><!--  para dejar espacio en los lados   -->
-                        
+
                     </div> <!-- termina el div row de Caracteristicas     -->
                 </div><!-- termina div panel center-->
 
@@ -222,10 +212,10 @@ include_once '../modelos/Categoria.php';
                         <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar
                     </button>
                 </div><!-- Termina botones -->
-                
+
             </div> <!-- Termina panel regisroAct -->
         </div><!-- Termina filaForm -->
-</form><!--fin formulario usuario-->
+    </form><!--fin formulario usuario-->
 
 </div><!--fin container-->
 
@@ -238,77 +228,96 @@ include_once '../modelos/Categoria.php';
 
 <div id="nuevaCat" class="modal modal-fixed-footer" ><!-- para llamar al modal PARA REGISTRAR CATEGORIA-->
     <div class="modal-heading panel-heading">
-         <i class="fa fa-sitemap prefix"></i> &nbsp;Registrar categoria
+        <i class="fa fa-sitemap prefix"></i><h3> &nbsp;Registrar categoria</h3>
     </div>
-   
+
     <div class="modal-content ">
-             <?php include('nueva_categoria.php');?>
-    
+        <?php include('nueva_categoria.php'); ?>
+
     </div>
-     <div class="modal-footer">
+    <div class="modal-footer">
         <div class="row">
-        <div class="col-md-6 text-right"><button class="btn btn-success modal-action modal-close" type="submit" form="FORMULARIO2">
-                <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>                            
-                Guardar</button></div>
-        <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>
+            <div class="col-md-6 text-right"><button  class="btn btn-success  " type="submit" form="FORMULARIO2" >
+                    <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>
+                    Guardar</button></div>
+            <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>
         </div>
     </div>
 </div>
 
 
 <div id="nuevoProv" class="modal modal-fixed-footer" ><!-- para llamar al modal PARA REGISTRAR PROVEEDOR-->
- <div class="modal-heading panel-heading">
-         <i class="fa fa-truck prefix" aria-hidden="true"></i>&nbsp;Registrar Proveedo
+    <div class="modal-heading panel-heading">
+        <i class="fa fa-truck prefix" aria-hidden="true"></i><h3>&nbsp;Registrar Proveedo</h3>
     </div>
-     
+
     <div class="modal-content ">
-             <?php include('nuevo_proveedor.php');?>
-    
+        <?php include('nuevo_proveedor.php'); ?>
+
     </div>
-     <div class="modal-footer">
+    <div class="modal-footer">
         <div class="row">
-        <div class="col-md-6 text-right"><a href="#" class="modal-action modal-close waves-effect btn btn-success"><i class="glyphicon glyphicon-floppy-disk"></i>  Guardar</a></div>
-        <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>
+            <div class="col-md-6 text-right"><button id="gp" class="btn btn-success modal-action " type="submit" form="FORMULARIO3">
+                    <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>
+                    Guardar</button></div>
+            <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>
         </div>
     </div>
 </div>
 
-<script language="javascript">// <![CDATA[ PARA QUE NO SE ACTUALICE CUANDO GUARDA EN LOS MODALES
+<script type="text/javascript">
 $(document).ready(function() {
-   // Esta primera parte crea un loader no es necesaria
-    
-   // Interceptamos el evento submit
-    $('#FORMULARIO2, #fat, #fo3').submit(function() {
-  // Enviamos el formulario usando AJAX
-        $.ajax({
-            type: 'POST',
-            url: $(this).attr('action'),
-            data: $(this).serialize(),
-            // Mostramos un mensaje con la respuesta de PHP
-            success: function() {
-                  recargarS2('selectCat');
-            }
-        })        
-        return false;
-    }); 
-})
-// FUENTE: http://www.miguelmanchego.com/2009/ajax-enviar-formularios-sin-recargar-jquery/ ]]>
-    
+     $('.FORMULARIO2, .FORMULARIO3, .editorialf').submit(function(){
+        //var codigo=$('#codigol').val();
+   // alert(codigo);
+    $.ajax({
+        url:$(this).attr('action'),
+        type:'POST',
+        data:$(this).serialize()
+    }).done(function(resp){
+       if(resp==1){
+                swal({
+                    title: "Exito",
+                    text: "Registro Completado",
+                    type: "success"},
+                    function(){
+                       document.getElementById('FORMULARIO1').reset();
+                       
+                       recargarCombos();
+                        
+                    }
 
-function recargarS2(val){
- 
-   //esperando la carga...
-   alert('paso');
-   //realizo la call via jquery ajax
-   $.ajax({
-        url: 'select_categoria.php',
-        data: 'id='+val,
-        success: function(resp){
-
-         $('#selectCat').html(resp) 
+                    );
+            
+         }else{
+                swal ( "Oops" ,  "Libro no ingresado" ,  "error" )
+             
          }
-    });
+    })
+    return false;
+})
+    
+
+});
+function recargarCombos () {
+    $.ajax({
+        url:'select_categoria',
+        type:'POST',
+        data:''
+    }).done(function(resp){
+         $('select').material_select('destroy');
+      $('select.selectCat').html(resp).fadeIn();
+      $('select').material_select();
+    })
+
+     $.ajax({
+        url:'select_proveedor',
+        type:'POST',
+        data:''
+    }).done(function(resp){
+         $('select').material_select('destroy');
+      $('select.selectPro').html(resp).fadeIn();
+      $('select').material_select();
+    })
 }
-
 </script>
-
