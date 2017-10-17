@@ -3,21 +3,18 @@ include_once './cabecera.php';
 include_once './menu.php';
 ?>
 </nav>
-<input type="hidden" id="ok" name="ok">
 <button onclick="AlertaExttoZZZ()">ENVIAR
     
 </button>
 
 <script>
-function ok{
-    document.getElementById('ok');
-    document.getElementById('ok');
-}
+AlertaExttoZZZ();
 </script>
+    
+
 
 <?php
 include_once './pie_de_pagina.php';
-<<<<<<< HEAD
 ?>
 
 <script type="text/javascript">
@@ -42,9 +39,3 @@ include_once './pie_de_pagina.php';
     }
 
 </script>
-=======
-
-
-
-?>
->>>>>>> 3b41b32c13e525b69db870f9fe342940d979ee91
