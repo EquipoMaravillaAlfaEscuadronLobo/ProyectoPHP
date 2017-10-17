@@ -81,12 +81,12 @@ class Repositorio_administrador {
         return $administrador;
     }
 
-    public static function lista_administradores($conexion,$codigo) {
+    public static function lista_administradores($conexion, $codigo) {
         $lista_administradores = array();
 
         if (isset($conexion)) {
             try {
-                $sql = "select * from administradores where (codigo_administrador != '$codigo'  AND estado = 1)" ;
+                $sql = "select * from administradores where (codigo_administrador != '$codigo'  AND estado = 1)";
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->execute();
                 $resultado = $sentencia->fetchAll();
@@ -198,6 +198,33 @@ class Repositorio_administrador {
                 print 'ERROR: ' . $ex->getMessage();
             }
         }
+    }
+
+    public static function lista_administradores2($conexion) {
+        if (isset($conexion)) {
+            try {
+                $sql = "select * from administradores where (estado = 1)";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+
+                        echo"<option value='" . $fila['codigo_administrador'] . "'>" . $fila['nombre'] . " " . $fila['apellido'] . "</option>";
+                    }
+                }
+            } catch (PDOException $exc) {
+                print('ERROR' . $exc->getMessage());
+            }
+        }
+//        echo   'numero de registros en lista registros'. count($lista_administradores) . '<br>';
+        //foreach ($lista_administradores as $fila ){
+        //    echo $fila ->getNombre(). "<br>";
+        //   echo '<img src="data:image/jpg;base64,<?php echo base64_encode($fila["foto"]);';
+        // }
+
+       // return true;
     }
 
 }

@@ -1,4 +1,7 @@
-
+<?php
+include_once '../repositorios/repositorio_administrador.inc.php';
+include_once '../app/Conexion.php';
+?>
 
 <!--formulario usuario-->
 <div class="container">
@@ -28,7 +31,7 @@
                                 <option value="0" disabled selected>Seleccione Encargado</option>
                                 <?php
                                 Conexion::abrir_conexion();
-                                $lista_admnistradores = Repositorio_administrador::lista_administradores(Conexion::obtener_conexion(),'pereez02');
+                                Repositorio_administrador::lista_administradores2(Conexion::obtener_conexion());
                                 //echo '<script language="javascript">alert("juas");</script>'; 
                                 //foreach ($lista_admnistradores as $lista) {
                                    // echo"<option value='" . $lista->getCodigo_administrador() . "'>" . $lista->getNombre() . " " . $lista->getApellido() . "</option>";
