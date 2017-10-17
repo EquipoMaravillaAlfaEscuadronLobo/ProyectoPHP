@@ -30,7 +30,7 @@ class Repositorio_editorial
                 $sentencia->bindParam(':nombre', $nombre, PDO::PARAM_STR);
                 $sentencia->bindParam(':direccion', $direccion, PDO::PARAM_STR);
                 $sentencia->bindParam(':email', $email, PDO::PARAM_STR);
-                $sentencia->bindParam(':telefono', $biografia, PDO::PARAM_STR);
+                $sentencia->bindParam(':telefono', $telefono, PDO::PARAM_STR);
                                              
                 
                 $editorial_insertada = $sentencia->execute();

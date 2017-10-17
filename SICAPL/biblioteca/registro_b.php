@@ -69,7 +69,7 @@
                         	</div>
                         </div>
                         <div class="row">
-                        	<div class="col-md-6">
+                        	<div class="col-md-12">
                         		<div class="input-field">
                         		<i class="fa fa-bookmark-o prefix" aria-hidden="true"></i>
                         			<select name="editorial" id="editorial" class="editorial">
@@ -81,15 +81,7 @@
                         		</div>
                         	</div>
                        
-                        	<div class="col-md-6">
-                        	<i class="fa fa-shopping-cart prefix" aria-hidden="true"></i>
-                        		<div class="radio-inline">
-                        			<input type="radio" name="origen" id="donador" value="Donado" class=" with-gap">
-                        			<label for="donador">Donado</label>
-                        			<input type="radio" name="origen" id="comprador" value="Comprado" class="with-gap">
-                        			<label for="comprador">Comprado</label>
-                        		</div>
-                        	</div>
+                        	
                         </div>
                         <div class="row">
                         	<div class="col-md-6">

@@ -7,7 +7,7 @@
                         		<div class="input-field">
                         			<i class="fa fa-list-ol prefix" aria-hidden="true"></i>
                         			<label for="codigo">Codigo</label>
-                        			<input type="text" id="codigo" class="form-control" disabled>
+                        			<input type="text" id="codigoe_edit" class="form-control" disabled placeholder=" ">
                         		</div>
                         	</div>
                         
@@ -15,7 +15,7 @@
                         		<div class="input-field">
                         			<i class="fa fa-user-circle prefix" aria-hidden="true"></i>
                         			<label for="nombre">Nombre</label>
-                        			<input type="text" id="nombre" class="form-control">
+                        			<input type="text" id="nombree_edit" class="form-control" placeholder=" ">
                         		</div>
                         	</div>
                         </div>
@@ -24,7 +24,7 @@
                                 <div class="input-field">
                                     <i class="fa fa-phone prefix" aria-hidden="true"></i>
                                     <label for="telefono">Telefono</label>
-                                    <input type="text" id="telefono" class="form-control">
+                                    <input type="text" id="telefonoe_edit" class="form-control" placeholder=" ">
                                 </div>
                             </div>
                        
@@ -32,7 +32,7 @@
                         		<div class="input-field">
                         			<i class="fa fa-envelope-o prefix" aria-hidden="true"></i>
                         			<label for="email" data-error="wrong" data-success="right">Email</label>
-                        			<input type="email" id="email" class="form-control validate" >
+                        			<input type="email" id="email_edit" class="form-control validate" placeholder=" ">
                         		</div>
                         	</div>
                         </div>
@@ -42,7 +42,7 @@
                                 <div class="input-field">
                                     <i class="fa fa-map-marker prefix" aria-hidden="true"></i>
                                     <label for="fecha_nac" class="active">Direccion</label>
-                                    <textarea id="direccion" name="direccion" class="materialize-textarea"></textarea>
+                                    <textarea id="direccion_edit" name="direccion" class="materialize-textarea" placeholder=" "></textarea>
                                 </div>
                             </div>
                         </div>

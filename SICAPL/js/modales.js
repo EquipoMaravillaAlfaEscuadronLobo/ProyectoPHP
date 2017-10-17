@@ -85,13 +85,34 @@ function abrirModal() {
 }
 
 
-function abrirEdicionLib() {
+function abrirEdicionLib(codigo,editorial,titulo,fecha,foto, cantidad) {
+   
+
+   // alert(codigo);
+    $('#codigo_edit').val(codigo);
+   $('#selectEdit').val(editorial);
+    $('#titulo_edit').val(titulo);
+    $('#fecha_pub_edit').val(fecha);
+    $('#file_foto').val(foto);
+    $('#cantidad_edit').val(cantidad);
     $('#edicionLib').modal('open');
 }
-function abrirEdicionAut() {
+function abrirEdicionAut(codigo,nombre,apellido,fecha,bio) {
+    $('#codigoa_edit').val(codigo);
+   
+    $('#nombrea_edit').val(nombre);
+    $('#apellidoa_edit').val(apellido);
+    $('#fecha_nac_edit').val(fecha);
+    $('#bio_edit').val(bio);
     $('#edicionAut').modal('open');
 }
-function abrirEdicionEdi() {
+function abrirEdicionEdi(codigo,nombre,direccion,correo,telefono) {
+    $('#codigoe_edit').val(codigo);
+   
+    $('#nombree_edit').val(nombre);
+    $('#telefonoe_edit').val(telefono);
+    $('#email_edit').val(correo);
+    $('#direccion_edit').val(direccion);
     $('#edicionEdi').modal('open');
 }
 

@@ -23,7 +23,7 @@
                         
                      ?>
                         <tr>
-                            <td class="text-center"><button class="btn btn-success" onclick="abrirEdicionAut()"> <i class="Medium material-icons prefix">edit</i> </button></td>
+                            <td class="text-center"><button class="btn btn-success" onclick="abrirEdicionAut('<?php echo $fila['codigo_autor'] ?>','<?php echo $fila['nombre'] ?>','<?php echo $fila['apellido'] ?>','<?php echo $fila['nacimiento'] ?>')"> <i class="Medium material-icons prefix">edit</i> </button></td>
                             <td class="text-center"><?php echo $fila['nombre'] ?></td>
                             <td class="text-center"><?php echo $fila['apellido'] ?></td>
                             <td class="text-center"><?php echo $fila['nacimiento'] ?></td>

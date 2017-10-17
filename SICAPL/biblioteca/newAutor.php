@@ -18,12 +18,12 @@
     $Autor->setNacimiento($nacimiento);
     if (move_uploaded_file($_FILES['bio1']['tmp_name'], $biografia)) {
        $Autor->setBiografia($biografia);
-       echo 1;
+       
     }else{
-        //$Autor->setBiografia("");
+        $Autor->setBiografia("");
         echo basename($FILES['bio1']['name']);
 }
-//echo Repositorio_autores::insertarAutor(Conexion::obtener_conexion(), $Autor);
+echo Repositorio_autores::insertarAutor(Conexion::obtener_conexion(), $Autor);
     Conexion::cerrar_conexion();
 
 

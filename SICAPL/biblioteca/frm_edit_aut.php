@@ -7,7 +7,7 @@
                         		<div class="input-field">
                         			<i class="fa fa-list-ol prefix" aria-hidden="true"></i>
                         			<label for="codigo">Codigo</label>
-                        			<input type="text" id="codigo" class="form-control" disabled>
+                        			<input type="text" id="codigoa_edit" class="form-control" disabled placeholder=" ">
                         		</div>
                         	</div>
                         </div>
@@ -16,14 +16,14 @@
                         		<div class="input-field">
                         			<i class="fa fa-user-circle prefix" aria-hidden="true"></i>
                         			<label for="nombre">Nombre</label>
-                        			<input type="text" id="nombre" class="form-control">
+                        			<input type="text" id="nombrea_edit" class="form-control" placeholder=" ">
                         		</div>
                         	</div>
                         	<div class="col-md-6">
                         		<div class="input-field">
                         			<i class="fa fa-user-circle prefix" aria-hidden="true"></i>
                         			<label for="apellido">Apellido</label>
-                        			<input type="text" id="apellido" class="form-control">
+                        			<input type="text" id="apellidoa_edit" class="form-control" placeholder=" ">
                         		</div>
                         	</div>
                         </div>
@@ -32,7 +32,7 @@
                         		<div class="input-field">
                         			<i class="fa fa-calendar prefix" aria-hidden="true"></i>
                         			<label for="fecha_nac" class="active">Fecha de Nacimiento</label>
-                        			<input type="date" id="fecha_nac" class="form-control datepicker">
+                        			<input type="date" id="fecha_nac_edit" class="form-control datepicker" placeholder=" ">
                         		</div>
                         	</div>
                         
@@ -42,10 +42,10 @@
                         			
                         				<div class="btn">
         									<span><i class="fa fa-address-book" aria-hidden="true"></i>Biografia</span>
-        									<input type="file">
+        									<input type="file" id="bio_edit">
       									</div>
       									<div class="file-path-wrapper">
-                        					<input type="text" id="bio" class="form-control file-path validate">
+                        					<input type="text"  class="form-control file-path validate" placeholder=" ">
                         				</div>
                         		</div>
                         	</div>

@@ -53,6 +53,10 @@ class Repositorio_libros
                 $sql="SELECT 
 libros.titulo as titulo,
 editoriales.nombre AS editorial,
+libros.codigo_libro as codigo,
+libros.foto as foto,
+libros.codigo_editorial as cedit,
+libros.fecha_publicacion as fecha_publicacion,
 autores.nombre AS autor,
 COUNT(DISTINCT libros.titulo) as cantidad
 FROM

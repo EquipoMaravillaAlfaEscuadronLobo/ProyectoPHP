@@ -65,12 +65,17 @@ include_once('../plantillas/pie_de_pagina.php');
 <script type="text/javascript">
 $(document).ready(function() {
      $('.librof').submit(function(){
+      var formData=new FormData(document.getElementById('frmLibro'));
         //var codigo=$('#codigol').val();
    // alert(codigo);
     $.ajax({
         url:$(this).attr('action'),
         type:'POST',
-        data:$(this).serialize()
+        dataType: "html",
+        data:formData,
+    cache: false,
+    contentType: false,
+    processData: false
     }).done(function(resp){
        if(resp==1){
                 swal({
@@ -111,7 +116,7 @@ $(document).ready(function() {
        if(resp==1){
                 swal({
                     title: "Exito",
-                    text: resp,
+                    text: "Autor Registrado",
                     type: "success"},
                     function(){
                        document.getElementById('frmAutor').reset();
@@ -123,7 +128,7 @@ $(document).ready(function() {
                     );
             
          }else{
-                swal ( "Oops" ,  resp ,  "error" )
+                swal ( "Oops" ,  "Autor no registrado" ,  "error" )
              
          }
     })
@@ -142,10 +147,10 @@ $(document).ready(function() {
        if(resp==1){
                 swal({
                     title: "Exito",
-                    text: "Editorial Registrado",
+                    text: "Editorial Registada",
                     type: "success"},
                     function(){
-                       document.getElementById('frmEditorial').reset();
+                       document.getElementById('frmEditoriales').reset();
                        
                        recargarCombos();
                         
@@ -154,7 +159,7 @@ $(document).ready(function() {
                     );
             
          }else{
-                swal ( "Oops" ,  "Editorial no ingresada" ,  "error" )
+                swal ( "Oops" ,  "Editorial no registrada" ,  "error" )
              
          }
     })

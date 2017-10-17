@@ -1,35 +1,37 @@
+
+</script>
 <div class="panel">
     <div class="panel-heading">
         Modificar Libro
     </div>
 
-    <div class="panel-body"><form action="">
+    <div class="panel-body"><form action="" name="frmEditLib" id="frmEditLib">
             <div class="row">
                 <div class="col-md-6">
                     <div class="input-field">
                         <i class="fa fa-list-ol prefix" aria-hidden="true"></i>
-                        <label for="codigo">Codigo</label>
-                        <input type="text" id="codigo" class="form-control" disabled>
+                        <label for="codigo" class="active">Codigo</label>
+                        <input type="text" id="codigol_edit" class="form-control" readonly="true" placeholder=" ">
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="input-field">
                         <i class="fa fa-bookmark prefix" aria-hidden="true"></i>
-                        <label for="Titulo">Titulo</label>
-                        <input type="text" id="Titulo" class="form-control">
+                        <label for="titulo_edit" class="active">Titulo</label>
+                        <input type="text" id="titulo_edit" class="form-control" placeholder=" ">
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     <div class="input-field">
+                    <input type="hidden" id="selecEdit">
                         <i class="fa fa-pencil prefix" aria-hidden="true"></i>
-                        <select multiple>
-                            <option value="0" disabled selected>Eliga los autores</option>
-                            <option value="1">Homero</option>
-                            <option value="2">Salarrue</option>
-                            <option value="3">Otro</option>
+                        <select multiple id="autores">
+                           <?php 
+                                      include 'opcionesAutores.php';   
+                                     ?>
                         </select>
                         <label>Autores</label>
                     </div>
@@ -38,8 +40,8 @@
                 <div class="col-md-6">
                     <div class="input-field">
                         <i class="fa fa-sort prefix" aria-hidden="true"></i>
-                        <label for="cantidad">Cantidad</label>
-                        <input type="number" id="cantidad" class="form-control">
+                        <label for="cantidad" class="active">Cantidad</label>
+                        <input type="number" id="cantidad_edit" class="form-control" placeholder=" ">
                     </div>
                 </div>
             </div>
@@ -47,32 +49,23 @@
                 <div class="col-md-6">
                     <div class="input-field">
                         <i class="fa fa-bookmark-o prefix" aria-hidden="true"></i>
-                        <select>
-                            <option value="0" disabled selected>Eliga la editorial</option>
-                            <option value="1">Homero</option>
-                            <option value="2">Salarrue</option>
-                            <option value="3">Otro</option>
+                        <select id="editorial" class="edit2">
+                           <?php 
+                                      include 'opcionesEditorial.php';   
+                                     ?>
                         </select>
                         <label>Editorial</label>
                     </div>
                 </div>
 
-                <div class="col-md-6">
-                    <i class="fa fa-shopping-cart prefix" aria-hidden="true"></i>
-                    <div class="radio-inline">
-                        <input type="radio" name="origen" id="donadoe" value="Donado" class=" with-gap">
-                        <label for="donadoe">Donado</label>
-                        <input type="radio" name="origen" id="compradoe" value="Comprado" class="with-gap">
-                        <label for="compradoe">Comprado</label>
-                    </div>
-                </div>
+                
             </div>
             <div class="row">
                 <div class="col-md-6">
                     <div class="input-field">
                         <i class="fa fa-calendar prefix" aria-hidden="true"></i>
                         <label for="fecha_pub" class="active">Fecha de Publicacion</label>
-                        <input type="date" id="fecha_pub" class="form-control datepicker">
+                        <input type="date" id="fecha_pub_edit" class="form-control datepicker" placeholder=" ">
                     </div>
                 </div>
 
