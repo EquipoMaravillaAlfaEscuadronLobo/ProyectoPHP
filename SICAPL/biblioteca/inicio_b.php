@@ -97,16 +97,21 @@ $(document).ready(function() {
 
       $('.autorf').submit(function(){
         //var codigo=$('#codigol').val();
-   // alert(codigo);
+    //alert(codigo);
+    var formData=new FormData(document.getElementById('frmAutor'))
     $.ajax({
         url:$(this).attr('action'),
         type:'POST',
-        data:$(this).serialize()
+         dataType: "html",
+        data:formData,
+    cache: false,
+    contentType: false,
+    processData: false
     }).done(function(resp){
        if(resp==1){
                 swal({
                     title: "Exito",
-                    text: "Autor Registrado",
+                    text: resp,
                     type: "success"},
                     function(){
                        document.getElementById('frmAutor').reset();
