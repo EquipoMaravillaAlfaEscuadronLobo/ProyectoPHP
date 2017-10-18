@@ -122,6 +122,8 @@ class Repositorio_administrador {
         // }
 
         return $lista_administradores;
+        
+        
     }
 
     public static function actualizar_administrador($conexion, $administrador, $codigo_original) {
@@ -158,14 +160,23 @@ class Repositorio_administrador {
                     $sentencia->bindParam(':sexo', $sexo, PDO::PARAM_STR);
 
                     $administrador_insertado = $sentencia->execute();
-
-                    echo '<script>swal("Excelente!", "Registro actualizado con exito", "success");</script>';
-                    echo '<script>location.href="inicio_seguridad.php";</script>';
+                    echo '<script>swal({
+                    title: "Exito",
+                    text: "El registro ha sido actualizado!",
+                    type: "success",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },
+                function () {
+                    location.href="inicio_seguridad.php";
+                    
+                });</script>';
+                    
                 } else {
-                    echo "<script>swal('Excelente!', 'hubo pedo '$sql' ', 'success');</script>";
+                    echo "<script>swal('Excelente!', 'hubo incombenientes '$sql' ', 'success');</script>";
                 }
             } catch (PDOException $ex) {
-                echo "<script>swal('Excelente!', 'hubo pedo '$sql' ', 'success');</script>";
+                echo "<script>swal('Excelente!', 'hubo incombenientes  '$sql' ', 'success');</script>";
 
                 print 'ERROR: ' . $ex->getMessage();
             }
@@ -202,9 +213,8 @@ class Repositorio_administrador {
                     location.href="inicio_seguridad.php";
                     
                 });</script>';
-                //echo '<script>location.href="inicio_seguridad.php";</script>';
-            } catch (PDOException $ex) {
-                echo "<script>swal('Excelente!', 'hubo pedo '$sql' ', 'success');</script>";
+                } catch (PDOException $ex) {
+                echo "<script>swal('Precaucion!', 'intente mas tarde '$sql' ', 'warning');</script>";
 
                 print 'ERROR: ' . $ex->getMessage();
             }
