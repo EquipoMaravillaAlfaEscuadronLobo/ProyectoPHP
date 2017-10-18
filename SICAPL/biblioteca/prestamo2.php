@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-md-6">
         <div class="panel-group" id="accordion2">
-            <div class="panel panel-default" name="libros">
+            <div class="panel panel-default" name="libros" id="libros1">
                 <div class="panel-heading p_libro">
 
                 <div class="row">
@@ -18,9 +18,9 @@
                 </a>
                 </div>
                 <div class="col-md-1">
-                   
-                  <i class="fa fa-minus" id="despliegue" aria-hidden="true"></i>
-                
+                   <button  onClick="eliminar(1)">
+                  <i class="fa fa-minus" id="despliegue" aria-hidden="true" onClick="eliminar(1)"></i>
+                </button>
                 </div>
                     </div>
                 </div>
@@ -143,3 +143,15 @@
  ?>
 </datalist>
 <datalist id="listaLibros2"></datalist>
+
+
+<script type="text/javascript">
+    
+    function eliminar (numero) {
+        var id='libros'+numero;
+        var top=document.getElementById('accordion2');
+        var bottom=document.getElementById(id);
+        alert(id)
+        top.removeChild(bottom);
+}
+</script>
