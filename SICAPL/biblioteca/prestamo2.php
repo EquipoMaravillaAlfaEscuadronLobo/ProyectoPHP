@@ -36,10 +36,6 @@
                                 <td><div id="autor1"></div></td>
                             </tr>
                             <tr>
-                                <td><b>Genero:</b></td>
-                                <td><div id="genero1"></div></td>
-                            </tr>
-                            <tr>
                                 <td><b>Fecha de Publicacion:</b></td>
                                 <td><div id="fecha_pub1"></div></td>
                             </tr>
@@ -56,7 +52,7 @@
     <div class="col-md-6"><!-- panel datos de usuario -->        
             <div class="panel panel-default" name="user">
                 <div class="panel-heading p_libro">
-                 <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="" style="font-size:16px">Buscar Usuario</label><input type="text" id="codigo" autofocus onkeypress="buscarUser(event)">
+                 <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="" style="font-size:16px">Buscar Usuario</label><input type="text" id="codigouser" autofocus onkeypress="buscarUser(this)" list="listaUsuarios">
                  </div>              
                 
                 </div>
@@ -126,6 +122,22 @@
      
      foreach ($listado as $fila) {
         echo "<option value='$fila[2]'>$fila[0]</option>";
+    }                    
+                    
+ ?>
+</datalist>
+
+<datalist id="listaUsuarios">
+  <?php 
+    include_once '../app/Conexion.php';
+    include_once '../modelos/Libros.php';
+    include_once '../repositorios/respositorio_libros.php';
+    Conexion::abrir_conexion();
+    $listado=Repositorio_libros::BuscarUsuarios(Conexion::obtener_conexion());
+
+     
+     foreach ($listado as $fila) {
+        echo "<option value='$fila[0]'>$fila[2] $fila[3]</option>";
     }                    
                     
  ?>

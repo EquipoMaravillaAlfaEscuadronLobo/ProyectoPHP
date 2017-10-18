@@ -34,7 +34,7 @@ document.getElementById('titulo').value = "Iliada";
 function buscarLibro2(valor){
 var depto = valor.value;
 var numero=valor.id.substr(7)
-alert(valor.id);
+//alert(valor.id);
     if (depto != "") {
         $.post("getLibro.php", {libro: depto, numero: numero}, function(mensaje) {
           $('#listaLibros2').html(mensaje).fadeIn();
@@ -43,12 +43,23 @@ alert(valor.id);
         }); 
     } 
 }
-function buscarUser(){
-document.getElementById('carnet').innerHTML = 'TM17000';
+function buscarUser(valor){
+
+        var depto = valor.value;
+//var numero=valor.id.substr(7)
+//alert(valor.id);
+    if (depto != "") {
+        $.post("getUser.php", {libro: depto}, function(mensaje) {
+          $('#listaLibros2').html(mensaje).fadeIn();
+         
+
+        }); 
+    } 
+        /*document.getElementById('carnet').innerHTML = 'TM17000';
         document.getElementById('nombreUser').innerHTML = 'Carlos Antonio Torres Martinez';
         document.getElementById('edad').innerHTML = '10';
         document.getElementById('sexo').innerHTML = "Masculino";
-        document.getElementById('fot').setAttribute("src", "../imagenes/tipo.jpg")
+        document.getElementById('fot').setAttribute("src", "../imagenes/tipo.jpg")*/
 
 }
 function buscarActivo(){

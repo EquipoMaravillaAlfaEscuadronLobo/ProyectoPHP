@@ -87,5 +87,35 @@ print 'ERROR: ' . $ex->getMessage();
             }
             return $resultado;
     }
+
+    public static function BuscarUsuarios($conexion)
+    {
+        $resultado="";
+            if (isset($conexion)) {
+                try{
+                $sql="SELECT * from usuarios";
+                $resultado=$conexion->query($sql);
+            }catch(PDOException $ex){
+print 'ERROR: ' . $ex->getMessage();
+
+            }
+            }
+            return $resultado;
+    }
+
+    public static function BuscarUsuario($conexion, $codigo)
+    {
+        $resultado="";
+            if (isset($conexion)) {
+                try{
+                $sql="SELECT * from usuarios where codigo_usuario='$codigo'";
+                $resultado=$conexion->query($sql);
+            }catch(PDOException $ex){
+print 'ERROR: ' . $ex->getMessage();
+
+            }
+            }
+            return $resultado;
+    }
 }
  ?>
