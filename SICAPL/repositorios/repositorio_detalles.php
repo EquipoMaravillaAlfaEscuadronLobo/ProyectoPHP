@@ -40,8 +40,7 @@ class Repositorio_detalle {
                      $sentencia->bindParam(':proce', $proce, PDO::PARAM_STR);
  //echo '<script>alert("'.$sentencia.'");</script>'; 
                     $detalle_insertado= $sentencia->execute();
-
-                    echo '<script>swal("Excelente!", "Registro guardado con exito", "success");</script>';
+                    
                /* } else {
                     echo '<script>'
                     . 'swal("Advetencia!", "El nombre de usuario que introdujo ya esta en uso, favor introdusca otro", "warning");'
@@ -59,13 +58,16 @@ class Repositorio_detalle {
         }
     }
 
-    public static function obtener_ultimo_detale() {
+    public static function obtener_ultimo_detale($conexion) {
         
         if (isset($conexion)) {
             try {
 
                 $sql = "SELECT MAX(codigo_detalle) AS id FROM detalles"; ///estos son alias para que PDO pueda trabajar 
-                return $conexion->query($sql) ;
+                foreach ($conexion->query($sql) as $row) {
+                     $r=$row[0] ;
+                }
+                return $r; 
                     
                 
             } catch (PDOException $ex) {

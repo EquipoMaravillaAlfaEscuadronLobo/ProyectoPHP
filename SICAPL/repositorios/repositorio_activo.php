@@ -195,31 +195,28 @@ class Repositorio_activo {
         }
     }
 
-    public static function lista_administradores2($conexion) {
+     public static function obtener_nactivo($conexion,$cod) {
+        
         if (isset($conexion)) {
             try {
-                $sql = "select * from administradores where (estado = 1)";
-                $sentencia = $conexion->prepare($sql);
-                $sentencia->execute();
-                $resultado = $sentencia->fetchAll();
 
-                if (count($resultado)) {
-                    foreach ($resultado as $fila) {
-
-                        echo"<option value='" . $fila['codigo_administrador'] . "'>" . $fila['nombre'] . " " . $fila['apellido'] . "</option>";
-                    }
+                $sql = "SELECT
+                        COUNT( actvos.codigo_tipo)
+                        FROM
+                        actvos
+                        WHERE
+                        actvos.codigo_tipo = '$cod'"; ///estos son alias para que PDO pueda trabajar 
+                foreach ($conexion->query($sql) as $row) {
+                     $r=$row[0] ;
                 }
-            } catch (PDOException $exc) {
-                print('ERROR' . $exc->getMessage());
+                return $r; 
+                    
+                
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
             }
         }
-//        echo   'numero de registros en lista registros'. count($lista_administradores) . '<br>';
-        //foreach ($lista_administradores as $fila ){
-        //    echo $fila ->getNombre(). "<br>";
-        //   echo '<img src="data:image/jpg;base64,<?php echo base64_encode($fila["foto"]);';
-        // }
-
-       // return true;
+         
     }
 
 }

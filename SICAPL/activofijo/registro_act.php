@@ -32,7 +32,6 @@ include_once '../app/Conexion.php';
                                 <?php
                                 Conexion::abrir_conexion();
                                 Repositorio_administrador::lista_administradores2(Conexion::obtener_conexion());
-                                
                                 ?>
                             </select>
                         </div>
@@ -54,7 +53,7 @@ include_once '../app/Conexion.php';
                             </div>
                         </div>
                         <div class="input-field col m2" > 
-                            <select name="selectCat" id="selectCat" class="selectCat" required="">
+                            <select name="selectCat" id="selectCat" class="selectCat" required="true">
                                 <option value="0" disabled selected>Seleccione Categoria</option>
                                 <?php
                                 include'select_categoria.php';
@@ -63,7 +62,7 @@ include_once '../app/Conexion.php';
 
                         </div>
                         <div class="input-field col m1">
-                            <input type="number"  min="1" max="500" name="cantidad" placeholder="Cantidad">
+                            <input type="number"  min="1" max="500" id="cantidad" name="cantidad" placeholder="Cantidad" required="true">
                         </div>
                         <div class="input-field col m1">
                             <a class="btn btn_primary"  target="_blank" onclick="nuevaCat(1)"><span aria-hidden="true" class="glyphicon glyphicon-plus"></span></a>
@@ -234,8 +233,8 @@ include_once '../app/Conexion.php';
                 <!-- botones -->
                 <div class="row text-center" name="botones">
                     <button  class="btn btn-success  " type="submit" form="FORMULARI" >
-                    <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>
-                    Guardar</button>
+                        <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>
+                        Guardar</button>
                     <button type="reset" class="btn btn-danger" onclick="AlertaExttoZZZ()">
                         <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar
                     </button>
@@ -260,7 +259,7 @@ include_once '../app/Conexion.php';
     </div>
 
     <div class="modal-content ">
-<?php include('nueva_categoria.php'); ?>
+        <?php include('nueva_categoria.php'); ?>
 
     </div>
     <div class="modal-footer">
@@ -280,7 +279,7 @@ include_once '../app/Conexion.php';
     </div>
 
     <div class="modal-content ">
-<?php include('nuevo_proveedor.php'); ?>
+        <?php include('nuevo_proveedor.php'); ?>
 
     </div>
     <div class="modal-footer">
@@ -356,16 +355,16 @@ include_once '../app/Conexion.php';
 
 <?php
 if (isset($_REQUEST["bandera1"])) {
-     
-         
+
+
     include_once '../app/Conexion.php';
     include_once '../modelos/Activo.php';
     include_once '../modelos/Detalles.php';
     include_once '../repositorios/repositorio_activo.php';
     include_once '../repositorios/repositorio_detalles.php';
-    Conexion::abrir_conexion(); 
-    $cant = $_REQUEST["cantidad"];
-    
+    Conexion::abrir_conexion();
+    $cant = $_REQUEST['cantidad'];
+
     $detalle = new Detalles();
     $detalle->setSeri($_REQUEST["nserie"]);
     $detalle->setColor($_REQUEST["color"]);
@@ -378,26 +377,54 @@ if (isset($_REQUEST["bandera1"])) {
     $detalle->setProcesador($_REQUEST["pro"]);
     $detalle->setOtros($_REQUEST["otro"]);
     Repositorio_detalle::insertar_detalle(Conexion::obtener_conexion(), $detalle);
-   
+
     $activo = new Activo();
-    $activo->setCodigo_activo("CEJ-2017-001-07");
+    $activo->setCodigo_activo($_REQUEST["selectCat"]);
     $activo->setCodigo_administrador($_REQUEST["admin"]);
-    
+    //DANDO FORMATO A LA FECHA
     $originalDate = $_REQUEST['fecha_adq'];
-    $fecha=$_REQUEST['fecha_adq'];
-    list($dia, $mes, $year)=explode("/", $fecha);
-    $fecha=$year."-".$mes."-".$dia;
-     echo '<script>alert("'.$fecha.'");</script>';  
-    
+    $fecha = $_REQUEST['fecha_adq'];
+    list($dia, $mes, $year) = explode("/", $fecha);
+    $fecha = $year . "-" . $mes . "-" . $dia;
+
+    $R = Repositorio_detalle::obtener_ultimo_detale(Conexion::obtener_conexion());
+
     $activo->setFecha_adquicision($fecha);
     $activo->setCodigo_tipo($_REQUEST["selectCat"]);
     $activo->setPrecio($_REQUEST["precioUnitario"]);
     $activo->setCodigo_proveedor($_REQUEST['selectPro']);
     //$activo->setFoto($_REQUEST["fotoActivo"]);
     $activo->setEstado('1');
-    $activo->setCodigo_detalle('4');
-    Repositorio_activo::insertar_activo(Conexion::obtener_conexion(), $activo); 
+    $activo->setCodigo_detalle($R);
+    $correlativo = Repositorio_activo::obtener_nactivo(Conexion::obtener_conexion(), $_REQUEST["selectCat"]);
+
+
+echo '<script>alert("'.$cant.'");</script>'; 
+    for ($i = 1; $i <= $cant; $i++) {
+        Repositorio_detalle::insertar_detalle(Conexion::obtener_conexion(), $detalle);
+        $R = Repositorio_detalle::obtener_ultimo_detale(Conexion::obtener_conexion());
+        $activo->setCodigo_detalle($R);
+        $correlativo++;
+        if (($correlativo / 10) < 1) {
+            $cod = $_REQUEST["selectCat"] . "-000" . $correlativo;
+        } else {
+            if (($correlativo / 10) < 10) {
+                $cod = $_REQUEST["selectCat"] . "-00" . $correlativo;
+            }  else {
+                if (($correlativo / 10) < 100) {
+                $cod = $_REQUEST["selectCat"] . "-0" . $correlativo;
+            }else{
+                
+                $cod = $_REQUEST["selectCat"] . "-" . $correlativo;
+            }
+            }
+        }
+
+        //$cod=$_REQUEST["selectCat"]."-".$correlativo; 
+        $activo->setCodigo_activo($cod);
+        Repositorio_activo::insertar_activo(Conexion::obtener_conexion(), $activo);
+    }
+echo '<script>swal("Excelente!", "Registro guardado con exito", "success");</script>';
     Conexion::cerrar_conexion();
-        
 }
 ?>
