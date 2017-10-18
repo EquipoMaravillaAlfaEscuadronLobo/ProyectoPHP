@@ -2,14 +2,14 @@
 
 <div class="row">
     <div class="col-md-6">
-        <div class="panel-group" id="accordion">
+        <div class="panel-group" id="accordion2">
             <div class="panel panel-default" name="libros">
                 <div class="panel-heading p_libro">
 
                 <div class="row">
                 <div class="col-md-10">
 
-                 <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="">Buscar Libro</label><input type="text" id="codigo" autofocus onkeypress="buscarLibro2(event)"></div>
+                 <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="">Buscar Libro</label><input type="text" id="codigol1" autofocus onkeypress="buscarLibro2(this)" list="listaLibros"></div>
                 
                 </div>
                 <div class="col-md-1">
@@ -29,19 +29,19 @@
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <td width="60%"><b>Titulo:</b></td>
-                                <td width="40%"><div id="titulo"></div></td>
+                                <td width="40%"><div id="titulo1"></div></td>
                             </tr>
                             <tr>
                                 <td><b>Autor:</b></td>
-                                <td><div id="autor"></div></td>
+                                <td><div id="autor1"></div></td>
                             </tr>
                             <tr>
                                 <td><b>Genero:</b></td>
-                                <td><div id="genero"></div></td>
+                                <td><div id="genero1"></div></td>
                             </tr>
                             <tr>
                                 <td><b>Fecha de Publicacion:</b></td>
-                                <td><div id="fecha_pub"></div></td>
+                                <td><div id="fecha_pub1"></div></td>
                             </tr>
                             
                         </table>
@@ -114,3 +114,20 @@
             </div>
 </div>
 
+
+<datalist id="listaLibros">
+  <?php 
+    include_once '../app/Conexion.php';
+    include_once '../modelos/Libros.php';
+    include_once '../repositorios/respositorio_libros.php';
+    Conexion::abrir_conexion();
+    $listado=Repositorio_libros::ListaLibros(Conexion::obtener_conexion());
+
+     
+     foreach ($listado as $fila) {
+        echo "<option value='$fila[2]'>$fila[0]</option>";
+    }                    
+                    
+ ?>
+</datalist>
+<datalist id="listaLibros2"></datalist>

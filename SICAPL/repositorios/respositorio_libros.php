@@ -73,6 +73,19 @@ print 'ERROR: ' . $ex->getMessage();
             }
             return $resultado;
         }
-	
+	public static function BuscarLibro($conexion, $codigo)
+    {
+        $resultado="";
+            if (isset($conexion)) {
+                try{
+                $sql="SELECT * from libros where codigo_libro='$codigo'";
+                $resultado=$conexion->query($sql);
+            }catch(PDOException $ex){
+print 'ERROR: ' . $ex->getMessage();
+
+            }
+            }
+            return $resultado;
+    }
 }
  ?>
