@@ -73,8 +73,8 @@ include_once('../plantillas/pie_de_pagina.php');
 
 
 <div id="nuevoMant" class="modal modal-fixed-footer nuevo">
-    <div class="modal-heading panel-heading">
-        Registrar Mantenimiento
+    <div class="modal-heading panel-heading text-center">
+        <h4>Registrar Mantenimiento</h4>
     </div>
     <div class="modal-content ">    
         <?php include('registrar_mant.php');?>
@@ -89,15 +89,17 @@ include_once('../plantillas/pie_de_pagina.php');
 </div>
 
 <div id="nuevoEncargado" class="modal modal-fixed-footer " >
-    <div class="modal-heading panel-heading">
-       <h3> Registrar Encargado de Mantenimiento </h3> 
+    <div class="modal-heading panel-heading text-center">
+       <h4> Registrar Encargado de Mantenimiento </h4> 
     </div>
     <div class="modal-content"> 
     <?php include('nuevo_encargado.php');?>
     </div>
      <div class="modal-footer ">
         <div class="row">
-        <div class="col-md-6 text-right"></div>
+        <div class="col-md-6 text-right"><button  class="btn btn-success  " type="submit" form="FORMUL" >
+                    <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>
+                    Guardar</button></div>
         <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>
         </div>
     </div>
@@ -105,8 +107,8 @@ include_once('../plantillas/pie_de_pagina.php');
 
 
 <div id="actualizarCaracteristicas" class="modal modal-fixed-footer " >
-    <div class="modal-heading panel-heading">
-       Actualizar Detalles Activo Fijo
+    <div class="modal-heading panel-heading text-center">
+    <h4>   Actualizar Detalles Activo Fijo</h4>
     </div>
     <div class="modal-content"> 
         
@@ -120,3 +122,52 @@ include_once('../plantillas/pie_de_pagina.php');
     </div>
 </div>
 
+
+
+<script language="javascript">// <![CDATA[
+$(document).ready(function() {
+   
+   // Interceptamos el evento submit
+    $('#FORMUL, #fo3').submit(function() {
+  // Enviamos el formulario usando AJAX
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            // Mostramos un mensaje con la respuesta de PHP
+            success: function(resp) {
+                document.getElementById('FORMUL').reset();
+               $('#nuevoEncargado').modal('close');
+               recargarCombos() 
+            }
+        })        
+        return false;
+    }); 
+})
+// ]]></script>
+<script type="text/javascript">
+
+    
+    
+    function recargarCombos() {
+        $.ajax({
+            url: 'select_categoria',
+            type: 'POST',
+            data: ''
+        }).done(function (resp) {
+            $('select').material_select('destroy');
+            $('select.selectCat').html(resp).fadeIn();
+            $('select').material_select();
+        })
+
+        $.ajax({
+            url: 'select_proveedor',
+            type: 'POST',
+            data: ''
+        }).done(function (resp) {
+            $('select').material_select('destroy');
+            $('select.selectPro').html(resp).fadeIn();
+            $('select').material_select();
+        })
+    }
+</script>

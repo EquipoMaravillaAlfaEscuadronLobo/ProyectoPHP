@@ -39,7 +39,7 @@ class Repositorio_activo {
 
                    $activo_insertado = $sentencia->execute();
 
-                    echo '<script>swal("Excelente!", "Registro guardado con exito", "success");</script>';
+                    
                /* } else {
                     echo '<script>'
                     . 'swal("Advetencia!", "El nombre de usuario que introdujo ya esta en uso, favor introdusca otro", "warning");'

@@ -97,16 +97,15 @@ include_once '../app/Conexion.php';
                         <!-- termina el combo de proveedor   -->
                         <!-- foto  -->
                         <div class="col m6">
-                            <div class="file-field input-field col m10">
-                                <div class="btn btn-primary">
-                                    <span class="glyphicon glyphicon-picture" aria="hidden"></span> Foto                          
-                                    <input id="fotoActivo" name="fotoActivo" type="file">
+                            <div class="file-field input-field m5">
+                                    <div class="btn">
+                                            <span><i class="glyphicon glyphicon-picture" aria-hidden="true"></i>Foto</span>
+                                            <input type="file">
+                                        </div>
+                                        <div class="">
+                                            <input type="file" accept="image/*" id="foto" name="foto" class="form-control  validate">
+                                        </div>
                                 </div>
-                                <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text" name="nameFoto" id="idFoto">
-                                    <input type="file" id="files" name="files[]">
-                                </div>
-                            </div>
                         </div>
                         <!-- termina foto -->
 
@@ -293,43 +292,31 @@ include_once '../app/Conexion.php';
 </div>
 
 
-<script type="text/javascript">
+<script language="javascript">// <![CDATA[
+$(document).ready(function() {
+   
+   // Interceptamos el evento submit
+    $('#FORMULARIO2, #fo3').submit(function() {
+  // Enviamos el formulario usando AJAX
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            // Mostramos un mensaje con la respuesta de PHP
+            success: function(resp) {
+                document.getElementById('FORMULARIO2').reset();
+               $('#nuevaCat').modal('close');
+               recargarCombos() 
+            }
+        })        
+        return false;
+    }); 
+})
+
+    
 
 
-    $(document).ready(function () {
-        $('.FORMULARIO2, .FORMULARIO3 ').submit(function () {
-            //var codigo=$('#codigol').val();
-            // alert(codigo);
-            $.ajax({
-                url: $(this).attr('action'),
-                type: 'POST',
-                data: $(this).serialize()
-            }).done(function (resp) {
-                if (resp == 1) {
-                    swal({
-                        title: "Exito",
-                        text: "Registro Completado",
-                        type: "success"},
-                    function () {
-                        document.getElementById('FORMULARI').reset();
-
-                        recargarCombos();
-
-                    }
-
-                    );
-
-                } else {
-                    swal("Oops", "Libro no ingresado", "error");
-
-                }
-            })
-            return false;
-        })
-
-
-    });
-    function recargarCombos() {
+function recargarCombos2() {
         $.ajax({
             url: 'select_categoria',
             type: 'POST',
@@ -365,6 +352,7 @@ if (isset($_REQUEST["bandera1"])) {
     Conexion::abrir_conexion();
     $cant = $_REQUEST['cantidad'];
 
+
     $detalle = new Detalles();
     $detalle->setSeri($_REQUEST["nserie"]);
     $detalle->setColor($_REQUEST["color"]);
@@ -386,20 +374,35 @@ if (isset($_REQUEST["bandera1"])) {
     $fecha = $_REQUEST['fecha_adq'];
     list($dia, $mes, $year) = explode("/", $fecha);
     $fecha = $year . "-" . $mes . "-" . $dia;
-
+//fin fecha
     $R = Repositorio_detalle::obtener_ultimo_detale(Conexion::obtener_conexion());
 
     $activo->setFecha_adquicision($fecha);
     $activo->setCodigo_tipo($_REQUEST["selectCat"]);
     $activo->setPrecio($_REQUEST["precioUnitario"]);
     $activo->setCodigo_proveedor($_REQUEST['selectPro']);
+
+    //para la foto
+    $ruta='../fotoActivos/';
+    $foto =$ruta.basename($_FILES["foto"]["name"]);
+    echo '<script>alert("'.$foto.'");</script>'; 
+    if (move_uploaded_file($_FILES['foto']['tmp_name'], $foto)) {
+       $activo->setFoto($foto);
+       echo "1";
+    }else{
+        $activo->setFoto("");
+        echo "2";
+    }
+
+    //fin para foto
+
     //$activo->setFoto($_REQUEST["fotoActivo"]);
     $activo->setEstado('1');
     $activo->setCodigo_detalle($R);
     $correlativo = Repositorio_activo::obtener_nactivo(Conexion::obtener_conexion(), $_REQUEST["selectCat"]);
 
 
-echo '<script>alert("'.$cant.'");</script>'; 
+
     for ($i = 1; $i <= $cant; $i++) {
         Repositorio_detalle::insertar_detalle(Conexion::obtener_conexion(), $detalle);
         $R = Repositorio_detalle::obtener_ultimo_detale(Conexion::obtener_conexion());

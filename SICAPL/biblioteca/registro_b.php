@@ -64,7 +64,7 @@
                         		<div class="input-field">
                         			<i class="fa fa-sort prefix" aria-hidden="true"></i>
                         			<label for="cantidad">Cantidad</label>
-                        			<input type="number" id="cantidad" name="cantidad" class="form-control">
+                        			<input type="number" min="1" max="500" id="cantidad" name="cantidad" class="form-control">
                         		</div>
                         	</div>
                         </div>

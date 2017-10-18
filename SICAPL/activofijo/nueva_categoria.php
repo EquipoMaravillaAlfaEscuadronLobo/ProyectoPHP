@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
         <form id="FORMULARIO2" name="FORMULARIO2" class="FORMULARIO2" method="post"  autocomplete="off" enctype="multipart/form-data" >
-            <input type="hidden" name="pbanderaCAtegoria" id="banderaCAtegoria" value="no">
+            <input type="hidden" name="banderaCAtegoria" id="banderaCAtegoria" >
             <div class="panel">				
                 <div class="panel-body">
                     <div class="row">
@@ -37,9 +37,7 @@
 </script>
 
 <?php
-if (
-     $_REQUEST["nameApellido"] != ""
-    && $_REQUEST["nameNombre"] != ""
+if (isset($_REQUEST["banderaCAtegoria"])
 
     ) {
      
