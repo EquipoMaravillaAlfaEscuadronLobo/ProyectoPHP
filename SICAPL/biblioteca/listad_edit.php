@@ -13,7 +13,7 @@
                     <th class="text-center">Correo</th>
                     <th class="text-center">Telefono</th>
                     
-                    <th class="text-center"></th>
+                    
 
                     </thead>
                     <tbody>
@@ -29,7 +29,7 @@
                             <td class="text-center"><?php echo $fila['email'] ?></td>
                             <td class="text-center"><?php echo $fila['telefono'] ?></td>
                             
-                            <td class="text-center"><button class="btn btn-danger"> <i class="Medium material-icons prefix">delete</i> </button></td>
+                           
                         </tr>
                         <?php } ?>
                         
@@ -43,8 +43,14 @@
     </div>
     <div class="modal-footer">
     <div class="row">
-        <div class="col-md-6 text-right"><a href="#" class="modal-action modal-close waves-effect btn btn-success">Actualizar</a></div>
+        <div class="col-md-6 text-right"><button onclick="actualizarAutor()" class="waves-effect btn btn-success">Actualizar</button></div>
         <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger">Salir</a></div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+     function actualizarAutor () {
+        document.frmEditEditorial.submit();
+    }
+</script>

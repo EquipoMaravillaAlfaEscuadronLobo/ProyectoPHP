@@ -92,11 +92,12 @@ function abrirEdicionLib(codigo,editorial,titulo,fecha,foto, cantidad) {
    
 
    // alert(codigo);
-    $('#codigo_edit').val(codigo);
-   $('#selectEdit').val(editorial);
+    $('#codigol_edit').val(codigo);
+    $('#selectEdit').val(editorial);
     $('#titulo_edit').val(titulo);
     $('#fecha_pub_edit').val(fecha);
     $('#file_foto').val(foto);
+    document.getElementById("fotoLibro").src = foto;
     $('#cantidad_edit').val(cantidad);
     $('#edicionLib').modal('open');
 }
@@ -106,7 +107,7 @@ function abrirEdicionAut(codigo,nombre,apellido,fecha,bio) {
     $('#nombrea_edit').val(nombre);
     $('#apellidoa_edit').val(apellido);
     $('#fecha_nac_edit').val(fecha);
-    $('#bio_edit').val(bio);
+    $('#bio_edit1').val(bio);
     $('#edicionAut').modal('open');
 }
 function abrirEdicionEdi(codigo,nombre,direccion,correo,telefono) {

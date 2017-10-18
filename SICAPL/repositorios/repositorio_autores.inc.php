@@ -72,5 +72,43 @@ print 'ERROR: ' . $ex->getMessage();
 			}
 			return $resultado;
 		}
+
+
+		public static function editarAutor($conexion, $autor)
+		{
+			 $autor_insertado = false;
+       if (isset($conexion)) {
+            try {
+                
+               
+                 
+                $nombre = $autor->getNombre();
+                $codigo= $autor->getCodigo();
+                $apellido = $autor->getApellido();
+                $nacimiento = $autor->getNacimiento();            
+                $biografia = $autor->getBiografia();
+                
+                
+                $sql = 'UPDATE autores SET nombre=:nombre, apellido=:apellido, nacimiento=:nacimiento, biografia=:biografia where  codigo_autor=:codigo';
+                                ///estos son alias para que PDO pueda trabajar 
+                $sentencia = $conexion->prepare($sql);
+                
+                
+                
+                
+                $sentencia->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+                $sentencia->bindParam(':apellido', $apellido, PDO::PARAM_STR);
+                $sentencia->bindParam(':nacimiento', $nacimiento, PDO::PARAM_STR);
+                $sentencia->bindParam(':biografia', $biografia, PDO::PARAM_STR);
+                $sentencia->bindParam(':codigo', $codigo, PDO::PARAM_STR);
+                                             
+                
+                $autor_insertado = $sentencia->execute();
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $autor_insertado;
+		}
 	}
  ?>

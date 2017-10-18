@@ -98,8 +98,10 @@
         									<span><i class="glyphicon glyphicon-picture" aria-hidden="true"></i>Foto</span>
         									<input type="file">
       									</div>
-      									<div class="">
-                        					<input type="file" accept="image/*" id="foto" name="foto" class="form-control  validate">
+
+
+      									<div class="file-path-wrapper">
+                        					<input type="file" accept="image/*" id="foto" name="foto" class="form-control file-path validate">
                         				</div>
                         		</div>
                         	</div>

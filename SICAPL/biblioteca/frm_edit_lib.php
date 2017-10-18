@@ -24,18 +24,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
-                    <div class="input-field">
-                    <input type="hidden" id="selecEdit">
-                        <i class="fa fa-pencil prefix" aria-hidden="true"></i>
-                        <select multiple id="autores">
-                           <?php 
-                                      include 'opcionesAutores.php';   
-                                     ?>
-                        </select>
-                        <label>Autores</label>
-                    </div>
-                </div>
+                
 
                 <div class="col-md-6">
                     <div class="input-field">
@@ -44,32 +33,9 @@
                         <input type="number" id="cantidad_edit" class="form-control" placeholder=" ">
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="input-field">
-                        <i class="fa fa-bookmark-o prefix" aria-hidden="true"></i>
-                        <select id="editorial" class="edit2">
-                           <?php 
-                                      include 'opcionesEditorial.php';   
-                                     ?>
-                        </select>
-                        <label>Editorial</label>
-                    </div>
-                </div>
 
-                
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="input-field">
-                        <i class="fa fa-calendar prefix" aria-hidden="true"></i>
-                        <label for="fecha_pub" class="active">Fecha de Publicacion</label>
-                        <input type="date" id="fecha_pub_edit" class="form-control datepicker" placeholder=" ">
-                    </div>
-                </div>
 
-                <div class="col-md-6">
+            <div class="col-md-6">
                     <div class="file-field input-field">
                         <div class="btn">
                             <span><i class="fa fa-camera" aria-hidden="true"></i>Foto</span>
@@ -79,6 +45,23 @@
                             <input type="text" id="file_foto" class="form-control file-path validate">
                         </div>
                     </div>
+                </div>  
+            </div>
+
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-field">
+                        <i class="fa fa-calendar prefix" aria-hidden="true"></i>
+                        <label for="fecha_pub" class="active">Fecha de Publicacion</label>
+                        <input type="date" id="fecha_pub_edit" class="form-control datepicker" placeholder=" ">
+                    </div>
+                </div>
+                
+
+
+                <div class="col-md-6">
+                    <img src="" id="fotoLibro" width="30%">
                 </div>
             </div>
         </form>
