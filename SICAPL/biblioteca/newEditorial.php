@@ -18,7 +18,7 @@
     $Editorial->setDireccion($direccion);
     
 
-echo Repositorio_editorial::insertarEditorial(Conexion::obtener_conexion(), $Editorial);
+    echo Repositorio_editorial::insertarEditorial(Conexion::obtener_conexion(), $Editorial);
     Conexion::cerrar_conexion();
 
 

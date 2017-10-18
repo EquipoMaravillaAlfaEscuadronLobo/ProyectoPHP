@@ -11,6 +11,7 @@
 <script src="../js/alertaPersonalizadas.js"></script>
 <script src="../js/mi_validacion.js"></script>
 <script src="../js/validacion_editar.js"></script>
+<script src="../js/validacion_elimnar.js"></script>
 <script src="../js/mi_validacion1.js"></script>
 <script src="../js/mi_validacion2.js"></script>
 <script src="../js/mi_validacion3.js"></script>

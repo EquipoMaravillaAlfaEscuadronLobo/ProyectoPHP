@@ -24,7 +24,7 @@ include_once '../app/Conexion.php';
                         
                      ?>
                         <tr>
-                            <td class="text-center"><button class="btn btn-success" onclick="abrirEdicionLib()"> <i class="Medium material-icons prefix">edit</i> </button></td>
+                            <td class="text-center"><button class="btn btn-success" onclick="abrirEdicionLib('<?php echo $fila['codigo'] ?>','<?php echo $fila['cedit'] ?>','<?php echo $fila['titulo'] ?>','<?php echo $fila['fecha_publicacion'] ?>','<?php echo $fila['foto'] ?>','<?php echo $fila['cantidad'] ?>')"> <i class="Medium material-icons prefix">edit</i> </button></td>
                             <td class="text-center"><?php echo $fila['titulo'] ?></td>
                             <td class="text-center"><?php echo $fila['autor'] ?></td>
                             <td class="text-center"><?php echo $fila['editorial'] ?></td>

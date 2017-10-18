@@ -53,7 +53,8 @@ class Repositorio_administrador {
                     . '$("#idFecha").val("' . $fecha . '"); $("#idEmail").val("' . $email . '");'
                     . 'if ("' . $nivel . '" == "0") {$("#idRoot").attr("checked", "checked");} else {$("#idAdministrador").attr("checked", "checked");}'
                     . 'if ("' . $sexo . '" == "Masculino") {$("#idHombre").attr("checked", "checked");} else {$("#idMujer").attr("checked", "checked");}'
-                    . '</script>';
+                    . '$("#idListarAdmnistrador").removeClass("active");  $("#idRegistroAdministrador").addClass("active"); '
+                    . '$("#idPass1").val("'.$pasword.'"); $("#idPass2").val("'.$pasword.'");  </script>';
                 }
             } catch (PDOException $ex) {
                 echo '<script>swal("No se puedo realizar el registro", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
@@ -190,7 +191,17 @@ class Repositorio_administrador {
 
                 $administrador_insertado = $sentencia->execute();
 
-                echo '<script>swal("Excelente!", "Registro Eliminado con exito", "success");</script>';
+                echo '<script>swal({
+                    title: "Exito",
+                    text: "El registro ha sido eliminado!",
+                    type: "success",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },
+                function () {
+                    location.href="inicio_seguridad.php";
+                    
+                });</script>';
                 //echo '<script>location.href="inicio_seguridad.php";</script>';
             } catch (PDOException $ex) {
                 echo "<script>swal('Excelente!', 'hubo pedo '$sql' ', 'success');</script>";

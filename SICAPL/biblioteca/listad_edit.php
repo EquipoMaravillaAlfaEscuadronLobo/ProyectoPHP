@@ -23,7 +23,7 @@
                         
                      ?>
                         <tr>
-                            <td class="text-center"><button class="btn btn-success" onclick="abrirEdicionEdi()"> <i class="Medium material-icons prefix">edit</i> </button></td>
+                            <td class="text-center"><button class="btn btn-success" onclick="abrirEdicionEdi('<?php echo $fila['codigo_editorial'] ?>','<?php echo $fila['nombre'] ?>','<?php echo $fila['direccion'] ?>','<?php echo $fila['email'] ?>','<?php echo $fila['telefono'] ?>')"> <i class="Medium material-icons prefix">edit</i> </button></td>
                             <td class="text-center"><?php echo $fila['nombre'] ?></td>
                             <td class="text-center"><?php echo $fila['direccion'] ?></td>
                             <td class="text-center"><?php echo $fila['email'] ?></td>
