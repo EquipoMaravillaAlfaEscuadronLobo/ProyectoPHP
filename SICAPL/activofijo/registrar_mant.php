@@ -120,8 +120,8 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="textarea1" class="materialize-textarea" style="font-size:15px"></textarea>
-                        <label for="textarea1" style="font-size:15px"><i class="	fa fa-pencil-square-o"></i>&nbspDescripción</label>
+                        <textarea id="textarea1" class="materialize-textarea"  ></textarea>
+                        <label for="textarea1" style="font-size:15px"><i class="fa fa-pencil-square-o"></i>&nbspDescripción</label>
                     </div>
                 </div>
 
