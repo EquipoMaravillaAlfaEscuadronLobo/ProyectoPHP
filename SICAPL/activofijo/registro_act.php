@@ -5,7 +5,7 @@ include_once '../app/Conexion.php';
 
 <!--formulario usuario-->
 <div class="container">
-    <form id="FORMULARIO1" class="FORMULARIO1" method="post" class="form-horizontal" action="" autocomplete="off">
+    <form id="FORMULARI" class="FORMULARI" method="post" class="form-horizontal"  autocomplete="off">
         <input type="hidden" name="bandera1" id="bandera1">
         <div class="row" name="filaForm">
             <div class="panel" name="regisroAct">
@@ -32,10 +32,7 @@ include_once '../app/Conexion.php';
                                 <?php
                                 Conexion::abrir_conexion();
                                 Repositorio_administrador::lista_administradores2(Conexion::obtener_conexion());
-                                //echo '<script language="javascript">alert("juas");</script>'; 
-                                //foreach ($lista_admnistradores as $lista) {
-                                   // echo"<option value='" . $lista->getCodigo_administrador() . "'>" . $lista->getNombre() . " " . $lista->getApellido() . "</option>";
-                               // }
+                                
                                 ?>
                             </select>
                         </div>
@@ -43,7 +40,7 @@ include_once '../app/Conexion.php';
                         <!-- termona el combo de encargado   -->
                         <div class="input-field col m4">
                             <i class="fa fa-calendar prefix"></i> 
-                            <input type="date" id="fecha_pub" name="fecha_pub" class="datepicker" required value="<?php echo date("d-m-Y"); ?>" > 
+                            <input type="date" id="fecha_adq" name="fecha_adq" class="datepicker" required value="<?php echo date("d-m-Y"); ?>" > 
                             <label for="idNombre" class="col-sm-4 control-labe" style="font-size: 16">Fecha de Adquisición</label>
                         </div>
 
@@ -66,7 +63,7 @@ include_once '../app/Conexion.php';
 
                         </div>
                         <div class="input-field col m1">
-                            <input type="text" name="cantidad" placeholder="Cantidad">
+                            <input type="number"  min="1" max="500" name="cantidad" placeholder="Cantidad">
                         </div>
                         <div class="input-field col m1">
                             <a class="btn btn_primary"  target="_blank" onclick="nuevaCat(1)"><span aria-hidden="true" class="glyphicon glyphicon-plus"></span></a>
@@ -74,7 +71,7 @@ include_once '../app/Conexion.php';
                         <!-- termona el combo de categoria   -->
                         <div class="input-field col m5">
                             <i class="fa fa-usd prefix"></i> 
-                            <input type="text" id="precioUnitario" name="precioUnitario" class="text-center validate" required="">
+                            <input type="text" id="precioUnitario" name="precioUnitario" class="text-center validate" required="" pattern="^@?(\w){1,15}$"  >
                             <label for="precioUnitario">Precio Unitario <small></small> </label>
                         </div>
                     </div>
@@ -87,7 +84,7 @@ include_once '../app/Conexion.php';
                             </div>
                         </div>
                         <div class="input-field col m3">
-                            <select required="" name="selectPro" id="selectCPro" class="selectPro">
+                            <select required="" name="selectPro" id="selectPro" class="selectPro">
                                 <option value="0" disabled selected>Seleccione Proveedor</option>
                                 <?php
                                 include'select_proveedor.php';
@@ -104,7 +101,7 @@ include_once '../app/Conexion.php';
                             <div class="file-field input-field col m10">
                                 <div class="btn btn-primary">
                                     <span class="glyphicon glyphicon-picture" aria="hidden"></span> Foto                          
-                                    <input type="file">
+                                    <input id="fotoActivo" name="fotoActivo" type="file">
                                 </div>
                                 <div class="file-path-wrapper">
                                     <input class="file-path validate" type="text" name="nameFoto" id="idFoto">
@@ -125,7 +122,7 @@ include_once '../app/Conexion.php';
                             <div class="panel-group" id="accordion">
                                 <div class="panel" name="caracteristicas">
                                     <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion" href="#caracteristicas">Detalles  </a></div>
-                                    <div id="caracteristicas" class="panel-collapse collapse ">
+                                    <div id="caracteristicas" class="panel-collapse collapse in">
                                         <div class="panel-body">                                            
 
                                             <div class="row">
@@ -236,9 +233,9 @@ include_once '../app/Conexion.php';
                 </div>
                 <!-- botones -->
                 <div class="row text-center" name="botones">
-                    <button class="btn btn-success">
-                        <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>                            
-                        Guardar</button>
+                    <button  class="btn btn-success  " type="submit" form="FORMULARI" >
+                    <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>
+                    Guardar</button>
                     <button type="reset" class="btn btn-danger" onclick="AlertaExttoZZZ()">
                         <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar
                     </button>
@@ -258,8 +255,8 @@ include_once '../app/Conexion.php';
 
 
 <div id="nuevaCat" class="modal modal-fixed-footer" ><!-- para llamar al modal PARA REGISTRAR CATEGORIA-->
-    <div class="modal-heading panel-heading">
-        <i class="fa fa-sitemap prefix"></i><h3> &nbsp;Registrar categoria</h3>
+    <div class="modal-heading panel-heading text-center">
+        <i class="fa fa-sitemap prefix"></i><h4> &nbsp;Registrar categoria</h4>
     </div>
 
     <div class="modal-content ">
@@ -278,7 +275,7 @@ include_once '../app/Conexion.php';
 
 
 <div id="nuevoProv" class="modal modal-fixed-footer" ><!-- para llamar al modal PARA REGISTRAR PROVEEDOR-->
-    <div class="modal-heading panel-heading">
+    <div class="modal-heading panel-heading text-center">
         <i class="fa fa-truck prefix" aria-hidden="true"></i><h3>&nbsp;Registrar Proveedo</h3>
     </div>
 
@@ -298,8 +295,10 @@ include_once '../app/Conexion.php';
 
 
 <script type="text/javascript">
+
+
     $(document).ready(function () {
-        $('.FORMULARIO2, .FORMULARIO3, .editorialf').submit(function () {
+        $('.FORMULARIO2, .FORMULARIO3 ').submit(function () {
             //var codigo=$('#codigol').val();
             // alert(codigo);
             $.ajax({
@@ -313,7 +312,7 @@ include_once '../app/Conexion.php';
                         text: "Registro Completado",
                         type: "success"},
                     function () {
-                        document.getElementById('FORMULARIO1').reset();
+                        document.getElementById('FORMULARI').reset();
 
                         recargarCombos();
 
@@ -353,3 +352,52 @@ include_once '../app/Conexion.php';
         })
     }
 </script>
+
+
+<?php
+if (isset($_REQUEST["bandera1"])) {
+     
+         
+    include_once '../app/Conexion.php';
+    include_once '../modelos/Activo.php';
+    include_once '../modelos/Detalles.php';
+    include_once '../repositorios/repositorio_activo.php';
+    include_once '../repositorios/repositorio_detalles.php';
+    Conexion::abrir_conexion(); 
+    $cant = $_REQUEST["cantidad"];
+    
+    $detalle = new Detalles();
+    $detalle->setSeri($_REQUEST["nserie"]);
+    $detalle->setColor($_REQUEST["color"]);
+    $detalle->setMarca($_REQUEST["marca"]);
+    $detalle->setSistema($_REQUEST["so"]);
+    $detalle->setDimencione($_REQUEST["dimensiones"]);
+    $detalle->setRam($_REQUEST["ram"]);
+    $detalle->setModelo($_REQUEST["modelo"]);
+    $detalle->setMemoria($_REQUEST["dd"]);
+    $detalle->setProcesador($_REQUEST["pro"]);
+    $detalle->setOtros($_REQUEST["otro"]);
+    Repositorio_detalle::insertar_detalle(Conexion::obtener_conexion(), $detalle);
+   
+    $activo = new Activo();
+    $activo->setCodigo_activo("CEJ-2017-001-07");
+    $activo->setCodigo_administrador($_REQUEST["admin"]);
+    
+    $originalDate = $_REQUEST['fecha_adq'];
+    $fecha=$_REQUEST['fecha_adq'];
+    list($dia, $mes, $year)=explode("/", $fecha);
+    $fecha=$year."-".$mes."-".$dia;
+     echo '<script>alert("'.$fecha.'");</script>';  
+    
+    $activo->setFecha_adquicision($fecha);
+    $activo->setCodigo_tipo($_REQUEST["selectCat"]);
+    $activo->setPrecio($_REQUEST["precioUnitario"]);
+    $activo->setCodigo_proveedor($_REQUEST['selectPro']);
+    //$activo->setFoto($_REQUEST["fotoActivo"]);
+    $activo->setEstado('1');
+    $activo->setCodigo_detalle('4');
+    Repositorio_activo::insertar_activo(Conexion::obtener_conexion(), $activo); 
+    Conexion::cerrar_conexion();
+        
+}
+?>

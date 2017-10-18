@@ -1,6 +1,6 @@
 $.validator.setDefaults({
     submitHandler: function () {
-       
+       alert("paso");
         document.getElementById('bandera1').value="ok";    
         document.FORMULARIO1.submit();
         

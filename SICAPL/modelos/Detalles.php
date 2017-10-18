@@ -9,10 +9,17 @@ class Detalles{
    private $memoria;
    private $sistema;
    private $dimencione;
-   private $foto;
+   private $procesador;
    private $otros;
-   
-   function getCodigo_detalle() {
+   function getProcesador() {
+       return $this->procesador;
+   }
+
+   function setProcesador($procesador) {
+       $this->procesador = $procesador;
+   }
+
+      function getCodigo_detalle() {
        return $this->codigo_detalle;
    }
 
@@ -48,9 +55,7 @@ class Detalles{
        return $this->dimencione;
    }
 
-   function getFoto() {
-       return $this->foto;
-   }
+   
 
    function getOtros() {
        return $this->otros;
@@ -91,11 +96,6 @@ class Detalles{
    function setDimencione($dimencione) {
        $this->dimencione = $dimencione;
    }
-
-   function setFoto($foto) {
-       $this->foto = $foto;
-   }
-
    function setOtros($otros) {
        $this->otros = $otros;
    }
