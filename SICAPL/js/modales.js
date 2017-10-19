@@ -1,14 +1,23 @@
 $(document).ready(function () {
-    $('.datepicker').pickadate({
-        selectMonths: false, // Creates a dropdown to control month
-        selectYears: true, // Creates a dropdown of 15 years to control year,
-        today: 'Hoy',
-        clear: 'Borrar',
-        close: 'Aceptar',
-        format: 'dd/mm/yyyy',
-        max: new Date(),
-        closeOnSelect: true // Close upon selecting a date,
-    });
+   $('.datepicker2').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 150, // Creates a dropdown of 15 years to control year,
+    today: 'Hoy',
+    clear: 'Borrar',
+    close: 'Ok',
+    max: new Date(),
+    closeOnSelect: true // Close upon selecting a date,
+  });
+
+    $('#fecha_dev').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 2, // Creates a dropdown of 15 years to control year,
+    today: 'Hoy',
+    clear: 'Borrar',
+    close: 'Ok',
+    min: new Date(),
+    closeOnSelect: true // Close upon selecting a date,
+  });
     $('.collapse')
             .on('shown.bs.collapse', function () {
                 $(this).parent()
@@ -94,6 +103,7 @@ function abrir_edicion_usuario(nombre,apellido,direccion,email,telefono,sexo,pas
      
  $('#edicion_usuario').modal('open');
 }
+
 function abrir_eliminacion_usuario(nombre,apellido,carnet,password) {
     $("#idOtroCarnet").val(carnet);
     $("#idNombreEliminado").val(nombre+ " "+ apellido);
@@ -104,13 +114,12 @@ function abrir_eliminacion_usuario(nombre,apellido,carnet,password) {
  $('#eliminacion_usuario').modal('open');
 }
 
-
-
-
-function abrir_eliminacion_administrador(nombre, apellido,usuario) {
+function abrir_eliminacion_administrador(nombre, apellido,usuario,password) {
     $("#idNombreEl").val(nombre +" " +apellido);
     $("#idUsuarioEl").val(usuario);
-    $("#codigo_eliminacion").val(usuario);
+    $("#idSecretoEL").val(password);
+    $("#idOtroCarnet").val(usuario);
+    
   
  $('#eliminacion_administradores').modal('open');
 }
@@ -122,14 +131,15 @@ function abrirModal() {
 
 function abrirEdicionLib(codigo,editorial,titulo,fecha,foto, cantidad) {
    
-
+    var foto2="../fotoLibros/"+foto;
    // alert(codigo);
     $('#codigol_edit').val(codigo);
     $('#selectEdit').val(editorial);
     $('#titulo_edit').val(titulo);
     $('#fecha_pub_edit').val(fecha);
+    $('#foto1').attr("filename", foto);
     $('#file_foto').val(foto);
-    document.getElementById("fotoLibro").src = foto;
+    document.getElementById("fotoLibro").src = foto2;
     $('#cantidad_edit').val(cantidad);
     $('#edicionLib').modal('open');
 }

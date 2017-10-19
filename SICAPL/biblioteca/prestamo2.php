@@ -19,11 +19,7 @@
                    <i class="fa fa-sort-desc" id="despliegue" aria-hidden="true"></i>
                 </a>
                 </div>
-                <div class="col-md-1">
-                   <button  onClick="eliminar(1)">
-                  <i class="fa fa-minus" id="despliegue" aria-hidden="true" onClick="eliminar(1)"></i>
-                </button>
-                </div>
+               
                     </div>
                 </div>
                 <div id="libro1" class="panel-collapse collapse in">
@@ -75,7 +71,7 @@
                                 <div class="input-field">
                                                 <i class="fa fa-calendar prefix" aria-hidden="true"></i>
                                                 <label for="fecha_pub" class="active" style="font-size:16px">Fecha de Devolución</label>
-                                                <input type="date" id="fecha_pub" name="fecha_devolucion" class="form-control datepicker" value="<?php echo date("Y-m-d"); ?>">
+                                                <input type="text" id="fecha_dev" name="fecha_devolucion" class="form-control datepicker" value="<?php echo date("Y-m-d"); ?>">
                                             </div>
                             </div>  
                         </div>
@@ -94,8 +90,7 @@
                                 <td colspan="3"><div id="nombreUser"></div></td>
                             </tr>
                             <tr>
-                                <td><b>Edad:</b></td>
-                                <td><div id="edad"></div></td>
+                                
                                 <td><b>Sexo:</b></td>
                                 <td><div id="sexo"></div></td>
                             </tr>

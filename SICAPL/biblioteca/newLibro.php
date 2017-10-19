@@ -15,6 +15,7 @@
     $cantidad=$_POST["cantidad"];
     $publicacion = $_POST["fecha_pub"];
     $foto =$ruta.basename($_FILES["foto"]["name"]);
+    $foto2=basename($_FILES["foto"]["name"]);
     Conexion::abrir_conexion();
 
     $Libro = new Libros();
@@ -25,7 +26,7 @@
     $Libro->setEstado($estado);
 
     if (move_uploaded_file($_FILES['foto']['tmp_name'], $foto)) {
-       $Libro->setFoto($foto);
+       $Libro->setFoto($foto2);
       // echo "1";
     }else{
         $Libro->setFoto("");

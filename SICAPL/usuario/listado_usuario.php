@@ -34,7 +34,7 @@ $lista_usuarios = Repositorio_usuario::lista_usuarios(Conexion::obtener_conexion
                                     <button class="btn btn-success" onclick="abrir_edicion_usuario('<?php echo $lista_usu->getNombre();?>',
                                                 '<?php echo $lista_usu->getApellido();?>','<?php echo $lista_usu->getDireccion();?>',
                                                 '<?php echo $lista_usu->getEmail();?>','<?php echo $lista_usu->getTelefono();?>',
-                                                '<?php echo $lista_usu->getSexo();?>',)">
+                                                '<?php echo $lista_usu->getSexo();?>','111111','<?php echo $lista_usu->getCodigo_usuario();?>' )">
                                         <i class="Medium material-icons prefix">edit</i> 
                                     </button>
                                 </td>

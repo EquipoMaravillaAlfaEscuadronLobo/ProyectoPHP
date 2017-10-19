@@ -33,7 +33,7 @@
                         		<div class="input-field">
                         			<i class="fa fa-calendar prefix" aria-hidden="true"></i>
                         			<label for="fecha_nac" class="active">Fecha de Nacimiento</label>
-                        			<input type="date" id="fecha_nac_edit" name="fecha_nac_edit" class="form-control datepicker" placeholder=" ">
+                        			<input type="text" id="fecha_nac_edit" name="fecha_nac_edit" class="form-control datepicker datepicker2" placeholder=" ">
                         		</div>
                         	</div>
                         
@@ -46,7 +46,7 @@
         									<input type="file" id="bio_edit" name="bio_edit" accept=".pdf">
       									</div>
       									<div class="file-path-wrapper">
-                        					<input type="text" id="bio_edit1"  class="form-control file-path validate" placeholder=" ">
+                        					<input type="text" id="bio_edit1" name="bio_edit"  class="form-control file-path validate" placeholder=" ">
                         				</div>
                         		</div>
                         	</div>

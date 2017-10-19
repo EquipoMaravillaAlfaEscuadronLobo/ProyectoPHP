@@ -1,5 +1,6 @@
 <form  method="post" action="" autocomplete="off" id="editar_formulario">
 <input type="hidden" name="banderaEdicion" id="banderaEdicion"/>
+<input type="hidden" name="nameCarnetE" id="idCarnetE"/>
 <input type="hidden" id="idSecreto" value="">
     <!--este es el modal-->
     <div id="edicion_usuario" class="modal modal-fixed-footer nuevo">
@@ -51,7 +52,7 @@
                                 </div>
                             </div>
                             <div class="input-field col m4">
-                                <select required="">
+                                <select required="" name="nameInstitucionE">
                                     <option value = "" disabled selected>Seleccione Institucion</option>
                                     <option value = "1" selected="">Centro Escolar Presbitero Norberto Marroquín</option>
                                     <option value = "2">Instituto Nacional de San José Verapaz</option>
@@ -68,10 +69,10 @@
                                 <i class="fa fa-intersex prefix"></i> 
                                 <div class="radio-inline">
                                     <span>Sexo</span>
-                                    <input type="radio" id="hombreE"  name="NameSexoE"  class="text-center with-gap" checked="">
+                                    <input type="radio" id="hombreE"  name="NameSexoE"  class="text-center with-gap" checked="" value="Masculino">
                                     <label for="hombreE">Masculino</label>
 
-                                    <input type="radio" id="mujerE" name="NameSexoE"  class="text-center with-gap">
+                                    <input type="radio" id="mujerE" name="NameSexoE"  class="text-center with-gap" value="Femenino">
                                     <label for="mujerE">Femenino</label>
                                 </div>
                                 <div class="col 1"></div>
@@ -113,15 +114,17 @@ if (isset($_REQUEST["banderaEdicion"])) {
 
     $usuario = new Usuario();
 
-    $usuario->setNombre($_REQUEST['nameNombre']);
-    $usuario->setApellido($_REQUEST['nameApellido']);
-    $usuario->setDireccion($_REQUEST['nameDireccion']);
-    $usuario->setEmail($_REQUEST['nameEmail']);
-    $usuario->setTelefono($_REQUEST['nameTelefono']);
-    $usuario->setCodigo_institucion($_REQUEST['nameInstitucion']);
-    $usuario->setSexo($_REQUEST['NameSexo']);
+    $usuario->setNombre($_REQUEST['nameNombreE']);
+    $usuario->setApellido($_REQUEST['nameApellidoE']);
+    $usuario->setDireccion($_REQUEST['nameDireccionE']);
+    $usuario->setEmail($_REQUEST['nameEmailE']);
+    $usuario->setTelefono($_REQUEST['nameTelefonoE']);
+    $usuario->setCodigo_institucion($_REQUEST['nameInstitucionE']);
+    $usuario->setSexo($_REQUEST['NameSexoE']);
+    $carnet = $_REQUEST['nameCarnetE'] ;
     
         
+    echo 'el sexo es'.$_REQUEST['NameSexoE'];
     Repositorio_usuario::actualizar_usuario(Conexion::obtener_conexion(), $usuario, $carnet);
     //Conexion::cerrar_conexion();
 }
