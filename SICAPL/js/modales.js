@@ -1,11 +1,21 @@
 $(document).ready(function () {
-   $('.datepicker').pickadate({
+   $('.datepicker2').pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 150, // Creates a dropdown of 15 years to control year,
     today: 'Hoy',
     clear: 'Borrar',
     close: 'Ok',
     max: new Date(),
+    closeOnSelect: true // Close upon selecting a date,
+  });
+
+    $('#fecha_dev').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 2, // Creates a dropdown of 15 years to control year,
+    today: 'Hoy',
+    clear: 'Borrar',
+    close: 'Ok',
+    min: new Date(),
     closeOnSelect: true // Close upon selecting a date,
   });
     $('.collapse')
@@ -127,7 +137,7 @@ function abrirEdicionLib(codigo,editorial,titulo,fecha,foto, cantidad) {
     $('#selectEdit').val(editorial);
     $('#titulo_edit').val(titulo);
     $('#fecha_pub_edit').val(fecha);
-    $('#foto1').next.val(foto);
+    $('#foto1').attr("filename", foto);
     $('#file_foto').val(foto);
     document.getElementById("fotoLibro").src = foto2;
     $('#cantidad_edit').val(cantidad);

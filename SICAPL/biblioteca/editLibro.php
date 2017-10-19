@@ -18,15 +18,22 @@ include_once '../plantillas/cabecera.php';
     
     $foto =$ruta.basename($_FILES["foto1"]["name"]);
     $foto2=basename($_FILES["foto1"]["name"]);
-    Conexion::abrir_conexion();
 
+    if($foto2==""){
+        $foto2=$_POST['foto1'];
+        $foto ="";
+
+    }
+    //echo $foto2;
+    Conexion::abrir_conexion();
+    echo $publicacion;
     $Libro = new Libros();
     $Libro->setTitulo($titulo);
     //$Libro->setEditoriales_codigo($editorial);
    	$Libro->setCodigo_libro($codigo);
     $Libro->setFecha_publicacion($publicacion);
     //$Libro->setEstado($estado);
-
+    if($foto!=""){
     if (move_uploaded_file($_FILES['foto1']['tmp_name'], $foto)) {
        $Libro->setFoto($foto2);
       // echo "1";
@@ -34,8 +41,11 @@ include_once '../plantillas/cabecera.php';
         $Libro->setFoto("");
         //echo "2";
     }
+}else{
+    $Libro->setFoto($foto2);
+}
    // echo Repositorio_libros::EditarLibro(Conexion::obtener_conexion(), $Libro);
-     if (Repositorio_libros::EditarLibro(Conexion::obtener_conexion(), $Libro)==1) {
+    if (Repositorio_libros::EditarLibro(Conexion::obtener_conexion(), $Libro)==1) {
         //echo "hasta aki";
         echo "<script type='text/javascript'>";
         echo "swal({
@@ -71,4 +81,5 @@ include_once '../plantillas/cabecera.php';
 //echo "location.href='inicio_b.php'";
         echo "</script>";
     }
+    
  ?>

@@ -8,19 +8,24 @@
     $ruta="../biografias/";
     $nombre = $_POST["nombrea_edit"];
     $apellido = $_POST["apellidoa_edit"];
-    $nacimiento = $_POST["apellidoa_edit"];
+    $nacimiento = $_POST["fecha_nac_edit"];
     $biografia =$ruta.$_FILES["bio_edit"]["name"];
     $biografia2 =$_FILES["bio_edit"]["name"];
     $codigo=$_POST['codigoa_edit'];
     Conexion::abrir_conexion();
+    if($biografia2==""){
+        $biografia2=$_POST['bio_edit'];
+        $biografia ="";
 
+    }
     $Autor = new Autores();
     $Autor->setCodigo($codigo);
     $Autor->setNombre($nombre);
     $Autor->setApellido($apellido);
-   echo $codigo;
+  // echo $codigo;
     $Autor->setNacimiento($nacimiento);
   //  echo "hasta aki";
+    if($biografia!=""){
     if (move_uploaded_file($_FILES['bio_edit']['tmp_name'], $biografia)) {
        $Autor->setBiografia($biografia2);
        
@@ -28,7 +33,9 @@
         $Autor->setBiografia("");
        // echo "hasta";
 }
-	
+	}else{
+    $Autor->setBiografia($biografia2);
+}
     //echo Repositorio_autores::editarAutor(Conexion::obtener_conexion(), $Autor);
     if (Repositorio_autores::editarAutor(Conexion::obtener_conexion(), $Autor)==1) {
     	//echo "hasta aki";
