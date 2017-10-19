@@ -39,8 +39,8 @@
                                 
                                 <td><?php echo $fila['nombre']." ".$fila['apellido'] ?></td>
                                 <td><?php echo $fila['titulo'] ?></td>
-                                <td><?php echo $fila['salida'] ?></td>
-                                <td><?php echo $fila['devolucion'] ?></td>
+                                <td><?php echo date_format(date_create($fila['salida']),'d-m-Y') ?></td>
+                                <td><?php echo  date_format(date_create($fila['devolucion']),'d-m-Y')  ?></td>
                                 <td class="alert <?php if($fdev>$hoy){echo 'alert-warning';}else{echo 'alert-danger';} ?>" onclick="finalizar('<?php echo $fila['codigo'] ?>')">Pendiente</td>
                             </tr>
                             <?php } ?>

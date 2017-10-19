@@ -26,7 +26,7 @@
                             <td class="text-center"><button class="btn btn-success" onclick="abrirEdicionAut('<?php echo $fila['codigo_autor'] ?>','<?php echo $fila['nombre'] ?>','<?php echo $fila['apellido'] ?>','<?php echo $fila['nacimiento'] ?>','<?php echo $fila['biografia'] ?>')"> <i class="Medium material-icons prefix">edit</i> </button></td>
                             <td class="text-center"><?php echo $fila['nombre'] ?></td>
                             <td class="text-center"><?php echo $fila['apellido'] ?></td>
-                            <td class="text-center"><?php echo $fila['nacimiento'] ?></td>
+                            <td class="text-center"><?php echo date_format(date_create($fila['nacimiento']),'d-m-Y') ?></td>
                             <td class="text-center"><a class="btn btn-info" href="pdf.php?direccion=<?php echo $fila['biografia']; ?>" target="_blank">Biografia</a></td>
                             
                          
