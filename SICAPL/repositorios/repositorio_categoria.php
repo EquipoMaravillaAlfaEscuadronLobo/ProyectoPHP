@@ -53,14 +53,23 @@ class Repositorio_categoria {
                 print('ERROR' . $exc->getMessage());
             }
         }
-//        echo   'numero de registros en lista registros'. count($lista_administradores) . '<br>';
-        //foreach ($lista_administradores as $fila ){
-        //    echo $fila ->getNombre(). "<br>";
-         //   echo '<img src="data:image/jpg;base64,<?php echo base64_encode($fila["foto"]);';
-       // }
-        
          
         return   $lista_categorias;
+    }
+    public static function obtener_categoria($conexion, $cod ) {
+        $resultado = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT nombre from categoria where codigo_tipo = '$cod'";
+                
+                foreach ($conexion->query($sql) as $row) {
+                     $r=$row[0] ;
+                }
+                return $r;
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
     }
 
 }

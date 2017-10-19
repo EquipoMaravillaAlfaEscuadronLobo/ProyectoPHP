@@ -5,7 +5,7 @@
             <div class="panel">
                 <div class="panel-heading">
                     <div class="row">
-                        <div class="col-md-8"><h3>Listado de Activos</h3>
+                        <div class="col-md-8"><h4>Listado de Activos</h4>
                         </div>
                         
                     </div>       
@@ -13,7 +13,7 @@
                 <div class="panel-body">                
                     <table padding="20px" class="responsive-table display" id="tabla-listManteActivo">
                         <thead>
-                        <th>Código</th>
+                        <th>Códigoo</th>
                         <th>Tipo</th>
                         <th>Encargado</th>
                         <th>Estado</th>
@@ -33,7 +33,7 @@
                                 <td>Silla</td>
                                 <td>Ligia Alferez Muños</td>
                                 <td>Bueno</td>
-                                <td class="alert alert-success"><a class="btn btn_primary"   onclick="nuevoMant()"><span aria-hidden="true" class="glyphicon glyphicon-plus">
+                                <td class="alert alert-success"><a class="btn btn_primary"   onclick="nuevaCat(7) ""><span aria-hidden="true" class="glyphicon glyphicon-plus">
                         </span>MANTENIMIENTO</a></td>
                             </tr>
                             <tr>
@@ -54,3 +54,6 @@
         </div>
     </row>
 </div>
+
+
+

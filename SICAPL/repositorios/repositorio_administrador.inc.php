@@ -85,6 +85,7 @@ class Repositorio_administrador {
                     $administrador->setPasword($row["pasword"]);
                     $administrador->setNivel($row["nivel"]);
                     $administrador->setEmail($row["email"]);
+                    $administrador->setNombre($row["nombre"]);
                 }
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();

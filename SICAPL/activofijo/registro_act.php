@@ -98,14 +98,14 @@ include_once '../app/Conexion.php';
                         <!-- foto  -->
                         <div class="col m6">
                             <div class="file-field input-field m5">
-                                    <div class="btn">
-                                            <span><i class="glyphicon glyphicon-picture" aria-hidden="true"></i>Foto</span>
-                                            <input type="file">
-                                        </div>
-                                        <div class="">
-                                            <input type="file" accept="image/*" id="foto" name="foto" class="form-control  validate">
-                                        </div>
+                                <div class="btn">
+                                    <span><i class="glyphicon glyphicon-picture" aria-hidden="true"></i>Foto</span>
+                                    <input type="file">
                                 </div>
+                                <div class="">
+                                    <input type="file" accept="image/*" id="foto" name="foto" class="form-control  validate">
+                                </div>
+                            </div>
                         </div>
                         <!-- termina foto -->
 
@@ -293,30 +293,30 @@ include_once '../app/Conexion.php';
 
 
 <script language="javascript">// <![CDATA[
-$(document).ready(function() {
-   
-   // Interceptamos el evento submit
-    $('#FORMULARIO2, #fo3').submit(function() {
-  // Enviamos el formulario usando AJAX
-        $.ajax({
-            type: 'POST',
-            url: $(this).attr('action'),
-            data: $(this).serialize(),
-            // Mostramos un mensaje con la respuesta de PHP
-            success: function(resp) {
-                document.getElementById('FORMULARIO2').reset();
-               $('#nuevaCat').modal('close');
-               recargarCombos() 
-            }
-        })        
-        return false;
-    }); 
-})
+    $(document).ready(function () {
 
-    
+        // Interceptamos el evento submit
+        $('#FORMULARIO2, #fo3').submit(function () {
+            // Enviamos el formulario usando AJAX
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                // Mostramos un mensaje con la respuesta de PHP
+                success: function (resp) {
+                    document.getElementById('FORMULARIO2').reset();
+                    $('#nuevaCat').modal('close');
+                    recargarCombos()
+                }
+            })
+            return false;
+        });
+    })
 
 
-function recargarCombos2() {
+
+
+    function recargarCombos2() {
         $.ajax({
             url: 'select_categoria',
             type: 'POST',
@@ -383,19 +383,18 @@ if (isset($_REQUEST["bandera1"])) {
     $activo->setCodigo_proveedor($_REQUEST['selectPro']);
 
     //para la foto
-    $ruta='../fotoActivos/';
-    $foto =$ruta.basename($_FILES["foto"]["name"]);
-    echo '<script>alert("'.$foto.'");</script>'; 
+    $ruta = '../fotoActivos/';
+    $foto = $ruta . basename($_FILES["foto"]["name"]);
+    echo '<script>alert("' . $foto . '");</script>';
     if (move_uploaded_file($_FILES['foto']['tmp_name'], $foto)) {
-       $activo->setFoto($foto);
-       echo "1";
-    }else{
+        $activo->setFoto($foto);
+        echo "1";
+    } else {
         $activo->setFoto("");
         echo "2";
     }
 
     //fin para foto
-
     //$activo->setFoto($_REQUEST["fotoActivo"]);
     $activo->setEstado('1');
     $activo->setCodigo_detalle($R);
@@ -413,13 +412,13 @@ if (isset($_REQUEST["bandera1"])) {
         } else {
             if (($correlativo / 10) < 10) {
                 $cod = $_REQUEST["selectCat"] . "-00" . $correlativo;
-            }  else {
+            } else {
                 if (($correlativo / 10) < 100) {
-                $cod = $_REQUEST["selectCat"] . "-0" . $correlativo;
-            }else{
-                
-                $cod = $_REQUEST["selectCat"] . "-" . $correlativo;
-            }
+                    $cod = $_REQUEST["selectCat"] . "-0" . $correlativo;
+                } else {
+
+                    $cod = $_REQUEST["selectCat"] . "-" . $correlativo;
+                }
             }
         }
 
@@ -427,7 +426,7 @@ if (isset($_REQUEST["bandera1"])) {
         $activo->setCodigo_activo($cod);
         Repositorio_activo::insertar_activo(Conexion::obtener_conexion(), $activo);
     }
-echo '<script>swal("Excelente!", "Registro guardado con exito", "success");</script>';
+    echo '<script>swal("Excelente!", "Registro guardado con exito", "success");</script>';
     Conexion::cerrar_conexion();
 }
 ?>

@@ -57,7 +57,7 @@ class Repositorio_activo {
         }
     }
 
-    public static function obtener_administrador($conexion, $codigo_administrador) {
+    public static function obtener_administrador($conexion) {
         $administrador = new Administrador();
         if (isset($conexion)) {
             try {
@@ -76,46 +76,17 @@ class Repositorio_activo {
         return $administrador;
     }
 
-    public static function lista_administradores($conexion, $codigo) {
-        $lista_administradores = array();
-
+    public static function lista_activo($conexion) {
+        $resultado = "";
         if (isset($conexion)) {
             try {
-                $sql = "select * from administradores where (codigo_administrador != '$codigo'  AND estado = 1)";
-                $sentencia = $conexion->prepare($sql);
-                $sentencia->execute();
-                $resultado = $sentencia->fetchAll();
-
-                if (count($resultado)) {
-                    foreach ($resultado as $fila) {
-                        $administrador = new Administrador();
-                        $administrador->setApellido($fila['apellido']);
-                        $administrador->setCodigo_administrador($fila['codigo_administrador']);
-                        $administrador->setDui($fila['dui']);
-                        $administrador->setEstado($fila['estado']);
-                        $administrador->setFoto($fila['foto']);
-                        $administrador->setNivel($fila['nivel']);
-                        $administrador->setNombre($fila['nombre']);
-                        $administrador->setObservacion($fila['observacion']);
-                        $administrador->setPasword($fila['pasword']);
-                        $administrador->setSexo($fila['sexo']);
-                        $administrador->setFecha($fila['fecha']);
-                        $administrador->setEmail($fila['email']);
-
-                        $lista_administradores[] = $administrador;
-                    }
-                }
-            } catch (PDOException $exc) {
-                print('ERROR' . $exc->getMessage());
+                $sql = "SELECT * from actvos where estado = 1 ORDER BY actvos.codigo_activo ASC";
+                $resultado = $conexion->query($sql);
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
             }
         }
-//        echo   'numero de registros en lista registros'. count($lista_administradores) . '<br>';
-        //foreach ($lista_administradores as $fila ){
-        //    echo $fila ->getNombre(). "<br>";
-        //   echo '<img src="data:image/jpg;base64,<?php echo base64_encode($fila["foto"]);';
-        // }
-
-        return $lista_administradores;
+        return $resultado;
     }
 
     public static function actualizar_administrador($conexion, $administrador, $codigo_original) {

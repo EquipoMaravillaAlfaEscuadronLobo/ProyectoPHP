@@ -1,9 +1,16 @@
-<!--formulario usuario-->
+<?php
+include_once '../repositorios/repositorio_administrador.inc.php';
+include_once '../app/Conexion.php';
+?>
+
 
             <div class="panel" name="regisroAct">
                 
 
                 <div class=" text-center panel-body">
+                <form  name="actAct" id="ActAct" method="post">
+                    <input type="hidden" id="codActivo" name="codActivo">
+                    <input type="hidden" id="codDetalle" name="codDetalle">
                     <div class="row">
                         <div class="col m1"></div>
                          <!--seccion del combo para encargado  -->
@@ -13,10 +20,12 @@
                             </div>
                         </div>
                         <div class="input-field col m3">
-                            <select required="">
-                                <option value = "" disabled selected>Seleccione Encargado</option>
-                                <option value="1" selected>Ligia Alferez Muños</option>
-                                <option value="2">Alberto Pérez Guzman</option>
+                           <select required="" name="adminedit" id="adminEdit" >
+                                <option value="0" disabled selected>Seleccione Encargado</option>
+                                <?php
+                                Conexion::abrir_conexion();
+                                Repositorio_administrador::lista_administradores2(Conexion::obtener_conexion());
+                                ?>
                             </select>
                         </div>
                          <div class="col m1"></div>
@@ -48,80 +57,100 @@
                             <div class="panel-group" id="accordion">
                                 <div class="panel" name="caracteristicas">
                                     <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion" href="#caracteristicasMod">Detalles  </a></div>
-                                    <div id="caracteristicasMod" class="panel-collapse collapse ">
-                                        <div class="panel-body">                                            
+                                    <div id="caracteristicasMod" class="panel-collapse collapse in">
+                                         <div class="panel-body">                                            
 
-                                                <div class="row">
+                                            <div class="row">
 
-                                                    <div class="input-field col m5">
-                                                        <i class="fa fa-barcode prefix"></i> 
-                                                        <input type="text" id="precioUnitario" name="precioUnitario" class="text-center validate" required="">
-                                                        <label for="precioUnitario">Numero de Serie <small></small> </label>
-                                                    </div>
-                                                    <div class="col m1"></div>
-
-                                                    <div class="input-field col m5">
-                                                        <i class="fa fa-adjust prefix"></i> 
-                                                        <input type="email" id="idEmail" name="nameEmail" class="text-center validate" required="" >
-                                                        <label for="idEmail">Color<small></small> </label>
-                                                    </div>
+                                                <div class="input-field col m5">
+                                                    <i class="fa fa-barcode prefix"></i> 
+                                                    <input type="text" id="nserieE" name="nserieE" class="text-center validate" required="" value="Sin Numero de Serie" onclick = "if (this.value == 'Sin Numero de Serie')
+                                                                this.value = ''" onblur="if (this.value == '')
+                                                                            this.value = 'Sin Numero de Serie'">
+                                                    <label for="precioUnitario">Numero de Serie <small></small> </label>
                                                 </div>
-                                                <div class="row">
+                                                <div class="col m1"></div>
 
-                                                    <div class="input-field col m5">
-                                                        <i class="fa fa-registered prefix"></i> 
-                                                        <input type="text" id="precioUnitario" name="precioUnitario" class="text-center validate" required="">
-                                                        <label for="precioUnitario">Marca <small></small> </label>
-                                                    </div>
-                                                    <div class="col m1"></div>
-
-                                                     <div class="input-field col m5">
-                                                        <i class="fa fa-windows prefix"></i> 
-                                                        <input type="email" id="idEmail" name="nameEmail" class="text-center validate" required="" >
-                                                        <label for="idEmail">Sistema Operativo <small></small> </label>
-                                                    </div>
-                                                    
+                                                <div class="input-field col m5">
+                                                    <i class="fa fa-adjust prefix"></i> 
+                                                    <input type="text" id="colorE" name="colorE" class="text-center validate" required="" >
+                                                    <label for="idEmail">Color<small></small> </label>
                                                 </div>
-                                                <div class="row">
+                                            </div>
+                                            <div class="row">
 
-                                                    <div class="input-field col m5">
-                                                        <i class="fa fa-crop prefix"></i> 
-                                                        <input type="text" id="dimensiones" name="precioUnitario" class="text-center validate" required="">
-                                                        <label for="dimensines">Dimensiones <small></small> </label>
-                                                    </div>
-                                                    <div class="col m1"></div>
+                                                <div class="input-field col m5">
+                                                    <i class="fa fa-registered prefix"></i> 
+                                                    <input type="text" id="marcaE" name="marcaE" class="text-center validate" required="" value="Sin Marca" onclick = "if (this.value == 'Sin Marca')
+                                                                this.value = ''" onblur="if (this.value == '')
+                                                                            this.value = 'Sin Marca'">
+                                                    <label for="precioUnitario">Marca <small></small> </label>
+                                                </div>
+                                                <div class="col m1"></div>
 
-                                                     <div class="input-field col m5">
-                                                        <i class="fa fa-circle-o-notch prefix"></i> 
-                                                        <input type="text" id="dimensiones" name="precioUnitario" class="text-center validate" required="">
-                                                        <label for="dimensines">Memoria Ram <small></small> </label>
-                                                    </div>
+                                                <div class="input-field col m5">
+                                                    <i class="fa fa-windows prefix"></i> 
+                                                    <input type="text" id="soE" name="soE" class="text-center validate" required="" value="Sin Sistema Operativo" onclick = "if (this.value == 'Sin Sistema Operativo')
+                                                                this.value = ''" onblur="if (this.value == '')
+                                                                            this.value = 'Sin Sistema Operativo'">
+                                                    <label for="idEmail">Sistema Operativo <small></small> </label>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="input-field col m5">
-                                                        <i class="fa fa-laptop prefix"></i> 
-                                                        <input type="email" id="idEmail" name="nameEmail" class="text-center validate" required="" >
-                                                        <label for="idEmail">Modelo<small></small> </label>
-                                                    </div>
-                                                   
 
-                                                    <div class="col m1"></div>
-                                                    <div class="input-field col m5">
-                                                        <i class="fa fa-hdd-o prefix"></i> 
-                                                        <input type="email" id="idEmail" name="nameEmail" class="text-center validate" required="" >
-                                                        <label for="idEmail">Disco Duro <small></small> </label>
-                                                    </div> 
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="input-field col m5">
+                                                    <i class="fa fa-crop prefix"></i> 
+                                                    <input type="text" id="dimensionesE" name="dimensionesE" class="text-center validate" required="" value="Sin Dimenciones" onclick = "if (this.value == 'Sin Dimenciones')
+                                                                this.value = ''" onblur="if (this.value == '')
+                                                                            this.value = 'Sin Dimenciones'">
+                                                    <label for="dimensines">Dimensiones <small></small> </label>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col m4"></div>
-                                                     <div class="input-field col m5">
-                                                        <i class="fa fa-microchip prefix"></i> 
-                                                        <input type="email" id="idEmail" name="nameEmail" class="text-center validate" required="" >
-                                                        <label for="idEmail">Procesador <small></small> </label>
-                                                    </div>
-                                                    <div class="col m2"></div>
+                                                <div class="col m1"></div>
+
+                                                <div class="input-field col m5">
+                                                    <i class="fa fa-circle-o-notch prefix"></i> 
+                                                    <input type="text" id="ramE" name="ramE" class="text-center validate" required="" value="Sin Memoria Ram" onclick = "if (this.value == 'Sin Memoria Ram')
+                                                                this.value = ''" onblur="if (this.value == '')
+                                                                            this.value = 'Sin Memoria Ram'">
+                                                    <label for="dimensines">Memoria Ram <small></small> </label>
                                                 </div>
-                                                  
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col m5">
+                                                    <i class="fa fa-laptop prefix"></i> 
+                                                    <input type="text" id="modeloE" name="modeloE" class="text-center validate" required="" value="Sin Modelo" onclick = "if (this.value == 'Sin Modelo')
+                                                                this.value = ''" onblur="if (this.value == '')
+                                                                            this.value = 'Sin Modelo'">
+                                                    <label for="idEmail">Modelo<small></small> </label>
+                                                </div>
+
+
+                                                <div class="col m1"></div>
+                                                <div class="input-field col m5">
+                                                    <i class="fa fa-hdd-o prefix"></i> 
+                                                    <input type="text" id="ddE" name="ddE" class="text-center validate" required="" value="Sin Disco Duro" onclick = "if (this.value == 'Sin Disco Duro')
+                                                                this.value = ''" onblur="if (this.value == '')
+                                                                            this.value = 'Sin Disco Duro'">
+                                                    <label for="idEmail">Disco Duro <small></small> </label>
+                                                </div> 
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="input-field col m5">
+                                                    <i class="fa fa-microchip prefix"></i> 
+                                                    <input type="text" id="proE" name="proE" class="text-center validate" required="" value="Sin Procesador" onclick = "if (this.value == 'Sin Procesador')
+                                                                this.value = ''" onblur="if (this.value == '')
+                                                                            this.value = 'Sin Procesador'">
+                                                    <label for="idEmail">Procesador <small></small> </label>
+                                                </div>
+                                                <div class="col m1"></div>
+                                                <div class="input-field col m5">
+                                                    <textarea id="otroE" name="otroE" class="materialize-textarea" style="font-size:15px"></textarea>
+                                                    <label for="textarea1" style="font-size:15px"><i class="  fa fa-pencil-square-o"></i>&nbsp Otro</label>
+                                                </div>
+                                            </div>
+
 
                                         </div>
                                     </div>
@@ -132,6 +161,7 @@
                         <div class="col m1"></div><!--  para dejar espacio en los lados   -->
                         
                     </div> <!-- termina el div row de Caracteristicas     -->
+                    </form>
                 </div><!-- termina div panel center-->
 
                 <div class="row">
