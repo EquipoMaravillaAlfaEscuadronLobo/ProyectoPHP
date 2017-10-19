@@ -37,7 +37,7 @@
                                 <td><?php echo $fila['nombre']." ".$fila['apellido'] ?></td>
                                 <td><?php echo $fila['salida'] ?></td>
                                 <td><?php echo $fila['devolucion'] ?></td>
-                                <td class="alert alert-warning">Pendiente</td>
+                                <td class="alert alert-warning" onclick="finalizar('<?php echo $fila['codigo'] ?>')">Pendiente</td>
                             </tr>
                             <?php } ?>
                             
@@ -66,6 +66,25 @@
     function enviar () {
     document.getElementById('num').value= document.getElementsByName('libros').length;
     document.frmPrestamoLibro.submit();
+}
+
+function finalizar (codigo) {
+  swal({
+  title: "An input!",
+  text: "Write something interesting:",
+  type: "input",
+  showCancelButton: true,
+  closeOnConfirm: false,
+  inputPlaceholder: "Write something"
+}, function (inputValue) {
+  if (inputValue === false) return false;
+  if (inputValue === "") {
+    swal.showInputError("You need to write something!");
+    return false
+  }
+  swal("Nice!", "You wrote: " + inputValue, "success");
+});
+
 }
 
 </script>

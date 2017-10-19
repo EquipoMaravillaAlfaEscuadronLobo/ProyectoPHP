@@ -57,9 +57,7 @@
         </div>
     </div>
 </div>
-<script crossorigin="a
-        nonymous" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" src="../js/jquery.min.js">
-</script>
+
 <script>
     function addLibro() {
         var imagenes = document.getElementsByName('libros').length + 1;

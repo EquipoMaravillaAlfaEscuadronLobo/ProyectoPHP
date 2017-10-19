@@ -88,7 +88,7 @@
                         		<div class="input-field">
                         			<i class="fa fa-calendar prefix" aria-hidden="true"></i>
                         			<label for="fecha_pub" class="active">Fecha de Publicacion</label>
-                        			<input type="date" id="fecha_pub" name="fecha_pub" class="datepicker">
+                        			 <input type="text" class="datepicker" name="fecha_pub" id="fecha_pub">
                         		</div>
                         	</div>
                         
