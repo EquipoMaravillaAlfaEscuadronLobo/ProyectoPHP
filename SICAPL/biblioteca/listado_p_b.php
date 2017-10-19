@@ -21,8 +21,9 @@
                     <table padding="20px" class="responsive-table display" id="tabla-paginada4">
                         <thead>
                         <th>Codigo</th>
-                        <th>Libro</th>
+                        
                         <th>Usuario</th>
+                        <th>Libro</th>
                         <th>Fecha Salida</th>
                         <th>Fecha Devolucion</th>
                         <th>Estado</th>
@@ -30,17 +31,20 @@
                         <tbody>
                         <?php 
                             foreach ($listado as $fila) {
+                                $fdev=date_create($fila['devolucion']);
+                                $hoy=new DateTime("now");
                          ?>
                             <tr>
-                                <td><?php echo $fila['codigo'] ?></td>
-                                <td><?php echo $fila['titulo'] ?></td>
+                               <td><?php echo $fila['codigo'] ?></td>
+                                
                                 <td><?php echo $fila['nombre']." ".$fila['apellido'] ?></td>
+                                <td><?php echo $fila['titulo'] ?></td>
                                 <td><?php echo $fila['salida'] ?></td>
                                 <td><?php echo $fila['devolucion'] ?></td>
-                                <td class="alert alert-warning" onclick="finalizar('<?php echo $fila['codigo'] ?>')">Pendiente</td>
+                                <td class="alert <?php if($fdev>$hoy){echo 'alert-warning';}else{echo 'alert-danger';} ?>" onclick="finalizar('<?php echo $fila['codigo'] ?>')">Pendiente</td>
                             </tr>
                             <?php } ?>
-                            
+                           
                         </tbody>
                     </table>
                 </div>
@@ -70,18 +74,41 @@
 
 function finalizar (codigo) {
   swal({
-  title: "An input!",
-  text: "Write something interesting:",
+  title: "Seguro que desea finalizar el prestamo "+codigo,
+  text: "Escriba una observacion",
   type: "input",
   showCancelButton: true,
   closeOnConfirm: false,
-  inputPlaceholder: "Write something"
+  inputPlaceholder: "Escribe algo"
 }, function (inputValue) {
-  if (inputValue === false) return false;
-  if (inputValue === "") {
-    swal.showInputError("You need to write something!");
-    return false
-  }
+    $.ajax({
+        url:'finalizarPrestamo.php?codigo='+codigo+'&motivo='+inputValue,
+        type:'GET',
+        dataType: "html",
+        data:{codigo: codigo, motivo:inputValue},
+    cache: false,
+    contentType: false,
+    processData: false
+    }).done(function(resp){
+       if(resp==1){
+                swal({
+                    title: "Exito",
+                    text: "Prestamo Finalizado",
+                    type: "success"},
+                    function(){
+                       location.href="inicio_b.php";
+                       
+                       
+                        
+                    }
+
+                    );
+            
+         }else{
+                swal ( "Oops" , resp ,  "error" )
+             
+         }
+    })
   swal("Nice!", "You wrote: " + inputValue, "success");
 });
 

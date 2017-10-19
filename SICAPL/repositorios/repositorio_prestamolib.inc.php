@@ -15,12 +15,13 @@ libros.titulo as titulo,
 usuarios.nombre as nombre,
 usuarios.apellido as apellido,
 prestamo_libros.fecha_salida as salida,
-prestamo_libros.fecha_devolucion as devolucion
+prestamo_libros.fecha_devolucion as devolucion,
+prestamo_libros.estado as estado
 FROM
 prestamo_libros
 INNER JOIN usuarios ON prestamo_libros.codigo_usuario = usuarios.codigo_usuario
 INNER JOIN movimiento_libros ON movimiento_libros.codigo_plibro = prestamo_libros.codigo_plibro
-INNER JOIN libros ON movimiento_libros.codigo_libro = libros.codigo_libro
+INNER JOIN libros ON movimiento_libros.codigo_libro = libros.codigo_libro where prestamo_libros.estado=0
 ";
 				$resultado=$conexion->query($sql);
 			}catch(PDOException $ex){
@@ -124,5 +125,34 @@ print 'ERROR: ' . $ex->getMessage();
 			}
 			return $codigo;
 		}
+
+		 public static function Finalizar($conexion, $codigo, $motivo)
+    {
+          $libro_mod = 0;
+       if (isset($conexion)) {
+            try {
+                            
+                
+                $sql = "UPDATE prestamo_libros SET estado='1', observaciones='$motivo' where  codigo_plibro='$codigo'";
+                                ///estos son alias para que PDO pueda trabajar 
+                $sentencia = $conexion->prepare($sql);
+                
+                
+                
+                
+                //$sentencia->bindParam(':titulo', $titulo, PDO::PARAM_STR);
+                //$sentencia->bindParam(':foto', $foto, PDO::PARAM_STR);
+                //$sentencia->bindParam(':publicacion', $publicacion, PDO::PARAM_STR);
+                //$sentencia->bindParam(':biografia', $biografia, PDO::PARAM_STR);
+                //$sentencia->bindParam(':codigo', $codigo, PDO::PARAM_STR);
+                                             
+                
+                $libro_mod = $sentencia->execute();
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $libro_mod;
+    }
 	}
  ?>

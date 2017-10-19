@@ -8,6 +8,7 @@
     $apellido = $_POST["apellido"];
     $nacimiento = $_POST["fecha_nac"];
     $biografia =$ruta.$_POST["bio"];
+    $biografia2=$_POST['bio'];
     
     Conexion::abrir_conexion();
 
@@ -17,7 +18,7 @@
    
     $Autor->setNacimiento($nacimiento);
     if (move_uploaded_file($_FILES['bio1']['tmp_name'], $biografia)) {
-       $Autor->setBiografia($biografia);
+       $Autor->setBiografia($biografia2);
        
     }else{
         $Autor->setBiografia("");
