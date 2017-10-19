@@ -1,15 +1,17 @@
 
-
+<form method="POST" name="frmPrestamoLibro" id="frmPrestamoLibro" action="newPrestamo.php">
+<input type="hidden" name="num" id="num">
 <div class="row">
     <div class="col-md-6">
         <div class="panel-group" id="accordion2">
+        <div id="borrar1">
             <div class="panel panel-default" name="libros" id="libros1">
                 <div class="panel-heading p_libro">
 
                 <div class="row">
                 <div class="col-md-10">
 
-                 <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="">Buscar Libro</label><input type="text" id="codigol1" autofocus onkeypress="buscarLibro2(this)" list="listaLibros"></div>
+                 <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="">Buscar Libro</label><input type="text" id="codigol1" name="codigol1" autofocus onkeypress="buscarLibro2(this)" list="listaLibros"></div>
                 
                 </div>
                 <div class="col-md-1">
@@ -44,6 +46,7 @@
                     </div>
                 </div>
             </div>
+            </div>
         </div>
         
         <but class="btn" onClick="addLibro()"><span aria-hidden="true" class="glyphicon glyphicon-plus">
@@ -52,7 +55,7 @@
     <div class="col-md-6"><!-- panel datos de usuario -->        
             <div class="panel panel-default" name="user">
                 <div class="panel-heading p_libro">
-                 <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="" style="font-size:16px">Buscar Usuario</label><input type="text" id="codigouser" autofocus onkeypress="buscarUser(this)" list="listaUsuarios">
+                 <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="" style="font-size:16px">Buscar Usuario</label><input type="text" id="codigouser" name="codigouser" autofocus onkeypress="buscarUser(this)" list="listaUsuarios">
                  </div>              
                 
                 </div>
@@ -62,7 +65,7 @@
                             <div class="col m6">
                                 <div class="input-field ">
                                         <i class="fa fa-calendar-check-o prefix" style="color: green"></i> 
-                                        <input type="text" id="fecha" name="nameNombre"  class="text-center validate" maxlength="25" minlength="3" required value="<?php echo date("d-m-Y"); ?>" readonly> 
+                                        <input type="text" id="fecha" name="fecha_salida"  class="text-center validate" maxlength="25" minlength="3" required value="<?php echo date("d-m-Y"); ?>" readonly> 
                                         <label for="idNombre" class="col-sm-4 control-labe" style="font-size:18px">Fecha de Salida</label>
                                 </div>
                                 
@@ -72,7 +75,7 @@
                                 <div class="input-field">
                                                 <i class="fa fa-calendar prefix" aria-hidden="true"></i>
                                                 <label for="fecha_pub" class="active" style="font-size:16px">Fecha de Devolución</label>
-                                                <input type="date" id="fecha_pub" class="form-control datepicker" value="<?php echo date("Y-m-d"); ?>">
+                                                <input type="date" id="fecha_pub" name="fecha_devolucion" class="form-control datepicker" value="<?php echo date("Y-m-d"); ?>">
                                             </div>
                             </div>  
                         </div>
@@ -109,7 +112,7 @@
                 </div>
             </div>
 </div>
-
+</form>
 
 <datalist id="listaLibros">
   <?php 
@@ -148,10 +151,14 @@
 <script type="text/javascript">
     
     function eliminar (numero) {
-        var id='libros'+numero;
+        var id='borrar'+numero;
         var top=document.getElementById('accordion2');
         var bottom=document.getElementById(id);
-        alert(id)
-        top.removeChild(bottom);
+        //alert(bottom)
+        if (bottom.parentNode) {
+        bottom.parentNode.removeChild(bottom);
+        };
 }
+
+
 </script>
