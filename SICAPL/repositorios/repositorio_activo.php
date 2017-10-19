@@ -80,7 +80,7 @@ class Repositorio_activo {
         $resultado = "";
         if (isset($conexion)) {
             try {
-                $sql = "SELECT * from actvos where estado = 1 ORDER BY actvos.codigo_activo ASC";
+                $sql = "SELECT * from actvos  ORDER BY actvos.codigo_activo ASC";
                 $resultado = $conexion->query($sql);
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();

@@ -2,7 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
         <file>
-            <url>usuario/eliminar_usuario.php</url>
+            <url>seguridad/listado_administrador.php</url>
             <bookmark id="1">
                 <name/>
                 <line>0</line>
@@ -12,12 +12,13 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/usuario/listado_usuario.php</file>
-            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/usuario/inicio_usuario.php</file>
-            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/usuario/editar_usuario.php</file>
-            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/js/validacion_elimnar.js</file>
-            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/js/modales.js</file>
-            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/repositorios/repositorio_usuario.inc.php</file>
+            <file>file:/C:/xampp/htdocs/ProyectosEquipoMaravilla/SICAPL/repositorios/repositorio_encargado.php</file>
+            <file>file:/C:/xampp/htdocs/ProyectosEquipoMaravilla/SICAPL/repositorios/repositorio_detalles.php</file>
+            <file>file:/C:/xampp/htdocs/ProyectosEquipoMaravilla/SICAPL/activofijo/edit_aactivo.php</file>
+            <file>file:/C:/xampp/htdocs/ProyectosEquipoMaravilla/SICAPL/repositorios/respositorio_libros.php</file>
+            <file>file:/C:/xampp/htdocs/ProyectosEquipoMaravilla/SICAPL/repositorios/repositorio_administrador.inc.php</file>
+            <file>file:/C:/xampp/htdocs/ProyectosEquipoMaravilla/SICAPL/repositorios/repositorio_activo.php</file>
+            <file>file:/C:/xampp/htdocs/ProyectosEquipoMaravilla/SICAPL/activofijo/listado_act.php</file>
         </group>
     </open-files>
 </project-private>

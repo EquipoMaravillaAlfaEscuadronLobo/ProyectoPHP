@@ -1,11 +1,12 @@
 <?php
 include_once '../repositorios/repositorio_administrador.inc.php';
 include_once '../app/Conexion.php';
+Conexion::abrir_conexion();
 ?>
 
 <!--formulario usuario-->
 <div class="container">
-    <form id="FORMULARI" class="FORMULARI" method="post" class="form-horizontal"  autocomplete="off">
+    <form id="FORMULARI" class="FORMULARI" method="post" class="form-horizontal"  autocomplete="off" enctype="multipart/form-data" action="">
         <input type="hidden" name="bandera1" id="bandera1">
         <div class="row" name="filaForm">
             <div class="panel" name="regisroAct">
@@ -30,7 +31,7 @@ include_once '../app/Conexion.php';
                             <select required="" name="admin" id="admin" >
                                 <option value="0" disabled selected>Seleccione Encargado</option>
                                 <?php
-                                Conexion::abrir_conexion();
+                                
                                 Repositorio_administrador::lista_administradores2(Conexion::obtener_conexion());
                                 ?>
                             </select>
@@ -54,7 +55,6 @@ include_once '../app/Conexion.php';
                         </div>
                         <div class="input-field col m2" > 
                             <select name="selectCat" id="selectCat" class="selectCat" required="true">
-                                <option value="0" disabled selected>Seleccione Categoria</option>
                                 <?php
                                 include'select_categoria.php';
                                 ?>
@@ -62,7 +62,8 @@ include_once '../app/Conexion.php';
 
                         </div>
                         <div class="input-field col m1">
-                            <input type="number"  min="1" max="500" id="cantidad" name="cantidad" placeholder="Cantidad" required="true">
+                            <input type="number"  min="1" max="500" id="cantidad" name="cantidad" placeholder="Cantidad" required="true" value="1">
+                            <label for="catidad" style="font-size:15px ">Cantidad <small></small> </label>
                         </div>
                         <div class="input-field col m1">
                             <a class="btn btn_primary"  target="_blank" onclick="nuevaCat(1)"><span aria-hidden="true" class="glyphicon glyphicon-plus"></span></a>
@@ -84,7 +85,7 @@ include_once '../app/Conexion.php';
                         </div>
                         <div class="input-field col m3">
                             <select required="" name="selectPro" id="selectPro" class="selectPro">
-                                <option value="0" disabled selected>Seleccione Proveedor</option>
+                                
                                 <?php
                                 include'select_proveedor.php';
                                 ?>
@@ -296,7 +297,7 @@ include_once '../app/Conexion.php';
     $(document).ready(function () {
 
         // Interceptamos el evento submit
-        $('#FORMULARIO2, #fo3').submit(function () {
+        $('.FORMULARIO2 ,.FORMULARIO3, .FORMULARI').submit(function () {
             // Enviamos el formulario usando AJAX
             $.ajax({
                 type: 'POST',
@@ -304,9 +305,15 @@ include_once '../app/Conexion.php';
                 data: $(this).serialize(),
                 // Mostramos un mensaje con la respuesta de PHP
                 success: function (resp) {
-                    document.getElementById('FORMULARIO2').reset();
-                    $('#nuevaCat').modal('close');
-                    recargarCombos()
+                   $('#nuevaCat').modal('close');
+                   $('#nuevoProv').modal('close');
+                   document.getElementById('FORMULARIO2').reset();                   
+                   document.getElementById('FORMULARIO3').reset();
+                   document.getElementById('FORMULARI').reset();
+                    swal("Excelente!", "Registro guardado con exito", "success");
+                    recargarCombos2();
+                   
+
                 }
             })
             return false;
@@ -318,7 +325,7 @@ include_once '../app/Conexion.php';
 
     function recargarCombos2() {
         $.ajax({
-            url: 'select_categoria',
+            url: 'select_categoria.php',
             type: 'POST',
             data: ''
         }).done(function (resp) {
@@ -328,7 +335,7 @@ include_once '../app/Conexion.php';
         })
 
         $.ajax({
-            url: 'select_proveedor',
+            url: 'select_proveedor.php',
             type: 'POST',
             data: ''
         }).done(function (resp) {
@@ -364,7 +371,6 @@ if (isset($_REQUEST["bandera1"])) {
     $detalle->setMemoria($_REQUEST["dd"]);
     $detalle->setProcesador($_REQUEST["pro"]);
     $detalle->setOtros($_REQUEST["otro"]);
-    Repositorio_detalle::insertar_detalle(Conexion::obtener_conexion(), $detalle);
 
     $activo = new Activo();
     $activo->setCodigo_activo($_REQUEST["selectCat"]);
@@ -375,7 +381,6 @@ if (isset($_REQUEST["bandera1"])) {
     list($dia, $mes, $year) = explode("/", $fecha);
     $fecha = $year . "-" . $mes . "-" . $dia;
 //fin fecha
-    $R = Repositorio_detalle::obtener_ultimo_detale(Conexion::obtener_conexion());
 
     $activo->setFecha_adquicision($fecha);
     $activo->setCodigo_tipo($_REQUEST["selectCat"]);
@@ -385,17 +390,17 @@ if (isset($_REQUEST["bandera1"])) {
     //para la foto
     $ruta = '../fotoActivos/';
     $foto = $ruta . basename($_FILES["foto"]["name"]);
-    echo '<script>alert("' . $foto . '");</script>';
+
     if (move_uploaded_file($_FILES['foto']['tmp_name'], $foto)) {
         $activo->setFoto($foto);
-        echo "1";
+        
     } else {
         $activo->setFoto("");
-        echo "2";
+        
     }
 
     //fin para foto
-    //$activo->setFoto($_REQUEST["fotoActivo"]);
+    
     $activo->setEstado('1');
     $activo->setCodigo_detalle($R);
     $correlativo = Repositorio_activo::obtener_nactivo(Conexion::obtener_conexion(), $_REQUEST["selectCat"]);
@@ -424,9 +429,10 @@ if (isset($_REQUEST["bandera1"])) {
 
         //$cod=$_REQUEST["selectCat"]."-".$correlativo; 
         $activo->setCodigo_activo($cod);
-        Repositorio_activo::insertar_activo(Conexion::obtener_conexion(), $activo);
+       echo Repositorio_activo::insertar_activo(Conexion::obtener_conexion(), $activo);
     }
-    echo '<script>swal("Excelente!", "Registro guardado con exito", "success");</script>';
-    Conexion::cerrar_conexion();
+
+   
+    
 }
 ?>

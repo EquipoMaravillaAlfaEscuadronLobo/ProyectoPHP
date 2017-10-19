@@ -1,6 +1,12 @@
+<?php
+      
+    include_once '../app/Conexion.php';
+    include_once '../modelos/Categoria.php';
+    include_once '../repositorios/repositorio_categoria.php';
+?>
 <div class="row">
     <div class="col-md-12">
-        <form id="FORMULARIO2" name="FORMULARIO2" class="FORMULARIO2" method="post"  autocomplete="off" enctype="multipart/form-data" >
+        <form id="FORMULARIO2" name="FORMULARIO2" class="FORMULARIO2" method="post"  autocomplete="off" enctype="multipart/form-data" onsubmit="recargarCombos2()">
             <input type="hidden" name="banderaCAtegoria" id="banderaCAtegoria" >
             <div class="panel">				
                 <div class="panel-body">
@@ -18,7 +24,7 @@
                             <div class="input-field">
                                 <i class="fa fa-barcode prefix" aria-hidden="true"></i>
                                 <label for="Titulo">Código</label>
-                                <input type="text" id="codigoCat" name="nameApellido"  class="text-center validate" maxlength="25" minlength="3" required="">
+                                <input type="text" id="codigoCat" name="nameApellido" readonly="" value="<?php echo Repositorio_categoria::obtener_newcod_categoria(Conexion::obtener_conexion()) ?>"class="text-center validate" maxlength="25" minlength="3" required="">
                             </div>
                         </div>
                     </div>
@@ -41,10 +47,7 @@ if (isset($_REQUEST["banderaCAtegoria"])
 
     ) {
      
-          
-    include_once '../app/Conexion.php';
-    include_once '../modelos/Categoria.php';
-    include_once '../repositorios/repositorio_categoria.php';
+    
 
     
     Conexion::abrir_conexion(); 
@@ -54,7 +57,9 @@ if (isset($_REQUEST["banderaCAtegoria"])
     $categoria->setNombre($_REQUEST["nameNombre"]);
 
     Repositorio_categoria::insertar_categoria(Conexion::obtener_conexion(), $categoria); 
-    Conexion::cerrar_conexion();
+    echo '<script>swal("Excelente!", "Registro guardado con exito", "success");</script>';
+     echo '<script>recargar2();</script>';
+    //Conexion::cerrar_conexion();
         
 }
 ?>

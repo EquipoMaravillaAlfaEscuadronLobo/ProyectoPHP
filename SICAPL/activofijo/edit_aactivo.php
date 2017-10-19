@@ -28,28 +28,41 @@ include_once '../app/Conexion.php';
                                 ?>
                             </select>
                         </div>
-                         <div class="col m1"></div>
+                         
                         <!-- termona el combo de encargado   -->
-                        
+                        <div class="input-field col m3">
+                                                    <i class="fa fa-info-circle prefix "></i> 
+                                                    <input type="text" id="estadoE" name="estadoE" class="text-center validate" required="" readonly=""
+                                                    value="" 
+                                                    >
+                                                    <label for="estadoE">Estado <small></small> </label>
+                                                </div>
                         <!-- foto  -->
-                        <div class="col m6">
-                            <div class="file-field input-field col m10">
-                                <div class="btn btn-primary">
-                                    <span class="glyphicon glyphicon-picture" aria="hidden"></span> Foto                          
+                        <div class="col m1">
+                             
+                         </div>
+                       <div class="col m3">
+                            <div class="file-field input-field m5">
+                                <div class="btn">
+                                    <span><i class="glyphicon glyphicon-picture" aria-hidden="true"></i>Foto</span>
                                     <input type="file">
                                 </div>
-                                <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text" name="nameFoto" id="idFoto">
-                                    <input type="file" id="files" name="files[]">
+                                <div class="">
+                                    <input type="file" accept="image/*" id="idFotoe" name="idFotoe" class="form-control  validate">
                                 </div>
                             </div>
                         </div>
                         <!-- termina foto -->
+                         
                         </div>
-                    
+                    <div class="col-md-6">
+                    <img src="" id="idFotoea" width="30%">
+                </div>
                     <div class="row">
-                        <output id="list"></output>                
+                        <output id="list"> <img src="" id="idFotoea" width="30%"></output>                
                     </div>
+
+                      
                     <div class="row"><!--  panel de Caracteristicas   -->
                         
                         <div class="col m1"></div><!--  para dejar espacio en los lados   -->
@@ -168,7 +181,7 @@ include_once '../app/Conexion.php';
                     <output id="list"></output>                
                 </div>
                 <!-- botones -->
-                <div class="row text-center" name="botones">
+              <div class="row text-center" name="botones">
                     <button class="alert alert-success"><a class="btn btn_primary"   onclick="nuevoMant()"><span aria-hidden="true" class="glyphicon glyphicon-plus">
                         </span>MANTENIMIENTO</a></button>
                         <button class="btn btn-danger"> <i class="Medium material-icons prefix" onclick="AlertaExttoZZZ()">delete</i> </button>

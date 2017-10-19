@@ -4,6 +4,7 @@ include_once '../app/Conexion.php';
 include_once '../modelos/Proveedor.php';
 
 Conexion::abrir_conexion();
+echo '<option value="0" disabled selected>Seleccione Proveedor</option>';
 $lista_pro = Repositorio_proveedor::lista_proveedores(Conexion::obtener_conexion());
 foreach ($lista_pro as $lista) {
 echo"<option value='".$lista->getCodigo_proveedor()."'>".$lista->getNombre()."</option>";

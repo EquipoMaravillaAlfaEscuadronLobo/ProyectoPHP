@@ -187,10 +187,12 @@ function nuevoEnc() {
 
 
 function abrirActivo(coda,codadm,foto,estado,codd,color,dimen,marca,memo,mode,otros,proce,ram,seri,siste) {
+
    $('#codActivo').val(coda);
    $('#codDetalle').val(codd);
-   $('#adminedit').val(codadm);
-   $('#idFoto').val(foto);
+   //$('#adminedit').val(codadm).selected;
+   $("select#adminedit").val(codadm).attr('selected', 'selected');;
+   // $('#adminedit > option[value="'+codadm+'"]').attr('selected', 'selected');
    $('#nserieE').val(seri);
    $('#colorE').val(color);
    $('#marcaE').val(marca);
@@ -199,10 +201,13 @@ function abrirActivo(coda,codadm,foto,estado,codd,color,dimen,marca,memo,mode,ot
    $('#modeloE').val(mode);
    $('#proE').val(proce);
    $('#otroE').val(otros);
+    $('#ramE').val(ram);
+    $('#ddE').val(memo);
+    $('#estadoE').val(estado);
+    document.getElementById("idFotoea").src = foto;
+$('#editActivo').modal('open');
 
-
-
-   $('#editActivo').modal('open');
+   
 }
 
     

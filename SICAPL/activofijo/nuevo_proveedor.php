@@ -1,7 +1,8 @@
 
   	<div class="row">
 		<div class="col-md-12">
-            <form id="FORMULARIO3" name="FORMULARIO3" class="FORMULARIO3" method="post" action="" autocomplete="off" enctype="multipart/form-data">
+            <form id="FORMULARIO3" name="FORMULARIO3" class="FORMULARIO3" method="post" action="" autocomplete="off" enctype="multipart/form-data" onsubmit="recargarCombos2();
+">
             <input type="hidden" name="bandera2" id="bandera2" value="no" >
 			<div class="panel">
 				
@@ -67,11 +68,7 @@
 </script>
 	
 <?php 
-if ($_REQUEST["bandera2"]=="ok"
-    && $_REQUEST["nameDireccion"]!= ""
-    && $_REQUEST["nameNombre"] != ""
-    && $_REQUEST["nameTelefono"] != ""
-    && $_REQUEST["nameEmail"] != ""
+if (isset($_REQUEST["bandera2"])
 
     ) {
           
@@ -94,7 +91,7 @@ if ($_REQUEST["bandera2"]=="ok"
     
      
     Repositorio_proveedor::insertar_proveedor(Conexion::obtener_conexion(), $proveedor);
-    Conexion::cerrar_conexion();
+    //Conexion::cerrar_conexion();
     
 }
 ?>
