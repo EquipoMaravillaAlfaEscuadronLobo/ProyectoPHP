@@ -44,8 +44,13 @@ include_once '../app/Conexion.php';
     </div>
     <div class="modal-footer">
     <div class="row">
-        <div class="col-md-6 text-right"><a href="#" class="modal-action modal-close waves-effect btn btn-success">Actualizar</a></div>
+        <div class="col-md-6 text-right"><button onclick="editLibro()" class="waves-effect btn btn-success">Actualizar</button></div>
         <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger">Salir</a></div>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    function editLibro () {
+        document.frmEditLib.submit();
+    }
+</script>

@@ -57,7 +57,7 @@ libros.codigo_libro as codigo,
 libros.foto as foto,
 libros.codigo_editorial as cedit,
 libros.fecha_publicacion as fecha_publicacion,
-autores.nombre AS autor
+CONCAT(autores.nombre,' ',autores.apellido)  AS autor
 
 FROM
 libros
@@ -116,6 +116,44 @@ print 'ERROR: ' . $ex->getMessage();
             }
             }
             return $resultado;
+    }
+
+
+    public static function EditarLibro($conexion, $libro)
+    {
+         $libro_mod = 0;
+       if (isset($conexion)) {
+            try {
+                
+               
+                 
+                $titulo = $libro->getTitulo();
+                $codigo= $libro->getCodigo_libro();
+                $foto = $libro->getFoto();
+                $publicacion = $libro->getFecha_publicacion();            
+                //$biografia = $libro->getBiografia();
+                
+                
+                $sql = "UPDATE libros SET titulo='$titulo', foto='$foto', fecha_publicacion='$publicacion' where  codigo_libro='$codigo'";
+                                ///estos son alias para que PDO pueda trabajar 
+                $sentencia = $conexion->prepare($sql);
+                
+                
+                
+                
+                //$sentencia->bindParam(':titulo', $titulo, PDO::PARAM_STR);
+                //$sentencia->bindParam(':foto', $foto, PDO::PARAM_STR);
+                //$sentencia->bindParam(':publicacion', $publicacion, PDO::PARAM_STR);
+                //$sentencia->bindParam(':biografia', $biografia, PDO::PARAM_STR);
+                //$sentencia->bindParam(':codigo', $codigo, PDO::PARAM_STR);
+                                             
+                
+                $libro_mod = $sentencia->execute();
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $libro_mod;
     }
 }
  ?>

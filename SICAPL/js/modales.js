@@ -122,14 +122,14 @@ function abrirModal() {
 
 function abrirEdicionLib(codigo,editorial,titulo,fecha,foto, cantidad) {
    
-
+    var foto2="../fotoLibros/"+foto;
    // alert(codigo);
     $('#codigol_edit').val(codigo);
     $('#selectEdit').val(editorial);
     $('#titulo_edit').val(titulo);
     $('#fecha_pub_edit').val(fecha);
     $('#file_foto').val(foto);
-    document.getElementById("fotoLibro").src = foto;
+    document.getElementById("fotoLibro").src = foto2;
     $('#cantidad_edit').val(cantidad);
     $('#edicionLib').modal('open');
 }
