@@ -71,7 +71,7 @@ class Repositorio_usuario {
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->execute();
                 $resultado = $sentencia->fetch();
-                echo 'esta buscanso<br>';
+               // echo 'esta buscanso<br>';
                 $total_usuario = $resultado['total'];
             } catch (PDOException $ex) {
                 echo '<script>swal("No se puedo realizar el registro", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
@@ -129,7 +129,7 @@ class Repositorio_usuario {
         //$usuario = new Usuario();
         if (isset($conexion)) {
             try {
-                echo 'hay conexion<br>';
+                //echo 'hay conexion<br>';
                 $nombre = $usuario->getNombre();
                 $apellido = $usuario->getApellido();
                 $direccion = $usuario->getDireccion();
@@ -138,7 +138,7 @@ class Repositorio_usuario {
                 $instittucion = $usuario->getCodigo_institucion();
                 $sexo = $usuario->getSexo();
                 
-                echo 'el sexo sige siendo' . $sexo;
+                //echo 'el sexo sige siendo' . $sexo;
                
                 $sql = 'UPDATE usuarios SET codigo_institucion=:institucion,nombre=:nombre,apellido=:apellido,telefono=:telefono,correo=:correo,direccion=:direccion,sexo=:sexo where codigo_usuario = :carnet';
 
@@ -181,8 +181,8 @@ class Repositorio_usuario {
         //$usuario = new Usuario();
         if (isset($conexion)) {
             try {
-                echo 'hay conexion<br>';
-                echo 'el carnet es'. $carnet;
+                //echo 'hay conexion<br>';
+                //echo 'el carnet es'. $carnet;
                 $observacion = $usuario->getObservacion();
                 $estado = 0;
                 

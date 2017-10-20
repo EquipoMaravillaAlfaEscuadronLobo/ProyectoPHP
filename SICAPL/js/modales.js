@@ -62,7 +62,7 @@ function abrir_edicion_administrador(nombre, apellido, user, dui, fecha, email, 
     $("#idEmailE").val(email);
     $("#idPass1E").val(password);
     $("#idPass2E").val(password);
-    $("#idSecreto").val(password);
+    $("#idSecreto").val('111111');
     $("#codigo_original").val(user);
     
     $("#idListarAdmnistrador").removeClass("active");
@@ -85,7 +85,7 @@ function abrir_edicion_administrador(nombre, apellido, user, dui, fecha, email, 
 }
 
 function abrir_edicion_usuario(nombre,apellido,direccion,email,telefono,sexo,password,carnet) {
-    $("#idSecreto").val(password);
+    $("#idSecreto").val('111111');
     $("#idCarnetE").val(carnet);
     $("#idNombreE").val(nombre);
     $("#idApellidoE").val(apellido);
@@ -110,14 +110,14 @@ function abrir_eliminacion_usuario(nombre,apellido,carnet,password) {
      $("#idCarnetEliminado").val(carnet);
      
      $("#idCarnetEl").val(carnet);
-     $("#idSecretoEL").val(password);
+     $("#idSecretoEL").val('111111');
  $('#eliminacion_usuario').modal('open');
 }
 
 function abrir_eliminacion_administrador(nombre, apellido,usuario,password) {
     $("#idNombreEl").val(nombre +" " +apellido);
     $("#idUsuarioEl").val(usuario);
-    $("#idSecretoEL").val(password);
+    $("#idSecretoEL").val('111111');
     $("#idOtroCarnet").val(usuario);
     
   
