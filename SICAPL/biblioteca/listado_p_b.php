@@ -81,6 +81,7 @@ function finalizar (codigo) {
   closeOnConfirm: false,
   inputPlaceholder: "Escribe algo"
 }, function (inputValue) {
+    if (inputValue === false) return false;
     $.ajax({
         url:'finalizarPrestamo.php?codigo='+codigo+'&motivo='+inputValue,
         type:'GET',

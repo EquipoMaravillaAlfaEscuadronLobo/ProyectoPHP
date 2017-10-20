@@ -7,7 +7,7 @@
 <script src="../js/jquery.dataTables.min.js"></script>
 <script src="../js/data-tables-script.js"></script>
 <script src="../js/jquery.validate.js"></script>
-
+<script type="text/javascript" src="../js/validacionBiblioteca.js"></script>
 <script src="../js/alertaPersonalizadas.js"></script>
 <script src="../js/mi_validacion.js"></script>
 <script src="../js/validacion_editar.js"></script>

@@ -64,9 +64,12 @@ include_once('../plantillas/pie_de_pagina.php');
 ?>
 <script type="text/javascript">
 $(document).ready(function() {
+
      $('.librof').submit(function(){
       var formData=new FormData(document.getElementById('frmLibro'));
+      
         //var codigo=$('#codigol').val();
+      
    // alert(codigo);
     $.ajax({
         url:$(this).attr('action'),
@@ -85,18 +88,19 @@ $(document).ready(function() {
                     function(){
                        document.getElementById('frmLibro').reset();
                        
-                       recargarCombos();
+                       location.href="inicio_b.php";
                         
                     }
 
                     );
             
          }else{
-                swal ( "Oops" ,  "Libro no ingresado" ,  "error" )
+                swal ( "Oops" ,  "Campos Vacios" ,  "error" )
              
          }
     })
     return false;
+  
 })
 
 

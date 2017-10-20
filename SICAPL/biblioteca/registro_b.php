@@ -19,7 +19,7 @@
                                 <div class="input-field">
                                     <i class="fa fa-list-ol prefix" aria-hidden="true"></i>
                                     <label for="codigo">Codigo</label>
-                                    <input type="text" id="codigol" name="codigo" class="form-control" value="CEJ-002-" readonly="true">
+                                    <input type="text" required id="codigol" name="codigo" class="form-control validate" value="CEJ-002-" readonly="true">
                                 </div>
                             </div>
                         </div>
@@ -29,14 +29,14 @@
                                 <div class="input-field">
                                     <i class="fa fa-bookmark prefix" aria-hidden="true"></i>
                                     <label for="Titulo">Titulo</label>
-                                    <input type="text" id="titulo" name="titulo" class="form-control">
+                                    <input type="text" id="titulo" required name="titulo" class="form-control validate">
                                 </div>
                             </div>
                         	<div class="col-md-6">
                         		<div class="input-field">
                         			<i class="fa fa-list-ol prefix" aria-hidden="true"></i>
                         			<label for="clasificacion">Clasificacion</label>
-                        			<input onkeyup="llenarCodigo()" onchange="llenarCodigo()" onclick="llenarCodigo()" type="text" id="clasificacion" name="clasificacion" list="clasificacionlist"class="form-control" >
+                        			<input onkeyup="llenarCodigo()" required onchange="llenarCodigo()" onclick="llenarCodigo()" type="text" id="clasificacion" name="clasificacion" list="clasificacionlist" class="form-control validate" >
                         		</div>
                         	</div>
                         <datalist id="clasificacionlist" onchange="llenarCodigo()">
@@ -51,7 +51,7 @@
                         	<div class="col-md-6">
                         		<div class="input-field">
                         		<i class="fa fa-pencil prefix" aria-hidden="true"></i>
-                        			<select name="autores[]" multiple id="autores" class="autores">
+                        			<select name="autores[]" required multiple id="autores" class="autores validate">
 								     <?php 
                                       include 'opcionesAutores.php';   
                                      ?>
@@ -64,7 +64,7 @@
                         		<div class="input-field">
                         			<i class="fa fa-sort prefix" aria-hidden="true"></i>
                         			<label for="cantidad">Cantidad</label>
-                        			<input type="number" min="1" max="500" id="cantidad" name="cantidad" class="form-control">
+                        			<input type="number" min="1" required max="500" id="cantidad" name="cantidad" class="form-control validate">
                         		</div>
                         	</div>
                         </div>
@@ -72,7 +72,7 @@
                         	<div class="col-md-12">
                         		<div class="input-field">
                         		<i class="fa fa-bookmark-o prefix" aria-hidden="true"></i>
-                        			<select name="editorial" id="editorial" class="editorial">
+                        			<select name="editorial" id="editorial" required class="editorial validate">
 								     <?php 
                                       include 'opcionesEditorial.php';   
                                      ?>
@@ -88,7 +88,7 @@
                         		<div class="input-field">
                         			<i class="fa fa-calendar prefix" aria-hidden="true"></i>
                         			<label for="fecha_pub" class="active">Fecha de Publicacion</label>
-                        			 <input type="text" class="datepicker datepicker2" name="fecha_pub" id="fecha_pub">
+                        			 <input type="text" class="datepicker datepicker2 validate" required name="fecha_pub" id="fecha_pub">
                         		</div>
                         	</div>
                         
@@ -96,12 +96,12 @@
                         		<div class="file-field input-field">
                         			<div class="btn">
         									<span><i class="glyphicon glyphicon-picture" aria-hidden="true"></i>Foto</span>
-        									<input type="file">
+        									<input type="file" id="foto" required name="foto" accept="image/*">
       									</div>
 
 
       									<div class="file-path-wrapper">
-                        					<input type="file" accept="image/*" id="foto" name="foto" class="form-control file-path validate">
+                        					<input type="text" accept="image/*" required class="form-control file-path validate">
                         				</div>
                         		</div>
                         	</div>
@@ -109,7 +109,7 @@
                        
                 </div>
                 <div class="panel-footer text-center">
-                    <button class="btn btn-success" onClick="enviar()">Guardar</button><button type="reset" class="btn btn-danger">Cancelar</button>
+                    <button class="btn btn-success" >Guardar</button><button type="reset" class="btn btn-danger">Cancelar</button>
                    </form>
                 </div>
             </div>
@@ -124,7 +124,7 @@
                         		<div class="input-field">
                         			<i class="fa fa-list-ol prefix" aria-hidden="true"></i>
                         			<label for="codigo">Codigo</label>
-                        			<input type="text" id="codigoa" class="form-control" disabled value="<?php echo $ultimoAutor ?>">
+                        			<input type="text" id="codigoa" required class="form-control validate" disabled value="<?php echo $ultimoAutor ?>">
                         		</div>
                         	</div>
                         </div>
@@ -133,14 +133,15 @@
                         		<div class="input-field">
                         			<i class="fa fa-user-circle prefix" aria-hidden="true"></i>
                         			<label for="nombre">Nombre</label>
-                        			<input type="text" id="nombre" name="nombre" class="form-control">
+                        			<input type="text" id="nombre" required name="nombre" class="form-control validate">
                         		</div>
+
                         	</div>
                         	<div class="col-md-6">
                         		<div class="input-field">
                         			<i class="fa fa-user-circle prefix" aria-hidden="true"></i>
                         			<label for="apellido">Apellido</label>
-                        			<input type="text" id="apellido" name="apellido" class="form-control">
+                        			<input type="text" id="apellido" required name="apellido" class="form-control validate">
                         		</div>
                         	</div>
                         </div>
@@ -149,7 +150,7 @@
                         		<div class="input-field">
                         			<i class="fa fa-calendar prefix" aria-hidden="true"></i>
                         			<label for="fecha_nac" class="active">Fecha de Nacimiento</label>
-                        			<input type="text" id="fecha_nac" name="fecha_nac" class="form-control datepicker datepicker2">
+                        			<input type="text" id="fecha_nac"  required name="fecha_nac" class="form-control datepicker datepicker2 validate">
                         		</div>
                         	</div>
                         
@@ -159,7 +160,7 @@
                         			
                         				<div class="btn">
         									<span><i class="fa fa-address-book" aria-hidden="true"></i>Biografia</span>
-        									<input type="file" accept=".pdf" name="bio1">
+        									<input type="file" accept=".pdf" required name="bio1">
       									</div>
       									<div class="file-path-wrapper">
                         					<input type="text" id="bio" name="bio" class="form-control file-path validate">
@@ -183,7 +184,7 @@
                         		<div class="input-field">
                         			<i class="fa fa-list-ol prefix" aria-hidden="true"></i>
                         			<label for="codigo">Codigo</label>
-                        			<input type="text" id="codigoe" class="form-control" disabled value="<?php echo $ultimaEditorial ?>">
+                        			<input type="text" id="codigoe" required class="form-control validate" disabled value="<?php echo $ultimaEditorial ?>">
                         		</div>
                         	</div>
                         
@@ -191,7 +192,7 @@
                         		<div class="input-field">
                         			<i class="fa fa-user-circle prefix" aria-hidden="true"></i>
                         			<label for="nombre">Nombre</label>
-                        			<input type="text" id="nombre" name="nombre" class="form-control">
+                        			<input type="text" id="nombre" name="nombre" required class="form-control validate">
                         		</div>
                         	</div>
                         </div>
@@ -200,7 +201,7 @@
                                 <div class="input-field">
                                     <i class="fa fa-phone prefix" aria-hidden="true"></i>
                                     <label for="telefono">Telefono</label>
-                                    <input type="text" id="telefono" name="telefono" class="form-control">
+                                    <input type="text" id="telefono" required name="telefono" class="form-control validate">
                                 </div>
                             </div>
                        
@@ -208,7 +209,7 @@
                         		<div class="input-field">
                         			<i class="fa fa-envelope-o prefix" aria-hidden="true"></i>
                         			<label for="email" data-error="wrong" data-success="right">Email</label>
-                        			<input type="email" id="email" name="email" class="form-control validate" >
+                        			<input type="email" id="email" name="email" required class="form-control validate" >
                         		</div>
                         	</div>
                         </div>
@@ -218,7 +219,7 @@
                                 <div class="input-field">
                                     <i class="fa fa-map-marker prefix" aria-hidden="true"></i>
                                     <label for="fecha_nac" class="active">Direccion</label>
-                                    <textarea id="direccion" name="direccion" class="materialize-textarea"></textarea>
+                                    <textarea id="direccion" name="direccion" required class="materialize-textarea validate"></textarea>
                                 </div>
                             </div>
                         </div>

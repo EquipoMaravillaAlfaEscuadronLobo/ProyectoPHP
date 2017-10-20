@@ -63,7 +63,7 @@ include_once '../app/Conexion.php';
   closeOnConfirm: false,
   inputPlaceholder: "Escribe algo"
 }, function (inputValue) {
-        
+        if (inputValue === false) return false;
         $.ajax({
         url:'bajaLibro.php?codigo='+codigo+'&motivo='+inputValue,
         type:'GET',

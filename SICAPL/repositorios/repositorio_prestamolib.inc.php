@@ -48,8 +48,8 @@ print 'ERROR: ' . $ex->getMessage();
                 
                 
                 
-                $sql = 'INSERT INTO prestamo_libros(codigo_usuario,fecha_devolucion,fecha_salida)'
-                        . ' values (:usuario,:salida,:devolucion)';
+                $sql = 'INSERT INTO prestamo_libros(codigo_usuario,fecha_salida,fecha_devolucion,estado)'
+                        . ' values (:usuario,CURDATE(),:devolucion,"0")';
                                 ///estos son alias para que PDO pueda trabajar 
                 $sentencia = $conexion->prepare($sql);
                 
@@ -57,7 +57,7 @@ print 'ERROR: ' . $ex->getMessage();
                 
                 
                 $sentencia->bindParam(':usuario', $usuario, PDO::PARAM_STR);
-                $sentencia->bindParam(':salida', $salida, PDO::PARAM_STR);
+              //  $sentencia->bindParam(':salida', $salida, PDO::PARAM_STR);
                 $sentencia->bindParam(':devolucion', $devolucion, PDO::PARAM_STR);
               
                                              
