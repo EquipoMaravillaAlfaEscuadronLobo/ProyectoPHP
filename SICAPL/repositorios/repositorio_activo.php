@@ -89,43 +89,27 @@ class Repositorio_activo {
         return $resultado;
     }
 
-    public static function actualizar_administrador($conexion, $administrador, $codigo_original) {
-        $administrador_insertado = false;
+    public static function actualizar_activo($conexion, $activo, $codigo_original) {
+        $activo_insertado = false;
         // $administrador = new Administrador();
 
         if (isset($conexion)) {
             try {
 
-                $codigo_administrador = $administrador->getCodigo_administrador();
-                $pasword = $administrador->getPasword();
-                $nivel = $administrador->getNivel();
-                $nombre = $administrador->getNombre();
-                $apellido = $administrador->getApellido();
-                $sexo = $administrador->getSexo();
-                $dui = $administrador->getDui();
-                $observacion = $administrador->getObservacion();
-                $foto = $administrador->getFoto();
-                $email = $administrador->getEmail();
-                $fecha = $administrador->getFecha();
+                $codigo_administrador = $activo->getCodigo_administrador();
+               
+                $foto = $activo->getFoto();
 
                 if ($codigo_administrador == $codigo_original) {
-                    $sql = 'UPDATE administradores SET nombre=:nombre, apellido=:apellido,pasword=:pasword,dui=:dui,nivel=:nivel, fecha=:fecha,email=:email,sexo=:sexo  WHERE codigo_administrador = :codigo_original';
+                    $sql = "UPDATE  actvos set codigo_administrador=:codigo_administrador,foto = :foto where codigo_activo='$codigo_original'";
 
                     $sentencia = $conexion->prepare($sql);
-                    $sentencia->bindParam(':codigo_original', $codigo_original, PDO::PARAM_STR);
-                    $sentencia->bindParam(':nombre', $nombre, PDO::PARAM_STR);
-                    $sentencia->bindParam(':apellido', $apellido, PDO::PARAM_STR);
-                    $sentencia->bindParam(':pasword', $pasword, PDO::PARAM_STR);
-                    $sentencia->bindParam(':dui', $dui, PDO::PARAM_STR);
-                    $sentencia->bindParam(':nivel', $nivel, PDO::PARAM_STR);
-                    $sentencia->bindParam(':fecha', $fecha, PDO::PARAM_STR);
-                    $sentencia->bindParam(':email', $email, PDO::PARAM_STR);
-                    $sentencia->bindParam(':sexo', $sexo, PDO::PARAM_STR);
+                    $sentencia->bindParam(':codigo_administrador', $codigo_administrador, PDO::PARAM_INT);
+                    $sentencia->bindParam(':foto', $foto, PDO::PARAM_STR);
+                    echo '<script>swal("Excelente!", "' . $codigo_original . '", "success");</script>';
+                   $activo_insertado = $sentencia->execute();
 
-                    $administrador_insertado = $sentencia->execute();
-
-                    echo '<script>swal("Excelente!", "Registro actualizado con exito", "success");</script>';
-                    echo '<script>location.href="inicio_seguridad.php";</script>';
+                    
                 } else {
                     echo "<script>swal('Excelente!', 'hubo pedo '$sql' ', 'success');</script>";
                 }

@@ -196,7 +196,7 @@ function nuevoEnc() {
 }
 
 
-function abrirActivo(coda,codadm,foto,estado,codd,color,dimen,marca,memo,mode,otros,proce,ram,seri,siste) {
+function abrirActivo(coda,codadm,foto,estado,codd,color,dimen,marca,memo,mode,otros,proce,ram,seri,siste, admin) {
 
    $('#codActivo').val(coda);
    $('#codDetalle').val(codd);
@@ -214,6 +214,16 @@ function abrirActivo(coda,codadm,foto,estado,codd,color,dimen,marca,memo,mode,ot
     $('#ramE').val(ram);
     $('#ddE').val(memo);
     $('#estadoE').val(estado);
+    $('#codamin').val(codadm);
+    $('#nadmin').val(admin);
+    
+    if(estado=="Disponible"){
+        document.actAct.estadoE.style.background="#2EFE2E";
+    }
+    if(estado=="Prestado"){
+        document.actAct.estadoE.style.background="#F7FE2E";
+    }
+    
     document.getElementById("idFotoea").src = foto;
 $('#editActivo').modal('open');
 

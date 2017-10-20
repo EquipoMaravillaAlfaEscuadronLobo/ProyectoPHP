@@ -100,6 +100,7 @@ class Repositorio_administrador {
                     $administrador->setNivel($row["nivel"]);
                     $administrador->setEmail($row["email"]);
                     $administrador->setNombre($row["nombre"]);
+                     $administrador->setApellido($row["apellido"]);
                 }
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();
@@ -258,6 +259,26 @@ class Repositorio_administrador {
                     foreach ($resultado as $fila) {
 
                         echo"<option value='" . $fila['codigo_administrador'] . "'>" . $fila['nombre'] . " " . $fila['apellido'] . "</option>";
+                    }
+                }
+            } catch (PDOException $exc) {
+                print('ERROR' . $exc->getMessage());
+            }
+        }
+    }
+    
+     public static function lista_administradores3($conexion) {
+        if (isset($conexion)) {
+            try {
+                $sql = "select * from administradores where (estado = 1)";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+
+                        echo"<option value='" . $fila['nombre'] . " " . $fila['apellido'] . "'>" . $fila['nombre'] . " " . $fila['apellido'] . "</option>";
                     }
                 }
             } catch (PDOException $exc) {

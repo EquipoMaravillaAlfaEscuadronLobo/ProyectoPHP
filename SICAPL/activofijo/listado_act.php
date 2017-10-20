@@ -67,11 +67,14 @@ $listado = Repositorio_activo::lista_activo(Conexion::obtener_conexion());
                                                                 '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getProcesador() ?>',
                                                                 '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getRam() ?>',
                                                                 '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getSeri() ?>',
-                                                                '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getSistema() ?>'
+                                                                '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getSistema() ?>',
+                                                                '<?php echo Repositorio_administrador::obtener_administrador(Conexion::obtener_conexion(), $fila['codigo_administrador'])->getNombre().
+                                            " ".Repositorio_administrador::obtener_administrador(Conexion::obtener_conexion(), $fila['codigo_administrador'])->getApellido(); ?>'
                                                                 )"> <i class="Medium material-icons prefix">edit</i> </button></td>
                                     <td class="text-center"><?php echo $fila['codigo_activo']; ?></td>
                                     <td class="text-center"><?php echo Repositorio_categoria::obtener_categoria(Conexion::obtener_conexion(), $fila['codigo_tipo']); ?></td>
-                                    <td class="text-center"><?php echo Repositorio_administrador::obtener_administrador(Conexion::obtener_conexion(), $fila['codigo_administrador'])->getNombre(); ?></td>
+                                    <td class="text-center"><?php echo Repositorio_administrador::obtener_administrador(Conexion::obtener_conexion(), $fila['codigo_administrador'])->getNombre().
+                                            " ".Repositorio_administrador::obtener_administrador(Conexion::obtener_conexion(), $fila['codigo_administrador'])->getApellido(); ?></td>
                                     <td class="text-center <?php
                                     if ($fila['estado'] == 1) {
                                         echo "btn-success";
@@ -120,7 +123,9 @@ $listado = Repositorio_activo::lista_activo(Conexion::obtener_conexion());
     </div>
     <div class="modal-footer ">
         <div class="row">
-            <div class="col-md-6 text-right"><a href="#" class="modal-action modal-close waves-effect btn btn-success"><i class="glyphicon glyphicon-floppy-disk"></i>  Guardar</a></div>
+            <div class="col-md-6 text-right"><button id="gp" class="btn btn-success modal-action " type="submit" form="ActAct">
+                    <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>
+                    Guardar</button></div>
             <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>
         </div>
     </div>
