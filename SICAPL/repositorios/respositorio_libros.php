@@ -19,7 +19,7 @@ class Repositorio_libros
                 $foto = $libro->getFoto();
                 $estado = $libro->getEstado();
                 
-                $sql = 'INSERT INTO libros(codigo_libro,titulo,codigo_editorial,fecha_publicacion,foto,estado)'
+                $sql = 'INSERT INTO libros(codigo_libro,titulo,editoriales_codigo,fecha_publicacion,foto,estado)'
                         . ' values (:codigo,:titulo,:editorial,:publicacion,:foto, :estado)';
                                 ///estos son alias para que PDO pueda trabajar 
                 $sentencia = $conexion->prepare($sql);
@@ -55,13 +55,13 @@ DISTINCT libros.titulo as titulo,
 editoriales.nombre AS editorial,
 libros.codigo_libro as codigo,
 libros.foto as foto,
-libros.codigo_editorial as cedit,
+libros.editoriales_codigo as cedit,
 libros.fecha_publicacion as fecha_publicacion,
 CONCAT(autores.nombre,' ',autores.apellido)  AS autor
 
 FROM
 libros
-INNER JOIN editoriales ON libros.codigo_editorial = editoriales.codigo_editorial
+INNER JOIN editoriales ON libros.editoriales_codigo = editoriales.codigo_editorial
 INNER JOIN movimiento_autores ON movimiento_autores.codigo_libro = libros.codigo_libro
 INNER JOIN autores ON movimiento_autores.codigo_autor = autores.codigo_autor where libros.estado=0
 ";

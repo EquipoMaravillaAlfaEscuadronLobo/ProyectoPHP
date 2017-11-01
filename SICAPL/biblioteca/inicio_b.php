@@ -95,7 +95,7 @@ $(document).ready(function() {
                     );
             
          }else{
-                swal ( "Oops" ,  "Campos Vacios" ,  "error" )
+                swal ( "Oops" ,  resp ,  "error" )
              
          }
     })
@@ -132,7 +132,7 @@ $(document).ready(function() {
                     );
             
          }else{
-                swal ( "Oops" ,  "Autor no registrado" ,  "error" )
+                swal ( "Oops" ,  resp ,  "error" )
              
          }
     })

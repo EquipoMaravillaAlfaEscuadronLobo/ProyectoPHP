@@ -1,13 +1,13 @@
 <?php  
-//session_start(); 
-//    if (!isset($_SESSION['user'])&&$titulo1!="Inicio de Sesion") {
-//        header("Location: ../index.php");
-//    }else{
-//        if (isset($_SESSION['user'])&&$titulo1=="Inicio de Sesion") {
-//        header("Location: home.php");
-//    }
-//    }
-//
+session_start(); 
+    if (!isset($_SESSION['user'])&&$titulo1!="Inicio de Sesion") {
+        header("Location: ../index.php");
+    }else{
+        if (isset($_SESSION['user'])&&$titulo1=="Inicio de Sesion") {
+        header("Location: home.php");
+    }
+    }
+
 
 ?>
 <!DOCTYPE html>
@@ -15,7 +15,7 @@
     <head>
         <meta charset="utf-8">
         <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
-        <title><?php echo $titulo1; ?></title>
+       <!-- <title><?php echo $titulo1; ?></title>-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="../css/jquery.dataTables.min.css" rel="stylesheet">

@@ -136,9 +136,9 @@ class Repositorio_detalle {
                 $sentencia->bindParam(':proce', $proce, PDO::PARAM_STR);
                 //echo '<script>alert("'.$sentencia.'");</script>';
                 $detalle_insertado = $sentencia->execute();
-                echo '<script>swal("Excelente!", "' . $codigo_original . '", "success");</script>';
+              //  echo '<script>swal("Excelente!", "' . $codigo_original . '", "success");</script>';
                 
-                echo '<script>swal("Excelente!", "Registro actualizado con exito", "success");</script>';
+               // echo '<script>swal("Excelente!", "Registro actualizado con exito", "success");</script>';
             } catch (PDOException $ex) {
                 echo "<script>swal('Excelente!', 'hubo pedo '$sql' ', 'success');</script>";
 

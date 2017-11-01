@@ -229,5 +229,22 @@ $('#editActivo').modal('open');
 
    
 }
+ function delA(){
+   
+        var coda = document.getElementById('codActivo').value;
+        var codd = document.getElementById('codDetalle').value;
+        var secreto ="111111"; 
+        DActivo(coda,codd,secreto);
+
+    }
+function DActivo(cada,codd,password) {
+     $('#codDA').val(codd);
+      $('#codD').val(cada);
+       $('#Secreto').val(password);
+       
+$('#DActivo').modal('open');
+
+   
+}
 
     

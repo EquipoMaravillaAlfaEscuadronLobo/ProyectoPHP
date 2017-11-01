@@ -52,7 +52,7 @@ class Repositorio_usuario {
                     
                 });</script>';
             } catch (PDOException $ex) {
-                echo '<script>swal("No se puedo realizar el registro", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
+                echo '<script>swal("No se puedo realizar el registro", "Favor '.$ex->getMessage().' revisar los  datos e intentar nuevamente", "warning");</script>';
                 print 'ERROR: ' . $ex->getMessage();
             }
         } else {

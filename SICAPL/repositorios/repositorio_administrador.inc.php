@@ -278,7 +278,7 @@ class Repositorio_administrador {
                 if (count($resultado)) {
                     foreach ($resultado as $fila) {
 
-                        echo"<option value='" . $fila['nombre'] . " " . $fila['apellido'] . "'>" . $fila['nombre'] . " " . $fila['apellido'] . "</option>";
+                        echo"<option value='".$fila['codigo_administrador'].", ". $fila['nombre'] . " " . $fila['apellido'] . "'>" . $fila['nombre'] . " " . $fila['apellido'] . "</option>";
                     }
                 }
             } catch (PDOException $exc) {
