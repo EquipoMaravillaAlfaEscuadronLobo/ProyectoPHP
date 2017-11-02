@@ -45,21 +45,21 @@
                             //getOptions();
                             ?>
                         </datalist>
-                        	
+
                         </div>
                         <div class="row">
                         	<div class="col-md-6">
                         		<div class="input-field">
                         		<i class="fa fa-pencil prefix" aria-hidden="true"></i>
                         			<select name="autores[]" required multiple id="autores" class="autores validate">
-								     <?php 
-                                      include 'opcionesAutores.php';   
+								     <?php
+                                      include 'opcionesAutores.php';
                                      ?>
 								    </select>
 								    <label>Autores</label>
                         		</div>
                         	</div>
-                        
+
                         	<div class="col-md-6">
                         		<div class="input-field">
                         			<i class="fa fa-sort prefix" aria-hidden="true"></i>
@@ -73,25 +73,25 @@
                         		<div class="input-field">
                         		<i class="fa fa-bookmark-o prefix" aria-hidden="true"></i>
                         			<select name="editorial" id="editorial" required class="editorial validate">
-								     <?php 
-                                      include 'opcionesEditorial.php';   
+								     <?php
+                                      include 'opcionesEditorial.php';
                                      ?>
 								    </select>
 								    <label>Editorial</label>
                         		</div>
                         	</div>
-                       
-                        	
+
+
                         </div>
                         <div class="row">
                         	<div class="col-md-6">
                         		<div class="input-field">
                         			<i class="fa fa-calendar prefix" aria-hidden="true"></i>
                         			<label for="fecha_pub" class="active">Fecha de Publicacion</label>
-                        			 <input type="text" class="datepicker datepicker2 validate" required name="fecha_pub" id="fecha_pub">
+                        			 <input type="text" class="datepicker datepicker2 " required name="fecha_pub" id="fecha_pub">
                         		</div>
                         	</div>
-                        
+
                         	<div class="col-md-6">
                         		<div class="file-field input-field">
                         			<div class="btn">
@@ -106,7 +106,7 @@
                         		</div>
                         	</div>
                         </div>
-                       
+
                 </div>
                 <div class="panel-footer text-center">
                     <button class="btn btn-success" >Guardar</button><button type="reset" class="btn btn-danger">Cancelar</button>
@@ -153,11 +153,11 @@
                         			<input type="text" id="fecha_nac"  required name="fecha_nac" class="form-control datepicker datepicker2 validate">
                         		</div>
                         	</div>
-                        
+
                         	<div class="col-md-6">
                         		<div class="file-field input-field">
-                        			
-                        			
+
+
                         				<div class="btn">
         									<span><i class="fa fa-address-book" aria-hidden="true"></i>Biografia</span>
         									<input type="file" accept=".pdf" required name="bio1">
@@ -187,7 +187,7 @@
                         			<input type="text" id="codigoe" required class="form-control validate" disabled value="<?php echo $ultimaEditorial ?>">
                         		</div>
                         	</div>
-                        
+
                         	<div class="col-md-6">
                         		<div class="input-field">
                         			<i class="fa fa-user-circle prefix" aria-hidden="true"></i>
@@ -201,10 +201,10 @@
                                 <div class="input-field">
                                     <i class="fa fa-phone prefix" aria-hidden="true"></i>
                                     <label for="telefono">Telefono</label>
-                                    <input type="text" id="telefono" required name="telefono" class="form-control validate">
+                                    <input type="text" id="idTelefono" required name="telefono" class="form-control validate">
                                 </div>
                             </div>
-                       
+
                         	<div class="col-md-6">
                         		<div class="input-field">
                         			<i class="fa fa-envelope-o prefix" aria-hidden="true"></i>
@@ -214,7 +214,7 @@
                         	</div>
                         </div>
                         <div class="row">
-                        	
+
                         <div class="col-md-12">
                                 <div class="input-field">
                                     <i class="fa fa-map-marker prefix" aria-hidden="true"></i>
@@ -242,7 +242,6 @@
         document.getElementById('codigol').value=texto+clas;
 
     }
-  
-    
-</script>
 
+
+</script>

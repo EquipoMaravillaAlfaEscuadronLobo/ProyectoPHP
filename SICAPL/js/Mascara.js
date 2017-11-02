@@ -4,5 +4,6 @@ $(document).ready(function ($){
     $('#idTelefonoE').mask("9999-9999",{placeholder: ""});
     $('#idDuiE').mask("99999999-9",{placeholder: ""});
     $('#idTelefonoE').mask("9999-9999",{placeholder: ""});
-    
+    $('#telefono').mask("9999-9999",{placeholder: ""});
+
 });
