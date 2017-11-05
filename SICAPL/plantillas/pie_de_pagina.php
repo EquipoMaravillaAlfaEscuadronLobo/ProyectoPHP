@@ -3,6 +3,7 @@
 <!--<script src="../js/jquery-1.11.2.js"></script>-->
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/materialize.js"></script>
+<script src="../js/jquery.inputmask.bundle.js"></script>
 <script src="../js/modales.js"></script>
 <script src="../js/jquery.dataTables.min.js"></script>
 <script src="../js/data-tables-script.js"></script>
