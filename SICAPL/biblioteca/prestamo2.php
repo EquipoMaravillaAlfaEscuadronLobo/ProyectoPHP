@@ -145,7 +145,8 @@
 
 <script type="text/javascript">
 
-    function eliminar (numero) {
+    function eliminar (numero,event) {
+       if(event.keyCode !== 13){
         var id='borrar'+numero;
         var top=document.getElementById('accordion2');
         var bottom=document.getElementById(id);
@@ -153,6 +154,7 @@
         if (bottom.parentNode) {
         bottom.parentNode.removeChild(bottom);
         };
+    }
 }
 
 

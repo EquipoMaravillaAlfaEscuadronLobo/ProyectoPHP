@@ -18,11 +18,8 @@ class Repositorio_libros
                 $publicacion = $libro->getFecha_publicacion();
                 $foto = $libro->getFoto();
                 $estado = $libro->getEstado();
-<<<<<<< HEAD
-                
-=======
 
->>>>>>> 5821a70cac8f87233a902316c77813fed6389914
+                
                 $sql = 'INSERT INTO libros(codigo_libro,titulo,editoriales_codigo,fecha_publicacion,foto,estado)'
                         . ' values (:codigo,:titulo,:editorial,:publicacion,:foto, :estado)';
                                 ///estos son alias para que PDO pueda trabajar

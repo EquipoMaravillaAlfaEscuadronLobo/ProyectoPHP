@@ -3,12 +3,12 @@ var imagenes = document.getElementsByName('libros').length + 1;
 var id="borrar"+imagenes;
         var script = document.createElement("div");
         script.setAttribute("id", id)
-        script.innerHTML = '<div class="panel panel-default" name="libros" id="libros1"><div class="panel-heading p_libro"><div class="row"><div class="col-md-10"><div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="">Buscar Libro</label><input type="text" id="codigol'+imagenes+'" name="codigol'+imagenes+'" autofocus onkeyup="buscarLibro2(this,event)" list="listaLibros"></div></div><div class="col-md-1"><a data-toggle="collapse" data-parent="#accordion" href="#libro'+imagenes+'"><i class="fa fa-sort-desc" id="despliegue" aria-hidden="true"></i></a></div><div class="col-md-1"><button  onclick="eliminar('+imagenes+')"><i class="fa fa-minus" id="restar'+imagenes+'" aria-hidden="true"></i></button></div></div></div><div id="libro'+imagenes+'" class="panel-collapse collapse in"><div class="panel-body"><table class="table table-striped table-bordered"><tr><td width="60%"><b>Titulo:</b></td><td width="40%"><div id="titulo'+imagenes+'"></div></td></tr><tr><td><b>Autor:</b></td><td><div id="autor'+imagenes+'"></div></td></tr><tr><td><b>Fecha de Publicacion:</b></td><td><div id="fecha_pub'+imagenes+'"></div></td></tr></table></div></div></div>';
+        script.innerHTML = '<div class="panel panel-default" name="libros" id="libros1"><div class="panel-heading p_libro"><div class="row"><div class="col-md-10"><div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="">Buscar Libro</label><input type="text" id="codigol'+imagenes+'" name="codigol'+imagenes+'" autofocus onkeyup="buscarLibro2(this,event)" list="listaLibros"></div></div><div class="col-md-1"><a data-toggle="collapse" data-parent="#accordion" href="#libro'+imagenes+'"><i class="fa fa-sort-desc" id="despliegue" aria-hidden="true"></i></a></div><div class="col-md-1"><button  onclick="eliminar('+imagenes+',event)"><i class="fa fa-minus" id="restar'+imagenes+'" aria-hidden="true"></i></button></div></div></div><div id="libro'+imagenes+'" class="panel-collapse collapse in"><div class="panel-body"><table class="table table-striped table-bordered"><tr><td width="60%"><b>Titulo:</b></td><td width="40%"><div id="titulo'+imagenes+'"></div></td></tr><tr><td><b>Autor:</b></td><td><div id="autor'+imagenes+'"></div></td></tr><tr><td><b>Fecha de Publicacion:</b></td><td><div id="fecha_pub'+imagenes+'"></div></td></tr></table></div></div></div>';
         var fila = document.getElementById("accordion2");
         fila.appendChild(script);
 }
 function buscarLibro(event) {
-if (event.keyCode == 13) {
+if (event.keyCode === 13) {
 document.getElementById('titulo').value = "Iliada";
         document.getElementById('autor').value = "Homero";
         document.getElementById('genero').value = "Epopeya";
@@ -37,6 +37,7 @@ function buscarLibro2(valor, event){
 var depto = valor.value;
 var numero=valor.id.substr(7)
 //alert(valor.id);
+if(event.keyCode === 13){
     if (depto != "") {
         $.post("getLibro.php", {libro: depto, numero: numero}, function(mensaje) {
           $('#listaLibros2').html(mensaje).fadeIn();
@@ -44,6 +45,7 @@ var numero=valor.id.substr(7)
 
         });
     }
+}
 }
 function buscarUser(valor){
 
@@ -64,7 +66,7 @@ function buscarUser(valor){
         document.getElementById('fot').setAttribute("src", "../imagenes/tipo.jpg")*/
 
 }
-<<<<<<< HEAD
+
 function buscarUser2(valor){
 
         var depto = valor.value;
@@ -124,11 +126,11 @@ function llenar(valor, lista){
     }         
 
 }
-=======
+
 function buscarActivo(){
 document.getElementById('codigoActivo').innerHTML = '1995-25-05';
         document.getElementById('tipoActivo').innerHTML = 'Silla';
         document.getElementById('encargado').innerHTML = 'Boris Ricardo Miranda Ayala';
         document.getElementById('estado').innerHTML = "Disponible";
 }
->>>>>>> 5821a70cac8f87233a902316c77813fed6389914
+

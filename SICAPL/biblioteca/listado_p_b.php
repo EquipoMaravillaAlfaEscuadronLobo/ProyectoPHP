@@ -60,16 +60,18 @@
     </div>
     <div class="modal-footer">
         <div class="row">
-            <div class="col-md-6 text-right"><button onclick="enviar()" class="waves-effect btn btn-success">Guardar</button></div>
+            <div class="col-md-6 text-right"><button onclick="enviar(evt)" class="waves-effect btn btn-success">Guardar</button></div>
             <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger">Salir</a></div>
         </div>
     </div>
 </div>
 
 <script type="text/javascript">
-    function enviar () {
+    function enviar (evt) {
+        if(window.event.keyCode !== 13){
     document.getElementById('num').value= document.getElementsByName('libros').length;
     document.frmPrestamoLibro.submit();
+    }
 }
 
 function finalizar (codigo) {
