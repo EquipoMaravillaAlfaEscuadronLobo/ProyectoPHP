@@ -21,6 +21,7 @@
      ////   document.getElementById('autor<?php echo $numero ?>').value = <?php echo $fila[2] ?>;
       // document.getElementById('genero<?php echo $numero ?>').value = "Epopeya";
      //   document.getElementById('fecha_pub<?php echo $numero ?>').value = <?php echo $fila['fecha_publicacion'] ?>;
+     activar();
 		</script>
 
 

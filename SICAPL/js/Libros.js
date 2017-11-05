@@ -108,12 +108,18 @@ function listar(valor){
 
 }
 
-function addActivo() {
-var imagenes = document.getElementsByName('libros').length + 1;
-var id="borrar"+imagenes;
-        var script = document.createElement("div");
-        script.setAttribute("id", id)
-        script.innerHTML = '<div class="panel panel-default" name="libros" id="libros1"><div class="panel-heading p_libro"><div class="row"><div class="col-md-10"><div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="">Buscar Libro</label><input type="text" id="codigol'+imagenes+'" name="codigol'+imagenes+'" autofocus onkeyup="buscarLibro2(this)" list="listaLibros"></div></div><div class="col-md-1"><a data-toggle="collapse" data-parent="#accordion" href="#libro'+imagenes+'"><i class="fa fa-sort-desc" id="despliegue" aria-hidden="true"></i></a></div><div class="col-md-1"><button  onclick="eliminar('+imagenes+')"><i class="fa fa-minus" id="restar'+imagenes+'" aria-hidden="true"></i></button></div></div></div><div id="libro'+imagenes+'" class="panel-collapse collapse in"><div class="panel-body"><table class="table table-striped table-bordered"><tr><td width="60%"><b>Titulo:</b></td><td width="40%"><div id="titulo'+imagenes+'"></div></td></tr><tr><td><b>Autor:</b></td><td><div id="autor'+imagenes+'"></div></td></tr><tr><td><b>Genero:</b></td><td><div id="genero'+imagenes+'"></div></td></tr><tr><td><b>Fecha de Publicacion:</b></td><td><div id="fecha_pub'+imagenes+'"></div></td></tr></table></div></div></div>';
-        var fila = document.getElementById("accordion2");
-        fila.appendChild(script);
+function llenar(valor, lista){ 
+//alert("paso");
+        var depto = valor;
+        var depto2 = lista;
+//var numero=valor.id.substr(7)
+//alert(valor.id);
+    if (depto != "") {alert("paso"+depto);
+        $.post("../activofijo/llenar.php", {libro: depto, lista: depto2}, function(mensaje) {
+          $('#listaLibros22').html(mensaje).fadeIn();
+         
+
+        }); 
+    }         
+
 }

@@ -48,7 +48,7 @@
 
 
 
-<div id="nuevoPrestamoAct" class="modal modal-fixed-footer nuevo ">
+<div id="nuevoPrestamoAct" class="modal modal-fixed-footer prestamoActivo ">
     <div class="modal-heading panel-heading">
         Registrar Prestamo 
     </div>
@@ -67,7 +67,7 @@
     </div>
 </div>
 
-<div id="actPres" class="modal modal-fixed-footer nuevo ">
+<div id="actPres" class="modal modal-fixed-footer prestamoActivo ">
     <div class="modal-heading panel-heading">
         Actualizar Prestamo 
     </div>
