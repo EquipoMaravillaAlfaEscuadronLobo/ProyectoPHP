@@ -52,19 +52,26 @@ class Repositorio_libros
             if (isset($conexion)) {
                 try{
                 $sql="SELECT
-DISTINCT libros.titulo as titulo,
-editoriales.nombre AS editorial,
+GROUP_CONCAT(DISTINCT autores.nombre,' ',autores.apellido SEPARATOR ' - ') AS autor,
 libros.codigo_libro as codigo,
+(libros.titulo) as titulo,
+libros.fecha_publicacion as fecha_publicacion,
+libros.estado,
 libros.foto as foto,
 libros.editoriales_codigo as cedit,
-libros.fecha_publicacion as fecha_publicacion,
-CONCAT(autores.nombre,' ',autores.apellido)  AS autor
-
+editoriales.nombre as editorial,
+count(titulo) as cantidad
 FROM
 libros
 INNER JOIN editoriales ON libros.editoriales_codigo = editoriales.codigo_editorial
 INNER JOIN movimiento_autores ON movimiento_autores.codigo_libro = libros.codigo_libro
-INNER JOIN autores ON movimiento_autores.codigo_autor = autores.codigo_autor where libros.estado=0
+INNER JOIN autores ON movimiento_autores.codigo_autor = autores.codigo_autor
+where libros.estado=0
+GROUP BY
+titulo
+
+
+
 ";
                 $resultado=$conexion->query($sql);
             }catch(PDOException $ex){

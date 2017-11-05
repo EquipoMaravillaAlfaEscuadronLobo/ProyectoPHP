@@ -141,21 +141,3 @@
  ?>
 </datalist>
 <datalist id="listaLibros2"></datalist>
-
-
-<script type="text/javascript">
-
-    function eliminar (numero,event) {
-       if(event.keyCode !== 13){
-        var id='borrar'+numero;
-        var top=document.getElementById('accordion2');
-        var bottom=document.getElementById(id);
-        //alert(bottom)
-        if (bottom.parentNode) {
-        bottom.parentNode.removeChild(bottom);
-        };
-    }
-}
-
-
-</script>
