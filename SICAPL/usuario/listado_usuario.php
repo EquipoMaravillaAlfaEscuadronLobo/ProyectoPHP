@@ -42,7 +42,9 @@ $lista_usuarios = Repositorio_usuario::lista_usuarios(Conexion::obtener_conexion
                                 <td class="text-center"><?php echo $lista_usu->getTelefono(); ?></td>
                                 <td class="text-center"><?php echo $lista_usu->getDireccion(); ?></td>
                                 <td class="text-center"><?php echo $lista_usu->getEmail(); ?></td>
-                                <td class="text-center"><img src="../imagenes/imagenes.jpg" class="presentacionXZ" alt=""></td>
+                                <td class="text-center">
+                                    <img src="data:image/jpg;<?php echo base64_encode($lista_usu->getFoto()); ?>"/>
+                                </td>
                                 <td class="text-center">
                                     <button class="btn btn-danger" onclick="abrir_eliminacion_usuario('<?php echo $lista_usu->getNombre();?>','<?php echo $lista_usu->getApellido();?>','<?php echo $lista_usu->getCodigo_usuario();?>','111111')"> 
                                         <i class="Medium material-icons prefix">delete</i> 
