@@ -107,6 +107,7 @@ class Repositorio_usuario {
                         $usuario->setNombre($fila['nombre']);
                         $usuario->setSexo($fila['sexo']);
                         $usuario->setTelefono($fila['telefono']);
+                        $usuario->setFoto($fila['foto']);
 
                         $lista_usuarios[] = $usuario;
                     }
