@@ -10,7 +10,7 @@ include_once '../repositorios/repositorio_institucion.php';
 
 <!--formulario usuario-->
 <div class="container">
-    <form id="FORMULARIO" method="post" class="form-horizontal" action="" autocomplete="off">
+    <form id="FORMULARIO" method="post" class="form-horizontal" action="" autocomplete="off" enctype="multipart/form-data">
         <input type="hidden" name="banderaRegistro" id="banderaRegistro"/>
         <div class="row">
             <div class="panel" name="libros">
@@ -89,17 +89,7 @@ include_once '../repositorios/repositorio_institucion.php';
                             <div class="col 1"></div>
                         </div>
                         <div class="col m6">
-                            <div class="col m2"></div>
-                            <div class="file-field input-field col m10">
-                                <div class="btn btn-primary">
-                                    <span class="glyphicon glyphicon-picture" aria="hidden"></span> Foto                          
-                                    <input type="file">
-                                </div>
-                                <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text" name="nameFoto" id="idFoto">
-                                    <input type="file" id="files" name="files[]">
-                                </div>
-                            </div>
+                            <input type="file" name="nameFotos" id="idFotos">
                         </div>
                     </div>
                     <div class="row">
@@ -138,9 +128,12 @@ if (isset($_REQUEST["banderaRegistro"])) {
     $usuario->setEmail($_REQUEST['nameEmail']);
     $usuario->setTelefono($_REQUEST['nameTelefono']);
     $usuario->setCodigo_institucion($_REQUEST['nameInstitucion']);
+    $foto = addslashes(file_get_contents($_FILES['nameFotos']['tmp_name']));
+    $usuario ->setFoto($foto);
+    echo 'esta es la foto '.$foto;
     
 
-     Repositorio_usuario::insertar_usuario(Conexion::obtener_conexion(), $usuario);
+ Repositorio_usuario::insertar_usuario(Conexion::obtener_conexion(), $usuario);
 
 }
 ?>
