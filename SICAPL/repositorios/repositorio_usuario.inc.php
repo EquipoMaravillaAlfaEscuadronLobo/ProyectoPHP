@@ -23,9 +23,10 @@ class Repositorio_usuario {
                 $observaciones = "";
                 $foto = $usuario->getFoto();
 
-                $sql = 'INSERT INTO usuarios(codigo_usuario,codigo_institucion,nombre,apellido,telefono,correo,direccion,estado,sexo,observaciones,foto)'
-                        . ' values (:codigo_usuario,:codigo_institucion,:nombre,:apellido,:telefono,:correo,:direccion,:estado,:sexo,:observaciones,:foto)';
+                $sql = "INSERT INTO usuarios(codigo_usuario,codigo_institucion,nombre,apellido,telefono,correo,direccion,estado,sexo,observaciones,foto)
+                    values (:codigo_usuario,:codigo_institucion,:nombre,:apellido,:telefono,:correo,:direccion,:estado,:sexo,:observaciones,'$foto') ";
 
+                
                 $sentencia = $conexion->prepare($sql);
 
                 $sentencia->bindParam(':codigo_usuario', $carnet, PDO::PARAM_STR);
@@ -38,7 +39,7 @@ class Repositorio_usuario {
                 $sentencia->bindParam(':estado', $estado, PDO::PARAM_INT);
                 $sentencia->bindParam(':sexo', $sexo, PDO::PARAM_STR);
                 $sentencia->bindParam(':observaciones', $observaciones, PDO::PARAM_STR);
-                $sentencia->bindParam(':foto', $foto, PDO::PARAM_STR);
+                
 
                 $usuario_insertado = $sentencia->execute();
 
