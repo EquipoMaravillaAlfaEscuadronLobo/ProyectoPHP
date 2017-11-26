@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once '../app/Conexion.php';
     include_once '../modelos/Libros.php';
     include_once '../repositorios/respositorio_libros.php';
@@ -11,29 +11,31 @@ include_once '../app/Conexion.php';
                     <th class="text-center">Titulo</th>
                     <th class="text-center">Autores</th>
                     <th class="text-center">Editorial</th>
-                   
-                    
+                    <th class="text-center">Cantidad</th>
+
+
                     <th class="text-center"></th>
 
                     </thead>
                     <tbody>
 
-                    <?php 
+                    <?php
                         foreach ($listado as $fila) {
                             # code...
-                        
+
                      ?>
                         <tr>
                             <td class="text-center"><button class="btn btn-success" onclick="abrirEdicionLib('<?php echo $fila['codigo'] ?>','<?php echo $fila['cedit'] ?>','<?php echo $fila['titulo'] ?>','<?php echo $fila['fecha_publicacion'] ?>','<?php echo $fila['foto'] ?>','<?php echo $fila['cantidad'] ?>')"> <i class="Medium material-icons prefix">edit</i> </button></td>
                             <td class="text-center"><?php echo $fila['titulo'] ?></td>
                             <td class="text-center"><?php echo $fila['autor'] ?></td>
                             <td class="text-center"><?php echo $fila['editorial'] ?></td>
-                           
-                            
+                            <td class="text-center"><?php echo $fila['cantidad'] ?></td>
+
+
                             <td class="text-center"><button class="btn btn-danger" onclick="Baja('<?php echo $fila['codigo'] ?>')"> <i class="Medium material-icons prefix">delete</i> </button></td>
                         </tr>
                         <?php } ?>
-                       
+
                     </tbody>
                 </table>
 
@@ -80,21 +82,21 @@ include_once '../app/Conexion.php';
                     type: "success"},
                     function(){
                        location.href="inicio_b.php";
-                       
-                       
-                        
+
+
+
                     }
 
                     );
-            
+
          }else{
                 swal ( "Oops" ,  "No se pudo dar de Baja" ,  "error" )
-             
+
          }
     })
    //swal("Nice!", "You wrote: " + inputValue, "success");
-  
-  
+
+
 });
     }
 </script>
