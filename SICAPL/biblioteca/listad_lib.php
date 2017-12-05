@@ -32,7 +32,7 @@ include_once '../app/Conexion.php';
                             <td class="text-center"><?php echo $fila['cantidad'] ?></td>
 
 
-                            <td class="text-center"><button class="btn btn-danger" onclick="Baja('<?php echo $fila['codigo'] ?>')"> <i class="Medium material-icons prefix">delete</i> </button></td>
+                            <td class="text-center"><button class="btn btn-info" onclick="Baja('<?php echo $fila['codigo'] ?>')"> <i class="fa fa-eye"></i> </button></td>
                         </tr>
                         <?php } ?>
 
@@ -51,6 +51,9 @@ include_once '../app/Conexion.php';
         </div>
     </div>
 </div>
+
+
+
 <script type="text/javascript">
     function editLibro () {
         document.frmEditLib.submit();

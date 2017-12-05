@@ -53,7 +53,7 @@ class Repositorio_libros
                 try{
                 $sql="SELECT
 GROUP_CONCAT(DISTINCT autores.nombre,' ',autores.apellido SEPARATOR ' - ') AS autor,
-libros.codigo_libro as codigo,
+SUBSTR(libros.codigo_libro,1,11) as codigo,
 (libros.titulo) as titulo,
 libros.fecha_publicacion as fecha_publicacion,
 libros.estado,
@@ -69,7 +69,6 @@ INNER JOIN autores ON movimiento_autores.codigo_autor = autores.codigo_autor
 where libros.estado=0
 GROUP BY
 titulo
-
 
 
 ";

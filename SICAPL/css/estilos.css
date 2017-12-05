@@ -4,7 +4,7 @@
 
 body{
     font-family: "NueMerriweather";
-    src: url ("../fonts/NueMerriweather/PermanentMarker-Regular.ttf");
+    src: url("../fonts/NueMerriweather/PermanentMarker-Regular.ttf");
 }
 
 footer{
@@ -146,4 +146,7 @@ a.ass:hover{
 	margin-top: 3em !important;
 	margin-bottom: 5em !important;
 	
+}
+.pendiente{
+	cursor: pointer !important;
 }

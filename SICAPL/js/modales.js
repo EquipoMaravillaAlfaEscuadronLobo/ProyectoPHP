@@ -5,7 +5,9 @@ $(document).ready(function () {
     today: 'Hoy',
     clear: 'Borrar',
     close: 'Ok',
+       format: 'dd-mm-yyyy',
     max: new Date(),
+
     closeOnSelect: true // Close upon selecting a date,
   });
 
@@ -15,7 +17,9 @@ $(document).ready(function () {
     today: 'Hoy',
     clear: 'Borrar',
     close: 'Ok',
+        format: 'dd-mm-yyyy',
     min: new Date(),
+
     closeOnSelect: true // Close upon selecting a date,
   });
     $('.collapse')
