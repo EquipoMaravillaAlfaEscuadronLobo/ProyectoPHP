@@ -35,7 +35,7 @@
                             </div>
                             <div class="input-field col m5">
                                 <i class="fa fa-credit-card prefix"></i> 
-                                <input type="text" id="idDuiE" name="nameDuiE" class="text-center validate" minlength="10" required="" value=" ">
+                                <input type="text" id="idDuiE" name="nameDuiE" class="text-center validate" minlength="10" required="" value="d">
                                 <label for="idDuiE">Dui <small>(Ej: 02436390-9)</small></label>
                             </div>
 
@@ -44,12 +44,12 @@
                             <div class="col-md-1"></div>
                             <div class="input-field col m5">
                                 <i class="fa fa-eye prefix"></i> 
-                                <input type="password" id="idPass1E" name="namePass1E" class="text-center validate" autocomplete="off" minlength="6" maxlength="10"  >
+                                <input type="password" id="idPass1E" name="namePass1E" class="text-center validate" autocomplete="off" minlength="6" maxlength="10" value="d" >
                                 <label for="idPass1E">nueva contraseña(opcional)</label>
                             </div>
                             <div class="input-field col m5">
                                 <i class="fa fa-eye prefix"></i> 
-                                <input type="password" id="idPass2E" name="namePass2E" class="text-center validate" autocomplete="off"  minlength="6" maxlength="10">
+                                <input type="password" id="idPass2E" name="namePass2E" class="text-center validate" autocomplete="off"  minlength="6" maxlength="10" value="d">
                                 <label for="idPass2E">Repita Contraseña</label>
                             </div>
                         </div>
@@ -115,8 +115,8 @@
                             </div>
                             <div class="input-field col m5">
                                 <i class="fa fa-expeditedssl prefix"></i> 
-                                <input type="password" id="idValidacionX" name="nameValidacionX" class="text-center validate" autocomplete="off">
-                                <label for="idValidacionX">Para continuar por favor ingrese su contraseña</label>
+                                <input type="password" id="idVerificacion" name="nameVerificacion" class="text-center validate" autocomplete="off">
+                                <label for="idVerificacion">Para continuar por favor ingrese su contraseña</label>
                             </div>
 
                             <div class="row">
@@ -159,10 +159,11 @@ if (isset($_REQUEST["banderaEdicion"])) {
     $administrador->setSexo($_REQUEST['NameSexoE']);
     $administrador->setEmail($_REQUEST['nameEmailE']);
     $administrador->setFecha($_REQUEST['nameFechaE']);
-    $codigo_original = $_REQUEST['codigo_original'];
+    $codigo_original = $_REQUEST['codigo_original'];///ESTE ES EL ID ADMINISTRADOR
+    $verificacion = $_REQUEST['nameVerificacion'];
 
 
-    Repositorio_administrador::actualizar_administrador(Conexion::obtener_conexion(), $administrador, $codigo_original);
+    Repositorio_administrador::actualizar_administrador(Conexion::obtener_conexion(), $administrador, $codigo_original,$verificacion);
     //Conexion::cerrar_conexion();
 }
 ?>

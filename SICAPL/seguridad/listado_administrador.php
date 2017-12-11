@@ -30,7 +30,7 @@ $lista_admnistradores = Repositorio_administrador::lista_administradores(Conexio
                                     <button class="btn btn-success" onclick="abrir_edicion_administrador('<?php echo $lista->getNombre(); ?>',
                                                         '<?php echo $lista->getApellido(); ?>', '<?php echo $lista->getCodigo_administrador(); ?>',
                                                         '<?php echo $lista->getDui(); ?>', '<?php echo $lista->getFecha(); ?>',
-                                                        '<?php echo $lista->getEmail(); ?>', '<?php echo $lista->getPasword(); ?>',
+                                                        '<?php echo $lista->getEmail(); ?>', '<?php echo 'PASWORD_AC'; ?>',
                                                         '<?php echo $lista->getNivel(); ?>', '<?php echo $lista->getSexo(); ?>')">
                                         <i class="Medium material-icons prefix">edit</i> 
                                     </button>

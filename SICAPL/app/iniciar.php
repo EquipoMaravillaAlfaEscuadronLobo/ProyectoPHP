@@ -10,7 +10,7 @@
 
 
 	 $administrador=Repositorio_administrador::obtener_administrador(Conexion::obtener_conexion(), $codigo);
-	 if (isset($administrador)&&$administrador->getPasword()==$pass) {
+	 if (isset($administrador) && password_verify($pass, $administrador->getPasword())) {
 	 	$_SESSION['user']=$administrador->getCodigo_administrador();
 	 	$_SESSION['nivel']=$administrador->getNivel();
 	 	echo "ENCONTRADO";

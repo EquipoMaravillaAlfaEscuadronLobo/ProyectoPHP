@@ -34,7 +34,7 @@ class Repositorio_administrador {
                         $sentencia = $conexion->prepare($sql);
 
                         $sentencia->bindParam(':codigo_administrador', $codigo_administrador, PDO::PARAM_STR);
-                        $sentencia->bindParam(':pasword', $pasword, PDO::PARAM_STR);
+                        $sentencia->bindParam(':pasword', password_hash($pasword, PASSWORD_DEFAULT), PDO::PARAM_STR);
                         $sentencia->bindParam(':nivel', $nivel, PDO::PARAM_INT);
                         $sentencia->bindParam(':nombre', $nombre, PDO::PARAM_STR);
                         $sentencia->bindParam(':apellido', $apellido, PDO::PARAM_STR);
@@ -151,15 +151,15 @@ class Repositorio_administrador {
         return $lista_administradores;
     }
 
-    public static function actualizar_administrador($conexion, $administrador, $codigo_original) {
+    public static function actualizar_administrador($conexion, $administrador, $codigo_original,$verificacion) {
         $administrador_insertado = false;
-        // $administrador = new Administrador();
+        $administrador_actual = self:: obtener_administrador($conexion, $codigo_original);
 
         if (isset($conexion)) {
             try {
                 echo 'hay conexion<br>';
                 $codigo_administrador = $administrador->getCodigo_administrador();
-                $pasword = $administrador->getPasword();
+                $pasword = $administrador->getPasword();////password plana
                 $nivel = $administrador->getNivel();
                 $nombre = $administrador->getNombre();
                 $apellido = $administrador->getApellido();
@@ -169,20 +169,28 @@ class Repositorio_administrador {
                 $foto = $administrador->getFoto();
                 $email = $administrador->getEmail();
                 $fecha = $administrador->getFecha();
-
-                if ($codigo_original == $codigo_original) {
+                
+                if (password_verify($verificacion, $administrador_actual ->getPasword())) {///esto es para saber si las contrase;a para modificar es correcta
+                                      
+                    
                     $sql = 'UPDATE administradores SET nombre=:nombre,apellido=:apellido,pasword=:pasword,dui=:dui,nivel=:nivel, fecha=:fecha,email=:email,sexo=:sexo  WHERE codigo_administrador = :codigo_original';
 
                     $sentencia = $conexion->prepare($sql);
                     $sentencia->bindParam(':codigo_original', $codigo_original, PDO::PARAM_STR);
                     $sentencia->bindParam(':nombre', $nombre, PDO::PARAM_STR);
                     $sentencia->bindParam(':apellido', $apellido, PDO::PARAM_STR);
-                    $sentencia->bindParam(':pasword', $pasword, PDO::PARAM_STR);
                     $sentencia->bindParam(':dui', $dui, PDO::PARAM_STR);
                     $sentencia->bindParam(':nivel', $nivel, PDO::PARAM_STR);
                     $sentencia->bindParam(':fecha', $fecha, PDO::PARAM_STR);
                     $sentencia->bindParam(':email', $email, PDO::PARAM_STR);
                     $sentencia->bindParam(':sexo', $sexo, PDO::PARAM_STR);
+                    
+                     if ($pasword == 'PASWORD_AC'){
+                        $pasword = $administrador_actual ->getPasword();
+                        $sentencia->bindParam(':pasword', $pasword, PDO::PARAM_STR);
+                    }else{
+                        $sentencia->bindParam(':pasword', password_hash($pasword, PASSWORD_DEFAULT), PDO::PARAM_STR);
+                    }
 
                     $administrador_insertado = $sentencia->execute();
                     echo '<script>swal({
@@ -196,11 +204,12 @@ class Repositorio_administrador {
                     location.href="inicio_seguridad.php";
                     
                 });</script>';
-                } else {
-                    echo "<script>swal('Excelente!', 'hubo incombenientes '$sql' ', 'success');</script>";
+                }
+                else {
+                    echo "<script>swal('Oops!', 'Contraseña Incorrecta, por favor vuelve a intentar', 'warning'); </script>";
                 }
             } catch (PDOException $ex) {
-                echo "<script>swal('Excelente!', 'hubo incombenientes  '$sql' ', 'success');</script>";
+                echo "<script>swal('Ooops!', 'Hubo no se pudo realizar la accion', 'error');</script>";
 
                 print 'ERROR: ' . $ex->getMessage();
             }
