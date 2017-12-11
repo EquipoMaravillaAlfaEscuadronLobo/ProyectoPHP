@@ -14,7 +14,7 @@
         document.getElementById('nombreUser').innerHTML = "<?php echo $fila['nombre'] ?>";
        //document.getElementById('edad').innerHTML = "<?php echo $fila['titulo'] ?>";
         document.getElementById('sexo').innerHTML = "<?php echo $fila['sexo'] ?>";
-        document.getElementById('fot').setAttribute("src", "../imagenes/tipo.jpg")
+        document.getElementById('fot').setAttribute("src", "<?php echo $fila['foto'] ?>")
 
 
 	//	document.getElementById('titulo<?php echo $numero ?>').value = <?php echo $fila['titulo'] ?>;

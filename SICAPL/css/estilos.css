@@ -150,3 +150,11 @@ a.ass:hover{
 .pendiente{
 	cursor: pointer !important;
 }
+
+.brand-logo{
+	display: inline !important;
+	position: absolute !important;
+	float: left !important;
+	width: 15%;
+	height: 100%;
+}

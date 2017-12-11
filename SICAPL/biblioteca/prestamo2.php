@@ -24,21 +24,31 @@
                 </div>
                 <div id="libro1" class="panel-collapse collapse in">
                     <div class="panel-body">
-                        <table class="table table-striped table-bordered">
-                            <tr>
-                                <td width="60%"><b>Titulo:</b></td>
-                                <td width="40%"><div id="titulo1"></div></td>
-                            </tr>
-                            <tr>
-                                <td><b>Autor:</b></td>
-                                <td><div id="autor1"></div></td>
-                            </tr>
-                            <tr>
-                                <td><b>Fecha de Publicacion:</b></td>
-                                <td><div id="fecha_pub1"></div></td>
-                            </tr>
+                        <div class="row">
+                            <div class="col-md-3">
 
-                        </table>
+                                <img src="../imagenes/if_book_285636.png" id="fotLib1" class="presentacionXZ">
+                            </div>
+                            <div class="col-md-9">
+                                <table class="table table-striped table-bordered">
+                                    <tr>
+                                        <td width="60%"><b>Titulo:</b></td>
+                                        <td width="40%"><div id="titulo1"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Autor:</b></td>
+                                        <td><div id="autor1"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Fecha de Publicacion:</b></td>
+                                        <td><div id="fecha_pub1"></div></td>
+                                    </tr>
+
+                                </table>
+
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -77,7 +87,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-3" >
-                                <img src="" id="fot" class="presentacionXZ">
+                                <img src="../imagenes/if_user-alt_285645.png" id="fot" class="presentacionXZ">
                             </div>
                             <div class="col-md-9">
                                  <table class="table table-striped table-bordered">
@@ -115,11 +125,11 @@
     include_once '../modelos/Libros.php';
     include_once '../repositorios/respositorio_libros.php';
     Conexion::abrir_conexion();
-    $listado=Repositorio_libros::ListaLibros(Conexion::obtener_conexion());
+    $listado=Repositorio_libros::ListaLibros2(Conexion::obtener_conexion());
 
 
      foreach ($listado as $fila) {
-        echo "<option value='$fila[2]'>$fila[0]</option>";
+        echo "<option value='$fila[0]'>$fila[1]</option>";
     }
 
  ?>

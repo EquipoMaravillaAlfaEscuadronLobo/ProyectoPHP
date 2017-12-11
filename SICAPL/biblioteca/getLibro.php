@@ -13,7 +13,7 @@
 		document.getElementById('titulo<?php echo $numero ?>').innerHTML =  "<?php echo $fila['titulo'] ?>";
         document.getElementById('autor<?php echo $numero ?>').innerHTML = "<?php echo $fila['autor'] ?>";
         document.getElementById('fecha_pub<?php echo $numero ?>').innerHTML = "<?php echo $fila['fecha_publicacion'] ?>";
-
+        document.getElementById('fotLib<?php echo $numero ?>').setAttribute("src", "../fotoLibros/<?php echo $fila['foto'] ?>")
 
 	//	document.getElementById('titulo<?php echo $numero ?>').value = <?php echo $fila['titulo'] ?>;
      ////   document.getElementById('autor<?php echo $numero ?>').value = <?php echo $fila[2] ?>;
