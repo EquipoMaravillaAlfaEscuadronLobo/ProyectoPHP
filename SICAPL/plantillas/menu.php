@@ -2,7 +2,7 @@
     <div class="nav-wrapper">
         <div class="brand-logo">
             <a href="../app/home.php">
-                <img src="../imagenes/libros.png" alt="" width="100%" height="100%">
+                <img src="../imagenes/libros.png" alt="" width="80%" height="100%">
             </a>
         </div>
 

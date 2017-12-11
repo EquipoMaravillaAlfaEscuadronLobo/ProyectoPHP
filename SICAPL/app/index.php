@@ -67,11 +67,6 @@ include_once('../plantillas/cabecera.php');
 
                                     );
 
-
-
-
-
-
                                 } else {
                                     swal("Oops", "Contraseña Incorrecta", "error")
                                     $('input#clave').addClass("invalidado");

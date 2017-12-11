@@ -2,7 +2,8 @@
 	session_start();
 	$codigo=$_POST["user"];
 	$pass=$_POST["clave"];
-
+        
+             
 	include_once 'Conexion.php';
 	include_once '../modelos/Administrador.inc.php';
 	include_once '../repositorios/repositorio_administrador.inc.php';
@@ -10,6 +11,7 @@
 
 
 	 $administrador=Repositorio_administrador::obtener_administrador(Conexion::obtener_conexion(), $codigo);
+         
 	 if (isset($administrador) && password_verify($pass, $administrador->getPasword())) {
 	 	$_SESSION['user']=$administrador->getCodigo_administrador();
 	 	$_SESSION['nivel']=$administrador->getNivel();
@@ -17,7 +19,7 @@
 	 }
 	 else{
 	 	echo "INEXISTENTE";
-	 }
+             }
 
 
 

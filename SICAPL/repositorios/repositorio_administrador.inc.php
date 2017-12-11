@@ -206,7 +206,9 @@ class Repositorio_administrador {
                 });</script>';
                 }
                 else {
-                    echo "<script>swal('Oops!', 'Contraseña Incorrecta, por favor vuelve a intentar', 'warning'); </script>";
+                         echo '<script>'
+                        . 'swal("Oops!", "El la contraseña que introdujo no es correcta, por lo que no se haran cambios", "warning"); </script>';
+                    
                 }
             } catch (PDOException $ex) {
                 echo "<script>swal('Ooops!', 'Hubo no se pudo realizar la accion', 'error');</script>";
