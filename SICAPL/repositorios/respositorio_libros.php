@@ -80,6 +80,38 @@ print 'ERROR: ' . $ex->getMessage();
             }
             return $resultado;
         }
+
+    public function ListaLibros2($conexion)
+    {
+        $resultado="";
+        if (isset($conexion)) {
+            try{
+                $sql="SELECT
+
+libros.codigo_libro as codigo,
+(libros.titulo) as titulo,
+
+libros.estado,
+libros.foto as foto
+
+FROM
+libros
+INNER JOIN editoriales ON libros.editoriales_codigo = editoriales.codigo_editorial
+INNER JOIN movimiento_autores ON movimiento_autores.codigo_libro = libros.codigo_libro
+INNER JOIN autores ON movimiento_autores.codigo_autor = autores.codigo_autor
+where libros.estado=0
+
+
+
+";
+                $resultado=$conexion->query($sql);
+            }catch(PDOException $ex){
+                print 'ERROR: ' . $ex->getMessage();
+
+            }
+        }
+        return $resultado;
+    }
 	public static function BuscarLibro($conexion, $codigo)
     {
         $resultado="";
@@ -88,7 +120,8 @@ print 'ERROR: ' . $ex->getMessage();
                 $sql="SELECT
 libros.titulo,
 libros.fecha_publicacion,
-CONCAT(autores.nombre,' ',autores.apellido) as autor
+CONCAT(autores.nombre,' ',autores.apellido) as autor,
+libros.foto as foto
 FROM
 libros
 INNER JOIN movimiento_autores ON movimiento_autores.codigo_libro = libros.codigo_libro

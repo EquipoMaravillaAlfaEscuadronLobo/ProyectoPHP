@@ -39,7 +39,7 @@
                                 
                                 <td><?php echo $fila['nombre']." ".$fila['apellido'] ?></td>
                                 <td><?php echo $fila['titulo'] ?></td>
-                                <td><?php echo date_format(date_create($fila['salida']),'m-d-Y') ?></td>
+                                <td><?php echo date_format(date_create($fila['salida']),'d-m-Y') ?></td>
                                 <td><?php echo  date_format(date_create($fila['devolucion']),'d-m-Y')  ?></td>
                                 <td class="alert <?php if($fdev>$hoy){echo 'alert-warning';}else{echo 'alert-danger';} ?>  pendiente" onclick="finalizar('<?php echo $fila['codigo'] ?>')">Pendiente</td>
                             </tr>

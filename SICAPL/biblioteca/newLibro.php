@@ -14,6 +14,7 @@
     //echo $editorial;
     $cantidad=$_POST["cantidad"];
     $publicacion = $_POST["fecha_pub"];
+    $publicacion=date_format(date_create($publicacion),'Y-m-d');
     $foto =$ruta.basename($_FILES["foto"]["name"]);
     $foto2=basename($_FILES["foto"]["name"]);
     Conexion::abrir_conexion();
