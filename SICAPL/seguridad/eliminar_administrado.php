@@ -17,12 +17,12 @@
                             <div class="col-md-1"></div>
                             <div class="input-field col m5 input-group">
                                 <i class="fa fa-user-circle prefix"></i> 
-                                <input type="text" id="idNombreEl" name="nameNombreEl"  class="text-center" value=" " disabled="">
+                                <input type="text" id="idNombreEl" name="nameNombreEl"  class="text-center" value="nombre" disabled="">
                                 <label for="idNombreEl" class="col-sm-4 control-labe">Nombre Completo</label>
                             </div>
                             <div class="input-field col m5">
                                 <i class="fa fa-vcard prefix"></i> 
-                                <input type="text" id="idUsuarioEl" name="nameUsuarioEl"  class="text-center" disabled="">
+                                <input type="text" id="idUsuarioEl" name="nameUsuarioEl"  class="text-center" disabled="" value="nombre">
                                 <label for="idUsuarioEl">Nombre de Usuario</label>
                             </div>
                         </div>
@@ -64,8 +64,8 @@
                             </div>
                             <div class="input-field col m5">
                                 <i class="fa fa-expeditedssl prefix"></i> 
-                                <input type="password" id="idValidacionXE" name="nameValidacionXE" class="text-center validate" autocomplete="off" >
-                                <label for="idValidacionXE">Para continuar por favor ingrese su contraseña</label>
+                                <input type="password" id="idVerificacion" name="nameVerificacionE" class="text-center validate" autocomplete="off" >
+                                <label for="idVerificacion">Para continuar por favor ingrese su contraseña</label>
                             </div>
                         </div>
                     </div>
@@ -89,7 +89,9 @@ if (isset($_REQUEST["banderaEliminacion"])) {
     $administrador->setObservacion($_REQUEST['nameMotivoEliminacion']);
     $administrador->setEstado(0);
     $codigo_eliminar = $_REQUEST['nameOtroCarnet'];
+    $verificacion = $_REQUEST['nameVerificacionE'];
 
-    Repositorio_administrador::eliminar_administrador(Conexion::obtener_conexion(), $administrador, $codigo_eliminar);
+    
+    Repositorio_administrador::eliminar_administrador(Conexion::obtener_conexion(), $administrador, $codigo_eliminar, $verificacion);
 }
 ?>
