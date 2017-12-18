@@ -29,7 +29,7 @@
                                 <div class="input-field">
                                     <i class="fa fa-bookmark prefix" aria-hidden="true"></i>
                                     <label for="Titulo">Titulo</label>
-                                    <input type="text" id="titulo" required name="titulo" class="form-control validate">
+                                    <input type="text" id="titulo" required name="titulo" class="form-control validate" onkeyup="llenarCodigo()">
                                 </div>
                             </div>
                         	<div class="col-md-6">
@@ -72,7 +72,7 @@
                         	<div class="col-md-12">
                         		<div class="input-field">
                         		<i class="fa fa-bookmark-o prefix" aria-hidden="true"></i>
-                        			<select name="editorial" id="editorial" required class="editorial validate">
+                        			<select name="editorial" id="editorial" required class="editorial validate" onchange="llenarCodigo()">
 								     <?php
                                       include 'opcionesEditorial.php';
                                      ?>
@@ -236,12 +236,23 @@
 
 <script type="text/javascript">
     function llenarCodigo () {
+        var clas=""
+        var nombre=""
+        var editorial=""
+
          document.getElementById('codigol').value="";
         var texto="CEJ-002-";
-        var clas=document.getElementById('clasificacion').value.slice(0,3);
-        document.getElementById('codigol').value=texto+clas;
+        clas=document.getElementById('clasificacion').value.slice(0,3);
+        nombre=(document.getElementById('titulo').value.slice(0,2)).toUpperCase();
+        editorial=pad(document.getElementById('editorial').value,4,'0');
+        texto=texto+clas+"-"+nombre+"-"+editorial;
+        document.getElementById('codigol').value=texto;
+        //alert(pad(1.5, 0, 4));
 
     }
 
-
+    function pad(input, length, padding) {
+        var str = input + "";
+        return (length <= str.length) ? str : pad(padding+str, length, padding);
+    }
 </script>

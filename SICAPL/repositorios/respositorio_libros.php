@@ -9,9 +9,14 @@ class Repositorio_libros
 		$libro_insertado = false;
        if (isset($conexion)) {
             try {
+               $resultado=self::getCantidad($conexion,$libro->getCodigo_libro());
 
-
-                 for($i=1;$i<=$a;$i++){
+             // $cantidad=0;
+                foreach ($resultado as $row) {
+                    $cantidad=$row[0];
+                }
+               // echo $cantidad;
+                 for($i=$cantidad+1;$i<=$a+$cantidad;$i++){
                 $titulo = $libro->getTitulo();
                 $codigo=$libro->getCodigo_libro()."-".str_pad($i, 4,"0", STR_PAD_LEFT);
                 $editorial = $libro->getEditoriales_codigo();
@@ -53,7 +58,7 @@ class Repositorio_libros
                 try{
                 $sql="SELECT
 GROUP_CONCAT(DISTINCT autores.nombre,' ',autores.apellido SEPARATOR ' - ') AS autor,
-SUBSTR(libros.codigo_libro,1,11) as codigo,
+SUBSTR(libros.codigo_libro,1,19) as codigo,
 (libros.titulo) as titulo,
 libros.fecha_publicacion as fecha_publicacion,
 libros.estado,
@@ -68,7 +73,7 @@ INNER JOIN movimiento_autores ON movimiento_autores.codigo_libro = libros.codigo
 INNER JOIN autores ON movimiento_autores.codigo_autor = autores.codigo_autor
 where libros.estado=0
 GROUP BY
-titulo
+codigo
 
 
 ";
@@ -235,6 +240,27 @@ print 'ERROR: ' . $ex->getMessage();
         return $libro_mod;
     }
 
+    public static function getCantidad($conexion, $codigo){
+        $resultado="";
+       // echo $codigo;
+        if (isset($conexion)) {
+            try{
+                $sql="SELECT
+Count(libros.codigo_libro)
+FROM
+libros
+WHERE
+libros.codigo_libro like '%" .$codigo."%'";
+
+                $resultado=$conexion->query($sql);
+            }catch(PDOException $ex){
+                print 'ERROR: ' . $ex->getMessage();
+
+            }
+        }
+        return $resultado;
+
+    }
 
 }
  ?>
