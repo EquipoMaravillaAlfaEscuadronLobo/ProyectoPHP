@@ -40,8 +40,10 @@ class Repositorio_usuario {
                 $sentencia->bindParam(':sexo', $sexo, PDO::PARAM_STR);
                 $sentencia->bindParam(':observaciones', $observaciones, PDO::PARAM_STR);
                 
-
                 $usuario_insertado = $sentencia->execute();
+                
+                           
+                
 
                 echo '<script>swal({
                     title: "Exito",

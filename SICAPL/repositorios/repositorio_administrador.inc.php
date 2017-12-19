@@ -47,6 +47,9 @@ class Repositorio_administrador {
                         $sentencia->bindParam(':fecha', $fecha, PDO::PARAM_STR);
 
                         $administrador_insertado = $sentencia->execute();
+                        
+                        self::insertar_bitacora($conexion, 'dfds');
+                        
 
                         echo '<script>swal({
                     title: "Exito",
@@ -414,6 +417,31 @@ class Repositorio_administrador {
             }
         } else {
             echo "no hay conexion";
+        }
+    }
+    
+    public static function insertar_bitacora($conexion, $accion) {
+        $administrador_insertado = false;
+                if (isset($conexion)) {
+            try {
+        
+                echo 'esta en bitacora';
+               
+                            $sql = 'INSERT INTO bitacora (codigo_administrador, accion, fecha) VALUES ("fsdfsdfsddd", "eeee", "2017-12-12 08:16:28");';
+                        
+                        ///estos son alias para que PDO pueda trabajar 
+                        $sentencia = $conexion->prepare($sql);
+                        $administrador_insertado = $sentencia->execute();
+                        
+                        echo 'la bitacora ha sido guardada';                       
+
+                       
+                 
+                
+            } catch (PDOException $ex) {
+                echo '<script>swal("No se puedo realizar el registro", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
+                print 'ERROR: ' . $ex->getMessage();
+            }
         }
     }
 
