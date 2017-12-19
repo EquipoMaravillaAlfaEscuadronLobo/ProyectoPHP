@@ -47,9 +47,10 @@ class Repositorio_administrador {
                         $sentencia->bindParam(':fecha', $fecha, PDO::PARAM_STR);
 
                         $administrador_insertado = $sentencia->execute();
+                        $mensaje = 'Se registro al administrodor ' . $nombre .' ' . $apellido;
                         
-                        self::insertar_bitacora($conexion, 'dfds');
-                        
+                        self::insertar_bitacora($conexion, $mensaje);
+
 
                         echo '<script>swal({
                     title: "Exito",
@@ -85,7 +86,18 @@ class Repositorio_administrador {
                     . '$("#idPass1").val("' . $pasword . '"); $("#idPass2").val("' . $pasword . '");  </script>';
                 }
             } catch (PDOException $ex) {
-                echo '<script>swal("No se puedo realizar el registro", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
+                //echo '<script>swal("Advertencia!", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
+                echo '<script>swal({
+                    title: "Error!",
+                    text: "Por Favor intente más tarde",
+                    type: "warning",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },
+                function () {
+                    location.href="inicio_seguridad.php";
+                    
+                });</script>';
                 print 'ERROR: ' . $ex->getMessage();
             }
         }
@@ -206,11 +218,36 @@ class Repositorio_administrador {
                     
                 });</script>';
                 } else {
-                    echo '<script>'
-                    . 'swal("Oops!", "El la contraseña que introdujo no es correcta, por lo que no se haran cambios", "warning"); </script>';
+                    //echo '<script>'
+                    //. 'swal("Alerta!", "El la contraseña que introdujo no es correcta, por lo que no se haran cambios", "warning"); </script>';
+                    echo '<script>swal({
+                    title: "Advertencia!",
+                    text: "la contraseña que introdujo no es correcta, por lo que no se haran cambios",
+                    type: "warning",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },
+                function () {
+                    location.href="inicio_seguridad.php";
+                    
+                });</script>';
+
+
+                    
                 }
             } catch (PDOException $ex) {
-                echo "<script>swal('Ooops!', 'Hubo no se pudo realizar la accion', 'error');</script>";
+                //echo "<script>swal('Ooops!', 'Hubo no se pudo realizar la accion', 'error');</script>";
+                 echo '<script>swal({
+                    title: "Error!",
+                    text: "Por Favor intente más tarde",
+                    type: "warning",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },
+                function () {
+                    location.href="inicio_seguridad.php";
+                    
+                });</script>';
 
                 print 'ERROR: ' . $ex->getMessage();
             }
@@ -222,12 +259,10 @@ class Repositorio_administrador {
     public static function eliminar_administrador($conexion, $administrador, $codigo_eliminar, $verificacion) {
         $administrador_insertado = false;
         $administrador_actual = self:: obtener_administrador($conexion, $verificacion);
-        echo 'esta es la verificacion<br> ' . $verificacion . '<br>';
-        echo 'esta es la password<br>' . $administrador_actual ->getPasword();
-
+        
         if (isset($conexion)) {
             try {
-                
+
                 if (password_verify($verificacion, $administrador_actual->getPasword())) {///esto es para saber si las contrase;a para modificar es correcta
                     $observacion = $administrador->getObservacion();
                     $estado = $administrador->getEstado();
@@ -252,8 +287,19 @@ class Repositorio_administrador {
                     
                 });</script>';
                 } else {
-                    echo '<script>'
-                    . 'swal("Oops!", "El la contraseña que introdujo no es correcta, por lo que no se haran cambios", "warning"); </script>';
+                     echo '<script>swal({
+                    title: "Advertencia!",
+                    text: "La contraseña que introdujo no es correcta, por lo que no se harán combios",
+                    type: "warning",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                     },
+                 function () {
+                    location.href="inicio_seguridad.php";
+                    
+                });</script>';
+
+
                 }
             } catch (PDOException $ex) {
                 echo "<script>swal('Ooops!', 'Hubo no se pudo realizar la accion', 'error');</script>";
@@ -419,25 +465,22 @@ class Repositorio_administrador {
             echo "no hay conexion";
         }
     }
-    
+
     public static function insertar_bitacora($conexion, $accion) {
         $administrador_insertado = false;
-                if (isset($conexion)) {
+        if (isset($conexion)) {
             try {
-        
-                echo 'esta en bitacora';
-               
-                            $sql = 'INSERT INTO bitacora (codigo_administrador, accion, fecha) VALUES ("fsdfsdfsddd", "eeee", "2017-12-12 08:16:28");';
-                        
-                        ///estos son alias para que PDO pueda trabajar 
-                        $sentencia = $conexion->prepare($sql);
-                        $administrador_insertado = $sentencia->execute();
-                        
-                        echo 'la bitacora ha sido guardada';                       
+                $administrador = $_SESSION['user'];
+                ini_set('date.timezone', 'America/Blanc-Sablon');
+                $hora = date("Y/m/d ") . date("h:i:s");
 
-                       
-                 
-                
+                $sql = "INSERT INTO bitacora (codigo_administrador, accion, fecha) VALUES ('$administrador', '$accion', '$hora');";
+
+                ///estos son alias para que PDO pueda trabajar 
+                $sentencia = $conexion->prepare($sql);
+                $administrador_insertado = $sentencia->execute();
+
+                echo 'la bitacora ha sido guardada';
             } catch (PDOException $ex) {
                 echo '<script>swal("No se puedo realizar el registro", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
                 print 'ERROR: ' . $ex->getMessage();

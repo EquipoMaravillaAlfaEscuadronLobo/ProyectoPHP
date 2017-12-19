@@ -42,9 +42,6 @@ class Repositorio_usuario {
                 
                 $usuario_insertado = $sentencia->execute();
                 
-                           
-                
-
                 echo '<script>swal({
                     title: "Exito",
                     text: "El registro ha sido Guardado!",
@@ -57,7 +54,18 @@ class Repositorio_usuario {
                     
                 });</script>';
             } catch (PDOException $ex) {
-                echo '<script>swal("No se puedo realizar el registro", "Favor '.$ex->getMessage().' revisar los  datos e intentar nuevamente", "warning");</script>';
+                //echo '<script>swal("No se puedo realizar el registro", "Favor '.$ex->getMessage().' revisar los  datos e intentar nuevamente", "warning");</script>';
+                echo '<script>swal({
+                    title: "Advertencia!",
+                    text: "por favor revise los datos e intente nuevamente",
+                    type: "warning",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },
+                function () {
+                    location.href="inicio_usuario.php";
+                    
+                });</script>';
                 print 'ERROR: ' . $ex->getMessage();
             }
         } else {
@@ -79,7 +87,18 @@ class Repositorio_usuario {
                // echo 'esta buscanso<br>';
                 $total_usuario = $resultado['total'];
             } catch (PDOException $ex) {
-                echo '<script>swal("No se puedo realizar el registro", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
+                echo '<script>swal({
+                    title: "Advertencia!",
+                    text: "por favor revise los datos e intente nuevamente",
+                    type: "warning",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },
+                function () {
+                    location.href="inicio_usuario.php";
+                    
+                });</script>';
+                //echo '<script>swal("No se puedo realizar el registro", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
                 print 'ERROR: ' . $ex->getMessage();
             }
         }
@@ -171,8 +190,20 @@ class Repositorio_usuario {
                     
                 });</script>';
             } catch (PDOException $ex) {
-                echo "<script>swal('Excelente!', 'hubo incombenientes  '$sql' ', 'success');</script>";
-                echo 'problemas con sql';
+                //echo "<script>swal('Excelente!', 'hubo incombenientes  '$sql' ', 'success');</script>";
+                //echo 'problemas con sql';
+                echo '<script>swal({
+                    title: "Error!",
+                    text: "No hay conexion",
+                    type: "error",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },
+                function () {
+                    location.href="inicio_usuario.php";
+                    
+                });</script>';
+                
                 print 'ERROR: ' . $ex->getMessage();
             }
         }  else {
@@ -213,8 +244,19 @@ class Repositorio_usuario {
                     
                 });</script>';
             } catch (PDOException $ex) {
-                echo "<script>swal('Excelente!', 'hubo incombenientes  '$sql' ', 'success');</script>";
-                echo 'problemas con sql';
+                //echo "<script>swal('Excelente!', 'hubo incombenientes  '$sql' ', 'success');</script>";
+                echo '<script>swal({
+                    title: "Error!",
+                    text: "No hay conexion",
+                    type: "error",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },
+                function () {
+                    location.href="inicio_usuario.php";
+                    
+                });</script>';
+                //echo 'problemas con sql';
                 print 'ERROR: ' . $ex->getMessage();
             }
         }  else {
