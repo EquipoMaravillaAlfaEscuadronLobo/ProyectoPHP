@@ -39,7 +39,8 @@ class Repositorio_activo {
 
                 $activo_insertado = $sentencia->execute();
 
-
+                //$accion = "se registro un activo con las siguientes  caracteristicas: tipo" $ ;
+                
                 /* } else {
                   echo '<script>'
                   . 'swal("Advetencia!", "El nombre de usuario que introdujo ya esta en uso, favor introdusca otro", "warning");'
@@ -159,7 +160,7 @@ class Repositorio_activo {
             }
         }
     }
-
+    
 }
 
 ?>

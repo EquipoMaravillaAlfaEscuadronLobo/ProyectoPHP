@@ -1,7 +1,7 @@
 <form  method="post" action="" autocomplete="off" id="eliminar_formulario">
     <input type="hidden" name="banderaEliminacion" id="banderaEliminacion"/>
     <input type="hidden" id="idSecretoEL" value="" name="nameSecretoELiminar">
-    <input type="hidden" id="idOtroCarnet" name="nameOtroCarnet">
+    <input type="hidden" id="idOtroCarnet" name="nameOtroCarnet" value="d">
 
     <!--este es el modal-->
     <div id="eliminacion_usuario" class="modal modal-fixed-footer nuevo">
@@ -17,7 +17,7 @@
                             <div class="col m1"></div>
                             <div class="input-field col m5">
                                 <i class="fa fa-user-circle prefix"></i> 
-                                <input type="text" id="idNombreEliminado" name="nameNombreEliminado"  class="text-center validate" maxlength="25" minlength="3" required disabled="" value="fafad">
+                                <input type="text" id="idNombreEliminado" name="nameNombreEliminado"  class="text-center validate" maxlength="25" minlength="3" required disabled="" value="">
                                 <label for="idNombreEliminado" class="col-sm-4 control-labe">Nombre Completo</label>
                             </div>
                             <div class="input-field col m5">
@@ -36,16 +36,14 @@
                                 </div>
                             </div> 
                         </div>
-                        <div class="row">
+<!--                        <div class="row">
                             <div class="col m4"></div>
                             <div class="input-field col m5">
                                 <i class="fa fa-expeditedssl prefix"></i> 
-                                <input type="password" id="idValidacionXE" name="nameValidacionXE" class="text-center validate" autocomplete="off">
-                                <label for="idValidacionXE">Para continuar por favor ingrese su contraseña</label>
+                                <input type="password" id="idValidacionXE" name="nameVerificacion" class="text-center validate" autocomplete="off">
+                                <label for="idVerificacion">Para continuar por favor ingrese su contraseña</label>
                             </div>
-
-                        </div>
-
+                        </div>-->
                     </div>
                 </div>
             </div>
@@ -70,6 +68,7 @@ if (isset($_REQUEST["banderaEliminacion"])) {
 //    
     $usuario = new Usuario();
     $usuario->setObservacion($_REQUEST['nameMotivoEliminacion']);
+    $usuario->setNombre($_REQUEST['nameSecretoELiminar']);
     $carnet = $_REQUEST['nameOtroCarnet'];
 
     echo $_REQUEST['nameOtroCarnet'];

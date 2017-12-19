@@ -481,7 +481,7 @@ class Repositorio_administrador {
         if (isset($conexion)) {
             try {
                 $administrador = $_SESSION['user'];
-                ini_set('date.timezone', 'America/Blanc-Sablon');
+                ini_set('date.timezone', 'America/El_Salvador');
                 $hora = date("Y/m/d ") . date("h:i:s");
 
                 $sql = "INSERT INTO bitacora (codigo_administrador, accion, fecha) VALUES ('$administrador', '$accion', '$hora');";

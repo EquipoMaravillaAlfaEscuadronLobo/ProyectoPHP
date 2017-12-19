@@ -431,8 +431,14 @@ if (isset($_REQUEST["bandera1"])) {
         $activo->setCodigo_activo($cod);
        echo Repositorio_activo::insertar_activo(Conexion::obtener_conexion(), $activo);
     }
-
-   
+    
+    ////esto es para la bitacora 
+    include_once '../repositorios/repositorio_bitacora.php';
+    $nombre_categoria = Repositorio_categoria::obtener_nombre_categoria(Conexion::obtener_conexion(),'00001' );
+    $accion = 'se registraron '. $cant .' item tipo ' .$nombre_categoria . ' con las siguientes características: color '
+            . $_REQUEST["color"] . ', marca ' .$_REQUEST['marca']. ", dimensiones " .$_REQUEST['dimensiones']
+            . ', sistema operativo ' . $_REQUEST["so"]. ", Memoria Ram " .  $_REQUEST["ram"] . ", Modelo " . $_REQUEST["modelo"]  ;
+    Repositorio_Bitacora::insertar_bitacora(Conexion::obtener_conexion(), $accion);
     
 }
 ?>
