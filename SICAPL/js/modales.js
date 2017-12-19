@@ -124,6 +124,7 @@ function abrir_eliminacion_administrador(nombre, apellido,usuario,password) {
     $("#idSecretoEL").val('1121111');
     $("#idOtroCarnet").val(usuario);
     
+    
   
  $('#eliminacion_administradores').modal('open');
 }

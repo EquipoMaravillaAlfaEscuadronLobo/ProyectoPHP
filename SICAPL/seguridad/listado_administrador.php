@@ -47,7 +47,7 @@ $lista_admnistradores = Repositorio_administrador::lista_administradores(Conexio
                                 <td class="text-center"><img src="../imagenes/imagenes.jpg" class="presentacionXZ" alt=""></td>
                                 <td class="text-center">
                                     <button class="btn btn-danger" onclick="abrir_eliminacion_administrador('<?php echo $lista->getNombre(); ?>',
-                                                        '<?php echo $lista->getApellido(); ?>', '<?php echo $lista->getCodigo_administrador(); ?>','111111')"> 
+                                                        '<?php echo $lista->getApellido(); ?>', '<?php echo $lista->getCodigo_administrador(); $_SESSION['seleccionado'] = $lista->getCodigo_administrador() ?>','111111')"> 
                                         <i class="Medium material-icons prefix">delete</i> 
                                     </button>
                                 </td>

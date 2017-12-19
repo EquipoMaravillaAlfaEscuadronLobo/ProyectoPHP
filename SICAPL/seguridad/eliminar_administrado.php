@@ -49,10 +49,13 @@
                                 <select  class="validate" required="" id="idSelectedAdministrador" name="nameSelectedAdministrador">
                                     <option value = "" disabled selected>Seleccione Nuevo encargado de Activos</option>
                                     <?php
+                                    echo '';
+                                    if ( $_SESSION['user'] != "") {
+    
+
                                     
-                                    
-                                    $lista_sin_actual = Repositorio_administrador::lista_administradores(Conexion::obtener_conexion(), $_REQUEST['nameOtroCarnet']);
-                                    echo 'el codigo actual es '  . $_REQUEST['nameOtroCarnet'];
+                                    $lista_sin_actual = Repositorio_administrador::lista_administradores(Conexion::obtener_conexion(), $_SESSION['seleccionado']);
+                                    //echo 'el codigo actual es '  . $_REQUEST['nameOtroCarnet'];
                                     if (($lista_sin_actual) != NULL) {
                                         foreach ($lista_sin_actual as $filaz) {
                                             ?>
@@ -60,6 +63,7 @@
                                             <option value="<?php echo $filaz->getCodigo_administrador(); ?>"><?php echo $filaz->getNombre() . ' ' . $lista->getApellido(); ?></option>
                                             <?php
                                         }
+                                    }
                                     }
                                     ?>
 
