@@ -105,7 +105,7 @@ class Repositorio_autores {
         $administrador_insertado = false;
         if (isset($conexion)) {
             try {
-                $administrador = $_SESSION['user'];
+                $administrador = 'admin01';
                 sini_set('date.timezone', 'America/El_Salvador');
                 $hora = date("Y/m/d ") . date("h:i:s");
 

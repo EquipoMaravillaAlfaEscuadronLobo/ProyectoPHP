@@ -7,13 +7,8 @@ include_once './menu.php';
 
 
 <?php
-include_once '../app/Conexion.php';
-include_once '../modelos/Administrador.inc.php';
-include_once '../repositorios/repositorio_administrador.inc.php';
-Conexion::abrir_conexion();
-
-Repositorio_administrador::numero_administradores(Conexion::obtener_conexion());
-
+//bool phpinfo ([ int $what = INFO_ALL ];
+phpinfo();
 ?>
 
 
