@@ -490,12 +490,31 @@ class Repositorio_administrador {
                 $sentencia = $conexion->prepare($sql);
                 $administrador_insertado = $sentencia->execute();
 
-                echo 'la bitacora ha sido guardada';
+//                echo 'la bitacora ha sido guardada';
             } catch (PDOException $ex) {
                 echo '<script>swal("No se puedo realizar el registro", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
                 print 'ERROR: ' . $ex->getMessage();
             }
         }
+    }
+    
+    public static function numero_administradores($conexion) {
+    $numero;
+    echo 'no hay conexion ';
+        if (isset($conexion)) {
+            try {
+                echo 'hay conexion';
+                $sql = "SELECT count(*) FROM  administradores"; ///estos son alias para que PDO pueda trabajar 
+                
+                    
+                
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        
+        
+        
     }
 
 }

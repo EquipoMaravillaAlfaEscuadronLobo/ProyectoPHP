@@ -226,7 +226,7 @@ CREATE  TABLE IF NOT EXISTS `diseno1`.`prestamo_libros` (
 -- Table `diseno1`.`bitacora`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `diseno1`.`bitacora` (
-  `codigo_bitacora` int(11) NOT NULL,
+  `codigo_bitacora` int(11) NOT NULL AUTO_INCREMENT,
   `codigo_administrador` varchar(15) NOT NULL,
   `accion` varchar(1000) DEFAULT NULL,
   `fecha` datetime DEFAULT NULL,

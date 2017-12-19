@@ -50,10 +50,9 @@
                                     <option value = "" disabled selected>Seleccione Nuevo encargado de Activos</option>
                                     <?php
                                     echo '';
-                                    if ( $_SESSION['user'] != "") {
-    
-
-                                    
+                                    if ($_SESSION['seleccionado'] != NULL) {
+                                        
+                                        
                                     $lista_sin_actual = Repositorio_administrador::lista_administradores(Conexion::obtener_conexion(), $_SESSION['seleccionado']);
                                     //echo 'el codigo actual es '  . $_REQUEST['nameOtroCarnet'];
                                     if (($lista_sin_actual) != NULL) {

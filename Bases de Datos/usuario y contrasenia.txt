@@ -1,0 +1,5 @@
+usuario 
+admin01
+
+password
+$2y$10$2rho0MAZ5MwLDYw851GwB.6eHCBN0gIKsWJboakQ6epu1IOqsjphy
