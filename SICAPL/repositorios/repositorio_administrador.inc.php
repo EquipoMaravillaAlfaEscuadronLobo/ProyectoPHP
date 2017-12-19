@@ -27,7 +27,7 @@ class Repositorio_administrador {
                 if ($administradorExistente->getCodigo_administrador() == "") {
                     if ($EmailExistente->getEmail() == "") {
 
-                        echo '<br>codigo valido y correo valido<br>';
+                        
                         $sql = 'INSERT INTO administradores(codigo_administrador,pasword,nivel,nombre,apellido,sexo,dui,estado,observacion,foto,email,fecha)'
                                 . ' values (:codigo_administrador,:pasword,:nivel,:nombre,:apellido,:sexo,:dui,:estado,:observacion,:foto,:email,:fecha)';
                         ///estos son alias para que PDO pueda trabajar 
@@ -47,7 +47,7 @@ class Repositorio_administrador {
                         $sentencia->bindParam(':fecha', $fecha, PDO::PARAM_STR);
 
                         $administrador_insertado = $sentencia->execute();
-                        $mensaje = 'Se registro al administrodor ' . $nombre .' ' . $apellido;
+                        $mensaje = 'Se registro como administrador a ' . $nombre .' ' . $apellido;
                         
                         self::insertar_bitacora($conexion, $mensaje);
 
@@ -206,6 +206,10 @@ class Repositorio_administrador {
                     }
 
                     $administrador_insertado = $sentencia->execute();
+                    
+                    $accion = 'se actualizaron los datos del administrador ' . $nombre . ' ' . $apellido;  
+                    self::insertar_bitacora($conexion, $accion);
+                    
                     echo '<script>swal({
                     title: "Exito",
                     text: "El registro ha sido actualizado!",
@@ -274,10 +278,16 @@ class Repositorio_administrador {
                     $sentencia->bindParam(':codigo_eliminacion', $codigo_eliminar, PDO::PARAM_INT);
                     $administrador_insertado = $sentencia->execute();
 
+                    ////esto es para la bitacora
+                    $datos_bitacora = self::obtener_administrador_actual($conexion, $codigo_eliminar);
+                    $accion = 'se dio de baja al administrador ' . $datos_bitacora->getNombre() . ' ' . $datos_bitacora->getApellido(). 
+                            'por el siguiente motivo: ' .$observacion;
+                    self::insertar_bitacora($conexion, $accion);
 
+                    ///mandamos mensaje de confirmacion
                     echo '<script>swal({
                     title: "Exito",
-                    text: "El registro ha sido actualizado!",
+                    text: "El registro ha sido eliminado!",
                     type: "success",
                     confirmButtonText: "ok",
                     closeOnConfirm: false
