@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="db4208a1-0e17-4c21-834f-0396ded374eb">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     libros.`codigo_libro` AS libros_codigo_libro,
+     libros.`editoriales_codigo` AS libros_editoriales_codigo,
+     libros.`titulo` AS libros_titulo
+FROM
+     `libros` libros
+WHERE
+libros.estado=0]]>
+	</queryString>
+	<field name="libros_codigo_libro" class="java.lang.String"/>
+	<field name="libros_editoriales_codigo" class="java.lang.Integer"/>
+	<field name="libros_titulo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="-20" y="0" width="595" height="64" uuid="61be4d80-4274-484a-87e9-0551cf12dcf7"/>
+				<imageExpression><![CDATA["wood.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="5" width="263" height="33" uuid="decc390e-cd49-4248-a07c-7bcb8dc8f2fb"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Codigo de Barras]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="63" y="39" width="200" height="22" forecolor="#FFFFFF" uuid="e360c2a1-1509-4511-911b-b4b5d5d702af"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Wood SubTitle]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="bcacd4f1-65d4-44ce-8fcd-1acd77f46273"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="185" height="15" uuid="66abec79-e3b6-43eb-87fc-a0c4bf50f639"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Codigo de Libros]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="211" y="19" width="185" height="15" uuid="fe951aef-e33b-419c-92a7-0f74c37ee6ce"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Editorial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="396" y="19" width="157" height="15" uuid="2aa2acf9-b89c-4e89-aaa6-f560f12d771c"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Titulo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="100" splitType="Immediate">
+			<textField>
+				<reportElement style="Detail" x="211" y="16" width="185" height="15" uuid="5257afc9-5cfb-422c-ad94-4031fb4cbe5b"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{libros_editoriales_codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="396" y="16" width="157" height="15" uuid="1f07d26d-753b-46d1-8b42-573527bd3e1f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{libros_titulo}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="0" y="0" width="200" height="50" uuid="8356a7ba-06cd-4e02-8e05-d8f02742eedd"/>
+				<jr:Codabar xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{libros_codigo_libro}]]></jr:codeExpression>
+				</jr:Codabar>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="97eb3f0a-0275-4aab-8680-917fd1226bef"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="c38aa7ca-c861-4f0b-a134-ffeff1e4e9b1"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="a737704b-0c7b-4961-a7ce-0368fb2cb389"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="2fd00ed4-d935-4c07-8585-e3d5a5907384"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
