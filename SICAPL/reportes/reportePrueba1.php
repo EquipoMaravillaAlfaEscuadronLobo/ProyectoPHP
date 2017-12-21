@@ -5,7 +5,7 @@
     
     $PHPJasperXML = new PHPJasperXML();
     //$PHPJasperXML ->
-    $PHPJasperXML ->load_xml_file('pruebaBarCode.jrxml');
+    $PHPJasperXML ->load_xml_file('reporte1.jrxml');
     $PHPJasperXML ->transferDBtoArray($server, $user, $pass, $db);   
     $PHPJasperXML ->outpage("I");
 /* 
