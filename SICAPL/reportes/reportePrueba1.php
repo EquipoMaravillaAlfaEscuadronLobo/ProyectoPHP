@@ -1,11 +1,11 @@
 <?php
     include_once '../class/tcpdf/tcpdf.php';
-    include_once '../class/PHPJasperXML-0.9d.inc.php';
+    include_once '../class/PHPJasperXML-0.9e.inc.php';
     include_once '../setting.php';
     
     $PHPJasperXML = new PHPJasperXML();
     //$PHPJasperXML ->
-    $PHPJasperXML ->load_xml_file('librosBarCode.jrxml');
+    $PHPJasperXML ->load_xml_file('pruebaBarCode.jrxml');
     $PHPJasperXML ->transferDBtoArray($server, $user, $pass, $db);   
     $PHPJasperXML ->outpage("I");
 /* 
