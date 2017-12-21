@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/app/iniciar.php</file>
-            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/repositorios/repositorio_autores.inc.php</file>
-            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/app/home.php</file>
-            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/biblioteca/registro_b.php</file>
-            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/biblioteca/inicio_b.php</file>
+            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/app/Conexion.php</file>
+            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/repositorios/repositorio_administrador.inc.php</file>
+            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/repositorios/repositorio_backup.php</file>
+            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/repositorios/repositorio_bitacora.php</file>
+            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/app/config.inc.php</file>
+            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/plantillas/pruebas.php</file>
         </group>
     </open-files>
 </project-private>
