@@ -41,7 +41,7 @@
                                 <td><?php echo $fila['titulo'] ?></td>
                                 <td><?php echo date_format(date_create($fila['salida']),'d-m-Y') ?></td>
                                 <td><?php echo  date_format(date_create($fila['devolucion']),'d-m-Y')  ?></td>
-                                <td class="alert <?php if($fdev>$hoy){echo 'alert-warning';}else{echo 'alert-danger';} ?>  pendiente" onclick="finalizar('<?php echo $fila['codigo'] ?>')">Pendiente</td>
+                                <td class="alert <?php if($fdev>$hoy){echo 'alert-danger';}else{echo 'alert-warning';} ?>  pendiente" onclick="finalizar('<?php echo $fila['codigo'] ?>')">Pendiente</td>
                             </tr>
                             <?php } ?>
                            
