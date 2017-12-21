@@ -7,12 +7,9 @@ include_once './menu.php';
 
 
 <?php
-//bool phpinfo ([ int $what = INFO_ALL ];
 //phpinfo();
-
-
 include_once '../repositorios/repositorio_backup.php';
-repositorio_backup::otroa();
+repositorio_backup::generar_backup();
 ?>
 
 
