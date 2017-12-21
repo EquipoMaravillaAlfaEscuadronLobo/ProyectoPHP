@@ -1,5 +1,6 @@
 <?php
 Conexion::abrir_conexion();
+//session_start();
 $lista_admnistradores = Repositorio_administrador::lista_administradores(Conexion::obtener_conexion(),$_SESSION['user']);
 ?>
 <div class="container">

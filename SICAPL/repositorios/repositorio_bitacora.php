@@ -25,6 +25,57 @@ class Repositorio_Bitacora {
         }
     }
 
+    public static function lista_bitacora($conexion) {
+        $lista_bitacora = array();
+
+        if (isset($conexion)) {
+            try {
+                $sql = "select * from bitacora";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+                        $bitacora = new Bitacora();
+                        $bitacora ->setCodigo_bitacora($fila['codigo_bitacora']);
+                        //$nombre = self::nombre_administrador($conexion, $fila['codigo_administrador']);
+                        $bitacora ->setCodigo_administrador($fila['codigo_administrador']);
+                        $bitacora ->setAccion($fila['accion']);
+                        $bitacora ->setFecha($fila['fecha']);
+
+                        $lista_bitacora[] = $bitacora;
+                    }
+                }
+            } catch (PDOException $exc) {
+                print('ERROR' . $exc->getMessage());
+            }
+        }
+        return $lista_bitacora;
+    }
+    
+    public static function nombre_administrador($conexion, $codigo) {
+        $nombre= "";
+        if (isset($conexion)) {
+            try {
+                $sql = "select * from administradores where (codigo_administrador != '$codigo'  AND estado = 1)";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+                        $nombre = ($fila['nombre']. " ". $fila['apellido']);
+                         
+                    }
+                }
+            } catch (PDOException $exc) {
+                print('ERROR' . $exc->getMessage());
+            }
+        }
+        return $nombre;
+    }
+    
 }
 
 ?>

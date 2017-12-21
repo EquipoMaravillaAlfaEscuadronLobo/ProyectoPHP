@@ -1,3 +1,12 @@
+<?php
+include_once '../modelos/Bitacora.php';
+include_once '../repositorios/repositorio_bitacora.php';
+Conexion::abrir_conexion();
+$lista_bitacora = Repositorio_Bitacora::lista_bitacora(Conexion::obtener_conexion());
+
+
+?>
+
 <div class="container">
     <div class="panel">
         <div class="panel-heading text-center">
@@ -40,18 +49,14 @@
 
                 </thead>
                 <tbody>
+                    <?php foreach ($lista_bitacora as $listaB) {?>
                     <tr>
-                        <td class="text-center ">jhon Cena</td>
-                        <td class="text-center ">Inicio de sesión</td>
-                        <td class="text-center ">23 de Febrero 2018</td>
-                        <td class="text-center ">3:32 PM</td>
+                        <td class="text-center "><?php echo $listaB->getCodigo_administrador()?></td>
+                        <td class="text-center "><?php echo $listaB->getAccion();?></td>
+                        <td style="width: 100px;" class="text-center "><?php $dia = date_create($listaB->getFecha()); echo date_format($dia,'d-m-Y'); ?></td>
+                        <td class="text-center "><?php $hora = date_create($listaB->getFecha()); echo date_format($hora,'h:i:s'); ?></td>
                     </tr>
-                    <tr>
-                        <td class="text-center">Elton Miton</td>
-                        <td class="text-center">Cerrar sesión</td>
-                        <td class="text-center">14 de Junio 2002</td>
-                        <td class="text-center">5:23 AM</td>
-                    </tr>
+                    <?php }?>
                 </tbody>
             </table>
         </div>

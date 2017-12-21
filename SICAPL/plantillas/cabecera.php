@@ -1,5 +1,5 @@
 <?php 
-/*session_start();
+session_start();
     if (!isset($_SESSION['user'])&&$titulo1!="Inicio de Sesion") {
         header("Location: ../index.php");
     }else{
@@ -7,7 +7,7 @@
         header("Location: home.php");
     }
     }
-*/
+
 
 ?>
 <!DOCTYPE html>

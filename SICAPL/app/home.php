@@ -6,7 +6,7 @@ include_once('../plantillas/menu.php');
 ?>
 </nav>
 <?php
-//echo $_SESSION["user"];
+echo $_SESSION["user"];
 //echo $_SESSION['nivel'];
 ?>
 
