@@ -71,8 +71,6 @@ class Repositorio_autores {
         if (isset($conexion)) {
             try {
 
-
-
                 $nombre = $autor->getNombre();
                 $codigo = $autor->getCodigo();
                 $apellido = $autor->getApellido();
@@ -84,29 +82,30 @@ class Repositorio_autores {
                 ///estos son alias para que PDO pueda trabajar 
                 $sentencia = $conexion->prepare($sql);
 
-
-
-
                 $sentencia->bindParam(':nombre', $nombre, PDO::PARAM_STR);
                 $sentencia->bindParam(':apellido', $apellido, PDO::PARAM_STR);
                 $sentencia->bindParam(':nacimiento', $nacimiento, PDO::PARAM_STR);
                 $sentencia->bindParam(':biografia', $biografia, PDO::PARAM_STR);
                 $sentencia->bindParam(':codigo', $codigo, PDO::PARAM_STR);
 
-
                 $autor_insertado = $sentencia->execute();
+                $accion = 'se actualizaron los datos del Autor '. $nombre ." ". $apellido ;
+                self::insertar_bitacora($conexion, $accion);
+                
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();
             }
         }
         return $autor_insertado;
     }
-     static function insertar_bitacora($conexion, $accion) {
+  
+    static function insertar_bitacora($conexion, $accion) {
         $administrador_insertado = false;
         if (isset($conexion)) {
             try {
-                $administrador = 'admin01';
-                sini_set('date.timezone', 'America/El_Salvador');
+                session_start() ;
+                $administrador = $_SESSION['user'];
+                ini_set('date.timezone', 'America/El_Salvador');
                 $hora = date("Y/m/d ") . date("h:i:s");
 
                 $sql = "INSERT INTO bitacora (codigo_administrador, accion, fecha) VALUES ('$administrador', '$accion', '$hora');";

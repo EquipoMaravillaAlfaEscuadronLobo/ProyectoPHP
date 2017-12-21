@@ -499,24 +499,21 @@ class Repositorio_administrador {
     }
     
     public static function numero_administradores($conexion) {
-    $numero;
-    echo 'no hay conexion ';
+    $resultado= 0 ;
+    //echo 'no hay conexion ';
         if (isset($conexion)) {
             try {
-                echo 'hay conexion';
+                //echo 'hay conexion';
                 $sql = "SELECT count(*) FROM  administradores"; ///estos son alias para que PDO pueda trabajar 
-                
+                $resultado = $conexion->query($sql);
                     
-                
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();
             }
         }
-        
-        
+        return $resultado;
         
     }
 
 }
-
 ?>
