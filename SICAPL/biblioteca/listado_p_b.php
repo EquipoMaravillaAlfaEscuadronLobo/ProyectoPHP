@@ -31,17 +31,17 @@
                         <tbody>
                         <?php 
                             foreach ($listado as $fila) {
-                                $fdev=date_create($fila['devolucion']);
+                                $fdev=date_create($fila['Devolucion']);
                                 $hoy=new DateTime("now");
                          ?>
                             <tr>
                                <td><?php echo $fila['codigo'] ?></td>
                                 
-                                <td><?php echo $fila['nombre']." ".$fila['apellido'] ?></td>
+                                <td><?php echo $fila['nombre'] ?></td>
                                 <td><?php echo $fila['titulo'] ?></td>
-                                <td><?php echo date_format(date_create($fila['salida']),'d-m-Y') ?></td>
-                                <td><?php echo  date_format(date_create($fila['devolucion']),'d-m-Y')  ?></td>
-                                <td class="alert <?php if($fdev>$hoy){echo 'alert-danger';}else{echo 'alert-warning';} ?>  pendiente" onclick="finalizar('<?php echo $fila['codigo'] ?>')">Pendiente</td>
+                                <td><?php echo date_format(date_create($fila['fecha_salida']),'d-m-Y') ?></td>
+                                <td><?php echo  date_format(date_create($fila['Devolucion']),'d-m-Y')  ?></td>
+                                <td class="alert <?php if($fdev>$hoy){echo 'alert-warning';}else{echo 'alert-danger';} ?>  pendiente" onclick="finalizar('<?php echo $fila['codigo'] ?>')">Pendiente</td>
                             </tr>
                             <?php } ?>
                            

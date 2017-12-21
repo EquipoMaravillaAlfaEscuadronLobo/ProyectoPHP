@@ -10,6 +10,7 @@
 	$usuario=$_POST['codigouser'];
 	$salida=$_POST['fecha_salida'];
 	$devolucion=$_POST['fecha_devolucion'];
+	$devolucion=date_format(date_create($devolucion),'Y-m-d');
 	$libros=$_POST['num'];
 //echo $usuario;
 	$Prestamo= new PrestamoLibro();
