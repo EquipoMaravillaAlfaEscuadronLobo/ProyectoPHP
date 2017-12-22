@@ -124,13 +124,13 @@ function listar(valor){
 
 }
 
-function llenar(valor, lista){ 
-//alert("paso");
+function llenarTact(valor, lista){ 
+//alert("paso8");
         var depto = valor;
         var depto2 = lista;
 //var numero=valor.id.substr(7)
 //alert(valor.id);
-    if (depto != "") {alert("paso"+depto);
+    if (depto != "") {//alert("paso"+depto);
         $.post("../activofijo/llenar.php", {libro: depto, lista: depto2}, function(mensaje) {
           $('#listaLibros22').html(mensaje).fadeIn();
          
@@ -140,7 +140,7 @@ function llenar(valor, lista){
 
 }
 
-function buscarActivo(){
+function buscarActivo2(){
 document.getElementById('codigoActivo').innerHTML = '1995-25-05';
         document.getElementById('tipoActivo').innerHTML = 'Silla';
         document.getElementById('encargado').innerHTML = 'Boris Ricardo Miranda Ayala';

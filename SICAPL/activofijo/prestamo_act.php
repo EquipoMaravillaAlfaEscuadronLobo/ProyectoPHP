@@ -2,9 +2,8 @@
 <input type="hidden" name="passsss" id="passsss">
 <input type="hidden" name="codTipo" id="codTipo">
 <input type="hidden" name="codAct" id="codAct">
-<div class="container-fluid" style="margin: 0px;
-     padding: 0px 0px 8px 0px;">
-    <tr>
+<div class="container-fluid" >
+    <div class="row">
     <div class="col-md-12"><!-- panel datos de usuario -->        
         <div class="panel panel-default" name="user">
             <div class="panel-heading p_libro">
@@ -65,9 +64,8 @@
             </div>
         </div>
     </div>
-</tr>
-<tr>
-
+    </div>
+    <div class="row">
 <div class="col-md-12">
     <div class="panel-group" id="accordion">
         <div class="panel panel-default" name="activo">
@@ -81,7 +79,7 @@
 
             </div>
             <div id="activo1" class="panel-collapse collapse in">
-                <div class="panel-body">
+               
                     <div class="panel-body">
                         <div class="row">
                             <div class="input-field col m3">
@@ -96,38 +94,38 @@
                                 <label style="font-size:16px">Codigo <small></small> </label>
                             </div>
                             <div class="col m1"></div>
-                            <div class="input-field col m3">
-                                <i class="fa fa-barcode prefix"></i> 
-                                <input type="text" id="correlativo" name="correlativo" class="text-center validate" required="" value="p. ej. 5-14, 25, 95"
+                            <div class="input-field col m2">
+                                <i class="fa fa-barcode prefix" title="Indique el numero correlativo del activo para agragar varios a la tabla"></i> 
+                                <input type="text" id="correlativo" name="correlativo" class="text-center validate" required="" 
+                                       value="p. ej. 5-14, 25, 95"
+                                       pattern="[0-9]"
                                        onclick = "if (this.value == 'p. ej. 5-14, 25, 95')
-                                            this.value = ''" 
+                                                   this.value = ''" 
                                        onblur="if (this.value == '')
-                                            this.value = 'p. ej. 5-14, 25, 95'"
-                                       
+                                                   this.value = 'p. ej. 5-14, 25, 95'"
+
                                        >
-                                <label style="font-size:16px">Seleccion Multiple Con Correlativo <small></small> </label>
+                                <label style="font-size:16px" >Seleccion Multiple  <small></small> </label>
                             </div>
                             <div class="input-field col-md-offset-2 col m1">
-                                <button id="agrAct" class="btn btn-success modal-action " onclick="agregar()" disabled="" >
+                                <button id="agrAct" class="btn btn-success modal-action " onclick="javascript:agregar()" disabled="" >
                                     <span class="fa fa-mail-forward" aria="hidden"></span>
                                     Agregar</button>
                             </div>
                         </div>
 
-                        <table class="table table-striped table-bordered">
+                        <table class="table table-striped table-bordered" id="tabla_activo_prestamo">
+                            <caption>Activos A Prestar</caption>
                             <thead>
                             <th>Codigo</th>
                             <th>Categoria</th>
                             <th>Responsable</th>
                             </thead>
                             <tbody>
-                        <tr>
-                            <td><input type="text" name="codigos[]" id="codigos[]" readonly=""></td>
-                            <td><input type="text" name="codigos[]" id="codigos[]" readonly=""></td>
-                            <td><input type="text" name="codigos[]" id="codigos[]" readonly=""></td>
-                        </tr>
-                        </tbody>
+                               
+                            </tbody>
                         </table>
+
                     </div>
 
                 </div>
@@ -136,14 +134,7 @@
     </div>
 
 </div>
-
-
-
-
-
-</tr>
-</div>
-
+    </div>
 
 
 <script crossorigin="a
@@ -159,9 +150,9 @@
 
     }
 
-function agregar(){
-    llenar(document.getElementById("codPrestAct").value, document.getElementById("correlativo").value);
-}
+    function agregar() {
+        llenarTact(document.getElementById("codPrestAct").value, document.getElementById("correlativo").value);
+    }
 
 
 </script>
