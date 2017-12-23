@@ -2,6 +2,8 @@
 $titulo1 = 'Seguridad';
 include_once '../plantillas/cabecera.php';
 include_once '../plantillas/menu.php';
+//echo $_SESSION['nivel'];
+
 ?>
 <div class="nav-content nav-pills" name="">
     <ul class="tabs tabs-transparent">

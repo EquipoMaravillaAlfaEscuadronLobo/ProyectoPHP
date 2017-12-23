@@ -2,7 +2,6 @@
 $titulo1 = 'Seguridad';
 include_once '../plantillas/cabecera.php';
 include_once '../plantillas/menu.php';
-
 ?>
 <div class="nav-content nav-pills" name="">
     <ul class="tabs tabs-transparent">
@@ -16,10 +15,6 @@ include_once '../plantillas/menu.php';
                 <i class="fa fa-bell" aria-hidden="true"></i> Notificaciones
             </a>
         </li>
-        
-        
-       
-
     </ul>
 </div>
 </nav>
@@ -32,8 +27,6 @@ include_once './editar_mis_datos.php';
 <div class="col s12" id="test2">
      
 </div>
-
-
 
 <?php
 include_once '../plantillas/pie_de_pagina.php';

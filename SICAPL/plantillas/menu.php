@@ -28,20 +28,23 @@
                     <i class="fa fa-users" aria-hidden="true"></i>  Gestión de Usuarios
                 </a>
             </li>
+            <?php if ($_SESSION['nivel'] == '0') {?>          
             <li>
                 <a href="../seguridad/inicio_seguridad.php">
                     <i class="fa fa-lock" aria-hidden="true"></i>  Seguridad
+                </a>
+            </li>
+            <?php }?>
+            
+            <li>
+                <a href="../Cuenta/inicio_cuenta.php">
+                    <i class="fa fa-wrench" aria-hidden="true"></i> Mi Cuenta
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class="fa fa-info-circle" aria-hidden="true"></i>
                     Ayuda
-                </a>
-            </li>
-            <li>
-                <a href="../Cuenta/inicio_cuenta.php">
-                    <i class="fa fa-wrench" aria-hidden="true"></i> Mi Cuenta
                 </a>
             </li>
 
@@ -71,20 +74,23 @@
                     <i class="fa fa-users" aria-hidden="true"></i>  Gestión de Usuarios
                 </a>
             </li>
+            <?php if ($_SESSION['nivel'] == '0') {?>          
             <li>
                 <a href="../seguridad/inicio_seguridad.php">
                     <i class="fa fa-lock" aria-hidden="true"></i>  Seguridad
+                </a>
+            </li>
+            <?php } ?>
+            
+            <li>
+                <a href="../Cuenta/inicio_cuenta.php">
+                    <i class="fa fa-wrench" aria-hidden="true"></i>  Mi Cuenta
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class="fa fa-info-circle" aria-hidden="true"></i>
                     Ayuda
-                </a>
-            </li>
-            <li>
-                <a href="../Cuenta/inicio_cuenta.php">
-                    <i class="fa fa-wrench" aria-hidden="true"></i>  Mi Cuenta
                 </a>
             </li>
             <li>

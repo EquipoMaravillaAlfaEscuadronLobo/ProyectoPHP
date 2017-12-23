@@ -15,7 +15,6 @@ $sexo = $administradorActual->getSexo();
     <!--    inicio de formulario-->
     <form id="editar_formulario" method="post" action="" autocomplete="off" >
         <input type="hidden" name="banderaEdicion" id="banderaEdicion"/>
-        <input type="hidden" id="idSecreto" value="<?php echo $administradorActual->getPasword();?>">
         <!-- inicio de panel-->
         <div class="panel" name="libros">
             <div class="panel-heading text-center">
@@ -25,6 +24,7 @@ $sexo = $administradorActual->getSexo();
                     </div>
                 </div>
             </div>
+            
             <!--inicio de panel body-->
             <div class="text-center panel-body">
                 <div class="row">
@@ -58,12 +58,12 @@ $sexo = $administradorActual->getSexo();
                     <div class="col-md-1"></div>
                     <div class="input-field col m5">
                         <i class="fa fa-eye prefix"></i> 
-                        <input type="password" id="idPass1E" name="namePass1E" class="text-center validate" autocomplete="off" minlength="5" maxlength="10" value="<?php echo $administradorActual->getPasword();?>" >
+                        <input type="password" id="idPass1E" name="namePass1E" class="text-center validate" autocomplete="off" minlength="5" maxlength="10" value="PASS_AC" >
                         <label for="idPass1E">nueva contraseña(opcional)</label>
                     </div>
                     <div class="input-field col m5">
                         <i class="fa fa-eye prefix"></i> 
-                        <input type="password" id="idPass2E" name="namePass2E" class="text-center validate" autocomplete="off"  minlength="5" maxlength="10" value="<?php echo $administradorActual->getPasword();?>">
+                        <input type="password" id="idPass2E" name="namePass2E" class="text-center validate" autocomplete="off"  minlength="5" maxlength="10" value="PASS_AC">
                         <label for="idPass2E">Repita Contraseña</label>
                     </div>
                 </div>
@@ -106,7 +106,7 @@ $sexo = $administradorActual->getSexo();
                     </div>    
                      <div class="input-field col m5">
                         <i class="fa fa-expeditedssl prefix"></i> 
-                        <input type="password" id="idValidacionX" name="nameValidacionX" class="text-center validate" autocomplete="off">
+                <input type="password" id="idVerificacion" name="nameVerificacion" class="text-center validate" autocomplete="off">
                         <label for="idValidacionX">Para continuar por favor ingrese su contraseña</label>
                     </div>
                 </div>
@@ -161,16 +161,17 @@ if (isset($_REQUEST["banderaEdicion"])) {
     //$administrador->setCodigo_administrador($_REQUEST["nameUserE"]);
     $administradorE->setDui($_REQUEST["nameDuiE"]);
     $administradorE->setNombre($_REQUEST["nameNombreE"]);
-    $administradorE->setNivel($_REQUEST['NameNivelE']);
+    //$administradorE->setNivel($_REQUEST['NameNivelE']);
     $administradorE->setObservacion("NINGUNA");
     $administradorE->setPasword($_REQUEST["namePass1E"]);
     $administradorE->setSexo($_REQUEST['NameSexoE']);
     $administradorE->setEmail($_REQUEST['nameEmailE']);
     $administradorE->setFecha($_REQUEST['nameFechaE']);
-    $codigo_original = $_REQUEST['codigo_original'];
+    //$codigo_original = $_REQUEST['codigo_original'];
+    $verificacion = $_REQUEST['nameVerificacion'];
 
-
-    Repositorio_administrador::actualizar_mis_datos(Conexion::obtener_conexion(), $administradorE, $administradorActual->getCodigo_administrador());
+//echo 'vamos bien ' .$verificacion ;
+    Repositorio_administrador::actualizar_mis_datos(Conexion::obtener_conexion(), $administradorE, $_SESSION['user'], $verificacion);
     //Conexion::cerrar_conexion();
 }
 
