@@ -17,7 +17,7 @@ class Repositorio_Bitacora {
                 $sentencia = $conexion->prepare($sql);
                 $administrador_insertado = $sentencia->execute();
 
-                echo 'la bitacora ha sido guardada';
+//                echo 'la bitacora ha sido guardada';
             } catch (PDOException $ex) {
                 echo '<script>swal("No se puedo realizar el registro", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
                 print 'ERROR: ' . $ex->getMessage();
@@ -98,7 +98,30 @@ class Repositorio_Bitacora {
         return $nombre;
     }
     
-    public static function nombre_libro($conexion, $codigo) {
+        public static function codigo_usuario_por_codigo_prestamo($conexion, $codigo) {
+        $nombre= "";
+        if (isset($conexion)) {
+            try {
+                $sql = "select * from prestamo_libros where (codigo_plibro = '$codigo')";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+                        $nombre = ($fila['codigo_usuario']);
+                         
+                    }
+                }
+            } catch (PDOException $exc) {
+                print('ERROR' . $exc->getMessage());
+            }
+        }
+        return $nombre;
+    }
+    
+    
+     public static function nombre_libro($conexion, $codigo) {
         $nombre= "";
         if (isset($conexion)) {
             try {
@@ -119,6 +142,8 @@ class Repositorio_Bitacora {
         }
         return $nombre;
     }
+    
+    
     
 }
 
