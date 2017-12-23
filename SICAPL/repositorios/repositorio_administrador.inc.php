@@ -168,7 +168,7 @@ class Repositorio_administrador {
 
     public static function actualizar_administrador($conexion, $administrador, $codigo_original, $verificacion) {
         $administrador_insertado = false;
-        $administrador_actual = self:: obtener_administrador($conexion, $verificacion);
+        $administrador_actual = self:: obtener_administrador_actual($conexion, $_SESSION['user']);
 
         if (isset($conexion)) {
             try {
@@ -421,11 +421,11 @@ class Repositorio_administrador {
         return $administrador;
     }
 
-    public static function actualizar_mis_datos($conexion, $administrador, $codigo_original, $verificacion) {
+    public static function actualizar_mis_datos($conexion, $administrador,$verificacion) {
         $administrador_insertado = false;
-        $administrador_actual = self:: obtener_administrador($conexion, $verificacion);
-
+        $administrador_actual = self:: obtener_administrador_actual($conexion, $administrador->getCodigo_administrador());
         if (isset($conexion)) {
+           
             try {
                 echo 'hay conexion<br>';
                 $pasword = $administrador->getPasword(); ////password plana
@@ -443,7 +443,7 @@ class Repositorio_administrador {
                     $sql = 'UPDATE administradores SET nombre=:nombre,apellido=:apellido,pasword=:pasword,dui=:dui,nivel=:nivel, fecha=:fecha,email=:email,sexo=:sexo  WHERE codigo_administrador = :codigo_original';
 
                     $sentencia = $conexion->prepare($sql);
-                    $sentencia->bindParam(':codigo_original', $codigo_original, PDO::PARAM_STR);
+                    $sentencia->bindParam(':codigo_original', $administrador_actual->getCodigo_administrador(), PDO::PARAM_STR);
                     $sentencia->bindParam(':nombre', $nombre, PDO::PARAM_STR);
                     $sentencia->bindParam(':apellido', $apellido, PDO::PARAM_STR);
                     $sentencia->bindParam(':dui', $dui, PDO::PARAM_STR);

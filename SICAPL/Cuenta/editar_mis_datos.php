@@ -158,20 +158,18 @@ if (isset($_REQUEST["banderaEdicion"])) {
     $administradorE = new Administrador();
 
     $administradorE->setApellido($_REQUEST["nameApellidoE"]);
-    //$administrador->setCodigo_administrador($_REQUEST["nameUserE"]);
+    $administradorE->setCodigo_administrador($administradorActual->getCodigo_administrador());
     $administradorE->setDui($_REQUEST["nameDuiE"]);
     $administradorE->setNombre($_REQUEST["nameNombreE"]);
-    //$administradorE->setNivel($_REQUEST['NameNivelE']);
     $administradorE->setObservacion("NINGUNA");
     $administradorE->setPasword($_REQUEST["namePass1E"]);
     $administradorE->setSexo($_REQUEST['NameSexoE']);
     $administradorE->setEmail($_REQUEST['nameEmailE']);
     $administradorE->setFecha($_REQUEST['nameFechaE']);
-    //$codigo_original = $_REQUEST['codigo_original'];
     $verificacion = $_REQUEST['nameVerificacion'];
 
 //echo 'vamos bien ' .$verificacion ;
-    Repositorio_administrador::actualizar_mis_datos(Conexion::obtener_conexion(), $administradorE, $_SESSION['user'], $verificacion);
+    Repositorio_administrador::actualizar_mis_datos(Conexion::obtener_conexion(), $administradorE, $verificacion);
     //Conexion::cerrar_conexion();
 }
 
