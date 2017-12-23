@@ -210,7 +210,7 @@ class Repositorio_administrador {
 
                     $administrador_insertado = $sentencia->execute();
                     
-                    $accion = 'se actualizaron los datos del administrador ' . $nombre . ' ' . $apellido;  
+                    $accion = 'se actualizaron los datos del administrador ' .$codigo_original ."(" . $nombre . ' ' . $apellido.")";  
                     self::insertar_bitacora($conexion, $accion);
                     
                     echo '<script>swal({
@@ -265,7 +265,7 @@ class Repositorio_administrador {
 
     public static function eliminar_administrador($conexion, $administrador, $codigo_eliminar, $verificacion) {
         $administrador_insertado = false;
-        $administrador_actual = self:: obtener_administrador($conexion, $verificacion);
+        $administrador_actual = self:: obtener_administrador_actual($conexion, $codigo_eliminar);
         
         if (isset($conexion)) {
             try {
