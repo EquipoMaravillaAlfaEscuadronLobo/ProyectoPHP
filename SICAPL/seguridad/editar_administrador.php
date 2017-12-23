@@ -1,4 +1,4 @@
-<form id="FORMULARIO" method="post" action="" autocomplete="off" >
+<form id="editar_formulario" method="post" action="" autocomplete="off" >
     <input type="hidden" name="banderaEdicion" id="banderaEliminacion"/>
     <input type="hidden" name="codigo_original" id="codigo_original"/>
     <input type="hidden" id="idSecreto" value="">
