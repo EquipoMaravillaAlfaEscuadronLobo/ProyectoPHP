@@ -187,7 +187,6 @@ CREATE  TABLE IF NOT EXISTS `diseno1`.`usuarios` (
   `estado` int(11) DEFAULT NULL,
   `observaciones` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`codigo_usuario`),
-  UNIQUE KEY `sexo_UNIQUE` (`sexo`),
   KEY `fk_usuarios_institucion1_idx` (`codigo_institucion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
