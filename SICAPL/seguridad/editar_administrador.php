@@ -1,4 +1,4 @@
-<form id="editar_formulario" method="post" action="" autocomplete="off" >
+<form id="FORMULARIO" method="post" action="" autocomplete="off" >
     <input type="hidden" name="banderaEdicion" id="banderaEliminacion"/>
     <input type="hidden" name="codigo_original" id="codigo_original"/>
     <input type="hidden" id="idSecreto" value="">
@@ -136,8 +136,12 @@
         </div>
         <div class="modal-footer">
             <div class="row">
-                <div class="col-md-6 text-right"><button href="#" class="btn btn-success">Guardar</button></div>
-                <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger" onclick="location.href='inicio_seguridad.php';">Salir</a></div>
+                <div class="col-md-6 text-right">
+                    <button href="#" class="btn btn-success">
+                       <span class="glyphicon glyphicon-refresh" aria="hidden"></span> Actualizar
+                    </button>
+                </div>
+                <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger" onclick="location.href='inicio_seguridad.php';"><span class="glyphicon glyphicon-remove" aria="hidden"></span>Salir</a></div>
             </div>
         </div>
     </div>

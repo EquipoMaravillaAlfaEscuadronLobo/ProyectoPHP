@@ -166,6 +166,9 @@ function abrirEdicionEdi(codigo,nombre,direccion,correo,telefono) {
     $('#direccion_edit').val(direccion);
     $('#edicionEdi').modal('open');
 }
+function abrir_nueva_institucion(codigo,nombre,direccion,correo,telefono) {
+    $('#idVentana_institucion').modal('open');
+}
 
 //  FUNCIONES QUE SE OCUPAN PARA ACTIVO FIJO
 function nuevaCat(opcion) {

@@ -59,10 +59,17 @@ $(document).ready(function () {
             nameValidacionX:{
                   required: true,
                   equalTo: "#idSecreto"
+            },
+            nameVerificacion:{
+                  required: true
             }
             
         },
         messages: {
+            nameVerificacion: {
+                required: "Por favor ingrese su contraseña actual para continuar",
+            },
+            
             nameNombreE: {
                 required: "Por favor ingrese su Nombre",
                 minlength: "El nombre debe de tener por lo menos 3 caracteres"

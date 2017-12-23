@@ -5,7 +5,6 @@ include_once '../modelos/Institucion.php';
 Conexion::abrir_conexion();
 include_once '../repositorios/repositorio_usuario.inc.php';
 include_once '../repositorios/repositorio_institucion.php';
-
 ?>
 
 <!--formulario usuario-->
@@ -62,7 +61,7 @@ include_once '../repositorios/repositorio_institucion.php';
                                 <i class="fa fa-hospital-o prefix"></i> 
                             </div>
                         </div>
-                        <div class="input-field col m4">
+                        <div class="input-field col m3">
                             <select required="" name="nameInstitucion" id="institucion">
                                 <option value = "" disabled selected>Seleccione Institucion</option>
                                 <?php
@@ -70,10 +69,17 @@ include_once '../repositorios/repositorio_institucion.php';
 
                                 foreach ($lista_instituciones as $lista_ins) {
                                     ?>
-                                <option value = '<?php echo $lista_ins->getCodigo_institucion();?>' ><?php echo $lista_ins->getNombre(); ?></option>
+                                    <option value = '<?php echo $lista_ins->getCodigo_institucion(); ?>' ><?php echo $lista_ins->getNombre(); ?></option>
                                 <?php } ?>
                             </select>
+                           
                         </div>
+                         <div class="input-field col m1">
+                             <a class="btn btn_primary"  target="_blank" onclick="abrir_nueva_institucion()">
+                                    <span aria-hidden="true" class="glyphicon glyphicon-plus">
+                                    </span>
+                                </a>
+                            </div>
                     </div>
                     <div class="row">
                         <div class="col m5">
@@ -99,7 +105,7 @@ include_once '../repositorios/repositorio_institucion.php';
                         <button class="btn btn-success">
                             <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>                            
                             Guardar</button>
-                        <button type="reset" class="btn btn-danger" onclick="location.href='inicio_usuario.php';">
+                        <button type="reset" class="btn btn-danger" onclick="location.href = 'inicio_usuario.php';">
                             <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar
                         </button>
                     </div>
@@ -110,15 +116,21 @@ include_once '../repositorios/repositorio_institucion.php';
     </form>
 </div>
 <!--fin formulario usuario-->
+
+<!--esto es para el modal de nueva institucion-->
+<?php
+include_once './nueva_institucion.php';
+?>
+
 <script>
-    $('#FORMULARIO').attr('autocomplete', 'off');
+       $('#FORMULARIO').attr('autocomplete', 'off');
     document.getElementById('FORMULARIO').setAttribute('autocomplete', 'off');
 </script>
 
 <?php
 if (isset($_REQUEST["banderaRegistro"])) {
     Conexion::abrir_conexion();
-    $usuario= new Usuario();
+    $usuario = new Usuario();
 
     $usuario->setApellido($_REQUEST["nameApellido"]);
     $usuario->setDireccion($_REQUEST["nameDireccion"]);
@@ -129,12 +141,11 @@ if (isset($_REQUEST["banderaRegistro"])) {
     $usuario->setTelefono($_REQUEST['nameTelefono']);
     $usuario->setCodigo_institucion($_REQUEST['nameInstitucion']);
     $foto = addslashes(file_get_contents($_FILES['nameFotos']['tmp_name']));
-    $usuario ->setFoto($foto);
-    echo 'esta es la foto '.$foto;
-    
+    $usuario->setFoto($foto);
+    echo 'esta es la foto ' . $foto;
 
- Repositorio_usuario::insertar_usuario(Conexion::obtener_conexion(), $usuario);
 
+    Repositorio_usuario::insertar_usuario(Conexion::obtener_conexion(), $usuario);
 }
 ?>
 

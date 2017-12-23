@@ -6,20 +6,13 @@ include_once '../plantillas/menu.php';
 <div class="nav-content nav-pills" name="">
     <ul class="tabs tabs-transparent">
         <li class="tab">
-            <a class="" href="#test1" id="idRegistroAdministrador">
+            <a class="active" href="#test1" id="idRegistroAdministrador">
                 <i class="fa fa-user" aria-hidden="true"></i> Registro Administradores
             </a>
         </li>
         <li class="tab">
-            <a class="active" href="#test5" id="idListarAdmnistrador">
+            <a class="" href="#test5" id="idListarAdmnistrador">
                 <i class="fa fa-edit" aria-hidden="true"></i> Editar Administradores
-            </a>
-        </li>
-
-
-        <li class="tab">
-            <a href="#test2">
-                <i class="fa fa-book" aria-hidden="true"></i> Categorias De Activos
             </a>
         </li>
 
@@ -46,29 +39,7 @@ include_once '../plantillas/menu.php';
     <?php include_once './listado_administrador.php'; ?>
 </div>
 
-<div class="col s12" id="test2">
-    <div class="container">
-        <div class="panel">
-            <div class="panel-heading">
-                <h3>Ingresar Categoria</h3>
-            </div>
 
-            <?php include_once '../activofijo/nueva_categoria.php'; ?>
-
-            <div class="panel-footer">
-                <!-- botones -->
-                <div class="row text-center" name="botones">
-                    <button class="btn btn-success">
-                        <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>                            
-                        Guardar</button>
-                    <button type="reset" class="btn btn-danger" onclick="AlertaExttoZZZ()">
-                        <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar
-                    </button>
-                </div><!-- Termina botones -->
-            </div>
-        </div>
-    </div>
-</div>
 <div class="col s12" id="test3">
     <?php include_once './bitacora.php'; ?>
 </div>

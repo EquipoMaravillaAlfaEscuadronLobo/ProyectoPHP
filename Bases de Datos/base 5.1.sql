@@ -26,6 +26,7 @@ ENGINE = InnoDB;
 CREATE  TABLE IF NOT EXISTS `diseno1`.`detalles` (
   `codigo_detalle` INT NOT NULL AUTO_INCREMENT ,
   `serie` VARCHAR(50) NULL ,
+  `serie` VARCHAR(50) NULL ,
   `color` VARCHAR(50) NULL ,
   `marca` VARCHAR(30) NULL ,
   `modelo` VARCHAR(30) NULL ,

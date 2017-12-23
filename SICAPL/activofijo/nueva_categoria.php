@@ -60,6 +60,9 @@ if (isset($_REQUEST["banderaCAtegoria"])
     echo '<script>swal("Excelente!", "Registro guardado con exito", "success");</script>';
      echo '<script>recargar2();</script>';
     //Conexion::cerrar_conexion();
+      
         
 }
+
+
 ?>

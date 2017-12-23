@@ -168,7 +168,7 @@ class Repositorio_administrador {
 
     public static function actualizar_administrador($conexion, $administrador, $codigo_original, $verificacion) {
         $administrador_insertado = false;
-        $administrador_actual = self:: obtener_administrador($conexion, $codigo_original);
+        $administrador_actual = self:: obtener_administrador($conexion, $verificacion);
 
         if (isset($conexion)) {
             try {
@@ -184,6 +184,8 @@ class Repositorio_administrador {
                 $foto = $administrador->getFoto();
                 $email = $administrador->getEmail();
                 $fecha = $administrador->getFecha();
+                echo $verificacion;
+                echo $administrador_actual->getPasword();
 
                 if (password_verify($verificacion, $administrador_actual->getPasword())) {///esto es para saber si las contrase;a para modificar es correcta
                     $sql = 'UPDATE administradores SET nombre=:nombre,apellido=:apellido,pasword=:pasword,dui=:dui,nivel=:nivel, fecha=:fecha,email=:email,sexo=:sexo  WHERE codigo_administrador = :codigo_original';
@@ -199,6 +201,7 @@ class Repositorio_administrador {
                     $sentencia->bindParam(':sexo', $sexo, PDO::PARAM_STR);
 
                     if ($pasword == 'PASWORD_AC') {
+                        echo 'si la password es' . $pasword;
                         $pasword = $administrador_actual->getPasword();
                         $sentencia->bindParam(':pasword', $pasword, PDO::PARAM_STR);
                     } else {
@@ -504,7 +507,7 @@ class Repositorio_administrador {
         if (isset($conexion)) {
             try {
                 //echo 'hay conexion';
-                $sql = "SELECT count(*) FROM  administradores"; ///estos son alias para que PDO pueda trabajar 
+                $sql = "SELECT count(*) FROM  administradoresSELECT count(*) FROM  administradores"; ///estos son alias para que PDO pueda trabajar 
                 $resultado = $conexion->query($sql);
                     
             } catch (PDOException $ex) {
