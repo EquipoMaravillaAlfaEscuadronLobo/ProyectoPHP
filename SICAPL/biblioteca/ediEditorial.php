@@ -1,5 +1,10 @@
+<style>
+    body{
+        color: white !important;
+    }
+</style>
 <?php
-
+$titulo1="";
     include_once '../app/Conexion.php';
     include_once '../modelos/Editorial.php';
     include_once '../repositorios/repositorio_editorial.php';
