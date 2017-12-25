@@ -180,7 +180,7 @@ libros.codigo_libro ='$codigo'";
                 //$biografia = $libro->getBiografia();
 
 
-                $sql = "UPDATE libros SET titulo='$titulo', foto='$foto', fecha_publicacion='$publicacion' where  codigo_libro='$codigo'";
+                $sql = "UPDATE libros SET titulo='$titulo', foto='$foto', fecha_publicacion='$publicacion' where  codigo_libro like '%$codigo%'";
                 ///estos son alias para que PDO pueda trabajar
                 $sentencia = $conexion->prepare($sql);
 
@@ -259,7 +259,7 @@ libros.titulo
 FROM
 libros
 WHERE
-codigo_libro like '%cej-002%' and libros.estado=0;
+codigo_libro like '%$codigo%' and libros.estado=0;
 
 ";
                 $resultado = $conexion->query($sql);

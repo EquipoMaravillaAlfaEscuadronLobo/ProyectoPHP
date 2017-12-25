@@ -1,5 +1,10 @@
+<style>
+    body{
+        color: white !important;
+    }
+</style>
 <?php
-
+$titulo1="";
     include_once '../app/Conexion.php';
     include_once '../modelos/Autores.php';
     include_once '../repositorios/repositorio_autores.inc.php';
@@ -9,6 +14,7 @@
     $nombre = $_POST["nombrea_edit"];
     $apellido = $_POST["apellidoa_edit"];
     $nacimiento = $_POST["fecha_nac_edit"];
+    $nacimiento=date_format(date_create($nacimiento),'Y-m-d');
     $biografia =$ruta.$_FILES["bio_edit"]["name"];
     $biografia2 =$_FILES["bio_edit"]["name"];
     $codigo=$_POST['codigoa_edit'];

@@ -158,3 +158,6 @@ a.ass:hover{
 	width: 15%;
 	height: 100%;
 }
+textarea{
+	font-size: larger !important;
+}

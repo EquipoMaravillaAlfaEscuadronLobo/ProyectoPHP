@@ -1,7 +1,14 @@
-<?php 
+<style>
+    body{
+        color: white !important;
+    }
+</style>
+<?php
+//session_start();
     include_once '../app/Conexion.php';
     include_once '../modelos/Libros.php';
     include_once '../repositorios/respositorio_libros.php';
+    $titulo1="";
 include_once '../plantillas/cabecera.php';
     include_once '../plantillas/pie_de_pagina.php';
     $ruta='../fotoLibros/';
@@ -15,6 +22,7 @@ include_once '../plantillas/cabecera.php';
     //echo $editorial;
    // $cantidad=$_POST["cantidad_edit"];
     $publicacion = $_POST["fecha_pub_edit"];
+$publicacion=date_format(date_create($publicacion),'Y-m-d');
     
     $foto =$ruta.basename($_FILES["foto1"]["name"]);
     $foto2=basename($_FILES["foto1"]["name"]);
@@ -26,7 +34,7 @@ include_once '../plantillas/cabecera.php';
     }
     //echo $foto2;
     Conexion::abrir_conexion();
-    echo $publicacion;
+   // echo $codigo;
     $Libro = new Libros();
     $Libro->setTitulo($titulo);
     //$Libro->setEditoriales_codigo($editorial);

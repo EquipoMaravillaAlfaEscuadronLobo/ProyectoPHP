@@ -1,12 +1,14 @@
 <?php
-$titulo1="";
-include_once '../plantillas/cabecera.php';
-$titulo1="";
+//$titulo1="";
+//include_once '../plantillas/cabecera.php';
+//$titulo1="";
 include_once '../app/Conexion.php';
 include_once '../modelos/Libros.php';
 include_once '../repositorios/respositorio_libros.php';
+$codigo=$_POST['codigo'];
+
 Conexion::abrir_conexion();
-$listado=Repositorio_libros::ListaDarBaja(Conexion::obtener_conexion(), 'cej-002');
+$listado=Repositorio_libros::ListaDarBaja(Conexion::obtener_conexion(), $codigo);
 ?>
     <table>
         <thead>

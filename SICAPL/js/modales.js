@@ -133,9 +133,7 @@ function abrirModal() {
     $('#nuevo').modal('open');
 }
 
-function abrirBajaLibros() {
-    $('#bajaLib').modal('open');
-}
+
 
 function abrirEdicionLib(codigo,editorial,titulo,fecha,foto, cantidad) {
    

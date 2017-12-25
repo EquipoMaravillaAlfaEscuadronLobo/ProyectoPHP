@@ -25,14 +25,14 @@ include_once '../app/Conexion.php';
 
                      ?>
                         <tr>
-                            <td class="text-center"><button class="btn btn-success" onclick="abrirEdicionLib('<?php echo $fila['codigo'] ?>','<?php echo $fila['cedit'] ?>','<?php echo $fila['titulo'] ?>','<?php echo $fila['fecha_publicacion'] ?>','<?php echo $fila['foto'] ?>','<?php echo $fila['cantidad'] ?>')"> <i class="Medium material-icons prefix">edit</i> </button></td>
+                            <td class="text-center"><button class="btn btn-success" onclick="abrirEdicionLib('<?php echo $fila['codigo'] ?>','<?php echo $fila['cedit'] ?>','<?php echo $fila['titulo'] ?>','<?php echo date_format(date_create($fila['fecha_publicacion']),'d-m-Y'); ?>','<?php echo $fila['foto'] ?>','<?php echo $fila['cantidad'] ?>')"> <i class="Medium material-icons prefix">edit</i> </button></td>
                             <td class="text-center"><?php echo $fila['titulo'] ?></td>
                             <td class="text-center"><?php echo $fila['autor'] ?></td>
                             <td class="text-center"><?php echo $fila['editorial'] ?></td>
                             <td class="text-center"><?php echo $fila['cantidad'] ?></td>
 
 
-                            <td class="text-center"><button class="btn btn-info" onclick="abrirBajaLibros()"> <i class="fa fa-eye"></i> </button></td>
+                            <td class="text-center"><button class="btn btn-info" onclick="abrirBajaLibros('<?php echo $fila['codigo'] ?>')"> <i class="fa fa-eye"></i> </button></td>
                         </tr>
                         <?php } ?>
 
@@ -53,8 +53,8 @@ include_once '../app/Conexion.php';
 </div>
 
 <div id="bajaLib" class="modal modal-fixed-footer nuevo">
-    <div class="modal-content modal-lg">
-        <?php include('listadoDarBaja.php'); ?>
+    <div class="modal-content modal-lg" id="bajaLib2">
+        <?php //include('listadoDarBaja.php'); ?>
     </div>
     <div class="modal-footer">
         <div class="row">
@@ -70,7 +70,13 @@ include_once '../app/Conexion.php';
     function editLibro () {
         document.frmEditLib.submit();
     }
+    function abrirBajaLibros(codigo) {
+        $('#bajaLib').modal('open');
+        $.post("listadoDarBaja.php", {codigo: codigo}, function(mensaje){
+            $('#bajaLib2').html(mensaje).fadeIn();
 
+        });
+    }
     function Baja (codigo) {
         swal({
   title: "Seguro que desea dar de baja",
