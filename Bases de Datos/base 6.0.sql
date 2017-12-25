@@ -42,8 +42,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `diseno1`.`tipo_activo`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `diseno1`.`tipo_activo` (
-  `codigo_tipo` VARCHAR(5) NOT NULL ,
+CREATE  TABLE IF NOT EXISTS `diseno1`.`categoria` (
+  `codigo_tipo` VARCHAR(13) NOT NULL ,
   `nombre` VARCHAR(45) NULL ,
   PRIMARY KEY (`codigo_tipo`) )
 ENGINE = InnoDB;
