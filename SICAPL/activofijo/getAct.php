@@ -9,11 +9,11 @@ Conexion::abrir_conexion();
 
 $listado = Repositorio_activo::obtener_activo(Conexion::obtener_conexion(), $_POST['libro']);
 //$numero=$_POST['numero'];
-
+echo '<script language="javascript">alert("'.$listado.'");</script>'; 
 foreach ($listado as $fila) {
     ?>
     <script type="text/javascript">
-        
+        //alert("<?php echo $fila['codigo_activo']; ?>");
         document.getElementById('catPrestAct').value = "<?php echo Repositorio_categoria::obtener_categoria(Conexion::obtener_conexion(), $fila['codigo_tipo']); ?>";
         document.getElementById('codPrestAct').value = "<?php echo $fila['codigo_activo']; ?>";
         document.getElementById('codTipo').value = "<?php echo $fila['codigo_tipo']; ?>";
