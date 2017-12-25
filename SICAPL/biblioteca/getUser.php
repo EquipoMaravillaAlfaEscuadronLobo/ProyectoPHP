@@ -12,15 +12,11 @@
 
 		document.getElementById('carnet').innerHTML = "<?php echo $fila['codigo_usuario'] ?>";
         document.getElementById('nombreUser').innerHTML = "<?php echo $fila['nombre'] ?>";
-       //document.getElementById('edad').innerHTML = "<?php echo $fila['titulo'] ?>";
+       
         document.getElementById('sexo').innerHTML = "<?php echo $fila['sexo'] ?>";
         document.getElementById('fot').setAttribute("src", "<?php echo $fila['foto'] ?>")
 
 
-	//	document.getElementById('titulo<?php echo $numero ?>').value = <?php echo $fila['titulo'] ?>;
-     ////   document.getElementById('autor<?php echo $numero ?>').value = <?php echo $fila[2] ?>;
-      // document.getElementById('genero<?php echo $numero ?>').value = "Epopeya";
-     //   document.getElementById('fecha_pub<?php echo $numero ?>').value = <?php echo $fila['fecha_publicacion'] ?>;
 		</script>
 
 
