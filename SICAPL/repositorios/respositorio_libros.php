@@ -259,7 +259,7 @@ libros.titulo
 FROM
 libros
 WHERE
-codigo_libro like '%cej-002%' and libros.estado=0;
+codigo_libro like '%$codigo%' and libros.estado=0;
 
 ";
                 $resultado = $conexion->query($sql);
