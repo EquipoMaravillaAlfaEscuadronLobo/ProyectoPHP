@@ -249,6 +249,27 @@ libros.codigo_libro like '%" . $codigo . "%'";
         return $resultado;
     }
 
+    public function ListaDarBaja($conexion, $codigo) {
+        $resultado = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT
+libros.codigo_libro,
+libros.titulo
+FROM
+libros
+WHERE
+codigo_libro like '%cej-002%' and libros.estado=0;
+
+";
+                $resultado = $conexion->query($sql);
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
+
     static function insertar_bitacora($conexion, $accion) {
         $administrador_insertado = false;
         if (isset($conexion)) {

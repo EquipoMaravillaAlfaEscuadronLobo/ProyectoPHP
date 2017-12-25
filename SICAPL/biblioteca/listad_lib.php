@@ -32,7 +32,7 @@ include_once '../app/Conexion.php';
                             <td class="text-center"><?php echo $fila['cantidad'] ?></td>
 
 
-                            <td class="text-center"><button class="btn btn-info" onclick="Baja('<?php echo $fila['codigo'] ?>')"> <i class="fa fa-eye"></i> </button></td>
+                            <td class="text-center"><button class="btn btn-info" onclick="abrirBajaLibros()"> <i class="fa fa-eye"></i> </button></td>
                         </tr>
                         <?php } ?>
 
@@ -48,6 +48,18 @@ include_once '../app/Conexion.php';
     <div class="row">
         <div class="col-md-6 text-right"><button onclick="editLibro()" class="waves-effect btn btn-success">Actualizar</button></div>
         <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger">Salir</a></div>
+        </div>
+    </div>
+</div>
+
+<div id="bajaLib" class="modal modal-fixed-footer nuevo">
+    <div class="modal-content modal-lg">
+        <?php include('listadoDarBaja.php'); ?>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+
+            <div class="col-md-12 text-center"><a href="#" class="modal-action modal-close waves-effect btn btn-danger">Salir</a></div>
         </div>
     </div>
 </div>
