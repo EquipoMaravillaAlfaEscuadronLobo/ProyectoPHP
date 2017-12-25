@@ -34,7 +34,8 @@ CREATE  TABLE IF NOT EXISTS `diseno1`.`detalles` (
   `sistema` VARCHAR(30) NULL ,
   `dimensiones` VARCHAR(50) NULL ,
   `foto` BINARY NULL ,
-  `otros` VARCHAR(300) NULL ,
+  `otros` text,
+  `procesador` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`codigo_detalle`) )
 ENGINE = InnoDB;
 
@@ -74,8 +75,8 @@ DEFAULT CHARACTER SET = latin1;
 -- Table `diseno1`.`actvos`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `diseno1`.`actvos` (
-  `codigo_activo` varchar(15) NOT NULL,
-  `codigo_tipo` varchar(12) NOT NULL,
+  `codigo_activo` varchar(16) NOT NULL,
+  `codigo_tipo` varchar(13) NOT NULL,
   `codigo_proveedor` int(11) NOT NULL,
   `codigo_detalle` int(11) NOT NULL,
   `codigo_administrador` varchar(20) NOT NULL,

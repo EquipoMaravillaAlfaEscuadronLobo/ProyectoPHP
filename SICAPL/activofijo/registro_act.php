@@ -404,7 +404,9 @@ if (isset($_REQUEST["bandera1"])) {
     $activo->setEstado('1');
     $activo->setCodigo_detalle($R);
     $correlativo = Repositorio_activo::obtener_nactivo(Conexion::obtener_conexion(), $_REQUEST["selectCat"]);
-
+    if($correlativo ==""){
+        $correlativo=0;
+    }
 
 
     for ($i = 1; $i <= $cant; $i++) {
@@ -426,15 +428,15 @@ if (isset($_REQUEST["bandera1"])) {
                 }
             }
         }
-
         //$cod=$_REQUEST["selectCat"]."-".$correlativo; 
         $activo->setCodigo_activo($cod);
-       echo Repositorio_activo::insertar_activo(Conexion::obtener_conexion(), $activo);
+      
+        echo Repositorio_activo::insertar_activo(Conexion::obtener_conexion(), $activo);
     }
     
     ////esto es para la bitacora 
     include_once '../repositorios/repositorio_bitacora.php';
-    $nombre_categoria = Repositorio_categoria::obtener_nombre_categoria(Conexion::obtener_conexion(),'00001' );
+    $nombre_categoria = Repositorio_categoria::obtener_nombre_categoria(Conexion::obtener_conexion(),$_REQUEST["selectCat"] );
     $accion = 'se registraron '. $cant .' item tipo ' .$nombre_categoria . ' con las siguientes características: color '
             . $_REQUEST["color"] . ', marca ' .$_REQUEST['marca']. ", dimensiones " .$_REQUEST['dimensiones']
             . ', sistema operativo ' . $_REQUEST["so"]. ", Memoria Ram " .  $_REQUEST["ram"] . ", Modelo " . $_REQUEST["modelo"]  ;
