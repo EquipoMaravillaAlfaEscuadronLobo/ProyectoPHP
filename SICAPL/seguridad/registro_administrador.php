@@ -197,11 +197,12 @@ if (isset($_REQUEST["banderaRegistro"])) {
     $administrador->setFecha($_REQUEST['nameFecha']);
     
     $ruta = '../foto_admi/';
-    $foto = $ruta . basename($_FILES["foto"]["name"]); ///ruta
+    $correlativo = Repositorio_administrador::numero_administradores(Conexion::obtener_conexion());
+    $foto = $ruta .$correlativo. basename($_FILES["foto"]["name"]); ///ruta
     $foto2 = basename($_FILES["foto"]["name"]); //nombre de archivo
 
     if (move_uploaded_file($_FILES['foto']['tmp_name'], $foto)) {
-        $administrador->setFoto($foto2);
+        $administrador->setFoto($correlativo.$foto2);
     } else {
         $administrador->setFoto("");
     }

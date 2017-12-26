@@ -153,11 +153,12 @@ if (isset($_REQUEST["banderaRegistro"])) {
     $usuario->setCodigo_institucion($_REQUEST['nameInstitucion']);
 
     $ruta = '../foto_usuario/';
-    $foto = $ruta . basename($_FILES["foto"]["name"]); ///ruta
+    $correlativo = Repositorio_usuario::numero_de_usuarios(Conexion::obtener_conexion());
+    $foto = $ruta .$correlativo. basename($_FILES["foto"]["name"]); ///ruta
     $foto2 = basename($_FILES["foto"]["name"]); //nombre de archivo
 
     if (move_uploaded_file($_FILES['foto']['tmp_name'], $foto)) {
-        $usuario->setFoto($foto2);
+        $usuario->setFoto($correlativo.$foto2);
     } else {
         $usuario->setFoto("");
     }
