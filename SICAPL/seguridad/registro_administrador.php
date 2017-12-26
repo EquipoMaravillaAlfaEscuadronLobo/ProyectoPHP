@@ -113,11 +113,11 @@ include_once '../repositorios/repositorio_administrador.inc.php';
                                 <div class="radio-inline">
                                     <input type="radio" id="idAdministrador" name="NameNivel" value="1"  class="text-center with-gap" checked="">
                                     <label for="idAdministrador">Administrador</label>
-                                    
-                                    
+
+
                                     <input type="radio" id="idRoot"  name="NameNivel" value="0"  class="text-center with-gap">
                                     <label for="idRoot">Root</label>
-               
+
                                 </div>
                             </div>
                         </div> 
@@ -127,14 +127,18 @@ include_once '../repositorios/repositorio_administrador.inc.php';
                 <div class="row">
                     <div class="col m4"></div>
 
-                    <div class="file-field input-field col m5">
-                        <div class="btn btn-primary">
-                            <span class="glyphicon glyphicon-picture" aria="hidden"></span> Foto                          
-                            <input type="file">
-                        </div>
-                        <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text" name="nameFoto" id="idFoto" required="" >
-                            <input type="file" id="files" name="files[]">
+                    <div class="col-md-5">
+                        <div class="file-field input-field">
+                            <div class="btn">
+                                <span><i class="glyphicon glyphicon-picture" aria-hidden="true"></i>Foto</span>
+                                <input type="file" id="files" required name="foto" accept="image/*">
+
+                            </div>
+
+
+                            <div class="file-path-wrapper">
+                                <input type="text" accept="image/*" required class="form-control file-path validate">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -156,7 +160,7 @@ include_once '../repositorios/repositorio_administrador.inc.php';
                     <button class="btn btn-success" type="submit">
                         <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>                            
                         Guardar</button>
-                    <button type="reset" class="btn btn-danger" onclick="location.href='inicio_seguridad.php';">
+                    <button type="reset" class="btn btn-danger" onclick="location.href = 'inicio_seguridad.php';">
                         <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar
                     </button>
                 </div>
@@ -191,9 +195,20 @@ if (isset($_REQUEST["banderaRegistro"])) {
     $administrador->setSexo($_REQUEST['NameSexo']);
     $administrador->setEmail($_REQUEST['nameEmail']);
     $administrador->setFecha($_REQUEST['nameFecha']);
+    
+    $ruta = '../foto_admi/';
+    $foto = $ruta . basename($_FILES["foto"]["name"]); ///ruta
+    $foto2 = basename($_FILES["foto"]["name"]); //nombre de archivo
+
+    if (move_uploaded_file($_FILES['foto']['tmp_name'], $foto)) {
+        $administrador->setFoto($foto2);
+    } else {
+        $administrador->setFoto("");
+    }
+    
+    echo 'la get foto es ' . $administrador->getFoto() ;
 
     // $administrador->setFoto(addslashes(file_get_contents($_FILES['nameFoto']['tmp_name'])));
     Repositorio_administrador::insertar_administrador(Conexion::obtener_conexion(), $administrador);
-
 }
 ?>

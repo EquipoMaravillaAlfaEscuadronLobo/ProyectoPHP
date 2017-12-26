@@ -63,7 +63,7 @@ CREATE  TABLE IF NOT EXISTS `diseno1`.`administradores` (
   `apellido` VARCHAR(25) NULL DEFAULT NULL ,
   `sexo` TINYINT(1) NULL DEFAULT NULL ,
   `dui` VARCHAR(11) NULL DEFAULT NULL ,
-  `foto` BINARY NULL DEFAULT NULL ,
+  `foto` longblob ,
   `estado` INT NULL ,
   `observacion` VARCHAR(150) NULL ,
   PRIMARY KEY (`codigo_administrador`) )

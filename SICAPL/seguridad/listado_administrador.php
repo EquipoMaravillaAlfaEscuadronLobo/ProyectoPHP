@@ -2,6 +2,7 @@
 Conexion::abrir_conexion();
 //session_start();
 $lista_admnistradores = Repositorio_administrador::lista_administradores(Conexion::obtener_conexion(),$_SESSION['user']);
+$ruta =  '../foto_admi/';
 ?>
 <div class="container">
     <div class="row">
@@ -45,7 +46,9 @@ $lista_admnistradores = Repositorio_administrador::lista_administradores(Conexio
                                         echo 'Administradro';
                                     }
                                     ?></td>
-                                <td class="text-center"><img src="../imagenes/imagenes.jpg" class="presentacionXZ" alt=""></td>
+                                <td class="text-center">
+                                    <img src="<?php echo $ruta . $lista->getFoto(); ?>" class="presentacionXZ" alt="">
+                                </td>
                                 <td class="text-center">
                                     <button class="btn btn-danger" onclick="abrir_eliminacion_administrador('<?php echo $lista->getNombre(); ?>',
                                                         '<?php echo $lista->getApellido(); ?>', '<?php echo $lista->getCodigo_administrador(); $_SESSION['seleccionado'] = $lista->getCodigo_administrador() ?>','111111')"> 
