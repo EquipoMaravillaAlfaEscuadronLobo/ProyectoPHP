@@ -104,7 +104,7 @@ class Repositorio_categoria {
         $resultado = "";
         if (isset($conexion)) {
             try {
-                $sql = "SELECT nombre from tipo_activo where codigo_tipo = '$cod'";
+                $sql = "SELECT nombre from categoria where codigo_tipo = '$cod'";
 
                 foreach ($conexion->query($sql) as $row) {
                     $r = $row[0];

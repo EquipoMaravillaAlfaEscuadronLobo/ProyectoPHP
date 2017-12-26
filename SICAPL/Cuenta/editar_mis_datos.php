@@ -137,8 +137,8 @@ $sexo = $administradorActual->getSexo();
                 </div>
                 <div class="row text-center">
                     <button class="btn btn-success">
-                        <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>                            
-                        Guardar</button>
+                        <span class="glyphicon glyphicon-refresh" aria="hidden"></span>                            
+                        Actualizar</button>
                     <button type="reset" class="btn btn-danger">
                         <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar
                     </button>

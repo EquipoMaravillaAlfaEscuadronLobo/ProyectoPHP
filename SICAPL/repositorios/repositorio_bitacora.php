@@ -76,7 +76,7 @@ class Repositorio_Bitacora {
         return $nombre;
     }
     
-        public static function nombre_usuario($conexion, $codigo) {
+    public static function nombre_usuario($conexion, $codigo) {
         $nombre= "";
         if (isset($conexion)) {
             try {
@@ -98,7 +98,7 @@ class Repositorio_Bitacora {
         return $nombre;
     }
     
-        public static function codigo_usuario_por_codigo_prestamo($conexion, $codigo) {
+    public static function codigo_usuario_por_codigo_prestamo($conexion, $codigo) {
         $nombre= "";
         if (isset($conexion)) {
             try {
@@ -120,8 +120,7 @@ class Repositorio_Bitacora {
         return $nombre;
     }
     
-    
-     public static function nombre_libro($conexion, $codigo) {
+    public static function nombre_libro($conexion, $codigo) {
         $nombre= "";
         if (isset($conexion)) {
             try {
@@ -134,6 +133,28 @@ class Repositorio_Bitacora {
                     foreach ($resultado as $fila) {
                         $nombre = ($fila['titulo']);
                          
+                    }
+                }
+            } catch (PDOException $exc) {
+                print('ERROR' . $exc->getMessage());
+            }
+        }
+        return $nombre;
+    }
+   
+    public static function nombre_de_administrador($conexion, $codigo) {
+        $nombre = '';
+        if (isset($conexion)) {
+            try {
+                $sql = "select * from administradores where (codigo_administrador = '$codigo')";
+               // echo $sql;      
+                    $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+                        $nombre = ($fila['nombre']);
                     }
                 }
             } catch (PDOException $exc) {
