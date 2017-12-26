@@ -96,7 +96,7 @@ function abrir_edicion_usuario(nombre,apellido,direccion,email,telefono,sexo,pas
     $("#idDireccionE").val(direccion);
     $("#idEmailE").val(email);
     $("#idTelefonoE").val(telefono);
-    if (sexo == "Femenino") {
+    if (sexo == "Masculino") {
       
         $('#idHombreE').attr("checked", "checked");
       } 
