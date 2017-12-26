@@ -1,4 +1,4 @@
-<!--<a href="./Backup.php">Realizar copia de seguridad</a>-->
++<!--<a href="./Backup.php">Realizar copia de seguridad</a>-->
 <a style="color:  red" href="../repositorios/repositorio_Backup.php">Realizar copia de seguridad</a>
 	<!--<form action="./Restore.php" method="POST">-->
         <form action="../repositorios/repositorio_Restore.php" method="POST">

@@ -1,29 +1,21 @@
 <?php
 error_reporting(E_PARSE);
-
 //Nombre de usuario de mysql
 const USER = "root";
-
 //Servidor de mysql
 const SERVER = "localhost";
-
 //Nombre de la base de datos
 const BD = "diseno1";
-
 //Contraseña de myqsl
 const PASS = "";
-
 //Carpeta donde se almacenaran las copias de seguridad
 //include_once '../backup/';
-
 const BACKUP_PATH = "../backup/";
-
 /*Configuración de zona horaria de tu país para más información visita
 http://php.net/manual/es/function.date-default-timezone-set.php
 http://php.net/manual/es/timezones.php
  */
 date_default_timezone_set('America/El_Salvador');
-
 class SGBD
 {
     //Funcion para hacer consultas a la base de datos
@@ -50,7 +42,6 @@ class SGBD
             return $consul;
         }
     }
-
     //Funcion para limpiar variables que contengan inyeccion SQL
     public static function limpiarCadena($valor)
     {
