@@ -1,8 +1,4 @@
 <?php
-
-/**
- * 
- */
 class Repositorio_autores {
 
     public static function insertarAutor($conexion, $autor) {

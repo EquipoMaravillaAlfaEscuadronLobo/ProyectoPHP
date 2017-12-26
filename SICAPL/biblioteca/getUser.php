@@ -12,7 +12,7 @@
 
 		document.getElementById('carnet').innerHTML = "<?php echo $fila['codigo_usuario'] ?>";
         document.getElementById('nombreUser').innerHTML = "<?php echo $fila['nombre'] ?>";
-       
+
         document.getElementById('sexo').innerHTML = "<?php echo $fila['sexo'] ?>";
         document.getElementById('fot').setAttribute("src", "<?php echo $fila['foto'] ?>")
 

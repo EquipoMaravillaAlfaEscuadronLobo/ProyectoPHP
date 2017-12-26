@@ -17,7 +17,7 @@ class Repositorio_Bitacora {
                 $sentencia = $conexion->prepare($sql);
                 $administrador_insertado = $sentencia->execute();
 
-                echo 'la bitacora ha sido guardada';
+//                echo 'la bitacora ha sido guardada';
             } catch (PDOException $ex) {
                 echo '<script>swal("No se puedo realizar el registro", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
                 print 'ERROR: ' . $ex->getMessage();
@@ -30,7 +30,7 @@ class Repositorio_Bitacora {
 
         if (isset($conexion)) {
             try {
-                $sql = "select * from bitacora";
+                $sql = "SELECT * FROM bitacora ORDER BY codigo_bitacora";
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->execute();
                 $resultado = $sentencia->fetchAll();
@@ -76,6 +76,98 @@ class Repositorio_Bitacora {
         return $nombre;
     }
     
+    public static function nombre_usuario($conexion, $codigo) {
+        $nombre= "";
+        if (isset($conexion)) {
+            try {
+                $sql = "select * from usuarios where (codigo_usuario = '$codigo')";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+                        $nombre = ($fila['nombre']. " ". $fila['apellido']);
+                         
+                    }
+                }
+            } catch (PDOException $exc) {
+                print('ERROR' . $exc->getMessage());
+            }
+        }
+        return $nombre;
+    }
+    
+    public static function codigo_usuario_por_codigo_prestamo($conexion, $codigo) {
+        $nombre= "";
+        if (isset($conexion)) {
+            try {
+                $sql = "select * from prestamo_libros where (codigo_plibro = '$codigo')";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+                        $nombre = ($fila['codigo_usuario']);
+                         
+                    }
+                }
+            } catch (PDOException $exc) {
+                print('ERROR' . $exc->getMessage());
+            }
+        }
+        return $nombre;
+    }
+    
+    public static function nombre_libro($conexion, $codigo) {
+        $nombre= "";
+        if (isset($conexion)) {
+            try {
+                $sql = "select * from libros where (codigo_libro = '$codigo')";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+                        $nombre = ($fila['titulo']);
+                         
+                    }
+                }
+            } catch (PDOException $exc) {
+                print('ERROR' . $exc->getMessage());
+            }
+        }
+        return $nombre;
+    }
+   
+    public static function nombre_de_administrador($conexion, $codigo) {
+        $nombre = '';
+        if (isset($conexion)) {
+            try {
+                $sql = "select * from administradores where (codigo_administrador = '$codigo')";
+               // echo $sql;      
+                    $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+                        $nombre = ($fila['nombre']);
+                    }
+                }
+            } catch (PDOException $exc) {
+                print('ERROR' . $exc->getMessage());
+            }
+        }
+        return $nombre;
+    }
+    
+    
+    
 }
+
+
 
 ?>

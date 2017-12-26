@@ -118,6 +118,11 @@ if (isset($_REQUEST["bandera_registro_institucion"])) {
     $conexion = Conexion::obtener_conexion();
     $sentencia = $conexion->prepare($sql);
     $sentencia->execute();
+    
+    include_once '../repositorios/repositorio_bitacora.php';
+    $accion = 'Se registro la siguiente institucion: ' . $nombre_institucion;
+    Repositorio_Bitacora::insertar_bitacora(Conexion::obtener_conexion(), $accion);
+    
     echo '<script>swal({
                     title: "Exito",
                     text: "El registro ha sido Guardado!",

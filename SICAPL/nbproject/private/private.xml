@@ -3,9 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/Cuenta/inicio_cuenta.php</file>
-            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/repositorios/repositorio_administrador.inc.php</file>
-            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/seguridad/editar_administrador.php</file>
+            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/biblioteca/bajaLibro.php</file>
+            <file>file:/C:/xampp/htdocs/DISII/ProyectosEquipoMaravilla/SICAPL/Cuenta/editar_mis_datos.php</file>
         </group>
     </open-files>
 </project-private>

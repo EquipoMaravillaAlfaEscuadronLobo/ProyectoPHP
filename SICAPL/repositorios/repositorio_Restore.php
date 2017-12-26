@@ -1,5 +1,4 @@
 <?php
-
 include './repositorio_Connet.php';
 $restorePoint = SGBD::limpiarCadena($_POST['restorePoint']);
 $sql = explode(";", file_get_contents($restorePoint));

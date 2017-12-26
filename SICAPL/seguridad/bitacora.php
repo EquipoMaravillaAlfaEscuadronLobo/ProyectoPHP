@@ -41,7 +41,7 @@ $lista_bitacora = Repositorio_Bitacora::lista_bitacora(Conexion::obtener_conexio
             </div>
             <table padding="20px" class="responsive-table table-sm display" id="tabla-paginada">
                 <thead class="">
-
+<th class="text-center alert-success">N</th>
                 <th class="text-center alert-success">Administrador</th>
                 <th class="text-center alert-success">Accion</th>
                 <th class="text-center alert-success">Fecha</th>
@@ -49,9 +49,11 @@ $lista_bitacora = Repositorio_Bitacora::lista_bitacora(Conexion::obtener_conexio
 
                 </thead>
                 <tbody>
-                    <?php foreach ($lista_bitacora as $listaB) {?>
+                    <?php foreach ($lista_bitacora as $listaB) { 
+                        $nombreB = Repositorio_Bitacora::nombre_de_administrador(Conexion::obtener_conexion(), $listaB->getCodigo_administrador());?>
                     <tr>
-                        <td class="text-center "><?php echo $listaB->getCodigo_administrador()?></td>
+                        <td class="text-center "><?php echo $listaB->getCodigo_bitacora()?></td>
+                        <td class="text-center "><?php echo $listaB->getCodigo_administrador() . "(" . $nombreB . ')' ?></td>
                         <td class="text-center "><?php echo $listaB->getAccion();?></td>
                         <td style="width: 100px;" class="text-center "><?php $dia = date_create($listaB->getFecha()); echo date_format($dia,'d-m-Y'); ?></td>
                         <td class="text-center "><?php $hora = date_create($listaB->getFecha()); echo date_format($hora,'h:i:s'); ?></td>

@@ -94,11 +94,11 @@ $sexo = $administradorActual->getSexo();
                                     ?>
                                     
                                     <input type="radio" id="idHombreE"  name="NameSexoE"
-                                           class="text-center with-gap" value="Masculino" <?php if ($sexo == "Masculino") {echo 'checked=""'; }?>>
+                                           class="text-center with-gap" value="0" <?php if ($sexo == "0") {echo 'checked=""'; }?>>
                                     <label for="idHombreE">Masculino</label>
 
                                     <input type="radio" id="idMujerE" name="NameSexoE" 
-                                      class="text-center with-gap" value="Femenino" <?php if ($sexo == "Femenino") {echo 'checked=""'; }?>>
+                                      class="text-center with-gap" value="1" <?php if ($sexo == "1") {echo 'checked=""'; }?>>
                                     <label for="idMujerE">Femenino</label>
                                 </div>
                             </div>
@@ -137,8 +137,8 @@ $sexo = $administradorActual->getSexo();
                 </div>
                 <div class="row text-center">
                     <button class="btn btn-success">
-                        <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>                            
-                        Guardar</button>
+                        <span class="glyphicon glyphicon-refresh" aria="hidden"></span>                            
+                        Actualizar</button>
                     <button type="reset" class="btn btn-danger">
                         <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar
                     </button>
