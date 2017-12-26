@@ -111,9 +111,7 @@
     
     <?php
 if (isset($_REQUEST["banderaEdicion"])) {
-
     $usuario = new Usuario();
-
     $usuario->setNombre($_REQUEST['nameNombreE']);
     $usuario->setApellido($_REQUEST['nameApellidoE']);
     $usuario->setDireccion($_REQUEST['nameDireccionE']);

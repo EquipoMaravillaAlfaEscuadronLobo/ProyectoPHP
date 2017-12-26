@@ -94,20 +94,20 @@ include_once '../repositorios/repositorio_institucion.php';
                             <div class="col 1"></div>
                         </div>
                         <div class="col-md-1"></div>
-                       <div class="col-md-5">
-                                <div class="file-field input-field">
-                                    <div class="btn">
-                                        <span><i class="glyphicon glyphicon-picture" aria-hidden="true"></i>Foto</span>
-                                        <input type="file" id="files" required name="foto" accept="image/*">
-                            
-                                    </div>
+                        <div class="col-md-5">
+                            <div class="file-field input-field">
+                                <div class="btn">
+                                    <span><i class="glyphicon glyphicon-picture" aria-hidden="true"></i>Foto</span>
+                                    <input type="file" id="files" required name="foto" accept="image/*">
+
+                                </div>
 
 
-                                    <div class="file-path-wrapper">
-                                        <input type="text" accept="image/*" required class="form-control file-path validate">
-                                    </div>
+                                <div class="file-path-wrapper">
+                                    <input type="text" accept="image/*" required class="form-control file-path validate">
                                 </div>
                             </div>
+                        </div>
                     </div>
                     <div class="row">
                         <output id="list"></output>                
@@ -158,12 +158,11 @@ if (isset($_REQUEST["banderaRegistro"])) {
 
     if (move_uploaded_file($_FILES['foto']['tmp_name'], $foto)) {
         $usuario->setFoto($foto2);
-       } else {
+    } else {
         $usuario->setFoto("");
-       
     }
     echo 'este es la direccion de foto' . $usuario->getFoto();
 
-   Repositorio_usuario::insertar_usuario(Conexion::obtener_conexion(), $usuario);
+    Repositorio_usuario::insertar_usuario(Conexion::obtener_conexion(), $usuario);
 }
 ?>

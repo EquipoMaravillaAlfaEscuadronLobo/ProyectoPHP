@@ -2,7 +2,6 @@
 Conexion::abrir_conexion();
 $lista_usuarios = Repositorio_usuario::lista_usuarios(Conexion::obtener_conexion());
 $direccion = '../foto_usuario/';
-
 ?>
 
 
@@ -36,7 +35,7 @@ $direccion = '../foto_usuario/';
                                     <button class="btn btn-success" onclick="abrir_edicion_usuario('<?php echo $lista_usu->getNombre();?>',
                                                 '<?php echo $lista_usu->getApellido();?>','<?php echo $lista_usu->getDireccion();?>',
                                                 '<?php echo $lista_usu->getEmail();?>','<?php echo $lista_usu->getTelefono();?>',
-                                                '<?php echo $lista_usu->getSexo();?>','111111','<?php echo $lista_usu->getCodigo_usuario();?>','<?php echo $lista_usu->getFoto();?>' )">
+                                                '<?php echo $lista_usu->getSexo();?>','111111','<?php echo $lista_usu->getCodigo_usuario();?>' )">
                                         <i class="Medium material-icons prefix">edit</i> 
                                     </button>
                                 </td>
@@ -45,7 +44,7 @@ $direccion = '../foto_usuario/';
                                 <td class="text-center"><?php echo $lista_usu->getDireccion(); ?></td>
                                 <td class="text-center"><?php echo $lista_usu->getEmail(); ?></td>
                                 <td class="text-center">
-                                    <img height="105px" width="85px" src="<?php echo $direccion . $lista_usu->getFoto();?>"/>
+                                        <img height="105px" width="85px" src="<?php echo $direccion . $lista_usu->getFoto();?>"/>
                                 </td>
                                 <td class="text-center">
                                     <button class="btn btn-danger" onclick="abrir_eliminacion_usuario('<?php echo $lista_usu->getNombre();?>','<?php echo $lista_usu->getApellido();?>','<?php echo $lista_usu->getCodigo_usuario();?>','111111')"> 
@@ -77,4 +76,3 @@ include_once './editar_usuario.php';
 include_once './eliminar_usuario.php';
 ?>
 <!--este es el fom ventana de eliminacion-->
-

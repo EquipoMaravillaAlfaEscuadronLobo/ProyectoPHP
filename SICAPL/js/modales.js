@@ -57,10 +57,7 @@ $(document).ready(function () {
    
 });
 
-function abrir_edicion_administrador(nombre, apellido, user, dui, fecha, email, password, nivel, sexo,foto) {
-    
-    var foto2="../foto_administrador/"+foto;
-    document.getElementById("idFoto").src = foto2;
+function abrir_edicion_administrador(nombre, apellido, user, dui, fecha, email, password, nivel, sexo) {
     $("#idNombreE").val(nombre);
     $("#idApellidoE").val(apellido);
     $("#idUserE").val(user);
@@ -91,10 +88,7 @@ function abrir_edicion_administrador(nombre, apellido, user, dui, fecha, email, 
  $('#edicion_administradores').modal('open');
 }
 
-function abrir_edicion_usuario(nombre,apellido,direccion,email,telefono,sexo,password,carnet,foto) {
-    
-    var foto2="../foto_usuario/"+foto;
-    document.getElementById("idFoto").src = foto2;
+function abrir_edicion_usuario(nombre,apellido,direccion,email,telefono,sexo,password,carnet) {
     $("#idSecreto").val(nombre + " " +apellido);
     $("#idCarnetE").val(carnet);
     $("#idNombreE").val(nombre);
@@ -102,7 +96,7 @@ function abrir_edicion_usuario(nombre,apellido,direccion,email,telefono,sexo,pas
     $("#idDireccionE").val(direccion);
     $("#idEmailE").val(email);
     $("#idTelefonoE").val(telefono);
-    if (sexo == "Masculino") {
+    if (sexo == "Femenino") {
       
         $('#idHombreE').attr("checked", "checked");
       } 
@@ -139,7 +133,9 @@ function abrirModal() {
     $('#nuevo').modal('open');
 }
 
-
+function abrirBajaLibros() {
+    $('#bajaLib').modal('open');
+}
 
 function abrirEdicionLib(codigo,editorial,titulo,fecha,foto, cantidad) {
    
@@ -261,5 +257,3 @@ $('#DActivo').modal('open');
 
    
 }
-
-    
