@@ -153,7 +153,7 @@ CREATE  TABLE IF NOT EXISTS `diseno1`.`libros` (
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `diseno1`.`mantenimientos` (
  `codigo_mantenimiento` int(11) NOT NULL AUTO_INCREMENT,
-  `codigo_activo` varchar(11) NOT NULL,
+  `codigo_activo` varchar(16) NOT NULL,
   `fecha` date DEFAULT NULL,
   `descripcion` text,
   `costo` double DEFAULT NULL,
@@ -239,7 +239,7 @@ CREATE  TABLE IF NOT EXISTS `diseno1`.`bitacora` (
 -- Table `diseno1`.`movimiento_actvos`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `diseno1`.`movimiento_actvos` (
-  `codigo_activo` varchar(11) NOT NULL,
+  `codigo_activo` varchar(16) NOT NULL,
   `codigo_pactivo` int(11) NOT NULL,
   KEY `fk_prestamo_activos_has_actvos_actvos1_idx` (`codigo_activo`),
   KEY `fk_prestamo_activos_has_actvos_prestamo_activos1_idx` (`codigo_pactivo`)

@@ -132,18 +132,13 @@ function llenarTact(valor, lista){
 //alert(valor.id);
     if (depto != "") {//alert("paso"+depto);
         $.post("../activofijo/llenar.php", {libro: depto, lista: depto2}, function(mensaje) {
-          $('#listaLibros22').html(mensaje).fadeIn();
-         
+          $('#listaLibros22').html(mensaje).fadeIn();       
 
         }); 
+        
     }         
 
 }
 
-function buscarActivo2(){
-document.getElementById('codigoActivo').innerHTML = '1995-25-05';
-        document.getElementById('tipoActivo').innerHTML = 'Silla';
-        document.getElementById('encargado').innerHTML = 'Boris Ricardo Miranda Ayala';
-        document.getElementById('estado').innerHTML = "Disponible";
-}
+
 
