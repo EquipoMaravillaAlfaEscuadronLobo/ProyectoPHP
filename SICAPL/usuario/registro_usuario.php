@@ -98,8 +98,8 @@ include_once '../repositorios/repositorio_institucion.php';
                                 <div class="file-field input-field">
                                     <div class="btn">
                                         <span><i class="glyphicon glyphicon-picture" aria-hidden="true"></i>Foto</span>
-                                        <input type="file" id="foto" name="foto" accept="image/*">
-                                          
+                                        <input type="file" id="files" required name="foto" accept="image/*">
+                            
                                     </div>
 
 
