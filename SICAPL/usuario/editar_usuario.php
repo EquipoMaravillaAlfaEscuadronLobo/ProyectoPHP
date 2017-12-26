@@ -1,13 +1,13 @@
 <form  method="post" action="" autocomplete="off" id="editar_formulario">
-<input type="hidden" name="banderaEdicion" id="banderaEdicion"/>
-<input type="hidden" name="nameCarnetE" id="idCarnetE"/>
-<input type="hidden" id="idSecreto" value="">
+    <input type="hidden" name="banderaEdicion" id="banderaEdicion"/>
+    <input type="hidden" name="nameCarnetE" id="idCarnetE"/>
+    <input type="hidden" id="idSecreto" value="">
     <!--este es el modal-->
     <div id="edicion_usuario" class="modal modal-fixed-footer nuevo">
         <div class="modal-heading panel-heading">
             <h3 class="text-center">Editar Usuarios</h3>
         </div>
-        
+
         <div class="modal-content modal-lg">
             <div class="row">
                 <div class="col-md-12">
@@ -77,19 +77,18 @@
                                 </div>
                                 <div class="col 1"></div>
                             </div>
-                            <div class="col m6">
-                                <div class="col m2"></div>
-                                <div class="file-field input-field col m10">
-                                    <div class="btn btn-primary">
-                                        <span class="glyphicon glyphicon-picture" aria="hidden"></span> Foto                          
-                                        <input type="file">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5">
+                                <div class="file-field input-field">
+                                    <div class="btn">
+                                        <span><i class="fa fa-camera" aria-hidden="true"></i>Foto</span>
+                                        <input type="file" id="foto1" name="foto1">
                                     </div>
                                     <div class="file-path-wrapper">
-                                        <input class="file-path validate" type="text" name="nameFotoE" id="idFotoE">
-                                        <input type="file" id="filesE" name="files[]">
+                                        <input type="text" id="file_foto" name="foto1"  class="form-control file-path validate">
                                     </div>
                                 </div>
-                            </div>
+                            </div>  
                         </div>
                         <div class="row">
                             <output id="listE"></output>                
@@ -97,7 +96,7 @@
                     </div>
                 </div>
             </div>
-         </div>
+        </div>
         <div class="modal-footer">
             <div class="row">
                 <div class="col-md-6 text-right"><button href="#" class="btn btn-success"><span class="glyphicon glyphicon-refresh" aria="hidden"></span>Actualizar</button></div>
@@ -107,9 +106,9 @@
     </div>
     <!--este es el fin de modal-->
 </form>
-    <!--fin de formulario-->
-    
-    <?php
+<!--fin de formulario-->
+
+<?php
 if (isset($_REQUEST["banderaEdicion"])) {
     $usuario = new Usuario();
     $usuario->setNombre($_REQUEST['nameNombreE']);
@@ -119,10 +118,30 @@ if (isset($_REQUEST["banderaEdicion"])) {
     $usuario->setTelefono($_REQUEST['nameTelefonoE']);
     $usuario->setCodigo_institucion($_REQUEST['nameInstitucionE']);
     $usuario->setSexo($_REQUEST['NameSexoE']);
-    $carnet = $_REQUEST['nameCarnetE'] ;
-    
-        
-    echo 'el sexo es'.$_REQUEST['NameSexoE'];
+    $carnet = $_REQUEST['nameCarnetE'];
+
+    $ruta = '../foto_usuario/';
+    $foto =$ruta.basename($_FILES["foto1"]["name"]);
+    $foto2=basename($_FILES["foto1"]["name"]);
+
+    if($foto2==""){
+        $foto2=$_POST['foto1'];
+        $foto ="";
+
+    }
+    if($foto!=""){
+    if (move_uploaded_file($_FILES['foto1']['tmp_name'], $foto)) {
+       $usuario->setFoto($foto2);
+      // echo "1";
+    }else{
+        $usuario->setFoto("");
+        //echo "2";
+    }
+}else{
+    $usuario->setFoto($foto2);
+}
+
+
     Repositorio_usuario::actualizar_usuario(Conexion::obtener_conexion(), $usuario, $carnet);
     //Conexion::cerrar_conexion();
 }

@@ -26,7 +26,7 @@ class Repositorio_usuario {
                 $sql = "INSERT INTO usuarios(codigo_usuario,codigo_institucion,nombre,apellido,telefono,correo,direccion,estado,sexo,observaciones,foto)
                     values (:codigo_usuario,:codigo_institucion,:nombre,:apellido,:telefono,:correo,:direccion,:estado,:sexo,:observaciones,'$foto') ";
 
-                
+
                 $sentencia = $conexion->prepare($sql);
 
                 $sentencia->bindParam(':codigo_usuario', $carnet, PDO::PARAM_STR);
@@ -39,11 +39,11 @@ class Repositorio_usuario {
                 $sentencia->bindParam(':estado', $estado, PDO::PARAM_INT);
                 $sentencia->bindParam(':sexo', $sexo, PDO::PARAM_STR);
                 $sentencia->bindParam(':observaciones', $observaciones, PDO::PARAM_STR);
-                
+
                 $usuario_insertado = $sentencia->execute();
-                $accion = 'se inserto al usuario ' . $nombre .' '. $apellido ;
+                $accion = 'se inserto al usuario ' . $nombre . ' ' . $apellido;
                 self::insertar_bitacora($conexion, $accion);
-                
+
                 echo '<script>swal({
                     title: "Exito",
                     text: "El registro ha sido Guardado!",
@@ -86,7 +86,7 @@ class Repositorio_usuario {
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->execute();
                 $resultado = $sentencia->fetch();
-               // echo 'esta buscanso<br>';
+                // echo 'esta buscanso<br>';
                 $total_usuario = $resultado['total'];
             } catch (PDOException $ex) {
                 echo '<script>swal({
@@ -150,8 +150,9 @@ class Repositorio_usuario {
     }
 
     public static function actualizar_usuario($conexion, $usuario, $carnet) {
-        
-        echo 'esta en actualizar usuario y el sexo es '  . $usuario->getSexo();;
+
+        echo 'esta en actualizar usuario y el sexo es ' . $usuario->getSexo();
+        ;
         $usuario_insertado = false;
         //$usuario = new Usuario();
         if (isset($conexion)) {
@@ -164,11 +165,15 @@ class Repositorio_usuario {
                 $telefono = $usuario->getTelefono();
                 $instittucion = $usuario->getCodigo_institucion();
                 $sexo = $usuario->getSexo();
-                
-                //echo 'el sexo sige siendo' . $sexo;
-               
-                $sql = 'UPDATE usuarios SET codigo_institucion=:institucion,nombre=:nombre,apellido=:apellido,telefono=:telefono,correo=:correo,direccion=:direccion,sexo=:sexo where codigo_usuario = :carnet';
+                $foto = $usuario->getFoto();
+                echo 'la direccion de la foto '. $foto;
 
+                if ($foto == "") {
+                    $sql = 'UPDATE usuarios SET codigo_institucion=:institucion,nombre=:nombre,apellido=:apellido,telefono=:telefono,correo=:correo,direccion=:direccion,sexo=:sexo where codigo_usuario = :carnet';
+                } else {
+
+                    $sql = 'UPDATE usuarios SET codigo_institucion=:institucion,nombre=:nombre,apellido=:apellido,telefono=:telefono,correo=:correo,direccion=:direccion,sexo=:sexo,foto:foto where codigo_usuario = :carnet';
+                }
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->bindParam(':carnet', $carnet, PDO::PARAM_STR);
                 $sentencia->bindParam(':institucion', $instittucion, PDO::PARAM_INT);
@@ -178,11 +183,15 @@ class Repositorio_usuario {
                 $sentencia->bindParam(':correo', $email, PDO::PARAM_STR);
                 $sentencia->bindParam(':sexo', $sexo, PDO::PARAM_STR);
                 $sentencia->bindParam(':telefono', $telefono, PDO::PARAM_STR);
+                                
+                if ($foto != "") {
+                $sentencia->bindParam(':foto', $foto, PDO::PARAM_STR);    
+                }
 
                 $administrador_insertado = $sentencia->execute();
                 $accion = 'se actualizaron los datos del usuario ' . $nombre . " " . $apellido;
                 self::insertar_bitacora($conexion, $accion);
-                
+
                 echo '<script>swal({
                     title: "Exito",
                     text: "El registro ha sido actualizado!",
@@ -199,7 +208,7 @@ class Repositorio_usuario {
                 //echo 'problemas con sql';
                 echo '<script>swal({
                     title: "Error!",
-                    text: "No hay conexion",
+                    text: "'.$ex->getMessage(); ' ",
                     type: "error",
                     confirmButtonText: "ok",
                     closeOnConfirm: false
@@ -208,38 +217,38 @@ class Repositorio_usuario {
                     location.href="inicio_usuario.php";
                     
                 });</script>';
-                
+
                 print 'ERROR: ' . $ex->getMessage();
             }
-        }  else {
-            echo 'no hay conexion';    
+        } else {
+            echo 'no hay conexion';
         }
     }
-    
+
     public static function eliminar_usuario($conexion, $usuario, $carnet) {
-        
+
         echo 'esta en eliminar usuario<br>';
         $usuario_insertado = false;
-      // $usuario = new Usuario();
+        // $usuario = new Usuario();
         if (isset($conexion)) {
             try {
                 //echo 'hay conexion<br>';
                 //echo 'el carnet es'. $carnet;
                 $observacion = $usuario->getObservacion();
                 $estado = 0;
-                
+
                 $sql = 'UPDATE usuarios SET estado=:estado,observaciones=:observaciones where codigo_usuario = :carnet';
 
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->bindParam(':carnet', $carnet, PDO::PARAM_STR);
                 $sentencia->bindParam(':estado', $estado, PDO::PARAM_INT);
                 $sentencia->bindParam(':observaciones', $observacion, PDO::PARAM_STR);
-                
+
                 $usuario_insertado = $sentencia->execute();
-                
+
                 $accion = "se dio de baja al usuario " . $usuario->getNombre() . ' por el siguiente motivo: ' . $observacion;
                 self::insertar_bitacora($conexion, $accion);
-                
+
                 echo '<script>swal({
                     title: "Exito",
                     text: "El registro ha sido Eliminado con exito!",
@@ -267,11 +276,11 @@ class Repositorio_usuario {
                 //echo 'problemas con sql';
                 print 'ERROR: ' . $ex->getMessage();
             }
-        }  else {
-            echo 'no hay conexion';    
+        } else {
+            echo 'no hay conexion';
         }
     }
-    
+
     public static function insertar_bitacora($conexion, $accion) {
         $administrador_insertado = false;
         if (isset($conexion)) {
