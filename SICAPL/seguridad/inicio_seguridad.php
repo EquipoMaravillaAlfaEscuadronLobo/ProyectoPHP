@@ -20,12 +20,12 @@ include_once '../plantillas/menu.php';
 
 
         <li class="tab">
-            <a href="#test3">
+            <a href="#test3" class="active">
                 <i class="fa fa-compass" aria-hidden="true"></i> Bitacora
             </a>
         </li>
         <li class="tab">
-            <a href="#test4" class="active">
+            <a href="#test4" class="">
                 <i class="fa fa-save" aria-hidden="true"></i> Backup/Restaurar
             </a>
         </li>

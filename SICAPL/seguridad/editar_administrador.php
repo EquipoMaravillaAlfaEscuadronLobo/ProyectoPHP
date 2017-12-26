@@ -1,9 +1,9 @@
-<form id="editar_formulario" method="post" action="" autocomplete="off" >
+<form id="editar_formulario" method="post" action="" autocomplete="off" enctype="multipart/form-data">
     <input type="hidden" name="banderaEdicion" id="banderaEliminacion"/>
     <input type="hidden" name="codigo_original" id="codigo_original"/>
     <input type="hidden" id="idSecreto" value="">
 
-<!--    este es el modal-->
+    <!--    este es el modal-->
     <div id="edicion_administradores" class="modal modal-fixed-footer nuevo">
         <div class="modal-heading panel-heading">
             <h3 class="text-center">Editar Administradores</h3>
@@ -103,14 +103,15 @@
                         </div>
                         <div class="row">
                             <div class="col m1"></div>
-                            <div class="file-field input-field col m5">
-                                <div class="btn btn-primary">
-                                    <span class="glyphicon glyphicon-picture" aria="hidden"></span> Foto                          
-                                    <input type="file">
-                                </div>
-                                <div class="file-path-wrapper">
-                                    <input class="file-path" type="text" name="nameFotoE" id="idFoto" minlength="5">
-                                    <input type="file" id="files" name="files[]">
+                            <div class="col-md-5">
+                                <div class="file-field input-field">
+                                    <div class="btn">
+                                        <span><i class="fa fa-camera" aria-hidden="true"></i>Foto</span>
+                                        <input type="file" id="foto1" name="foto1" accept="image/*">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input type="text"  class="form-control file-path validate">
+                                    </div>
                                 </div>
                             </div>
                             <div class="input-field col m5">
@@ -138,15 +139,15 @@
             <div class="row">
                 <div class="col-md-6 text-right">
                     <button href="#" class="btn btn-success">
-                       <span class="glyphicon glyphicon-refresh" aria="hidden"></span> Actualizar
+                        <span class="glyphicon glyphicon-refresh" aria="hidden"></span> Actualizar
                     </button>
                 </div>
-                <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger" onclick="location.href='inicio_seguridad.php';"><span class="glyphicon glyphicon-remove" aria="hidden"></span>Salir</a></div>
+                <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger" onclick="location.href = 'inicio_seguridad.php';"><span class="glyphicon glyphicon-remove" aria="hidden"></span>Salir</a></div>
             </div>
         </div>
     </div>
-<!--aqui termina el modal-->
-    
+    <!--aqui termina el modal-->
+
 </form>
 <?php
 if (isset($_REQUEST["banderaEdicion"])) {
@@ -163,11 +164,31 @@ if (isset($_REQUEST["banderaEdicion"])) {
     $administrador->setSexo($_REQUEST['NameSexoE']);
     $administrador->setEmail($_REQUEST['nameEmailE']);
     $administrador->setFecha($_REQUEST['nameFechaE']);
-    $codigo_original = $_REQUEST['codigo_original'];///ESTE ES EL ID ADMINISTRADOR
+    $codigo_original = $_REQUEST['codigo_original']; ///ESTE ES EL ID ADMINISTRADOR
     $verificacion = $_REQUEST['nameVerificacion'];
 
+    $ruta = '../foto_admi/';
+    $foto =$ruta.basename($_FILES["foto1"]["name"]);
+    $foto2=basename($_FILES["foto1"]["name"]);
+    if($foto2==""){
+        $foto2=$_FILES['foto1']['name'];
+        $foto ="";
 
-    Repositorio_administrador::actualizar_administrador(Conexion::obtener_conexion(), $administrador, $codigo_original,$verificacion);
+    }
+    if($foto!=""){
+    if (move_uploaded_file($_FILES['foto1']['tmp_name'], $foto)) {
+       $administrador->setFoto($foto2);
+      // echo "1";
+    }else{
+        $administrador->setFoto("");
+        //echo "2";
+    }
+}else{
+      $administrador->setFoto($foto2);
+
+}
+
+    Repositorio_administrador::actualizar_administrador(Conexion::obtener_conexion(), $administrador, $codigo_original, $verificacion);
     //Conexion::cerrar_conexion();
 }
 ?>

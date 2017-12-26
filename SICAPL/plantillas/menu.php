@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 ?>
 <nav class="nav-extended">
     <div class="nav-wrapper">

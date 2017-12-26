@@ -54,12 +54,13 @@
                             <div class="input-field col m4">
                                 <select required="" name="nameInstitucionE">
                                     <option value = "" disabled selected>Seleccione Institucion</option>
-                                    <option value = "1" selected="">Centro Escolar Presbitero Norberto Marroquín</option>
-                                    <option value = "2">Instituto Nacional de San José Verapaz</option>
-                                    <option value = "3">Instituto Nacional Dr. Sarvelio Navarrete</option>
-                                    <option value = "4">Escuela católica, San Jose Verapaz</option>
-                                    <option value = "5">Alcaldía Municial, San José Verapaz</option>
-                                    <option value = "6">Otros</option>
+                                     <?php
+                                    $lista_instituciones = Repositorio_institucion::lista_institucion(Conexion::obtener_conexion());
+
+                                    foreach ($lista_instituciones as $lista_ins) {
+                                    ?>
+                                    <option value = '<?php echo $lista_ins->getCodigo_institucion(); ?>' ><?php echo $lista_ins->getNombre(); ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
                         </div>
@@ -123,25 +124,23 @@ if (isset($_REQUEST["banderaEdicion"])) {
     $usuario->setSexo($_REQUEST['NameSexoE']);
     $carnet = $_REQUEST['nameCarnetE'];
     $ruta = '../foto_usuario/';
-    $foto =$ruta.basename($_FILES["foto1"]["name"]);
-    $foto2=basename($_FILES["foto1"]["name"]);
-    if($foto2==""){
-        $foto2=$_FILES['foto1']['name'];
-        $foto ="";
-
+    $foto = $ruta . basename($_FILES["foto1"]["name"]);
+    $foto2 = basename($_FILES["foto1"]["name"]);
+    if ($foto2 == "") {
+        $foto2 = $_FILES['foto1']['name'];
+        $foto = "";
     }
-    if($foto!=""){
-    if (move_uploaded_file($_FILES['foto1']['tmp_name'], $foto)) {
-       $usuario->setFoto($foto2);
-      // echo "1";
-    }else{
-        $usuario->setFoto("");
-        //echo "2";
+    if ($foto != "") {
+        if (move_uploaded_file($_FILES['foto1']['tmp_name'], $foto)) {
+            $usuario->setFoto($foto2);
+            // echo "1";
+        } else {
+            $usuario->setFoto("");
+            //echo "2";
+        }
+    } else {
+        $usuario->setFoto($foto2);
     }
-}else{
-    $usuario->setFoto($foto2);
-
-}
 //echo $carnet; 
 
     Conexion::abrir_conexion();
