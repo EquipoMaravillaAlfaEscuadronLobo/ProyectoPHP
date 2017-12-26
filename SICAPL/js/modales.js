@@ -57,7 +57,10 @@ $(document).ready(function () {
    
 });
 
-function abrir_edicion_administrador(nombre, apellido, user, dui, fecha, email, password, nivel, sexo) {
+function abrir_edicion_administrador(nombre, apellido, user, dui, fecha, email, password, nivel, sexo,foto) {
+    
+    var foto2="../foto_administrador/"+foto;
+    document.getElementById("idFoto").src = foto2;
     $("#idNombreE").val(nombre);
     $("#idApellidoE").val(apellido);
     $("#idUserE").val(user);
@@ -88,7 +91,10 @@ function abrir_edicion_administrador(nombre, apellido, user, dui, fecha, email, 
  $('#edicion_administradores').modal('open');
 }
 
-function abrir_edicion_usuario(nombre,apellido,direccion,email,telefono,sexo,password,carnet) {
+function abrir_edicion_usuario(nombre,apellido,direccion,email,telefono,sexo,password,carnet,foto) {
+    
+    var foto2="../foto_usuario/"+foto;
+    document.getElementById("idFoto").src = foto2;
     $("#idSecreto").val(nombre + " " +apellido);
     $("#idCarnetE").val(carnet);
     $("#idNombreE").val(nombre);

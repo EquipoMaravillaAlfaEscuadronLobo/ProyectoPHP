@@ -66,19 +66,19 @@ include_once '../repositorios/repositorio_institucion.php';
                                 <option value = "" disabled selected>Seleccione Institucion</option>
                                 <?php
                                 $lista_instituciones = Repositorio_institucion::lista_institucion(Conexion::obtener_conexion());
-                            
+
                                 foreach ($lista_instituciones as $lista_ins) {
                                     ?>
-                                <option value = '<?php echo $lista_ins->getCodigo_institucion();?>' ><?php echo $lista_ins->getNombre(); ?></option>
+                                    <option value = '<?php echo $lista_ins->getCodigo_institucion(); ?>' ><?php echo $lista_ins->getNombre(); ?></option>
                                 <?php } ?>
                             </select>
                         </div>
-                         <div class="input-field col m1">
-                             <a class="btn btn_primary"  target="_blank" onclick="abrir_nueva_institucion()">
-                                    <span aria-hidden="true" class="glyphicon glyphicon-plus">
-                                    </span>
-                                </a>
-                            </div>
+                        <div class="input-field col m1">
+                            <a class="btn btn_primary"  target="_blank" onclick="abrir_nueva_institucion()">
+                                <span aria-hidden="true" class="glyphicon glyphicon-plus">
+                                </span>
+                            </a>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col m5">
@@ -93,19 +93,21 @@ include_once '../repositorios/repositorio_institucion.php';
                             </div>
                             <div class="col 1"></div>
                         </div>
-                        <div class="col m6">
-                            <div class="col m2"></div>
-                            <div class="file-field input-field col m10">
-                                <div class="btn btn-primary">
-                                    <span class="glyphicon glyphicon-picture" aria="hidden"></span> Foto                          
-                                    <input type="file">
-                                </div>
-                                <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text" name="nameFoto" id="idFoto">
-                                    <input type="file" id="files" name="files[]">
+                        <div class="col-md-1"></div>
+                       <div class="col-md-5">
+                                <div class="file-field input-field">
+                                    <div class="btn">
+                                        <span><i class="glyphicon glyphicon-picture" aria-hidden="true"></i>Foto</span>
+                                        <input type="file" id="foto" name="foto" accept="image/*">
+                                          
+                                    </div>
+
+
+                                    <div class="file-path-wrapper">
+                                        <input type="text" accept="image/*" required class="form-control file-path validate">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
                     <div class="row">
                         <output id="list"></output>                
@@ -114,7 +116,7 @@ include_once '../repositorios/repositorio_institucion.php';
                         <button class="btn btn-success">
                             <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>                            
                             Guardar</button>
-                        <button type="reset" class="btn btn-danger" onclick="location.href='inicio_usuario.php';">
+                        <button type="reset" class="btn btn-danger" onclick="location.href = 'inicio_usuario.php';">
                             <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar
                         </button>
                     </div>
@@ -138,8 +140,9 @@ include_once './nueva_institucion.php';
 
 <?php
 if (isset($_REQUEST["banderaRegistro"])) {
+
     Conexion::abrir_conexion();
-    $usuario= new Usuario();
+    $usuario = new Usuario();
     $usuario->setApellido($_REQUEST["nameApellido"]);
     $usuario->setDireccion($_REQUEST["nameDireccion"]);
     $usuario->setNombre($_REQUEST["nameNombre"]);
@@ -148,7 +151,19 @@ if (isset($_REQUEST["banderaRegistro"])) {
     $usuario->setEmail($_REQUEST['nameEmail']);
     $usuario->setTelefono($_REQUEST['nameTelefono']);
     $usuario->setCodigo_institucion($_REQUEST['nameInstitucion']);
-    
-     Repositorio_usuario::insertar_usuario(Conexion::obtener_conexion(), $usuario);
+
+    $ruta = '../foto_usuario/';
+    $foto = $ruta . basename($_FILES["foto"]["name"]); ///ruta
+    $foto2 = basename($_FILES["foto"]["name"]); //nombre de archivo
+
+    if (move_uploaded_file($_FILES['foto']['tmp_name'], $foto)) {
+        $usuario->setFoto($foto2);
+       } else {
+        $usuario->setFoto("");
+       
+    }
+    echo 'este es la direccion de foto' . $usuario->getFoto();
+
+   Repositorio_usuario::insertar_usuario(Conexion::obtener_conexion(), $usuario);
 }
 ?>

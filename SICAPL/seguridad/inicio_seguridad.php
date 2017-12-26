@@ -13,7 +13,7 @@ include_once '../plantillas/menu.php';
             </a>
         </li>
         <li class="tab">
-            <a class="active" href="#test5" id="idListarAdmnistrador">
+            <a class="" href="#test5" id="idListarAdmnistrador">
                 <i class="fa fa-edit" aria-hidden="true"></i> Editar Administradores
             </a>
         </li>
@@ -25,8 +25,8 @@ include_once '../plantillas/menu.php';
             </a>
         </li>
         <li class="tab">
-            <a href="#test4">
-                <i class="fa fa-save" aria-hidden="true"></i> Backup
+            <a href="#test4" class="active">
+                <i class="fa fa-save" aria-hidden="true"></i> Backup/Restaurar
             </a>
         </li>
 

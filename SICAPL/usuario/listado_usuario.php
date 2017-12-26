@@ -1,6 +1,8 @@
 <?php
 Conexion::abrir_conexion();
 $lista_usuarios = Repositorio_usuario::lista_usuarios(Conexion::obtener_conexion());
+$direccion = '../foto_usuario/';
+
 ?>
 
 
@@ -34,7 +36,7 @@ $lista_usuarios = Repositorio_usuario::lista_usuarios(Conexion::obtener_conexion
                                     <button class="btn btn-success" onclick="abrir_edicion_usuario('<?php echo $lista_usu->getNombre();?>',
                                                 '<?php echo $lista_usu->getApellido();?>','<?php echo $lista_usu->getDireccion();?>',
                                                 '<?php echo $lista_usu->getEmail();?>','<?php echo $lista_usu->getTelefono();?>',
-                                                '<?php echo $lista_usu->getSexo();?>','111111','<?php echo $lista_usu->getCodigo_usuario();?>' )">
+                                                '<?php echo $lista_usu->getSexo();?>','111111','<?php echo $lista_usu->getCodigo_usuario();?>','<?php echo $lista_usu->getFoto();?>' )">
                                         <i class="Medium material-icons prefix">edit</i> 
                                     </button>
                                 </td>
@@ -43,7 +45,7 @@ $lista_usuarios = Repositorio_usuario::lista_usuarios(Conexion::obtener_conexion
                                 <td class="text-center"><?php echo $lista_usu->getDireccion(); ?></td>
                                 <td class="text-center"><?php echo $lista_usu->getEmail(); ?></td>
                                 <td class="text-center">
-                                    <img height="50px" src="data:image/jpg;base64,<?php echo base64_encode($lista_usu->getFoto());?>"/>
+                                    <img height="105px" width="85px" src="<?php echo $direccion . $lista_usu->getFoto();?>"/>
                                 </td>
                                 <td class="text-center">
                                     <button class="btn btn-danger" onclick="abrir_eliminacion_usuario('<?php echo $lista_usu->getNombre();?>','<?php echo $lista_usu->getApellido();?>','<?php echo $lista_usu->getCodigo_usuario();?>','111111')"> 
