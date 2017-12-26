@@ -239,7 +239,7 @@ if (isset($_REQUEST["passsss"])) {
         //	echo "hasta aki";
         $prestamo1 = Repositorio_prestamoact::obtenerUltimoPact(Conexion::obtener_conexion());
         //echo $prestamo1;
-        for ($i = 0; $i < $longitud; $i++) {echo '<script language="javascript">alert("' . $libros[$i] . '");</script>';
+        for ($i = 0; $i < $longitud; $i++) {
             if (!Repositorio_prestamoact::GuardarActivos(Conexion::obtener_conexion(), $prestamo1,  $libros[$i] )) {
                 echo "<script type='text/javascript'>";
                 echo 'swal({
