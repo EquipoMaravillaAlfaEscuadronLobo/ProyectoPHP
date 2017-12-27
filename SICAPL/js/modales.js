@@ -191,9 +191,9 @@ function nuevaCat(opcion) {
     if (opcion == 4) {
         $('#actualizarCaracteristicas').modal('open');
     }
-    if (opcion == 5) {
-        $('#actPres').modal('open');
-    }
+   
+       
+    
     if (opcion == 6) {
         $('#editActivo').modal('open');
     }
@@ -209,7 +209,14 @@ function nuevoMant() {
 function nuevoEnc() {
     $('#actualizarCaracteristicas').modal('open');
 }
+function actualizarPrestamoActivo(id){
+     $('#actPres').modal('open');
+    $.post("../activofijo/llenar_act_prest.php", {codigo: id, }, function(mensaje) {
+       $('#listaLibros22').html(mensaje).fadeIn();       
 
+        }); 
+    
+}
 
 function abrirActivo(coda,codadm,foto,estado,codd,color,dimen,marca,memo,mode,otros,proce,ram,seri,siste, admin) {
 

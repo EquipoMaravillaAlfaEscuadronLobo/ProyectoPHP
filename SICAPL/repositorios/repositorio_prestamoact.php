@@ -130,6 +130,68 @@ Devolucion ASC
         return $libro_mod;
     }
 
+    public static function obtenerPact($conexion, $codigoPact) {
+        
+        $resultado = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT
+categoria.nombre AS tipo,
+(CONCAT(usuarios.nombre,' ',usuarios.apellido)) AS nombre,
+usuarios.sexo AS sexo,
+usuarios.foto AS foto,
+usuarios.telefono AS tel,
+usuarios.correo AS correo,
+usuarios.direccion AS dir,
+prestamo_activos.fecha_salida AS fech_sal,
+prestamo_activos.fecha_devolucion AS fech_dev,
+movimiento_actvos.codigo_pactivo AS mov_activos,
+prestamo_activos.usuarios_codigo as carnet
+FROM
+prestamo_activos
+INNER JOIN movimiento_actvos ON movimiento_actvos.codigo_pactivo = prestamo_activos.codigo_pactivo
+INNER JOIN actvos ON actvos.codigo_activo = movimiento_actvos.codigo_activo
+INNER JOIN categoria ON actvos.codigo_tipo = categoria.codigo_tipo
+INNER JOIN usuarios ON prestamo_activos.usuarios_codigo = usuarios.codigo_usuario
+WHERE
+prestamo_activos.codigo_pactivo = '$codigoPact'
+GROUP BY
+prestamo_activos.codigo_pactivo
+
+                        ";
+                 $resultado = $conexion->query($sql);
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
+    
+      public static function obtenerListActP($conexion, $codigoP) {
+        
+        $resultado = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT
+                    movimiento_actvos.codigo_activo as codigo,
+categoria.nombre as tipo
+FROM
+movimiento_actvos
+INNER JOIN actvos ON movimiento_actvos.codigo_activo = actvos.codigo_activo
+INNER JOIN categoria ON actvos.codigo_tipo = categoria.codigo_tipo
+WHERE
+movimiento_actvos.codigo_pactivo = '$codigoP'
+ORDER BY
+codigo ASC
+                        ";
+                 $resultado = $conexion->query($sql);
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+       
+        return $resultado;
+    }
 }
 
 ?>

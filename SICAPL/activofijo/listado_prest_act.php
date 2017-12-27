@@ -4,9 +4,10 @@
     Conexion::abrir_conexion();
     $listado= Repositorio_prestamoact::ListaPrestamosAct(Conexion::obtener_conexion());
 
+
  ?>
 <div class="row">
-
+   
     <div class="col-md-12">
         <div class="panel">
             <div class="panel-heading">
@@ -32,6 +33,7 @@
                             foreach ($listado as $fila) {
                                 $fdev=date_create($fila['Devolucion']);
                                 $hoy=new DateTime("now");
+                                $codigo= $fila['codigo'];
                          ?>
                             <tr>
                                 <td style="display:none;"  ></td>
@@ -57,7 +59,7 @@
                                     }                                    
                                     ?>"
                                      <?php if ($fila['estado'] == 0) {
-                                        echo ' onclick="nuevaCat(5)" ';
+                                        echo ' onclick="actualizarPrestamoActivo('.$fila['codigo'].')" ';
                                         
                                     } ?>
                                         style="font-size: 16px">
@@ -126,5 +128,13 @@
     </div>
 </div>
 <script type="text/javascript">
-   
+        function  asignarcodigo() {//para activar boton de agregar, se llama en getuser y get activo
+         <?php  ?>
+        actualizarPrestamoActivo(1);
+        
+  alert("Modal Mostrada con Evento de Boostrap");
+
+    
+
+    }
 </script>   
