@@ -9,20 +9,20 @@ class Repositorio_prestamoact {
         $resultado = "";
         if (isset($conexion)) {
             try {
-                $sql = "SELECT
- (CONCAT(usuarios.nombre,' ',usuarios.apellido)) as nombre,
- prestamo_libros.codigo_plibro as codigo,
- (prestamo_libros.fecha_salida),
- (prestamo_libros.fecha_devolucion) as Devolucion,
- GROUP_CONCAT(libros.titulo SEPARATOR ' - ') as titulo
-FROM
-usuarios
-INNER JOIN prestamo_libros ON prestamo_libros.codigo_usuario = usuarios.codigo_usuario
-INNER JOIN movimiento_libros ON movimiento_libros.codigo_plibro = prestamo_libros.codigo_plibro
-INNER JOIN libros ON movimiento_libros.codigo_libro = libros.codigo_libro
-WHERE
-prestamo_libros.estado = 0
-GROUP BY prestamo_libros.fecha_devolucion
+                $sql = "SELECT  (CONCAT(usuarios.nombre,' ',usuarios.apellido)) as nombre, 
+                    prestamo_activos.codigo_pactivo as codigo, 
+                    (prestamo_activos.fecha_salida),   
+                    (movimiento_actvos.codigo_activo) as titulo, 
+                    (prestamo_activos.fecha_devolucion) as Devolucion,
+                    prestamo_activos.estado as estado
+FROM usuarios 
+                    INNER JOIN prestamo_activos ON prestamo_activos.usuarios_codigo= usuarios.codigo_usuario 
+                    INNER JOIN movimiento_actvos ON movimiento_actvos.codigo_pactivo = prestamo_activos.codigo_pactivo 
+                    INNER JOIN actvos ON movimiento_actvos.codigo_activo = actvos.codigo_activo
+GROUP BY prestamo_activos.codigo_pactivo
+ORDER BY
+estado ASC,
+Devolucion ASC
 ";
                 $resultado = $conexion->query($sql);
             } catch (PDOException $ex) {
