@@ -104,6 +104,14 @@
                                 <td><b>Sexo:</b></td>
                                 <td><div id="sexo"></div></td>
                             </tr>
+                            <tr>
+                                <td>
+                                    <b>Actual:</b>
+                                </td>
+                                <td id="actual" class="alert">
+                                    
+                                </td>
+                            </tr>
 
 
 

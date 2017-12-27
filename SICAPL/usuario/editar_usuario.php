@@ -69,11 +69,11 @@
                                 <i class="fa fa-intersex prefix"></i> 
                                 <div class="radio-inline">
                                     <span>Sexo</span>
-                                    <input type="radio" id="hombreE"  name="NameSexoE"  class="text-center with-gap" checked="" value="Masculino">
-                                    <label for="hombreE">Masculino</label>
+                                    <input type="radio" id="idHombreE"  name="NameSexoE"  class="text-center with-gap"  value="Masculino">
+                                    <label for="idHombreE">Masculino</label>
 
-                                    <input type="radio" id="mujerE" name="NameSexoE"  class="text-center with-gap" value="Femenino">
-                                    <label for="mujerE">Femenino</label>
+                                    <input type="radio" id="idMujerE" name="NameSexoE"  class="text-center with-gap"  value="Femenino">
+                                    <label for="idMujerE">Femenino</label>
                                 </div>
                                 <div class="col 1"></div>
                             </div>
@@ -111,9 +111,7 @@
     
     <?php
 if (isset($_REQUEST["banderaEdicion"])) {
-
     $usuario = new Usuario();
-
     $usuario->setNombre($_REQUEST['nameNombreE']);
     $usuario->setApellido($_REQUEST['nameApellidoE']);
     $usuario->setDireccion($_REQUEST['nameDireccionE']);

@@ -151,7 +151,7 @@ class Repositorio_usuario {
 
     public static function actualizar_usuario($conexion, $usuario, $carnet) {
         
-        echo 'esta en actualizar usuario<br>';
+        echo 'esta en actualizar usuario y el sexo es '  . $usuario->getSexo();;
         $usuario_insertado = false;
         //$usuario = new Usuario();
         if (isset($conexion)) {
