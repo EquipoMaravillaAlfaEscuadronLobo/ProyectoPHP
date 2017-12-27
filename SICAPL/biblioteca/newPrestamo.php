@@ -1,5 +1,5 @@
 <?php
-
+$titulo1="";
 include_once '../app/Conexion.php';
 include_once '../modelos/Prestamo.inc.php';
 include_once '../repositorios/repositorio_prestamolib.inc.php';

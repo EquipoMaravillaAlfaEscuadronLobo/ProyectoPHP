@@ -15,8 +15,20 @@
 
         document.getElementById('sexo').innerHTML = "<?php echo $fila['sexo'] ?>";
         document.getElementById('fot').setAttribute("src", "<?php echo $fila['foto'] ?>")
+        <?php 
+            if ($fila[11]=='si') {
+         ?>
+          document.getElementById('actual').innerHTML = "<?php echo 'Prestamo Pendiente'?>";
+          $('#actual').removeClass('alert-success');
+          $('#actual').addClass('alert-danger');
 
-
+        <?php 
+            }else {
+         ?>
+        document.getElementById('actual').innerHTML = "<?php echo 'sin Prestamos' ?>";
+        $('#actual').removeClass('alert-danger');
+        $('#actual').addClass('alert-success');
+        <?php } ?>
 		</script>
 
 
