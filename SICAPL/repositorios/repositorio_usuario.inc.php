@@ -151,7 +151,7 @@ class Repositorio_usuario {
 
     public static function actualizar_usuario($conexion, $usuario, $carnet) {
 
-        echo 'esta en actualizar usuario y el sexo es ' . $usuario->getSexo();
+        echo 'esta en actualizar usuario y el sexo es ' . $usuario->getFoto().'<br>';
         ;
         $usuario_insertado = false;
         //$usuario = new Usuario();
@@ -172,7 +172,7 @@ class Repositorio_usuario {
                     $sql = 'UPDATE usuarios SET codigo_institucion=:institucion,nombre=:nombre,apellido=:apellido,telefono=:telefono,correo=:correo,direccion=:direccion,sexo=:sexo where codigo_usuario = :carnet';
                 } else {
 
-                    $sql = 'UPDATE usuarios SET codigo_institucion=:institucion,nombre=:nombre,apellido=:apellido,telefono=:telefono,correo=:correo,direccion=:direccion,sexo=:sexo,foto:foto where codigo_usuario = :carnet';
+                    $sql = 'UPDATE usuarios SET codigo_institucion=:institucion,nombre=:nombre,apellido=:apellido,telefono=:telefono,correo=:correo,direccion=:direccion,sexo=:sexo,foto=:foto where codigo_usuario = :carnet';
                 }
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->bindParam(':carnet', $carnet, PDO::PARAM_STR);
@@ -190,6 +190,7 @@ class Repositorio_usuario {
 
                 $administrador_insertado = $sentencia->execute();
                 $accion = 'se actualizaron los datos del usuario ' . $nombre . " " . $apellido;
+                echo $accion;
                 self::insertar_bitacora($conexion, $accion);
 
                 echo '<script>swal({

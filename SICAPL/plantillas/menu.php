@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <nav class="nav-extended">
     <div class="nav-wrapper">
         <div class="brand-logo">

@@ -21,12 +21,12 @@
 <script src="../js/foto.js"></script>
 
 </body>
-<footer class="text-center">
+<!--<footer class="text-center">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">Derechos Reservados UES-FMP</div>
 
         </div>
     </div>
-</footer>
+</footer>-->
 </html>

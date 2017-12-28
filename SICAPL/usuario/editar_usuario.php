@@ -85,7 +85,7 @@
                                         <input type="file" id="foto1" name="foto1" accept="image/*">
                                     </div>
                                     <div class="file-path-wrapper">
-                                        <input type="text" id="file_foto" name="foto1"  class="form-control file-path validate">
+                                        <input type="text"  class="form-control file-path validate">
                                     </div>
                                 </div>
                             </div>  
@@ -110,6 +110,9 @@
 
 <?php
 if (isset($_REQUEST["banderaEdicion"])) {
+    include_once '../modelos/Usuario.php';
+    include_once '../repositorios/repositorio_usuario.inc.php';
+    include_once '../app/Conexion.php';
     $usuario = new Usuario();
     $usuario->setNombre($_REQUEST['nameNombreE']);
     $usuario->setApellido($_REQUEST['nameApellidoE']);
@@ -119,13 +122,11 @@ if (isset($_REQUEST["banderaEdicion"])) {
     $usuario->setCodigo_institucion($_REQUEST['nameInstitucionE']);
     $usuario->setSexo($_REQUEST['NameSexoE']);
     $carnet = $_REQUEST['nameCarnetE'];
-
     $ruta = '../foto_usuario/';
     $foto =$ruta.basename($_FILES["foto1"]["name"]);
     $foto2=basename($_FILES["foto1"]["name"]);
-
     if($foto2==""){
-        $foto2=$_POST['foto1'];
+        $foto2=$_FILES['foto1']['name'];
         $foto ="";
 
     }
@@ -139,9 +140,11 @@ if (isset($_REQUEST["banderaEdicion"])) {
     }
 }else{
     $usuario->setFoto($foto2);
+
 }
+//echo $carnet; 
 
-
+    Conexion::abrir_conexion();
     Repositorio_usuario::actualizar_usuario(Conexion::obtener_conexion(), $usuario, $carnet);
     //Conexion::cerrar_conexion();
 }
