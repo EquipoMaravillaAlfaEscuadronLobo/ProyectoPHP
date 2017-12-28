@@ -161,9 +161,11 @@ libros.codigo_libro ='$codigo'";
         if (isset($conexion)) {
             try {
                 $sql = "SELECT
-DISTINCT usuarios.*,(case when usuarios.codigo_usuario in (select DISTINCT (prestamo_libros.codigo_usuario) from prestamo_libros where prestamo_libros.estado=0) then 'si' else 'no' end) as 'esta'
+DISTINCT usuarios.*,(case when usuarios.codigo_usuario in (select DISTINCT (prestamo_libros.codigo_usuario) from prestamo_libros where prestamo_libros.estado=0) or usuarios.codigo_usuario in (select DISTINCT (prestamo_activos.usuarios_codigo) from prestamo_activos where prestamo_activos.estado=0)  then 'si' else 'no' end) as 'esta'
 FROM
 usuarios, prestamo_libros
+
+
 WHERE
 usuarios.codigo_usuario ='$codigo'";
                 $resultado = $conexion->query($sql);
