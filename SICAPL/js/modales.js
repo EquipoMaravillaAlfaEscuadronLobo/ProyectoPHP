@@ -22,6 +22,17 @@ $(document).ready(function () {
 
     closeOnSelect: true // Close upon selecting a date,
   });
+   $('.fecha_dev').pickadate({//es clase para validar las fechas del activo fijo
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 2, // Creates a dropdown of 15 years to control year,
+    today: 'Hoy',
+    clear: 'Borrar',
+    close: 'Ok',
+        format: 'dd-mm-yyyy',
+    min: new Date(),
+
+    closeOnSelect: true // Close upon selecting a date,
+  });
     $('.collapse')
             .on('shown.bs.collapse', function () {
                 $(this).parent()

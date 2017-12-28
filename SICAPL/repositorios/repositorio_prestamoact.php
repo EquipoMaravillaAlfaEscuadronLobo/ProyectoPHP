@@ -77,7 +77,7 @@ Devolucion ASC
 
                 $sql = 'INSERT INTO movimiento_actvos(codigo_activo,codigo_pactivo)'
                         . ' values (:libro,:prestamo)';
-                 $sql1 = "UPDATE `actvos` SET `estado`='2' WHERE (`codigo_activo`='$libro') ";                
+                $sql1 = "UPDATE `actvos` SET `estado`='2' WHERE (`codigo_activo`='$libro') ";
                 $sentencia1 = $conexion->prepare($sql1);
                 $sentencia1->execute();
                 ///estos son alias para que PDO pueda trabajar 
@@ -103,7 +103,6 @@ Devolucion ASC
             try {
                 $sql = "SELECT codigo_pactivo from prestamo_activos order by codigo_pactivo desc limit 1";
                 $resultado = $conexion->query($sql);
-                
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();
             }
@@ -120,7 +119,48 @@ Devolucion ASC
             try {
 
 
-                $sql = "UPDATE prestamo_libros SET estado='1', observaciones='$motivo' where  codigo_plibro='$codigo'";                
+                $sql = "UPDATE prestamo_activos SET estado='1', observacion='$motivo' where  codigo_pactivo='$codigo'";
+                $sentencia = $conexion->prepare($sql);
+                $libro_mod = $sentencia->execute();
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $libro_mod;
+    }
+
+    public static function Actualizar($conexion, $fecha, $observaciones, $cod) {
+        $libro_mod = 0;
+        if (isset($conexion)) {
+            try {
+                $sql = "UPDATE `prestamo_activos` SET `observacion`='$observaciones', `fecha_devolucion`='$fecha' WHERE (`codigo_pactivo`='$cod') ";
+                $sentencia = $conexion->prepare($sql);
+                $libro_mod = $sentencia->execute();
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $libro_mod;
+    }
+
+    public static function ActualizarActivo($conexion, $cod, $estado, $observacion) {
+        $libro_mod = 0;
+        if (isset($conexion)) {
+            try {
+                //para no borrar las observaciones acteriores
+                $sql = "SELECT
+                actvos.observacion
+                FROM
+                actvos
+                WHERE
+                actvos.codigo_activo = '$cod'";
+                $resultado = $conexion->query($sql);
+                foreach ($resultado as $fila) {
+                    $observacion = $fila[0] . " \n " .$observacion ;
+                }
+                //****
+                
+                $sql = "UPDATE `actvos` SET `estado`='$estado', `observacion`='$observacion' WHERE (`codigo_activo`='$cod') ";
                 $sentencia = $conexion->prepare($sql);
                 $libro_mod = $sentencia->execute();
             } catch (PDOException $ex) {
@@ -131,7 +171,7 @@ Devolucion ASC
     }
 
     public static function obtenerPact($conexion, $codigoPact) {
-        
+
         $resultado = "";
         if (isset($conexion)) {
             try {
@@ -159,22 +199,23 @@ GROUP BY
 prestamo_activos.codigo_pactivo
 
                         ";
-                 $resultado = $conexion->query($sql);
+                $resultado = $conexion->query($sql);
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();
             }
         }
         return $resultado;
     }
-    
-      public static function obtenerListActP($conexion, $codigoP) {
-        
+
+    public static function obtenerListActP($conexion, $codigoP) {
+
         $resultado = "";
         if (isset($conexion)) {
             try {
                 $sql = "SELECT
-                    movimiento_actvos.codigo_activo as codigo,
-categoria.nombre as tipo
+movimiento_actvos.codigo_activo AS codigo,
+categoria.nombre AS tipo,
+actvos.estado as estado
 FROM
 movimiento_actvos
 INNER JOIN actvos ON movimiento_actvos.codigo_activo = actvos.codigo_activo
@@ -184,14 +225,15 @@ movimiento_actvos.codigo_pactivo = '$codigoP'
 ORDER BY
 codigo ASC
                         ";
-                 $resultado = $conexion->query($sql);
+                $resultado = $conexion->query($sql);
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();
             }
         }
-       
+
         return $resultado;
     }
+
 }
 
 ?>

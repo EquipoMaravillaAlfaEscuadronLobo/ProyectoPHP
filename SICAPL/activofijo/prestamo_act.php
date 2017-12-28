@@ -73,7 +73,7 @@ $(document).ready(function() {
                                     <div class="input-field">
                                         <i class="fa fa-calendar prefix" aria-hidden="true"></i>
                                         <label for="fecha_pub" class="active" style="font-size:14px">Fecha de Devolución</label>
-                                        <input type="text" id="fecha_dev" name="fecha_devolucion" class="form-control datepicker" value="<?php echo date("d-m-Y"); ?>">
+                                        <input type="text" id="fecha_dev_prestamo" name="fecha_devolucion" class="form-control fecha_dev" value="<?php echo date("d-m-Y"); ?>">
                                     </div>
                                 </div>  
                             </div>

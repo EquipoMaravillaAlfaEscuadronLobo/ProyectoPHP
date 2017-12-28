@@ -40,8 +40,8 @@ Conexion::abrir_conexion();
                         <!-- termona el combo de encargado   -->
                         <div class="input-field col m4">
                             <i class="fa fa-calendar prefix"></i> 
-                            <input type="date" id="fecha_adq" name="fecha_adq" class="datepicker" required value="<?php echo date("d-m-Y"); ?>" > 
-                            <label for="idNombre" class="col-sm-4 control-labe" style="font-size: 16">Fecha de Adquisición</label>
+                            <input type="date" id="fecha_adq" name="fecha_adq" class="datepicker2" required value="<?php echo date("d-m-Y"); ?>" > 
+                            <label for="idNombre" class="col-sm-4 control-labe" style="font-size: 18">Fecha de Adquisición</label>
                         </div>
 
                     </div>

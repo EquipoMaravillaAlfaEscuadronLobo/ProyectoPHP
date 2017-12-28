@@ -119,22 +119,26 @@
         <div class="row">
             <div class="col-md-2 text-right"></div>
             <div class="col-md-6">
-                <a href="#" class="modal-action modal-close waves-effect btn btn-success"><i class="fa fa-check"></i> Finalizar</a>
-                <a href="#" class="modal-action modal-close waves-effect btn btn-warning " disabled> <i class="fa fa-refresh" ></i> Actualizar</a>
-                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a>
+                <button id="btnfinalizar" class="btn btn-success modal-action " disabled=""
+                        onclick="finalizar()">
+                    <span class="fa fa-check" aria="hidden"></span>
+                     Finalizar</button>
+                <button id="btn_actualizar_prestamo" class="btn btn-success modal-action" disabled="" onclick="actualizar()">
+                    <span class="fa fa-refresh" aria="hidden"></span>
+                     Actualizar</button>
+                 <a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a>
             </div>
             <div class="col-md-2 text-right"></div>
         </div>
     </div>
 </div>
 <script type="text/javascript">
-        function  asignarcodigo() {//para activar boton de agregar, se llama en getuser y get activo
-         <?php  ?>
-        actualizarPrestamoActivo(1);
-        
-  alert("Modal Mostrada con Evento de Boostrap");
-
-    
-
-    }
+        function  actualizar(){
+             document.getElementById("opcion").value = 2;
+             document.actualizar_prestamo_activo.submit(); 
+        }
+        function  finalizar(){
+             document.getElementById("opcion").value = 1;
+             document.actualizar_prestamo_activo.submit(); 
+        }
 </script>   

@@ -6,7 +6,7 @@ include_once('../plantillas/menu.php');
 <div class="nav-content" name="">
     <ul class="tabs tabs-transparent">
         <li class="tab">
-            <a class="active" href="#ttest2">
+            <a  href="#ttest2">
                 <i class="fa fa-server" aria-hidden="true"></i>    Inventario
             </a>
         </li>
@@ -23,7 +23,7 @@ include_once('../plantillas/menu.php');
             </a>
         </li>
         <li class="tab">
-            <a  href="#ttest4">
+            <a class="active" href="#ttest4">
                 <i class="fa fa-handshake-o" aria-hidden="true"></i> Prestamo
             </a>
         </li>
