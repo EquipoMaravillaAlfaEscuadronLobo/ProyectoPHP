@@ -1,4 +1,4 @@
-<form  method="post" action="" autocomplete="off" id="editar_formulario">
+<form  method="post" action="" autocomplete="off" id="editar_formulario" enctype="multipart/form-data">
     <input type="hidden" name="banderaEdicion" id="banderaEdicion"/>
     <input type="hidden" name="nameCarnetE" id="idCarnetE"/>
     <input type="hidden" id="idSecreto" value="">
@@ -82,7 +82,7 @@
                                 <div class="file-field input-field">
                                     <div class="btn">
                                         <span><i class="fa fa-camera" aria-hidden="true"></i>Foto</span>
-                                        <input type="file" id="foto1" name="foto1">
+                                        <input type="file" id="foto1" name="foto1" accept="image/*">
                                     </div>
                                     <div class="file-path-wrapper">
                                         <input type="text" id="file_foto" name="foto1"  class="form-control file-path validate">
