@@ -153,7 +153,6 @@ CREATE  TABLE IF NOT EXISTS `diseno1`.`libros` (
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `diseno1`.`mantenimientos` (
  `codigo_mantenimiento` int(11) NOT NULL AUTO_INCREMENT,
-  `codigo_activo` varchar(16) NOT NULL,
   `fecha` date DEFAULT NULL,
   `descripcion` text,
   `costo` double DEFAULT NULL,
@@ -245,6 +244,15 @@ CREATE  TABLE IF NOT EXISTS `diseno1`.`movimiento_actvos` (
   KEY `fk_prestamo_activos_has_actvos_prestamo_activos1_idx` (`codigo_pactivo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- -----------------------------------------------------
+-- Table `diseno1`.`movimiento_actvos_mant`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `diseno1`.`movimiento_actvos_mant` (
+  `codigo_activo` varchar(16) NOT NULL,
+   `codigo_mantenimiento` int(11) NOT NULL,
+ KEY `fk_mantenimientos_mantenimiento_has_actvos_actvos2_idx` (`codigo_activo`),
+  KEY `fk_actvos_has_mantenimientos_actvos2_idx` (`codigo_mantenimiento`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- -----------------------------------------------------
 -- Table `diseno1`.`movimiento_mantenimientos`

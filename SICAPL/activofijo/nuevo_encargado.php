@@ -65,15 +65,15 @@ if (isset($_REQUEST["bander"])) {
 
 
     Conexion::abrir_conexion();
-
+echo '<script language="javascript">alert("juas");</script>'; 
     $encargado = new Encargado_mantenimiento();
     $encargado->setNombre($_REQUEST["nameNombre"]);
     $encargado->setDirecccion($_REQUEST["nameDireccion"]);
     $encargado->setTelefono($_REQUEST["nameTelefono"]);
     $encargado->setCorreo($_REQUEST["nameEmail"]);
-
-    Repositorio_encargado::insertar_encargado(Conexion::obtener_conexion(), $encargado);
-    //echo '<script>swal("Excelente!", "Registro guardado con exito", "success");</script>';
-    Conexion::cerrar_conexion();
+     Repositorio_encargado::insertar_encargado(Conexion::obtener_conexion(), $encargado);
+    
+    //
+    //Conexion::cerrar_conexion();
 }
 ?>

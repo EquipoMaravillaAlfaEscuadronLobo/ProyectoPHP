@@ -28,6 +28,8 @@ class Repositorio_encargado {
 
               $encargado_insertado = $sentencia->execute();
              $accion = 'Se registro al siguiente encargado de mantenimiento: ' . $nombre . ", con direccion ". $direccion . ", telefono ". $telefono.", y correo ".$correo ;
+           
+             
              self::insertar_bitacora($conexion, $accion);
                 
             } catch (PDOException $ex) {
@@ -45,10 +47,11 @@ class Repositorio_encargado {
 
                 $sql = "SELECT * FROM encargado_mantenimiento WHERE codigo_emantenimiento='$codigo_encargado' "; ///estos son alias para que PDO pueda trabajar 
                 foreach ($conexion->query($sql) as $row) {
-                    //$encargado->setCodigo_emantenimiento($row["codigo_emantenimiento"]);
+                    $encargado->setCodigo_emantenimiento($row["codigo_emantenimiento"]);
                     $encargado->setNombre($row["nombre"]);
                     $encargado->setTelefono($row["telefono"]);
                     $encargado->setCorreo($row["correo"]);
+                    $encargado->setDirecccion($row["direccion"]);
                 }
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();
@@ -61,7 +64,11 @@ class Repositorio_encargado {
          $resultado = "";
         if (isset($conexion)) {
             try {
-                $sql = "SELECT * from encargado_mantenimiento";
+                $sql = "SELECT
+encargado_mantenimiento.codigo_emantenimiento as cod,
+encargado_mantenimiento.nombre as nombre,
+encargado_mantenimiento.telefono as tel
+from encargado_mantenimiento";
                 $resultado = $conexion->query($sql);
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();

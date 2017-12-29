@@ -1,7 +1,7 @@
 <?php
 class Mantenimiento{
    private $codigo_mantenimiento;
-   private $codigo_activo;
+   private $codigo_activo;//al final no se ocupo
    private $fecha;
    private $descripcion;
    private $costo;

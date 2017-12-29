@@ -43,212 +43,311 @@
 
     /* Easy Tooltip */
 </style>
-<div class="row">
+
     <form name="mant" id="mant"  method="post" >
-        <!--  panel de encargado    -->
-        <div class="col-md-4">
+        <input type="hidden" id="pass" name="pass"/>
+        <!--  panel de activo    -->
+        <div class="col-md-6">
             <div class="panel-group" id="accordion">
-                <div class="panel" id="encargado">
-                    <div class="panel-heading p_libro">
-                        <input type="hidden" name="idenca" id="idenca" >
-                        <div class="row">
-                            <div class="col-md-8">
+                <div class="panel panel-default" name="activo">
+                    <div class="panel-heading p_libro"><div class="row">
+                            <div class="col-md-10">
 
-                                <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label  style="font-size:17px">Buscar Encargado</label><input type="text" id="codigoeman" autofocus onkeypress="buscarUser(this)" list="listaeman"></div>
+                                <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="" style="font-size:17px">Buscar Activo</label><input type="text" required="" id="codigo" list="listaActivos" autofocus  onkeypress="buscarActivo_mantenimiento(this)"></div>
 
                             </div>
-
-                            <div class="col-md-2">
-                                <a class="btn btn_primary"  target="_blank" onclick="nuevaCat(3)"><span aria-hidden="true" class="glyphicon glyphicon-plus"></span></a>
-                            </div>
-                            <div class="col-md-1">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#encarg1">
-                                    <i class="fa fa-sort-desc" id="despliegue" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                            <div class="col-md-1">                   
-                                <i class="fa fa-minus" id="despliegue" aria-hidden="true"></i>                
-                            </div>
+                            <div class="col-md-2"></div>
                         </div>
-                        
+                       
                     </div>
-                    <div id="encarg1" class="panel-collapse collapse in">
+                    <div id="activo1" class="panel-collapse collapse in">
+
                         <div class="panel-body">
-                            <table class="table table-striped table-bordered">
-                                <tr>
-                                    <td width="40%"><b>Nombre:</b></td>
-                                    <td width="60%"><div id="nombreEnc"></div></td>
-                                </tr>
-                                <tr>
-                                    <td width="40%"><b>Telefono:</b></td>
-                                    <td width="60%"><div id="telefono"></div></td>
-                                </tr>
-                                <tr>
-                                    <td width="40%"><b>Correo:</b></td>
-                                    <td width="60%"><div id="correo"></div></td>
-                                </tr>
+                            <div class="row">
+                                <div class="input-field col m2">
+                                    <i class="fa fa-sitemap prefix"></i> 
+                                    <input type="text" id="catMantAct" name="catMantAct" class="text-center validate" required="" value="---" readonly="">
+                                    <label style="font-size:16px">Categoria <small></small> </label>
+                                </div>
+
+                                <div class="input-field col-md-offset-2 col m4">
+                                    <i class="fa fa-barcode prefix"></i> 
+                                    <input type="text" id="codMantAct" name="codMantAct" class="text-center validate codPrestAct" required="" value="---"  readonly="">
+                                    <label style="font-size:16px">Codigo <small></small> </label>
+                                </div>
+
+                                <div class="input-field col m3">
+                                    <i class="fa fa-barcode prefix" title="Indique el numero correlativo del activo para agragar varios a la tabla"></i> 
+                                    <input type="text" id="correlativoMant" name="correlativoMant" class="text-center validate" required="" 
+                                           value="p. ej. 5-14, 25"
+                                           pattern="[0-9]"
+                                           onclick = "if (this.value == 'p. ej. 5-14, 25')
+                                                       this.value = ''" 
+                                           onblur="if (this.value == '')
+                                                       this.value = 'p. ej. 5-14, 25'"
+
+                                           >
+                                    <label style="font-size:12px" >Seleccion Multiple  <small></small> </label>
+                                </div>
+                                
+                                <div class="input-field col-md-offset-2 col m1"   >
+                                    <button id="agrActMant" disabled="" class="btn-sm btn-success modal-action " type="button" onclick="javascript:agregarMant()"  >
+                                        <span class="fa fa-mail-forward" aria="hidden" ></span>
+                                        Agregar</button>
+                                </div>
+                            </div>
+
+                            <table class="table table-striped table-bordered" id="tabla_activo_mantenimiento">
+                                <caption>Activos </caption>
+                                <thead>
+                                <th>Codigo</th>
+                                <th>Categoria</th>
+                                <th>Responsable</th>
+                                <th>&nbsp;</th>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
                             </table>
 
                         </div>
+
                     </div>
                 </div>
             </div>
-            <button class="btn" onClick="addLibro()"><span aria-hidden="true" class="glyphicon glyphicon-plus">
-                </span>Agregar Encargado</button>
         </div>
 
-        <!--  panel de activo    -->
-        <div class="col-md-4">
-            <div class="panel">
-                <div class="panel-heading p_libro">
-                    <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label  style="font-size:16px">Buscar Activo</label><input type="text" id="codigo" autofocus onkeypress="buscarLibro2(event)">
-                    </div>              
+        <div class="col-md-6">
+            <div class="panel-group">
+                 <div class="panel panel-default" name="activo">
+                    <div class="panel-heading p_libro"><div class="row">
+                            <div class="col-md-10">
 
-                </div>
-
-                <div class="panel-body">
-                    <table class="table table-striped table-bordered">		
-                        <tr>
-                            <td width="40%"><b>Código:</b></td>
-                            <td  colspan="3"><div id="codigo"></div></td>
-                        </tr>
-                        <tr>
-                            <td ><b>Tipo:</b></td>
-                            <td colspan="3"><div id="tipo"></div></td>
-                        </tr>
-                        <tr>
-                            <td colspan="4">
-                                <div class="row"><!-- seccion para elegir varios activos -->
-                                    <div class="input-field col m3">
-                                        <i class="fa fa-arrow-left prefix"></i> 
-                                        <label for="Titulo">Desde</label>
-                                        <input type="text" id="Titulo" class="form-control">
-                                    </div>
-                                    <div class="col m1"></div>
-                                    <div class="input-field col m3">
-                                        <i class="fa fa-arrow-right prefix"></i> 
-                                        <label for="Titulo">Hasta</label>
-                                        <input type="text" id="Titulo" class="form-control">	                        			
-                                    </div>
-
-                                    <div class="col m5"></div>
-                                </div><!-- termina seccion -->
-                            </td>
-                        </tr>
-
-                    </table>	
-                </div>
-            </div>
-
-        </div>
-
-        <!--  panel de mantenimiento     -->
-        <div class="col-md-4">
-            <div class="panel">
-                <div class="panel-heading">	Datos de Mantenimiento</div>
-                <div class="panel-body">
-
-                    <div class="row">
-                        <div class="col m12">
-                            <div class="input-field">
-                                <i class="fa fa-calendar prefix" aria-hidden="true"></i>
-                                <label for="fecha_pub" class="active" style="font-size:16px">Fecha de Mantenimiento</label>
-                                <input type="date" id="fecha_pub" class="form-control datepicker" >
                             </div>
-                        </div>	
-                    </div>
-                    <div class="row">
-                        <div class="input-field col m12">
-                            <i class="fa fa-usd prefix"></i> 
-                            <input type="text" id="precioUnitario" name="precioUnitario" class="text-center validate" required="">
-                            <label for="precioUnitario" style="font-size:16px">Precio Total<small></small> </label>
+                            <div class="col-md-2"></div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <textarea id="textarea1" class="materialize-textarea"  ></textarea>
-                            <label for="textarea1" style="font-size:15px"><i class="fa fa-pencil-square-o"></i>&nbspDescripción</label>
-                        </div>
-                    </div>
+                        <form id="prestamoAct" id="prestamoAct" method="post">
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <a class="btn btn_primary"  target="_blank" onclick="nuevaCat(4)"><span aria-hidden="true" >Actualizar Detalles</span></a>
-                        </div>
                     </div>
+            <table class="table table-striped table-bordered" >
+                <tr>
+                <table class="table table-striped table-bordered" id="datos_mantenimiento">
+                    <caption>Datos de Mantenimiento</caption>
+                    <tbody>
+                    <tr>
+                        <td><div class="col m12">
+                                <div class="input-field">
+                                    <i class="fa fa-calendar prefix" aria-hidden="true"></i>
+                                    <label for="fecha_pub" class="active" style="font-size:16px">Fecha de Mantenimiento</label>
+                                    <input type="date" id="fecha_mant" name="fecha_mant" class="form-control datepicker2" >
+                                </div>
+                            </div></td>
+                        <td>
+                            <div class="input-field col m12">
+                                <i class="fa fa-usd prefix"></i> 
+                                <input type="text" id="costoTotal" name="CostoTotal" class="text-center validate" required="">
+                                <label for="precioUnitario" style="font-size:16px">Precio Total<small></small> </label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                    <div class="input-field col s12">
+                        <textarea id="descrMant" name="descrMant" class="materialize-textarea"  ></textarea>
+                        <label for="textarea1" style="font-size:15px"><i class="fa fa-pencil-square-o"></i>&nbspDescripción</label>
+                    </div>
+                    </td>
+                    </tr>
+                    </tbody>
+                </table>
+                </tr>
+                <tr>
+                    <table class="table table-striped table-bordered" id="datos_encargado">
+                    
+                    <tbody>
+                    <tr>
+                        <td>
+                        <div class="col-md-10">
 
+                                <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="" style="font-size:17px">Buscar Encargado</label><input type="text" required="" id="codigo_encargado" list="lista_encargado" autofocus  onkeypress="buscarEncargado(this)"></div>
 
-                </div>
-            </div>
+                            </div>
+                             <div class="col-md-2">
+                                <a class="btn btn_primary"  target="_blank" onclick="nuevaCat(3)"><span aria-hidden="true" class="glyphicon glyphicon-plus"></span></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <table class="table table-striped table-bordered" id="datos_encargado2">
+                            <caption>Encargados</caption>
+                            <thead>   
+                                 <th style="display:none;"  ></th>
+                                <th>Nombre</th>
+                                <th>Telefono</th>
+                                <th>Dirección</th>
+                                <th>boton</th>
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                        </table>
+                    </tr>
+                    </tbody>
+                    </table>
+                </tr>
+
+            </table>
+                 </div>
         </div>
-    </form>
-</div>
+        </div>
 
+
+    </form>
 
 <datalist id="listaeman">
-  <?php 
+    <?php
     include_once '../app/Conexion.php';
-include_once '../modelos/Encargado_mantenimiento.php';
-include_once '../repositorios/repositorio_encargado.php';
+    include_once '../modelos/Encargado_mantenimiento.php';
+    include_once '../repositorios/repositorio_encargado.php';
 
     Conexion::abrir_conexion();
-    $listado=  Repositorio_encargado::lista_encargado(Conexion::obtener_conexion());
+    $listado = Repositorio_encargado::lista_encargado(Conexion::obtener_conexion());
 
-     
-     foreach ($listado as $fila) {
+
+    foreach ($listado as $fila) {
         echo "<option value='$fila[0]'>$fila[1]</option>";
-    }                    
-                    
- ?>
+    }
+    ?>
 </datalist>
 
-<datalist id="listaUsuarios">
-  <?php 
+<datalist id="lista_encargado">
+    <?php
     include_once '../app/Conexion.php';
     include_once '../modelos/Libros.php';
     include_once '../repositorios/respositorio_libros.php';
     Conexion::abrir_conexion();
-    $listado=Repositorio_libros::BuscarUsuarios(Conexion::obtener_conexion());
+    $listado = Repositorio_encargado::lista_encargado(Conexion::obtener_conexion());
 
-     
-     foreach ($listado as $fila) {
-        echo "<option value='$fila[0]'>$fila[2] $fila[3]</option>";
-    }                    
-                    
- ?>
+
+    foreach ($listado as $fila) {
+        echo "<option value='$fila[0]'>$fila[1] </option>";
+    }
+    ?>
 </datalist>    
-    
+
 
 <script>
-
-    function addLibro() {
-        var imagenes = document.getElementsByName('libros').length + 1;
-        var script = document.createElement("div");
-        script.innerHTML = "<div class='panel' name='libros'><div class='panel-heading'><a data-toggle='collapse' data-parent='#accordion" + imagenes + "' href='#activo" + imagenes + "'>Datos de libros</a></div><div id='collapse" + imagenes + "' class='panel-collapse collapse in'><div class='panel-body'><input type='text' placeholder='codigo' autofocus><input type='text' placeholder='titulo' disabled><input type='text' placeholder='Autor' disabled><input type='text' placeholder='Gener' disabled><input type='text' placeholder='Fecha de Publicacion' disabled></div></div></div>";
-        var fila = document.getElementById("accordion");
-        fila.appendChild(script);
-    }
-    function buscarLibro(event) {
-        if (event.keyCode == 13) {
-            document.getElementById('titulo').value = "Iliada";
-            document.getElementById('autor').value = "Homero";
-            document.getElementById('genero').value = "Epopeya";
-            document.getElementById('fecha_pub').value = "762 A.C";
-
-            document.getElementById('titulo').disabled = false;
-            document.getElementById('autor').disabled = false;
-            document.getElementById('genero').disabled = false;
-            document.getElementById('fecha_pub').disabled = false;
-
-            $('#titulo').attr("readOnly", "");
-            document.getElementById('autor').disabled = false;
-            document.getElementById('genero').disabled = false;
-            document.getElementById('fecha_pub').disabled = false;
-
+    function  activarMant() {//para activar boton de agregar, se llama en getuser y get activo
+        
+        if (document.getElementById("codMantAct").value != "---") {
+            document.getElementById("agrActMant").disabled = false;
+            }
         }
+//para eliminar de las tablas
+// fuente https://es.stackoverflow.com/questions/9141/eliminar-fila-de-tabla-html-con-jquery-o-js
+$(document).on('click', '.borrar', function (event) {
+    event.preventDefault();
+    $(this).closest('tr').remove();
+});
+
+$(document).on('click', '.borrar_activo', function (event) {
+    event.preventDefault();
+    $(this).closest('tr').remove();
+});
+    
+
+    function agregarMant() {
+       
+        llenarTactMant(document.getElementById("codMantAct").value, document.getElementById("correlativoMant").value);
+       
+        return false;
+    }
 
 
 </script>
 
 
+</script>
+
+<?php
+if (isset($_REQUEST["pass"])) {
+
+    include_once '../app/Conexion.php';
+    include_once '../modelos/Mantenimiento.php';
+    include_once '../repositorios/repositorio_mantenimiento.php';
+
+    Conexion::abrir_conexion();
+   
+    $devolucion = $_POST['id="fecha_mant"'];
+    $devolucion = date_format(date_create($devolucion), 'Y-m-d');
+    $activos = $_POST['codsActsMant'];
+    $encargados = $_POST['codsEncMant'];
+//echo $usuario;
+    $mant = new Mantenimiento();
+    $mant->setCosto($_POST['CostoTotal']);
+    $mant->setDescripcion( $_POST['descrMant']);
+    $mant->setFecha( $devolucion);
+    
+    $longitud = count($activos);
+    $longitud2 = count($encargados);
+//Recorro todos los elementos
+  
+
+    if (Repositorio_mantenimiento::GuardarMantAct(Conexion::obtener_conexion(), $mant)) {
+        //	echo "hasta aki";
+        $prestamo1 = Repositorio_mantenimiento::obtenerUltimoMant(Conexion::obtener_conexion());
+        //echo $prestamo1;
+        for ($i = 0; $i < $longitud; $i++) {
+            if (!Repositorio_mantenimiento::GuardarActivos(Conexion::obtener_conexion(),  $activos[$i], $prestamo1 )) {
+                echo "<script type='text/javascript'>";
+                echo 'swal({
+                    title: "Ooops",
+                    text: "Mantenimiento no Registrado",
+                    type: "error"},
+                    function(){
+                       location.href="inicio_activo.php";
+                       
+                     
+                        
+                    }
+
+                    );';
+//echo "alert('datos no atualizados')";
+//echo "location.href='inicio_b.php'";
+                echo "</script>";
+            }
+        }
+        for ($i = 0; $i < $longitud2; $i++) {
+            if (!Repositorio_mantenimiento::GuardarEncargados(Conexion::obtener_conexion(),  $encargados[$i], $prestamo1 )) {
+                echo "<script type='text/javascript'>";
+                echo 'swal({
+                    title: "Ooops",
+                    text: "Mantenimiento no Registrado",
+                    type: "error"},
+                    function(){
+                       location.href="inicio_activo.php";
+                       
+                     
+                        
+                    }
+
+                    );';
+//echo "alert('datos no atualizados')";
+//echo "location.href='inicio_b.php'";
+                echo "</script>";
+            }
+        }
+        echo "<script type='text/javascript'>";
+        echo "swal({
+                    title: 'Exito',
+                    text: 'Mantenimiento Registrado',
+                    type: 'success'},
+                    function(){
+                       location.href='inicio_activo.php';
+                    }
+                    );";
+        echo "</script>";
+    }
+}
+?>
 

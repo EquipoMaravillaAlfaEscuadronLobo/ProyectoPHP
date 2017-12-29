@@ -69,7 +69,7 @@ include_once('../plantillas/menu.php');
 include_once('../plantillas/pie_de_pagina.php');
 ?>
 
-<div id="nuevoMant" class="modal modal-fixed-footer nuevo">
+<div id="nuevoMant" class="modal modal-fixed-footer prestamoActivo">
     <div class="modal-heading panel-heading text-center">
         <h4>Registrar Mantenimiento</h4>
     </div>
@@ -78,8 +78,9 @@ include_once('../plantillas/pie_de_pagina.php');
     </div>
     <div class="modal-footer">
         <div class="row">
-            <div class="col-md-6 text-right"><a href="#" class="modal-action modal-close waves-effect btn btn-success"><i class="glyphicon glyphicon-floppy-disk"></i>  Guardar</a></div>
-
+           <div class="col-md-6 text-right"><button id="gp" class="btn btn-success modal-action " type="submit" form="mant">
+                    <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>
+                    Guardar</button></div>
             <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>
         </div>
     </div>
@@ -135,6 +136,7 @@ include_once('../plantillas/pie_de_pagina.php');
                     document.getElementById('FORMUL').reset();
                     $('#nuevoEncargado').modal('close');
                      swal ( "Exito" ,  "Registro guardado con exito", "success");
+                     $("#lista_encargado").load(" #lista_encargado");//para actuaizar la datalist cuando registra
                 }
             })
             return false;

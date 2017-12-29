@@ -109,6 +109,36 @@ function buscarActivo(valor){
 
 }
 
+function buscarActivo_mantenimiento(valor){
+//alert("paso");
+        var depto = valor.value;
+//var numero=valor.id.substr(7)
+//alert(valor.id);
+    if (depto != "") {
+        $.post("../activofijo/getAct_mantenimiento.php", {libro: depto}, function(mensaje) {
+          $('#listaLibros22').html(mensaje).fadeIn();
+         
+
+        }); 
+    }         
+
+}
+
+function buscarEncargado(valor){
+//alert("paso");
+        var depto = valor.value;
+//var numero=valor.id.substr(7)
+//alert(valor.id);
+    if (depto != "") {
+        $.post("../activofijo/llenar_encargado.php", {libro: depto}, function(mensaje) {
+          $('#listaLibros22').html(mensaje).fadeIn();
+         
+
+        }); 
+    }         
+
+}
+
 function listar(valor){
 //alert("paso");
         var depto = valor.value;
@@ -140,5 +170,19 @@ function llenarTact(valor, lista){
 
 }
 
+function llenarTactMant(valor, lista){ 
+//alert("paso8");
+        var depto = valor;
+        var depto2 = lista;
+//var numero=valor.id.substr(7)
+//alert(valor.id);
+    if (depto != "") {//alert("paso"+depto);
+        $.post("../activofijo/llenar_mantenimiento.php", {libro: depto, lista: depto2}, function(mensaje) {
+          $('#listaLibros22').html(mensaje).fadeIn();       
 
+        }); 
+        
+    }         
+
+}
 
