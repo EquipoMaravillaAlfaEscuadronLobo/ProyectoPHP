@@ -18,21 +18,37 @@ foreach ($listado as $fila) {
      var codigo="<?php echo $fila['codigo_activo']; ?>";    
    var pass=doSearch(codigo);
    if(pass){
-        
+        var estado="<?php echo $fila['estado'];?>";
         var tipo="<?php echo Repositorio_categoria::obtener_categoria(Conexion::obtener_conexion(), $fila['codigo_tipo']); ?>";
         var encargado="<?php echo Repositorio_administrador::obtener_administrador(Conexion::obtener_conexion(), $fila['codigo_administrador'])->getNombre() . " " . Repositorio_administrador::obtener_administrador(Conexion::obtener_conexion(), $fila['codigo_administrador'])->getApellido(); ?>" ;
-        var linea="";
+    if(estado==1){    
+    var sel = '<div class="form-group">' +
+                    '<select class="form-control accion_select"  id="accion_select_mantenimiento[]" name="accion_select_mantenimiento[]">' +
+                   
+                    '<option value="1" selected="" class="btn-success">Disponible</option>' +
+                    '</select>' +
+                    '</div>';    
+        }else{
+             var sel = '<div class="form-group">' +
+                    '<select class="form-control accion_select"  id="accion_select_mantenimiento[]" name="accion_select_mantenimiento[]">' +
+                   
+                    '<option value="1"  class="btn-success">Disponible</option>' +
+                    '<option value="3" selected="" class="btn-warning">Dañado</option>' +
+                    '</select>' +
+                    '</div>';    
+            }
+    var linea="";
         linea=linea.concat(
             "<tr>",
             '<td> <input type="hidden" name="codsActsMant[]" value="'+codigo+'"> '+codigo+"</td>",
             "<td>"+tipo+"</td>",
-            "<td>"+encargado+"</td>",
+            "<td>"+sel+"</td>",
            ' "<td><input type="button" class="btn-success btn-sm " onclick="nuevaCat(4)" value="Actualizar Detalles"/>&nbsp;&nbsp;<input type="button" class="borrar_activo btn-sm btn-danger" value="-"/></td>',
             
             "</tr>"
             );
     $("table#tabla_activo_mantenimiento tbody").append(linea);
-   
+   document.getElementById('bandera_tabla_activo_prestamo').innerHTML = "<?php echo "paso" ?>";
     }else{
          swal("Importane!",  codigo+" ya fue ingresado", "warning")
      

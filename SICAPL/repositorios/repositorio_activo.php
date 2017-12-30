@@ -83,6 +83,19 @@ class Repositorio_activo {
         }
         return $resultado;
     }
+    
+    public static function lista_activo_mantenimiento($conexion) {
+        $resultado = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT * from actvos where actvos.estado = 1 or actvos.estado = 3  ORDER BY actvos.codigo_activo ASC";
+                $resultado = $conexion->query($sql);
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
 
     public static function lista_activo3($conexion, $cant) {
         $resultado = "";

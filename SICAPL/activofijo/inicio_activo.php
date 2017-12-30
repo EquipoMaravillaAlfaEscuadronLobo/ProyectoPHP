@@ -74,11 +74,11 @@ include_once('../plantillas/pie_de_pagina.php');
         <h4>Registrar Mantenimiento</h4>
     </div>
     <div class="modal-content ">    
-        <?php include('registrar_mant.php');?>
+        <?php include('registrar_mant.php'); ?>
     </div>
     <div class="modal-footer">
         <div class="row">
-           <div class="col-md-6 text-right"><button id="gp" class="btn btn-success modal-action " type="submit" form="mant">
+            <div class="col-md-6 text-right"><button id="gp" class="btn btn-success modal-action " type="submit" form="mant" >
                     <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>
                     Guardar</button></div>
             <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>
@@ -135,13 +135,16 @@ include_once('../plantillas/pie_de_pagina.php');
                 success: function (resp) {
                     document.getElementById('FORMUL').reset();
                     $('#nuevoEncargado').modal('close');
-                     swal ( "Exito" ,  "Registro guardado con exito", "success");
-                     $("#lista_encargado").load(" #lista_encargado");//para actuaizar la datalist cuando registra
+                    swal("Exito", "Registro guardado con exito", "success");
+                    $("#lista_encargado").load(" #lista_encargado");//para actuaizar la datalist cuando registra
                 }
             })
             return false;
         });
     })
+
+    
+
 // ]]></script>
 
 

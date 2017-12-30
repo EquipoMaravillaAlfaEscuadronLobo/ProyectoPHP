@@ -39,14 +39,14 @@ $listado = Repositorio_activo::lista_activo(Conexion::obtener_conexion());
                                     <td class="text-center">
                                         <button class="btn btn-success" 
                                         <?php
-                                        if ($fila['estado'] == 0) {
+                                        if ($fila['estado'] == 0 || $fila['estado'] == 4) {
                                             echo 'disabled="true"';
                                         }
                                         ?>
                                                 onclick="abrirActivo('<?php echo $fila['codigo_activo'] ?>',
-                                                                '<?php echo $fila['codigo_administrador'] ?>',
-                                                                '<?php echo $fila['foto'] ?>',
-                                                                '<?php
+                                                                    '<?php echo $fila['codigo_administrador'] ?>',
+                                                                    '<?php echo $fila['foto'] ?>',
+                                                                    '<?php
                                                 if ($fila['estado'] == 1) {
                                                     echo "Disponible";
                                                 }
@@ -56,25 +56,33 @@ $listado = Repositorio_activo::lista_activo(Conexion::obtener_conexion());
                                                 if ($fila['estado'] == 2) {
                                                     echo "Prestado";
                                                 }
+                                                if ($fila['estado'] == 3) {
+                                                    echo "Dañado";
+                                                }
+                                                if ($fila['estado'] == 4) {
+                                                    echo "Extaviado";
+                                                }
                                                 ?>',
-                                                                '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getCodigo_detalle() ?>',
-                                                                '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getColor() ?>',
-                                                                '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getDimencione() ?>',
-                                                                '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getMarca() ?>',
-                                                                '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getMemoria() ?>',
-                                                                '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getModelo() ?>',
-                                                                '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getOtros() ?>',
-                                                                '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getProcesador() ?>',
-                                                                '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getRam() ?>',
-                                                                '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getSeri() ?>',
-                                                                '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getSistema() ?>',
-                                                                '<?php echo Repositorio_administrador::obtener_administrador(Conexion::obtener_conexion(), $fila['codigo_administrador'])->getNombre().
-                                            " ".Repositorio_administrador::obtener_administrador(Conexion::obtener_conexion(), $fila['codigo_administrador'])->getApellido(); ?>'
-                                                                )"> <i class="Medium material-icons prefix">edit</i> </button></td>
+                                                                    '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getCodigo_detalle() ?>',
+                                                                    '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getColor() ?>',
+                                                                    '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getDimencione() ?>',
+                                                                    '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getMarca() ?>',
+                                                                    '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getMemoria() ?>',
+                                                                    '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getModelo() ?>',
+                                                                    '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getOtros() ?>',
+                                                                    '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getProcesador() ?>',
+                                                                    '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getRam() ?>',
+                                                                    '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getSeri() ?>',
+                                                                    '<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getSistema() ?>',
+                                                                    '<?php echo Repositorio_administrador::obtener_administrador(Conexion::obtener_conexion(), $fila['codigo_administrador'])->getNombre() .
+                                            " " . Repositorio_administrador::obtener_administrador(Conexion::obtener_conexion(), $fila['codigo_administrador'])->getApellido();
+                                                ?>'
+                                                                    )"> <i class="Medium material-icons prefix">edit</i> </button></td>
                                     <td class="text-center"><?php echo $fila['codigo_activo']; ?></td>
                                     <td class="text-center"><?php echo Repositorio_categoria::obtener_categoria(Conexion::obtener_conexion(), $fila['codigo_tipo']); ?></td>
-                                    <td class="text-center"><?php echo Repositorio_administrador::obtener_administrador(Conexion::obtener_conexion(), $fila['codigo_administrador'])->getNombre().
-                                            " ".Repositorio_administrador::obtener_administrador(Conexion::obtener_conexion(), $fila['codigo_administrador'])->getApellido(); ?></td>
+                                    <td class="text-center"><?php echo Repositorio_administrador::obtener_administrador(Conexion::obtener_conexion(), $fila['codigo_administrador'])->getNombre() .
+                                            " " . Repositorio_administrador::obtener_administrador(Conexion::obtener_conexion(), $fila['codigo_administrador'])->getApellido();
+                                            ?></td>
                                     <td class="text-center <?php
                                     if ($fila['estado'] == 1) {
                                         echo "btn-success";
@@ -82,7 +90,13 @@ $listado = Repositorio_activo::lista_activo(Conexion::obtener_conexion());
                                     if ($fila['estado'] == 0) {
                                         echo "btn-danger";
                                     }
+                                    if ($fila['estado'] == 4) {
+                                        echo "btn-danger";
+                                    }
                                     if ($fila['estado'] == 2) {
+                                        echo " btn-warning";
+                                    }
+                                    if ($fila['estado'] == 3) {
                                         echo " btn-warning";
                                     }
                                     ?>"
@@ -96,6 +110,12 @@ $listado = Repositorio_activo::lista_activo(Conexion::obtener_conexion());
                                             }
                                             if ($fila['estado'] == 2) {
                                                 echo "Prestado";
+                                            }
+                                            if ($fila['estado'] == 3) {
+                                                echo "Dañado";
+                                            }
+                                            if ($fila['estado'] == 4) {
+                                                echo "Extaviado";
                                             }
                                             ?>
 
@@ -138,7 +158,7 @@ $listado = Repositorio_activo::lista_activo(Conexion::obtener_conexion());
     <div class="modal-content">
 <?php include('eliminar_activo.php'); ?>
     </div>
-   <div class="modal-footer ">
+    <div class="modal-footer ">
         <div class="row">
             <div class="col-md-6 text-right"><button id="gp" class="btn btn-success  " onclick="valiD()">
                     <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>
@@ -162,11 +182,11 @@ $listado = Repositorio_activo::lista_activo(Conexion::obtener_conexion());
                 // Mostramos un mensaje con la respuesta de PHP
                 success: function (resp) {
                     swal("Excelente!", "Registro actualizado con exito", "success");
-                     location.href="inicio_activo.php";
+                    location.href = "inicio_activo.php";
 
-                    
-                    
-                    
+
+
+
                     // swal ( "Exito" ,  "Registro guardado con exito", "success");
                 }
             })
@@ -174,19 +194,23 @@ $listado = Repositorio_activo::lista_activo(Conexion::obtener_conexion());
         });
     })
 
-     function  valiD(){
+    function  valiD() {
 
-        var p1 =document.getElementById('idVal').value;
-        var p= document.getElementById('Secreto').value;
-         var m= document.getElementById('idMotivoE').value;
-         
-        if(p1==p){
-            if(m.length>3){
-               document.eliminarAct.submit();
-            }else{swal ( "Oops" ,  "ingrese  Motivo Valido" ,  "error" );}
-           
-        }else{swal ( "Oops" ,  "Contraseña Incorrecta" ,  "error" );}
-       
+        var p1 = document.getElementById('idVal').value;
+        var p = document.getElementById('Secreto').value;
+        var m = document.getElementById('idMotivoE').value;
+
+        if (p1 == p) {
+            if (m.length > 3) {
+                document.eliminarAct.submit();
+            } else {
+                swal("Oops", "ingrese  Motivo Valido", "error");
+            }
+
+        } else {
+            swal("Oops", "Contraseña Incorrecta", "error");
+        }
+
     }
 // ]]></script>
 
