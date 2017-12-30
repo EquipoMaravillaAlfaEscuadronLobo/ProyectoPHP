@@ -2,7 +2,7 @@ $.validator.setDefaults({
     submitHandler: function () {
        
         document.getElementById('banderaEliminacion').value="ok";    
-       // document.eliminar_formulario.submit();
+        document.eliminar_formulario.submit();
         
         }
 });
