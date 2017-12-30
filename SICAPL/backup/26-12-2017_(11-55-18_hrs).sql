@@ -80,8 +80,8 @@ CREATE TABLE `bitacora` (
   KEY `fk_bitacora_administradores1_idx` (`codigo_administrador`)
 ) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=latin1;
 
-INSERT INTO bitacora VALUES("1","admin01","El administrador admin01( ) iniciÃ³ sesiÃ³n","2017-12-23 12:28:53");
-INSERT INTO bitacora VALUES("2","admin01","se inserto al usuario kdkdkdkdk djdjdjdj","2017-12-23 12:30:21");
+INSERT INTO bitacora VALUES("1","admin01","petición");
+INSERT INTO bitacora VALUES("2","admin01","edición");
 INSERT INTO bitacora VALUES("3","admin01","se inserto al usuario dkfaldskfjalkdjfla ndfasdkfljasldfjakl","2017-12-23 12:30:45");
 INSERT INTO bitacora VALUES("4","admin01","se inserto al usuario CCCCCCCCC DDDDDDD","2017-12-23 12:37:10");
 INSERT INTO bitacora VALUES("5","admin01","se inserto al usuario xxXXXXXX XXXXXXXX","2017-12-23 12:39:28");

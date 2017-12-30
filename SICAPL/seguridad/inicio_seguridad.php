@@ -26,7 +26,12 @@ include_once '../plantillas/menu.php';
         </li>
         <li class="tab">
             <a href="#test4" class="">
-                <i class="fa fa-save" aria-hidden="true"></i> Backup/Restaurar
+                <i class="fa fa-save" aria-hidden="true"></i> Backup
+            </a>
+        </li>
+        <li class="tab">
+            <a href="#test12" class="">
+                <i class="fa fa-save" aria-hidden="true"></i> Restaurar
             </a>
         </li>
 
@@ -41,12 +46,14 @@ include_once '../plantillas/menu.php';
     <?php include_once './listado_administrador.php'; ?>
 </div>
 
-
 <div class="col s12" id="test3">
     <?php include_once './bitacora.php'; ?>
 </div>
 <div class="col s12" id="test4">
     <?php include_once './backup.php'; ?>
+</div>
+<div class="col s12" id="test12">
+    <?php include_once './restore.php'; ?>
 </div>
 
 <?php

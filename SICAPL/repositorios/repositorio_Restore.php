@@ -5,7 +5,9 @@ $sql = explode(";", file_get_contents($restorePoint));
 $totalErrors = 0;
 set_time_limit(60);
 $con = mysqli_connect(SERVER, USER, PASS, BD);
+mysqli_set_charset($con, "utf8");
 $con->query("SET FOREIGN_KEY_CHECKS=0");
+
 for ($i = 0; $i < (count($sql) - 1); $i++) {
     if ($con->query($sql[$i] . ";")) {
         
