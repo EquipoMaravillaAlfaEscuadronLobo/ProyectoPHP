@@ -131,13 +131,11 @@ include_once '../repositorios/repositorio_administrador.inc.php';
                         <div class="file-field input-field">
                             <div class="btn">
                                 <span><i class="glyphicon glyphicon-picture" aria-hidden="true"></i>Foto</span>
-                                <input type="file" id="files" required name="foto" accept="image/*">
+                                <input type="file" id="files"  name="foto" accept="image/*">
 
                             </div>
-
-
                             <div class="file-path-wrapper">
-                                <input type="text" accept="image/*" required class="form-control file-path validate">
+                                <input type="text" accept="image/*"  class="form-control file-path validate">
                             </div>
                         </div>
                     </div>

@@ -26,14 +26,10 @@ include_once '../plantillas/menu.php';
         </li>
         <li class="tab">
             <a href="#test4" class="active">
-                <i class="fa fa-save" aria-hidden="true"></i> Backup
+                <i class="fa fa-save" aria-hidden="true"></i> Backup/Restaurar
             </a>
         </li>
-        <li class="tab">
-            <a href="#test12" class="">
-                <i class="fa fa-undo" aria-hidden="true"></i> Restaurar
-            </a>
-        </li>
+        
 
     </ul>
 </div>
@@ -50,10 +46,10 @@ include_once '../plantillas/menu.php';
     <?php include_once './bitacora.php'; ?>
 </div>
 <div class="col s12" id="test4">
-    <?php include_once './backup_restore.php'; ?>
+    <?php  include_once './backup_restore.php'; ?>
 </div>
 <div class="col s12" id="test12">
-    <?php include_once './restore.php'; ?>
+    <?php // include_once './restore.php'; ?>
 </div>
 
 <?php

@@ -47,26 +47,28 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
                                             if (is_dir($ruta_completa)) {
                                                 
                                             } else {
+                                                ?>
+                                                <tr>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-success" onclick="llamar_restaurar('<?php echo $ruta_completa;?>')">
+                                                            <i class="Medium material-icons">autorenew</i> 
+                                                        </button>
+                                                    </td>
+                                                    <td class="text-center"><?php echo $dia;?></td>
+                                                    <td class="text-center"><?php echo $hora;?></td>
+                                                </tr>
 
-                                                echo '<option class="center-align" value="' . $ruta_completa . '">' . $dia . $hora . ' </option>';
-                                                echo '<tr>
-                                            <td class="text-center">
-                                                <button class="btn btn-success" onclick="llamar_restaurar("../backup/29-12-2017_(22-34-58_hrs).sql")">
-                                                    <i class="Medium material-icons">autorenew</i> 
-                                                </button>
-                                            </td>
-                                            <td class="text-center">' . $dia . '</td>
-                                            <td class="text-center">' . $hora . '</td>
-                                        </tr>';
-                                            }
-                                        }
-                                    }
-                                    closedir($aux);
-                                }
-                            } else {
-                                echo $ruta . " No es ruta válida";
-                            }
-                            ?>
+                                                <?php
+                                                }
+                                                }
+                                                }
+                                                closedir($aux);
+                                                }
+                                                } else {
+                                                echo $ruta . " No es ruta válida";
+                                                }
+                                                ?>
+
                         </tbody>
                     </table>
                 </div>
@@ -78,8 +80,8 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
 
 <script type="text/javascript">
     function llamar_restaurar(punto) {
-    window.open("../repositorios/repositorio_Restore.php="+punto, "_parent");
-    
+        window.open("../repositorios/repositorio_Restore.php?restorePoint=" + punto, "_parent");
+
     }
 
 
