@@ -1,4 +1,9 @@
 <?php
+$titulo1 ='BACKUP';
+include_once '../plantillas/cabecera.php';
+include_once '../plantillas/menu.php';
+
+
 include './repositorio_Connet.php';
 $day=date("d");
 $mont=date("m");
@@ -49,18 +54,41 @@ if($result){
     if($error==1){
         echo 'Ocurrio un error inesperado al crear la copia de seguridad';
     }else{
+        
         chmod(BACKUP_PATH, 0777);
         $sql.='SET FOREIGN_KEY_CHECKS=1;';
         $handle=fopen(BACKUP_PATH.$DataBASE,'w+');
         if(fwrite($handle, $sql)){
             fclose($handle);
-            echo 'Copia de seguridad realizada con éxito';
+             echo '<script>swal({
+                    title: "Exito",
+                    text: "Acaba de Realizarse un copia de seguridad!",
+                    type: "success",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },function () {location.href="../app/home.php";});</script>';
         }else{
-            echo 'Ocurrio un error inesperado al crear la copia de seguridad';
+            
+             echo '<script>swal({
+                    title: "Exito",
+                    text: "Ocurrio un error inesperado al crear la copia de seguridad!",
+                    type: "success",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },function () {location.href="../app/home.php";});</script>';
         }
     }
 }else{
-    echo 'Ocurrio un error inesperado';
+     echo '<script>swal({
+                    title: "Exito",
+                    text: "Ocurrio un error inesperado!",
+                    type: "success",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },function () {location.href="../app/home.php";});</script>';
+    
 }
 mysqli_free_result($result);
+
+include_once '../plantillas/pie_de_pagina.php';
 ?>

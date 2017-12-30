@@ -1,11 +1,13 @@
 <?php
-    include_once '../class/tcpdf/tcpdf.php';
-    include_once '../class/PHPJasperXML-0.9e.inc.php';
+    include_once '../PhpJasperLibrary/tcpdf/tcpdf.php';
+    include_once '../PhpJasperLibrary/PHPJasperXML.inc.php';
     include_once '../setting.php';
     
+    
+    $xml =  simplexml_load_file("reporte1.jrxml");
     $PHPJasperXML = new PHPJasperXML();
-    //$PHPJasperXML ->
-    $PHPJasperXML ->load_xml_file('reporte1.jrxml');
+    $PHPJasperXML ->arrayParameter=array("parameter1"=>1);
+    $PHPJasperXML ->xml_dismantle($xml);
     $PHPJasperXML ->transferDBtoArray($server, $user, $pass, $db);   
     $PHPJasperXML ->outpage("I");
 /* 

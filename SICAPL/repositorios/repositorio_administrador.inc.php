@@ -20,9 +20,12 @@ class Repositorio_administrador {
                 $foto = $administrador->getFoto();
                 $email = $administrador->getEmail();
                 $fecha = $administrador->getFecha();
-
                 $administradorExistente = self::obtener_administrador($conexion, $codigo_administrador);
                 $EmailExistente = self::obtener_email($conexion, $email);
+                
+                echo 'la get foto en isertar es  ' .$foto;
+              
+                
 
                 if ($administradorExistente->getCodigo_administrador() == "") {
                     if ($EmailExistente->getEmail() == "") {
