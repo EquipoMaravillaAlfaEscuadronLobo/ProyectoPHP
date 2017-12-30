@@ -182,6 +182,7 @@ function abrirEdicionEdi(codigo,nombre,direccion,correo,telefono) {
 }
 function abrir_nueva_institucion(codigo,nombre,direccion,correo,telefono) {
     $('#idVentana_institucion').modal('open');
+     
 }
 
 //  FUNCIONES QUE SE OCUPAN PARA ACTIVO FIJO

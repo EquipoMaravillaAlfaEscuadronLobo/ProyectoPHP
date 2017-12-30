@@ -62,7 +62,7 @@ include_once '../repositorios/repositorio_institucion.php';
                             </div>
                         </div>
                         <div class="input-field col m3">
-                            <select required="" name="nameInstitucion" id="institucion">
+                            <select required="" name="nameInstitucion" id="institucion" class="institucionCombo">
                                 <option value = "" disabled selected>Seleccione Institucion</option>
                                 <?php
                                 $lista_instituciones = Repositorio_institucion::lista_institucion(Conexion::obtener_conexion());

@@ -1,4 +1,4 @@
-<form  method="post" action="" autocomplete="off" id="FORMULARIO_INSTITUCION">
+<form  method="post" action="./newInstitucion.php" autocomplete="off" enctype="multipart/form-data" id="FORMULARIO_INSTITUCION" class="formInstitucion" name="FORMULARIO_INSTITUCION">
     <input type="hidden" name="bandera_registro_institucion" id="bandera_registro_institucion"/>
     <!--este es el modal-->
     <div id="idVentana_institucion" class="modal modal-fixed-footer nuevo">
@@ -23,8 +23,8 @@
         </div>
         <div class="modal-footer">
             <div class="row">
-                <div class="col-md-6 text-right"><button href="#" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>Guardar</button></div>
-                <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger" onclick="location.href = 'inicio_usuario.php';"><span class="glyphicon glyphicon-remove" aria="hidden"></span>Salir</a></div>
+                <div class="col-md-6 text-right"><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>Guardar</button></div>
+                <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><span class="glyphicon glyphicon-remove" aria="hidden"></span>Salir</a></div>
             </div>
         </div>
     </div>
@@ -33,7 +33,7 @@
 <!--fin de formulario-->
 
 <script>
-$.validator.setDefaults({
+/*$.validator.setDefaults({
     submitHandler: function () {
        
         document.getElementById('bandera_registro_institucion').value="ok";    
@@ -41,7 +41,7 @@ $.validator.setDefaults({
       
         
     }
-});
+});*/
 ///////////////////////////////////////////////////////////este es para los formularios de ingresozz
 $(document).ready(function () {
     $("#FORMULARIO_INSTITUCION").validate({
@@ -93,25 +93,80 @@ $(document).ready(function () {
             $(element).next("span").addClass("glyphicon-ok").removeClass("glyphicon-remove");
         }
     });
-    
+   
     ////////////////////////////////////////////////////////este es para los formularios de edicion
     
      
-    
-    
-    
+     // Interceptamos el evento submit
+      /*  $('.formInstitucion').submit(function () {
+            // Enviamos el formulario usando AJAX
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                // Mostramos un mensaje con la respuesta de PHP
+                success: function (resp) {
+                    document.getElementById('FORMULARIO_INSTITUCION').reset();
+                    $('#idVentana_institucion').modal('close');
+                    swal("Exito", "Registro guardado con exito", "success");
+                    $("#institucion").load(" #institucion");//para actuaizar la datalist cuando registra
+                }
+            })
+            return false;
+        });
+    */
+    $('.formInstitucion').submit(function(){
+      var formData=new FormData(document.getElementById('FORMULARIO_INSTITUCION'));
+      
+        //var codigo=$('#codigol').val();
+      
+   // alert(codigo);
+    $.ajax({
+        url:$(this).attr('action'),
+        type:'POST',
+        dataType: "html",
+        data:formData,
+    cache: false,
+    contentType: false,
+    processData: false
+    }).done(function(resp){
+       
+                swal({
+                    title: "Exito",
+                    text: "Institucion Registrada",
+                    type: "success"},
+                    function(){
+                       document.getElementById('FORMULARIO_INSTITUCION').reset();
+                         $('#idVentana_institucion').modal('close');
+                          recargarCombo();
+
+                    }
+
+                    );
+            
+         
+    })
+    return false;
+  })
 });
+function recargarCombo(){
 
-
-
-
-
+     $.ajax({
+        url:'opcionesIns.php',
+        type:'POST',
+        data:''
+    }).done(function(resp){
+         $('select').material_select('destroy');
+      $('select.institucionCombo').html(resp).fadeIn();
+      $('select').material_select();
+    })
+}
 
 </script>
 
 
 <?php
-if (isset($_REQUEST["bandera_registro_institucion"])) {
+/*if (isset($_REQUEST["bandera_registro_institucion"])) {
 
     $nombre_institucion = $_REQUEST['nameNombreInstitucion'];
     $sql = "INSERT INTO institucion (nombre) VALUES ('$nombre_institucion')";
@@ -139,5 +194,5 @@ if (isset($_REQUEST["bandera_registro_institucion"])) {
     //echo 'el nombre es ' . $nombre_institucion;
     
     //Conexion::cerrar_conexion();
-}
+}*/
 ?>
