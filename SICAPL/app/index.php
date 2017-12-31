@@ -44,7 +44,7 @@ include_once('../plantillas/cabecera.php');
                     </div>
                     </form>
                     <div class="panel-footer">  
-                        <a href="#" class="pass">Olvide mi contraseña</a>
+                        <a href="recuperacion.php" class="pass">Olvide mi contraseña</a>
                     </div>  
                 </div>
 

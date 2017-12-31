@@ -153,6 +153,7 @@ CREATE  TABLE IF NOT EXISTS `diseno1`.`libros` (
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `diseno1`.`mantenimientos` (
  `codigo_mantenimiento` int(11) NOT NULL AUTO_INCREMENT,
+ `codigo_activo` int(11) ,
   `fecha` date DEFAULT NULL,
   `descripcion` text,
   `costo` double DEFAULT NULL,

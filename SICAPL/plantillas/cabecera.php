@@ -1,9 +1,9 @@
 <?php 
 session_start();
-    if (!isset($_SESSION['user'])&&$titulo1!="Inicio de Sesion") {
+    if (!isset($_SESSION['user'])&&($titulo1!="Inicio de Sesion"&&$titulo1!="Recuperar Contraseña")) {
         header("Location: ../index.php");
     }else{
-        if (isset($_SESSION['user'])&&$titulo1=="Inicio de Sesion") {
+        if (isset($_SESSION['user'])&&($titulo1!="Inicio de Sesion"&&$titulo1!="Recuperar Contraseña")) {
         header("Location: home.php");
     }
     }
