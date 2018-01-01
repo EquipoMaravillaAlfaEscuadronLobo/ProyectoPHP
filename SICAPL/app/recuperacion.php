@@ -1,6 +1,9 @@
 <?php
 $titulo1 = "Recuperar Contraseña";
 include_once('../plantillas/cabecera.php');
+    
+   
+    
 ?>
 
 <div class="container login">
@@ -13,6 +16,7 @@ include_once('../plantillas/cabecera.php');
                     <div class="panel-heading text-center">
                         <h3>
                             Recuperar Contraseña
+                            
                         </h3>
                     </div>
                     <div class="panel-body">
@@ -21,8 +25,12 @@ include_once('../plantillas/cabecera.php');
                                 <div class="alert alert-info">
                                     <p>
                                         Escriba la direccion de correo electronico con la que se registro
-                                        y le enviaremos un email con el que podra restablecer su contraseña
+                                        y le enviaremos un email con el que podra restablecer su contraseña.
+                                        <br>
+                                        (Si el email no aparece, revise la bandeja de spam)
+                                        
                                     </p>
+                                    
                                 </div>
                                 <div class="col-md-3"><h4>Correo:</h4></div>
                                 <div class="col-md-9"><input type="email" name="correo" id="correo" class="form-control"   autofocus onkeyup="validarEmail(this.value)"/></div>
@@ -54,6 +62,7 @@ include_once('../plantillas/cabecera.php');
                                         type: "success"},
                                     function () {
                                         document.getElementById("correo").value="";
+                                        location.href="index.php"
                                     }
 
                                     );

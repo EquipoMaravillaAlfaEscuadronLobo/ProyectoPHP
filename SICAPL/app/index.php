@@ -80,7 +80,7 @@ include_once('../plantillas/cabecera.php');
                         if (pass.length > 5) {
                             $('#enviar').removeAttr("disabled");
                         } else {
-                            $('#enviar').addAttr("disabled");
+                            document.getElementById("enviar").disabled = true;
                         }
                     }
 

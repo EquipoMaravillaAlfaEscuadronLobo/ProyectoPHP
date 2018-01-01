@@ -18,6 +18,61 @@
                         return $peticion_generada;
             
         }
+        
+        public static function obtenerPeticion($conexion, $url_secreta) {
+            $peticion = new Recuperar();
+        if (isset($conexion)) {
+            try {
+
+                $sql = "SELECT * FROM recuperacion WHERE url_secreta='$url_secreta'"; ///estos son alias para que PDO pueda trabajar 
+                foreach ($conexion->query($sql) as $row) {
+                    $peticion->setCodigo_administrador($row["codigo_administrador"]);
+                    $peticion->setIdrecuperacion($row["idrecuperacion"]);
+                    $peticion->setUrl_secreta($row["url_secreta"]);
+                    $peticion->setFecha($row["fecha"]);
+                    
+                }
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $peticion;
+        }
+        
+         public static function obtenerPeticionEmail($conexion, $codigoAdmin) {
+            $peticion = new Recuperar();
+        if (isset($conexion)) {
+            try {
+
+                $sql = "SELECT * FROM recuperacion WHERE codigo_administrador='$codigoAdmin'"; ///estos son alias para que PDO pueda trabajar 
+                foreach ($conexion->query($sql) as $row) {
+                    $peticion->setCodigo_administrador($row["codigo_administrador"]);
+                    $peticion->setIdrecuperacion($row["idrecuperacion"]);
+                    $peticion->setUrl_secreta($row["url_secreta"]);
+                    $peticion->setFecha($row["fecha"]);
+                    
+                }
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $peticion;
+        }
+        
+        public static function eliminarPeticion($conexion, $codigoAdmin){
+            $peticion_borrada=false;
+            if (isset($conexion)) {
+                try {
+                    $sql="delete from recuperacion where codigo_administrador='$codigoAdmin'";
+                    
+                    
+                    $peticion_borrada=$conexion->query($sql);
+                } catch (PDOException $exc) {
+                    echo $exc->getMessage();
+                }
+                        }
+                        return $peticion_borrada;
+        }
 
 }
 /* 
