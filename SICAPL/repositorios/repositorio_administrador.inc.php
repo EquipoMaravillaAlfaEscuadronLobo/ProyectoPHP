@@ -569,6 +569,41 @@ class Repositorio_administrador {
         return $resultado;
         
     }
+    
+    public static function verificar_pass($conexion, $verificacion) {
+        $respuesta = false;
+        $administrador_actual = self:: obtener_administrador_actual($conexion, $_SESSION['user']);
+
+        if (isset($conexion)) {
+            try {
+                echo 'hay conexion<br>';
+                if (password_verify($verificacion, $administrador_actual->getPasword())) {///esto es para saber si las contrase;a para modificar es correcta
+                  $respuesta = true ;  
+                } else {
+                    $respuesta = false;
+                    
+                }
+            } catch (PDOException $ex) {
+                //echo "<script>swal('Ooops!', 'Hubo no se pudo realizar la accion', 'error');</script>";
+                 echo '<script>swal({
+                    title: "Error!",
+                    text: "Por Favor intente más tarde",
+                    type: "warning",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },
+                function () {
+                    location.href="inicio_seguridad.php";
+                    
+                });</script>';
+
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        } else {
+            echo "no hay conexion";
+        }
+        return $respuesta;
+    }
 
 }
 ?>
