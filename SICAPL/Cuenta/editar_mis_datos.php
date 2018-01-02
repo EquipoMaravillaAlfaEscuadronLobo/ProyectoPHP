@@ -125,7 +125,7 @@ $sexo = $administradorActual->getSexo();
                         <div class="file-field input-field">
                             <div class="btn">
                                 <span><i class="glyphicon glyphicon-picture" aria-hidden="true"></i>Foto</span>
-                                <input type="file" id="files"  name="foto" accept="image/*">
+                                <input type="file" id="files"  name="foto1" accept="image/*">
 
                             </div>
                             <div class="file-path-wrapper">
@@ -178,24 +178,26 @@ if (isset($_REQUEST["banderaEdicion"])) {
     $administradorE->setFecha($_REQUEST['nameFechaE']);
     $verificacion = $_REQUEST['nameVerificacion'];
 
-    $ruta = '../foto_admi/';
-    $foto = $ruta . basename($_FILES["foto"]["name"]);
-    $foto2 = basename($_FILES["foto"]["name"]);
-    if ($foto2 == "") {
-        $foto2 = $_FILES['foto']['name'];
-        $foto = "";
+   $ruta = '../foto_admi/';
+    $foto =$ruta.basename($_FILES["foto1"]["name"]);
+    $foto2=basename($_FILES["foto1"]["name"]);
+    if($foto2==""){
+        $foto2=$_FILES['foto1']['name'];
+        $foto ="";
+
     }
-    if ($foto != "") {
-        if (move_uploaded_file($_FILES['foto']['tmp_name'], $foto)) {
-            $administradorE->setFoto($foto2);
-            // echo "1";
-        } else {
-            $administradorE->setFoto("");
-            //echo "2";
-        }
-    } else {
-        $administradorE->setFoto($foto2);
+    if($foto!=""){
+    if (move_uploaded_file($_FILES['foto1']['tmp_name'], $foto)) {
+       $administradorE->setFoto($foto2);
+      // echo "1";
+    }else{
+        $administradorE->setFoto("");
+        //echo "2";
     }
+}else{
+      $administradorE->setFoto($foto2);
+
+}
 
 
 //echo 'vamos bien ' .$verificacion ;

@@ -1,82 +1,116 @@
 $.validator.setDefaults({
     submitHandler: function () {
        
-        document.getElementById('banderaEliminacion').value="ok";    
-        document.eliminar_formulario.submit();
+        document.getElementById('banderaSimple').value="ok";    
+        document.vandera_simple.submit();
         
-        }
+        
+    }
 });
 ///////////////////////////////////////////////////////////este es para los formularios de ingresozz
 $(document).ready(function () {
-     $("#eliminar_formulario").validate({
+    $("#vandera_simple").validate({
         rules: {
-            nameMotivoEliminacion: {
+            nameRequerido: {
+                required: true
+              
+            },
+            nameApellido: {
+                required: true,
+                minlength: 3
+            },
+            nameDireccion: {
                 required: true,
                 minlength: 10
             },
-            nameSelectedAdministrador: {
+            namePass1: {
+                required: true,
+                minlength: 6
+            },
+            namePass2: {
+                required: true,
+                equalTo: "#idPass1"
+            },
+            nameFoto: {
                 required: true
             },
-            nameDireccionE: {
+            nameEmail: {
+                required: true,
+                email: true
+            },
+            nameSexo: {
+                required: true
+            },
+            nameDui: {
                 required: true,
                 minlength: 10
             },
-            nameValidacionXE:{
-                  required: true,
-                  equalTo: "#idSecretoEL"
+            nameUser: {
+                required: true,
+                minlength: 6,
+                maxlength: 14
+            },
+            nameTelefono: {
+                required: true,
+                minlength: 8
+            },
+            nameNivel: {
+                  required: true
+            },
+            nameNombreX: {
+                  required: true
             }
-            
         },
         messages: {
-            nameMotivoEliminacion: {
-                required: "Por favor ingrese el motivo de la eliminacion de este administrador",
-                minlength: "ingrese por lo menos 10 caracteres"
+            nameRequerido: {
+                required: "Eeste campo es requerido"
+                
             },
-            nameSelectedAdministrador: {
-                required: "Seleccione un nuevo administrador"
-               
+            nameApellido: {
+                required: "Por favor ingrese su Apellido",
+                minlength: "El apellido debe de tener por lo menos 3 caracteres"
             },
-            nameDireccionE: {
+            nameDireccion: {
                 required: "Por favor ingrese la direccion",
                 minlength: "ingrese una direccion real"
             },
-            namePass1E: {
-            
-                minlength: "La contraseña debe de tener por lo menos 5 caracteres"
+            namePass1: {
+                required: "Ingrese una contraseña",
+                minlength: "La contraseña debe de tener por lo menos 6 caracteres"
             },
-            namePass2E: {
-                
+            namePass2: {
+                required: "Repita la contraseña",
+                minlength: "Por favor ingrese la misma contraseña",
                 equalTo: "Por favor ingrese la misma contraseña"
             },
-            nameFotoE: {
-               // requiredE: "favor ingrese una foto"
+            nameFoto: {
+                required: "por favor ingrese una foto"
             },
             nameSexo: {
-                requiredE: "Seleccione un campo"
+                required: "Seleccione un campo"
             },
-            nameEmailE: {
+            nameEmail: {
                 required: "Por favor ingrese un correo"
             },
-            nameDuiE: {
+            nameDui: {
                 minlength: "ingrese un dui valido",
                 required: "ingrese un dui valido"
             },
-            nameUserE : {
+            nameUser : {
                 required: "ingrese un nombre de usuario ",
-                minlength: "debe de poseer por lo menos 4 caracteres "
+                minlength: "debe de poseer por lo menos 6 caracteres "
             },
-            nameTelefonoE:{
+            nameTelefono:{
                required: "favor ingrese su teléfono",
                 minlength: "ingrese un numero telefónico valido"
             },
-            NameNivelE :{
+            NameNivel :{
                 required: "Seleccione un Nivel"
             },
-            nameValidacionXE:{
-              required: "debe proporcionar su actual contraseña para modificar",
-              equalTo: "debe proporcionar su actual contraseña para modificar"
+            NameNombreX :{
+                required: "Seleccione un Nivel"
             }
-                        
+            
         },
         errorElement: "em",
         errorPlacement: function (error, element) {
@@ -113,6 +147,14 @@ $(document).ready(function () {
             $(element).next("span").addClass("glyphicon-ok").removeClass("glyphicon-remove");
         }
     });
+    
+    ////////////////////////////////////////////////////////este es para los formularios de edicion
+    
+     
+    
+    
+    
 });
+
 
 

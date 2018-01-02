@@ -55,7 +55,7 @@ include_once '../repositorios/repositorio_administrador.inc.php';
                     <div class="col-md-1"></div>
                     <div class="input-field col m5">
                         <i class="fa fa-eye prefix"></i> 
-                        <input type="password" id="idPass1" name="namePass1" class="text-center validate" autocomplete="off" minlength="6">
+                        <input type="password" id="idPass1" autocomplete="off" name="namePass1" class="text-center validate" autocomplete="off" minlength="6">
                         <label for="idPass1">Contraseña</label>
                     </div>
                     <div class="input-field col m5">

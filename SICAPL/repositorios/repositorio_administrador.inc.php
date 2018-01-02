@@ -459,7 +459,7 @@ class Repositorio_administrador {
                 echo $administrador_actual->getPasword();
 
                 if (password_verify($verificacion, $administrador_actual->getPasword())) {///esto es para saber si las contrase;a para modificar es correcta
-                    $sql = 'UPDATE administradores SET nombre=:nombre,apellido=:apellido,pasword=:pasword,dui=:dui,nivel=:nivel, fecha=:fecha,email=:email,sexo=:sexo  WHERE codigo_administrador = :codigo_original';
+                    $sql = 'UPDATE administradores SET nombre=:nombre,apellido=:apellido,pasword=:pasword,dui=:dui,nivel=:nivel, fecha=:fecha,email=:email,sexo=:sexo,foto=:foto  WHERE codigo_administrador = :codigo_original';
 
                     $sentencia = $conexion->prepare($sql);
                     $sentencia->bindParam(':codigo_original', $administrador_actual->getCodigo_administrador(), PDO::PARAM_STR);
@@ -470,6 +470,7 @@ class Repositorio_administrador {
                     $sentencia->bindParam(':fecha', $fecha, PDO::PARAM_STR);
                     $sentencia->bindParam(':email', $email, PDO::PARAM_STR);
                     $sentencia->bindParam(':sexo', $sexo, PDO::PARAM_STR);
+                    $sentencia->bindParam(':foto', $foto, PDO::PARAM_STR);
 
                     if ($pasword == 'PASS_AC') {
                         echo 'si la password es' . $pasword;
@@ -567,6 +568,41 @@ class Repositorio_administrador {
         }
         return $resultado;
         
+    }
+    
+    public static function verificar_pass($conexion, $verificacion) {
+        $respuesta = false;
+        $administrador_actual = self:: obtener_administrador_actual($conexion, $_SESSION['user']);
+
+        if (isset($conexion)) {
+            try {
+                echo 'hay conexion<br>';
+                if (password_verify($verificacion, $administrador_actual->getPasword())) {///esto es para saber si las contrase;a para modificar es correcta
+                  $respuesta = true ;  
+                } else {
+                    $respuesta = false;
+                    
+                }
+            } catch (PDOException $ex) {
+                //echo "<script>swal('Ooops!', 'Hubo no se pudo realizar la accion', 'error');</script>";
+                 echo '<script>swal({
+                    title: "Error!",
+                    text: "Por Favor intente más tarde",
+                    type: "warning",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },
+                function () {
+                    location.href="inicio_seguridad.php";
+                    
+                });</script>';
+
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        } else {
+            echo "no hay conexion";
+        }
+        return $respuesta;
     }
 
 }

@@ -11,6 +11,7 @@
 <script type="text/javascript" src="../js/validacionBiblioteca.js"></script>
 <script src="../js/alertaPersonalizadas.js"></script>
 <script src="../js/mi_validacion.js"></script>
+<script src="../js/validacion_simple.js"></script>
 <script src="../js/validacion_editar.js"></script>
 <script src="../js/validacion_elimnar.js"></script>
 <script src="../js/jquery.inputmask.bundle.js"></script>
