@@ -5,6 +5,7 @@
 	<title>Codigo de Barras Libros</title>
 </head>
 <body>
-	<img src="barcode.php?text=cej-002-034-pa-001-001&size=50&print=true">
+	<img src="barcode.php?filepath=./&text=1234" alt="">
+	
 </body>
 </html>
