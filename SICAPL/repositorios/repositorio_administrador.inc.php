@@ -284,9 +284,8 @@ class Repositorio_administrador {
 
     public static function eliminar_administrador($conexion, $administrador, $codigo_eliminar, $verificacion) {
         $administrador_insertado = false;
-        $administrador_actual = self:: obtener_administrador_actual($conexion, $codigo_eliminar);
-        
-        if (isset($conexion)) {
+        $administrador_actual = self:: obtener_administrador_actual($conexion, $_SESSION['user']);
+             if (isset($conexion)) {
             try {
 
                 if (password_verify($verificacion, $administrador_actual->getPasword())) {///esto es para saber si las contrase;a para modificar es correcta
@@ -303,7 +302,7 @@ class Repositorio_administrador {
                     ////esto es para la bitacora
                     $datos_bitacora = self::obtener_administrador_actual($conexion, $codigo_eliminar);
                     $accion = 'se dio de baja al administrador ' . $datos_bitacora->getNombre() . ' ' . $datos_bitacora->getApellido(). 
-                            'por el siguiente motivo: ' .$observacion;
+                            ' por el siguiente motivo: ' .$observacion;
                     self::insertar_bitacora($conexion, $accion);
 
                     ///mandamos mensaje de confirmacion
@@ -455,8 +454,7 @@ class Repositorio_administrador {
                 $foto = $administrador->getFoto();
                 $email = $administrador->getEmail();
                 $fecha = $administrador->getFecha();
-                echo $verificacion;
-                echo $administrador_actual->getPasword();
+     
 
                 if (password_verify($verificacion, $administrador_actual->getPasword())) {///esto es para saber si las contrase;a para modificar es correcta
                     $sql = 'UPDATE administradores SET nombre=:nombre,apellido=:apellido,pasword=:pasword,dui=:dui,nivel=:nivel, fecha=:fecha,email=:email,sexo=:sexo,foto=:foto  WHERE codigo_administrador = :codigo_original';
