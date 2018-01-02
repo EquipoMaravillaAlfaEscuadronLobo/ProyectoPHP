@@ -24,69 +24,9 @@ $(document).ready(function() {
     <input type="hidden" name="codAct" id="codAct">
     <div class="container-fluid" >
         <div class="row">
-            <div class="col-md-12"><!-- panel datos de usuario -->        
-                <div class="panel panel-default" name="user">
-                    <div class="panel-heading p_libro">
-                        <div class="col-md-10">
-                            <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="" style="font-size:16px">Buscar Usuario</label><input type="text" id="codigouserA" required="" name="codigouserA" autofocus onkeypress="buscarUser2(this)" list="listaUsuarios">
-                            </div>              
-                        </div>
-                    </div>
-
-                    <div class="panel-body">
-
-                        <div class="row">
-                            <div class="col-md-3" >
-                                <img src="" id="fotA" class="presentacionXZ">
-                            </div>
-                            <div class="col-md-5">
-                                <table class="table table-striped table-bordered">
-                                    <tr>
-                                        <td width="30%"><b>Carnet:</b></td>
-                                        <td width="70%" colspan="3"> <div id="carnetA" onchange="activar()"></div></td>
-                                    </tr>
-                                    <tr>
-                                        <td ><b>Nombre:</b></td>
-                                        <td colspan="3"><div id="nombreUserA"></div></td>
-                                    </tr>
-                                    <tr>
-
-                                        <td><b>Sexo:</b></td>
-                                        <td><div id="sexoA"></div></td>
-                                    </tr>
-
-
-
-                                </table>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="col m6">
-                                    <div class="input-field ">
-                                        <i class="fa fa-calendar-check-o prefix" style="color: green"></i> 
-                                        <input type="text" id="fecha" name="fecha_salida"  class="text-center validate" maxlength="25" minlength="3" required value="<?php echo date("d-m-Y"); ?>" readonly> 
-                                        <label for="idNombre" class="col-sm-4 control-labe" style="font-size:18px">Fecha de Salida</label>
-                                    </div>
-
-                                </div>
-
-                                <div class="col m6">
-                                    <div class="input-field">
-                                        <i class="fa fa-calendar prefix" aria-hidden="true"></i>
-                                        <label for="fecha_pub" class="active" style="font-size:14px">Fecha de Devolución</label>
-                                        <input type="text" id="fecha_dev_prestamo" name="fecha_devolucion" class="form-control fecha_dev" value="<?php echo date("d-m-Y"); ?>">
-                                    </div>
-                                </div>  
-                            </div>
-                        </div>
-
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
+            
+            <!--            //panel de tabla de actios-->
+            <div class="col-md-7">
                 <div class="panel-group" id="accordion">
                     <div class="panel panel-default" name="activo">
                         <div class="panel-heading p_libro">
@@ -113,22 +53,24 @@ $(document).ready(function() {
                                         <input type="text" id="codPrestAct" name="codPrestAct" class="text-center validate codPrestAct" required="" value="---"  readonly="">
                                         <label style="font-size:16px">Codigo <small></small> </label>
                                     </div>
-                                    <div class="col m1"></div>
-                                    <div class="input-field col m2">
+                                   
+                                    <div class="input-field col m3">
                                         <i class="fa fa-barcode prefix" title="Indique el numero correlativo del activo para agragar varios a la tabla"></i> 
-                                        <input type="text" id="correlativo" name="correlativo" class="text-center validate" required="" 
-                                               value="p. ej. 5-14, 25, 95"
+                                        <input type="text" id="correlativo" name="correlativo" oncuechange="activar()"  class="text-center validate"  
+                                               value="---"
                                                pattern="[0-9]"
-                                               onclick = "if (this.value == 'p. ej. 5-14, 25, 95')
+                                               onclick = "if (this.value == '---')
                                                            this.value = ''" 
                                                onblur="if (this.value == '')
-                                                           this.value = 'p. ej. 5-14, 25, 95'"
+                                                           this.value = '---'"
+                                                                   placeholder=""
+                                                title="Indique el numero correlativo del activo para agregar varios a la tabla  &#13;p. ej. 5-14, 25,95"                            "
 
                                                >
-                                        <label style="font-size:16px" >Seleccion Multiple  <small></small> </label>
+                                        <label style="font-size:14px"  title="Indique el numero correlativo del activo para agregar varios a la tabla  &#13;p. ej. 5-14, 25" >Seleccion Multiple  <small></small> </label>
                                     </div>
                                     <div class="input-field col-md-offset-2 col m1"   >
-                                        <button id="agrAct" class="btn btn-success modal-action " type="button" onclick="javascript:agregar()" disabled="" >
+                                        <button id="agrAct" class="btn-sm btn-success modal-action " type="button" onclick="javascript:agregar()" disabled="" >
                                             <span class="fa fa-mail-forward" aria="hidden" ></span>
                                             Agregar</button>
                                     </div>
@@ -152,6 +94,76 @@ $(document).ready(function() {
                     </div>
                 </div>
             </div>
+            
+            <div class="col-md-5"><!-- panel datos de usuario -->        
+                <div class="panel panel-default" name="user">
+                    <div class="panel-heading p_libro">
+                        <div class="col-md-10">
+                            <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="" style="font-size:16px">Buscar Usuario</label><input type="text" id="codigouserA" required="" name="codigouserA" autofocus onkeypress="buscarUser2(this)" list="listaUsuarios">
+                            </div>              
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+
+                         <div class="row">
+                                <div class="col m6">
+                                    <div class="input-field ">
+                                        <i class="fa fa-calendar-check-o prefix" style="color: green"></i> 
+                                        <input type="text" id="fecha" name="fecha_salida"  class="text-center validate" maxlength="25" minlength="3" required value="<?php echo date("d-m-Y"); ?>" readonly> 
+                                        <label for="idNombre" class="col-sm-4 control-labe" style="font-size:18px">Fecha de Salida</label>
+                                    </div>
+
+                                </div>
+
+                                <div class="col m6">
+                                    <div class="input-field">
+                                        <i class="fa fa-calendar prefix" aria-hidden="true"></i>
+                                        <label for="fecha_pub" class="active" style="font-size:14px">Fecha de Devolución</label>
+                                        <input type="text" id="fecha_dev_prestamo" name="fecha_devolucion" class="form-control fecha_dev" value="<?php echo date("d-m-Y"); ?>">
+                                    </div>
+                                </div>  
+                            </div>
+                        <div class="row">
+                            <div class="col-md-3" >
+                                <img src="../imagenes/if_user-alt_285645.png"  id="fotA" class="presentacionXZ">
+                            </div>
+                            <div class="col-md-9">
+                                <table class="table table-striped table-bordered">
+                                    <tr>
+                                        <td width="30%"><b>Carnet:</b></td>
+                                        <td width="70%" colspan="3"> <div id="carnetA" onchange="activar()"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td ><b>Nombre:</b></td>
+                                        <td colspan="3"><div id="nombreUserA"></div></td>
+                                    </tr>
+                                    <tr>
+
+                                        <td><b>Sexo:</b></td>
+                                        <td><div id="sexoA"></div></td>
+                                    </tr>
+                                      <tr>
+                                <td>
+                                    <b>Actual:</b>
+                                </td>
+                                <td id="actual_prestamo_activo" class="alert">
+                                    
+                                </td>
+                            </tr>
+
+
+                                </table>
+                            </div>
+                           
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
 
         </div>
     </div>
@@ -161,12 +173,11 @@ $(document).ready(function() {
         nonymous" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" src="https://code.jquery.com/jquery-2.2.4.min.js">
 </script>
 <script>
-    function  activar() {//para activar boton de agregar, se llama en getuser y get activo
-        if (document.getElementById("carnetA").value != "" &&
-                document.getElementById("codPrestAct").value != "---") {
-            document.getElementById("agrAct").disabled = false;
-        }
+    
 
+
+    function  activar() {//para activar boton de agregar
+       
 
     }
 
@@ -176,6 +187,17 @@ $(document).ready(function() {
         return false;
     }
 
+//para eliminar de las tablas
+// fuente https://es.stackoverflow.com/questions/9141/eliminar-fila-de-tabla-html-con-jquery-o-js
+    $(document).on('click', '.borrar', function (event) {
+        event.preventDefault();
+        $(this).closest('tr').remove();
+    });
+
+    $(document).on('click', '.borrar_activo_tabla_prestamo', function (event) {
+        event.preventDefault();
+        $(this).closest('tr').remove();
+    });
 
 </script>
 <datalist id="listaActivos">

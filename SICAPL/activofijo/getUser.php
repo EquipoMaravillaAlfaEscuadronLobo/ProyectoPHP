@@ -13,13 +13,26 @@ foreach ($listado as $fila) {
         document.getElementById('carnetA').innerHTML = "<?php echo $fila['codigo_usuario'] ?>";
         document.getElementById('nombreUserA').innerHTML = "<?php echo $fila['nombre'] ?>";
         document.getElementById('sexoA').innerHTML = "<?php echo $fila['sexo'] ?>";
-        document.getElementById('fotA').setAttribute("src", "../imagenes/tipo.jpg")
+        document.getElementById('fotA').setAttribute("src", "<?php echo $fila['foto'] ?>");
+        
+     <?php 
+            if ($fila[11]=='si') {
+         ?>
+          document.getElementById('actual_prestamo_activo').innerHTML = "<?php echo 'Prestamo Pendiente'?>";
+          $('#actual_prestamo_activo').removeClass('alert-success');
+          $('#actual_prestamo_activo').addClass('alert-danger');
+
+        <?php 
+            }else {
+         ?>
+        document.getElementById('actual_prestamo_activo').innerHTML = "<?php echo 'sin Prestamos' ?>";
+        $('#actual_prestamo_activo').removeClass('alert-danger');
+        $('#actual_prestamo_activo').addClass('alert-success');
+        <?php } ?>
+		</script>
 
 
-        activar();
-    </script>
-
-
-    <?php
-}
-?>
+    	<?php
+    }                    
+                    
+ ?>

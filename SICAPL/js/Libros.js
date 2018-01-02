@@ -97,6 +97,9 @@ function buscarUser2(valor){
 function buscarActivo(valor){
 //alert("paso");
         var depto = valor.value;
+        var numero=depto.substr(12)
+        document.getElementById('correlativo').value = numero+" - "
+        
 //var numero=valor.id.substr(7)
 //alert(valor.id);
     if (depto != "") {
@@ -105,6 +108,8 @@ function buscarActivo(valor){
          
 
         }); 
+        document.getElementById("agrAct").disabled = false;
+        //llenarTact(depto, "---");
     }         
 
 }

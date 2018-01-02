@@ -79,12 +79,12 @@
                             <div class="input-field col m3">
                                 <i class="fa fa-barcode prefix" title="Indique el numero correlativo del activo para agragar varios a la tabla &#13;p. ej. 5-14, 25"></i> 
                                 <input type="text" id="correlativoMant" name="correlativoMant" class="text-center validate" 
-                                       value="0"
+                                       value="---"
                                        pattern="[0-9]"
-                                       onclick = "if (this.value == 'p. ej. 5-14, 25')
+                                       onclick = "if (this.value == '---')
                                                    this.value = ''" 
                                        onblur="if (this.value == '')
-                                                   this.value = 'p. ej. 5-14, 25'"
+                                                   this.value = '---'"
                                        title="Indique el numero correlativo del activo para agregar varios a la tabla  &#13;p. ej. 5-14, 25"
                                        >
                                 <label style="font-size:12px" title="Indique el numero correlativo del activo para agragar varios a la tabla&#13;p. ej. 5-14, 25">Seleccion Multiple  <small></small> </label>

@@ -40,10 +40,10 @@ foreach ($listado as $fila) {
     var linea="";
         linea=linea.concat(
             "<tr>",
-            '<td> <input type="hidden" name="codsActsMant[]" value="'+codigo+'"> '+codigo+"</td>",
+            '<td><input type="button" class="borrar_activo btn-sm btn-danger" value="-"/>&nbsp;&nbsp; <input type="hidden" name="codsActsMant[]" value="'+codigo+'"> '+codigo+"</td>",
             "<td>"+tipo+"</td>",
             "<td>"+sel+"</td>",
-           ' "<td><input type="button" class="btn-success btn-sm " onclick="nuevaCat(4)" value="Actualizar Detalles"/>&nbsp;&nbsp;<input type="button" class="borrar_activo btn-sm btn-danger" value="-"/></td>',
+           ' "<td><input type="button" class="btn-success btn-sm " onclick="nuevaCat(4)" value="Actualizar Detalles"/></td>',
             
             "</tr>"
             );
