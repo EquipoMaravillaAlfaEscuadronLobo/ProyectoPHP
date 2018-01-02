@@ -168,6 +168,21 @@ class Repositorio_administrador {
 
         return $lista_administradores;
     }
+    
+    public static function actualizarClave($conexion, $codigo_administrador, $clave) {
+        $clave_actualizada=false;
+        if (isset($conexion)) {
+            try {
+                $clave=password_hash($clave, PASSWORD_DEFAULT);
+            $sql="Update administradores set pasword='$clave' where codigo_administrador='$codigo_administrador'";
+            $sentencia=$conexion -> prepare($sql);
+             $clave_actualizada=$sentencia->execute();
+        } catch (PDOException $exc) {
+            echo $exc->getTraceAsString();
+        }
+        }
+        return $clave_actualizada;
+        }
 
     public static function actualizar_administrador($conexion, $administrador, $codigo_original, $verificacion) {
         $administrador_insertado = false;
