@@ -82,7 +82,7 @@
         <div class="modal-footer">
             <div class="row">
                 <div class="col-md-6 text-right"><button href="#" class="btn btn-success"><span class="glyphicon glyphicon-trash" aria="hidden"></span>Eliminar</button></div>
-                <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger" onclick="location.href = 'inicio_seguridad.php';"><span class="glyphicon glyphicon-remove" aria="hidden"></span>Salir</a></div>
+                <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><span class="glyphicon glyphicon-remove" aria="hidden"></span>Salir</a></div>
             </div>
         </div>
     </div>

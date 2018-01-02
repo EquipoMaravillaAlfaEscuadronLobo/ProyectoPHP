@@ -158,7 +158,7 @@ include_once '../repositorios/repositorio_administrador.inc.php';
                     <button class="btn btn-success" type="submit">
                         <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>                            
                         Guardar</button>
-                    <button type="reset" class="btn btn-danger" onclick="location.href = 'inicio_seguridad.php';">
+                    <button type="reset" class="btn btn-danger">
                         <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar
                     </button>
                 </div>

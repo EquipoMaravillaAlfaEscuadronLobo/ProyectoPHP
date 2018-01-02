@@ -142,7 +142,7 @@
                         <span class="glyphicon glyphicon-refresh" aria="hidden"></span> Actualizar
                     </button>
                 </div>
-                <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger" onclick="location.href = 'inicio_seguridad.php';"><span class="glyphicon glyphicon-remove" aria="hidden"></span>Salir</a></div>
+                <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><span class="glyphicon glyphicon-remove" aria="hidden"></span>Salir</a></div>
             </div>
         </div>
     </div>

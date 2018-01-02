@@ -116,7 +116,7 @@ include_once '../repositorios/repositorio_institucion.php';
                         <button class="btn btn-success">
                             <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>                            
                             Guardar</button>
-                        <button type="reset" class="btn btn-danger" onclick="location.href = 'inicio_usuario.php';">
+                        <button type="reset" class="btn btn-danger">
                             <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar
                         </button>
                     </div>
