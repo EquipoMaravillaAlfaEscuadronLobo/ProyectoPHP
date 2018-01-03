@@ -99,7 +99,7 @@ $(document).ready(function() {
                 <div class="panel panel-default" name="user">
                     <div class="panel-heading p_libro">
                         <div class="col-md-10">
-                            <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="" style="font-size:16px">Buscar Usuario</label><input type="text" id="codigouserA" required="" name="codigouserA" autofocus onkeypress="buscarUser2(this)" list="listaUsuarios">
+                            <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="" style="font-size:16px">Buscar Usuario</label><input type="text" id="codigouserA"  name="codigouserA" autofocus onkeypress="buscarUser2(this)" list="listaUsuarios">
                             </div>              
                         </div>
                     </div>

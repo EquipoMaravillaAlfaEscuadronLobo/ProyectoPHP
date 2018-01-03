@@ -29,6 +29,7 @@ foreach ($listado as $fila) {
             "<td>"+encargado+"</td>",
             "</tr>"
             );
+    
     $("table#tabla_activo_prestamo tbody").append(linea);
    
     }else{

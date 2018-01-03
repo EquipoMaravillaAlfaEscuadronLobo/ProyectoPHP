@@ -208,6 +208,7 @@ function nuevaCat(opcion) {
 }
 
 function nuevoPretamoAct() {
+     $("#tabla_activo_prestamo tbody").empty()//elino el anterior
     $('#nuevoPrestamoAct').modal('open');
 }
 
