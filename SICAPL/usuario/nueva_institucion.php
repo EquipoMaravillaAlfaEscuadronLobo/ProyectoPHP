@@ -31,7 +31,7 @@
     <!--este es el fin de modal-->
 </form>
 <!--fin de formulario-->
-
+<form action="#" name="eliminar_formulario"></form>
 <script>
 /*$.validator.setDefaults({
     submitHandler: function () {
@@ -160,6 +160,7 @@ function recargarCombo(){
       $('select.institucionCombo').html(resp).fadeIn();
       $('select').material_select();
     })
+    return false;
 }
 
 </script>

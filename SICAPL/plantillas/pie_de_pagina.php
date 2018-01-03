@@ -1,6 +1,7 @@
 <!--<script crossorigin="anonymous" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" src="../js/jquery.min.js"></script>-->
- <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<!--<script src="../js/jquery-1.11.2.js"></script>-->
+<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
+<script src="../js/jquery-1.11.2.js"></script>
+
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/materialize.js"></script>
 <script src="../js/jquery.inputmask.bundle.js"></script>
@@ -13,14 +14,14 @@
 <script src="../js/mi_validacion.js"></script>
 <script src="../js/validacion_simple.js"></script>
 <script src="../js/validacion_editar.js"></script>
-<script src="../js/validacion_elimnar.js"></script>
+
 <script src="../js/jquery.inputmask.bundle.js"></script>
 <script src="../js/Mascara.js"></script>
 <script src="../js/inicializaciones.js"></script>
 
 <script src="../js/Libros.js"></script>
 <script src="../js/foto.js"></script>
-
+<script src="../js/validacion_elimnar.js"></script>
 </body>
 <!--<footer class="text-center">
     <div class="container">

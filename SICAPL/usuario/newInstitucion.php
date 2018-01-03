@@ -18,18 +18,8 @@ if (isset($_REQUEST["bandera_registro_institucion"])) {
     $accion = 'Se registro la siguiente institucion: ' . $nombre_institucion;
     
     Repositorio_Bitacora::insertar_bitacora(Conexion::obtener_conexion(), $accion);
-    echo $accion;
-    echo '<script>swal({
-                    title: "Exito",
-                    text: "El registro ha sido Guardado!",
-                    type: "success",
-                    confirmButtonText: "ok",
-                    closeOnConfirm: false
-                },
-                function () {
-                    location.href="inicio_usuario.php";
-                    
-                });</script>';    
+   // echo $accion;
+    
     
     
     //echo 'el nombre es ' . $nombre_institucion;
