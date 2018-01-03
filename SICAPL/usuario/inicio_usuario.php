@@ -53,4 +53,52 @@ include_once '../plantillas/menu.php';
 include_once '../plantillas/pie_de_pagina.php';
 ?>
 
+<script>
+     $('.formInstitucion').submit(function(){
+      var formData=new FormData(document.getElementById('FORMULARIO_INSTITUCION'));
+      
+        //var codigo=$('#codigol').val();
+      
+   // alert(codigo);
+    $.ajax({
+        url:$(this).attr('action'),
+        type:'POST',
+        dataType: "html",
+        data:formData,
+    cache: false,
+    contentType: false,
+    processData: false
+    }).done(function(resp){
+       
+                swal({
+                    title: "Exito",
+                    text: "Institucion Registrada",
+                    type: "success"},
+                    function(){
+                       document.getElementById('FORMULARIO_INSTITUCION').reset();
+                         $('#idVentana_institucion').modal('close');
+                          recargarCombo();
 
+                    }
+
+                    );
+            
+         
+    })
+    return false;
+  })
+
+function recargarCombo(){
+
+     $.ajax({
+        url:'opcionesIns.php',
+        type:'POST',
+        data:''
+    }).done(function(resp){
+         $('select').material_select('destroy');
+      $('select.institucionCombo').html(resp).fadeIn();
+      $('select').material_select();
+    })
+    return false;
+}
+</script>

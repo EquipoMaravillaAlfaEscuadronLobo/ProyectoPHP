@@ -31,7 +31,7 @@
     <!--este es el fin de modal-->
 </form>
 <!--fin de formulario-->
-<form action="#" name="eliminar_formulario"></form>
+
 <script>
 /*$.validator.setDefaults({
     submitHandler: function () {
@@ -115,53 +115,14 @@ $(document).ready(function () {
             return false;
         });
     */
+})
     $('.formInstitucion').submit(function(){
       var formData=new FormData(document.getElementById('FORMULARIO_INSTITUCION'));
-      
+      });
         //var codigo=$('#codigol').val();
       
    // alert(codigo);
-    $.ajax({
-        url:$(this).attr('action'),
-        type:'POST',
-        dataType: "html",
-        data:formData,
-    cache: false,
-    contentType: false,
-    processData: false
-    }).done(function(resp){
-       
-                swal({
-                    title: "Exito",
-                    text: "Institucion Registrada",
-                    type: "success"},
-                    function(){
-                       document.getElementById('FORMULARIO_INSTITUCION').reset();
-                         $('#idVentana_institucion').modal('close');
-                          recargarCombo();
 
-                    }
-
-                    );
-            
-         
-    })
-    return false;
-  })
-});
-function recargarCombo(){
-
-     $.ajax({
-        url:'opcionesIns.php',
-        type:'POST',
-        data:''
-    }).done(function(resp){
-         $('select').material_select('destroy');
-      $('select.institucionCombo').html(resp).fadeIn();
-      $('select').material_select();
-    })
-    return false;
-}
 
 </script>
 
