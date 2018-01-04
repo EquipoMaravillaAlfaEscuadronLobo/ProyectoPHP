@@ -51,10 +51,10 @@ include_once('../plantillas/menu.php');
 </div>
 
 <div class="col s12" id="test5">
-    <h1>Consultas</h1>
+    <?php include('consultas.php'); ?>
 </div>
 <div class="col s12" id="test6">
-    <h1>Reportes</h1>
+   <?php include('reportes.php'); ?>
 </div>
 
 

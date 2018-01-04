@@ -17,6 +17,10 @@ footer{
    color: white;
    
 }
+.fotosLibros{
+	width: 50px !important;
+}
+
 .login{
 	padding-top: 7em;
 }

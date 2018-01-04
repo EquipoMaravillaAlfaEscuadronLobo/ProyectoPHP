@@ -66,6 +66,7 @@ SUBSTR(libros.codigo_libro,1,19) as codigo,
 libros.fecha_publicacion as fecha_publicacion,
 libros.estado,
 libros.foto as foto,
+libros.motivo as motivo,
 libros.editoriales_codigo as cedit,
 editoriales.nombre as editorial,
 count(titulo) as cantidad

@@ -1,0 +1,1 @@
+<a href="../reportes/reporte.php" ><p class="alert alert-info">Codigo de Barras, Ejemplo</p></a>
