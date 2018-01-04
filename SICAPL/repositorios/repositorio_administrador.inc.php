@@ -22,15 +22,15 @@ class Repositorio_administrador {
                 $fecha = $administrador->getFecha();
                 $administradorExistente = self::obtener_administrador($conexion, $codigo_administrador);
                 $EmailExistente = self::obtener_email($conexion, $email);
-                
-                echo 'la get foto en isertar es  ' .$foto;
-              
-                
+
+                echo 'la get foto en isertar es  ' . $foto;
+
+
 
                 if ($administradorExistente->getCodigo_administrador() == "") {
                     if ($EmailExistente->getEmail() == "") {
 
-                        
+
                         $sql = 'INSERT INTO administradores(codigo_administrador,pasword,nivel,nombre,apellido,sexo,dui,estado,observacion,foto,email,fecha)'
                                 . ' values (:codigo_administrador,:pasword,:nivel,:nombre,:apellido,:sexo,:dui,:estado,:observacion,:foto,:email,:fecha)';
                         ///estos son alias para que PDO pueda trabajar 
@@ -50,8 +50,8 @@ class Repositorio_administrador {
                         $sentencia->bindParam(':fecha', $fecha, PDO::PARAM_STR);
 
                         $administrador_insertado = $sentencia->execute();
-                        $mensaje = 'Se registro como administrador a ' . $nombre .' ' . $apellido;
-                        
+                        $mensaje = 'Se registro como administrador a ' . $nombre . ' ' . $apellido;
+
                         self::insertar_bitacora($conexion, $mensaje);
 
 
@@ -168,21 +168,21 @@ class Repositorio_administrador {
 
         return $lista_administradores;
     }
-    
+
     public static function actualizarClave($conexion, $codigo_administrador, $clave) {
-        $clave_actualizada=false;
+        $clave_actualizada = false;
         if (isset($conexion)) {
             try {
-                $clave=password_hash($clave, PASSWORD_DEFAULT);
-            $sql="Update administradores set pasword='$clave' where codigo_administrador='$codigo_administrador'";
-            $sentencia=$conexion -> prepare($sql);
-             $clave_actualizada=$sentencia->execute();
-        } catch (PDOException $exc) {
-            echo $exc->getTraceAsString();
-        }
+                $clave = password_hash($clave, PASSWORD_DEFAULT);
+                $sql = "Update administradores set pasword='$clave' where codigo_administrador='$codigo_administrador'";
+                $sentencia = $conexion->prepare($sql);
+                $clave_actualizada = $sentencia->execute();
+            } catch (PDOException $exc) {
+                echo $exc->getTraceAsString();
+            }
         }
         return $clave_actualizada;
-        }
+    }
 
     public static function actualizar_administrador($conexion, $administrador, $codigo_original, $verificacion) {
         $administrador_insertado = false;
@@ -202,8 +202,8 @@ class Repositorio_administrador {
                 $foto = $administrador->getFoto();
                 $email = $administrador->getEmail();
                 $fecha = $administrador->getFecha();
-                
-                             
+
+
 
                 if (password_verify($verificacion, $administrador_actual->getPasword())) {///esto es para saber si las contrase;a para modificar es correcta
                     $sql = 'UPDATE administradores SET nombre=:nombre,apellido=:apellido,pasword=:pasword,dui=:dui,nivel=:nivel, fecha=:fecha,email=:email,sexo=:sexo,foto=:foto  WHERE codigo_administrador = :codigo_original';
@@ -220,7 +220,7 @@ class Repositorio_administrador {
                     $sentencia->bindParam(':foto', $foto, PDO::PARAM_STR);
 
                     if ($pasword == 'PASWORD_AC') {
-                        
+
                         $pasword = $administrador_actual->getPasword();
                         $sentencia->bindParam(':pasword', $pasword, PDO::PARAM_STR);
                     } else {
@@ -228,10 +228,10 @@ class Repositorio_administrador {
                     }
 
                     $administrador_insertado = $sentencia->execute();
-                    
-                    $accion = 'se actualizaron los datos del administrador ' .$codigo_original ."(" . $nombre . ' ' . $apellido.")";  
+
+                    $accion = 'se actualizaron los datos del administrador ' . $codigo_original . "(" . $nombre . ' ' . $apellido . ")";
                     self::insertar_bitacora($conexion, $accion);
-                    
+
                     echo '<script>swal({
                     title: "Exito",
                     text: "El registro ha sido actualizado!",
@@ -257,13 +257,10 @@ class Repositorio_administrador {
                     location.href="inicio_seguridad.php";
                     
                 });</script>';
-
-
-                    
                 }
             } catch (PDOException $ex) {
                 //echo "<script>swal('Ooops!', 'Hubo no se pudo realizar la accion', 'error');</script>";
-                 echo '<script>swal({
+                echo '<script>swal({
                     title: "Error!",
                     text: "Por Favor intente más tarde",
                     type: "warning",
@@ -285,7 +282,7 @@ class Repositorio_administrador {
     public static function eliminar_administrador($conexion, $administrador, $codigo_eliminar, $verificacion) {
         $administrador_insertado = false;
         $administrador_actual = self:: obtener_administrador_actual($conexion, $_SESSION['user']);
-             if (isset($conexion)) {
+        if (isset($conexion)) {
             try {
 
                 if (password_verify($verificacion, $administrador_actual->getPasword())) {///esto es para saber si las contrase;a para modificar es correcta
@@ -301,8 +298,8 @@ class Repositorio_administrador {
 
                     ////esto es para la bitacora
                     $datos_bitacora = self::obtener_administrador_actual($conexion, $codigo_eliminar);
-                    $accion = 'se dio de baja al administrador ' . $datos_bitacora->getNombre() . ' ' . $datos_bitacora->getApellido(). 
-                            ' por el siguiente motivo: ' .$observacion;
+                    $accion = 'se dio de baja al administrador ' . $datos_bitacora->getNombre() . ' ' . $datos_bitacora->getApellido() .
+                            ' por el siguiente motivo: ' . $observacion;
                     self::insertar_bitacora($conexion, $accion);
 
                     ///mandamos mensaje de confirmacion
@@ -318,7 +315,7 @@ class Repositorio_administrador {
                     
                 });</script>';
                 } else {
-                     echo '<script>swal({
+                    echo '<script>swal({
                     title: "Advertencia!",
                     text: "La contraseña que introdujo no es correcta, por lo que no se harán combios",
                     type: "warning",
@@ -329,8 +326,6 @@ class Repositorio_administrador {
                     location.href="inicio_seguridad.php";
                     
                 });</script>';
-
-
                 }
             } catch (PDOException $ex) {
                 echo "<script>swal('Ooops!', 'Hubo no se pudo realizar la accion', 'error');</script>";
@@ -439,11 +434,11 @@ class Repositorio_administrador {
         return $administrador;
     }
 
-    public static function actualizar_mis_datos($conexion, $administrador,$verificacion) {
+    public static function actualizar_mis_datos($conexion, $administrador, $verificacion) {
         $administrador_insertado = false;
         $administrador_actual = self:: obtener_administrador_actual($conexion, $administrador->getCodigo_administrador());
         if (isset($conexion)) {
-           
+
             try {
                 echo 'hay conexion<br>';
                 $pasword = $administrador->getPasword(); ////password plana
@@ -454,7 +449,7 @@ class Repositorio_administrador {
                 $foto = $administrador->getFoto();
                 $email = $administrador->getEmail();
                 $fecha = $administrador->getFecha();
-     
+
 
                 if (password_verify($verificacion, $administrador_actual->getPasword())) {///esto es para saber si las contrase;a para modificar es correcta
                     $sql = 'UPDATE administradores SET nombre=:nombre,apellido=:apellido,pasword=:pasword,dui=:dui,nivel=:nivel, fecha=:fecha,email=:email,sexo=:sexo,foto=:foto  WHERE codigo_administrador = :codigo_original';
@@ -479,10 +474,10 @@ class Repositorio_administrador {
                     }
 
                     $administrador_insertado = $sentencia->execute();
-                    
-                    $accion = 'el administrador ' . $nombre . ' ' . $apellido . ' actualizo sus datos';  
+
+                    $accion = 'el administrador ' . $nombre . ' ' . $apellido . ' actualizo sus datos';
                     self::insertar_bitacora($conexion, $accion);
-                    
+
                     echo '<script>swal({
                     title: "Exito",
                     text: "El registro ha sido actualizado!",
@@ -506,11 +501,10 @@ class Repositorio_administrador {
                     location.href="../Cuenta/inicio_cuenta.php";
                     
                 });</script>';
-                 
                 }
             } catch (PDOException $ex) {
                 //echo "<script>swal('Ooops!', 'Hubo no se pudo realizar la accion', 'error');</script>";
-                 echo '<script>swal({
+                echo '<script>swal({
                     title: "Error!",
                     text: "Por Favor intente más tarde",
                     type: "warning",
@@ -550,24 +544,22 @@ class Repositorio_administrador {
             }
         }
     }
-    
+
     public static function numero_administradores($conexion) {
-    $resultado= 0 ;
-    //echo 'no hay conexion ';
+        $resultado = 0;
+        //echo 'no hay conexion ';
         if (isset($conexion)) {
             try {
                 //echo 'hay conexion';
                 $sql = "SELECT count(*) FROM  administradoresSELECT count(*) FROM  administradores"; ///estos son alias para que PDO pueda trabajar 
                 $resultado = $conexion->query($sql);
-                    
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();
             }
         }
         return $resultado;
-        
     }
-    
+
     public static function verificar_pass($conexion, $verificacion) {
         $respuesta = false;
         $administrador_actual = self:: obtener_administrador_actual($conexion, $_SESSION['user']);
@@ -576,14 +568,13 @@ class Repositorio_administrador {
             try {
                 echo 'hay conexion<br>';
                 if (password_verify($verificacion, $administrador_actual->getPasword())) {///esto es para saber si las contrase;a para modificar es correcta
-                  $respuesta = true ;  
+                    $respuesta = true;
                 } else {
                     $respuesta = false;
-                    
                 }
             } catch (PDOException $ex) {
                 //echo "<script>swal('Ooops!', 'Hubo no se pudo realizar la accion', 'error');</script>";
-                 echo '<script>swal({
+                echo '<script>swal({
                     title: "Error!",
                     text: "Por Favor intente más tarde",
                     type: "warning",
@@ -604,4 +595,5 @@ class Repositorio_administrador {
     }
 
 }
+
 ?>
