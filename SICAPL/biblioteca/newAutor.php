@@ -7,6 +7,7 @@
     $nombre = $_POST["nombre"];
     $apellido = $_POST["apellido"];
     $nacimiento = $_POST["fecha_nac"];
+    $nacimiento=date_format(date_create($nacimiento),'Y-m-d');
     $biografia =$ruta.$_POST["bio"];
     $biografia2=$_POST['bio'];
     

@@ -53,8 +53,9 @@ include_once '../app/Conexion.php';
 </div>
 
 <div id="bajaLib" class="modal modal-fixed-footer nuevo">
-    <div class="modal-content modal-lg" id="bajaLib2">
+    <div class="modal-content modal-lg" >
         <?php //include('listadoDarBaja.php'); ?>
+        <div id="bajaLib2"></div>
     </div>
     <div class="modal-footer">
         <div class="row">
@@ -71,11 +72,12 @@ include_once '../app/Conexion.php';
         document.frmEditLib.submit();
     }
     function abrirBajaLibros(codigo) {
-        $('#bajaLib').modal('open');
+        alert(codigo);
         $.post("listadoDarBaja.php", {codigo: codigo}, function(mensaje){
             $('#bajaLib2').html(mensaje).fadeIn();
 
         });
+        $('#bajaLib').modal('open');
     }
     function Baja (codigo) {
         swal({

@@ -271,6 +271,7 @@ WHERE
 codigo_libro like '%$codigo%' and libros.estado=0;
 
 ";
+                echo $codigo;
                 $resultado = $conexion->query($sql);
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();
