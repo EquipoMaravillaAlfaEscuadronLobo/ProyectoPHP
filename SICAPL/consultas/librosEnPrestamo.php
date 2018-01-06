@@ -34,6 +34,7 @@
                             <?php } ?>
                            
                         </tbody>
+</table>
                
 
 

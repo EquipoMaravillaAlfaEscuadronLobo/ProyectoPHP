@@ -6,7 +6,7 @@ include_once '../app/Conexion.php';
 include_once '../modelos/Libros.php';
 include_once '../repositorios/respositorio_libros.php';
 $codigo=$_REQUEST['codigo'];
-echo $codigo;
+//echo $codigo;
 Conexion::abrir_conexion();
 $listado=Repositorio_libros::ListaDarBaja(Conexion::obtener_conexion(), $codigo);
 ?>

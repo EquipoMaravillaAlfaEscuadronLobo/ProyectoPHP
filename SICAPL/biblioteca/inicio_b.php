@@ -20,7 +20,7 @@ include_once('../plantillas/menu.php');
 
         <li class="tab">
             <a class="active" href="#test3">
-             <i class="fa fa-handshake-o" aria-hidden="true"></i> Prestamo
+                <i class="fa fa-handshake-o" aria-hidden="true"></i> Prestamo
             </a>
         </li>
         <li class="tab">
@@ -41,7 +41,7 @@ include_once('../plantillas/menu.php');
 
 <div class="col s12" id="test1">
 
-  <?php include('modificar_b.php'); ?>
+    <?php include('modificar_b.php'); ?>
 </div>
 <div class="col s12" id="test2">
     <?php include('registro_b.php'); ?>
@@ -52,10 +52,15 @@ include_once('../plantillas/menu.php');
 
 <div class="col s12" id="test5">
     <?php include('consultas.php'); ?>
+
 </div>
+
 <div class="col s12" id="test6">
-   <?php include('reportes.php'); ?>
+    <?php include('reportes.php'); ?>
+
 </div>
+
+
 
 
 
@@ -63,136 +68,196 @@ include_once('../plantillas/menu.php');
 include_once('../plantillas/pie_de_pagina.php');
 ?>
 <script type="text/javascript">
-$(document).ready(function() {
+    $(document).ready(function () {
 
-     $('.librof').submit(function(){
-      var formData=new FormData(document.getElementById('frmLibro'));
-      
-        //var codigo=$('#codigol').val();
-      
-   // alert(codigo);
-    $.ajax({
-        url:$(this).attr('action'),
-        type:'POST',
-        dataType: "html",
-        data:formData,
-    cache: false,
-    contentType: false,
-    processData: false
-    }).done(function(resp){
-       if(resp==1){
-                swal({
-                    title: "Exito",
-                    text: "Libro Registrado",
-                    type: "success"},
-                    function(){
-                       document.getElementById('frmLibro').reset();
-                       
-                       location.href="inicio_b.php";
-                        
-                    }
+        $('.librof').submit(function () {
+            var formData = new FormData(document.getElementById('frmLibro'));
 
-                    );
-            
-         }else{
-                swal ( "Oops" ,  resp ,  "error" )
-             
-         }
-    })
-    return false;
-  
-})
+            //var codigo=$('#codigol').val();
 
+            // alert(codigo);
+            $.ajax({
+                url: $(this).attr('action'),
+                type: 'POST',
+                dataType: "html",
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false
+            }).done(function (resp) {
+                if (resp == 1) {
+                    swal({
+                        title: "Exito",
+                        text: "Libro Registrado",
+                        type: "success"},
+                            function () {
+                                document.getElementById('frmLibro').reset();
 
-      $('.autorf').submit(function(){
-        //var codigo=$('#codigol').val();
-    //alert(codigo);
-    var formData=new FormData(document.getElementById('frmAutor'))
-    $.ajax({
-        url:$(this).attr('action'),
-        type:'POST',
-         dataType: "html",
-        data:formData,
-    cache: false,
-    contentType: false,
-    processData: false
-    }).done(function(resp){
-       if(resp==1){
-                swal({
-                    title: "Exito",
-                    text: "Autor Registrado",
-                    type: "success"},
-                    function(){
-                       document.getElementById('frmAutor').reset();
-                       
-                       recargarCombos();
-                        
-                    }
+                                location.href = "inicio_b.php";
+
+                            }
 
                     );
-            
-         }else{
-                swal ( "Oops" ,  resp ,  "error" )
-             
-         }
-    })
-    return false;
-})
+
+                } else {
+                    swal("Oops", resp, "error")
+
+                }
+            })
+            return false;
+
+        })
 
 
-       $('.editorialf').submit(function(){
-        //var codigo=$('#codigol').val();
-   // alert(codigo);
-    $.ajax({
-        url:$(this).attr('action'),
-        type:'POST',
-        data:$(this).serialize()
-    }).done(function(resp){
-       if(resp==1){
-                swal({
-                    title: "Exito",
-                    text: "Editorial Registada",
-                    type: "success"},
-                    function(){
-                       document.getElementById('frmEditoriales').reset();
-                       
-                       recargarCombos();
-                        
-                    }
+        $('.autorf').submit(function () {
+            //var codigo=$('#codigol').val();
+            //alert(codigo);
+            var formData = new FormData(document.getElementById('frmAutor'))
+            $.ajax({
+                url: $(this).attr('action'),
+                type: 'POST',
+                dataType: "html",
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false
+            }).done(function (resp) {
+                if (resp == 1) {
+                    swal({
+                        title: "Exito",
+                        text: "Autor Registrado",
+                        type: "success"},
+                            function () {
+                                document.getElementById('frmAutor').reset();
+
+                                recargarCombos();
+
+                            }
 
                     );
-            
-         }else{
-                swal ( "Oops" ,  "Editorial no registrada" ,  "error" )
-             
-         }
-    })
-    return false;
-})
-    
 
-});
-function recargarCombos () {
-    $.ajax({
-        url:'opcionesAutores.php',
-        type:'POST',
-        data:''
-    }).done(function(resp){
-         $('select').material_select('destroy');
-      $('select.autores').html(resp).fadeIn();
-      $('select').material_select();
-    })
+                } else {
+                    swal("Oops", resp, "error")
 
-     $.ajax({
-        url:'opcionesEditorial.php',
-        type:'POST',
-        data:''
-    }).done(function(resp){
-         $('select').material_select('destroy');
-      $('select.editorial').html(resp).fadeIn();
-      $('select').material_select();
-    })
-}
+                }
+            })
+            return false;
+        })
+
+
+        $('.editorialf').submit(function () {
+            //var codigo=$('#codigol').val();
+            // alert(codigo);
+            $.ajax({
+                url: $(this).attr('action'),
+                type: 'POST',
+                data: $(this).serialize()
+            }).done(function (resp) {
+                if (resp == 1) {
+                    swal({
+                        title: "Exito",
+                        text: "Editorial Registada",
+                        type: "success"},
+                            function () {
+                                document.getElementById('frmEditoriales').reset();
+
+                                recargarCombos();
+
+                            }
+
+                    );
+
+                } else {
+                    swal("Oops", "Editorial no registrada", "error")
+
+                }
+            })
+            return false;
+        })
+
+
+    });
+    function recargarCombos() {
+        $.ajax({
+            url: 'opcionesAutores.php',
+            type: 'POST',
+            data: ''
+        }).done(function (resp) {
+            $('select').material_select('destroy');
+            $('select.autores').html(resp).fadeIn();
+            $('select').material_select();
+        })
+
+        $.ajax({
+            url: 'opcionesEditorial.php',
+            type: 'POST',
+            data: ''
+        }).done(function (resp) {
+            $('select').material_select('destroy');
+            $('select.editorial').html(resp).fadeIn();
+            $('select').material_select();
+        })
+    }
+</script>
+
+<script type="text/javascript">
+    function editLibro() {
+        document.frmEditLib.submit();
+    }
+    function abrirBajaLibros(codigo) {
+
+        $.post("listadoDarBaja.php", {codigo: codigo}, function (mensaje) {
+            $('#bajaLib2').html(mensaje).fadeIn();
+
+        });
+
+
+        $('#bajaLib').modal('open');
+    }
+    function Baja(codigo) {
+        swal({
+            title: "Seguro que desea dar de baja",
+            text: "Escriba aqui el motivo",
+            type: "select",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            inputPlaceholder: "Escribe algo"
+        }, function (inputValue) {
+            if (inputValue === false)
+                return false;
+            $.ajax({
+                url: 'bajaLibro.php?codigo=' + codigo + '&motivo=' + inputValue,
+                type: 'GET',
+                dataType: "html",
+                data: {codigo: codigo, motivo: inputValue},
+                cache: false,
+                contentType: false,
+                processData: false
+            }).done(function (resp) {
+                if (resp == 1) {
+                    swal({
+                        title: "Exito",
+                        text: "Baja Realizada",
+                        type: "success"},
+                            function () {
+                                location.href = "inicio_b.php";
+
+
+
+                            }
+
+                    );
+
+                } else {
+                    swal("Oops", "No se pudo dar de Baja", "error")
+
+                }
+            })
+            //swal("Nice!", "You wrote: " + inputValue, "success");
+
+
+        });
+    }
 </script>
 
 

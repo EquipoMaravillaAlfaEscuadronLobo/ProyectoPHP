@@ -1,6 +1,7 @@
-<!--<script crossorigin="anonymous" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" src="../js/jquery.min.js"></script>-->
- <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<!--<script src="../js/jquery-1.11.2.js"></script>-->
+ <!--<script crossorigin="anonymous" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" src="../js/jquery.min.js"></script>-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!--<script src="../js/jquery-1.11.2.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>-->
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/materialize.js"></script>
 <script src="../js/jquery.inputmask.bundle.js"></script>
@@ -18,16 +19,18 @@
 <script src="../js/Mascara.js"></script>
 <script src="../js/inicializaciones.js"></script>
 
+        <script type="text/javascript" src="../js/jquery.validate.js"></script>
+        <script src="../js/sweetalert.min.js"></script>
 <script src="../js/Libros.js"></script>
 <script src="../js/foto.js"></script>
 
 </body>
-<!--<footer class="text-center">
+<footer class="text-center">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">Derechos Reservados UES-FMP</div>
 
         </div>
     </div>
-</footer>-->
+</footer>
 </html>

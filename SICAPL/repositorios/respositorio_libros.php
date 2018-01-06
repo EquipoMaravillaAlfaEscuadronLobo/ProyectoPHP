@@ -271,7 +271,64 @@ WHERE
 codigo_libro like '%$codigo%' and libros.estado=0;
 
 ";
-                echo $codigo;
+                //echo $codigo;
+                $resultado = $conexion->query($sql);
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
+    
+    public function LibrosDadosBaja($conexion) {
+        $resultado = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT
+libros.titulo as titulo,
+libros.codigo_libro as codigo,
+libros.motivo as motivo
+FROM
+libros
+INNER JOIN editoriales ON libros.editoriales_codigo = editoriales.codigo_editorial
+INNER JOIN movimiento_autores ON movimiento_autores.codigo_libro = libros.codigo_libro
+INNER JOIN autores ON movimiento_autores.codigo_autor = autores.codigo_autor
+WHERE
+libros.estado=1
+GROUP BY
+titulo
+ORDER BY
+titulo
+
+";
+                //echo $codigo;
+                $resultado = $conexion->query($sql);
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
+    
+     public function LibrosDadosBaja2($conexion, $titulo) {
+        $resultado = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT
+libros.titulo as titulo,
+libros.codigo_libro as codigo,
+libros.motivo as motivo
+FROM
+libros
+INNER JOIN editoriales ON libros.editoriales_codigo = editoriales.codigo_editorial
+INNER JOIN movimiento_autores ON movimiento_autores.codigo_libro = libros.codigo_libro
+INNER JOIN autores ON movimiento_autores.codigo_autor = autores.codigo_autor
+WHERE
+libros.estado=1 and titulo='$titulo'
+ORDER BY
+titulo
+";
+                //echo $codigo;
                 $resultado = $conexion->query($sql);
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();
