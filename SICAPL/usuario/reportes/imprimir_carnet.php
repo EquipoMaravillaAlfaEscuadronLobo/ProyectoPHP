@@ -103,12 +103,11 @@ $i = 1;
         
         width: 750px;
         height:200px;
+        /*background: #AAAADD;*/
         
 
     }
-    .contenedor > div{
-        display: inline-block;
-    }
+    
 
     .frontal{
         border-width: 1px;
@@ -129,11 +128,10 @@ $i = 1;
         height: 195px;
         margin-right: 0px;
         background: #EEEE00;
-        position: absolute;
-        top: 20px;
+        position: relative;
+        top: -217px;
         left : 420px;
         
-
 
 
     }
@@ -187,6 +185,8 @@ $i = 1;
 
 <page pageset="old"><!-- Etiqueta para cada pagina del reporte-->
 
+    <?php for($i=0 ; $i<30;$i++)  { ?>
+    
     <div class="contenedor">
 
         <div class="ib frontal">
@@ -197,21 +197,18 @@ $i = 1;
             <div class="texto ib ">
                 <p> CARNET:  <strong>MA14049</strong></p> 
                 <p> NOMBRE:  <strong>BORIS RICARDO MIRANDA AYALA</strong></p> 
-                <p>FECHA EMISIÓN:  <strong><?php date_default_timezone_set('America/El_Salvador');
-echo date('d/m/Y');
-?></strong> </p>
+                <p>FECHA EMISIÓN:  <strong><?php date_default_timezone_set('America/El_Salvador'); echo date('d/m/Y');?></strong> </p>
             </div>
         </div>
-
+        
         <div class="trasero">
-
             <div class="ib datos">
-                <p> TELÉFONO :  <strong>7777-7777</strong></p> 
+                <p> TELÉFONO :  <strong><?php echo $i; ?></strong></p> 
                 <p> CORREO:  <strong>brmiranda009@gmail.com</strong></p> 
                 <p> DIRECCION :  <strong>Verapaz</strong> </p>
                 <p> <barcode dimension="1D"
                              type="C128"
-                             value="cej-002-003-pa-003-002" 
+                             value="MA14049" 
                              label="label"
                              style="width:70%;
                              height:15mm;
@@ -220,8 +217,10 @@ echo date('d/m/Y');
                 </barcode> </p>
             </div>
         </div>
+        
     </div>
-
+    <br>
+<?php }?>
 
 
 </page>
