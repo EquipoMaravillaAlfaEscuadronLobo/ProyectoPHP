@@ -111,6 +111,7 @@ $i = 1;
             margin: 10px;
             width: 295px;
             height: 195px;
+            background: #DDDDFF;
 
         }
         .encabezado{
@@ -136,16 +137,7 @@ $i = 1;
             top: -35px;
 
         }
-        .texto{
-
-            width: 160px;
-            height: 120px;
-            background: orange;
-            position: relative;
-            left: 4px;
-            top: -35px;
-
-        }
+        
         
         .ib{
             display: inline-block;
@@ -154,6 +146,13 @@ $i = 1;
             text-align: center;
             font-size: 12px;
         }
+        .datos{
+            width: 295px;
+            height: 100px;
+            text-align: center;
+            font-size: 12px;
+            background: #388E3C;
+        }
 
 
     </style>
@@ -161,26 +160,24 @@ $i = 1;
     <body>
     <page pageset="old"><!-- Etiqueta para cada pagina del reporte-->
 
-        <br><br><br><br><br><br><br><br>
-        <div class="frontal ib">
+      <div class="frontal ib">
             <p class="encabezado">CASA DE ENCUENTRO JUVENIL</p>
 
-            <img src="../../imagenes/hqdefault.jpg" class="foto ib" alt="">
+           <img src="../../imagenes/hqdefault.jpg" class="foto ib" alt="">
 
             <div class="ib texto">
-                <p> CARNET: <strong>  MA14049 </strong><p> 
+                <p> CARNET:  <strong>MA14049</strong></p> 
                 <p> NOMBRE:  <strong>BORIS RICARDO MIRANDA AYALA</strong></p> 
-                <p>FECHA EMISIÓN:  <strong><?php date_default_timezone_set('America/El_Salvador');
-echo date('d/m/Y');
-?></strong> </p>
+                <p>FECHA EMISIÓN:  <strong><?php date_default_timezone_set('America/El_Salvador'); echo date('d/m/Y'); ?></strong> </p>
             </div>
         </div>
         <div class="frontal ib">
-            <p class="encabezado">INFORMACIÓN</p>
-<?php $html2pdf->writeHTML('<barcode dimension="1D" type="C128" value="cej-002-003-pa-003-002" label="label" style="width:70%; height:15mm; color: #770000; font-size: 4mm"></barcode>');?>
             
-
-            
+           <div class="ib datos">
+                <p> TELÉFONO :  <strong>7777-7777</strong></p> 
+                <p> CORREO:  <strong>brmiranda009@gmail.com</strong></p> 
+                <p> DIRECCION :  <strong>Verapaz</strong> </p>
+            </div>
         </div>
         
         
