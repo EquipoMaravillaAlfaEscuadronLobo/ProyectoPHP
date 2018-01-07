@@ -106,6 +106,7 @@ $i = 1;
             width: 295px;
             height: 195px;
             margin-right: 0px;
+            background: #EEEE00;
 
         }
         .encabezado{
@@ -125,22 +126,13 @@ $i = 1;
 
             width: 160px;
             height: 120px;
-            background: orange;
-            position: relative;
-            left: 4px;
-            top: -35px;
-
-        }
-        .texto{
-
-            width: 160px;
-            height: 120px;
-            background: orange;
+            background: #EEEE00;
             position: relative;
             left: 4px;
             top: 0px;
 
         }
+        
         
         .ib{
             display: inline-block;
@@ -156,42 +148,55 @@ $i = 1;
             font-size: 12px;
             background: #388E3C;
         }
+        
+         .contenedor{
+            border-width: 1px;
+            border-style: dashed;
+            border-color: red;
+            width: 750px;
+            height: 600px;
+            background: #DDDDFF;
+            
+        }
 
 
     </style>
 
 
     <page pageset="old"><!-- Etiqueta para cada pagina del reporte-->
-        <div class="frontal ib">
+     
+        <div class=" ib contenedor">
+        
+            <div class="ib frontal">
             <p class="encabezado">CASA DE ENCUENTRO JUVENIL</p>
 
            <img src="../../imagenes/hqdefault.jpg" class="foto ib" alt="">
 
-            <div class="ib texto">
+            <div class="texto ib ">
                 <p> CARNET:  <strong>MA14049</strong></p> 
                 <p> NOMBRE:  <strong>BORIS RICARDO MIRANDA AYALA</strong></p> 
                 <p>FECHA EMISIÓN:  <strong><?php date_default_timezone_set('America/El_Salvador'); echo date('d/m/Y'); ?></strong> </p>
             </div>
         </div>
-        
-         <div class="frontal ib">
+     
+            <div class="frontal ib">
             
            <div class="ib datos">
                 <p> TELÉFONO :  <strong>7777-7777</strong></p> 
                 <p> CORREO:  <strong>brmiranda009@gmail.com</strong></p> 
                 <p> DIRECCION :  <strong>Verapaz</strong> </p>
-                <p> <barcode dimension="1D"'
-                            .' type="C128" '
-                            .'value="cej-002-003-pa-003-002" '
-                            .'label="label" '
-                            .'style="width:70%;'
-                            .'height:15mm;'
-                            .'color: #770000;'
-                            .'font-size: 4mm">'
-                            .'</barcode> </p>
+                <p> <barcode dimension="1D"
+                            type="C128"
+                            value="cej-002-003-pa-003-002" 
+                            label="label"
+                            style="width:70%;
+                            height:15mm;
+                            color: black;
+                            font-size: 4mm">
+                            </barcode> </p>
             </div>
         </div>
-        
+        </div>
 
 
 
