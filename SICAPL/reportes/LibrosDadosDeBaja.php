@@ -4,7 +4,7 @@
 	use Spipu\Html2Pdf\Html2Pdf;
 
 	ob_start();
-	require_once 'contenidoLibrosBaja.php';
+	require_once './contenidos/contenidoLibrosBaja.php';
 	$html=ob_get_clean();
 
 	$html2pdf = new Html2Pdf('P','A4','es','true','UTF-8');

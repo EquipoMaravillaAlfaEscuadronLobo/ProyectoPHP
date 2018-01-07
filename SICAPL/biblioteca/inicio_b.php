@@ -199,7 +199,7 @@ include_once('../plantillas/pie_de_pagina.php');
         })
     }
 </script>
-
+<script src="../js/sweetalert2.js"></script>
 <script type="text/javascript">
     function editLibro() {
         document.frmEditLib.submit();
@@ -215,17 +215,64 @@ include_once('../plantillas/pie_de_pagina.php');
         $('#bajaLib').modal('open');
     }
     function Baja(codigo) {
-        swal({
-            title: "Seguro que desea dar de baja",
-            text: "Escriba aqui el motivo",
-            type: "select",
-            showCancelButton: true,
-            closeOnConfirm: false,
-            inputPlaceholder: "Escribe algo"
-        }, function (inputValue) {
-            if (inputValue === false)
-                return false;
-            $.ajax({
+        swal("Cuidado", "Seleccione el Motivo Por el que desea dar de Baja", "info", {
+            buttons: {
+                cancel: "Cancelar",
+
+                catch : {
+                    text: "Dañado",
+                    value: "catch",
+                },
+
+                defeat: "Extraviado",
+                otro: {
+                    text: 'otro',
+                    value: 'otros',
+                },
+            },
+
+        }).then((value) => {
+            var inputValue;
+            switch (value) {
+
+                case "otros":
+                    swal("Escriba el motivo", {
+                        content: 'input',
+                        buttons:{
+                            cancel: "Cancelar",
+                            confirm: true,
+                        },
+                        
+                        
+                    }).then((value2,confirm) => {
+                        swal(value2+confirm);
+                        $.ajax({
+                            url: 'bajaLibro.php?codigo=' + codigo + '&motivo=' + value2,
+                            type: 'GET',
+                            dataType: "html",
+                            data: {codigo: codigo, motivo: value2},
+                            cache: false,
+                            contentType: false,
+                            processData: false
+                        }).done(function (resp) {
+                            if (resp == 1) {
+                                swal("Exito", "Libro Borrado", "success", {
+                                }).then(() => {
+                                    location.href = "inicio_b.php";
+
+                                });
+
+                            } else {
+                                swal("Oops", "No se pudo dar de Baja", "error")
+
+                            }
+                        })
+                    });
+                    break;
+
+                case "catch":
+                    inputValue = "Dañado";
+                    $.ajax({
                 url: 'bajaLibro.php?codigo=' + codigo + '&motivo=' + inputValue,
                 type: 'GET',
                 dataType: "html",
@@ -235,27 +282,47 @@ include_once('../plantillas/pie_de_pagina.php');
                 processData: false
             }).done(function (resp) {
                 if (resp == 1) {
-                    swal({
-                        title: "Exito",
-                        text: "Baja Realizada",
-                        type: "success"},
-                            function () {
-                                location.href = "inicio_b.php";
+                    swal("Exito", "Libro Borrado", "success", {
+                    }).then((value2) => {
+                        location.href = "inicio_b.php";
 
-
-
-                            }
-
-                    );
+                    });
 
                 } else {
                     swal("Oops", "No se pudo dar de Baja", "error")
 
                 }
             })
-            //swal("Nice!", "You wrote: " + inputValue, "success");
+                    break;
+                case "defeat":
+                    inputValue = "Extraviado";
+                    $.ajax({
+                url: 'bajaLibro.php?codigo=' + codigo + '&motivo=' + inputValue,
+                type: 'GET',
+                dataType: "html",
+                data: {codigo: codigo, motivo: inputValue},
+                cache: false,
+                contentType: false,
+                processData: false
+            }).done(function (resp) {
+                if (resp == 1) {
+                    swal("Exito", "Libro Borrado", "success", {
+                    }).then((value2) => {
+                        location.href = "inicio_b.php";
+
+                    });
+
+                } else {
+                    swal("Oops", "No se pudo dar de Baja", "error")
+
+                }
+            })
+                    break;
 
 
+
+            }
+           
         });
     }
 </script>
