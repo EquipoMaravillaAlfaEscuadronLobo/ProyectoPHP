@@ -7,6 +7,7 @@ ob_start();
 include_once '../../app/Conexion.php';
 include_once '../../modelos/Libros.php';
 include_once '../../repositorios/respositorio_libros.php';
+include_once '../../reportes/codigoBarras.php';
 Conexion::abrir_conexion();
 $listado1 = Repositorio_libros::LibrosDadosBaja(Conexion::obtener_conexion());
 $i = 1;
@@ -16,8 +17,8 @@ $i = 1;
     <!--
     table.page_header {width: 100%; border: none; background-color: #DDDDFF; border-bottom: solid 1mm #AAAADD; padding: 2mm }
     table.page_footer {width: 100%; border: none; background-color: #DDDDFF; border-top: solid 1mm #AAAADD; padding: 2mm}
-    .cabecera{display: inline; width: 25%; float: right;}
-    .cabecera-izquierda{display: inline; width: 25%; float: left;}
+    .cabecera{display: inline-block; width: 25%; float: right;}
+    .cabecera-izquierda{display: inline-block; width: 25%; float: left;}
     -->
 </style>
 <style>
@@ -98,6 +99,31 @@ $i = 1;
         text-align: center;
         width: 100%;
     }
+    .frontal{
+        border-width: 1px;
+        border-style: dashed;
+        border-color: red;
+        margin: 10px;
+         width: 295px;
+         height: 195px;
+         display: inline-block;
+             }
+             .encabezado{
+                 text-align: center;
+                 font-weight: bold;
+                 margin-bottom: 10px;
+             }
+             .foto{
+                 margin-left:  0px;
+                 height: 135px;
+                 width: 110px;
+                 margin-left:  10px;
+             }
+             .texto{
+                 
+                 width: 180px;
+                 height: 80px;
+             }
 
 </style>
 <page backtop="14mm" backbottom="14mm" backleft="10mm" backright="10mm" pagegroup="new">
@@ -138,63 +164,20 @@ $i = 1;
     </h3>
 </div>
 <?php
+ 
+
 foreach ($listado1 as $fila1) {
     $listado = Repositorio_libros::LibrosDadosBaja2(Conexion::obtener_conexion(), $fila1['titulo']);
     ?>
     <page pageset="old"><!-- Etiqueta para cada pagina del reporte-->
 
-        <br><br><br>
-        <div class="tabla"><!-- Inicio Contenido del Reporte (Modificable)-->
-
-            <table border="0"  align="center">
-                <tr>
-                    <th>C&oacute;digo</th>
-
-                    <th>Motivo</th>
-                </tr>
-                <br>
-                <tr class="espacio">
-                    <td>&nbsp;</td><td>&nbsp;</td>
-                </tr>
-                <tr class="espacio">
-                    <td>&nbsp;</td><td>&nbsp;</td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <b><?php echo $fila1['titulo'] ?></b>
-                    </td>
-                </tr>
-                <tr>
-                    <td><hr></td><td><hr></td>
-                </tr>
-                <?php
-                foreach ($listado as $fila) {
-                    ?>
-
-
-                    <tr>
-                        <td><?php echo $fila['codigo'] ?></td>
-
-                        <td><?php echo $fila['motivo'] ?></td>
-                    </tr>
-                    <?php
-                }
-                ?>
-                <tr class="espacio">
-                    <td>&nbsp;</td><td>&nbsp;</td>
-                </tr>
-                <tr class="espacio">
-                    <td>&nbsp;</td><td>&nbsp;</td>
-                </tr>
-                <tr class="espacio">
-                    <td>&nbsp;</td><td>&nbsp;</td>
-                </tr>
-
-
-
-            </table>
-        </div><!-- Fin Contenido del Reporte (Modificable)-->
+        <br><br><br><br><br><br><br><br>
+        <div class="frontal">
+            <p class="encabezado">CASA DE ENCUENTRO JUVENIL</p>
+            <img src="../../imagenes/hqdefault.jpg" class="foto" alt="">
+            
+            <div class="texto"> Carnet: </div>
+        </div>
 
     </page>
     <?php
