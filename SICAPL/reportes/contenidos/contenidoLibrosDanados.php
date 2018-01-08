@@ -4,13 +4,16 @@ include_once '../modelos/Libros.php';
 include_once '../repositorios/respositorio_libros.php';
 Conexion::abrir_conexion();
 $listado1 = Repositorio_libros::LibrosDanados(Conexion::obtener_conexion());
+$i=1;
 ?>
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <title>Libros Da&ntilde;ados</title>
-        <style>
+<style type="text/css">
+<!--
+    table.page_header {width: 100%; border: none; background-color: #DDDDFF; border-bottom: solid 1mm #AAAADD; padding: 2mm }
+    table.page_footer {width: 100%; border: none; background-color: #DDDDFF; border-top: solid 1mm #AAAADD; padding: 2mm}
+    .cabecera{display: block; width: 25%; float: right;}
+-->
+</style>
+ <style>
             .tabla{
 
                 align-content: stretch;
@@ -75,16 +78,21 @@ $listado1 = Repositorio_libros::LibrosDanados(Conexion::obtener_conexion());
                                border-bottom: solid 1mm #AAAADD;
                                padding: 2mm; 
             }
+            .portada{
+                padding-top: 500px;
+                float: bottom;
+                text-align: center;
+                width: 100%;
+            }
 
         </style>
-    </head>
-    <body>
-
+        
+<page backtop="14mm" backbottom="14mm" backleft="10mm" backright="10mm" pagegroup="new">
     <page_header>
         <table class="page_header">
             <tr>
                 <td style="width: 100%; text-align: left">
-                    <img src="../imagenes/logo.png" class="cabecera">
+                   <img src="../imagenes/logo.png" class="cabecera">
                     <h1>
                         Casa de Encuentro Juvenil <br>Verapaz, San Vicente
                     </h1>
@@ -92,37 +100,33 @@ $listado1 = Repositorio_libros::LibrosDanados(Conexion::obtener_conexion());
             </tr>
         </table>
     </page_header>
-    <br><br>
-
-
-
-
-
-
-
-    <br><br><br>
-    <br>
-    <br>
-    <br>
-    <div id="titulo"><!-- Inicio Titulo del Reporte (Modificable)-->
-        <table border='0' align='center'>
+    <page_footer>
+        <table class="page_footer">
             <tr>
-                
-                <td class="titulo" align='left'>
-            <h2>
-                Reporte de libros Da&ntilde;ados
-            </h2>
+                <td style="width: 100%; text-align: right">
+                    page [[page_cu]]/[[page_nb]]
                 </td>
-                <td class="espacio">&nbsp;</td>
-                <td class="fecha">
-                <h3>
-                    <?php date_default_timezone_set('America/El_Salvador');echo date('d-m-Y').'('.date('H:i:s').')'?>
-                </h3>
-            </td>
             </tr>
         </table>
-    </div><!-- Fin Titulo del Reporte (Modificable)-->
-    <div class="tabla"><!-- Inicio Contenido del Reporte (Modificable)-->
+    </page_footer>
+</page>
+        <div class="portada">
+            <h1>
+                Reporte de Libros Da&ntilde;ados
+        </h1>
+            <h3>
+                    <?php date_default_timezone_set('America/El_Salvador');echo date('d-m-Y').'('.date('H:i:s').')'?>
+                </h3>
+        </div>
+       <?php
+            foreach ($listado1 as $fila1) {
+                $listado = Repositorio_libros::LibrosDanados2(Conexion::obtener_conexion(), $fila1['titulo']);
+                
+                ?>
+            <page pageset="old"><!-- Etiqueta para cada pagina del reporte-->
+               
+    <br><br><br>
+     <div class="tabla"><!-- Inicio Contenido del Reporte (Modificable)-->
         
         <table border="0"  align="center">
             <tr>
@@ -137,10 +141,7 @@ $listado1 = Repositorio_libros::LibrosDanados(Conexion::obtener_conexion());
             <tr class="espacio">
                 <td>&nbsp;</td><td>&nbsp;</td>
             </tr>
-            <?php
-            foreach ($listado1 as $fila1) {
-                $listado = Repositorio_libros::LibrosDanados2(Conexion::obtener_conexion(), $fila1['titulo']);
-                ?>
+            
                 <tr>
                     <td>
                         <b><?php echo $fila1['titulo'] ?></b>
@@ -171,37 +172,17 @@ $listado1 = Repositorio_libros::LibrosDanados(Conexion::obtener_conexion());
                 <tr class="espacio">
                     <td>&nbsp;</td><td>&nbsp;</td>
                 </tr>
-            <?php }
-            ?>
+                
+               
 
         </table>
     </div><!-- Fin Contenido del Reporte (Modificable)-->
-
-
-    <page_footer>
-        <table class="page_footer">
-
-            <tr>
-
-
-
-
-
-                <td style="width: 100%; text-align: right">
-
-                    pag [[page_cu]]/[[page_nb]]
-                </td>
-
-            </tr>
-        </table>
-    </page_footer>
-
-</body>
-<footer>
-
-</footer>
-</html>
-
-
+    
+     </page>
+            <?php 
+            
+                }
+            
+            ?>
 
 

@@ -86,18 +86,15 @@ include_once('../plantillas/pie_de_pagina.php');
                 processData: false
             }).done(function (resp) {
                 if (resp == 1) {
-                    swal({
-                        title: "Exito",
-                        text: "Libro Registrado",
-                        type: "success"},
-                            function () {
-                                document.getElementById('frmLibro').reset();
+                    swal("Exito","Libro Registrado","success")
+                            .then((value)=>{
+                            document.getElementById('frmLibro').reset();
 
                                 location.href = "inicio_b.php";
-
                             }
+                )
 
-                    );
+                    
 
                 } else {
                     swal("Oops", resp, "error")
@@ -123,18 +120,13 @@ include_once('../plantillas/pie_de_pagina.php');
                 processData: false
             }).done(function (resp) {
                 if (resp == 1) {
-                    swal({
-                        title: "Exito",
-                        text: "Autor Registrado",
-                        type: "success"},
-                            function () {
-                                document.getElementById('frmAutor').reset();
-
-                                recargarCombos();
-
+                    swal("Exito","Autor Registrado","success")
+                            .then((value)=>{
+                            document.getElementById('frmAutor').reset();
+                            recargarCombos();
+                                
                             }
-
-                    );
+                )
 
                 } else {
                     swal("Oops", resp, "error")
@@ -154,18 +146,14 @@ include_once('../plantillas/pie_de_pagina.php');
                 data: $(this).serialize()
             }).done(function (resp) {
                 if (resp == 1) {
-                    swal({
-                        title: "Exito",
-                        text: "Editorial Registada",
-                        type: "success"},
-                            function () {
-                                document.getElementById('frmEditoriales').reset();
-
-                                recargarCombos();
-
+                    swal("Exito","Editorial Registrada","success")
+                            .then((value)=>{
+                            document.getElementById('frmEditoriales').reset();
+                            recargarCombos();
+                                
                             }
+                )
 
-                    );
 
                 } else {
                     swal("Oops", "Editorial no registrada", "error")

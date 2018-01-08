@@ -88,6 +88,40 @@ codigo
         }
         return $resultado;
     }
+    
+    public function CatalogoLibros($conexion) {
+        $resultado = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT
+GROUP_CONCAT(DISTINCT autores.nombre,' ',autores.apellido SEPARATOR ' - ') AS autor,
+SUBSTR(libros.codigo_libro,1,19) as codigo,
+(libros.titulo) as titulo,
+libros.fecha_publicacion as fecha_publicacion,
+libros.estado,
+libros.foto as foto,
+libros.motivo as motivo,
+libros.editoriales_codigo as cedit,
+editoriales.nombre as editorial,
+count(titulo) as cantidad
+FROM
+libros
+INNER JOIN editoriales ON libros.editoriales_codigo = editoriales.codigo_editorial
+INNER JOIN movimiento_autores ON movimiento_autores.codigo_libro = libros.codigo_libro
+INNER JOIN autores ON movimiento_autores.codigo_autor = autores.codigo_autor
+
+GROUP BY
+titulo
+
+
+";
+                $resultado = $conexion->query($sql);
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
 
     public function ListaLibros2($conexion) {
         $resultado = "";
