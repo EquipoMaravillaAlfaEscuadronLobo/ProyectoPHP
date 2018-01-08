@@ -22,10 +22,9 @@ if(true){
         linea=linea.concat(
             "<tr>", 
             '<td style="display:none;"><input type="hidden" name="codsEncMant[]" value="'+codigo+'"></td>',
-            '<td>'+nombre+"</td>",
+            '<td><input type="button" class="borrar btn-sm btn-danger" value="-"/>&nbsp;&nbsp'+nombre+"</td>",
             "<td>"+telefono+"</td>",
             "<td>"+direccion+"</td>",
-            '<td> <input type="button" class="borrar" value="Eliminar" /></td>',
             "</tr>"
             );
     $("table#datos_encargado2 tbody").append(linea);

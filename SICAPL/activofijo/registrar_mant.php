@@ -169,7 +169,11 @@
                                 <td style="height:13px;">
                                     <div class="col-md-10">
 
-                                        <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="" style="font-size:17px">Buscar Encargado</label><input type="text"  id="codigo_encargado" list="listaeman" autofocus  onkeypress="buscarEncargado(this)"></div>
+                                        <div class="input-field">
+                                            <i class="fa fa-search prefix" aria-hidden="true"></i>
+                                            <label for="" style="font-size:17px">Buscar Encargado</label>
+                                            <input type="text"  id="codigo_encargado" list="listaeman" autofocus  onkeypress="agrEnca()">
+                                        </div>
 
                                     </div>
                                     <div class="col-md-2">
@@ -185,7 +189,6 @@
                             <th>Nombre</th>
                             <th>Telefono</th>
                             <th>Dirección</th>
-                            <th>&nbsp;</th>
                             </thead>
                             <tbody >
 
@@ -215,7 +218,8 @@
 
 
     foreach ($listado as $fila) {
-        echo "<option value='$fila[0]'>$fila[1]</option>";
+        
+        echo "<option value='$fila[1]' label='$fila[0]'>";
     }
     ?>
 </datalist>
@@ -238,6 +242,12 @@
 
 
 <script>
+     function agrEnca(){
+        var depto = $("#listaeman option[value='" + $('#codigo_encargado').val() + "']").attr('label');//alert(depto);
+        buscarEncargado(depto);
+
+    }
+    
     function  activarMant() {//para activar boton de agregar, se llama en getuser y get activo
 
         if (document.getElementById("codMantAct").value != "---") {
@@ -290,9 +300,10 @@
         if (cont > 0) {//si hay activos con codido 3 
             swal({
                 title: "Desea continuar?",
-                text: "Hay activo que fueron a manteniminto y siguen dañados!",
+                text: "Hay activos que fueron a mantenimiento y siguen dañados!",
                 type: "warning",
                 showCancelButton: true,
+                cancelButtonText: "Cancelar",
                 confirmButtonClass: "btn-danger",
                 confirmButtonText: "Si, continuar!",
                 closeOnConfirm: false

@@ -43,13 +43,22 @@ foreach ($listado as $fila) {
                     '<option value="4" class="btn-danger">Extaviado</option>' +
                     '</select>' +
                     '</div>';
-        }else{
+        }else{if(estado==1){
             var sel = '<div class="form-group">' +
                     '<select class="form-control accion_select btn-success" onchange="activar_btn_act()"  id="accion_select[]" name="accion_select[]">' +                    
-                    '<option value="1" disabled="" selected="">Devuelto</option>' +
+                    '<option value="1"  selected="">Devuelto</option>' +
                     '<option value="2" class="btn-default">En Prestamo</option>' +
                     '</select>' +
                     '</div>';
+        }else{var sel = '<div class="form-group">' +
+                    '<select class="form-control accion_select btn-success" onchange="activar_btn_act()"  id="accion_select[]" name="accion_select[]">' +                    
+                    '<option value="'+estado+'"  selected="">No Disponible</option>' +
+                    '</select>' +
+                    '</div>';
+            
+        }
+            
+            
         }
             var linea = "";
             linea = linea.concat(

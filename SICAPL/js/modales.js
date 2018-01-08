@@ -208,11 +208,16 @@ function nuevaCat(opcion) {
 }
 
 function nuevoPretamoAct() {
-     $("#tabla_activo_prestamo tbody").empty()//elino el anterior
+     $("#tabla_activo_prestamo tbody").empty()//ellino el anterior
+     $("#talbe_user_activo tbody").empty()
     $('#nuevoPrestamoAct').modal('open');
 }
 
 function nuevoMant() {
+    $("#tabla_activo_mantenimiento tbody").empty()//ellino el anterior
+    $("#datos_encargado2 tbody").empty()//ellino el anterior
+    $("#descrMant").val("");
+    $("#costoTotal").val("");
     $('#nuevoMant').modal('open');
 }
 function nuevoEnc() {

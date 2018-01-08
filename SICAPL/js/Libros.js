@@ -131,7 +131,7 @@ function buscarActivo_mantenimiento(valor){
 
 function buscarEncargado(valor){
 //alert("paso");
-        var depto = valor.value;
+        var depto = valor;
 //var numero=valor.id.substr(7)
 //alert(valor.id);
     if (depto != "") {

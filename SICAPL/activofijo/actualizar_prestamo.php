@@ -1,4 +1,4 @@
-<form name="actualizar_prestamo_activo" id="actualizar_prestamo_activo" method="post" >
+<form name="actualizar_prestamo_activo" id="actualizar_prestamo_activo" method="post">
     <input type="hidden" name="pas" id="pas">
     <input type="hidden" name="codigouserActP" id="codigouserActP">
     <input type="hidden" name="codigoPrestamoAct" id="codigoPrestamoAct">
@@ -154,6 +154,7 @@
     
     function activar_btn_act(){
          document.getElementById("btn_actualizar_prestamo").disabled = false;
+         document.getElementById("btnfinalizar").disabled = false;
     }
     //activa el boton y evita que la fecha quede vacia
     function validarFecha() {
@@ -162,10 +163,12 @@
         if (feanew == "") {
             document.getElementById("fecha_dev_act").value = feact;
         }
-        alert(feanew);
+        //alert(feanew);
 
         document.getElementById("btn_actualizar_prestamo").disabled = false;
     }
+    
+     
 </script>
 <?php
 if (isset($_REQUEST["pas"])) {
@@ -231,7 +234,7 @@ if (isset($_REQUEST["pas"])) {
                     text: 'Prestamo Finalizado',
                     type: 'success'},
                     function(){
-                       location.href='inicio_activo.php';
+                       $('#tabla-paginada4').DataTable().ajax.reload();
                     }
                     );";
                     echo "</script>";
