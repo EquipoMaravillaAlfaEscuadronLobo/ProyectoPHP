@@ -484,6 +484,62 @@ titulo
         }
         return $resultado;
     }
+    
+    public function LibrosMasPrestados($conexion) {
+        $resultado = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT
+	prestamo_libros.codigo_plibro as codigo,
+	libros.codigo_libro as cl,
+	libros.titulo,
+	(select count(*) from movimiento_libros where movimiento_libros.codigo_libro=cl) as veces
+	
+FROM
+	prestamo_libros
+INNER JOIN movimiento_libros ON movimiento_libros.codigo_plibro = prestamo_libros.codigo_plibro
+INNER JOIN libros ON movimiento_libros.codigo_libro = libros.codigo_libro
+GROUP BY
+cl
+ORDER BY
+veces desc
+";
+                //echo $codigo;
+                $resultado = $conexion->query($sql);
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
+    
+    public function LibrosMasPrestados2($conexion, $titulo) {
+        $resultado = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT
+	prestamo_libros.codigo_plibro as codigo,
+	libros.codigo_libro as cl,
+	libros.titulo,
+	(select count(*) from movimiento_libros where movimiento_libros.codigo_libro=cl) as veces
+	
+FROM
+	prestamo_libros
+INNER JOIN movimiento_libros ON movimiento_libros.codigo_plibro = prestamo_libros.codigo_plibro
+INNER JOIN libros ON movimiento_libros.codigo_libro = libros.codigo_libro
+where
+libros.titulo='$titulo'
+ORDER BY
+veces desc
+";
+                //echo $codigo;
+                $resultado = $conexion->query($sql);
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
 
     static function insertar_bitacora($conexion, $accion) {
         $administrador_insertado = false;

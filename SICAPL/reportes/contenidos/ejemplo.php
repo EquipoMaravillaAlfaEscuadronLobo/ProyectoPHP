@@ -1,101 +1,22 @@
-<?php
-include_once '../app/Conexion.php';
-include_once '../modelos/Libros.php';
-include_once '../repositorios/respositorio_libros.php';
-Conexion::abrir_conexion();
-$listado1 = Repositorio_libros::LibrosDadosBaja(Conexion::obtener_conexion());
-$i=1;
-?>
 <style type="text/css">
 <!--
     table.page_header {width: 100%; border: none; background-color: #DDDDFF; border-bottom: solid 1mm #AAAADD; padding: 2mm }
     table.page_footer {width: 100%; border: none; background-color: #DDDDFF; border-top: solid 1mm #AAAADD; padding: 2mm}
-    .cabecera{display: block; width: 25%; float: right;}
+    h1 {color: #000033}
+    h2 {color: #000055}
+    h3 {color: #000077}
+    div.niveau
+    {
+        padding-left: 5mm;
+    }
 -->
 </style>
- <style>
-            .tabla{
-
-                align-content: stretch;
-                width: 100%;
-
-            }
-            h1 {color: #000033}
-            h2 {color: #000055}
-            h3 {color: #000077}
-            .pie{
-                float: bottom;
-                margin-bottom: 0;
-                text-align: right;
-            }
-            table{
-                border-spacing: 10px;
-
-                border-bottom: 1px;
-
-            }
-            #titulo{
-               
-            }
-            .titulo{
-               
-                width: 600px !important;
-                text-align: left !important;
-            }
-            .fecha{
-               
-                width: 100px !important;
-                text-align: right;
-            }
-            .espacio{
-                width: 110px;
-            }
-           
-            .tabla table td{
-                padding: 0;
-                margin: 0;
-                width: 300px;
-            }
-            
-
-            .cabecera{
-                display: block;
-                width: 25%;
-                float: right;
-            }
-            .cabecera h1{
-                text-align: center;
-            }
-            table.page_footer {width: 100%;
-                               border: none;
-                               background-color: #DDDDFF;
-                               border-top: solid 1mm #AAAADD;
-                               padding: 2mm;
-            }
-            table.page_header {width: 100%;
-                               border: none;
-                               background-color: #DDDDFF;
-                               border-bottom: solid 1mm #AAAADD;
-                               padding: 2mm; 
-            }
-            .portada{
-                padding-top: 500px;
-                float: bottom;
-                text-align: center;
-                width: 100%;
-            }
-
-        </style>
-        
-<page backtop="14mm" backbottom="14mm" backleft="10mm" backright="10mm" pagegroup="new">
+<page backtop="14mm" backbottom="14mm" backleft="10mm" backright="10mm" style="font-size: 12pt">
     <page_header>
         <table class="page_header">
             <tr>
                 <td style="width: 100%; text-align: left">
-                   <img src="../imagenes/logo.png" class="cabecera">
-                    <h1>
-                        Casa de Encuentro Juvenil <br>Verapaz, San Vicente
-                    </h1>
+                    Exemple d'utilisation des bookmarks
                 </td>
             </tr>
         </table>
@@ -109,80 +30,51 @@ $i=1;
             </tr>
         </table>
     </page_footer>
+    <bookmark title="Sommaire" level="0" ></bookmark>
 </page>
-        <div class="portada">
-            <h1>
-            Reporte de Libros Dados de Baja
-        </h1>
-            <h3>
-                    <?php date_default_timezone_set('America/El_Salvador');echo date('d-m-Y').'('.date('H:i:s').')'?>
-                </h3>
+<page pageset="old">
+    <bookmark title="Chapitre 1" level="0" ></bookmark><h1>Chapitre 1</h1>
+    <div class="niveau">
+        Contenu du chapitre 1
+    </div>
+</page>
+<page pageset="old">
+    <bookmark title="Chapitre 2" level="0" ></bookmark><h1>Chapitre 2</h1>
+    <div class="niveau">
+        intro au chapitre 2
+        <bookmark title="Chapitre 2.1" level="1" ></bookmark><h2>Chapitre 2.1</h2>
+        <div class="niveau">
+            Contenu du chapitre 2.1
         </div>
-       <?php
-            foreach ($listado1 as $fila1) {
-                $listado = Repositorio_libros::LibrosDadosBaja2(Conexion::obtener_conexion(), $fila1['titulo']);
-                
-                ?>
-            <page pageset="old"><!-- Etiqueta para cada pagina del reporte-->
-               
-    <br><br><br>
-     <div class="tabla"><!-- Inicio Contenido del Reporte (Modificable)-->
-        
-        <table border="0"  align="center">
-            <tr>
-                <th>C&oacute;digo</th>
-
-                <th>Motivo</th>
-            </tr>
-            <br>
-            <tr class="espacio">
-                <td>&nbsp;</td><td>&nbsp;</td>
-            </tr>
-            <tr class="espacio">
-                <td>&nbsp;</td><td>&nbsp;</td>
-            </tr>
-            
-                <tr>
-                    <td>
-                        <b><?php echo $fila1['titulo'] ?></b>
-                    </td>
-                </tr>
-                <tr>
-                    <td><hr></td><td><hr></td>
-                </tr>
-                <?php
-                foreach ($listado as $fila) {
-                    ?>
-
-
-                    <tr>
-                        <td><?php echo $fila['codigo'] ?></td>
-
-                        <td><?php echo $fila['motivo'] ?></td>
-                    </tr>
-                    <?php
-                }
-                ?>
-                <tr class="espacio">
-                    <td>&nbsp;</td><td>&nbsp;</td>
-                </tr>
-                <tr class="espacio">
-                    <td>&nbsp;</td><td>&nbsp;</td>
-                </tr>
-                <tr class="espacio">
-                    <td>&nbsp;</td><td>&nbsp;</td>
-                </tr>
-                
-               
-
-        </table>
-    </div><!-- Fin Contenido del Reporte (Modificable)-->
-    
-     </page>
-            <?php 
-            
-                }
-            
-            ?>
-
-
+        <bookmark title="Chapitre 2.2" level="1" ></bookmark><h2>Chapitre 2.2</h2>
+        <div class="niveau">
+            Contenu du chapitre 2.2
+        </div>
+        <bookmark title="Chapitre 2.3" level="1" ></bookmark><h2>Chapitre 2.3</h2>
+        <div class="niveau">
+            Contenu du chapitre 2.3
+        </div>
+    </div>
+</page>
+<page pageset="old">
+    <bookmark title="Chapitre 3" level="0" ></bookmark><h1>Chapitre 3</h1>
+    <div class="niveau">
+        intro au chapitre 3
+        <bookmark title="Chapitre 3.1" level="1" ></bookmark><h2>Chapitre 3.1</h2>
+        <div class="niveau">
+            Contenu du chapitre 3.1
+        </div>
+        <bookmark title="Chapitre 3.2" level="1" ></bookmark><h2>Chapitre 3.2</h2>
+        <div class="niveau">
+            intro au chapitre 3.2
+            <bookmark title="Chapitre 3.2.1" level="2" ></bookmark><h3>Chapitre 3.2.1</h3>
+            <div class="niveau">
+                Contenu du chapitre 3.2.1
+            </div>
+            <bookmark title="Chapitre 3.2.2" level="2" ></bookmark><h3>Chapitre 3.2.2</h3>
+            <div class="niveau">
+                Contenu du chapitre 3.2.2
+            </div>
+        </div>
+    </div>
+</page>
