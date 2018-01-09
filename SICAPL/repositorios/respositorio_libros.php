@@ -540,6 +540,34 @@ veces desc
         }
         return $resultado;
     }
+    
+    public function CodigoBarras($conexion) {
+        $resultado = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "select * from libros group by titulo";
+                //echo $codigo;
+                $resultado = $conexion->query($sql);
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
+    
+    public function CodigoBarras2($conexion, $titulo) {
+        $resultado = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "select * from libros where libros.titulo='$titulo'";
+                //echo $codigo;
+                $resultado = $conexion->query($sql);
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
 
     static function insertar_bitacora($conexion, $accion) {
         $administrador_insertado = false;
