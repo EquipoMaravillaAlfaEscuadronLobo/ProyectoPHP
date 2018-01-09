@@ -180,6 +180,15 @@ $i = 1;
                 <p> TELÉFONO :  <strong>7777-7777</strong></p> 
                 <p> CORREO:  <strong>brmiranda009@gmail.com</strong></p> 
                 <p> DIRECCION :  <strong>Verapaz</strong> </p>
+                <p> <barcode dimension="1D"'
+                            .' type="C128" '
+                            .'value="cej-002-003-pa-003-002" '
+                            .'label="label" '
+                            .'style="width:70%;'
+                            .'height:15mm;'
+                            .'color: #770000;'
+                            .'font-size: 4mm">'
+                            .'</barcode> </p>
             </div>
         </div>
         
