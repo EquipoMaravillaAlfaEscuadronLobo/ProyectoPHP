@@ -3,7 +3,7 @@ include_once '../app/Conexion.php';
 include_once '../modelos/Libros.php';
 include_once '../repositorios/respositorio_libros.php';
 Conexion::abrir_conexion();
-$listado1 = Repositorio_libros::LibrosDanados(Conexion::obtener_conexion());
+$listado1 = Repositorio_libros::LibrosMasPrestados(Conexion::obtener_conexion());
 $i=1;
 ?>
 <style type="text/css">
@@ -30,7 +30,7 @@ $i=1;
             }
             table{
                 border-spacing: 10px;
-
+                margin-top: 10px;
                 border-bottom: 1px;
 
             }
@@ -54,7 +54,7 @@ $i=1;
             .tabla table td{
                 padding: 0;
                 margin: 0;
-                width: 300px;
+                width: 200px;
             }
             
 
@@ -112,7 +112,7 @@ $i=1;
 </page>
         <div class="portada">
             <h1>
-                Reporte de Libros Da&ntilde;ados
+                Reporte de Libros M&aacute;s Prestados
         </h1>
             <h3>
                     <?php date_default_timezone_set('America/El_Salvador');echo date('d-m-Y').'('.date('H:i:s').')'?>
@@ -120,19 +120,21 @@ $i=1;
         </div>
        <?php
             foreach ($listado1 as $fila1) {
-                $listado = Repositorio_libros::LibrosDanados2(Conexion::obtener_conexion(), $fila1['titulo']);
+                $listado = Repositorio_libros::LibrosMasPrestados2(Conexion::obtener_conexion(), $fila1['titulo']);
                 
                 ?>
             <page pageset="old"><!-- Etiqueta para cada pagina del reporte-->
                
-    <br><br><br>
+                <br><br><br><br><br>
      <div class="tabla"><!-- Inicio Contenido del Reporte (Modificable)-->
         
         <table border="0"  align="center">
             <tr>
-                <th>C&oacute;digo</th>
+                <th>C&oacute;digo pr&eacute;stamo</th>
 
-                <th>Motivo</th>
+                <th>C&oacute;digo Libro</th>
+                
+                <th>Veces Prestado</th>
             </tr>
             <br>
             <tr class="espacio">
@@ -148,7 +150,7 @@ $i=1;
                     </td>
                 </tr>
                 <tr>
-                    <td><hr></td><td><hr></td>
+                    <td><hr></td><td><hr></td><td><hr></td>
                 </tr>
                 <?php
                 foreach ($listado as $fila) {
@@ -158,7 +160,9 @@ $i=1;
                     <tr>
                         <td><?php echo $fila['codigo'] ?></td>
 
-                        <td><?php echo $fila['motivo'] ?></td>
+                        <td><?php echo $fila['cl'] ?></td>
+                        
+                        <td><?php echo $fila['veces'] ?></td>
                     </tr>
                     <?php
                 }

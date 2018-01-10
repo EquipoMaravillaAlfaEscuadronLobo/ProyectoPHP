@@ -3,7 +3,7 @@
     include_once '../modelos/Libros.php';
     include_once '../repositorios/respositorio_libros.php';
     Conexion::abrir_conexion();
-    $listado=Repositorio_libros::ListaLibros(Conexion::obtener_conexion());
+    $listado=Repositorio_libros::CatalogoLibros(Conexion::obtener_conexion());
 ?>
 
 	<table id="catalogoLb" padding="20px" class="responsive-table display">

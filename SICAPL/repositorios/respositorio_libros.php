@@ -88,6 +88,40 @@ codigo
         }
         return $resultado;
     }
+    
+    public function CatalogoLibros($conexion) {
+        $resultado = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT
+GROUP_CONCAT(DISTINCT autores.nombre,' ',autores.apellido SEPARATOR ' - ') AS autor,
+SUBSTR(libros.codigo_libro,1,19) as codigo,
+(libros.titulo) as titulo,
+libros.fecha_publicacion as fecha_publicacion,
+libros.estado,
+libros.foto as foto,
+libros.motivo as motivo,
+libros.editoriales_codigo as cedit,
+editoriales.nombre as editorial,
+count(titulo) as cantidad
+FROM
+libros
+INNER JOIN editoriales ON libros.editoriales_codigo = editoriales.codigo_editorial
+INNER JOIN movimiento_autores ON movimiento_autores.codigo_libro = libros.codigo_libro
+INNER JOIN autores ON movimiento_autores.codigo_autor = autores.codigo_autor
+
+GROUP BY
+titulo
+
+
+";
+                $resultado = $conexion->query($sql);
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
 
     public function ListaLibros2($conexion) {
         $resultado = "";
@@ -442,6 +476,90 @@ libros.estado=1 and titulo='$titulo' and motivo='Extraviado'
 ORDER BY
 titulo
 ";
+                //echo $codigo;
+                $resultado = $conexion->query($sql);
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
+    
+    public function LibrosMasPrestados($conexion) {
+        $resultado = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT
+	prestamo_libros.codigo_plibro as codigo,
+	libros.codigo_libro as cl,
+	libros.titulo,
+	(select count(*) from movimiento_libros where movimiento_libros.codigo_libro=cl) as veces
+	
+FROM
+	prestamo_libros
+INNER JOIN movimiento_libros ON movimiento_libros.codigo_plibro = prestamo_libros.codigo_plibro
+INNER JOIN libros ON movimiento_libros.codigo_libro = libros.codigo_libro
+GROUP BY
+cl
+ORDER BY
+veces desc
+";
+                //echo $codigo;
+                $resultado = $conexion->query($sql);
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
+    
+    public function LibrosMasPrestados2($conexion, $titulo) {
+        $resultado = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT
+	prestamo_libros.codigo_plibro as codigo,
+	libros.codigo_libro as cl,
+	libros.titulo,
+	(select count(*) from movimiento_libros where movimiento_libros.codigo_libro=cl) as veces
+	
+FROM
+	prestamo_libros
+INNER JOIN movimiento_libros ON movimiento_libros.codigo_plibro = prestamo_libros.codigo_plibro
+INNER JOIN libros ON movimiento_libros.codigo_libro = libros.codigo_libro
+where
+libros.titulo='$titulo'
+ORDER BY
+veces desc
+";
+                //echo $codigo;
+                $resultado = $conexion->query($sql);
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
+    
+    public function CodigoBarras($conexion) {
+        $resultado = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "select * from libros group by titulo";
+                //echo $codigo;
+                $resultado = $conexion->query($sql);
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
+    
+    public function CodigoBarras2($conexion, $titulo) {
+        $resultado = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "select * from libros where libros.titulo='$titulo'";
                 //echo $codigo;
                 $resultado = $conexion->query($sql);
             } catch (PDOException $ex) {
