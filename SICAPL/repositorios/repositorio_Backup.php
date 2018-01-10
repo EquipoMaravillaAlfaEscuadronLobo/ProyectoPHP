@@ -2,6 +2,8 @@
 $titulo1 ='BACKUP';
 include_once '../plantillas/cabecera.php';
 include_once '../plantillas/menu.php';
+include_once '../app/Conexion.php';
+include_once './repositorio_bitacora.php';
 
 
 include './repositorio_Connet.php';
@@ -60,6 +62,11 @@ if($result){
         $handle=fopen(BACKUP_PATH.$DataBASE,'w+');
         if(fwrite($handle, $sql)){
             fclose($handle);
+            
+            $accion = 'se ralizo una copia de seguridad de los datos del sistema';
+            Conexion::abrir_conexion();
+            Repositorio_Bitacora::insertar_bitacora(Conexion::obtener_conexion(), $accion);
+            
              echo '<script>swal({
                     title: "Exito",
                     text: "Acaba de Realizarse un copia de seguridad!",
