@@ -11,7 +11,11 @@ class Repositorio_usuario {
             try {
                 $numero = self::numero_de_usuarios($conexion);
 
-                $carnet = strtoupper((substr($usuario->getNombre(), 0, 1) . substr($usuario->getApellido(), 0, 1))) . '17' . '-' . ($numero + 1);
+                ini_set('date.timezone', 'America/El_Salvador');
+                $anio = date("y");
+                
+                
+                $carnet = strtoupper((substr($usuario->getNombre(), 0, 1) . substr($usuario->getApellido(), 0, 1))) . $anio . '-' . ($numero + 1);
                 $institucion = $usuario->getCodigo_institucion();
                 $nombre = $usuario->getNombre();
                 $apellido = $usuario->getApellido();
@@ -44,17 +48,33 @@ class Repositorio_usuario {
                 $accion = 'se inserto al usuario ' . $nombre . ' ' . $apellido;
                 self::insertar_bitacora($conexion, $accion);
 
-                echo '<script>swal({
-                    title: "Exito",
-                    text: "El registro ha sido Guardado!",
-                    type: "success",
-                    confirmButtonText: "ok",
-                    closeOnConfirm: false
-                },
-                function () {
-                    location.href="inicio_usuario.php";
-                    
-                });</script>';
+
+
+                echo '<script>
+    swal({
+        title: "Usuario Registro con Exito",
+        text: "Desea imprimir el carnet?",
+        type: "success",
+        showCancelButton: true,
+        confirmButtonClass: "btn-danger",
+        confirmButtonText: "Sí, Imprimir",
+        cancelButtonText: "No, Salir",
+        closeOnConfirm: false,
+        closeOnCancel: false
+    },
+    function (isConfirm) {
+        if (isConfirm) {
+            var url = "../usuario/reportes/imprimir_carnet.php?carnet=' . $carnet . '" ;
+
+            var a = document.createElement("a");
+            a.target = "_blank";
+            a.href = url;
+            a.click();
+        } else {
+            location.href = "../usuario/inicio_usuario.php";
+        }
+    });
+</script>';
             } catch (PDOException $ex) {
                 //echo '<script>swal("No se puedo realizar el registro", "Favor '.$ex->getMessage().' revisar los  datos e intentar nuevamente", "warning");</script>';
                 echo '<script>swal({
@@ -148,7 +168,7 @@ class Repositorio_usuario {
 
         return $lista_usuarios;
     }
-    
+
     public static function lista_usuarios_de_baja($conexion) {
         $lista_usuarios = array();
 
@@ -188,7 +208,7 @@ class Repositorio_usuario {
 
     public static function actualizar_usuario($conexion, $usuario, $carnet) {
 
-        
+
         $usuario_insertado = false;
         //$usuario = new Usuario();
         if (isset($conexion)) {
@@ -202,7 +222,7 @@ class Repositorio_usuario {
                 $instittucion = $usuario->getCodigo_institucion();
                 $sexo = $usuario->getSexo();
                 $foto = $usuario->getFoto();
-                
+
 
                 if ($foto == "") {
                     $sql = 'UPDATE usuarios SET codigo_institucion=:institucion,nombre=:nombre,apellido=:apellido,telefono=:telefono,correo=:correo,direccion=:direccion,sexo=:sexo where codigo_usuario = :carnet';
@@ -219,14 +239,14 @@ class Repositorio_usuario {
                 $sentencia->bindParam(':correo', $email, PDO::PARAM_STR);
                 $sentencia->bindParam(':sexo', $sexo, PDO::PARAM_STR);
                 $sentencia->bindParam(':telefono', $telefono, PDO::PARAM_STR);
-                                
+
                 if ($foto != "") {
-                $sentencia->bindParam(':foto', $foto, PDO::PARAM_STR);    
+                    $sentencia->bindParam(':foto', $foto, PDO::PARAM_STR);
                 }
 
                 $administrador_insertado = $sentencia->execute();
                 $accion = 'se actualizaron los datos del usuario ' . $nombre . " " . $apellido;
-                
+
                 self::insertar_bitacora($conexion, $accion);
 
                 echo '<script>swal({
@@ -245,7 +265,8 @@ class Repositorio_usuario {
                 //echo 'problemas con sql';
                 echo '<script>swal({
                     title: "Error!",
-                    text: "'.$ex->getMessage(); ' ",
+                    text: "' . $ex->getMessage();
+                ' ",
                     type: "error",
                     confirmButtonText: "ok",
                     closeOnConfirm: false
@@ -264,7 +285,7 @@ class Repositorio_usuario {
 
     public static function eliminar_usuario($conexion, $usuario, $carnet) {
 
-        
+
         $usuario_insertado = false;
         // $usuario = new Usuario();
         if (isset($conexion)) {
@@ -331,18 +352,16 @@ class Repositorio_usuario {
                 ///estos son alias para que PDO pueda trabajar 
                 $sentencia = $conexion->prepare($sql);
                 $administrador_insertado = $sentencia->execute();
-
-                
             } catch (PDOException $ex) {
                 echo '<script>swal("No se puedo realizar el registro", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
                 print 'ERROR: ' . $ex->getMessage();
             }
         }
     }
-    
+
     public static function comprobar_prestamos_activos($conexion, $usuario) {
-       $total = null ;
-    //echo 'no hay conexion ';
+        $total = null;
+        //echo 'no hay conexion ';
         if (isset($conexion)) {
             try {
                 //echo 'hay conexion';
@@ -353,21 +372,20 @@ class Repositorio_usuario {
                         INNER JOIN prestamo_activos ON prestamo_activos.usuarios_codigo = usuarios.codigo_usuario
                         where prestamo_activos.usuarios_codigo = '$usuario' and prestamo_activos.estado = '0'"; ///estos son alias para que PDO pueda trabajar 
                 $sentencia = $conexion->prepare($sql);
-                $sentencia ->execute();
-                $resultado = $sentencia -> fetch();
-                
-                $total =$resultado['total'];
-                    
+                $sentencia->execute();
+                $resultado = $sentencia->fetch();
+
+                $total = $resultado['total'];
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();
             }
         }
         return $total;
     }
-    
+
     public static function comprobar_prestamos_libros($conexion, $usuario) {
-       $total = null ;
-    //echo 'no hay conexion ';
+        $total = null;
+        //echo 'no hay conexion ';
         if (isset($conexion)) {
             try {
                 //echo 'hay conexion';
@@ -379,11 +397,10 @@ class Repositorio_usuario {
                         where usuarios.codigo_usuario = '$usuario' AND prestamo_libros.estado = '0'";
                 ///estos son alias para que PDO pueda trabajar 
                 $sentencia = $conexion->prepare($sql);
-                $sentencia ->execute();
-                $resultado = $sentencia -> fetch();
-                
-                $total =$resultado['total'];
-                    
+                $sentencia->execute();
+                $resultado = $sentencia->fetch();
+
+                $total = $resultado['total'];
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();
             }
@@ -425,6 +442,30 @@ class Repositorio_usuario {
         }
         return $lista_usuarios;
     }
+
+    public static function ultimo_usuario_insertado($conexion) {
+        $usuario = new Usuario();
+        if (isset($conexion)) {
+            try {
+                $sql = "select * from usuarios desc limit 1";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+                        $usuario = new Usuario();
+                        $usuario->setCodigo_usuario($fila['codigo_usuario']);
+                        echo $fila['codigo_usuario'];
+                    }
+                }
+            } catch (PDOException $exc) {
+                print('ERROR' . $exc->getMessage());
+            }
+        }
+        return $usuario;
+    }
+
 }
 
 ?>

@@ -47,7 +47,7 @@ $direccion = '../foto_usuario/';
                                 <td class="text-center"><?php echo $lista_usu->getDireccion(); ?></td>
                                 <td class="text-center"><?php echo $lista_usu->getEmail(); ?></td>
                                 <td class="text-center">
-                                        <img height="105px" width="85px" src="<?php echo $direccion . $lista_usu->getFoto();?>"/>
+                                    <img class="presentacionXZ" src="<?php echo $direccion . $lista_usu->getFoto();?>"/>
                                 </td>
                                 <td class="text-center">
                                     <button class="btn btn-danger" onclick="abrir_eliminacion_usuario('<?php echo $lista_usu->getNombre();?>','<?php echo $lista_usu->getApellido();?>','<?php echo $lista_usu->getCodigo_usuario();?>','111111')"> 

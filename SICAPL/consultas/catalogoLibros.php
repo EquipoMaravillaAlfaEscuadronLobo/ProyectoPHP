@@ -27,7 +27,7 @@
 							<td class="text-center"><?php echo $fila['titulo'] ?></td>
                             <td class="text-center"><?php echo $fila['autor'] ?></td>
                             <td class="text-center"><?php echo $fila['editorial'] ?></td>
-                            <td class="text-center fotosLibros"><img src="../fotoLibros/<?php echo $fila['foto'] ?>" whidth="300px" class="fotosLibros"></td>
+                            <td class="text-center fotosLibros"><img src="../fotoLibros/<?php echo $fila['foto'] ?>" class="fotosLibros presentacionXZ"></td>
                             <td class="text-center"><?php echo date_format(date_create($fila['fecha_publicacion']),'d-m-Y') ?></td>
                             <?php if($fila['estado']==0){echo '<td class="alert alert-success">Disponibles';}else{echo '<td class="alert alert-danger">No Disponibles';}?></td>
 			</tr>

@@ -1,5 +1,5 @@
 <?php
-require '../../reportes/vendor/autoload.php';
+include_once '../../reportes/vendor/autoload.php';
 
 use Spipu\Html2Pdf\Html2Pdf;
 
