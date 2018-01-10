@@ -5,10 +5,10 @@ use Spipu\Html2Pdf\Html2Pdf;
 
 ob_start();
 include_once '../../app/Conexion.php';
-include_once '../../modelos/Libros.php';
-include_once '../../repositorios/respositorio_libros.php';
+include_once '../../modelos/Usuario.php';
+include_once '../../repositorios/repositorio_usuario.inc.php';
 Conexion::abrir_conexion();
-$listado1 = Repositorio_libros::LibrosDadosBaja(Conexion::obtener_conexion());
+$usuario = Repositorio_usuario::usuario_seleccionado(Conexion::obtener_conexion(), $_REQUEST['carnet']);
 $i = 1;
 ?>
 
@@ -185,30 +185,30 @@ $i = 1;
 
 <page pageset="old"><!-- Etiqueta para cada pagina del reporte-->
 
-    <?php for($i=0 ; $i<30;$i++)  { ?>
+    <?php foreach ($usuario as $lista) { ?>
     
     <div class="contenedor">
 
         <div class="ib frontal">
             <p class="encabezado">CASA DE ENCUENTRO JUVENIL</p>
 
-            <img src="../../imagenes/hqdefault.jpg" class="foto ib" alt="">
+            <img src="../../foto_usuario/<?php echo $lista->getFoto();?>" class="foto ib" alt="">
 
             <div class="texto ib ">
-                <p> CARNET:  <strong>MA14049</strong></p> 
-                <p> NOMBRE:  <strong>BORIS RICARDO MIRANDA AYALA</strong></p> 
+                <p> CARNET:  <strong><?php echo $lista->getCodigo_usuario();?></strong></p> 
+                <p> NOMBRE:  <strong><?php echo $lista->getNombre(). " " .$lista->getApellido();?></strong></p> 
                 <p>FECHA EMISIÓN:  <strong><?php date_default_timezone_set('America/El_Salvador'); echo date('d/m/Y');?></strong> </p>
             </div>
         </div>
         
         <div class="trasero">
             <div class="ib datos">
-                <p> TELÉFONO :  <strong><?php echo $i; ?></strong></p> 
-                <p> CORREO:  <strong>brmiranda009@gmail.com</strong></p> 
-                <p> DIRECCION :  <strong>Verapaz</strong> </p>
+                <p> TELÉFONO :  <strong><?php echo $lista->getTelefono(); ?></strong></p> 
+                <p> CORREO:  <strong><?php echo $lista->getEmail();?></strong></p> 
+                <p> DIRECCION :  <strong><?php echo $lista->getDireccion();?></strong> </p>
                 <p> <barcode dimension="1D"
                              type="C128"
-                             value="MA14049" 
+                             value="<?php echo $lista->getCodigo_usuario();?>" 
                              label="label"
                              style="width:70%;
                              height:15mm;

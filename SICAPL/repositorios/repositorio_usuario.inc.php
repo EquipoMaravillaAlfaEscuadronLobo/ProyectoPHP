@@ -364,6 +364,7 @@ class Repositorio_usuario {
         }
         return $total;
     }
+    
     public static function comprobar_prestamos_libros($conexion, $usuario) {
        $total = null ;
     //echo 'no hay conexion ';
@@ -390,6 +391,40 @@ class Repositorio_usuario {
         return $total;
     }
 
+    public static function usuario_seleccionado($conexion, $codigo) {
+        $lista_usuarios = array();
+
+        if (isset($conexion)) {
+            try {
+                $sql = "select * from usuarios where codigo_usuario = '$codigo'";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+                        $usuario = new Usuario();
+
+                        $usuario->setApellido($fila['apellido']);
+                        $usuario->setCodigo_institucion($fila['codigo_institucion']);
+                        $usuario->setCodigo_usuario($fila['codigo_usuario']);
+                        $usuario->setCorreo($fila['correo']);
+                        $usuario->setDireccion($fila['direccion']);
+                        $usuario->setEmail($fila['correo']);
+                        $usuario->setNombre($fila['nombre']);
+                        $usuario->setSexo($fila['sexo']);
+                        $usuario->setTelefono($fila['telefono']);
+                        $usuario->setFoto($fila['foto']);
+
+                        $lista_usuarios[] = $usuario;
+                    }
+                }
+            } catch (PDOException $exc) {
+                print('ERROR' . $exc->getMessage());
+            }
+        }
+        return $lista_usuarios;
+    }
 }
 
 ?>
