@@ -19,7 +19,9 @@ $direccion = '../foto_usuario/';
             <div class="panel-body">
                 <table padding="20px" class="responsive-table display" id="data-table-simple">
                     <thead class="">
+                    
                     <th class="text-center"></th>
+                    <th class="text-center">Carnet</th>
                     <th class="text-center">Nombre Completo</th>
                     <th class="text-center">Telefono</th>
                     <th class="text-center">Direccion</th>
@@ -31,7 +33,7 @@ $direccion = '../foto_usuario/';
                      <tbody>
                         <?php foreach ($lista_usuarios as $lista_usu) { ?>
                             <tr>
-                                <td class="text-center">
+                            <td class="text-center">
                                     <button class="btn btn-success" onclick="abrir_edicion_usuario('<?php echo $lista_usu->getNombre();?>',
                                                 '<?php echo $lista_usu->getApellido();?>','<?php echo $lista_usu->getDireccion();?>',
                                                 '<?php echo $lista_usu->getEmail();?>','<?php echo $lista_usu->getTelefono();?>',
@@ -39,6 +41,7 @@ $direccion = '../foto_usuario/';
                                         <i class="Medium material-icons prefix">edit</i> 
                                     </button>
                                 </td>
+                                <th class="text-center"><?php echo $lista_usu->getCodigo_usuario();?></th>
                                 <td class="text-center"><?php echo $lista_usu->getNombre() . " " . $lista_usu->getApellido(); ?></td>
                                 <td class="text-center"><?php echo $lista_usu->getTelefono(); ?></td>
                                 <td class="text-center"><?php echo $lista_usu->getDireccion(); ?></td>

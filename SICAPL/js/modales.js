@@ -7,7 +7,6 @@ $(document).ready(function () {
         close: 'Ok',
         format: 'dd-mm-yyyy',
         max: new Date(),
-
         closeOnSelect: true // Close upon selecting a date,
     });
 
@@ -19,7 +18,6 @@ $(document).ready(function () {
         close: 'Ok',
         format: 'dd-mm-yyyy',
         min: new Date(),
-
         closeOnSelect: true // Close upon selecting a date,
     });
     $('.fecha_dev').pickadate({//es clase para validar las fechas del activo fijo
@@ -30,7 +28,6 @@ $(document).ready(function () {
         close: 'Ok',
         format: 'dd-mm-yyyy',
         min: new Date(),
-
         closeOnSelect: true // Close upon selecting a date,
     });
     $('.collapse')
@@ -114,6 +111,12 @@ function abrir_edicion_usuario(nombre, apellido, direccion, email, telefono, sex
         $("#idMujerE").attr("checked", "checked");
 
     }
+       var elemento=5;
+
+
+     $("select#idInstitucionEf").val(4).attr('selected', 'selected');
+
+    
 
     $('#edicion_usuario').modal('open');
 }
@@ -210,7 +213,7 @@ function nuevoPretamoAct() {
     $("#tabla_activo_prestamo tbody").empty()//ellino el anterior
     $("#talbe_user_activo tbody").empty()
     $('#nuevoPrestamoAct').modal('open');
-   
+
 }
 
 function nuevoMant(id) {
@@ -219,17 +222,17 @@ function nuevoMant(id) {
     $("#tabla_activo_mantenimiento tbody").empty()//ellino el anterior
     $("#datos_encargado2 tbody").empty()//ellino el anterior
     $('#nuevoMant').modal('open');
-   
+
     if (id != "no") {
-        llenarTactMant(id,"reparar");
-    } 
-    
+        llenarTactMant(id, "reparar");
+    }
+
 }
 
 
 function validarTablas() {
     var ok = true;
-   
+
     var sel = document.mant.elements["accion_select_mantenimiento[]"];//se obtiene los elementos
 
     if ($('#tabla_activo_mantenimiento >tbody >tr').length == 0) {
@@ -245,7 +248,7 @@ function validarTablas() {
 
             var cont = 0;
             for (var i = 0; i < sel.length; i++) {
-               
+
                 if (sel[i].value == "3") {//verifica si hay activos con codigo de estado 3 que es el de danado
                     cont++;
                     ok = false;
@@ -262,10 +265,10 @@ function validarTablas() {
                     confirmButtonText: "Si, continuar!",
                     closeOnConfirm: false
                 },
-                        function () {
-                            cont = 0;
-                            document.mant.submit();
-                        });
+                function () {
+                    cont = 0;
+                    document.mant.submit();
+                });
             }
         }
     }
@@ -273,7 +276,7 @@ function validarTablas() {
 }
 
 function act_caract(coda, codd, color, dimen, marca, memo, mode, otros, proce, ram, seri, siste) {
-    
+
     $('#codActivoAD').val(coda);
     $('#codDetalleEAD').val(codd);
     $('#nserieEAD').val(seri);
@@ -298,12 +301,12 @@ function actualizarPrestamoActivo(id) {
 }
 
 function abrirActivo(coda, codadm, foto, estado, codd, color, dimen, marca, memo, mode, otros, proce, ram, seri, siste, admin) {
- var foto2 = "../fotoActivos/" + foto;
+    var foto2 = "../fotoActivos/" + foto;
     $('#codActivo').val(coda);
     $('#codDetalle').val(codd);
     //$('#adminedit').val(codadm).selected;
     $("select#adminedit").val(codadm).attr('selected', 'selected');
-    
+
     // $('#adminedit > option[value="'+codadm+'"]').attr('selected', 'selected');
     $('#nserieE').val(seri);
     $('#colorE').val(color);
@@ -318,14 +321,14 @@ function abrirActivo(coda, codadm, foto, estado, codd, color, dimen, marca, memo
     $('#estadoE').val(estado);
     $('#codamin').val(codadm);
     $('#nadmin').val(admin);
-   
+
     if (estado == "Disponible") {
         document.actAct.estadoE.style.background = "#2EFE2E";
     }
     if (estado == "Prestado") {
         document.actAct.estadoE.style.background = "#F7FE2E";
     }
-     alert(foto2)
+    alert(foto2)
     $('#foto1').attr("filename", foto);
     $('#file_fotoEdAct').val(foto);
     document.getElementById("fotoEdActsrc").src = foto2;

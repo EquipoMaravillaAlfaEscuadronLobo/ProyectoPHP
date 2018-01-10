@@ -52,8 +52,8 @@
                                 </div>
                             </div>
                             <div class="input-field col m4">
-                                <select required="" name="nameInstitucionE">
-                                    <option value = "" disabled selected>Seleccione Institucion</option>
+                                <select required="" name="nameInstitucionE" id="idInstitucionEf">
+                                    <option value = "1" >Seleccione Institucion</option>
                                      <?php
                                     $lista_instituciones = Repositorio_institucion::lista_institucion(Conexion::obtener_conexion());
 
