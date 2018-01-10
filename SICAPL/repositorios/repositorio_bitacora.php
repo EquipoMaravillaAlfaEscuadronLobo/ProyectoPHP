@@ -30,7 +30,7 @@ class Repositorio_Bitacora {
 
         if (isset($conexion)) {
             try {
-                $sql = "SELECT * FROM bitacora ORDER by codigo_bitacora DESC";
+                $sql = "SELECT * FROM bitacora ORDER by fecha DESC";
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->execute();
                 $resultado = $sentencia->fetchAll();

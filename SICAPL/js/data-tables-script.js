@@ -45,7 +45,7 @@ $(document).ready(function(){
         "columnDefs": [
             { "visible": false, "targets": 2 }
         ],
-        "order": [[ 2, 'asc' ]],
+        "order": [[ 0, 'desc' ]],
         "displayLength": 25,
         "drawCallback": function ( settings ) {
             var api = this.api();
@@ -67,11 +67,11 @@ $(document).ready(function(){
     // Order by the grouping
     $('#data-table-row-grouping tbody').on( 'click', 'tr.group', function () {
         var currentOrder = table.order()[0];
-        if ( currentOrder[0] === 2 && currentOrder[1] === 'asc' ) {
-            table.order( [ 2, 'desc' ] ).draw();
+        if ( currentOrder[0] === 2 && currentOrder[1] === 'desc' ) {
+            table.order( [ 0, 'desc' ] ).draw();
         }
         else {
-            table.order( [ 2, 'asc' ] ).draw();
+            table.order( [ 0, 'desc' ] ).draw();
         }
     } );
 

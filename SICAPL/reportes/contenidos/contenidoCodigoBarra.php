@@ -48,7 +48,7 @@ $listado1 = Repositorio_libros::CodigoBarras(Conexion::obtener_conexion());
             .tabla table td{
                 padding: 0;
                 margin: 0;
-                width: 350px;
+                width: 500px;
             }
             
 
