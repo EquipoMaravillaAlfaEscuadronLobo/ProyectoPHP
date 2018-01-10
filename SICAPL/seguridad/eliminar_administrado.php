@@ -29,10 +29,10 @@
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-10">
-                                <div class="input-field">
+                                <div class="input-field text-center">
                                     <i class="fa fa-edit prefix" aria-hidden="true"></i>
                                     <label for="idMotivoEliminacion" class="text-center">Escriba el motivo por el que se le da de baja</label>
-                                    <textarea  id="idMotivoEliminacion" name="nameMotivoEliminacion" class="materialize-textarea text-center validate"></textarea>
+                                    <textarea  id="idMotivoEliminacion" name="nameMotivoEliminacion" class="text-center materialize-textarea text-center validate"></textarea>
                                 </div>
                             </div>
 
@@ -47,14 +47,14 @@
                             <div class="input-field col m4">
 
                                 <select  class="validate" required="" id="idSelectedAdministrador" name="nameSelectedAdministrador">
-                                    <option value = "" disabled selected>Seleccione Nuevo encargado de Activos</option>
+                                    <option value = "admin01"  selected>Seleccione Nuevo encargado de Activos</option>
                                     <?php
                                     echo '';
                                     if ($_SESSION['seleccionado'] != NULL) {
                                         
                                         
-                                    $lista_sin_actual = Repositorio_administrador::lista_administradores(Conexion::obtener_conexion(), $_SESSION['seleccionado']);
-                                    //echo 'el codigo actual es '  . $_REQUEST['nameOtroCarnet'];
+                                    $lista_sin_actual = Repositorio_administrador::lista_administradores_para_baja(Conexion::obtener_conexion(), $_SESSION['seleccionado']);
+                                   
                                     if (($lista_sin_actual) != NULL) {
                                         foreach ($lista_sin_actual as $filaz) {
                                             ?>
@@ -69,9 +69,9 @@
 
                                 </select>
                             </div>
-                            <div class="input-field col m5">
+                            <div class="input-field col m5 text-center">
                                 <i class="fa fa-expeditedssl prefix"></i> 
-                                <input type="password" id="idVerificacion" name="nameVerificacionE" class="text-center validate" autocomplete="off" >
+                                <input type="password" id="idVerificacion" name="nameVerificacionE" class="text-center validate" required="" autocomplete="off" >
                                 <label for="idVerificacion">Para continuar por favor ingrese su contraseña</label>
                             </div>
                         </div>
@@ -97,7 +97,9 @@ if (isset($_REQUEST["banderaEliminacion"])) {
     $administrador->setEstado(0);
     $codigo_eliminar = $_REQUEST['nameOtroCarnet'];
     $verificacion = $_REQUEST['nameVerificacionE'];
+    $codigo_administrador2 = $_REQUEST['nameSelectedAdministrador'];
 
+    Repositorio_administrador::actualizar_activos_administradir(Conexion::obtener_conexion(), $codigo_eliminar, $codigo_administrador2);
     
     Repositorio_administrador::eliminar_administrador(Conexion::obtener_conexion(), $administrador, $codigo_eliminar, $verificacion);
 }
