@@ -164,7 +164,27 @@ class Repositorio_Bitacora {
         return $nombre;
     }
     
-    
+      public static function insertar_solicitud($conexion, $accion ,$administrador) {
+        $administrador_insertado = false;
+        if (isset($conexion)) {
+            try {
+                
+                ini_set('date.timezone', 'America/El_Salvador');
+                $hora = date("Y/m/d ") . date("h:i:s");
+
+                $sql = "INSERT INTO bitacora (codigo_administrador, accion, fecha) VALUES ('$administrador', '$accion', '$hora');";
+
+                ///estos son alias para que PDO pueda trabajar 
+                $sentencia = $conexion->prepare($sql);
+                $administrador_insertado = $sentencia->execute();
+
+//                echo 'la bitacora ha sido guardada';
+            } catch (PDOException $ex) {
+                echo '<script>swal("No se puedo realizar el registro", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+    }
     
 }
 
