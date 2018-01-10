@@ -175,23 +175,32 @@ $i = 1;
 </div>
 
 <page pageset="old"><!-- Etiqueta para cada pagina del reporte-->
- <br><br><br><br><br><br><br><br><br>
-<table padding="20px" class="responsive-table display" id="data-table-simple">
-                    
-                        
-                            <tr>
-                                <td class="text-center">qqqqqqqqq</td>
-                                <td class="text-center">rrrrrrrrrrr</td>
-                                <td class="text-center">ssssssssssss</td>
-                                <td class="text-center">xxxxxxxxxxxxx</td>
-                                <td class="text-center">eeeeeeeeeeeee</td>
-                                <td class="text-center">yyyyyyyyyyyyy</td>
-                                <td class="text-center">bbbbbbbbbbbbbb</td>
-                            </tr>
-                    
-                </table>
-    
+    <br><br><br><br><br><br><br><br><br>
+    <table padding="20px" class="responsive-table display" id="data-table-simple">
+        <tr>
+            <td class="centrado">foto</td>
+            <td class="centrado">nombre</td>
+            <td class="centrado">institucion</td>
+            <td class="centrado">motivo</td>
+        </tr>
+        <tr>
+            <td class="centrado"><img src="../../imagenes/hqdefault.jpg"  alt="" style="width: 100px;/*horzontal*/
+                                      height: 250px;/*vertical*/" >
+            </td>
+            <td class="centrado">Boris ricardo miranda</td>
+            <td class="centrado">insavi </td>
+            <td class="centrado">jadsjfkla djfaldj a jdsfladj  jdsfjal  jakldjfa dfladhf </td>
+        </tr>
+        <tr>
+            <td class="centrado"><img src="../../imagenes/hqdefault.jpg"  alt="" style="width: 100px;/*horzontal*/
+                                      height: 250px;/*vertical*/" >
+            </td>
+            <td class="centrado">Boris ricardo miranda</td>
+            <td class="centrado">insavi </td>
+            <td class="centrado">jadsjfkla djfaldj a jdsfladj  jdsfdsfdf a adsfuaioduf adfadf aiodufad ufaodfu adfuaiojal  jakldjfa dfladhf </td>
+        </tr>
 
+    </table>
 </page>
 
 

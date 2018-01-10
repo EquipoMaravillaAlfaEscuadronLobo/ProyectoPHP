@@ -52,7 +52,7 @@ include_once '../repositorios/repositorio_institucion.php';
                         <div class="col m1"></div>
                         <div class="input-field col m5">
                             <i class="fa fa-phone prefix"></i> 
-                            <input type="text" id="idTelefono" name="nameTelefono" class="text-center" required="" minlength="8" >
+                            <input type="text" id="idTelefono" name="nameTelefono" class="text-center" required="">
                             <label for="idTelefono">Numero Telefonico <small>(Ej: 2255-5555)</small></label>
                         </div>
 
@@ -63,7 +63,7 @@ include_once '../repositorios/repositorio_institucion.php';
                         </div>
                         <div class="input-field col m3">
                             <select required="" name="nameInstitucion" id="institucion" class="institucionCombo">
-                                <option value = "" disabled selected>Seleccione Institucion</option>
+                                <option  value = "1">Seleccione Institucion</option>
                                 <?php
                                 $lista_instituciones = Repositorio_institucion::lista_institucion(Conexion::obtener_conexion());
 

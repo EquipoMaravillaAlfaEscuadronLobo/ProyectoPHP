@@ -1,8 +1,8 @@
 <?php 
-session_start();
-    if (!isset($_SESSION['user'])&&($titulo1!="Inicio de Sesion"&&$titulo1!="Recuperar Contraseña")) {
-        header("Location: ../index.php");
-    }
+//session_start();
+//    if (!isset($_SESSION['user'])&&($titulo1!="Inicio de Sesion"&&$titulo1!="Recuperar Contraseña")) {
+//        header("Location: ../index.php");
+//    }
     
 
 ?>
@@ -24,7 +24,9 @@ session_start();
         <!--<link href="../css/materialdesignicons.min.css" rel="stylesheet">-->
         <link href="../css/sweetalert.css" rel="stylesheet">
         
-        
+        <script type="text/javascript" src="../js/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/jquery.validate.js"></script>
+        <script src="../js/sweetalert.min.js"></script>
       
 
     </head>

@@ -188,8 +188,7 @@ class Repositorio_usuario {
 
     public static function actualizar_usuario($conexion, $usuario, $carnet) {
 
-        echo 'esta en actualizar usuario y el sexo es ' . $usuario->getFoto().'<br>';
-        ;
+        
         $usuario_insertado = false;
         //$usuario = new Usuario();
         if (isset($conexion)) {
@@ -203,7 +202,7 @@ class Repositorio_usuario {
                 $instittucion = $usuario->getCodigo_institucion();
                 $sexo = $usuario->getSexo();
                 $foto = $usuario->getFoto();
-                echo 'la direccion de la foto '. $foto;
+                
 
                 if ($foto == "") {
                     $sql = 'UPDATE usuarios SET codigo_institucion=:institucion,nombre=:nombre,apellido=:apellido,telefono=:telefono,correo=:correo,direccion=:direccion,sexo=:sexo where codigo_usuario = :carnet';
@@ -227,7 +226,7 @@ class Repositorio_usuario {
 
                 $administrador_insertado = $sentencia->execute();
                 $accion = 'se actualizaron los datos del usuario ' . $nombre . " " . $apellido;
-                echo $accion;
+                
                 self::insertar_bitacora($conexion, $accion);
 
                 echo '<script>swal({
@@ -265,7 +264,7 @@ class Repositorio_usuario {
 
     public static function eliminar_usuario($conexion, $usuario, $carnet) {
 
-        echo 'esta en eliminar usuario<br>';
+        
         $usuario_insertado = false;
         // $usuario = new Usuario();
         if (isset($conexion)) {
@@ -333,7 +332,7 @@ class Repositorio_usuario {
                 $sentencia = $conexion->prepare($sql);
                 $administrador_insertado = $sentencia->execute();
 
-                echo 'la bitacora ha sido guardada';
+                
             } catch (PDOException $ex) {
                 echo '<script>swal("No se puedo realizar el registro", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
                 print 'ERROR: ' . $ex->getMessage();

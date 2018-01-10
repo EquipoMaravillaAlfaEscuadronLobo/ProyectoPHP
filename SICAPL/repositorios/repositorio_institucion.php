@@ -5,7 +5,7 @@ class Repositorio_institucion{
 
         if (isset($conexion)) {
             try {
-                $sql = "select * from institucion";
+                $sql = "select * from institucion where codigo_institucion != '1' ";
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->execute();
                 $resultado = $sentencia->fetchAll();
