@@ -69,6 +69,7 @@ function buscarUser(valor) {
 
 function buscarUser2(valor) {
 
+
     var depto = valor.value;
 //var numero=valor.id.substr(7)
 //alert(valor.id);
@@ -120,18 +121,23 @@ function buscarActivo(valor) {
 }
 
 function buscarActivo_mantenimiento(valor) {
-//alert("paso");
     var depto = valor.value;
-//var numero=valor.id.substr(7)
-//alert(valor.id);
 
-    if (depto != "") {
-        $.post("../activofijo/getAct_mantenimiento.php", {libro: depto}, function (mensaje) {
-            $('#listaLibros22').html(mensaje).fadeIn();
-
-
-        });
+    if (depto.length == 16) {
+        llenarTactMant(depto, "---");
     }
+//alert("paso");
+//    var depto = valor.value;
+////var numero=valor.id.substr(7)
+////alert(valor.id);
+//
+//    if (depto != "") {
+//        $.post("../activofijo/getAct_mantenimiento.php", {libro: depto}, function (mensaje) {
+//            $('#listaLibros22').html(mensaje).fadeIn();
+//
+//
+//        });
+//    }
 
 }
 
@@ -140,7 +146,7 @@ function buscarEncargado(valor) {
     var depto = valor;
 //var numero=valor.id.substr(7)
 //alert(valor.id);
-    if (depto != "") {
+    if (depto != "" && depto.length > 0) {
         $.post("../activofijo/llenar_encargado.php", {libro: depto}, function (mensaje) {
             $('#listaLibros22').html(mensaje).fadeIn();
 
@@ -227,7 +233,7 @@ function llenarTact(valor, lista) {
                 cap = tipo + "-" + numero[i];
             }
 
-           
+
             if ($('#tabla_activo_prestamo >tbody >tr').length != 0) {
                 for (var j = 0; j < cosd.length; j++) {
 
@@ -249,25 +255,99 @@ function llenarTact(valor, lista) {
 
         }
         if (no.length > 5) {
-            swal("Ooops", no+"\nya estan agregados", "warning");
+            swal("Ooops", no + "\nya estan agregados", "warning");
         }
     }
 
 }
 
 function llenarTactMant(valor, lista) {
-//alert("paso8");
+
     var depto = valor;
-    var depto2 = lista;
+   
+    if (lista == "---" || lista=="reparar") {
 //var numero=valor.id.substr(7)
 //alert(valor.id);
-    if (depto != "") {//alert("paso"+depto);
-        $.post("../activofijo/llenar_mantenimiento.php", {libro: depto, lista: depto2}, function (mensaje) {
-            $('#listaLibros22').html(mensaje).fadeIn();
+        if (depto != "") {
+            $.post("../activofijo/llenar_mantenimiento.php", {libro: depto, lista: lista}, function (mensaje) {
+                $('#listaLibros22').html(mensaje).fadeIn();
 
-        });
+            });
 
+        }   
+    } else {
+        lista = lista.split('/');
+        var tipo = lista[0];
+
+        lista = lista[1];
+        lista = lista.split(','); //primero separo por " , "+
+        var numero = [];
+        var lista2 = [];
+        var lista3 = [];
+        var cap = ""; // codigo activo prestamo
+        numero[0] = "---";
+        lista2[0] = "";
+        //var noDisponible = "";
+        for (var i = 0; i < lista.length; i++) {
+            if (lista[i].length > 2) {
+                lista2.push(lista[i]);
+            } else {
+                numero.push("" + lista[i]);
+            }
+        }
+        for (var i = 1; i < lista2.length; i++) {
+            lista3 = lista2[i].split('-');
+
+            for (var j = lista3[0]; j <= lista3[1]; j++) {
+                numero[numero.length] = "" + j;
+            }
+        }
+        var cosd = document.mant.elements["codsActsMant[]"];//se obtiene los elementos;
+        var p = 0;
+        var no = ""; 
+        for (var i = 1; i < numero.length; i++) {
+            p = 0;
+            if (numero[i].length == 1) {
+                cap = tipo + "-000" + numero[i];
+            }
+
+            if (numero[i].length == 2) {
+                cap = tipo + "-00" + numero[i];
+            }
+
+            if (numero[i].length == 3) {
+                cap = tipo + "-0" + numero[i];
+            }
+
+            if (numero[i].length == 4) {
+                cap = tipo + "-" + numero[i];
+            }
+
+            if ($('#tabla_activo_mantenimiento >tbody >tr').length != 0) {
+                for (var j = 0; j < cosd.length; j++) {
+
+                    if (cosd[j].value == cap) {//verifica que no se agregue el mismo activo
+                        p++;
+
+                    }
+                }
+            }
+
+
+            if (p == 0) {alert("paso");
+                 $.post("../activofijo/llenar_mantenimiento.php", {libro: cap, lista: "---"}, function (mensaje) {
+                $('#listaLibros22').html(mensaje).fadeIn();
+            });
+            } else {
+                no = no + "\n" + cap;
+            }
+
+        }
+        if (no.length > 5) {
+            swal("Ooops", no + "\nya estan agregados", "warning");
+        }
     }
+
 
 }
 

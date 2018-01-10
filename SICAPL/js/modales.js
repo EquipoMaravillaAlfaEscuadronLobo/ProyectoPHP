@@ -210,7 +210,7 @@ function nuevoPretamoAct() {
     $("#tabla_activo_prestamo tbody").empty()//ellino el anterior
     $("#talbe_user_activo tbody").empty()
     $('#nuevoPrestamoAct').modal('open');
-    var activosAgregado=[];
+   
 }
 
 function nuevoMant(id) {
@@ -218,10 +218,8 @@ function nuevoMant(id) {
     $("#codMantAct").val("---");
     $("#tabla_activo_mantenimiento tbody").empty()//ellino el anterior
     $("#datos_encargado2 tbody").empty()//ellino el anterior
-    $("#descrMant").val("1111111111");
-    $("#costoTotal").val("1");   //nuevoMant
     $('#nuevoMant').modal('open');
-
+   
     if (id != "no") {
         llenarTactMant(id,"reparar");
     } 
@@ -274,7 +272,20 @@ function validarTablas() {
     return ok;
 }
 
-function nuevoEnc() {
+function act_caract(coda, codd, color, dimen, marca, memo, mode, otros, proce, ram, seri, siste) {
+    
+    $('#codActivoAD').val(coda);
+    $('#codDetalleEAD').val(codd);
+    $('#nserieEAD').val(seri);
+    $('#colorEAD').val(color);
+    $('#marcaEAD').val(marca);
+    $('#soEAD').val(siste);
+    $('#dimensionesEAD').val(dimen);
+    $('#modeloEAD').val(mode);
+    $('#proEAD').val(proce);
+    $('#otroEAD').val(otros);
+    $('#ramEAD').val(ram);
+    $('#ddEAD').val(memo);
     $('#actualizarCaracteristicas').modal('open');
 }
 function actualizarPrestamoActivo(id) {
@@ -287,12 +298,12 @@ function actualizarPrestamoActivo(id) {
 }
 
 function abrirActivo(coda, codadm, foto, estado, codd, color, dimen, marca, memo, mode, otros, proce, ram, seri, siste, admin) {
-
+ var foto2 = "../fotoActivos/" + foto;
     $('#codActivo').val(coda);
     $('#codDetalle').val(codd);
     //$('#adminedit').val(codadm).selected;
     $("select#adminedit").val(codadm).attr('selected', 'selected');
-    ;
+    
     // $('#adminedit > option[value="'+codadm+'"]').attr('selected', 'selected');
     $('#nserieE').val(seri);
     $('#colorE').val(color);
@@ -307,15 +318,17 @@ function abrirActivo(coda, codadm, foto, estado, codd, color, dimen, marca, memo
     $('#estadoE').val(estado);
     $('#codamin').val(codadm);
     $('#nadmin').val(admin);
-
+   
     if (estado == "Disponible") {
         document.actAct.estadoE.style.background = "#2EFE2E";
     }
     if (estado == "Prestado") {
         document.actAct.estadoE.style.background = "#F7FE2E";
     }
-
-    document.getElementById("idFotoea").src = foto;
+     alert(foto2)
+    $('#foto1').attr("filename", foto);
+    $('#file_fotoEdAct').val(foto);
+    document.getElementById("fotoEdActsrc").src = foto2;
     $('#editActivo').modal('open');
 
 

@@ -44,9 +44,9 @@
     /* Easy Tooltip */
 </style>
 <script>
-      
-    </script>
-   
+
+</script>
+
 <form name="mant" id="mant" method="post" action="">
     <input type="hidden" id="pass" name="pass"/>
     <!--  panel de activo    -->
@@ -67,16 +67,14 @@
 
                     <div class="panel-body"  >
                         <div class="row">
-                            <div class="input-field col m2">
+                            <div class="input-field col m6">
                                 <i class="fa fa-sitemap prefix"></i> 
-                                <input type="text" id="catMantAct" name="catMantAct" class="text-center validate" required="" value="---" readonly="">
+                                <select name="selectCatMant" id="selectCatMant" class="selectCat" >
+                                    <?php
+                                    include'select_categoria.php';
+                                    ?>
+                                </select>
                                 <label style="font-size:16px">Categoria <small></small> </label>
-                            </div>
-
-                            <div class="input-field col-md-offset-2 col m4">
-                                <i class="fa fa-barcode prefix"></i> 
-                                <input type="text" id="codMantAct" name="codMantAct" class="text-center validate codPrestAct" required="" value="---"  readonly="">
-                                <label style="font-size:16px">Codigo <small></small> </label>
                             </div>
 
                             <div class="input-field col m3">
@@ -93,8 +91,8 @@
                                 <label style="font-size:12px" title="Indique el numero correlativo del activo para agragar varios a la tabla&#13;p. ej. 5-14, 25">Seleccion Multiple  <small></small> </label>
                             </div>
 
-                            <div class="input-field col-md-offset-2 col m1"   >
-                                <button id="agrActMant" disabled="" class="btn-sm btn-success modal-action " type="button" onclick="javascript:agregarMant()"  >
+                            <div class="input-field col-md-offset-2 col m3 text-center"   >
+                                <button id="agrActMant"  class="btn-sm btn-success modal-action " type="button" onclick="javascript:agregarMant()"  >
                                     <span class="fa fa-mail-forward" aria="hidden" ></span>
                                     Agregar</button>
                             </div>
@@ -209,7 +207,7 @@
 
 
 </form>
-              
+
 <datalist id="listaeman">
     <?php
     include_once '../app/Conexion.php';
@@ -221,7 +219,7 @@
 
 
     foreach ($listado as $fila) {
-        
+
         echo "<option value='$fila[1]' label='$fila[0]'>";
     }
     ?>
@@ -245,13 +243,13 @@
 
 
 <script>
-   
-     function agrEnca(){
+
+    function agrEnca() {
         var depto = $("#listaeman option[value='" + $('#codigo_encargado').val() + "']").attr('label');//alert(depto);
         buscarEncargado(depto);
 
     }
-    
+
     function  activarMant() {//para activar boton de agregar, se llama en getuser y get activo
 
         if (document.getElementById("codMantAct").value != "---") {
@@ -272,13 +270,12 @@
 
 
     function agregarMant() {
-
-        llenarTactMant(document.getElementById("codMantAct").value, document.getElementById("correlativoMant").value);
+        llenarTactMant("---", document.getElementById("selectCatMant").value + "/" + document.getElementById("correlativoMant").value);
 
         return false;
     }
 
- 
+
 </script>
 
 

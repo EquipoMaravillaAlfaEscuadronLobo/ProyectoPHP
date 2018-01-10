@@ -113,9 +113,13 @@ include_once('../plantillas/pie_de_pagina.php');
 
         <?php include('actualizar_caracteristicas.php'); ?>
     </div>
-    <div class="modal-footer ">
+    <div class="modal-footer "> 
         <div class="row">
-            <div class="col-md-6 text-right"><a href="#" class="modal-action modal-close waves-effect btn btn-success"><i class="glyphicon glyphicon-floppy-disk"></i>  Guardar</a></div>
+            <div class="col-md-6 text-right">
+                <button  class="btn btn-success  " type="submit" form="ActActEAD" >
+                    <span class="glyphicon glyphicon-floppy-disk" ></span>
+                    Guardar</button>
+            </div>
             <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>
         </div>
     </div>
@@ -137,6 +141,24 @@ include_once('../plantillas/pie_de_pagina.php');
                     $('#nuevoEncargado').modal('close');
                     swal("Exito", "Registro guardado con exito", "success");
                     $("#lista_encargado").load(" #lista_encargado");//para actuaizar la datalist cuando registra
+                }
+            })
+            return false;
+        });
+        
+         $('#ActActEAD').submit(function () {
+             
+            // Enviamos el formulario usando AJAX
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                // Mostramos un mensaje con la respuesta de PHP
+                success: function (resp) {
+                   // document.getElementById('ActActEAD').reset();
+                    $('#actualizarCaracteristicas').modal('close');
+                    swal("Exito", "Registro actualizado con exito", "success");
+                    //$("#lista_encargado").load(" #lista_encargado");//para actuaizar la datalist cuando registra
                 }
             })
             return false;
