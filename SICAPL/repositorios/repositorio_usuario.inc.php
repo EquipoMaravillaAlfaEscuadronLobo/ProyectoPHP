@@ -413,7 +413,23 @@ class Repositorio_usuario {
 
         if (isset($conexion)) {
             try {
-                $sql = "select * from usuarios where codigo_usuario = '$codigo'";
+                $sql = "SELECT
+                usuarios.codigo_usuario,
+                usuarios.codigo_institucion,
+                usuarios.nombre,
+                usuarios.apellido,
+                usuarios.telefono,
+                usuarios.correo,
+                usuarios.foto,
+                usuarios.direccion,
+                usuarios.sexo,
+                usuarios.estado,
+                usuarios.observaciones,
+                institucion.nombre
+                FROM
+                usuarios
+                INNER JOIN institucion ON usuarios.codigo_institucion = institucion.codigo_institucion
+                where codigo_usuario = '$codigo'";
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->execute();
                 $resultado = $sentencia->fetchAll();
@@ -423,7 +439,7 @@ class Repositorio_usuario {
                         $usuario = new Usuario();
 
                         $usuario->setApellido($fila['apellido']);
-                        $usuario->setCodigo_institucion($fila['codigo_institucion']);
+                        $usuario->setCodigo_institucion($fila['11']);
                         $usuario->setCodigo_usuario($fila['codigo_usuario']);
                         $usuario->setCorreo($fila['correo']);
                         $usuario->setDireccion($fila['direccion']);

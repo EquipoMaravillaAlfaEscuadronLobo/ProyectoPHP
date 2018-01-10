@@ -205,7 +205,7 @@ $i = 1;
             <div class="ib datos">
                 <p> TELÉFONO :  <strong><?php echo $lista->getTelefono(); ?></strong></p> 
                 <p> CORREO:  <strong><?php echo $lista->getEmail();?></strong></p> 
-                <p> DIRECCION :  <strong><?php echo $lista->getDireccion();?></strong> </p>
+                <p> INSTITUCIÓN :  <strong><?php echo $lista->getCodigo_institucion();?></strong> </p>
                 <p> <barcode dimension="1D"
                              type="C128"
                              value="<?php echo $lista->getCodigo_usuario();?>" 
