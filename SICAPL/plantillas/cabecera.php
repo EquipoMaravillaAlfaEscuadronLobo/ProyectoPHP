@@ -1,8 +1,8 @@
 <?php 
-//session_start();
-//    if (!isset($_SESSION['user'])&&($titulo1!="Inicio de Sesion"&&$titulo1!="Recuperar Contraseña")) {
-//        header("Location: ../index.php");
-//    }
+session_start();
+    if (!isset($_SESSION['user'])&&($titulo1!="Inicio de Sesion"&&$titulo1!="Recuperar Contraseña")) {
+        header("Location: ../index.php");
+    }
     
 
 ?>
