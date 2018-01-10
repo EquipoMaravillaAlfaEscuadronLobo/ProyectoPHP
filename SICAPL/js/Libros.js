@@ -99,8 +99,7 @@ function eliminar(numero) {
 function buscarActivo(valor) {
 //alert("paso");
     var depto = valor.value;
-
-    if (depto.length == 16) {
+    if (depto != "") {
         llenarTact(depto, "---");
     }
 //    var numero = depto.substr(12)
@@ -179,7 +178,7 @@ function llenarTact(valor, lista) {
 //var numero=valor.id.substr(7)
 //alert(valor.id);
         if (depto != "") {//alert("paso"+depto);
-            $.post("../activofijo/llenar.php", {libro: depto, lista: depto2}, function (mensaje) {
+            $.post("../activofijo/llenar.php", {libro: depto, lista: "depto2"}, function (mensaje) {
                 $('#listaLibros22').html(mensaje).fadeIn();
 
             });
@@ -334,7 +333,7 @@ function llenarTactMant(valor, lista) {
             }
 
 
-            if (p == 0) {alert("paso");
+            if (p == 0) {
                  $.post("../activofijo/llenar_mantenimiento.php", {libro: cap, lista: "---"}, function (mensaje) {
                 $('#listaLibros22').html(mensaje).fadeIn();
             });
