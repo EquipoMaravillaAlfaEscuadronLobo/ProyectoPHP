@@ -5,10 +5,10 @@ use Spipu\Html2Pdf\Html2Pdf;
 
 ob_start();
 include_once '../../app/Conexion.php';
-include_once '../../modelos/Libros.php';
-include_once '../../repositorios/respositorio_libros.php';
+include_once '../../modelos/Usuario.php';
+include_once '../../repositorios/repositorio_usuario.inc.php';
 Conexion::abrir_conexion();
-$listado1 = Repositorio_libros::LibrosDadosBaja(Conexion::obtener_conexion());
+$listado1 = Repositorio_usuario::lista_usuarios_de_baja(Conexion::obtener_conexion());
 $i = 1;
 ?>
 
@@ -23,7 +23,7 @@ $i = 1;
 <style>
     .tabla{
 
-        align-content: stretch;
+
         width: 100%;
 
     }
@@ -98,8 +98,42 @@ $i = 1;
         text-align: center;
         width: 100%;
     }
+    .centrado {
+        text-align: center;
+    }
+
+    .cuerpo-pagina{
+        width: 690px;/*horzontal*/
+        height: 120px;/*vertical*/
+        background: orange;
+
+    }
+    .cuerpo-pagina > div{
+        display: inline-block;
+
+    }
+
+    .foto-body{
+        text-align: center;
+        width: 100px;/*horzontal*/
+        height: 15px;/*vertical*/
+        background: bisque;
+        display: inline-block;
+    }
+    .nombre{
+        text-align: center;
+        width: 200px;/*horzontal*/
+        height: 15px;/*vertical*/
+        background: #0097a7;
+
+    }
 
 </style>
+<!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
+<link href="../../css/bootstrap.min.css" rel="stylesheet">
+<!--<script src="../../js/bootstrap.min.js"></script>-->
+
+
 <page backtop="14mm" backbottom="14mm" backleft="10mm" backright="10mm" pagegroup="new">
     <page_header>
         <table class="page_header">
@@ -107,10 +141,10 @@ $i = 1;
                 <td style="width: 100%; text-align: left">
                     <img src="../../imagenes/libros.png" class="cabecera">
                     <img src="../../imagenes/logo.png" class="cabecera-izquierda">
-                    
+
                     <h2>
                         Casa de Encuentro Juvenil
-                        </h2>
+                    </h2>
                     <h3>
                         Verapaz, San Vicente
                     </h3>
@@ -133,74 +167,35 @@ $i = 1;
         Reporte de Alumnos Dados de baja
     </h1>
     <h3>
-        <?php date_default_timezone_set('America/El_Salvador');
-        echo date('d-m-Y') . '(' . date('H:i:s') . ')' ?>
+        <?php
+        date_default_timezone_set('America/El_Salvador');
+        echo date('d-m-Y') . '(' . date('H:i:s') . ')'
+        ?>
     </h3>
 </div>
+
+<page pageset="old"><!-- Etiqueta para cada pagina del reporte-->
+ <br><br><br><br><br><br><br><br><br>
+<table padding="20px" class="responsive-table display" id="data-table-simple">
+                    
+                        
+                            <tr>
+                                <td class="text-center">qqqqqqqqq</td>
+                                <td class="text-center">rrrrrrrrrrr</td>
+                                <td class="text-center">ssssssssssss</td>
+                                <td class="text-center">xxxxxxxxxxxxx</td>
+                                <td class="text-center">eeeeeeeeeeeee</td>
+                                <td class="text-center">yyyyyyyyyyyyy</td>
+                                <td class="text-center">bbbbbbbbbbbbbb</td>
+                            </tr>
+                    
+                </table>
+    
+
+</page>
+
+
 <?php
-foreach ($listado1 as $fila1) {
-    $listado = Repositorio_libros::LibrosDadosBaja2(Conexion::obtener_conexion(), $fila1['titulo']);
-    ?>
-    <page pageset="old"><!-- Etiqueta para cada pagina del reporte-->
-
-        <br><br><br>
-        <div class="tabla"><!-- Inicio Contenido del Reporte (Modificable)-->
-
-            <table border="0"  align="center">
-                <tr>
-                    <th>C&oacute;digo</th>
-
-                    <th>Motivo</th>
-                </tr>
-                <br>
-                <tr class="espacio">
-                    <td>&nbsp;</td><td>&nbsp;</td>
-                </tr>
-                <tr class="espacio">
-                    <td>&nbsp;</td><td>&nbsp;</td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <b><?php echo $fila1['titulo'] ?></b>
-                    </td>
-                </tr>
-                <tr>
-                    <td><hr></td><td><hr></td>
-                </tr>
-                <?php
-                foreach ($listado as $fila) {
-                    ?>
-
-
-                    <tr>
-                        <td><?php echo $fila['codigo'] ?></td>
-
-                        <td><?php echo $fila['motivo'] ?></td>
-                    </tr>
-                    <?php
-                }
-                ?>
-                <tr class="espacio">
-                    <td>&nbsp;</td><td>&nbsp;</td>
-                </tr>
-                <tr class="espacio">
-                    <td>&nbsp;</td><td>&nbsp;</td>
-                </tr>
-                <tr class="espacio">
-                    <td>&nbsp;</td><td>&nbsp;</td>
-                </tr>
-
-
-
-            </table>
-        </div><!-- Fin Contenido del Reporte (Modificable)-->
-
-    </page>
-    <?php
-}
-
-
 $html = ob_get_clean();
 
 $html2pdf = new Html2Pdf('P', 'A4', 'es', 'true', 'UTF-8');

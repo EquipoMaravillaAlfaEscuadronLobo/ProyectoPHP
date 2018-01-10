@@ -148,6 +148,43 @@ class Repositorio_usuario {
 
         return $lista_usuarios;
     }
+    
+    public static function lista_usuarios_de_baja($conexion) {
+        $lista_usuarios = array();
+
+        if (isset($conexion)) {
+            try {
+                $sql = "select * from usuarios where estado = 0";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+                        $usuario = new Usuario();
+
+                        $usuario->setApellido($fila['apellido']);
+                        $usuario->setCodigo_institucion($fila['codigo_institucion']);
+                        $usuario->setCodigo_usuario($fila['codigo_usuario']);
+                        $usuario->setCorreo($fila['correo']);
+                        $usuario->setDireccion($fila['direccion']);
+                        $usuario->setEmail($fila['correo']);
+                        $usuario->setNombre($fila['nombre']);
+                        $usuario->setSexo($fila['sexo']);
+                        $usuario->setTelefono($fila['telefono']);
+                        $usuario->setFoto($fila['foto']);
+
+                        $lista_usuarios[] = $usuario;
+                    }
+                }
+            } catch (PDOException $exc) {
+                print('ERROR' . $exc->getMessage());
+            }
+        }
+
+
+        return $lista_usuarios;
+    }
 
     public static function actualizar_usuario($conexion, $usuario, $carnet) {
 
