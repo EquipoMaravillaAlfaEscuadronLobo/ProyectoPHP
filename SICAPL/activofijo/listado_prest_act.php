@@ -138,10 +138,8 @@ $listado = Repositorio_prestamoact::ListaPrestamosAct(Conexion::obtener_conexion
     function  finalizar() {
         if (validarTablas_dev()) {
             document.getElementById("opcion").value = 1;
-            document.actualizar_prestamo_activo.submit();
-          
+            document.actualizar_prestamo_activo.submit();          
         }
-
     }
     
     function validarTablas_dev() {

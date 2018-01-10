@@ -43,8 +43,11 @@
 
     /* Easy Tooltip */
 </style>
-
-<form name="mant" id="mant" onsubmit="return validarTablas()" method="post" action="">
+<script>
+      
+    </script>
+   
+<form name="mant" id="mant" method="post" action="">
     <input type="hidden" id="pass" name="pass"/>
     <!--  panel de activo    -->
     <div class="col-md-6">
@@ -62,7 +65,7 @@
                 </div>
                 <div id="activo1" class="panel-collapse collapse in">
 
-                    <div class="panel-body">
+                    <div class="panel-body"  >
                         <div class="row">
                             <div class="input-field col m2">
                                 <i class="fa fa-sitemap prefix"></i> 
@@ -103,7 +106,7 @@
                             <th>Codigo</th>
                             <th>Categoria</th>
                             <th>Estado</th>
-                            <th>&nbsp;<input type="hidden"  required="" id="bandera_tabla_activo_prestamo" name="bandera_tabla_activo_prestamo" /></th>
+                            <th>&nbsp;<input  type="hidden"  required="" id="bandera_tabla_activo_prestamo" name="bandera_tabla_activo_prestamo" /></th>
                             </thead>
                             <tbody>
 
@@ -206,7 +209,7 @@
 
 
 </form>
-
+              
 <datalist id="listaeman">
     <?php
     include_once '../app/Conexion.php';
@@ -242,6 +245,7 @@
 
 
 <script>
+   
      function agrEnca(){
         var depto = $("#listaeman option[value='" + $('#codigo_encargado').val() + "']").attr('label');//alert(depto);
         buscarEncargado(depto);
@@ -274,48 +278,7 @@
         return false;
     }
 
-    function validarTablas() {
-        var ok = true;
-        if ($('#tabla_activo_mantenimiento >tbody >tr').length == 0) {
-            ok = false;
-
-            swal("Ooops", "Tabla de activos vacia", "warning");
-        } else {
-            if ($('#datos_encargado2 >tbody >tr').length == 0) {
-                ok = false;
-                swal("Ooops", "Tabla de encargados vacia", "warning");
-
-            }
-
-        }
-        // codigo para verificar cuantos activos fueron a manteniemieto y siguen daniados
-        var sel = document.mant.elements["accion_select_mantenimiento[]"];//se obtiene los elementos
-        var cont = 0;
-        for (var i = 0; i < sel.length; i++) {
-            if (sel[i].value == "3") {//verifica si hay activos con codigo de estado 3 que es el de danado
-                cont++;
-                ok = false;
-            }
-        }
-        if (cont > 0) {//si hay activos con codido 3 
-            swal({
-                title: "Desea continuar?",
-                text: "Hay activos que fueron a mantenimiento y siguen dañados!",
-                type: "warning",
-                showCancelButton: true,
-                cancelButtonText: "Cancelar",
-                confirmButtonClass: "btn-danger",
-                confirmButtonText: "Si, continuar!",
-                closeOnConfirm: false
-            },
-                    function () {
-                        ok = true;
-                    });
-        }
-
-
-        return ok;
-    }
+ 
 </script>
 
 

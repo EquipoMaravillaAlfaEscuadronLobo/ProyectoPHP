@@ -15,7 +15,8 @@ $listado = Repositorio_activo::obtener_activo(Conexion::obtener_conexion(), $_PO
 foreach ($listado as $fila) {
     ?>
 <script type="text/javascript">
-     var codigo="<?php echo $fila['codigo_activo']; ?>";    
+     var codigo="<?php echo $fila['codigo_activo']; ?>";  
+     var correlativo="<?php echo $lista; ?>";
    var pass=doSearch(codigo);
    if(pass){
         var estado="<?php echo $fila['estado'];?>";
@@ -23,20 +24,28 @@ foreach ($listado as $fila) {
         var encargado="<?php echo Repositorio_administrador::obtener_administrador(Conexion::obtener_conexion(), $fila['codigo_administrador'])->getNombre() . " " . Repositorio_administrador::obtener_administrador(Conexion::obtener_conexion(), $fila['codigo_administrador'])->getApellido(); ?>" ;
     if(estado==1){    
     var sel = '<div class="form-group">' +
-                    '<select class="form-control accion_select"  id="accion_select_mantenimiento[]" name="accion_select_mantenimiento[]">' +
+                    '<select class="form-control accion_select"  id="accion_select_mantenimiento" name="accion_select_mantenimiento[]">' +
                    
                     '<option value="1" selected="" class="btn-success">Disponible</option>' +
+                    '<option value="3"  class="btn-warning">Dañado</option>' +
                     '</select>' +
                     '</div>';    
         }else{
              var sel = '<div class="form-group">' +
-                    '<select class="form-control accion_select"  id="accion_select_mantenimiento[]" name="accion_select_mantenimiento[]">' +
+                    '<select  class="form-control accion_select"  id="accion_select_mantenimiento" name="accion_select_mantenimiento[]">' +
                    
                     '<option value="1"  class="btn-success">Disponible</option>' +
                     '<option value="3" selected="" class="btn-warning">Dañado</option>' +
                     '</select>' +
                     '</div>';    
             }
+      if(correlativo=="reparar"){
+          var sel = '<div class="form-group">' +
+                    '<select  class="form-control accion_select"  id="accion_select_mantenimiento" name="accion_select_mantenimiento[]">' +
+                    '<option value="1" selected="" class="btn-success">Disponible</option>' +
+                    '</select>' +
+                    '</div>';    
+          }
     var linea="";
         linea=linea.concat(
             "<tr>",

@@ -42,17 +42,16 @@ $(document).ready(function() {
 
                             <div class="panel-body">
                                 <div class="row">
-                                    <div class="input-field col m3">
+                                    <div class="input-field col m6">
                                         <i class="fa fa-sitemap prefix"></i> 
-                                        <input type="text" id="catPrestAct" name="catPrestAct" class="text-center validate" required="" value="---" readonly="">
+                                          <select name="selectCatpres" id="selectCatpres" class="selectCat" >
+                                <?php
+                                include'select_categoria.php';
+                                ?>
+                            </select>
                                         <label style="font-size:16px">Categoria <small></small> </label>
                                     </div>
-                                    <div class="col m1"></div>
-                                    <div class="input-field col-md-offset-2 col m3">
-                                        <i class="fa fa-barcode prefix"></i> 
-                                        <input type="text" id="codPrestAct" name="codPrestAct" class="text-center validate codPrestAct" required="" value="---"  readonly="">
-                                        <label style="font-size:16px">Codigo <small></small> </label>
-                                    </div>
+                                   
                                    
                                     <div class="input-field col m3">
                                         <i class="fa fa-barcode prefix" title="Indique el numero correlativo del activo para agragar varios a la tabla"></i> 
@@ -69,8 +68,8 @@ $(document).ready(function() {
                                                >
                                         <label style="font-size:14px"  title="Indique el numero correlativo del activo para agregar varios a la tabla  &#13;p. ej. 5-14, 25" >Seleccion Multiple  <small></small> </label>
                                     </div>
-                                    <div class="input-field col-md-offset-2 col m1"   >
-                                        <button id="agrAct" class="btn-sm btn-success modal-action " type="button" onclick="javascript:agregar()" disabled="" >
+                                    <div class="input-field col-md-offset-2 col m3 text-center"   >
+                                        <button id="agrAct" class="btn-sm btn-success modal-action " type="button" onclick="javascript:agregar()"  >
                                             <span class="fa fa-mail-forward" aria="hidden" ></span>
                                             Agregar</button>
                                     </div>
@@ -182,7 +181,8 @@ $(document).ready(function() {
     }
 
     function agregar() {
-        llenarTact(document.getElementById("codPrestAct").value, document.getElementById("correlativo").value);
+        
+        llenarTact("---", document.getElementById("selectCatpres").value+"/"+document.getElementById("correlativo").value);
        
         return false;
     }

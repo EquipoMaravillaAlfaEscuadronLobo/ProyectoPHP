@@ -1,38 +1,38 @@
 $(document).ready(function () {
-   $('.datepicker2').pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 150, // Creates a dropdown of 15 years to control year,
-    today: 'Hoy',
-    clear: 'Borrar',
-    close: 'Ok',
-       format: 'dd-mm-yyyy',
-    max: new Date(),
+    $('.datepicker2').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 150, // Creates a dropdown of 15 years to control year,
+        today: 'Hoy',
+        clear: 'Borrar',
+        close: 'Ok',
+        format: 'dd-mm-yyyy',
+        max: new Date(),
 
-    closeOnSelect: true // Close upon selecting a date,
-  });
+        closeOnSelect: true // Close upon selecting a date,
+    });
 
     $('#fecha_dev').pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 2, // Creates a dropdown of 15 years to control year,
-    today: 'Hoy',
-    clear: 'Borrar',
-    close: 'Ok',
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 2, // Creates a dropdown of 15 years to control year,
+        today: 'Hoy',
+        clear: 'Borrar',
+        close: 'Ok',
         format: 'dd-mm-yyyy',
-    min: new Date(),
+        min: new Date(),
 
-    closeOnSelect: true // Close upon selecting a date,
-  });
-   $('.fecha_dev').pickadate({//es clase para validar las fechas del activo fijo
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 2, // Creates a dropdown of 15 years to control year,
-    today: 'Hoy',
-    clear: 'Borrar',
-    close: 'Ok',
+        closeOnSelect: true // Close upon selecting a date,
+    });
+    $('.fecha_dev').pickadate({//es clase para validar las fechas del activo fijo
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 2, // Creates a dropdown of 15 years to control year,
+        today: 'Hoy',
+        clear: 'Borrar',
+        close: 'Ok',
         format: 'dd-mm-yyyy',
-    min: new Date(),
+        min: new Date(),
 
-    closeOnSelect: true // Close upon selecting a date,
-  });
+        closeOnSelect: true // Close upon selecting a date,
+    });
     $('.collapse')
             .on('shown.bs.collapse', function () {
                 $(this).parent()
@@ -61,11 +61,11 @@ $(document).ready(function () {
 
     }
     );
-   
-    
 
 
-   
+
+
+
 });
 
 function abrir_edicion_administrador(nombre, apellido, user, dui, fecha, email, password, nivel, sexo) {
@@ -79,16 +79,16 @@ function abrir_edicion_administrador(nombre, apellido, user, dui, fecha, email, 
     $("#idPass2E").val(password);
     $("#idSecreto").val(nombre);
     $("#codigo_original").val(user);
-    
+
     $("#idListarAdmnistrador").removeClass("active");
     $("#idRegistroAdministrador").addClass("active");
-    
+
     if (nivel == '0') {
         $("#idRootE").attr("checked", "checked");
     } else {
         $("#idAdministradorE").attr("checked", "checked");
     }
-   
+
     if (sexo == "Masculino") {
         $('#idHombreE').attr("checked", "checked");
 
@@ -96,11 +96,11 @@ function abrir_edicion_administrador(nombre, apellido, user, dui, fecha, email, 
         $("#idMujerE").attr("checked", "checked");
     }
 
- $('#edicion_administradores').modal('open');
+    $('#edicion_administradores').modal('open');
 }
 
-function abrir_edicion_usuario(nombre,apellido,direccion,email,telefono,sexo,password,carnet) {
-    $("#idSecreto").val(nombre + " " +apellido);
+function abrir_edicion_usuario(nombre, apellido, direccion, email, telefono, sexo, password, carnet) {
+    $("#idSecreto").val(nombre + " " + apellido);
     $("#idCarnetE").val(carnet);
     $("#idNombreE").val(nombre);
     $("#idApellidoE").val(apellido);
@@ -108,36 +108,35 @@ function abrir_edicion_usuario(nombre,apellido,direccion,email,telefono,sexo,pas
     $("#idEmailE").val(email);
     $("#idTelefonoE").val(telefono);
     if (sexo == "Masculino") {
-      
+
         $('#idHombreE').attr("checked", "checked");
-      } 
-    else {
-         $("#idMujerE").attr("checked", "checked");
-      
+    } else {
+        $("#idMujerE").attr("checked", "checked");
+
     }
-     
- $('#edicion_usuario').modal('open');
+
+    $('#edicion_usuario').modal('open');
 }
 
-function abrir_eliminacion_usuario(nombre,apellido,carnet,password) {
+function abrir_eliminacion_usuario(nombre, apellido, carnet, password) {
     $("#idOtroCarnet").val(carnet);
-    $("#idNombreEliminado").val(nombre+ " "+ apellido);
-     $("#idCarnetEliminado").val(carnet);
-     
-     $("#idCarnetEl").val(carnet);
-     $("#idSecretoEL").val(nombre+ " "+ apellido);
- $('#eliminacion_usuario').modal('open');
+    $("#idNombreEliminado").val(nombre + " " + apellido);
+    $("#idCarnetEliminado").val(carnet);
+
+    $("#idCarnetEl").val(carnet);
+    $("#idSecretoEL").val(nombre + " " + apellido);
+    $('#eliminacion_usuario').modal('open');
 }
 
-function abrir_eliminacion_administrador(nombre, apellido,usuario,password) {
-    $("#idNombreEl").val(nombre +" " +apellido);
+function abrir_eliminacion_administrador(nombre, apellido, usuario, password) {
+    $("#idNombreEl").val(nombre + " " + apellido);
     $("#idUsuarioEl").val(usuario);
     $("#idSecretoEL").val('1121111');
     $("#idOtroCarnet").val(usuario);
-    
-    
-  
- $('#eliminacion_administradores').modal('open');
+
+
+
+    $('#eliminacion_administradores').modal('open');
 }
 
 function abrirModal() {
@@ -148,10 +147,10 @@ function abrirBajaLibros() {
     $('#bajaLib').modal('open');
 }
 
-function abrirEdicionLib(codigo,editorial,titulo,fecha,foto, cantidad) {
-   
-    var foto2="../fotoLibros/"+foto;
-   // alert(codigo);
+function abrirEdicionLib(codigo, editorial, titulo, fecha, foto, cantidad) {
+
+    var foto2 = "../fotoLibros/" + foto;
+    // alert(codigo);
     $('#codigol_edit').val(codigo);
     $('#selectEdit').val(editorial);
     $('#titulo_edit').val(titulo);
@@ -162,27 +161,27 @@ function abrirEdicionLib(codigo,editorial,titulo,fecha,foto, cantidad) {
     $('#cantidad_edit').val(cantidad);
     $('#edicionLib').modal('open');
 }
-function abrirEdicionAut(codigo,nombre,apellido,fecha,bio) {
+function abrirEdicionAut(codigo, nombre, apellido, fecha, bio) {
     $('#codigoa_edit').val(codigo);
-   
+
     $('#nombrea_edit').val(nombre);
     $('#apellidoa_edit').val(apellido);
     $('#fecha_nac_edit').val(fecha);
     $('#bio_edit1').val(bio);
     $('#edicionAut').modal('open');
 }
-function abrirEdicionEdi(codigo,nombre,direccion,correo,telefono) {
+function abrirEdicionEdi(codigo, nombre, direccion, correo, telefono) {
     $('#codigoe_edit').val(codigo);
-   
+
     $('#nombree_edit').val(nombre);
     $('#telefonoe_edit').val(telefono);
     $('#email_edit').val(correo);
     $('#direccion_edit').val(direccion);
     $('#edicionEdi').modal('open');
 }
-function abrir_nueva_institucion(codigo,nombre,direccion,correo,telefono) {
+function abrir_nueva_institucion(codigo, nombre, direccion, correo, telefono) {
     $('#idVentana_institucion').modal('open');
-     
+
 }
 
 //  FUNCIONES QUE SE OCUPAN PARA ACTIVO FIJO
@@ -199,86 +198,142 @@ function nuevaCat(opcion) {
     if (opcion == 4) {
         $('#actualizarCaracteristicas').modal('open');
     }
-   
-       
-    
+
+
+
     if (opcion == 6) {
         $('#editActivo').modal('open');
     }
 }
 
 function nuevoPretamoAct() {
-     $("#tabla_activo_prestamo tbody").empty()//ellino el anterior
-     $("#talbe_user_activo tbody").empty()
+    $("#tabla_activo_prestamo tbody").empty()//ellino el anterior
+    $("#talbe_user_activo tbody").empty()
     $('#nuevoPrestamoAct').modal('open');
+    var activosAgregado=[];
 }
 
-function nuevoMant() {
+function nuevoMant(id) {
+    $("#catMantAct").val("---");
+    $("#codMantAct").val("---");
     $("#tabla_activo_mantenimiento tbody").empty()//ellino el anterior
     $("#datos_encargado2 tbody").empty()//ellino el anterior
-    $("#descrMant").val("");
-    $("#costoTotal").val("");
+    $("#descrMant").val("1111111111");
+    $("#costoTotal").val("1");   //nuevoMant
     $('#nuevoMant').modal('open');
-}
-function nuevoEnc() {
-    $('#actualizarCaracteristicas').modal('open');
-}
-function actualizarPrestamoActivo(id){
-     $('#actPres').modal('open');
-    $.post("../activofijo/llenar_act_prest.php", {codigo: id, }, function(mensaje) {
-       $('#listaLibros22').html(mensaje).fadeIn();       
 
-        }); 
+    if (id != "no") {
+        llenarTactMant(id,"reparar");
+    } 
     
 }
 
-function abrirActivo(coda,codadm,foto,estado,codd,color,dimen,marca,memo,mode,otros,proce,ram,seri,siste, admin) {
 
-   $('#codActivo').val(coda);
-   $('#codDetalle').val(codd);
-   //$('#adminedit').val(codadm).selected;
-   $("select#adminedit").val(codadm).attr('selected', 'selected');;
-   // $('#adminedit > option[value="'+codadm+'"]').attr('selected', 'selected');
-   $('#nserieE').val(seri);
-   $('#colorE').val(color);
-   $('#marcaE').val(marca);
-   $('#soE').val(siste);
-   $('#dimensionesE').val(dimen);
-   $('#modeloE').val(mode);
-   $('#proE').val(proce);
-   $('#otroE').val(otros);
+function validarTablas() {
+    var ok = true;
+   
+    var sel = document.mant.elements["accion_select_mantenimiento[]"];//se obtiene los elementos
+
+    if ($('#tabla_activo_mantenimiento >tbody >tr').length == 0) {
+        ok = false;
+        swal("Ooops", "Tabla de activos vacia", "warning");
+    } else {
+        if ($('#datos_encargado2 >tbody >tr').length == 0) {
+            ok = false;
+            swal("Ooops", "Tabla de encargados vacia", "warning");
+        } else {
+            // codigo para verificar cuantos activos fueron a manteniemieto y siguen daniados
+
+
+            var cont = 0;
+            for (var i = 0; i < sel.length; i++) {
+               
+                if (sel[i].value == "3") {//verifica si hay activos con codigo de estado 3 que es el de danado
+                    cont++;
+                    ok = false;
+                }
+            }
+            if (cont > 0) {//si hay activos con codido 3 
+                swal({
+                    title: "Desea continuar?",
+                    text: "Hay activos que fueron a mantenimiento y siguen dañados!",
+                    type: "warning",
+                    showCancelButton: true,
+                    cancelButtonText: "Cancelar",
+                    confirmButtonClass: "btn-danger",
+                    confirmButtonText: "Si, continuar!",
+                    closeOnConfirm: false
+                },
+                        function () {
+                            cont = 0;
+                            document.mant.submit();
+                        });
+            }
+        }
+    }
+    return ok;
+}
+
+function nuevoEnc() {
+    $('#actualizarCaracteristicas').modal('open');
+}
+function actualizarPrestamoActivo(id) {
+    $('#actPres').modal('open');
+    $.post("../activofijo/llenar_act_prest.php", {codigo: id, }, function (mensaje) {
+        $('#listaLibros22').html(mensaje).fadeIn();
+
+    });
+
+}
+
+function abrirActivo(coda, codadm, foto, estado, codd, color, dimen, marca, memo, mode, otros, proce, ram, seri, siste, admin) {
+
+    $('#codActivo').val(coda);
+    $('#codDetalle').val(codd);
+    //$('#adminedit').val(codadm).selected;
+    $("select#adminedit").val(codadm).attr('selected', 'selected');
+    ;
+    // $('#adminedit > option[value="'+codadm+'"]').attr('selected', 'selected');
+    $('#nserieE').val(seri);
+    $('#colorE').val(color);
+    $('#marcaE').val(marca);
+    $('#soE').val(siste);
+    $('#dimensionesE').val(dimen);
+    $('#modeloE').val(mode);
+    $('#proE').val(proce);
+    $('#otroE').val(otros);
     $('#ramE').val(ram);
     $('#ddE').val(memo);
     $('#estadoE').val(estado);
     $('#codamin').val(codadm);
     $('#nadmin').val(admin);
-    
-    if(estado=="Disponible"){
-        document.actAct.estadoE.style.background="#2EFE2E";
+
+    if (estado == "Disponible") {
+        document.actAct.estadoE.style.background = "#2EFE2E";
     }
-    if(estado=="Prestado"){
-        document.actAct.estadoE.style.background="#F7FE2E";
+    if (estado == "Prestado") {
+        document.actAct.estadoE.style.background = "#F7FE2E";
     }
-    
+
     document.getElementById("idFotoea").src = foto;
-$('#editActivo').modal('open');
+    $('#editActivo').modal('open');
 
-   
+
 }
- function delA(){
-   
-        var coda = document.getElementById('codActivo').value;
-        var codd = document.getElementById('codDetalle').value;
-        var secreto ="111111"; 
-        DActivo(coda,codd,secreto);
+function delA() {
 
-    }
-function DActivo(cada,codd,password) {
-     $('#codDA').val(codd);
-      $('#codD').val(cada);
-       $('#Secreto').val(password);
-       
-$('#DActivo').modal('open');
+    var coda = document.getElementById('codActivo').value;
+    var codd = document.getElementById('codDetalle').value;
+    var secreto = "111111";
+    DActivo(coda, codd, secreto);
 
-   
+}
+function DActivo(cada, codd, password) {
+    $('#codDA').val(codd);
+    $('#codD').val(cada);
+    $('#Secreto').val(password);
+
+    $('#DActivo').modal('open');
+
+
 }

@@ -69,7 +69,7 @@ include_once('../plantillas/menu.php');
 include_once('../plantillas/pie_de_pagina.php');
 ?>
 
-<div id="nuevoMant" class="modal modal-fixed-footer prestamoActivo">
+<div id="nuevoMant" class="modal modal-fixed-footer prestamoActivo nuevoMant">
     <div class="modal-heading panel-heading text-center">
         <h4>Registrar Mantenimiento</h4>
     </div>
@@ -78,7 +78,7 @@ include_once('../plantillas/pie_de_pagina.php');
     </div>
     <div class="modal-footer">
         <div class="row">
-            <div class="col-md-6 text-right"><button id="gp" class="btn btn-success modal-action " type="submit" form="mant" >
+            <div class="col-md-6 text-right"><button id="gp" class="btn btn-success modal-action " type="button" onclick="guardar_mante()">
                     <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>
                     Guardar</button></div>
             <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>
@@ -143,6 +143,11 @@ include_once('../plantillas/pie_de_pagina.php');
         });
     })
 
+     function  guardar_mante() {//ver cod de funcion en js/libros.js
+        if (validarTablas()) {
+            document.mant.submit();          
+        }
+    }
     
 
 // ]]></script>
