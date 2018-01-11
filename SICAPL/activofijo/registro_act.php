@@ -98,15 +98,17 @@ Conexion::abrir_conexion();
                         <!-- termina el combo de proveedor   -->
                         <!-- foto  -->
                         <div class="col m6">
-                            <div class="file-field input-field m5">
-                                <div class="btn">
-                                    <span><i class="glyphicon glyphicon-picture" aria-hidden="true"></i>Foto</span>
-                                    <input type="file">
+                            <div class="file-field input-field">
+                                    <div class="btn">
+                                        <span><i class="glyphicon glyphicon-picture" aria-hidden="true"></i>Foto</span>
+                                        <input type="file" id="foto" required name="foto" accept="image/*">
+                                    </div>
+
+
+                                    <div class="file-path-wrapper">
+                                        <input type="text" accept="image/*" required class="form-control file-path validate">
+                                    </div>
                                 </div>
-                                <div class="">
-                                    <input type="file" accept="image/*" id="foto" name="foto" class="form-control  validate">
-                                </div>
-                            </div>
                         </div>
                         <!-- termina foto -->
 
@@ -302,7 +304,12 @@ Conexion::abrir_conexion();
             $.ajax({
                 type: 'POST',
                 url: $(this).attr('action'),
+                dataType: "html",
                 data: $(this).serialize(),
+                cache: false,
+                contentType: false,
+                processData: false
+                
                 // Mostramos un mensaje con la respuesta de PHP
                 success: function (resp) {
                    $('#nuevaCat').modal('close');
@@ -390,8 +397,10 @@ if (isset($_REQUEST["bandera1"])) {
     //para la foto
     $ruta = '../fotoActivos/';
     $foto = $ruta . basename($_FILES["foto"]["name"]);
-
-    if (move_uploaded_file($_FILES['foto']['tmp_name'], $foto)) {
+    echo "<script>";
+    echo "alert('$foto')";
+    echo "</script>";
+        if (move_uploaded_file($_FILES['foto']['tmp_name'], $foto)) {
         $activo->setFoto($foto);
         
     } else {

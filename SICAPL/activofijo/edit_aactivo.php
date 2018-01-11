@@ -69,16 +69,18 @@ include_once '../app/Conexion.php';
                 </div><!-- col md 7 -->
 
                 <div class="col-md-6">
-                    <div class=" file-field input-field">
-                        <div class="btn">
-                            <span><i class="fa fa-camera" aria-hidden="true"></i>Foto</span>
-                            <input type="file" id="foto1" name="foto1Act" >
-                        </div>
-                        <div class="file-path-wrapper">
-                            <input type="text" id="file_fotoEdAct" name="fotoEdAct"  class="form-control file-path validate">
-                        </div>
-                    </div>
+                    <div class="file-field input-field">
+                                    <div class="btn">
+                                        <span><i class="glyphicon glyphicon-picture" aria-hidden="true"></i>Foto</span>
+                                        <input type="file" id="fotoEdit" required name="fotoEdit" accept="image/*">
+                                    </div>
 
+
+                                    <div class="file-path-wrapper">
+                                        <input type="text" accept="image/*" required class="form-control file-path validate">
+                                    </div>
+                                </div>
+                
                     <!-- botones -->
                     <div class="row" id="fotoActual">
                         <img src="" id="fotoEdActsrc" width="20%">
@@ -296,14 +298,14 @@ if (isset($_REQUEST["banderaActiv"])) {
 
     //para la foto
     $ruta = '../fotoActivos/';
-    $foto = $ruta . basename($_FILES["foto1Act"]["name"]);
+    $foto = $ruta . basename($_FILES["fotoEdit"]["name"]);
 
-    if (move_uploaded_file($_FILES['foto1Act']['tmp_name'], $foto)) {
+    if (move_uploaded_file($_FILES['fotoEdit']['tmp_name'], $foto)) {
         $activo->setFoto($foto);
     } else {
         $activo->setFoto("");
     }
-    //echo '<script>swal("Excelente!", "'.$_REQUEST["codamin"]." ".$nadmin[1].'", "success");</script>';
+    echo '<script>swal("Excelente!", "'.$foto." ".$nadmin[1].'", "success");</script>';
 
 
     Repositorio_activo::actualizar_activo(Conexion::obtener_conexion(), $activo, $_REQUEST["codActivo"]);

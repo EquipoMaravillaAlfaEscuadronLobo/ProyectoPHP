@@ -178,7 +178,11 @@ $listado = Repositorio_activo::lista_activo(Conexion::obtener_conexion());
             $.ajax({
                 type: 'POST',
                 url: $(this).attr('action'),
+                dataType: "html",
                 data: $(this).serialize(),
+                cache: false,
+                contentType: false,
+                processData: false
                 // Mostramos un mensaje con la respuesta de PHP
                 success: function (resp) {
                     swal("Excelente!", "Registro actualizado con exito", "success");
