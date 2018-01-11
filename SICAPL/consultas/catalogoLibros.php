@@ -14,7 +14,7 @@
 				<th class="text-center">Editoriales</th>
 				<th class="text-center">Foto</th>
 				<th class="text-center">Fecha de Publicaci&oacute;n</th>
-				<th class="text-center">Estado</th>
+                                <th class="text-center">Estado<input type="date" min="2018-01-11" value="2018-01-11"></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -27,10 +27,11 @@
 							<td class="text-center"><?php echo $fila['titulo'] ?></td>
                             <td class="text-center"><?php echo $fila['autor'] ?></td>
                             <td class="text-center"><?php echo $fila['editorial'] ?></td>
-                            <td class="text-center fotosLibros"><img src="../fotoLibros/<?php echo $fila['foto'] ?>" whidth="50px" class="fotosLibros"></td>
+                            <td class="text-center fotosLibros"><img src="../fotoLibros/<?php echo $fila['foto'] ?>" whidth="300px" class="fotosLibros"></td>
                             <td class="text-center"><?php echo date_format(date_create($fila['fecha_publicacion']),'d-m-Y') ?></td>
                             <?php if($fila['estado']==0){echo '<td class="alert alert-success">Disponibles';}else{echo '<td class="alert alert-danger">No Disponibles';}?></td>
 			</tr>
 			 <?php } ?>
 		</tbody>
 	</table>
+

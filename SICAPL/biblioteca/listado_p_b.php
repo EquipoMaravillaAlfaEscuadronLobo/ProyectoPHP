@@ -22,6 +22,7 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
                         <th>Codigo</th>
 
                         <th>Usuario</th>
+                        <th>Nombre</th>
                         <th>Libro</th>
                         <th>Fecha Salida</th>
                         <th>Fecha Devolucion</th>
@@ -35,16 +36,18 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
                                 ?>
                                 <tr>
                                     <td><?php echo $fila['codigo'] ?></td>
-
+                                    <td><?php echo $fila['user'] ?></td>
                                     <td><?php echo $fila['nombre'] ?></td>
                                     <td><?php echo $fila['titulo'] ?></td>
                                     <td><?php echo date_format(date_create($fila['fecha_salida']), 'd-m-Y') ?></td>
                                     <td><?php echo date_format(date_create($fila['Devolucion']), 'd-m-Y') ?></td>
-                                    <td class="alert <?php if ($fdev > $hoy) {
-                                echo 'alert-warning';
-                            } else {
-                                echo 'alert-danger';
-                            } ?>  pendiente" onclick="finalizar('<?php echo $fila['codigo'] ?>')">Pendiente</td>
+                                    <td class="alert <?php
+                                    if ($fdev > $hoy) {
+                                        echo 'alert-warning';
+                                    } else {
+                                        echo 'alert-danger';
+                                    }
+                                    ?>  pendiente" onclick="finalizar('<?php echo $fila['codigo'] ?>')">Pendiente</td>
                                 </tr>
 <?php } ?>
 
@@ -69,6 +72,18 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
     </div>
 </div>
 
+<div id="finaizarPL" class="modal modal-fixed-footer nuevo">
+    <div class="modal-content modal-lg">
+<?php include('./ListaFinPrestamo.php'); ?>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col-md-6 text-right"><button onclick="enviar()" class="waves-effect btn btn-success">Guardar</button></div>
+            <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger">Salir</a></div>
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript">
     function enviar() {
         if (window.event.keyCode !== 13) {
@@ -78,50 +93,87 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
     }
 
     function finalizar(codigo) {
-        swal("Seguro que desea finalizar el prestamo?", {
-            content: {
-                element: 'input',
-                attributes: {
-                    placeholder: 'Escriba aqui una observacion',
-                    type: 'text',
-                }
-            },
-            icon: "warning",
-            buttons: {
-                cancel: "Cancelar",
-                confirm: true,
-            },
-
-        }).then((value,confirm) => {
-            swal(value+confirm)
-           $.ajax({
-                url: 'finalizarPrestamo.php?codigo=' + codigo + '&motivo=' + value,
-                type: 'GET',
-                dataType: "html",
-                data: {codigo: codigo, motivo: value},
-                cache: false,
-                contentType: false,
-                processData: false
-            }).done(function (resp) {
-                if (resp == 1) {
-                    swal("Exito", "Prestamo Finalizado", "success")
-                            .then((value) => {
-                                location.href = "inicio_b.php";
-                            }
-                            );
-                } else {
-                    swal("Oops", resp, "error")
-
-                }
-            });
-            
-            
-            //borrar(value);
-        });
-
+        var d=new Date()
+        var dia=d.getDate();
+        var mes=d.getMonth();
+        var anio=d.getFullYear();
+        var fecha=dia+"-"+(mes+1)+"-"+anio;
+       
         
+        var input=document.createElement("input");
+        input.type="date";
+         input.setAttribute("min",fecha);
+
+        swal("Que desea hacer", {
+        buttons: {
+        cancel: "Cancelar",
+                final: {
+                text:"Finalizar",
+                        value: "fin",
+                        className: "btn-primary"
+                },
+                actu: {
+                text: "actualizar",
+                        value: "act"
+                },
+        },
+                icon: "info",
+        }).then(value => {
+        switch (value){
+        case "fin":
+                swal("Seguro que desea finalizar el prestamo?", {
+                content: {
+                element: 'input',
+                        attributes: {
+                        placeholder: 'Escriba aqui una observacion',
+                                type: 'text',
+                                
+                        }
+                },
+                        icon: "warning",
+                        buttons: {
+                        cancel: "Cancelar",
+                                confirm: true,
+                        },
+                }).then((value, confirm) => {
+        swal(value + confirm)
+                $.ajax({
+                url: 'finalizarPrestamo.php?codigo=' + codigo + '&motivo=' + value,
+                        type: 'GET',
+                        dataType: "html",
+                        data: {codigo: codigo, motivo: value},
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                }).done(function (resp) {
+        if (resp == 1) {
+        swal("Exito", "Prestamo Finalizado", "success")
+                .then((value) => {
+                location.href = "inicio_b.php";
+                }
+                );
+        } else {
+        swal("Oops", resp, "error")
+
+        }
+        });
+        });
+                break;
+                case "act":
+                
+                swal({
+                   
+                content: input,
+                        });
+                break;
+        }
+
+        }
+        )
+
+
 
     }
-   
+
 
 </script>

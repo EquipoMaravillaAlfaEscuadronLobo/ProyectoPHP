@@ -69,7 +69,7 @@ include_once('../plantillas/pie_de_pagina.php');
 ?>
 <script type="text/javascript">
     $(document).ready(function () {
-
+        
         $('.librof').submit(function () {
             var formData = new FormData(document.getElementById('frmLibro'));
 
@@ -97,6 +97,10 @@ include_once('../plantillas/pie_de_pagina.php');
                     
 
                 } else {
+                    if(resp==0){
+                        
+                        
+                    }else{
                     swal("Oops", resp, "error")
 
                 }
@@ -105,7 +109,7 @@ include_once('../plantillas/pie_de_pagina.php');
 
         })
 
-
+        
         $('.autorf').submit(function () {
             //var codigo=$('#codigol').val();
             //alert(codigo);
@@ -130,6 +134,7 @@ include_once('../plantillas/pie_de_pagina.php');
 
                 } else {
                     swal("Oops", resp, "error")
+                }
 
                 }
             })

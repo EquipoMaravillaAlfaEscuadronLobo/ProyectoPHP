@@ -2,16 +2,16 @@ $.validator.setDefaults({
     submitHandler: function () {
        
         document.getElementById('registrarL').value="ok";    
-        document.frmLibro.submit();
+        document.frmEditLib.submit();
         
         
     }
 });
 ///////////////////////////////////////////////////////////este es para los formularios de ingresozz
 $(document).ready(function () {
-    $("#frmLibro").validate({
+    $("#frmEditLib").validate({
         rules: {
-            titulo: {
+            titulo_edit: {
                 required: true,
                 minlength: 3
             },
@@ -28,7 +28,7 @@ $(document).ready(function () {
             editorial: {
                 required: true
             },
-            fecha_pub: {
+            fecha_pub_edit: {
                 required: true
             }
         },

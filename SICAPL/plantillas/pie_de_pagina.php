@@ -18,6 +18,13 @@
 <script src="../js/jquery.inputmask.bundle.js"></script>
 <script src="../js/Mascara.js"></script>
 <script src="../js/inicializaciones.js"></script>
+<script src="../js/validacionBiblioteca.js"></script>
+<script src="../js/validacionAutores.js"></script>
+<script src="../js/validacionEditoriales.js"></script>
+
+<script src="../js/validacionBibliotecaEdit.js"></script>
+<script src="../js/validacionAutoresEdit.js"></script>
+<script src="../js/validacionEditorialesEdit.js"></script>
 
         <script type="text/javascript" src="../js/jquery.validate.js"></script>
         <script src="../js/sweetalert.min.js"></script>

@@ -4,126 +4,100 @@ include_once '../modelos/Libros.php';
 include_once '../repositorios/respositorio_libros.php';
 Conexion::abrir_conexion();
 $listado1 = Repositorio_libros::CodigoBarras(Conexion::obtener_conexion());
-
 ?>
 
- <style>
-            .tabla{
+<style>
+    .tabla{
 
-                align-content: stretch;
-                width: 100%;
+        align-content: stretch;
+        width: 100%;
 
-            }
-            h1 {color: #000033}
-            h2 {color: #000055}
-            h3 {color: #000077}
-            .pie{
-                float: bottom;
-                margin-bottom: 0;
-                text-align: right;
-            }
-            table{
-                border-spacing: 10px;
+    }
+    h1 {color: #000033}
+    h2 {color: #000055}
+    h3 {color: #000077}
+    .tabla table td{
+        padding: 0;
+        margin: 0;
+        width: 450px;
+    }
 
-                border-bottom: 1px;
 
-            }
-            #titulo{
-               
-            }
-            .titulo{
-               
-                width: 600px !important;
-                text-align: left !important;
-            }
-            .fecha{
-               
-                width: 100px !important;
-                text-align: right;
-            }
-            .espacio{
-                width: 110px;
-            }
-           
-            .tabla table td{
-                padding: 0;
-                margin: 0;
-                width: 500px;
-            }
-            
-
-            .cabecera{
-                display: block;
-                width: 25%;
-                float: right;
-            }
-            .cabecera h1{
-                text-align: center;
-            }
-            table.page_footer {width: 100%;
-                               border: none;
-                               background-color: #DDDDFF;
-                               border-top: solid 1mm #AAAADD;
-                               padding: 2mm;
-            }
-            table.page_header {width: 100%;
-                               border: none;
-                               background-color: #DDDDFF;
-                               border-bottom: solid 1mm #AAAADD;
-                               padding: 2mm; 
-            }
-            .portada{
-                padding-top: 500px;
-                float: bottom;
-                text-align: center;
-                width: 100%;
-            }
-
-        </style>
-       <?php
-            foreach ($listado1 as $fila1) {
-                $listado = Repositorio_libros::CodigoBarras2(Conexion::obtener_conexion(), $fila1['titulo']);
-                
-                ?>
-            <page pageset="new"><!-- Etiqueta para cada pagina del reporte-->
-               
     
-     <div class="tabla"><!-- Inicio Contenido del Reporte (Modificable)-->
+    .iz{
+        border: 1px black solid;
+        width: 500px;
+        height: 100px;
+        padding: 5px 5px 5px 5px;
+    }
+    
+    .dr{
+        border: 1px black solid;
+        width: 500px;
+        height: 100px;
+        margin-left: 540px;
+        margin-top: -133px;
+        padding: 5px 5px 5px 5px;
         
-        <table border="0"  align="center" cellspacing="20">
+    }
+
+</style>
+<?php
+foreach ($listado1 as $fila1) {
+    $listado = Repositorio_libros::CodigoBarras2(Conexion::obtener_conexion(), $fila1['titulo']);
+    ?>
+    <!-- Etiqueta para cada pagina del reporte-->
+
+
+        <div class="tabla"><!-- Inicio Contenido del Reporte (Modificable)-->
+
+            <table border="0"  align="center" cellspacing="20">
                 <tr>
                     <td>
                         <b><?php echo $fila1['titulo'] ?></b>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
-                
+
                 <?php
-                
+                $i=1;
                 foreach ($listado as $fila) {
-                    
+                    if($i==1){
                     ?>
-                <tr>
-                        <td><barcode dimension="1D" type="C128" value="<?php echo $fila['codigo_libro'] ?>" label="label" style="width:100%; height:15mm; color: #000000; font-size: 4mm"></barcode></td>                
-                    
-            </tr>
-                    
-                        <?php
-                    
+                    <tr>
+                        <td>
+                            <div class="iz">
+                                <barcode dimension="1D" type="C128" value="<?php echo $fila['codigo_libro'] ?>" label="label" style="width:100%; height:15mm; color: #000000; font-size: 4mm"></barcode>
+                            </div>
+                        </td>                
+                    </tr>
+
+                    <?php
+                    $i=2;
+                    }else{
                         
+                        ?>
+                            <tr>
+                        <td>
+                            <div class="dr">
+                                <barcode dimension="1D" type="C128" value="<?php echo $fila['codigo_libro'] ?>" label="label" style="width:100%; height:15mm; color: #000000; font-size: 4mm"></barcode>
+                            </div>
+                        </td>                
+                    </tr>
+                            <?php
+                            $i=1;
+                    }
                 }
                 ?>
-        
-               
 
-        </table>
-    </div><!-- Fin Contenido del Reporte (Modificable)-->
-    
-     </page>
-            <?php 
-            
-                }
-            
-            ?>
+
+
+            </table>
+        </div><!-- Fin Contenido del Reporte (Modificable)-->
+
+   
+    <?php
+}
+?>
 
 

@@ -41,6 +41,8 @@ if (Repositorio_prestamolib::GuardarPrestamo(Conexion::obtener_conexion(), $Pres
 //echo "alert('datos no atualizados')";
 //echo "location.href='inicio_b.php'";
             echo "</script>";
+        }else{
+            Repositorio_prestamolib::cambiarEstado(Conexion::obtener_conexion(), $_POST['codigol' . $i]);
         }
     }
     

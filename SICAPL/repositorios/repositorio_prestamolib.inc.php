@@ -4,16 +4,17 @@
 	*/
 	class Repositorio_prestamolib
 	{
-		public static function ListaPrestamos($conexion)
-		{
+		public static function ListaPrestamos($conexion){
 			$resultado="";
 			if (isset($conexion)) {
 				try{
 				$sql="SELECT
+                                    usuarios.codigo_usuario as user,
  (CONCAT(usuarios.nombre,' ',usuarios.apellido)) as nombre,
  prestamo_libros.codigo_plibro as codigo,
  (prestamo_libros.fecha_salida),
  (prestamo_libros.fecha_devolucion) as Devolucion,
+ libros.codigo_libro as cl,
  GROUP_CONCAT(libros.titulo SEPARATOR ' - ') as titulo
 FROM
 usuarios
@@ -21,7 +22,7 @@ INNER JOIN prestamo_libros ON prestamo_libros.codigo_usuario = usuarios.codigo_u
 INNER JOIN movimiento_libros ON movimiento_libros.codigo_plibro = prestamo_libros.codigo_plibro
 INNER JOIN libros ON movimiento_libros.codigo_libro = libros.codigo_libro
 WHERE
-prestamo_libros.estado = 0
+prestamo_libros.estado = 0 and libros.estado=2
 GROUP BY prestamo_libros.fecha_devolucion
 ";
 				$resultado=$conexion->query($sql);
@@ -34,8 +35,7 @@ print 'ERROR: ' . $ex->getMessage();
 		}
 
 
-		public static function GuardarPrestamo($conexion, $prestamo)
-		{
+		public static function GuardarPrestamo($conexion, $prestamo){
 			 $autor_insertado = false;
        if (isset($conexion)) {
             try {
@@ -71,8 +71,7 @@ print 'ERROR: ' . $ex->getMessage();
         return $autor_insertado;
 		}
 
-		public static function GuardarLibros($conexion, $prestamo, $libro)
-		{
+		public static function GuardarLibros($conexion, $prestamo, $libro){
 			 $autor_insertado = false;
        if (isset($conexion)) {
             try {
@@ -108,8 +107,7 @@ print 'ERROR: ' . $ex->getMessage();
         return $autor_insertado;
 		}
 
-		public static function obtenerUltimo($conexion)
-		{
+		public static function obtenerUltimo($conexion){
 			$codigo="";
 			$resultado="";
 			if (isset($conexion)) {
@@ -127,14 +125,41 @@ print 'ERROR: ' . $ex->getMessage();
 			return $codigo;
 		}
 
-		 public static function Finalizar($conexion, $codigo, $motivo)
-    {
+		public static function Finalizar($conexion, $codigo, $motivo){
           $libro_mod = 0;
        if (isset($conexion)) {
             try {
                             
                 
                 $sql = "UPDATE prestamo_libros SET estado='1', observaciones='$motivo' where  codigo_plibro='$codigo'";
+                                ///estos son alias para que PDO pueda trabajar 
+                $sentencia = $conexion->prepare($sql);
+                
+                
+                
+                
+                //$sentencia->bindParam(':titulo', $titulo, PDO::PARAM_STR);
+                //$sentencia->bindParam(':foto', $foto, PDO::PARAM_STR);
+                //$sentencia->bindParam(':publicacion', $publicacion, PDO::PARAM_STR);
+                //$sentencia->bindParam(':biografia', $biografia, PDO::PARAM_STR);
+                //$sentencia->bindParam(':codigo', $codigo, PDO::PARAM_STR);
+                                             
+                
+                $libro_mod = $sentencia->execute();
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $libro_mod;
+    }
+    
+                public static function cambiarEstado($conexion, $codigo_libro) {
+                    $libro_mod = 0;
+       if (isset($conexion)) {
+            try {
+                            
+                
+                $sql = "UPDATE libros SET estado='2' where  codigo_libro='$codigo_libro'";
                                 ///estos son alias para que PDO pueda trabajar 
                 $sentencia = $conexion->prepare($sql);
                 

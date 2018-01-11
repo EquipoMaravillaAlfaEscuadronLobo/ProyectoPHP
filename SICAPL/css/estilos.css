@@ -18,7 +18,14 @@ footer{
    
 }
 .fotosLibros{
-	width: 50px !important;
+	width: 100px !important;
+}
+.fotosLibros:hover{
+    transform : scale(2);
+        -moz-transform : scale(2);      /* Firefox */
+        -webkit-transform : scale(2);   /* Chrome - Safari */
+        -o-transform : scale(2);
+        transition: all 1s;
 }
 
 .login{
