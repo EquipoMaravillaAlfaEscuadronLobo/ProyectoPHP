@@ -303,7 +303,7 @@ if (isset($_REQUEST["banderaActiv"])) {
     } else {
         $activo->setFoto("");
     }
-    //echo '<script>swal("Excelente!", "'.$_REQUEST["codamin"]." ".$nadmin[1].'", "success");</script>';
+    echo '<script>swal("Excelente!", "'.$activo->getFoto().'", "success");</script>';
 
 
     Repositorio_activo::actualizar_activo(Conexion::obtener_conexion(), $activo, $_REQUEST["codActivo"]);
