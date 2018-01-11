@@ -23,7 +23,37 @@ INNER JOIN movimiento_libros ON movimiento_libros.codigo_plibro = prestamo_libro
 INNER JOIN libros ON movimiento_libros.codigo_libro = libros.codigo_libro
 WHERE
 prestamo_libros.estado = 0 and libros.estado=2
-GROUP BY prestamo_libros.fecha_devolucion
+GROUP BY movimiento_libros.codigo_plibro
+";
+				$resultado=$conexion->query($sql);
+			}catch(PDOException $ex){
+print 'ERROR: ' . $ex->getMessage();
+
+			}
+			}
+			return $resultado;
+		}
+                
+                public static function ListaLibrosPrestamo($conexion, $codigo){
+			$resultado="";
+			if (isset($conexion)) {
+				try{
+				$sql="SELECT
+                                    
+ 
+ prestamo_libros.codigo_plibro as codigo,
+ (prestamo_libros.fecha_salida),
+ (prestamo_libros.fecha_devolucion) as Devolucion,
+ libros.codigo_libro as cl,
+ libros.titulo as titulo
+FROM
+usuarios
+INNER JOIN prestamo_libros ON prestamo_libros.codigo_usuario = usuarios.codigo_usuario
+INNER JOIN movimiento_libros ON movimiento_libros.codigo_plibro = prestamo_libros.codigo_plibro
+INNER JOIN libros ON movimiento_libros.codigo_libro = libros.codigo_libro
+WHERE
+prestamo_libros.estado = 0 and libros.estado=2 and prestamo_libros.codigo_plibro='$codigo'
+
 ";
 				$resultado=$conexion->query($sql);
 			}catch(PDOException $ex){

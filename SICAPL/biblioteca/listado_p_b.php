@@ -47,7 +47,7 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
                                     } else {
                                         echo 'alert-danger';
                                     }
-                                    ?>  pendiente" onclick="finalizar('<?php echo $fila['codigo'] ?>')">Pendiente</td>
+                                    ?>  pendiente" onclick="abrirFinPres('<?php echo $fila['codigo'] ?>')">Pendiente</td>
                                 </tr>
 <?php } ?>
 
@@ -72,14 +72,15 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
     </div>
 </div>
 
-<div id="finaizarPL" class="modal modal-fixed-footer nuevo">
+<div id="finalizarPL" class="modal modal-fixed-footer nuevo">
     <div class="modal-content modal-lg">
-<?php include('./ListaFinPrestamo.php'); ?>
+<?php //include('./ListaFinPrestamo.php'); ?>
+        <div id="finalizarPL2"></div>
     </div>
     <div class="modal-footer">
         <div class="row">
-            <div class="col-md-6 text-right"><button onclick="enviar()" class="waves-effect btn btn-success">Guardar</button></div>
-            <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger">Salir</a></div>
+            
+            <div class="col-md-12 text-center"><a href="#" class="modal-action modal-close waves-effect btn btn-danger">Salir</a></div>
         </div>
     </div>
 </div>
@@ -176,4 +177,17 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
     }
 
 
+</script>
+
+<script>
+ function abrirFinPres(codigo) {
+
+        $.post("listaFinPrestamo.php", {codigo: codigo}, function (mensaje) {
+            $('#finalizarPL2').html(mensaje).fadeIn();
+
+        });
+
+
+        $('#finalizarPL').modal('open');
+    }
 </script>
