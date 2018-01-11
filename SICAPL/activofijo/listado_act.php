@@ -182,7 +182,7 @@ $listado = Repositorio_activo::lista_activo(Conexion::obtener_conexion());
                 // Mostramos un mensaje con la respuesta de PHP
                 success: function (resp) {
                     swal("Excelente!", "Registro actualizado con exito", "success");
-                   // location.href = "inicio_activo.php";
+                    location.href = "inicio_activo.php";
 
 
 
