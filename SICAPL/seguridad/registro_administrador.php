@@ -205,7 +205,7 @@ if (isset($_REQUEST["banderaRegistro"])) {
         $administrador->setFoto("");
     }
     
-    echo 'la get foto es ' . $administrador->getFoto() ;
+
 
     // $administrador->setFoto(addslashes(file_get_contents($_FILES['nameFoto']['tmp_name'])));
     Repositorio_administrador::insertar_administrador(Conexion::obtener_conexion(), $administrador);

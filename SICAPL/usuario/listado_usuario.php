@@ -37,7 +37,7 @@ $direccion = '../foto_usuario/';
                                     <button class="btn btn-success" onclick="abrir_edicion_usuario('<?php echo $lista_usu->getNombre();?>',
                                                 '<?php echo $lista_usu->getApellido();?>','<?php echo $lista_usu->getDireccion();?>',
                                                 '<?php echo $lista_usu->getEmail();?>','<?php echo $lista_usu->getTelefono();?>',
-                                                '<?php echo $lista_usu->getSexo();?>','111111','<?php echo $lista_usu->getCodigo_usuario();?>' )">
+                                                '<?php echo $lista_usu->getSexo();?>','111111','<?php echo $lista_usu->getCodigo_usuario();?>','<?php echo $lista_usu->getCodigo_institucion();?>' )">
                                         <i class="Medium material-icons prefix">edit</i> 
                                     </button>
                                 </td>

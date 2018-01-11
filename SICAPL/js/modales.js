@@ -96,7 +96,7 @@ function abrir_edicion_administrador(nombre, apellido, user, dui, fecha, email, 
     $('#edicion_administradores').modal('open');
 }
 
-function abrir_edicion_usuario(nombre, apellido, direccion, email, telefono, sexo, password, carnet) {
+function abrir_edicion_usuario(nombre, apellido, direccion, email, telefono, sexo, password, carnet,institucion) {
     $("#idSecreto").val(nombre + " " + apellido);
     $("#idCarnetE").val(carnet);
     $("#idNombreE").val(nombre);
@@ -114,7 +114,7 @@ function abrir_edicion_usuario(nombre, apellido, direccion, email, telefono, sex
        var elemento=5;
 
 
-     $("select#idInstitucionEf").val(4).attr('selected', 'selected');
+     $("select#idInstitucionEf").val(institucion).attr('selected', 'selected');
 
     
 

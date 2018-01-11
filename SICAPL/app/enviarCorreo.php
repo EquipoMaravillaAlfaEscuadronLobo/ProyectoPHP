@@ -5,6 +5,7 @@ include_once '../modelos/Administrador.inc.php';
 include_once '../modelos/Recuperar.php';
 include_once '../repositorios/repositorio_administrador.inc.php';
 include_once '../repositorios/repositorio_recuperacion.inc.php';
+include_once '../repositorios/repositorio_bitacora.php';
 
 $path = $_SERVER['PHP_SELF'];
 $file = dirname($path);
@@ -31,6 +32,10 @@ if($admin->getEmail()!=""){
             . '<br><br>Si esta peticion fue un error, favor de ignorar este mensaje';
 if (mail($_POST['correo'], "Recuperacion de contraseña", $contenido,$cabeceras)) {
     echo "ENCONTRADO";
+    
+    $accion = 'el administrador ' . $admin->getNombre() ." " . $admin->getApellido() ." solicito recuperar su conraseña";
+    Repositorio_Bitacora::insertar_solicitud(Conexion::obtener_conexion(), $accion, $admin->getCodigo_administrador());
+    
 }else{
     echo "No Enviado";
 }

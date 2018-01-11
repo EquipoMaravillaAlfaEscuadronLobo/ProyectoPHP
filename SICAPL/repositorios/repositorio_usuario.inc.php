@@ -339,6 +339,56 @@ class Repositorio_usuario {
             }
         }
     }
+    
+    public static function comprobar_prestamos_activos($conexion, $usuario) {
+       $total = null ;
+    //echo 'no hay conexion ';
+        if (isset($conexion)) {
+            try {
+                //echo 'hay conexion';
+                $sql = "SELECT
+                        count(*) as total
+                        FROM
+                        usuarios
+                        INNER JOIN prestamo_activos ON prestamo_activos.usuarios_codigo = usuarios.codigo_usuario
+                        where prestamo_activos.usuarios_codigo = '$usuario' and prestamo_activos.estado = '0'"; ///estos son alias para que PDO pueda trabajar 
+                $sentencia = $conexion->prepare($sql);
+                $sentencia ->execute();
+                $resultado = $sentencia -> fetch();
+                
+                $total =$resultado['total'];
+                    
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $total;
+    }
+    public static function comprobar_prestamos_libros($conexion, $usuario) {
+       $total = null ;
+    //echo 'no hay conexion ';
+        if (isset($conexion)) {
+            try {
+                //echo 'hay conexion';
+                $sql = "SELECT
+                        count(*) as total
+                        FROM
+                        usuarios
+                        INNER JOIN prestamo_libros ON prestamo_libros.codigo_usuario = usuarios.codigo_usuario
+                        where usuarios.codigo_usuario = '$usuario' AND prestamo_libros.estado = '0'";
+                ///estos son alias para que PDO pueda trabajar 
+                $sentencia = $conexion->prepare($sql);
+                $sentencia ->execute();
+                $resultado = $sentencia -> fetch();
+                
+                $total =$resultado['total'];
+                    
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $total;
+    }
 
 }
 

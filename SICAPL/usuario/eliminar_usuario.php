@@ -60,21 +60,39 @@
 </form>
 <?php
 if (isset($_REQUEST["banderaEliminacion"])) {
-//    include_once '../app/Conexion.php';
-//    include_once '../modelos/Usuario.php';
-//    include_once '../repositorios/repositorio_usuario.inc.php';
-//    
-//    echo "tenemos bandera<br>";
-//    
+
     $usuario = new Usuario();
     $usuario->setObservacion($_REQUEST['nameMotivoEliminacion']);
     $usuario->setNombre($_REQUEST['nameSecretoELiminar']);
     $carnet = $_REQUEST['nameOtroCarnet'];
+    
+    if (Repositorio_usuario::comprobar_prestamos_activos(Conexion::obtener_conexion(), $carnet)) {
+         echo '<script>swal({
+                    title: "Advertencia!",
+                    text: "El usuario tiene prestamos de activos pendientes, favor terminar prestamos",
+                    type: "warning",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },
+                function () {
+                    location.href="inicio_usuario.php";
+                    
+                });</script>';
+    }
+    else if(Repositorio_usuario::comprobar_prestamos_libros(Conexion::obtener_conexion(), $carnet)){
+       echo '<script>swal({
+                    title: "Advertencia!",
+                    text: "El usuario tiene prestamos de bibliografia pendientes, favor terminar prestamos",
+                    type: "warning",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },
+                function () {
+                    location.href="inicio_usuario.php";
+                });</script>'; 
+    }else{
 
-    echo $_REQUEST['nameOtroCarnet'];
-
-    //echo $_REQUEST['NameSexoE'];
     Repositorio_usuario::eliminar_usuario(Conexion::obtener_conexion(), $usuario, $carnet);
-    //Conexion::cerrar_conexion();
+    }
 }
 ?>

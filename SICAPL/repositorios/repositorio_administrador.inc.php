@@ -7,7 +7,7 @@ class Repositorio_administrador {
         // $administrador = new Administrador();
         if (isset($conexion)) {
             try {
-                echo 'hay conexion';
+                
                 $codigo_administrador = $administrador->getCodigo_administrador();
                 $pasword = $administrador->getPasword();
                 $nivel = $administrador->getNivel();
@@ -23,8 +23,7 @@ class Repositorio_administrador {
                 $administradorExistente = self::obtener_administrador($conexion, $codigo_administrador);
                 $EmailExistente = self::obtener_email($conexion, $email);
 
-                echo 'la get foto en isertar es  ' . $foto;
-
+                
 
 
                 if ($administradorExistente->getCodigo_administrador() == "") {
@@ -132,7 +131,7 @@ class Repositorio_administrador {
 
         if (isset($conexion)) {
             try {
-                $sql = "select * from administradores where (codigo_administrador != '$codigo'  AND estado = 1)";
+                $sql = "select * from administradores where (codigo_administrador != '$codigo' AND estado = 1 AND codigo_administrador !='admin01')";
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->execute();
                 $resultado = $sentencia->fetchAll();
@@ -160,15 +159,45 @@ class Repositorio_administrador {
                 print('ERROR' . $exc->getMessage());
             }
         }
-//        echo   'numero de registros en lista registros'. count($lista_administradores) . '<br>';
-        //foreach ($lista_administradores as $fila ){
-        //    echo $fila ->getNombre(). "<br>";
-        //   echo '<img src="data:image/jpg;base64,<?php echo base64_encode($fila["foto"]);';
-        // }
-
         return $lista_administradores;
     }
+    
+    public static function lista_administradores_para_baja($conexion, $codigo) {
+        $lista_administradores = array();
 
+        if (isset($conexion)) {
+            try {
+                $sql = "select * from administradores where (codigo_administrador != '$codigo' AND estado = 1 )";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+                        $administrador = new Administrador();
+                        $administrador->setApellido($fila['apellido']);
+                        $administrador->setCodigo_administrador($fila['codigo_administrador']);
+                        $administrador->setDui($fila['dui']);
+                        $administrador->setEstado($fila['estado']);
+                        $administrador->setFoto($fila['foto']);
+                        $administrador->setNivel($fila['nivel']);
+                        $administrador->setNombre($fila['nombre']);
+                        $administrador->setObservacion($fila['observacion']);
+                        $administrador->setPasword($fila['pasword']);
+                        $administrador->setSexo($fila['sexo']);
+                        $administrador->setFecha($fila['fecha']);
+                        $administrador->setEmail($fila['email']);
+
+                        $lista_administradores[] = $administrador;
+                    }
+                }
+            } catch (PDOException $exc) {
+                print('ERROR' . $exc->getMessage());
+            }
+        }
+        return $lista_administradores;
+    }
+    
     public static function actualizarClave($conexion, $codigo_administrador, $clave) {
         $clave_actualizada = false;
         if (isset($conexion)) {
@@ -183,7 +212,7 @@ class Repositorio_administrador {
         }
         return $clave_actualizada;
     }
-
+    
     public static function actualizar_administrador($conexion, $administrador, $codigo_original, $verificacion) {
         $administrador_insertado = false;
         $administrador_actual = self:: obtener_administrador_actual($conexion, $_SESSION['user']);
@@ -546,18 +575,24 @@ class Repositorio_administrador {
     }
 
     public static function numero_administradores($conexion) {
-        $resultado = 0;
-        //echo 'no hay conexion ';
+        $total = null ;
+  
         if (isset($conexion)) {
             try {
                 //echo 'hay conexion';
-                $sql = "SELECT count(*) FROM  administradoresSELECT count(*) FROM  administradores"; ///estos son alias para que PDO pueda trabajar 
-                $resultado = $conexion->query($sql);
+                $sql = "SELECT count(*) as total FROM  administradores"; ///estos son alias para que PDO pueda trabajar 
+                $sentencia = $conexion->prepare($sql);
+                $sentencia ->execute();
+                $resultado = $sentencia -> fetch();
+                
+                $total =$resultado['total'];
+                    
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();
             }
         }
-        return $resultado;
+        return $total;
+    
     }
 
     public static function verificar_pass($conexion, $verificacion) {
@@ -592,6 +627,23 @@ class Repositorio_administrador {
             echo "no hay conexion";
         }
         return $respuesta;
+    }
+    
+    public static function actualizar_activos_administradir($conexion, $codigo_administrador1, $codigo_administrador2) {
+        $clave_actualizada = false;
+        if (isset($conexion)) {
+            try {
+                $sql = "UPDATE actvos SET codigo_administrador = '$codigo_administrador2' WHERE actvos.codigo_administrador = '$codigo_administrador1';";
+                $sentencia = $conexion->prepare($sql);
+                $clave_actualizada = $sentencia->execute();
+            } catch (PDOException $exc) {
+                echo $exc->getTraceAsString();
+            }
+        }
+        $mensaje = 'los activos de el administrador ' . $codigo_administrador1 . " fueron transferidos a " .$codigo_administrador2;
+        self::insertar_bitacora($conexion, $mensaje);
+        
+        return $clave_actualizada;
     }
 
 }
