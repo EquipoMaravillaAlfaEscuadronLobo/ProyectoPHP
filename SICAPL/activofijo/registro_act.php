@@ -311,7 +311,7 @@ Conexion::abrir_conexion();
                 processData: false
                 
                 // Mostramos un mensaje con la respuesta de PHP
-                success: function (resp) {
+                }).done( function (resp) {
                    $('#nuevaCat').modal('close');
                    $('#nuevoProv').modal('close');
                    document.getElementById('FORMULARIO2').reset();                   
@@ -322,7 +322,7 @@ Conexion::abrir_conexion();
                    
 
                 }
-            })
+            )
             return false;
         });
     })
