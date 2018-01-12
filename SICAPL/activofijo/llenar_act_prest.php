@@ -37,17 +37,17 @@ foreach ($listado as $fila) {
             if(estado==2){
             var sel = '<div class="form-group">' +
                     '<select class="form-control accion_select" onchange="activar_btn_act()" id="accion_select[]" name="accion_select[]">' +
-                    '<option value="2" class="btn-default">En Prestamo</option>' +
-                    '<option value="1" class="btn-success">Devolver</option>' +
-                    '<option value="3" class="btn-warning">Dañado</option>' +
-                    '<option value="4" class="btn-danger">Extaviado</option>' +
+                    '<option value="2" >En Prestamo</option>' +
+                    '<option value="1" >Devolver</option>' +
+                    '<option value="3" >Dañado</option>' +
+                    '<option value="4" >Extaviado</option>' +
                     '</select>' +
                     '</div>';
         }else{if(estado==1){
             var sel = '<div class="form-group">' +
                     '<select class="form-control accion_select btn-success" onchange="activar_btn_act()"  id="accion_select[]" name="accion_select[]">' +                    
                     '<option value="1"  selected="">Devuelto</option>' +
-                    '<option value="2" class="btn-default">En Prestamo</option>' +
+                    '<option value="2" >En Prestamo</option>' +
                     '</select>' +
                     '</div>';
         }else{var sel = '<div class="form-group">' +
@@ -72,12 +72,6 @@ foreach ($listado as $fila) {
             //
 
             $("table#listActivoAct tbody").append(linea).closest("table#listActivoAct");
-        //             var x = document.getElementById("accion");
-        //                var option = document.createElement("option");
-        //                option.text = "Kiwi";
-        //                x.add(option);
-            //alert(select);
-            // document.getElementById('selectAciono').innerHTML = select;
 
     <?php } ?>
 

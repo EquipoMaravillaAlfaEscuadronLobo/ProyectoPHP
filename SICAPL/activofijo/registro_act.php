@@ -296,42 +296,7 @@ Conexion::abrir_conexion();
     </div>
 </div>
 
-<script language="javascript">// <![CDATA[
-    $(document).ready(function () {
- // Interceptamos el evento submit
-        $(' .FORMULARI').submit(function () {
-            // Enviamos el formulario usando AJAX
-           
-            $.ajax({
-                type: 'POST',
-                url: $(this).attr('action'),
-                dataType: "html",
-                data: $(this).serialize(),
-                cache: false,
-                processData: false,
-                contentType: false
-                
-                
-                // Mostramos un mensaje con la respuesta de PHP
-                }).done( function (resp) {
-                  swal({
-                    title: "Exito",
-                    text: "Registro guardado con exito!",
-                    type: "success",
-                    confirmButtonText: "ok",
-                    closeOnConfirm: false
-                },
-                function () {
-                    location.href="inicio_activo.php";
-                    
-                });
-                  
-                } 
-            );
-            return false;
-        });
-    })
-</script>
+
 <?php
 if (isset($_REQUEST["bandera1"])) {
 

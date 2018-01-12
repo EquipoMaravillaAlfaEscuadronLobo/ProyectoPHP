@@ -29,6 +29,7 @@
         <script type="text/javascript" src="../js/jquery.validate.js"></script>
         <script src="../js/sweetalert.min.js"></script>
 <script src="../js/Libros.js"></script>
+<script src="../js/Activo.js"></script>
 <script src="../js/foto.js"></script>
 
 </body>

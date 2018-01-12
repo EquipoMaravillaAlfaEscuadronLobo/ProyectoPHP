@@ -85,19 +85,19 @@ $listado = Repositorio_activo::lista_activo(Conexion::obtener_conexion());
                                             ?></td>
                                     <td class="text-center <?php
                                     if ($fila['estado'] == 1) {
-                                        echo "btn-success";
+                                        echo "alert-success";
                                     }
                                     if ($fila['estado'] == 0) {
-                                        echo "btn-danger";
+                                        echo "alert-danger";
                                     }
                                     if ($fila['estado'] == 4) {
-                                        echo "btn-danger";
+                                        echo "alert-danger";
                                     }
                                     if ($fila['estado'] == 2) {
-                                        echo " btn-warning";
+                                        echo " alert-warning";
                                     }
                                     if ($fila['estado'] == 3) {
-                                        echo " btn-warning";
+                                        echo " alert-warning";
                                     }
                                     ?>"
                                         style="font-size: 16px">
@@ -109,7 +109,7 @@ $listado = Repositorio_activo::lista_activo(Conexion::obtener_conexion());
                                                 echo "Dado de Baja";
                                             }
                                             if ($fila['estado'] == 2) {
-                                                echo "Prestado";
+                                                echo "En Prestamo";
                                             }
                                             if ($fila['estado'] == 3) {
                                                 echo "Dañado";
@@ -170,60 +170,6 @@ $listado = Repositorio_activo::lista_activo(Conexion::obtener_conexion());
 
 <script language="javascript">// <![CDATA[
 
-    $(document).ready(function () {
+   
 
-       // Interceptamos el evento submit
-        $('#ActAct').submit(function () {
-            // Enviamos el formulario usando AJAX
-           
-            $.ajax({
-                type: 'POST',
-                url: $(this).attr('action'),
-                dataType: "html",
-                data: $(this).serialize(),
-                cache: false,
-                contentType: false
-                processData: false
-                
-                // Mostramos un mensaje con la respuesta de PHP
-                }).done( function () {
-                  
-                  swal({
-                    title: "Exito",
-                    text: "Registro actualizado con exito!",
-                    type: "success",
-                    confirmButtonText: "ok",
-                    closeOnConfirm: false
-                },
-                function () {
-                    location.href="inicio_activo.php#ttest2";
-                    
-                });
-                
-
-                } 
-                       
-            )
-            return false;
-        });
-    })
-
-    function  valiD() {
-
-        var p1 = document.getElementById('idVal').value;
-        var p = document.getElementById('Secreto').value;
-        var m = document.getElementById('idMotivoE').value;
-
-        if (p1 == p) {
-            if (m.length > 3) {
-                document.eliminarAct.submit();
-            } else {
-                swal("Oops", "ingrese  Motivo Valido", "error");
-            }
-
-        } else {
-            swal("Oops", "Contraseña Incorrecta", "error");
-        }
-
-    }
 // ]]></script>

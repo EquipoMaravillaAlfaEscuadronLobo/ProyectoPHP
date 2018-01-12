@@ -55,7 +55,7 @@ $(document).ready(function() {
                                    
                                     <div class="input-field col m3">
                                         <i class="fa fa-barcode prefix" title="Indique el numero correlativo del activo para agragar varios a la tabla"></i> 
-                                        <input type="text" id="correlativo" name="correlativo" oncuechange="activar()"  class="text-center validate"  
+                                        <input type="text" id="correlativo" name="correlativo"  class="text-center "  
                                                value="---"
                                                pattern="[0-9]"
                                                onclick = "if (this.value == '---')
@@ -171,35 +171,7 @@ $(document).ready(function() {
 <script crossorigin="a
         nonymous" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" src="https://code.jquery.com/jquery-2.2.4.min.js">
 </script>
-<script>
-    
 
-
-    function  activar() {//para activar boton de agregar
-       
-
-    }
-
-    function agregar() {
-        
-        llenarTact("---", document.getElementById("selectCatpres").value+"/"+document.getElementById("correlativo").value);
-       
-        return false;
-    }
-
-//para eliminar de las tablas
-// fuente https://es.stackoverflow.com/questions/9141/eliminar-fila-de-tabla-html-con-jquery-o-js
-    $(document).on('click', '.borrar', function (event) {
-        event.preventDefault();
-        $(this).closest('tr').remove();
-    });
-
-    $(document).on('click', '.borrar_activo_tabla_prestamo', function (event) {
-        event.preventDefault();
-        $(this).closest('tr').remove();
-    });
-
-</script>
 <datalist id="listaActivos">
     <?php
     include_once '../app/Conexion.php';
@@ -208,10 +180,10 @@ $(document).ready(function() {
     include_once '../repositorios/repositorio_activo.php';
     include_once '../repositorios/repositorio_detalles.php';
     Conexion::abrir_conexion();
-    $listado = Repositorio_activo::lista_activo2(Conexion::obtener_conexion());
+    $listadoA = Repositorio_activo::lista_activo2(Conexion::obtener_conexion());
 
 
-    foreach ($listado as $fila) {
+    foreach ($listadoA as $fila) {
         echo '<option value="' . $fila["codigo_activo"] . '">' . Repositorio_categoria::obtener_categoria(Conexion::obtener_conexion(), $fila["codigo_tipo"]) . '</option>';
     }
     ?>

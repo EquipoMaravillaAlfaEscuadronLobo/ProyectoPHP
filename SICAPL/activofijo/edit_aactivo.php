@@ -8,7 +8,7 @@ include_once '../app/Conexion.php';
 
 
     <div class=" text-center panel-body">
-        <form  name="actAct" id="ActAct" method="post"  enctype="multipart/form-data">
+        <form  name="actAct" id="ActAct" method="post" action="" enctype="multipart/form-data">
             <input type="hidden" id="banderaActiv" name="banderaActiv">
             <input type="hidden" id="codActivo" name="codActivo">
             <input type="hidden" id="codDetalle" name="codDetalle">
@@ -21,9 +21,12 @@ include_once '../app/Conexion.php';
                         <div class="col m1"></div>
                         <div class="input-field col m6">
                             <i class="fa fa-info-circle prefix "></i> 
+                        
+                    
                             <input type="text" id="estadoE" name="estadoE" class="text-center validate" placeholder="" required="" readonly=""
                                    value="" 
                                    >
+                            
                             <label for="estadoE" style="font-size: 16px">Estado <small></small> </label>
                         </div>
                     </div>
@@ -48,7 +51,7 @@ include_once '../app/Conexion.php';
                             </div>
                         </div>
                         <div class="input-field col m6">
-                            <select required="" name="adminedit" id="adminEdit" onchange="cambiar(this.value)" >
+                            <select required="" name="adminedit" id="adminEdit" onchange="cambiarAdmin(this.value)" >
                                 <option value="0,0" disabled selected>Nuevo Encargado</option>
                                 <?php
                                 Conexion::abrir_conexion();
@@ -60,9 +63,9 @@ include_once '../app/Conexion.php';
                     </div>
                     <!-- termina el combo de encargado   -->
                     <div class="row "  >
-                        <button class="btn btn_primary"  ><a   onclick="nuevoMant(document.getElementById('codActivo').value)"><span aria-hidden="true" class="glyphicon glyphicon-plus">
+                        <button class="btn btn_primary"  ><a   onclick="llamarMantenimiento() "><span aria-hidden="true" class="glyphicon glyphicon-plus">
                                 </span>MANTENIMIENTO</a></button>
-                        <div class="col-md-1"></div>
+                        <div class="col-md-3"></div>
                         <button class="btn btn-danger"> <i class="Medium material-icons prefix" onclick="delA()" >delete</i> </button>
 
 
@@ -188,7 +191,7 @@ include_once '../app/Conexion.php';
                         </div>
                         <div class="row">
 
-                            <div class="input-field col m12">
+                            <div class="input-field col m11">
                                 <i class="fa fa-microchip prefix"></i> 
                                 <input type="text" id="proE" name="proE" class="text-center validate" required="" value="Sin Procesador" onclick = "if (this.value == 'Sin Procesador')
                                             this.value = ''" onblur="if (this.value == '')
@@ -197,7 +200,7 @@ include_once '../app/Conexion.php';
                             </div>
                         </div>
                         <div class="row">
-                            <div class="input-field col m12">
+                            <div class="input-field col m11">
                                 <textarea id="otroE" name="otroE" class="materialize-textarea" style="font-size:15px"></textarea>
                                 <label for="textarea1" style="font-size:15px"><i class="  fa fa-pencil-square-o"></i>&nbsp Otro</label>
                             </div>
@@ -227,13 +230,15 @@ include_once '../app/Conexion.php';
 <script crossorigin="anonymous" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" src="https://code.jquery.com/jquery-2.2.4.min.js">
 </script>
 <script type="text/javascript">
-
-    function cambiar(ldsf) {
-        alert("paso");
-//       var valor = "valor.value";
-//        //valor = valor.split(",");
-//        //document.getElementById('codamin').value= valor[1];
-//        alert(valor);
+function llamarMantenimiento(){
+    nuevoMant(document.getElementById('codActivo').value);
+    return false;
+}
+ 
+    function cambiarAdmin(valor) {
+        valor = valor.split(",");
+        document.getElementById('codamin').value= valor[0];
+       
     }
 
 //PARA VER LAS NUEVAS FOTOS

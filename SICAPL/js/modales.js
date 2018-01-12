@@ -230,50 +230,7 @@ function nuevoMant(id) {
 }
 
 
-function validarTablas() {
-    var ok = true;
 
-    var sel = document.mant.elements["accion_select_mantenimiento[]"];//se obtiene los elementos
-
-    if ($('#tabla_activo_mantenimiento >tbody >tr').length == 0) {
-        ok = false;
-        swal("Ooops", "Tabla de activos vacia", "warning");
-    } else {
-        if ($('#datos_encargado2 >tbody >tr').length == 0) {
-            ok = false;
-            swal("Ooops", "Tabla de encargados vacia", "warning");
-        } else {
-            // codigo para verificar cuantos activos fueron a manteniemieto y siguen daniados
-
-
-            var cont = 0;
-            for (var i = 0; i < sel.length; i++) {
-
-                if (sel[i].value == "3") {//verifica si hay activos con codigo de estado 3 que es el de danado
-                    cont++;
-                    ok = false;
-                }
-            }
-            if (cont > 0) {//si hay activos con codido 3 
-                swal({
-                    title: "Desea continuar?",
-                    text: "Hay activos que fueron a mantenimiento y siguen dañados!",
-                    type: "warning",
-                    showCancelButton: true,
-                    cancelButtonText: "Cancelar",
-                    confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Si, continuar!",
-                    closeOnConfirm: false
-                },
-                function () {
-                    cont = 0;
-                    document.mant.submit();
-                });
-            }
-        }
-    }
-    return ok;
-}
 
 function act_caract(coda, codd, color, dimen, marca, memo, mode, otros, proce, ram, seri, siste) {
 
@@ -302,10 +259,11 @@ function actualizarPrestamoActivo(id) {
 
 function abrirActivo(coda, codadm, foto, estado, codd, color, dimen, marca, memo, mode, otros, proce, ram, seri, siste, admin) {
     var foto2 = "../fotoActivos/" + foto;
+    
     $('#codActivo').val(coda);
     $('#codDetalle').val(codd);
     //$('#adminedit').val(codadm).selected;
-    $("select#adminedit").val(codadm).attr('selected', 'selected');
+   // $("select#adminedit").val(codadm).attr('selected', 'selected');
 
     // $('#adminedit > option[value="'+codadm+'"]').attr('selected', 'selected');
     $('#nserieE').val(seri);
@@ -317,21 +275,12 @@ function abrirActivo(coda, codadm, foto, estado, codd, color, dimen, marca, memo
     $('#proE').val(proce);
     $('#otroE').val(otros);
     $('#ramE').val(ram);
-    $('#ddE').val(memo);
-    $('#estadoE').val(estado);
+    $('#ddE').val(memo);  
     $('#codamin').val(codadm);
     $('#nadmin').val(admin);
-
-    if (estado == "Disponible") {
-       
-    }
-    if (estado == "Prestado") {
-       
-    }
-   
+    $('#estadoE').val(estado);
     document.getElementById("fotoEdActsrc").src = foto2;
     $('#editActivo').modal('open');
-
 
 }
 function delA() {

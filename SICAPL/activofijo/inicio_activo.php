@@ -165,9 +165,9 @@ include_once('../plantillas/pie_de_pagina.php');
         });
 
 
-       
 
-         //Interceptamos el evento submit
+
+        //Interceptamos el evento submit
         $('.FORMULARIO2 ,.FORMULARIO3').submit(function () {//para guardar categoria y proveedores sin recargar la pagina
             // Enviamos el formulario usando AJAX
             var id = $(this).attr('id'); // para decidir que selec se actualiza
@@ -175,23 +175,92 @@ include_once('../plantillas/pie_de_pagina.php');
                 type: 'POST',
                 url: $(this).attr('action'),
                 data: $(this).serialize()
+
+                        // Mostramos un mensaje con la respuesta de PHP
+            }).done(function (resp) {
+                $('#nuevaCat').modal('close');
+                $('#nuevoProv').modal('close');
+                document.getElementById('FORMULARIO2').reset();
+                document.getElementById('FORMULARIO3').reset();
+                // document.getElementById('FORMULARI').reset();
+                if (id == "FORMULARIO2") {
+                    recargarCombos2();
+                } else {
+                    recargarCombos3();
+                }
+
+                swal("Excelente!", "Registro guardado con exito", "success");
+            }
+
+
+            );
+            return false;
+        });
+        
+        // Interceptamos el evento submit
+        $('#ActAct').submit(function () {
+            // Enviamos el formulario usando AJAX
+           
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                dataType: "html",
+                data: $(this).serialize(),
+                cache: false,
+                contentType: false,
+                processData: false
+                
+                // Mostramos un mensaje con la respuesta de PHP
+                }).done( function () {
+                  
+                  swal({
+                    title: "Exito",
+                    text: "Registro actualizado con exito!",
+                    type: "success",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },
+                function () {
+                    location.href="inicio_activo.php";
+                    
+                });
+                
+
+                } 
+                       
+            )
+            return false;
+        });
+        
+        
+         $(' .FORMULARI').submit(function () {
+            // Enviamos el formulario usando AJAX
+           
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                dataType: "html",
+                data: $(this).serialize(),
+                cache: false,
+                processData: false,
+                contentType: false
+                
                 
                 // Mostramos un mensaje con la respuesta de PHP
                 }).done( function (resp) {
-                   $('#nuevaCat').modal('close');
-                   $('#nuevoProv').modal('close');
-                   document.getElementById('FORMULARIO2').reset();                   
-                   document.getElementById('FORMULARIO3').reset();
-                  // document.getElementById('FORMULARI').reset();
-                 if(id == "FORMULARIO2"){
-                     recargarCombos2();
-                 }else{
-                    recargarCombos3();}
-                
-                 swal("Excelente!", "Registro guardado con exito", "success");
-                }
-
-                
+                  swal({
+                    title: "Exito",
+                    text: "Registro guardado con exito!",
+                    type: "success",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },
+                function () {
+                    location.href="inicio_activo.php";
+                    
+                });
+                  
+                } 
             );
             return false;
         });
@@ -200,33 +269,7 @@ include_once('../plantillas/pie_de_pagina.php');
 
 
 
-    function recargarCombos2() {// actualiza el selec de cateoria cuando se registra una nueva
-        $.ajax({
-            url: 'select_categoria.php',
-            type: 'POST',
-            data: ''
-        }).done(function (resp) {
-            $('select').material_select('destroy');
-            $('select.selectCat').html(resp).fadeIn();
-            $('select').material_select();
-        });
-    }
-    function recargarCombos3() {// actualiza el selec de proveedor cuando se registra uno nuevo
-        $.ajax({
-            url: 'select_proveedor.php',
-            type: 'POST',
-            data: ''
-        }).done(function (resp) {
-            $('select').material_select('destroy');
-            $('select.selectPro').html(resp).fadeIn();
-            $('select').material_select();
-        });
-    }
-    function  guardar_mante() {//ver cod de funcion en js/libros.js
-        if (validarTablas()) {
-            document.mant.submit();
-        }
-    }
+
 
 
 // ]]></script>

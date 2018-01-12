@@ -43,9 +43,7 @@
 
     /* Easy Tooltip */
 </style>
-<script>
 
-</script>
 
 <form name="mant" id="mant" method="post" action="">
     <input type="hidden" id="pass" name="pass"/>
@@ -232,54 +230,14 @@
     include_once '../repositorios/repositorio_activo.php';
     include_once '../repositorios/repositorio_categoria.php';
     Conexion::abrir_conexion();
-    $listado = Repositorio_activo::lista_activo_mantenimiento(Conexion::obtener_conexion());
+    $listadoA = Repositorio_activo::lista_activo_mantenimiento(Conexion::obtener_conexion());
 
 
-    foreach ($listado as $fila) {
+    foreach ($listadoA as $fila) {
         echo "<option value='$fila[0]'> " . Repositorio_categoria::obtener_categoria(Conexion::obtener_conexion(), $fila["codigo_tipo"]) . "</option>";
     }
     ?>
-</datalist>    
 
-
-<script>
-
-    function agrEnca() {
-        var depto = $("#listaeman option[value='" + $('#codigo_encargado').val() + "']").attr('label');//alert(depto);
-        buscarEncargado(depto);
-
-    }
-
-    function  activarMant() {//para activar boton de agregar, se llama en getuser y get activo
-
-        if (document.getElementById("codMantAct").value != "---") {
-            document.getElementById("agrActMant").disabled = false;
-        }
-    }
-//para eliminar de las tablas
-// fuente https://es.stackoverflow.com/questions/9141/eliminar-fila-de-tabla-html-con-jquery-o-js
-    $(document).on('click', '.borrar', function (event) {
-        event.preventDefault();
-        $(this).closest('tr').remove();
-    });
-
-    $(document).on('click', '.borrar_activo', function (event) {
-        event.preventDefault();
-        $(this).closest('tr').remove();
-    });
-
-
-    function agregarMant() {
-        llenarTactMant("---", document.getElementById("selectCatMant").value + "/" + document.getElementById("correlativoMant").value);
-
-        return false;
-    }
-
-
-</script>
-
-
-</script>
 
 <?php
 if (isset($_REQUEST["pass"])) {

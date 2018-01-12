@@ -16,8 +16,11 @@ $lista = $_POST['lista'];
 //$numero=$_POST['numero'];
     foreach ($listado as $fila) {
         ?><script type="text/javascript">
-       
+      
             var codigo = "<?php echo $fila['codigo_activo']; ?>";
+            var estadi= "<?php echo $fila['estado']; ?>";
+            var noDisponible=""
+            if(estadi=="1"){
             var pass = doSearch(codigo);
             if (pass) {
 
@@ -38,7 +41,23 @@ $lista = $_POST['lista'];
                 swal("Importane!", codigo + " ya fue ingresado", "warning")
             }
             //para no ingresar los mismos activo a la tabla
-           
+           }
+          if(estadi=="2"){
+          noDisponible=codigo+" esta en Prestamo\n"
+           swal("Importane!", codigo + " esta en Prestamo", "warning")
+          }
+          if(estadi=="3"){
+           noDisponible=codigo+" esta dañado\n"
+           swal("Importane!", codigo + " esta dañado", "warning")
+          }
+          if(estadi=="4"){
+           noDisponible=codigo+" esta extraviado\n"
+           swal("Importane!", codigo + " esta extraviado", "warning")
+          }
+          if(estadi=="0"){
+           noDisponible=codigo+" ya fue dado de baja\n"
+           swal("Importane!", codigo + " ya fue dado de baja", "warning")
+          }
 
      
            
