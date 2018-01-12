@@ -203,15 +203,17 @@ Conexion::abrir_conexion();
                                             </div>
                                             <div class="row">
 
-                                                <div class="input-field col m5">
+                                                <div class="input-field col m12">
                                                     <i class="fa fa-microchip prefix"></i> 
                                                     <input type="text" id="pro" name="pro" class="text-center validate" required="" value="Sin Procesador" onclick = "if (this.value == 'Sin Procesador')
                                                                 this.value = ''" onblur="if (this.value == '')
                                                                             this.value = 'Sin Procesador'">
                                                     <label for="idEmail">Procesador <small></small> </label>
                                                 </div>
-                                                <div class="col m1"></div>
-                                                <div class="input-field col m5">
+                                                 </div>
+                                             <div class="row">
+                                                
+                                                <div class="input-field col m12">
                                                     <textarea id="otro" name="otro" class="materialize-textarea" style="font-size:15px"></textarea>
                                                     <label for="textarea1" style="font-size:15px"><i class="  fa fa-pencil-square-o"></i>&nbsp Otro</label>
                                                 </div>
@@ -237,7 +239,7 @@ Conexion::abrir_conexion();
                     <button  class="btn btn-success  " type="submit" form="FORMULARI" >
                         <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>
                         Guardar</button>
-                    <button type="reset" class="btn btn-danger" onclick="AlertaExttoZZZ()">
+                    <button type="reset" class="btn btn-danger" onclick="location.href='inicio_activo.php';">
                         <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar
                     </button>
                 </div><!-- Termina botones -->
@@ -294,66 +296,42 @@ Conexion::abrir_conexion();
     </div>
 </div>
 
-
 <script language="javascript">// <![CDATA[
     $(document).ready(function () {
-
-        // Interceptamos el evento submit
-        $('.FORMULARIO2 ,.FORMULARIO3, .FORMULARI').submit(function () {
+ // Interceptamos el evento submit
+        $(' .FORMULARI').submit(function () {
             // Enviamos el formulario usando AJAX
+           
             $.ajax({
                 type: 'POST',
                 url: $(this).attr('action'),
                 dataType: "html",
                 data: $(this).serialize(),
                 cache: false,
-                contentType: false,
-                processData: false
+                processData: false,
+                contentType: false
+                
                 
                 // Mostramos un mensaje con la respuesta de PHP
                 }).done( function (resp) {
-                   $('#nuevaCat').modal('close');
-                   $('#nuevoProv').modal('close');
-                   document.getElementById('FORMULARIO2').reset();                   
-                   document.getElementById('FORMULARIO3').reset();
-                   document.getElementById('FORMULARI').reset();
-                    swal("Excelente!", "Registro guardado con exito", "success");
-                    recargarCombos2();
-                   
-
-                }
-            )
+                  swal({
+                    title: "Exito",
+                    text: "Registro guardado con exito!",
+                    type: "success",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },
+                function () {
+                    location.href="inicio_activo.php";
+                    
+                });
+                  
+                } 
+            );
             return false;
         });
     })
-
-
-
-
-    function recargarCombos2() {
-        $.ajax({
-            url: 'select_categoria.php',
-            type: 'POST',
-            data: ''
-        }).done(function (resp) {
-            $('select').material_select('destroy');
-            $('select.selectCat').html(resp).fadeIn();
-            $('select').material_select();
-        })
-
-        $.ajax({
-            url: 'select_proveedor.php',
-            type: 'POST',
-            data: ''
-        }).done(function (resp) {
-            $('select').material_select('destroy');
-            $('select.selectPro').html(resp).fadeIn();
-            $('select').material_select();
-        })
-    }
 </script>
-
-
 <?php
 if (isset($_REQUEST["bandera1"])) {
 
@@ -361,8 +339,12 @@ if (isset($_REQUEST["bandera1"])) {
     include_once '../app/Conexion.php';
     include_once '../modelos/Activo.php';
     include_once '../modelos/Detalles.php';
-    include_once '../repositorios/repositorio_activo.php';
+    include_once '../modelos/Bitacora.php';
+    include_once '../modelos/Categoria.php';
+    include_once '../repositorios/repositorio_activo.php';    
+    include_once '../repositorios/repositorio_categoria.php';
     include_once '../repositorios/repositorio_detalles.php';
+    include_once '../repositorios/repositorio_bitacora.php';
     Conexion::abrir_conexion();
     $cant = $_REQUEST['cantidad'];
 
@@ -382,12 +364,11 @@ if (isset($_REQUEST["bandera1"])) {
     $activo = new Activo();
     $activo->setCodigo_activo($_REQUEST["selectCat"]);
     $activo->setCodigo_administrador($_REQUEST["admin"]);
+    
     //DANDO FORMATO A LA FECHA
-    $originalDate = $_REQUEST['fecha_adq'];
-    $fecha = $_REQUEST['fecha_adq'];
-    list($dia, $mes, $year) = explode("/", $fecha);
-    $fecha = $year . "-" . $mes . "-" . $dia;
-//fin fecha
+    $fecha = $_POST["fecha_adq"];
+    $fecha = date_format(date_create($fecha), 'Y-m-d');
+    //fin fecha
 
     $activo->setFecha_adquicision($fecha);
     $activo->setCodigo_tipo($_REQUEST["selectCat"]);
@@ -397,9 +378,7 @@ if (isset($_REQUEST["bandera1"])) {
     //para la foto
     $ruta = '../fotoActivos/';
     $foto = $ruta . basename($_FILES["foto"]["name"]);
-    echo "<script>";
-    echo "alert('$foto')";
-    echo "</script>";
+    
         if (move_uploaded_file($_FILES['foto']['tmp_name'], $foto)) {
         $activo->setFoto($foto);
         
@@ -411,7 +390,6 @@ if (isset($_REQUEST["bandera1"])) {
     //fin para foto
     
     $activo->setEstado('1');
-    $activo->setCodigo_detalle($R);
     $correlativo = Repositorio_activo::obtener_nactivo(Conexion::obtener_conexion(), $_REQUEST["selectCat"]);
     if($correlativo ==""){
         $correlativo=0;
@@ -444,7 +422,7 @@ if (isset($_REQUEST["bandera1"])) {
     }
     
     ////esto es para la bitacora 
-    include_once '../repositorios/repositorio_bitacora.php';
+   
     $nombre_categoria = Repositorio_categoria::obtener_nombre_categoria(Conexion::obtener_conexion(),$_REQUEST["selectCat"] );
     $accion = 'se registraron '. $cant .' item tipo ' .$nombre_categoria . ' con las siguientes características: color '
             . $_REQUEST["color"] . ', marca ' .$_REQUEST['marca']. ", dimensiones " .$_REQUEST['dimensiones']

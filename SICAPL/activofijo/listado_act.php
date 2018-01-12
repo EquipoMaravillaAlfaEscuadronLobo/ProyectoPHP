@@ -172,28 +172,38 @@ $listado = Repositorio_activo::lista_activo(Conexion::obtener_conexion());
 
     $(document).ready(function () {
 
-        // Interceptamos el evento submit
+       // Interceptamos el evento submit
         $('#ActAct').submit(function () {
             // Enviamos el formulario usando AJAX
+           
             $.ajax({
                 type: 'POST',
                 url: $(this).attr('action'),
                 dataType: "html",
                 data: $(this).serialize(),
                 cache: false,
-                contentType: false,
+                contentType: false
                 processData: false
+                
                 // Mostramos un mensaje con la respuesta de PHP
-                success: function (resp) {
-                    swal("Excelente!", "Registro actualizado con exito", "success");
-                    location.href = "inicio_activo.php";
+                }).done( function () {
+                  
+                  swal({
+                    title: "Exito",
+                    text: "Registro actualizado con exito!",
+                    type: "success",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },
+                function () {
+                    location.href="inicio_activo.php#ttest2";
+                    
+                });
+                
 
-
-
-
-                    // swal ( "Exito" ,  "Registro guardado con exito", "success");
-                }
-            })
+                } 
+                       
+            )
             return false;
         });
     })

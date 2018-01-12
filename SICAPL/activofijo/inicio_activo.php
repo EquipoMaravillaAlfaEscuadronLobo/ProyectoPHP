@@ -6,7 +6,7 @@ include_once('../plantillas/menu.php');
 <div class="nav-content" name="">
     <ul class="tabs tabs-transparent">
         <li class="tab">
-            <a  href="#ttest2">
+            <a  href="#ttest2" id="inventario">
                 <i class="fa fa-server" aria-hidden="true"></i>    Inventario
             </a>
         </li>
@@ -18,7 +18,7 @@ include_once('../plantillas/menu.php');
 
 
         <li class="tab">
-            <a href="#ttest3">
+            <a href="#ttest3" >
                 <i class="fa fa-wrench" aria-hidden="true"></i>  Mantenimiento
             </a>
         </li>
@@ -142,12 +142,12 @@ include_once('../plantillas/pie_de_pagina.php');
                     swal("Exito", "Registro guardado con exito", "success");
                     $("#lista_encargado").load(" #lista_encargado");//para actuaizar la datalist cuando registra
                 }
-            })
+            });
             return false;
         });
-        
-         $('#ActActEAD').submit(function () {
-             
+
+        $('#ActActEAD').submit(function () {
+
             // Enviamos el formulario usando AJAX
             $.ajax({
                 type: 'POST',
@@ -155,7 +155,7 @@ include_once('../plantillas/pie_de_pagina.php');
                 data: $(this).serialize(),
                 // Mostramos un mensaje con la respuesta de PHP
                 success: function (resp) {
-                   // document.getElementById('ActActEAD').reset();
+                    // document.getElementById('ActActEAD').reset();
                     $('#actualizarCaracteristicas').modal('close');
                     swal("Exito", "Registro actualizado con exito", "success");
                     //$("#lista_encargado").load(" #lista_encargado");//para actuaizar la datalist cuando registra
@@ -163,14 +163,71 @@ include_once('../plantillas/pie_de_pagina.php');
             })
             return false;
         });
-    })
 
-     function  guardar_mante() {//ver cod de funcion en js/libros.js
+
+       
+
+         //Interceptamos el evento submit
+        $('.FORMULARIO2 ,.FORMULARIO3').submit(function () {//para guardar categoria y proveedores sin recargar la pagina
+            // Enviamos el formulario usando AJAX
+            var id = $(this).attr('id'); // para decidir que selec se actualiza
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: $(this).serialize()
+                
+                // Mostramos un mensaje con la respuesta de PHP
+                }).done( function (resp) {
+                   $('#nuevaCat').modal('close');
+                   $('#nuevoProv').modal('close');
+                   document.getElementById('FORMULARIO2').reset();                   
+                   document.getElementById('FORMULARIO3').reset();
+                  // document.getElementById('FORMULARI').reset();
+                 if(id == "FORMULARIO2"){
+                     recargarCombos2();
+                 }else{
+                    recargarCombos3();}
+                
+                 swal("Excelente!", "Registro guardado con exito", "success");
+                }
+
+                
+            );
+            return false;
+        });
+    });
+
+
+
+
+    function recargarCombos2() {// actualiza el selec de cateoria cuando se registra una nueva
+        $.ajax({
+            url: 'select_categoria.php',
+            type: 'POST',
+            data: ''
+        }).done(function (resp) {
+            $('select').material_select('destroy');
+            $('select.selectCat').html(resp).fadeIn();
+            $('select').material_select();
+        });
+    }
+    function recargarCombos3() {// actualiza el selec de proveedor cuando se registra uno nuevo
+        $.ajax({
+            url: 'select_proveedor.php',
+            type: 'POST',
+            data: ''
+        }).done(function (resp) {
+            $('select').material_select('destroy');
+            $('select.selectPro').html(resp).fadeIn();
+            $('select').material_select();
+        });
+    }
+    function  guardar_mante() {//ver cod de funcion en js/libros.js
         if (validarTablas()) {
-            document.mant.submit();          
+            document.mant.submit();
         }
     }
-    
+
 
 // ]]></script>
 

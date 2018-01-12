@@ -139,11 +139,12 @@ class Repositorio_activo {
 
                 $codigo_administrador = $activo->getCodigo_administrador();
                 $foto = $activo->getFoto();
-                $sql = "UPDATE  actvos set codigo_administrador=:codigo_administrador,foto = :foto where codigo_activo='$codigo_original'";
-
-                $sentencia = $conexion->prepare($sql);
-                $sentencia->bindParam(':codigo_administrador', $codigo_administrador, PDO::PARAM_INT);
-                $sentencia->bindParam(':foto', $foto, PDO::PARAM_STR);
+                if($foto != ""){
+                $sql = "UPDATE  actvos set codigo_administrador='$codigo_administrador' ,foto = '$foto' where codigo_activo='$codigo_original'";
+                }else{
+                $sql = "UPDATE  actvos set codigo_administrador='$codigo_administrador'  where codigo_activo='$codigo_original'";
+}
+                $sentencia = $conexion->prepare($sql);                
                 $activo_insertado = $sentencia->execute();
                 
                 $accion = "se  actualizaron los datos del activo " . $codigo_original;

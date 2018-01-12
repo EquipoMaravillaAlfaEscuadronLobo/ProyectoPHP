@@ -323,14 +323,12 @@ function abrirActivo(coda, codadm, foto, estado, codd, color, dimen, marca, memo
     $('#nadmin').val(admin);
 
     if (estado == "Disponible") {
-        document.actAct.estadoE.style.background = "#2EFE2E";
+       
     }
     if (estado == "Prestado") {
-        document.actAct.estadoE.style.background = "#F7FE2E";
+       
     }
-    alert(foto2)
-    $('#foto1').attr("filename", foto);
-    $('#file_fotoEdAct').val(foto);
+   
     document.getElementById("fotoEdActsrc").src = foto2;
     $('#editActivo').modal('open');
 

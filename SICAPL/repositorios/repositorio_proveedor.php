@@ -66,10 +66,10 @@ class Repositorio_proveedor {
                         $proveedor = new Proveedor();
                         $proveedor->setCodigo_proveedor($fila['codigo_proveedor']);
                         $proveedor->setNombre($fila['nombre']);
-                        $proveedor->setDireccion($fila['direccion']);
-                        $proveedor->setTelefono($fila['telefono']);
-                        $proveedor->setCorreo($fila['correo']);
-                        $proveedor->setFax($fila['fax']);
+                      //  $proveedor->setDireccion($fila['direccion']);
+                       // $proveedor->setTelefono($fila['telefono']);
+                       // $proveedor->setCorreo($fila['correo']);
+                       // $proveedor->setFax($fila['fax']);
 
                         $lista_proveedores[] = $proveedor;
                     }
