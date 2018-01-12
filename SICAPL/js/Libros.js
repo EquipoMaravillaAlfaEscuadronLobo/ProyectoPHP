@@ -35,8 +35,26 @@ function buscarLibro(event) {
 }
 function buscarLibro2(valor, event) {
     var depto = valor.value;
-    var numero = valor.id.substr(7)
+    var numero = valor.id.substr(7);
+    //alert(numero+" "+depto);
+    var bandera=true;
+    
+    for(var i=1;i<=document.getElementsByName('libros').length;i++){
+               if(i==numero){
+                   continue;
+               }
+                if(document.getElementById('codigol'+i).value===depto){
+                    bandera=false;
+                    
+                }
+                }
+            
+        
 //alert(valor.id);
+    if(bandera===false){
+        swal("Atencion","Libro ya esta en la lista para prestar","error");
+        document.getElementById('codigol'+numero).value="";
+    }else{
     if (event.keyCode === 13) {
         if (depto != "") {
             $.post("getLibro.php", {libro: depto, numero: numero}, function (mensaje) {
@@ -46,6 +64,7 @@ function buscarLibro2(valor, event) {
             });
         }
     }
+}
 }
 function buscarUser(valor) {
 

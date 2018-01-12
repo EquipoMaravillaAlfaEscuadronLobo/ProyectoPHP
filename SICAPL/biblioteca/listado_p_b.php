@@ -94,7 +94,9 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
 <script type="text/javascript">
     function enviar() {
         if (window.event.keyCode !== 13) {
+            var bandera=true;
             document.getElementById('num').value = document.getElementsByName('libros').length;
+            
             document.frmPrestamoLibro.submit();
         }
     }
@@ -187,6 +189,29 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
 
 
     }
+    function actualizarFecha(codigo){
+         var fecha=document.getElementById('newDev').value;
+        $.ajax({
+                url: 'actualizarPrestamo.php?codigo=' + codigo + '&fecha=' + fecha,
+                type: 'GET',
+                dataType: "html",
+                data: {codigo: codigo, fecha: fecha},
+                cache: false,
+                contentType: false,
+                processData: false
+            }).done(function (resp) {
+                if (resp == 1) {
+                    swal("Exito", "Fecha de Prestamo Actualizada", "success")
+                            .then((value) => {
+                                location.href = "inicio_b.php";
+                            }
+                            );
+                } else {
+                    swal("Oops", resp, "error")
+
+                }
+            });
+    }
 
 
 </script>
@@ -194,7 +219,7 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
 <script>
     function abrirFinPres(codigo, dev, cant) {
         
-        $.post("listaFinPrestamo.php", {codigo: codigo, cantidad: cant}, function (mensaje) {
+        $.post("listaFinPrestamo.php", {codigo: codigo, cantidad: cant, dev: dev}, function (mensaje) {
             $('#finalizarPL2').html(mensaje).fadeIn();
 
         });
