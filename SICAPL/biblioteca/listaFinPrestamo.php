@@ -7,11 +7,13 @@ include_once '../modelos/Libros.php';
 include_once '../repositorios/repositorio_prestamolib.inc.php';
 $codigo=$_REQUEST['codigo'];
 $cantidad=$_REQUEST['cantidad'];
+$dev=$_REQUEST['dev'];
 //echo $codigo;
 Conexion::abrir_conexion();
 $listado= Repositorio_prestamolib::ListaLibrosPrestamo(Conexion::obtener_conexion(), $codigo);
 
 ?>
+<input type="hidden" id="fechaDev" value="<?php echo $dev?>"> 
 <table class="table table-hover">
         <thead>
         
@@ -43,13 +45,13 @@ $listado= Repositorio_prestamolib::ListaLibrosPrestamo(Conexion::obtener_conexio
                 <div class="input-field">
                                     <i class="fa fa-calendar prefix" aria-hidden="true"></i>
                                     <label for="fecha_pub" class="active">Nueva Fecha de Devoluci&oacute;n</label>
-                                    <input type="text" class="fecha_dev2" id="newDev" value="<?php echo date("d-m-Y"); ?>">
+                                    <input type="text" class="fecha_dev2" id="newDev" value="<?php echo $dev ?>">
                 </div>
                 
                 
             </div>
             <div class="col-md-3">
-                <input type="button" class="btn btn-warning" id="actualizar" value="Actualizar">
+                <input type="button" class="btn btn-warning" id="actualizar" value="Actualizar" onclick="actualizarFecha('<?php echo $codigo?>')">
             </div>
             <div class="col-md-3">
                 <input type="button" class="btn btn-danger" id="finlizar" value="Devolver Todo" onclick="finalizar('<?php echo $codigo ?>')">
@@ -59,6 +61,7 @@ $listado= Repositorio_prestamolib::ListaLibrosPrestamo(Conexion::obtener_conexio
 
 <script>
     $(document).ready(function () {
+        
         $('.fecha_dev2').removeData('min');
         $('.fecha_dev2').pickadate({//es clase para validar las fechas del activo fijo
             selectMonths: true, // Creates a dropdown to control month
