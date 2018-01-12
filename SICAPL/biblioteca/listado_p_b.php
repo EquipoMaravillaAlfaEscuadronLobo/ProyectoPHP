@@ -47,9 +47,9 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
                                     } else {
                                         echo 'alert-danger';
                                     }
-                                    ?>  pendiente" onclick="abrirFinPres('<?php echo $fila['codigo'] ?>')">Pendiente</td>
+                                    ?>  pendiente" onclick="abrirFinPres('<?php echo $fila['codigo'] ?>', '<?php echo date_format(date_create($fila['Devolucion']), 'd-m-Y') ?>', '<?php echo $fila['cantidad'] ?>')">Pendiente</td>
                                 </tr>
-<?php } ?>
+                            <?php } ?>
 
                         </tbody>
                     </table>
@@ -62,7 +62,7 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
 
 <div id="nuevo" class="modal modal-fixed-footer nuevo">
     <div class="modal-content modal-lg">
-<?php include('prestamo2.php'); ?>
+        <?php include('prestamo2.php'); ?>
     </div>
     <div class="modal-footer">
         <div class="row">
@@ -74,12 +74,18 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
 
 <div id="finalizarPL" class="modal modal-fixed-footer nuevo">
     <div class="modal-content modal-lg">
-<?php //include('./ListaFinPrestamo.php'); ?>
-        <div id="finalizarPL2"></div>
+        <?php //include('./ListaFinPrestamo.php'); ?>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="finalizarPL2"></div>
+            </div>
+            
+            
+        </div>
     </div>
     <div class="modal-footer">
         <div class="row">
-            
+
             <div class="col-md-12 text-center"><a href="#" class="modal-action modal-close waves-effect btn btn-danger">Salir</a></div>
         </div>
     </div>
@@ -93,84 +99,90 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
         }
     }
 
-    function finalizar(codigo) {
-        var d=new Date()
-        var dia=d.getDate();
-        var mes=d.getMonth();
-        var anio=d.getFullYear();
-        var fecha=dia+"-"+(mes+1)+"-"+anio;
-       
-        
-        var input=document.createElement("input");
-        input.type="date";
-         input.setAttribute("min",fecha);
-
-        swal("Que desea hacer", {
-        buttons: {
-        cancel: "Cancelar",
-                final: {
-                text:"Finalizar",
-                        value: "fin",
-                        className: "btn-primary"
-                },
-                actu: {
-                text: "actualizar",
-                        value: "act"
-                },
-        },
-                icon: "info",
-        }).then(value => {
-        switch (value){
-        case "fin":
-                swal("Seguro que desea finalizar el prestamo?", {
-                content: {
-                element: 'input',
-                        attributes: {
-                        placeholder: 'Escriba aqui una observacion',
-                                type: 'text',
-                                
-                        }
-                },
-                        icon: "warning",
-                        buttons: {
-                        cancel: "Cancelar",
-                                confirm: true,
-                        },
-                }).then((value, confirm) => {
-        swal(value + confirm)
-                $.ajax({
-                url: 'finalizarPrestamo.php?codigo=' + codigo + '&motivo=' + value,
-                        type: 'GET',
-                        dataType: "html",
-                        data: {codigo: codigo, motivo: value},
-                        cache: false,
-                        contentType: false,
-                        processData: false
-                }).done(function (resp) {
-        if (resp == 1) {
-        swal("Exito", "Prestamo Finalizado", "success")
-                .then((value) => {
-                location.href = "inicio_b.php";
-                }
-                );
+    function devolucion(count, cl, cp) {
+        if (count == 1) 
+        {
+            finalizar(cp);
         } else {
-        swal("Oops", resp, "error")
+            finalizar1(cl, cp);
+        }
+    }
+    function finalizar1(cl, cp) {
+        swal("Seguro que desea devolver est libro", {
+            buttons: {
+                cancel: "Cancelar",
+                confirm: true,
+            },
+            icon: "info",
+        }).then(value => {
+            $.ajax({
+                url: 'devolver1.php?codigop=' + cp + '&codigol=' + cl,
+                type: 'GET',
+                dataType: "html",
+                data: {codigop: cp, codigol: cl},
+                cache: false,
+                contentType: false,
+                processData: false
+            }).done(function (resp) {
+                if (resp == 1) {
+                    swal("Exito", "Libro Devuelto", "success")
+                            .then((value) => {
+                                $.post("listaFinPrestamo.php", {codigo: cp}, function (mensaje) {
+                                    $('#finalizarPL2').html(mensaje).fadeIn();
 
-        }
-        });
-        });
-                break;
-                case "act":
-                
-                swal({
-                   
-                content: input,
-                        });
-                break;
-        }
+                                });
+                            }
+                            );
+                    $("#tabla-paginada4").load("listado_p_b.php #tabla-paginada4");
+                } else {
+                    swal("Oops", resp, "error")
 
-        }
-        )
+                }
+            });
+
+        })
+    }
+    function finalizar(codigo) {
+
+        swal("Seguro que desea finalizar el prestamo?", {
+            content: {
+                element: 'input',
+                attributes: {
+                    placeholder: 'Escriba aqui una observacion',
+                    type: 'text',
+
+                }
+            },
+            icon: "warning",
+            buttons: {
+                cancel: "Cancelar",
+                confirm: true,
+            },
+        }).then((value, confirm) => {
+            swal(value + confirm)
+            $.ajax({
+                url: 'finalizarPrestamo.php?codigo=' + codigo + '&motivo=' + value,
+                type: 'GET',
+                dataType: "html",
+                data: {codigo: codigo, motivo: value},
+                cache: false,
+                contentType: false,
+                processData: false
+            }).done(function (resp) {
+                if (resp == 1) {
+                    swal("Exito", "Prestamo Finalizado", "success")
+                            .then((value) => {
+                                location.href = "inicio_b.php";
+                            }
+                            );
+                } else {
+                    swal("Oops", resp, "error")
+
+                }
+            });
+        });
+
+        
 
 
 
@@ -180,9 +192,9 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
 </script>
 
 <script>
- function abrirFinPres(codigo) {
-
-        $.post("listaFinPrestamo.php", {codigo: codigo}, function (mensaje) {
+    function abrirFinPres(codigo, dev, cant) {
+        
+        $.post("listaFinPrestamo.php", {codigo: codigo, cantidad: cant}, function (mensaje) {
             $('#finalizarPL2').html(mensaje).fadeIn();
 
         });

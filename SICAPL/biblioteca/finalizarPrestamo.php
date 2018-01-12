@@ -15,6 +15,13 @@ include_once '../app/Conexion.php';
     
     $accion = 'el usuario ' . $identificacion_usuario . ' finalizo su prestamo, con la siguiente observación: ' . $motivo ;
     Repositorio_Bitacora::insertar_bitacora(Conexion::obtener_conexion(), $accion);
+    $listado= repositorio_prestamolib::ListaLibrosPrestamo(Conexion::obtener_conexion(), $codigo);    
+    foreach($listado as $fila){
+     repositorio_prestamolib::CambiarEstado(Conexion::obtener_conexion(),$fila['cl'], 0);;
+     //echo 'asta aki';
+    }
+    $estadop= repositorio_prestamolib::Finalizar(Conexion::obtener_conexion(),$codigo,$motivo);
     
-    echo repositorio_prestamolib::Finalizar(Conexion::obtener_conexion(),$codigo,$motivo);
+    echo $estadop;
+    
  ?>

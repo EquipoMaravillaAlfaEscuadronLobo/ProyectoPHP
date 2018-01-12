@@ -15,7 +15,8 @@
  (prestamo_libros.fecha_salida),
  (prestamo_libros.fecha_devolucion) as Devolucion,
  libros.codigo_libro as cl,
- GROUP_CONCAT(libros.titulo SEPARATOR ' - ') as titulo
+ GROUP_CONCAT(libros.titulo SEPARATOR ' - ') as titulo,
+(Select COUNT(DISTINCT libros.codigo_libro)) as cantidad
 FROM
 usuarios
 INNER JOIN prestamo_libros ON prestamo_libros.codigo_usuario = usuarios.codigo_usuario
@@ -63,7 +64,6 @@ print 'ERROR: ' . $ex->getMessage();
 			}
 			return $resultado;
 		}
-
 
 		public static function GuardarPrestamo($conexion, $prestamo){
 			 $autor_insertado = false;
@@ -183,13 +183,13 @@ print 'ERROR: ' . $ex->getMessage();
         return $libro_mod;
     }
     
-                public static function cambiarEstado($conexion, $codigo_libro) {
+                public static function cambiarEstado($conexion, $codigo_libro, $estado) {
                     $libro_mod = 0;
        if (isset($conexion)) {
             try {
                             
                 
-                $sql = "UPDATE libros SET estado='2' where  codigo_libro='$codigo_libro'";
+                $sql = "UPDATE libros SET estado='$estado' where  codigo_libro='$codigo_libro'";
                                 ///estos son alias para que PDO pueda trabajar 
                 $sentencia = $conexion->prepare($sql);
                 
