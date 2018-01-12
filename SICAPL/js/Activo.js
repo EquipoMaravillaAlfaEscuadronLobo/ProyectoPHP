@@ -145,6 +145,7 @@ function llenarTact(valor, lista) {
         }
         var cosd = document.prestamoAct.elements["codsActs[]"];//se obtiene los elementos;
         var p = 0;
+       
         var no = "";
         for (var i = 1; i < numero.length; i++) {
             p = 0;
