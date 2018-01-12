@@ -94,7 +94,9 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
 <script type="text/javascript">
     function enviar() {
         if (window.event.keyCode !== 13) {
+            var bandera=true;
             document.getElementById('num').value = document.getElementsByName('libros').length;
+            
             document.frmPrestamoLibro.submit();
         }
     }

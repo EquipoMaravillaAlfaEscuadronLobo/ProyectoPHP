@@ -11,7 +11,11 @@
                 <div class="row">
                 <div class="col-md-10">
 
-                 <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="">Buscar Libro</label><input type="text" id="codigol1" name="codigol1" autofocus onkeypress="buscarLibro2(this,event)" list="listaLibros"></div>
+                 <div class="input-field">
+                     <i class="fa fa-search prefix" aria-hidden="true"></i>
+                     <label for="">Buscar Libro</label>
+                     <input type="text" id="codigol1" name="codigol1" autofocus onkeypress="buscarLibro2(this,event)" list="listaLibros">
+                 </div>
 
                 </div>
                 <div class="col-md-1">
