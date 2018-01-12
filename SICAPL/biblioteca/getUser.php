@@ -14,7 +14,7 @@
         document.getElementById('nombreUser').innerHTML = "<?php echo $fila['nombre'] ?>";
 
         document.getElementById('sexo').innerHTML = "<?php echo $fila['sexo'] ?>";
-        document.getElementById('fot').setAttribute("src", "<?php echo $fila['foto'] ?>")
+        document.getElementById('fot').setAttribute("src", "../foto_usuario/<?php echo $fila['foto'] ?>")
         <?php 
             if ($fila[11]=='si') {
          ?>

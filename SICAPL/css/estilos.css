@@ -17,6 +17,9 @@ footer{
    color: white;
    
 }
+input[type="text"]{
+    text-align: center !important;
+}
 .fotosLibros{
 	width: 100px !important;
 }

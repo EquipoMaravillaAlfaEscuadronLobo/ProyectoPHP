@@ -1,5 +1,5 @@
 
-<form method="POST" name="frmPrestamoLibro" id="frmPrestamoLibro" action="newPrestamo.php">
+<form method="POST" name="frmPrestamoLibro" id="frmPrestamoLibro" action="newPrestamo.php" autocomplete="off">
 <input type="hidden" name="num" id="num">
 <div class="row">
     <div class="col-md-6">
@@ -65,7 +65,10 @@
     <div class="col-md-6"><!-- panel datos de usuario -->
             <div class="panel panel-default" name="user">
                 <div class="panel-heading p_libro">
-                 <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="" style="font-size:16px">Buscar Usuario</label><input type="text" id="codigouser" name="codigouser" autofocus onkeypress="buscarUser(this)" list="listaUsuarios">
+                 <div class="input-field">
+                     <i class="fa fa-search prefix" aria-hidden="true"></i>
+                     <label for="" style="font-size:16px">Buscar Usuario</label>
+                     <input type="text" id="codigouser" name="codigouser" autofocus onkeypress="buscarUser(this)" list="listaUsuarios">
                  </div>
 
                 </div>

@@ -181,8 +181,7 @@ libros.codigo_libro ='$codigo'";
         $resultado = "";
         if (isset($conexion)) {
             try {
-                $sql = "SELECT * FROM usuarios
-";
+                $sql = "SELECT * FROM usuarios where usuarios.estado=1";
                 $resultado = $conexion->query($sql);
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();
