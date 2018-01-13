@@ -36,14 +36,6 @@
                                 </div>
                             </div> 
                         </div>
-<!--                        <div class="row">
-                            <div class="col m4"></div>
-                            <div class="input-field col m5">
-                                <i class="fa fa-expeditedssl prefix"></i> 
-                                <input type="password" id="idValidacionXE" name="nameVerificacion" class="text-center validate" autocomplete="off">
-                                <label for="idVerificacion">Para continuar por favor ingrese su contraseña</label>
-                            </div>
-                        </div>-->
                     </div>
                 </div>
             </div>

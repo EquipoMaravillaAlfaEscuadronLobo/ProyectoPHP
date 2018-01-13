@@ -11,10 +11,20 @@ class Usuario{
     private $estado;
     private $observacion;
     private $direccion;
+    private $motivo_eliminacion;
 
     function __construct() {
         
     }
+    function getMotivo_eliminacion() {
+        return $this->motivo_eliminacion;
+    }
+
+    function setMotivo_eliminacion($motivo_eliminacion) {
+        $this->motivo_eliminacion = $motivo_eliminacion;
+    }
+
+        
     function getObservacion() {
         return $this->observacion;
     }

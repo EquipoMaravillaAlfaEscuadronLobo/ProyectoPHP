@@ -52,8 +52,8 @@ class Repositorio_usuario {
 
                 echo '<script>
     swal({
-        title: "Usuario Registro con Exito",
-        text: "Desea imprimir el carnet?",
+        title: "Exito!",
+        text: "Usuario Registrado desea imprimir el carnet?",
         type: "success",
         showCancelButton: true,
         confirmButtonClass: "btn-danger",
@@ -78,9 +78,9 @@ class Repositorio_usuario {
             } catch (PDOException $ex) {
                 //echo '<script>swal("No se puedo realizar el registro", "Favor '.$ex->getMessage().' revisar los  datos e intentar nuevamente", "warning");</script>';
                 echo '<script>swal({
-                    title: "Advertencia!",
-                    text: "por favor revise los datos e intente nuevamente",
-                    type: "warning",
+                    title: "Error!",
+                    text: "por favor intente más tarde",
+                    type: "error",
                     confirmButtonText: "ok",
                     closeOnConfirm: false
                 },
@@ -110,9 +110,9 @@ class Repositorio_usuario {
                 $total_usuario = $resultado['total'];
             } catch (PDOException $ex) {
                 echo '<script>swal({
-                    title: "Advertencia!",
+                    title: "Error!",
                     text: "por favor revise los datos e intente nuevamente",
-                    type: "warning",
+                    type: "error",
                     confirmButtonText: "ok",
                     closeOnConfirm: false
                 },
@@ -153,6 +153,50 @@ class Repositorio_usuario {
                         $usuario->setTelefono($fila['telefono']);
                         $usuario->setFoto($fila['foto']);
                         $usuario->setObservacion($fila['observaciones']);
+                         $usuario->setMotivo_eliminacion($fila['motivo_eliminacion']);
+
+                        $lista_usuarios[] = $usuario;
+                    }
+                }
+            } catch (PDOException $exc) {
+                print('ERROR' . $exc->getMessage());
+            }
+        }
+//        echo   'numero de registros en lista registros'. count($lista_administradores) . '<br>';
+        //foreach ($lista_administradores as $fila ){
+        //    echo $fila ->getNombre(). "<br>";
+        //   echo '<img src="data:image/jpg;base64,<?php echo base64_encode($fila["foto"]);';
+        // }
+
+        return $lista_usuarios;
+    }
+    
+    public static function lista_usuarios_eliminados($conexion) {
+        $lista_usuarios = array();
+
+        if (isset($conexion)) {
+            try {
+                $sql = "select * from usuarios where estado = 0";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+                        $usuario = new Usuario();
+
+                        $usuario->setApellido($fila['apellido']);
+                        $usuario->setCodigo_institucion($fila['codigo_institucion']);
+                        $usuario->setCodigo_usuario($fila['codigo_usuario']);
+                        $usuario->setCorreo($fila['correo']);
+                        $usuario->setDireccion($fila['direccion']);
+                        $usuario->setEmail($fila['correo']);
+                        $usuario->setNombre($fila['nombre']);
+                        $usuario->setSexo($fila['sexo']);
+                        $usuario->setTelefono($fila['telefono']);
+                        $usuario->setFoto($fila['foto']);
+                        $usuario->setObservacion($fila['observaciones']);
+                         $usuario->setMotivo_eliminacion($fila['motivo_eliminacion']);
 
                         $lista_usuarios[] = $usuario;
                     }
@@ -194,6 +238,7 @@ class Repositorio_usuario {
                         $usuario->setSexo($fila['sexo']);
                         $usuario->setTelefono($fila['telefono']);
                         $usuario->setFoto($fila['foto']);
+                        $usuario->setMotivo_eliminacion($fila['motivo_eliminacion']);
 
                         $lista_usuarios[] = $usuario;
                     }
@@ -266,8 +311,7 @@ class Repositorio_usuario {
                 //echo 'problemas con sql';
                 echo '<script>swal({
                     title: "Error!",
-                    text: "' . $ex->getMessage();
-                ' ",
+                    text: "Por favor intente más tarde",
                     type: "error",
                     confirmButtonText: "ok",
                     closeOnConfirm: false
@@ -293,15 +337,16 @@ class Repositorio_usuario {
             try {
                 //echo 'hay conexion<br>';
                 //echo 'el carnet es'. $carnet;
-                $observacion = self::obtener_expediete($conexion, $carnet) . $usuario->getObservacion();
+                $observacion = self::obtener_expediete($conexion, $carnet) . ' el usuario fue eliminado por:'. $usuario->getObservacion();
                 $estado = 1;
 
-                $sql = 'UPDATE usuarios SET estado=:estado,observaciones=:observaciones where codigo_usuario = :carnet';
+                $sql = 'UPDATE usuarios SET estado=:estado,observaciones=:observaciones,motivo_eliminacion=:motivo_eliminacion where codigo_usuario = :carnet';
 
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->bindParam(':carnet', $carnet, PDO::PARAM_STR);
                 $sentencia->bindParam(':estado', $estado, PDO::PARAM_INT);
                 $sentencia->bindParam(':observaciones', $observacion, PDO::PARAM_STR);
+                $sentencia->bindParam(':motivo_eliminacion', $observacion, PDO::PARAM_STR);
 
                 $usuario_insertado = $sentencia->execute();
 
@@ -323,7 +368,7 @@ class Repositorio_usuario {
                 //echo "<script>swal('Excelente!', 'hubo incombenientes  '$sql' ', 'success');</script>";
                 echo '<script>swal({
                     title: "Error!",
-                    text: "No hay conexion",
+                    text: "Por favor intente más tarde",
                     type: "error",
                     confirmButtonText: "ok",
                     closeOnConfirm: false
@@ -354,7 +399,7 @@ class Repositorio_usuario {
                 $sentencia = $conexion->prepare($sql);
                 $administrador_insertado = $sentencia->execute();
             } catch (PDOException $ex) {
-                echo '<script>swal("No se puedo realizar el registro", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
+                echo '<script>swal("Error", "Por favor intente más tarde", "error");</script>';
                 print 'ERROR: ' . $ex->getMessage();
             }
         }

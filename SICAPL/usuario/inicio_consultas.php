@@ -16,7 +16,7 @@
         
         <div class="panel panel-primary"><!-- Desde aqui-->
             <div class="panel-heading text-center">
-                <a data-toggle="collapse" style="font-size: 20px;font-weight: bold " data-parent="#accordion3" href="#collapse-CatAutores">Expediente de Usuarios</a>
+                <a data-toggle="collapse" style="font-size: 20px;font-weight: bold" data-parent="#accordion3" href="#collapse-CatAutores">Obsevaciones de Usuarios</a>
 
             </div>
 
@@ -31,14 +31,14 @@
         
         
         <div class="panel panel-primary"><!-- Desde aqui-->
-            <div class="panel-heading">
-                <a data-toggle="collapse" data-parent="#accordion3" href="#collapse-CatEditoriales">Cat&aacute;logo de Editoriales</a>
+            <div class="panel-heading text-center">
+                <a data-toggle="collapse" style="font-size: 20px;font-weight: bold" data-parent="#accordion3" href="#collapse-CatEditoriales">Usuarios dados de baja</a>
 
             </div>
 
             <div id="collapse-CatEditoriales" class="panel-collapse collapse">
                 <div class="panel-body" >
-                    <?php include('../consultas/catalogoEditoriales.php'); ?>
+                    <?php include('./consultas/usuarios_baja.php'); ?>
                 </div>
             </div>
 

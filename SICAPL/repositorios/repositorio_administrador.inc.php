@@ -67,7 +67,7 @@ class Repositorio_administrador {
                 });</script>';
                     } else {
                         echo '<script>'
-                        . 'swal("Advetencia!", "El correo que introdujo ya esta en uso, favor introdusca otro", "warning");'
+                        . 'swal("Cuidado!", "El correo que introdujo ya esta en uso, favor introdusca otro", "warning");'
                         . '$("#idNombre").val("' . $nombre . '"); $("#idApellido").val("' . $apellido . '");'
                         . '$("#idUser").val("' . $codigo_administrador . '"); $("#idDui").val("' . $dui . '");'
                         . '$("#idFecha").val("' . $fecha . '"); $("#idEmail").val("' . $email . '");'
@@ -78,7 +78,7 @@ class Repositorio_administrador {
                     }
                 } else {
                     echo '<script>'
-                    . 'swal("Advetencia!", "El nombre de usuario que introdujo ya esta en uso, favor introdusca otro", "warning");'
+                    . 'swal("Cuidado!", "El nombre de usuario que introdujo ya esta en uso, favor introdusca otro", "warning");'
                     . '$("#idNombre").val("' . $nombre . '"); $("#idApellido").val("' . $apellido . '");'
                     . '$("#idUser").val("' . $codigo_administrador . '"); $("#idDui").val("' . $dui . '");'
                     . '$("#idFecha").val("' . $fecha . '"); $("#idEmail").val("' . $email . '");'
@@ -276,7 +276,7 @@ class Repositorio_administrador {
                     //echo '<script>'
                     //. 'swal("Alerta!", "El la contraseña que introdujo no es correcta, por lo que no se haran cambios", "warning"); </script>';
                     echo '<script>swal({
-                    title: "Advertencia!",
+                    title: "Cuidado!",
                     text: "la contraseña que introdujo no es correcta, por lo que no se haran cambios",
                     type: "warning",
                     confirmButtonText: "ok",
@@ -357,7 +357,7 @@ class Repositorio_administrador {
                 });</script>';
                 }
             } catch (PDOException $ex) {
-                echo "<script>swal('Ooops!', 'Hubo no se pudo realizar la accion', 'error');</script>";
+                echo "<script>swal('Error!', 'Hubo no se pudo realizar la accion', 'error');</script>";
 
                 print 'ERROR: ' . $ex->getMessage();
             }
@@ -520,7 +520,7 @@ class Repositorio_administrador {
                 });</script>';
                 } else {
                     echo '<script>swal({
-                    title: "Advertencia!",
+                    title: "Cuidado!",
                     text: "la contraseña que introdujo no es correcta, por lo que no se haran cambios",
                     type: "warning",
                     confirmButtonText: "ok",
@@ -536,7 +536,7 @@ class Repositorio_administrador {
                 echo '<script>swal({
                     title: "Error!",
                     text: "Por Favor intente más tarde",
-                    type: "warning",
+                    type: "error",
                     confirmButtonText: "ok",
                     closeOnConfirm: false
                 },
@@ -568,7 +568,7 @@ class Repositorio_administrador {
 
 //                echo 'la bitacora ha sido guardada';
             } catch (PDOException $ex) {
-                echo '<script>swal("No se puedo realizar el registro", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
+                echo '<script>swal("Por Favor intente mas tarde", "Favor revisar los datos e intentar nuevamente", "error");</script>';
                 print 'ERROR: ' . $ex->getMessage();
             }
         }
@@ -612,7 +612,7 @@ class Repositorio_administrador {
                 echo '<script>swal({
                     title: "Error!",
                     text: "Por Favor intente más tarde",
-                    type: "warning",
+                    type: "error",
                     confirmButtonText: "ok",
                     closeOnConfirm: false
                 },
