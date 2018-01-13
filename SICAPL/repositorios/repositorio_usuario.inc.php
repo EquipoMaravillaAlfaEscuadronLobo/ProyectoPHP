@@ -152,6 +152,7 @@ class Repositorio_usuario {
                         $usuario->setSexo($fila['sexo']);
                         $usuario->setTelefono($fila['telefono']);
                         $usuario->setFoto($fila['foto']);
+                        $usuario->setObservacion($fila['observaciones']);
 
                         $lista_usuarios[] = $usuario;
                     }
@@ -292,8 +293,8 @@ class Repositorio_usuario {
             try {
                 //echo 'hay conexion<br>';
                 //echo 'el carnet es'. $carnet;
-                $observacion = $usuario->getObservacion();
-                $estado = 0;
+                $observacion = self::obtener_expediete($conexion, $carnet) . $usuario->getObservacion();
+                $estado = 1;
 
                 $sql = 'UPDATE usuarios SET estado=:estado,observaciones=:observaciones where codigo_usuario = :carnet';
 
@@ -480,6 +481,34 @@ class Repositorio_usuario {
             }
         }
         return $usuario;
+    }
+    
+    public static function obtener_expediete($conexion, $codigo) {
+        $expediente= "";
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT usuarios.observaciones FROM usuarios WHERE usuarios.codigo_usuario = '$codigo'";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+                $hora = date("d/m/Y");
+
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+                        $expediente = ($fila['0']);
+                        if ($expediente == '') {
+                           $expediente = $hora . " ";
+                        }else{
+                          $expediente = ($fila['0']. " <br>" . $hora. ' ');
+                        }
+                         
+                    }
+                }
+            } catch (PDOException $exc) {
+                print('ERROR' . $exc->getMessage());
+            }
+        }
+        return $expediente;
     }
 
 }

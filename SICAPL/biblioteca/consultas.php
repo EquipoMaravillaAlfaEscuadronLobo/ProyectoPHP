@@ -1,8 +1,8 @@
 <div class="container-fluid">
     <div class="panel-group" id="accordion3">
         <div class="panel panel-primary"><!-- Desde aqui-->
-            <div class="panel-heading">
-                <a data-toggle="collapse" data-parent="#accordion3" href="#collapse-Catlibros">Cat&aacute;logo de Libros</a>
+            <div class="panel-heading text-center">
+                <a data-toggle="collapse" style="font-size: 20px;font-weight: bold " data-parent="#accordion3" href="#collapse-Catlibros">Cat&aacute;logo de Libros</a>
 
             </div>
 
@@ -15,13 +15,13 @@
         </div><!-- hasta aki cada consulta-->
         
         <div class="panel panel-primary"><!-- Desde aqui-->
-            <div class="panel-heading">
-                <a data-toggle="collapse" data-parent="#accordion3" href="#collapse-CatAutores">Cat&aacute;logo de Autores</a>
+            <div class="panel-heading text-center">
+                <a data-toggle="collapse" style="font-size: 20px;font-weight: bold " data-parent="#accordion3" href="#collapse-CatAutores">Cat&aacute;logo de Autores</a>
 
             </div>
 
             <div id="collapse-CatAutores" class="panel-collapse collapse">
-                <div class="panel-body" >
+                <div class="panel-body " >
                     <?php include('../consultas/catalogoAutores.php'); ?>
                 </div>
             </div>
@@ -31,8 +31,8 @@
         
         
         <div class="panel panel-primary"><!-- Desde aqui-->
-            <div class="panel-heading">
-                <a data-toggle="collapse" data-parent="#accordion3" href="#collapse-CatEditoriales">Cat&aacute;logo de Editoriales</a>
+            <div class="panel-heading text-center">
+                <a data-toggle="collapse" style="font-size: 20px;font-weight: bold " data-parent="#accordion3" href="#collapse-CatEditoriales">Cat&aacute;logo de Editoriales</a>
 
             </div>
 
@@ -45,8 +45,8 @@
         </div><!-- hasta aki cada consulta-->
         
         <div class="panel panel-primary"><!-- Desde aqui-->
-            <div class="panel-heading">
-                <a data-toggle="collapse" data-parent="#accordion3" href="#collapse-LibPres">Libros en Prestamo</a>
+            <div class="panel-heading text-center">
+                <a data-toggle="collapse" style="font-size: 20px;font-weight: bold " data-parent="#accordion3" href="#collapse-LibPres">Libros en Prestamo</a>
 
             </div>
 

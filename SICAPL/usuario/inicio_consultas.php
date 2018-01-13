@@ -1,8 +1,8 @@
 <div class="container-fluid">
     <div class="panel-group" id="accordion3">
         <div class="panel panel-primary"><!-- Desde aqui-->
-            <div class="panel-heading">
-                <a data-toggle="collapse" data-parent="#accordion3" href="#collapse-Catlibros">Carnet de Alumno</a>
+            <div class="panel-heading text-center">
+                <a data-toggle="collapse" style="font-size: 20px;font-weight: bold "  data-parent="#accordion3" href="#collapse-Catlibros">Carnet de Usuarios</a>
 
             </div>
 
@@ -15,14 +15,14 @@
         </div><!-- hasta aki cada consulta-->
         
         <div class="panel panel-primary"><!-- Desde aqui-->
-            <div class="panel-heading">
-                <a data-toggle="collapse" data-parent="#accordion3" href="#collapse-CatAutores">Cat&aacute;logo de Autores</a>
+            <div class="panel-heading text-center">
+                <a data-toggle="collapse" style="font-size: 20px;font-weight: bold " data-parent="#accordion3" href="#collapse-CatAutores">Expediente de Usuarios</a>
 
             </div>
 
             <div id="collapse-CatAutores" class="panel-collapse collapse">
                 <div class="panel-body" >
-                    <?php include('../consultas/catalogoAutores.php'); ?>
+                    <?php include('./consultas/expediente_usuario.php'); ?>
                 </div>
             </div>
 

@@ -3,7 +3,7 @@ Conexion::abrir_conexion();
 $lista_usuarios = Repositorio_usuario::lista_usuarios(Conexion::obtener_conexion());
 ?>
 
-<form action="../usuario/reportes/imprimir_lista_carnet.php" method="get" target="_blank">
+<form action="../usuario/reportes/imprimir_lista_carnet.php" method="post" target="_blank">
 <table padding="20px" class="responsive-table display" id="catalogoLb">
     <thead class="">
 
