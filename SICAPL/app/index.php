@@ -21,12 +21,12 @@ include_once('../plantillas/cabecera.php');
                                 <div class="col-md-3"><h4>Usuario:</h4></div>
                                 <div class="col-md-9"><input type="text" name="nombre" id="nombre" class="form-control" onkeyup="buscarAdmin()" autofocus/></div>
                             </div>
-                            <div class="row">
+                            <div class="row text-center">
                                 <div class="col-md-3"><h4>Contraseña:</h4></div>
                                 <div class="col-md-9"> 
-                                    <div class="row">
+                                    <div class="row text-center">
                                         <div class="col-md-11">
-                                            <input type="password" name="clave" id="clave" class="form-control" onkeyup="activarBoton()" disabled/>
+                                            <input type="password" name="clave" id="clave" class="form-control text-center" onkeyup="activarBoton()" disabled/>
                                         </div>
                                         <div class="col-md-1"><i id="ojo" class="fa fa-eye" aria-hidden="true"></i></div></div>
                                 </div>

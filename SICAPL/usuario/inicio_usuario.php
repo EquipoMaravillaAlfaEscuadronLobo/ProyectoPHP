@@ -11,14 +11,14 @@ include_once '../plantillas/menu.php';
             </a>
         </li>
         <li class="tab">
-            <a href="#test2" class="active">
+            <a href="#test2" class="">
                 <i class="fa fa-edit" aria-hidden="true"></i>  Editar Usuarios
             </a>
         </li>
 
 
         <li class="tab">
-            <a href="#test3">
+            <a href="#test3" class="active">
                 <i class="fa fa-list-alt" aria-hidden="true"></i> Consulta
             </a>
         </li>
