@@ -8,7 +8,7 @@ include_once '../../app/Conexion.php';
 include_once '../../modelos/Usuario.php';
 include_once '../../repositorios/repositorio_usuario.inc.php';
 Conexion::abrir_conexion();
-$usuario = Repositorio_usuario::usuario_seleccionado(Conexion::obtener_conexion(), $_REQUEST['carnet']);
+
 $i = 1;
 ?>
 
@@ -185,7 +185,9 @@ $i = 1;
 
 <page pageset="old"><!-- Etiqueta para cada pagina del reporte-->
 
-    <?php foreach ($usuario as $lista) { ?>
+    <?php 
+    $usuario = Repositorio_usuario::usuario_seleccionado(Conexion::obtener_conexion(), $_REQUEST['carnet']);
+    foreach ($usuario as $lista) { ?>
     
     <div class="contenedor">
 
