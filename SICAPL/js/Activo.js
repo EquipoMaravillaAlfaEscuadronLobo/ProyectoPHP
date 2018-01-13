@@ -405,12 +405,12 @@ function validarTablas_dev() {
     // codigo para verificar no finalizar con activos en prestamo
     var sel2 = document.actualizar_prestamo_activo.elements["accion_select1[]"];//se obtiene los elementos
     if ($('#listActivoAct >tbody >tr').length == 1) {
-       var op=  document.getElementsByName("accion_select1[]")[0].value; 
-       if(op==1){
+        var op = document.getElementsByName("accion_select1[]")[0].value;
+        if (op == 1) {
             return true;
-       }else{
-           cont1=10;
-       }
+        } else {
+            cont1 = 10;
+        }
     } else {
         var cont1 = 0;
         for (var i = 0; i < sel2.length; i++) {

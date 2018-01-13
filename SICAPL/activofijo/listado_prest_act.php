@@ -38,20 +38,18 @@ $listado = Repositorio_prestamoact::ListaPrestamosAct(Conexion::obtener_conexion
                                 <td><?php echo $fila['codigo']; ?></td>
 
                                 <td><?php echo $fila['nombre'] ?></td>
-                                <td>
-                                    <?php 
-                                  
-    Conexion::abrir_conexion();
-    $listado1 = Repositorio_prestamoact::obtenerListActP(Conexion::obtener_conexion(), $fila['codigo']);
-    foreach ($listado1 as $fila1) {
-        ?>
-                                            
-                                            
-                                    ?>
+                                <td><label  title="<?php
+                                    Conexion::abrir_conexion();
+                                    $listado1 = Repositorio_prestamoact::obtenerListActP(Conexion::obtener_conexion(), $fila['codigo']);
+                                    foreach ($listado1 as $fila1) {
+                                        echo $fila1['codigo'] . "&#13;";
+                                    }
+                                    ?>">Activos</label>
+
                                 </td>
                                 <td><?php echo date_format(date_create($fila['fecha_salida']), 'd-m-Y') ?></td>
                                 <td><?php echo date_format(date_create($fila['Devolucion']), 'd-m-Y') ?></td>
-    
+
                                 <td class="text-center <?php
                                 if ($fila['estado'] == 1) {
                                     echo "alert-success";
@@ -63,7 +61,7 @@ $listado = Repositorio_prestamoact::ListaPrestamosAct(Conexion::obtener_conexion
                                         echo "alert-danger";
                                     }
                                 }
-                                ?>"
+                                    ?>"
                                 <?php
                                 if ($fila['estado'] == 0) {
                                     echo ' onclick="actualizarPrestamoActivo(' . $fila['codigo'] . ')" ';
@@ -71,17 +69,17 @@ $listado = Repositorio_prestamoact::ListaPrestamosAct(Conexion::obtener_conexion
                                 ?>
                                     style="font-size: 16px">
 
-                                <?php
-                                if ($fila['estado'] == 1) {
-                                    echo "Finalizado";
-                                }
-                                if ($fila['estado'] == 0) {
-                                    echo "Pendiente";
-                                }
-                                ?>
+                                    <?php
+                                    if ($fila['estado'] == 1) {
+                                        echo "Finalizado";
+                                    }
+                                    if ($fila['estado'] == 0) {
+                                        echo "Pendiente";
+                                    }
+                                    ?>
 
                             </tr>
-                                <?php } ?>
+                        <?php } ?>
 
                     </tbody>
                 </table>
@@ -100,7 +98,7 @@ $listado = Repositorio_prestamoact::ListaPrestamosAct(Conexion::obtener_conexion
     </div>
     <div class="modal-content">
 
-<?php include('prestamo_act.php'); ?>
+        <?php include('prestamo_act.php'); ?>
 
     </div>
     <div class="modal-footer">
@@ -119,7 +117,7 @@ $listado = Repositorio_prestamoact::ListaPrestamosAct(Conexion::obtener_conexion
     </div>
     <div class="modal-content">
 
-<?php include('actualizar_prestamo.php'); ?>
+        <?php include('actualizar_prestamo.php'); ?>
 
     </div>
     <div class="modal-footer ">
