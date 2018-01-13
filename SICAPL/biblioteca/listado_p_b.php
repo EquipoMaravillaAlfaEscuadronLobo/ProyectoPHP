@@ -37,7 +37,9 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
                                 <tr>
                                     <td><?php echo $fila['codigo'] ?></td>
                                     <td><?php echo $fila['user'] ?></td>
-                                    <td><?php echo $fila['nombre'] ?></td>
+                                    <td rel="popover" data-container="body" data-togle="popover" data-placement="top" 
+                                        title="Informaci&oacute;n de contacto:" data-content="<b>Tel&eacute;fono: </b><?php echo $fila['telefono'] ?>
+                                        <br><b>Correo: </b><?php echo $fila['correo'] ?>"><?php echo $fila['nombre'] ?></td>
                                     <td><?php echo $fila['titulo'] ?></td>
                                     <td><?php echo date_format(date_create($fila['fecha_salida']), 'd-m-Y') ?></td>
                                     <td><?php echo date_format(date_create($fila['Devolucion']), 'd-m-Y') ?></td>

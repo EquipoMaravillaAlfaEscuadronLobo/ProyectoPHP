@@ -8,3 +8,9 @@ $(document).ready(function () {
  $(document).ready(function() {
     Materialize.updateTextFields();
   });
+  $(document).ready(function() {
+   $('[rel="popover"]').popover({
+       trigger: 'hover',
+       html: true,
+   })
+  });

@@ -195,13 +195,16 @@ libros.codigo_libro ='$codigo'";
         if (isset($conexion)) {
             try {
                 $sql = "SELECT
-DISTINCT usuarios.*,(case when usuarios.codigo_usuario in (select DISTINCT (prestamo_libros.codigo_usuario) from prestamo_libros where prestamo_libros.estado=0) or usuarios.codigo_usuario in (select DISTINCT (prestamo_activos.usuarios_codigo) from prestamo_activos where prestamo_activos.estado=0)  then 'si' else 'no' end) as 'esta'
+DISTINCT usuarios.*,(case when usuarios.codigo_usuario in (select DISTINCT (prestamo_libros.codigo_usuario) from prestamo_libros where prestamo_libros.estado=0) or usuarios.codigo_usuario in (select DISTINCT (prestamo_activos.usuarios_codigo) from prestamo_activos where prestamo_activos.estado=0)  then 'si' else 'no' end) as 'esta',
+GROUP_CONCAT(prestamo_libros.observaciones SEPARATOR ' - ') as obsP
+ 
 FROM
-usuarios, prestamo_libros
+usuarios
+inner JOIN prestamo_libros on usuarios.codigo_usuario=prestamo_libros.codigo_usuario
 
 
 WHERE
-usuarios.codigo_usuario ='$codigo'";
+usuarios.codigo_usuario  ='$codigo'";
                 $resultado = $conexion->query($sql);
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();

@@ -32,7 +32,9 @@ $listado= Repositorio_prestamolib::ListaLibrosPrestamo(Conexion::obtener_conexio
             <td><?php echo $fila['cl']?></td>
             <td><?php echo $fila['titulo']?></td>
             <td>
-                <button class="btn btn-danger" onclick="devolucion('<?php echo $cantidad ?>','<?php echo $fila['cl'] ?>','<?php echo $fila[0] ?>')"><i class="fa fa-trash"></i></button>
+                <button class="btn btn-warning" onclick="devolucion('<?php echo $cantidad ?>','<?php echo $fila['cl'] ?>','<?php echo $fila[0] ?>')">
+                    <i class="fa fa-reply" aria-hidden="true"></i>
+                </button>
             </td>
         </tr>
             <?php
@@ -51,10 +53,14 @@ $listado= Repositorio_prestamolib::ListaLibrosPrestamo(Conexion::obtener_conexio
                 
             </div>
             <div class="col-md-3">
-                <input type="button" class="btn btn-warning" id="actualizar" value="Actualizar" onclick="actualizarFecha('<?php echo $codigo?>')">
+                <button type="button" class="btn btn-success" id="actualizar"  onclick="actualizarFecha('<?php echo $codigo?>')">
+                <i class="fa fa-refresh" aria-hidden="true"></i> Actualizar
+                </button>
             </div>
             <div class="col-md-3">
-                <input type="button" class="btn btn-danger" id="finlizar" value="Devolver Todo" onclick="finalizar('<?php echo $codigo ?>')">
+                <button type="button" class="btn btn-warning" id="finlizar"  onclick="finalizar('<?php echo $codigo ?>')">
+                <i class="fa fa-reply" aria-hidden="true"></i> Devolver Todo
+                </button>
             </div>
     
 </div>

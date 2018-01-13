@@ -15,6 +15,12 @@
 
         document.getElementById('sexo').innerHTML = "<?php echo $fila['sexo'] ?>";
         document.getElementById('fot').setAttribute("src", "../foto_usuario/<?php echo $fila['foto'] ?>")
+        document.getElementById('fot').setAttribute("title", "Observaciones")
+        document.getElementById('fot').setAttribute("rel", "popover")
+        document.getElementById('fot').setAttribute("data-container", "body")
+        document.getElementById('fot').setAttribute("data-togle", "popover")
+        document.getElementById('fot').setAttribute("data-placement", "top")
+        document.getElementById('fot').setAttribute("data-content", "<?php echo $fila['obsP'] ?>")
         <?php 
             if ($fila[11]=='si') {
          ?>
@@ -28,6 +34,7 @@
         document.getElementById('actual').innerHTML = "<?php echo 'sin Prestamos' ?>";
         $('#actual').removeClass('alert-danger');
         $('#actual').addClass('alert-success');
+        
         <?php } ?>
 		</script>
 
@@ -36,3 +43,11 @@
     }                    
                     
  ?>
+                <script>
+                    $(document).ready(function() {
+   $('[rel="popover"]').popover({
+       trigger: 'hover',
+       html: true,
+   })
+  });
+                </script>

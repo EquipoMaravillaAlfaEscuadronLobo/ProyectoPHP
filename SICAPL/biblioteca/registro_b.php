@@ -107,6 +107,7 @@ $ultimaEditorial = repositorio_editorial::ObtenerUltimo(Conexion::obtener_conexi
                             </div>
                         </div>
 
+                
                 </div>
                 <div class="panel-footer text-center">
                     <button type="submit" class="btn btn-success" >Guardar</button>
@@ -120,12 +121,12 @@ $ultimaEditorial = repositorio_editorial::ObtenerUltimo(Conexion::obtener_conexi
             <div id="collapse-autores" class="panel-collapse collapse">
                 <div class="panel-body">
                     <form action="newAutor.php" class="autorf" name="frmAutor" method="post" id="frmAutor" enctype="multipart/form-data">
-                        <input type="hidden" id="registrarA">
+                        <input type="hidden" id="registrarA" name="registrarA">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="input-field">
                                     <i class="fa fa-list-ol prefix" aria-hidden="true"></i>
-                                    <label for="codigo">Codigo</label>
+                                    <label for="codigo">C&oacute;digo</label>
                                     <input type="text" id="codigoa" required class="form-control validate" disabled value="<?php echo $ultimoAutor ?>">
                                 </div>
                             </div>
@@ -172,7 +173,7 @@ $ultimaEditorial = repositorio_editorial::ObtenerUltimo(Conexion::obtener_conexi
                         </div>
                 </div>
                 <div class="panel-footer text-center">
-                    <button type="submit" class="btn btn-success" form="frmAutor">Guardar</button>
+                    <button  class="btn btn-success" form="frmAutor">Guardar</button>
                     <button type="reset" class="btn btn-danger">Cancelar</button>
                     </form>
                 </div>
