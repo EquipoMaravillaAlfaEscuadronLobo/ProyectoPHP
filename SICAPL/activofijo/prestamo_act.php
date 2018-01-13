@@ -22,6 +22,7 @@ $(document).ready(function() {
     <input type="hidden" name="passsss" id="passsss">
     <input type="hidden" name="codTipo" id="codTipo">
     <input type="hidden" name="codAct" id="codAct">
+    <input type="hidden" name="mensaje" id="mensaje" value="no funciona">
     <div class="container-fluid" >
         <div class="row">
             
@@ -32,7 +33,11 @@ $(document).ready(function() {
                         <div class="panel-heading p_libro">
                             <div class="col-md-10">
 
-                                <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="" style="font-size:17px">Buscar Activo</label><input type="text" required="" id="codigo" list="listaActivos" autofocus  onkeypress="buscarActivo(this)"></div>
+                                <div class="input-field">
+                                    <i class="fa fa-search prefix" aria-hidden="true"></i>
+                                    <label for="" style="font-size:17px">Buscar Activo</label>
+                                    <input type="text"  id="codigo" list="listaActivos" autofocus  onkeypress="buscarActivo(this)">
+                                </div>
 
                             </div>
                             <form id="prestamoAct" id="prestamoAct" method="post">
@@ -57,7 +62,7 @@ $(document).ready(function() {
                                         <i class="fa fa-barcode prefix" title="Indique el numero correlativo del activo para agragar varios a la tabla"></i> 
                                         <input type="text" id="correlativo" name="correlativo"  class="text-center "  
                                                value="---"
-                                               pattern="[0-9]"
+                                               
                                                onclick = "if (this.value == '---')
                                                            this.value = ''" 
                                                onblur="if (this.value == '')

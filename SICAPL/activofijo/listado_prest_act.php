@@ -38,11 +38,20 @@ $listado = Repositorio_prestamoact::ListaPrestamosAct(Conexion::obtener_conexion
                                 <td><?php echo $fila['codigo']; ?></td>
 
                                 <td><?php echo $fila['nombre'] ?></td>
-                                <td><?php echo $fila['titulo'] ?></td>
+                                <td>
+                                    <?php 
+                                  
+    Conexion::abrir_conexion();
+    $listado1 = Repositorio_prestamoact::obtenerListActP(Conexion::obtener_conexion(), $fila['codigo']);
+    foreach ($listado1 as $fila1) {
+        ?>
+                                            
+                                            
+                                    ?>
+                                </td>
                                 <td><?php echo date_format(date_create($fila['fecha_salida']), 'd-m-Y') ?></td>
                                 <td><?php echo date_format(date_create($fila['Devolucion']), 'd-m-Y') ?></td>
-                                <?php
-                                ?>
+    
                                 <td class="text-center <?php
                                 if ($fila['estado'] == 1) {
                                     echo "alert-success";
@@ -62,17 +71,17 @@ $listado = Repositorio_prestamoact::ListaPrestamosAct(Conexion::obtener_conexion
                                 ?>
                                     style="font-size: 16px">
 
-                                    <?php
-                                    if ($fila['estado'] == 1) {
-                                        echo "Finalizado";
-                                    }
-                                    if ($fila['estado'] == 0) {
-                                        echo "Pendiente";
-                                    }
-                                    ?>
+                                <?php
+                                if ($fila['estado'] == 1) {
+                                    echo "Finalizado";
+                                }
+                                if ($fila['estado'] == 0) {
+                                    echo "Pendiente";
+                                }
+                                ?>
 
                             </tr>
-                        <?php } ?>
+                                <?php } ?>
 
                     </tbody>
                 </table>
@@ -91,7 +100,7 @@ $listado = Repositorio_prestamoact::ListaPrestamosAct(Conexion::obtener_conexion
     </div>
     <div class="modal-content">
 
-        <?php include('prestamo_act.php'); ?>
+<?php include('prestamo_act.php'); ?>
 
     </div>
     <div class="modal-footer">
@@ -110,7 +119,7 @@ $listado = Repositorio_prestamoact::ListaPrestamosAct(Conexion::obtener_conexion
     </div>
     <div class="modal-content">
 
-        <?php include('actualizar_prestamo.php'); ?>
+<?php include('actualizar_prestamo.php'); ?>
 
     </div>
     <div class="modal-footer ">
@@ -129,38 +138,4 @@ $listado = Repositorio_prestamoact::ListaPrestamosAct(Conexion::obtener_conexion
             <div class="col-md-2 text-right"></div>
         </div>
     </div>
-</div>
-<script type="text/javascript">
-    function  actualizar() {
-        document.getElementById("opcion").value = 2;
-        document.actualizar_prestamo_activo.submit();
-    }
-    function  finalizar() {
-        if (validarTablas_dev()) {
-            document.getElementById("opcion").value = 1;
-            document.actualizar_prestamo_activo.submit();          
-        }
-    }
-    
-    function validarTablas_dev() {
-        
-        var okk = true;
-        // codigo para verificar no finalizar con activos en prestamo
-        var sel1 = document.actualizar_prestamo_activo.elements["accion_select[]"];//se obtiene los elementos
-        var cont1 = 0;
-        for (var i = 0; i < sel1.length; i++) {
-            if (sel1[i].value == "2") {//verifica si hay activos con codigo de estado 2, que es el de en prestamo
-                cont1++;
-                okk = false;
-            }
-        }
-         
-        if (cont1 > 0) {//si hay activos con codido 3 
-            swal("Ooops", "No puede finalizar el prestamo con activos pendientes de devolver", "warning");
-            
-        }
-
-
-        return okk;
-    }
-</script>   
+</div>  

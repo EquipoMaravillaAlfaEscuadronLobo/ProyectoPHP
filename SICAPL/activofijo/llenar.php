@@ -1,4 +1,5 @@
- 
+<script type="text/javascript">
+
 <?php
 include_once '../app/Conexion.php';
 include_once '../modelos/Activo.php';
@@ -11,16 +12,18 @@ Conexion::abrir_conexion();
 $lista = $_POST['lista'];
 
 
-    $listado = Repositorio_activo::obtener_activo(Conexion::obtener_conexion(), $_POST['libro']);
-    $tipo = $_POST['libro'];
+$listado = Repositorio_activo::obtener_activo(Conexion::obtener_conexion(), $_POST['libro']);
+$tipo = $_POST['libro'];
 //$numero=$_POST['numero'];
-    foreach ($listado as $fila) {
-        ?><script type="text/javascript">
-      
-            var codigo = "<?php echo $fila['codigo_activo']; ?>";
-            var estadi= "<?php echo $fila['estado']; ?>";
-            var noDisponible=""
-            if(estadi=="1"){
+foreach ($listado as $fila) {
+    ?>
+
+        var codigo = "<?php echo $fila['codigo_activo']; ?>";
+        var estadi = "<?php echo $fila['estado']; ?>";
+        var mostrarMensaje = "<?php echo $lista; ?>";
+
+
+        if (estadi == "1") {
             var pass = doSearch(codigo);
             if (pass) {
 
@@ -38,72 +41,81 @@ $lista = $_POST['lista'];
                 $("table#tabla_activo_prestamo tbody").append(linea);
 
             } else {
+                 
                 swal("Importane!", codigo + " ya fue ingresado", "warning")
+                 
             }
             //para no ingresar los mismos activo a la tabla
-           }
-          if(estadi=="2"){
-          noDisponible=codigo+" esta en Prestamo\n"
-           swal("Importane!", codigo + " esta en Prestamo", "warning")
-          }
-          if(estadi=="3"){
-           noDisponible=codigo+" esta dañado\n"
-           swal("Importane!", codigo + " esta dañado", "warning")
-          }
-          if(estadi=="4"){
-           noDisponible=codigo+" esta extraviado\n"
-           swal("Importane!", codigo + " esta extraviado", "warning")
-          }
-          if(estadi=="0"){
-           noDisponible=codigo+" ya fue dado de baja\n"
-           swal("Importane!", codigo + " ya fue dado de baja", "warning")
-          }
+        }
+        
+            if (estadi == "2") {
+                swal({
+                    title: "Importane!",
+                    text: codigo + " esta en Prestamo",
+                    type: "warning",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                });
+                //swal("Importane!", codigo + " esta en Prestamo", "warning")
+            }
+            if (estadi == "3") {
+             swal({
+                    title: "Importane!",
+                    text: codigo + " esta en dañado",
+                    type: "warning",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                });
+                //swal("Importane!", codigo + " esta dañado", "warning")
+            }
+            if (estadi == "4") { //$('#mensaje').val(codigo+" esta en Prestamo");
+                swal("Importane!", codigo + " esta extraviado", "warning")
+            }
+            if (estadi == "0") { //$('#mensaje').val(codigo+" esta en Prestamo");
+                swal("Importane!", codigo + " ya fue dado de baja", "warning")
+            }
+        
+        function doSearch(codigo)
+        {
 
-     
-           
-     function doSearch(codigo)
+            var pso = "true";
+            var tableReg = document.getElementById('tabla_activo_prestamo');
+            var searchText = codigo;
+            var cellsOfRow = "";
+            var found = false;
+            var compareWith = "";
+
+
+            // Recorremos todas las filas con contenido de la tabla
+            for (var i = 1; i < tableReg.rows.length; i++)
             {
-               
-                var pso = "true";
-                var tableReg = document.getElementById('tabla_activo_prestamo');
-                var searchText = codigo;
-                var cellsOfRow = "";
-                var found = false;
-                var compareWith = "";
-
-
-                // Recorremos todas las filas con contenido de la tabla
-                for (var i = 1; i < tableReg.rows.length; i++)
+                cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+                found = false;
+                // Recorremos todas las celdas
+                for (var j = 0; j < cellsOfRow.length && !found; j++)
                 {
-                    cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
-                    found = false;
-                    // Recorremos todas las celdas
-                    for (var j = 0; j < cellsOfRow.length && !found; j++)
-                    {
 
-                        compareWith = cellsOfRow[j].innerHTML;
+                    compareWith = cellsOfRow[j].innerHTML;
 
-                        // Buscamos el texto en el contenido de la celda
-                        if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1))
-                        {
-                            found = true;
-                        }
-                    }
-                    if (found)
+                    // Buscamos el texto en el contenido de la celda
+                    if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1))
                     {
-                        pso = false;//tableReg.rows[i].style.display = '';
-                    } else {
-                        // si no ha encontrado ninguna coincidencia, esconde la
-                        // fila de la tabla
-                        //tableReg.rows[i].style.display = 'none';
-                        pso = true;
+                        found = true;
                     }
                 }
-                return pso;
+                if (found)
+                {
+                    pso = false;//tableReg.rows[i].style.display = '';
+                } else {
+                    // si no ha encontrado ninguna coincidencia, esconde la
+                    // fila de la tabla
+                    //tableReg.rows[i].style.display = 'none';
+                    pso = true;
+                }
             }
-   </script>  
-   
-      <?php
-    }
+            return pso;
+        }
+    </script>  
 
-?>
+    <?php
+}

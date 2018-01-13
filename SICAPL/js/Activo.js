@@ -1,18 +1,11 @@
 
 function buscarUser2(valor) {
-
-
     var depto = valor.value;
-//var numero=valor.id.substr(7)
-//alert(valor.id);
     if (depto != "") {
         $.post("../activofijo/getUser.php", {libro: depto}, function (mensaje) {
             $('#listaLibros22').html(mensaje).fadeIn();
-
-
         });
     }
-
 }
 
 
@@ -34,21 +27,6 @@ function buscarActivo(valor) {
     if (depto != "") {
         llenarTact(depto, "---");
     }
-//    var numero = depto.substr(12)
-//    document.getElementById('correlativo').value = numero + " - "
-
-//var numero=valor.id.substr(7)
-//alert(valor.id);
-//    if (depto != "") {
-//        $.post("../activofijo/getAct.php", {libro: depto}, function (mensaje) {
-//            $('#listaLibros22').html(mensaje).fadeIn();
-//
-//
-//        });
-//        document.getElementById("agrAct").disabled = false;
-//        //llenarTact(depto, "---");
-//    }
-
 }
 
 function buscarActivo_mantenimiento(valor) {
@@ -145,8 +123,9 @@ function llenarTact(valor, lista) {
         }
         var cosd = document.prestamoAct.elements["codsActs[]"];//se obtiene los elementos;
         var p = 0;
-       
+        var agregados = "";
         var no = "";
+        var listacod = [];
         for (var i = 1; i < numero.length; i++) {
             p = 0;
             if (numero[i].length == 1) {
@@ -164,29 +143,30 @@ function llenarTact(valor, lista) {
             if (numero[i].length == 4) {
                 cap = tipo + "-" + numero[i];
             }
-
+            listacod.push(cap);//llenando lista de cosigos solicitados 
 
             if ($('#tabla_activo_prestamo >tbody >tr').length != 0) {
                 for (var j = 0; j < cosd.length; j++) {
 
-                    if (cosd[j].value == cap) {//verifica si hay activos con codigo de estado 3 que es el de danado
+                    if (cosd[j].value == cap) {//compuba quq no se ingrese activos reetidos a la tabla
                         p++;
 
                     }
                 }
             }
-             
+
 
             if (p == 0) {
                 $.post("../activofijo/llenar.php", {libro: cap, lista: "---"}, function (mensaje) {
                     $('#listaLibros22').html(mensaje).fadeIn();
 
                 });
+
             } else {
                 no = no + "\n" + cap;
             }
 
-        }
+        }//fin del for
         if (no.length > 5) {
             swal("Ooops", no + "\nya estan agregados", "warning");
         }
@@ -197,8 +177,8 @@ function llenarTact(valor, lista) {
 function llenarTactMant(valor, lista) {
 
     var depto = valor;
-   
-    if (lista == "---" || lista=="reparar") {
+
+    if (lista == "---" || lista == "reparar") {
 //var numero=valor.id.substr(7)
 //alert(valor.id);
         if (depto != "") {
@@ -207,7 +187,7 @@ function llenarTactMant(valor, lista) {
 
             });
 
-        }   
+        }
     } else {
         lista = lista.split('/');
         var tipo = lista[0];
@@ -237,7 +217,7 @@ function llenarTactMant(valor, lista) {
         }
         var cosd = document.mant.elements["codsActsMant[]"];//se obtiene los elementos;
         var p = 0;
-        var no = ""; 
+        var no = "";
         for (var i = 1; i < numero.length; i++) {
             p = 0;
             if (numero[i].length == 1) {
@@ -268,9 +248,9 @@ function llenarTactMant(valor, lista) {
 
 
             if (p == 0) {
-                 $.post("../activofijo/llenar_mantenimiento.php", {libro: cap, lista: "---"}, function (mensaje) {
-                $('#listaLibros22').html(mensaje).fadeIn();
-            });
+                $.post("../activofijo/llenar_mantenimiento.php", {libro: cap, lista: "---"}, function (mensaje) {
+                    $('#listaLibros22').html(mensaje).fadeIn();
+                });
             } else {
                 no = no + "\n" + cap;
             }
@@ -319,10 +299,10 @@ function validarTablas() {
                     confirmButtonText: "Si, continuar!",
                     closeOnConfirm: false
                 },
-                function () {
-                    cont = 0;
-                    document.mant.submit();
-                });
+                        function () {
+                            cont = 0;
+                            document.mant.submit();
+                        });
             }
         }
     }
@@ -330,84 +310,126 @@ function validarTablas() {
 }
 
 function agrEnca() {
-        var depto = $("#listaeman option[value='" + $('#codigo_encargado').val() + "']").attr('label');//alert(depto);
-        buscarEncargado(depto);
+    var depto = $("#listaeman option[value='" + $('#codigo_encargado').val() + "']").attr('label');//alert(depto);
+    buscarEncargado(depto);
 
+}
+
+function  activarMant() {//para activar boton de agregar, se llama en getuser y get activo
+
+    if (document.getElementById("codMantAct").value != "---") {
+        document.getElementById("agrActMant").disabled = false;
     }
-
-    function  activarMant() {//para activar boton de agregar, se llama en getuser y get activo
-
-        if (document.getElementById("codMantAct").value != "---") {
-            document.getElementById("agrActMant").disabled = false;
-        }
-    }
+}
 //para eliminar de las tablas
 // fuente https://es.stackoverflow.com/questions/9141/eliminar-fila-de-tabla-html-con-jquery-o-js
-    $(document).on('click', '.borrar', function (event) {
-        event.preventDefault();
-        $(this).closest('tr').remove();
+$(document).on('click', '.borrar', function (event) {
+    event.preventDefault();
+    $(this).closest('tr').remove();
+});
+
+$(document).on('click', '.borrar_activo', function (event) {
+    event.preventDefault();
+    $(this).closest('tr').remove();
+});
+
+
+function agregarMant() {
+    llenarTactMant("---", document.getElementById("selectCatMant").value + "/" + document.getElementById("correlativoMant").value);
+
+    return false;
+}
+
+
+function recargarCombos2() {// actualiza el selec de cateoria cuando se registra una nueva
+    $.ajax({
+        url: 'select_categoria.php',
+        type: 'POST',
+        data: ''
+    }).done(function (resp) {
+        $('select').material_select('destroy');
+        $('select.selectCat').html(resp).fadeIn();
+        $('select').material_select();
     });
-
-    $(document).on('click', '.borrar_activo', function (event) {
-        event.preventDefault();
-        $(this).closest('tr').remove();
+}
+function recargarCombos3() {// actualiza el selec de proveedor cuando se registra uno nuevo
+    $.ajax({
+        url: 'select_proveedor.php',
+        type: 'POST',
+        data: ''
+    }).done(function (resp) {
+        $('select').material_select('destroy');
+        $('select.selectPro').html(resp).fadeIn();
+        $('select').material_select();
     });
+}
+function  guardar_mante() {//ver cod de funcion en js/libros.js
+    if (validarTablas()) {
+        document.mant.submit();
+    }
+}
 
+function agregar() {
 
-    function agregarMant() {
-        llenarTactMant("---", document.getElementById("selectCatMant").value + "/" + document.getElementById("correlativoMant").value);
+    llenarTact("---", document.getElementById("selectCatpres").value + "/" + document.getElementById("correlativo").value);
 
-        return false;
-    }
-    
-    
-      function recargarCombos2() {// actualiza el selec de cateoria cuando se registra una nueva
-        $.ajax({
-            url: 'select_categoria.php',
-            type: 'POST',
-            data: ''
-        }).done(function (resp) {
-            $('select').material_select('destroy');
-            $('select.selectCat').html(resp).fadeIn();
-            $('select').material_select();
-        });
-    }
-    function recargarCombos3() {// actualiza el selec de proveedor cuando se registra uno nuevo
-        $.ajax({
-            url: 'select_proveedor.php',
-            type: 'POST',
-            data: ''
-        }).done(function (resp) {
-            $('select').material_select('destroy');
-            $('select.selectPro').html(resp).fadeIn();
-            $('select').material_select();
-        });
-    }
-    function  guardar_mante() {//ver cod de funcion en js/libros.js
-        if (validarTablas()) {
-            document.mant.submit();
-        }
-    }
-    
-     function agregar() {
-        
-        llenarTact("---", document.getElementById("selectCatpres").value+"/"+document.getElementById("correlativo").value);
-       
-        return false;
-    }
+    return false;
+}
 
 //para eliminar de las tablas
 // fuente https://es.stackoverflow.com/questions/9141/eliminar-fila-de-tabla-html-con-jquery-o-js
-    $(document).on('click', '.borrar', function (event) {
-        event.preventDefault();
-        $(this).closest('tr').remove();
-    });
+$(document).on('click', '.borrar', function (event) {
+    event.preventDefault();
+    $(this).closest('tr').remove();
+});
 
-    $(document).on('click', '.borrar_activo_tabla_prestamo', function (event) {
-        event.preventDefault();
-        $(this).closest('tr').remove();
-    });
-    
+$(document).on('click', '.borrar_activo_tabla_prestamo', function (event) {
+    event.preventDefault();
+    $(this).closest('tr').remove();
+});
+
+function  actualizar() {
+    document.getElementById("opcion").value = 2;
+    document.actualizar_prestamo_activo.submit();
+}
+function  finalizar() {
+    if (validarTablas_dev()) {
+        document.getElementById("opcion").value = 1;
+        document.actualizar_prestamo_activo.submit();
+    }
+}
+
+function validarTablas_dev() {
+
+    var okk = true;
+    // codigo para verificar no finalizar con activos en prestamo
+    var sel2 = document.actualizar_prestamo_activo.elements["accion_select1[]"];//se obtiene los elementos
+    if ($('#listActivoAct >tbody >tr').length == 1) {
+       var op=  document.getElementsByName("accion_select1[]")[0].value; 
+       if(op==1){
+            return true;
+       }else{
+           cont1=10;
+       }
+    } else {
+        var cont1 = 0;
+        for (var i = 0; i < sel2.length; i++) {
+            if (sel2[i].value == "2") {//verifica si hay activos con codigo de estado 2, que es el de en prestamo
+                cont1++;
+                okk = false;
+            }
+        }
+    }
+
+    if (cont1 > 0) {//si hay activos con codido 3 
+        swal("Ooops", "No puede finalizar el prestamo con activos pendientes de devolver", "warning");
+
+    }
+
+
+    return okk;
+}
+
 //    function  valiD() {
 //
 //        var p1 = document.getElementById('idVal').value;

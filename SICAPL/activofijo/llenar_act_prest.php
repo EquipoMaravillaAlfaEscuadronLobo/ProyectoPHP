@@ -36,7 +36,7 @@ foreach ($listado as $fila) {
             var estado= "<?php echo $fila1['estado']; ?>";
             if(estado==2){
             var sel = '<div class="form-group">' +
-                    '<select class="form-control accion_select" onchange="activar_btn_act()" id="accion_select[]" name="accion_select[]">' +
+                    '<select class="form-control accion_select" onchange="activar_btn_act()" id="accion_select1[]" name="accion_select1[]">' +
                     '<option value="2" >En Prestamo</option>' +
                     '<option value="1" >Devolver</option>' +
                     '<option value="3" >Dañado</option>' +
@@ -45,13 +45,13 @@ foreach ($listado as $fila) {
                     '</div>';
         }else{if(estado==1){
             var sel = '<div class="form-group">' +
-                    '<select class="form-control accion_select btn-success" onchange="activar_btn_act()"  id="accion_select[]" name="accion_select[]">' +                    
+                    '<select class="form-control accion_select btn-success" onchange="activar_btn_act()"  id="accion_select1[]" name="accion_select1[]">' +                    
                     '<option value="1"  selected="">Devuelto</option>' +
                     '<option value="2" >En Prestamo</option>' +
                     '</select>' +
                     '</div>';
         }else{var sel = '<div class="form-group">' +
-                    '<select class="form-control accion_select btn-success" onchange="activar_btn_act()"  id="accion_select[]" name="accion_select[]">' +                    
+                    '<select class="form-control accion_select btn-success" onchange="activar_btn_act()"  id="accion_select1[]" name="accion_select1[]">' +                    
                     '<option value="'+estado+'"  selected="">No Disponible</option>' +
                     '</select>' +
                     '</div>';

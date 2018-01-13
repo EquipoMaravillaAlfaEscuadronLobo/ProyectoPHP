@@ -171,7 +171,28 @@ class Repositorio_activo {
         return $resultado;
     }
 
-    public static function obtener_nactivo($conexion, $cod) {
+    public static function obtener_estadoActivo($conexion, $cod) {
+
+        if (isset($conexion)) {
+            try {
+
+                $sql = "SELECT
+                actvos.estado
+                FROM
+                actvos
+                WHERE
+                actvos.codigo_activo = '$cod'"; ///estos son alias para que PDO pueda trabajar 
+                foreach ($conexion->query($sql) as $row) {
+                    $r = $row[0];
+                }
+                return $r;
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+    }
+    
+     public static function obtener_nactivo($conexion, $cod) {
 
         if (isset($conexion)) {
             try {

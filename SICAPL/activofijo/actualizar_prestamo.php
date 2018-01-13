@@ -234,7 +234,7 @@ if (isset($_REQUEST["pas"])) {
                     text: 'Prestamo Finalizado',
                     type: 'success'},
                     function(){
-                       $('#tabla-paginada4').DataTable().ajax.reload();
+                       location.href='inicio_activo.php';
                     }
                     );";
                     echo "</script>";
