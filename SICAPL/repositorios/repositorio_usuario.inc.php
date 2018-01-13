@@ -444,7 +444,7 @@ class Repositorio_usuario {
                         $usuario->setCorreo($fila['correo']);
                         $usuario->setDireccion($fila['direccion']);
                         $usuario->setEmail($fila['correo']);
-                        $usuario->setNombre($fila['nombre']);
+                        $usuario->setNombre($fila['2']);
                         $usuario->setSexo($fila['sexo']);
                         $usuario->setTelefono($fila['telefono']);
                         $usuario->setFoto($fila['foto']);
