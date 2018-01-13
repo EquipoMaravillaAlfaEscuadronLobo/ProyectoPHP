@@ -186,56 +186,54 @@ Conexion::abrir_conexion();
         $lista_imprimir = $_REQUEST['lista_usuario'];
         foreach ($lista_imprimir as $key => $carnetI) {
             $usuario = Repositorio_usuario::usuario_seleccionado(Conexion::obtener_conexion(), $carnetI);
-              echo $carnetI . '<br/>';
-            foreach ($usuario as $lista) {  ?>
+                foreach ($usuario as $lista) {  ?>
+                      <div class="contenedor">
 
-                <div class="contenedor">
+        <div class="ib frontal">
+            <p class="encabezado">CASA DE ENCUENTRO JUVENIL</p>
 
-                    <div class="ib frontal">
-                        <p class="encabezado">CASA DE ENCUENTRO JUVENIL</p>
+            <img src="../../foto_usuario/<?php echo $lista->getFoto();?>" class="foto ib" alt="">
 
-                        <img src="../../foto_usuario/<?php echo $lista->getFoto(); ?>" class="foto ib" alt="">
+            <div class="texto ib ">
+                <p> CARNET:  <strong><?php echo $lista->getCodigo_usuario();?></strong></p> 
+                <p> NOMBRE:  <strong><?php echo $lista->getNombre(). " " .$lista->getApellido();?></strong></p> 
+                <p>FECHA EMISIÓN:  <strong><?php date_default_timezone_set('America/El_Salvador'); echo date('d/m/Y');?></strong> </p>
+            </div>
+        </div>
+        
+        <div class="trasero">
+            <div class="ib datos">
+                <p> TELÉFONO :  <strong><?php echo $lista->getTelefono(); ?></strong></p> 
+                <p> CORREO:  <strong><?php echo $lista->getEmail();?></strong></p> 
+                <p> INSTITUCIÓN :  <strong><?php echo $lista->getCodigo_institucion();?></strong> </p>
+                <p> <barcode dimension="1D"
+                             type="C128"
+                             value="<?php echo $lista->getCodigo_usuario();?>" 
+                             label="label"
+                             style="width:70%;
+                             height:15mm;
+                             color: black;
+                             font-size: 4mm">
+                </barcode> </p>
+            </div>
+        </div>
+        
+    </div>
+    <br>
+                <?php }
+        }
+    } else {
+        echo 'no se ha seleccionado ningun usuario';
+    }
+    ?>
 
-                        <div class="texto ib ">
-                            <p> CARNET:  <strong><?php echo $lista->getCodigo_usuario(); ?></strong></p> 
-                            <p> NOMBRE:  <strong><?php echo $lista->getNombre() . " " . $lista->getApellido(); ?></strong></p> 
-                            <p>FECHA EMISIÓN:  <strong><?php date_default_timezone_set('America/El_Salvador');
-            echo date('d/m/Y'); ?></strong> </p>
-                        </div>
-                    </div>
-
-                    <div class="trasero">
-                        <div class="ib datos">
-                            <p> TELÉFONO :  <strong><?php echo $lista->getTelefono(); ?></strong></p> 
-                            <p> CORREO:  <strong><?php echo $lista->getEmail(); ?></strong></p> 
-                            <p> INSTITUCIÓN :  <strong><?php echo $lista->getCodigo_institucion(); ?></strong> </p>
-                            <p> <barcode dimension="1D"
-                                         type="C128"
-                                         value="<?php echo $lista->getCodigo_usuario(); ?>" 
-                                         label="label"
-                                         style="width:70%;
-                                         height:15mm;
-                                         color: black;
-                                         font-size: 4mm">
-                            </barcode> </p>
-                        </div>
-                    </div>
-
-                </div>
-                <br>
-            <?php } ?>
 
 
 </page>
 
 <?php
-
 $html = ob_get_clean();
 $html2pdf = new Html2Pdf('P', 'A4', 'es', 'true', 'UTF-8');
 $html2pdf->writeHTML($html);
 $html2pdf->output('Reporte 1.pdf');
-}
-} else {
-echo 'no a seleccionado ningun usuario';
-}
 ?>
