@@ -79,8 +79,8 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
             <div class="col-md-12">
                 <div id="finalizarPL2"></div>
             </div>
-            
-            
+
+
         </div>
     </div>
     <div class="modal-footer">
@@ -94,15 +94,31 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
 <script type="text/javascript">
     function enviar() {
         if (window.event.keyCode !== 13) {
-            var bandera=true;
-            document.getElementById('num').value = document.getElementsByName('libros').length;
-            
-            document.frmPrestamoLibro.submit();
+            var bandera = true;
+            var ultimo = document.getElementsByName('libros');
+            var conteo = ultimo.length;
+            var last = ultimo[conteo - 1].id.substr(6);
+           // alert(last);
+            document.getElementById('num').value = last;
+            for(var i=1;i<=last;i++){
+               
+               if($('#codigol'+i).length != 0){
+                if(document.getElementById('codigol'+i).value===""||document.getElementById('codigouser').value===""){
+                    bandera=false;
+                    
+                }
+            }
+                }
+                if(bandera==true){
+             document.frmPrestamoLibro.submit();
+                }else{
+                    swal("Cuidado","Campos Vacios","error");
+                }
         }
     }
 
     function devolucion(count, cl, cp) {
-        if (count == 1) 
+        if (count == 1)
         {
             finalizar(cp);
         } else {
@@ -184,33 +200,33 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
             });
         });
 
-        
+
 
 
 
     }
-    function actualizarFecha(codigo){
-         var fecha=document.getElementById('newDev').value;
+    function actualizarFecha(codigo) {
+        var fecha = document.getElementById('newDev').value;
         $.ajax({
-                url: 'actualizarPrestamo.php?codigo=' + codigo + '&fecha=' + fecha,
-                type: 'GET',
-                dataType: "html",
-                data: {codigo: codigo, fecha: fecha},
-                cache: false,
-                contentType: false,
-                processData: false
-            }).done(function (resp) {
-                if (resp == 1) {
-                    swal("Exito", "Fecha de Prestamo Actualizada", "success")
-                            .then((value) => {
-                                location.href = "inicio_b.php";
-                            }
-                            );
-                } else {
-                    swal("Oops", resp, "error")
+            url: 'actualizarPrestamo.php?codigo=' + codigo + '&fecha=' + fecha,
+            type: 'GET',
+            dataType: "html",
+            data: {codigo: codigo, fecha: fecha},
+            cache: false,
+            contentType: false,
+            processData: false
+        }).done(function (resp) {
+            if (resp == 1) {
+                swal("Exito", "Fecha de Prestamo Actualizada", "success")
+                        .then((value) => {
+                            location.href = "inicio_b.php";
+                        }
+                        );
+            } else {
+                swal("Oops", resp, "error")
 
-                }
-            });
+            }
+        });
     }
 
 
@@ -218,7 +234,7 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
 
 <script>
     function abrirFinPres(codigo, dev, cant) {
-        
+
         $.post("listaFinPrestamo.php", {codigo: codigo, cantidad: cant, dev: dev}, function (mensaje) {
             $('#finalizarPL2').html(mensaje).fadeIn();
 

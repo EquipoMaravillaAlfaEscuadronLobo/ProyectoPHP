@@ -42,7 +42,7 @@ include_once '../plantillas/menu.php';
 </div>
 
 <div class="col s12" id="test3">
-    <h1>ConsultasZ</h1>
+   <?php include_once './inicio_consultas.php'; ?>
 </div>
 <div class="col s12" id="test4">
     
@@ -51,6 +51,7 @@ include_once '../plantillas/menu.php';
 
 <?php
 include_once '../plantillas/pie_de_pagina.php';
+
 ?>
 
 <script>

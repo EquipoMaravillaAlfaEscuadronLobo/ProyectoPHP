@@ -69,7 +69,7 @@ include_once('../plantillas/pie_de_pagina.php');
 ?>
 <script type="text/javascript">
     $(document).ready(function () {
-        
+
         $('.librof').submit(function () {
             var formData = new FormData(document.getElementById('frmLibro'));
 
@@ -86,30 +86,31 @@ include_once('../plantillas/pie_de_pagina.php');
                 processData: false
             }).done(function (resp) {
                 if (resp == 1) {
-                    swal("Exito","Libro Registrado","success")
-                            .then((value)=>{
-                            document.getElementById('frmLibro').reset();
+                    swal("Exito", "Libro Registrado", "success")
+                            .then((value) => {
+                                document.getElementById('frmLibro').reset();
 
                                 location.href = "inicio_b.php";
                             }
-                )
+                            )
 
-                    
+
 
                 } else {
-                    if(resp==0){
-                        
-                        
-                    }else{
-                    swal("Oops", resp, "error")
+                    if (resp == 0) {
 
+
+                    } else {
+                        swal("Oops", resp, "error")
+
+                    }
                 }
-            })
-            return false;
+                )
+                        return false;
 
+            })
         })
 
-        
         $('.autorf').submit(function () {
             //var codigo=$('#codigol').val();
             //alert(codigo);
@@ -124,23 +125,22 @@ include_once('../plantillas/pie_de_pagina.php');
                 processData: false
             }).done(function (resp) {
                 if (resp == 1) {
-                    swal("Exito","Autor Registrado","success")
-                            .then((value)=>{
-                            document.getElementById('frmAutor').reset();
-                            recargarCombos();
-                                
+                    swal("Exito", "Autor Registrado", "success")
+                            .then((value) => {
+                                document.getElementById('frmAutor').reset();
+                                recargarCombos();
+
                             }
-                )
+                            )
 
                 } else {
                     swal("Oops", resp, "error")
                 }
 
-                }
+
             })
             return false;
         })
-
 
         $('.editorialf').submit(function () {
             //var codigo=$('#codigol').val();
@@ -151,13 +151,13 @@ include_once('../plantillas/pie_de_pagina.php');
                 data: $(this).serialize()
             }).done(function (resp) {
                 if (resp == 1) {
-                    swal("Exito","Editorial Registrada","success")
-                            .then((value)=>{
-                            document.getElementById('frmEditoriales').reset();
-                            recargarCombos();
-                                
+                    swal("Exito", "Editorial Registrada", "success")
+                            .then((value) => {
+                                document.getElementById('frmEditoriales').reset();
+                                recargarCombos();
+
                             }
-                )
+                            )
 
 
                 } else {
@@ -211,7 +211,6 @@ include_once('../plantillas/pie_de_pagina.php');
         swal("Cuidado", "Seleccione el Motivo Por el que desea dar de Baja", "info", {
             buttons: {
                 cancel: "Cancelar",
-
                 catch : {
                     text: "Dañado",
                     value: "catch",
@@ -231,14 +230,13 @@ include_once('../plantillas/pie_de_pagina.php');
                 case "otros":
                     swal("Escriba el motivo", {
                         content: 'input',
-                        buttons:{
+                        buttons: {
                             cancel: "Cancelar",
                             confirm: true,
                         },
-                        
-                        
-                    }).then((value2,confirm) => {
-                        swal(value2+confirm);
+
+                    }).then((value2, confirm) => {
+                        swal(value2 + confirm);
                         $.ajax({
                             url: 'bajaLibro.php?codigo=' + codigo + '&motivo=' + value2,
                             type: 'GET',
@@ -266,56 +264,56 @@ include_once('../plantillas/pie_de_pagina.php');
                 case "catch":
                     inputValue = "Dañado";
                     $.ajax({
-                url: 'bajaLibro.php?codigo=' + codigo + '&motivo=' + inputValue,
-                type: 'GET',
-                dataType: "html",
-                data: {codigo: codigo, motivo: inputValue},
-                cache: false,
-                contentType: false,
-                processData: false
-            }).done(function (resp) {
-                if (resp == 1) {
-                    swal("Exito", "Libro Borrado", "success", {
-                    }).then((value2) => {
-                        location.href = "inicio_b.php";
+                        url: 'bajaLibro.php?codigo=' + codigo + '&motivo=' + inputValue,
+                        type: 'GET',
+                        dataType: "html",
+                        data: {codigo: codigo, motivo: inputValue},
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    }).done(function (resp) {
+                        if (resp == 1) {
+                            swal("Exito", "Libro Borrado", "success", {
+                            }).then((value2) => {
+                                location.href = "inicio_b.php";
 
-                    });
+                            });
 
-                } else {
-                    swal("Oops", "No se pudo dar de Baja", "error")
+                        } else {
+                            swal("Oops", "No se pudo dar de Baja", "error")
 
-                }
-            })
+                        }
+                    })
                     break;
                 case "defeat":
                     inputValue = "Extraviado";
                     $.ajax({
-                url: 'bajaLibro.php?codigo=' + codigo + '&motivo=' + inputValue,
-                type: 'GET',
-                dataType: "html",
-                data: {codigo: codigo, motivo: inputValue},
-                cache: false,
-                contentType: false,
-                processData: false
-            }).done(function (resp) {
-                if (resp == 1) {
-                    swal("Exito", "Libro Borrado", "success", {
-                    }).then((value2) => {
-                        location.href = "inicio_b.php";
+                        url: 'bajaLibro.php?codigo=' + codigo + '&motivo=' + inputValue,
+                        type: 'GET',
+                        dataType: "html",
+                        data: {codigo: codigo, motivo: inputValue},
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    }).done(function (resp) {
+                        if (resp == 1) {
+                            swal("Exito", "Libro Borrado", "success", {
+                            }).then((value2) => {
+                                location.href = "inicio_b.php";
 
-                    });
+                            });
 
-                } else {
-                    swal("Oops", "No se pudo dar de Baja", "error")
+                        } else {
+                            swal("Oops", "No se pudo dar de Baja", "error")
 
-                }
-            })
+                        }
+                    })
                     break;
 
 
 
             }
-           
+
         });
     }
 </script>
