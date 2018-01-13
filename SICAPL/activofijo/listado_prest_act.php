@@ -103,7 +103,7 @@ $listado = Repositorio_prestamoact::ListaPrestamosAct(Conexion::obtener_conexion
     </div>
     <div class="modal-footer">
         <div class="row">
-            <div class="col-md-6 text-right"><button id="gp" class="btn btn-success modal-action " type="submit" form="prestamoAct">
+            <div class="col-md-6 text-right"><button id="gp" class="btn btn-success modal-action " onclick="registrar()" >
                     <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>
                     Guardar</button></div>
             <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>

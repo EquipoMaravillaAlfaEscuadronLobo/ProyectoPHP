@@ -38,19 +38,7 @@ class Repositorio_activo {
                 $sentencia->bindParam(':foto', $foto, PDO::PARAM_STR);
 
                 $activo_insertado = $sentencia->execute();
-
-                //$accion = "se registro un activo con las siguientes  caracteristicas: tipo" $ ;
                 
-                /* } else {
-                  echo '<script>'
-                  . 'swal("Advetencia!", "El nombre de usuario que introdujo ya esta en uso, favor introdusca otro", "warning");'
-                  . '$("#idNombre").val("' . $nombre . '"); $("#idApellido").val("' . $apellido . '");'
-                  . '$("#idUser").val("' . $codigo_administrador . '"); $("#idDui").val("' . $dui . '");'
-                  . '$("#idFecha").val("' . $fecha . '"); $("#idEmail").val("' . $email . '");'
-                  . 'if ("' . $nivel . '" == "0") {$("#idRoot").attr("checked", "checked");} else {$("#idAdministrador").attr("checked", "checked");}'
-                  . 'if ("' . $sexo . '" == "Masculino") {$("#idHombre").attr("checked", "checked");} else {$("#idMujer").attr("checked", "checked");}'
-                  . '</script>';
-                  } */
             } catch (PDOException $ex) {
                 echo '<script>swal("No se puedo realizar el registro acivo", "Favor revisar los datos e intentar nuevamente' . $ex->getMessage() . '", "warning");</script>';
                 print 'ERROR: ' . $ex->getMessage();

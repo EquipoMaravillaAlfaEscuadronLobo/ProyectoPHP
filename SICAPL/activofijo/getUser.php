@@ -14,6 +14,7 @@ foreach ($listado as $fila) {
         document.getElementById('nombreUserA').innerHTML = "<?php echo $fila['nombre'] ?>";
         document.getElementById('sexoA').innerHTML = "<?php echo $fila['sexo'] ?>";
         document.getElementById('fotA').setAttribute("src", "<?php echo $fila['foto'] ?>");
+        document.getElementById('codigouserA').value="<?php echo $fila['codigo_usuario'] ?>";
         
      <?php 
             if ($fila[11]=='si') {

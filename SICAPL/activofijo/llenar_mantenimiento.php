@@ -44,14 +44,14 @@ foreach ($listado as $fila) {
         var sel = '<div class="form-group">' +
                 '<select class="form-control accion_select"  id="accion_select_mantenimiento" name="accion_select_mantenimiento[]">' +
                 '<option value="1" selected="" >Disponible</option>' +
-                '<option value="3"  class="btn-warning">Dañado</option>' +
+                '<option value="3"  >Dañado</option>' +
                 '</select>' +
                 '</div>';
         } else{
         var sel = '<div class="form-group">' +
                 '<select  class="form-control accion_select"  id="accion_select_mantenimiento" name="accion_select_mantenimiento[]">' +
                 '<option value="1"  >Disponible</option>' +
-                '<option value="3" selected="" class="btn-warning">Dañado</option>' +
+                '<option value="3" selected="" >Dañado</option>' +
                 '</select>' +
                 '</div>';
         }

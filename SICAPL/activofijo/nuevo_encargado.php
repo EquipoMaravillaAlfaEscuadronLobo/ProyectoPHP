@@ -65,7 +65,7 @@ if (isset($_REQUEST["bander"])) {
 
 
     Conexion::abrir_conexion();
-echo '<script language="javascript">alert("juas");</script>'; 
+
     $encargado = new Encargado_mantenimiento();
     $encargado->setNombre($_REQUEST["nameNombre"]);
     $encargado->setDirecccion($_REQUEST["nameDireccion"]);

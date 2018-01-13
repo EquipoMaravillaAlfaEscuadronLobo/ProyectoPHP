@@ -19,7 +19,7 @@ $listado = Repositorio_activo::lista_activo_mantenimiento2(Conexion::obtener_con
                         <div class="col-md-8"><h3>Listado de Activos</h3>
                         </div>
                         <div class="col-md-4">
-                            <a class="btn btn_primary"   onclick="nuevoMant('no')"><span aria-hidden="true" class="glyphicon glyphicon-plus">
+                            <a class="btn btn_primary"   onclick="nuevoMant('no','si')"><span aria-hidden="true" class="glyphicon glyphicon-plus">
                         </span>MANTENIMIENTO</a>
                         </div>
                     </div>       
@@ -82,7 +82,7 @@ $listado = Repositorio_activo::lista_activo_mantenimiento2(Conexion::obtener_con
 
                                     </td>
                                     <td class="text-center">
-                                        <a class="btn btn_primary"   onclick="nuevoMant('<?php echo $fila['codigo_activo'] ?>')"><span aria-hidden="true" class="fa fa-wrench">
+                                        <a class="btn btn_primary"   onclick="nuevoMant('<?php echo $fila['codigo_activo'] ?>','si')"><span aria-hidden="true" class="fa fa-wrench">
                         </span></a>
                                     </td>
 

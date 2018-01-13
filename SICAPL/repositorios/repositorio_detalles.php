@@ -20,9 +20,6 @@ class Repositorio_detalle {
                 $proce = $detalle->getProcesador();
 
 
-                //$administradorExistente = self::obtener_administrador($conexion, $codigo_administrador);
-                //if ($administradorExistente->getCodigo_administrador() == "") {
-
                 $sql = 'INSERT INTO detalles(codigo_detalle,serie,color,marca,modelo,ram,memoria,sistema,dimensiones,otros,procesador)'
                         . ' values (:codigo_detalle,:serie,:color,:marca,:modelo,:ram,:memoria,:sistema,:dimensiones,:otros,:proce)';
                 ///estos son alias para que PDO pueda trabajar 
@@ -41,16 +38,6 @@ class Repositorio_detalle {
                 //echo '<script>alert("'.$sentencia.'");</script>'; 
                 $detalle_insertado = $sentencia->execute();
 
-                /* } else {
-                  echo '<script>'
-                  . 'swal("Advetencia!", "El nombre de usuario que introdujo ya esta en uso, favor introdusca otro", "warning");'
-                  . '$("#idNombre").val("' . $nombre . '"); $("#idApellido").val("' . $apellido . '");'
-                  . '$("#idUser").val("' . $codigo_administrador . '"); $("#idDui").val("' . $dui . '");'
-                  . '$("#idFecha").val("' . $fecha . '"); $("#idEmail").val("' . $email . '");'
-                  . 'if ("' . $nivel . '" == "0") {$("#idRoot").attr("checked", "checked");} else {$("#idAdministrador").attr("checked", "checked");}'
-                  . 'if ("' . $sexo . '" == "Masculino") {$("#idHombre").attr("checked", "checked");} else {$("#idMujer").attr("checked", "checked");}'
-                  . '</script>';
-                  } */
             } catch (PDOException $ex) {
                 echo '<script>swal("No se puedo realizar el registro ", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
                 print 'ERROR: ' . $ex->getMessage();

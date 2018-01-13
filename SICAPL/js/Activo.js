@@ -290,7 +290,7 @@ function validarTablas() {
             }
             if (cont > 0) {//si hay activos con codido 3 
                 swal({
-                    title: "Desea continuar?",
+                    title: "¿Desea continuar?",
                     text: "Hay activos que fueron a mantenimiento y siguen dañados!",
                     type: "warning",
                     showCancelButton: true,
@@ -398,18 +398,72 @@ function  finalizar() {
         document.actualizar_prestamo_activo.submit();
     }
 }
+function  registrar() {
+    if (validarTablas_reg()) {
+        document.prestamoAct.submit();
+    }
+}
+function validarTablas_reg() {
+    var ok = true;
 
+    var sel = document.mant.elements["accion_select_mantenimiento[]"];//se obtiene los elementos
+
+    if ($('#tabla_activo_prestamo >tbody >tr').length == 0) {
+        ok = false;
+        swal("Ooops", "Tabla de activos vacia", "warning");
+    } else {
+        if (document.getElementById('codigouserA').value == "no") {
+            ok = false;
+            swal("Ooops", "No ha seleccionado usuario", "warning");
+        }
+    }
+    return ok;
+}
 function validarTablas_dev() {
 
     var okk = true;
     // codigo para verificar no finalizar con activos en prestamo
     var sel2 = document.actualizar_prestamo_activo.elements["accion_select1[]"];//se obtiene los elementos
-    if ($('#listActivoAct >tbody >tr').length == 1) {
+    if ($('#listActivoAct >tbody >tr').length == 1) {okk = false;
         var op = document.getElementsByName("accion_select1[]")[0].value;
-        if (op == 1) {
-            return true;
+        if (op == 1) {//observacion_pres_act
+            okk = true;
         } else {
-            cont1 = 10;
+            if (op == 3) {
+                swal({
+                    title: "¿Desea continuar?",
+                    text: "Finalizara el prestamo con el activo dañado",
+                    type: "warning",
+                    showCancelButton: true,
+                    cancelButtonText: "Cancelar",
+                    confirmButtonClass: "btn-danger",
+                    confirmButtonText: "Si, continuar!",
+                    closeOnConfirm: false
+                },
+                        function () {
+                            okk = false;
+                            document.actualizar_prestamo_activo.submit();
+                        });
+
+            } else {
+                if (op == 4) {
+                    swal({
+                        title: "¿Desea continuar?",
+                        text: "Finalizara el prestamo con el activos extrviado",
+                        type: "warning",
+                        showCancelButton: true,
+                        cancelButtonText: "Cancelar",
+                        confirmButtonClass: "btn-danger",
+                        confirmButtonText: "Si, continuar!",
+                        closeOnConfirm: false
+                    },
+                            function () {
+                                okk = false;
+                                document.actualizar_prestamo_activo.submit();
+                            });
+                    // observacion_pres_act
+                }
+            }
         }
     } else {
         var cont1 = 0;
@@ -418,6 +472,7 @@ function validarTablas_dev() {
                 cont1++;
                 okk = false;
             }
+
         }
     }
 
@@ -430,22 +485,14 @@ function validarTablas_dev() {
     return okk;
 }
 
-//    function  valiD() {
-//
-//        var p1 = document.getElementById('idVal').value;
-//        var p = document.getElementById('Secreto').value;
-//        var m = document.getElementById('idMotivoE').value;
-//
-//        if (p1 == p) {
-//            if (m.length > 3) {
-//                document.eliminarAct.submit();
-//            } else {
-//                swal("Oops", "ingrese  Motivo Valido", "error");
-//            }
-//
-//        } else {
-//            swal("Oops", "Contraseña Incorrecta", "error");
-//        }
-//
-//    }
+function copiarDetalles() {
+    document.getElementById('1').value = document.getElementById('nserieEAD').value;
+    document.getElementById('1').value = document.getElementById('nserieEAD').value;
+    document.getElementById('1').value = document.getElementById('nserieEAD').value;
+    document.getElementById('1').value = document.getElementById('nserieEAD').value;
+    document.getElementById('1').value = document.getElementById('nserieEAD').value;
+    document.getElementById('1').value = document.getElementById('nserieEAD').value;
+    document.getElementById('1').value = document.getElementById('nserieEAD').value;
+
+}
 

@@ -22,7 +22,7 @@ $(document).ready(function() {
     <input type="hidden" name="passsss" id="passsss">
     <input type="hidden" name="codTipo" id="codTipo">
     <input type="hidden" name="codAct" id="codAct">
-    <input type="hidden" name="mensaje" id="mensaje" value="no funciona">
+    <input type="hidden" name="codigouserA" id="codigouserA" value="no">
     <div class="container-fluid" >
         <div class="row">
             
@@ -80,11 +80,11 @@ $(document).ready(function() {
                                     </div>
                                 </div>
 
-                                <table class="table table-striped table-bordered" id="tabla_activo_prestamo">
+                                <table class="table table-hover" id="tabla_activo_prestamo">
                                     <caption>Activos A Prestar</caption>
                                     <thead>
                                     <th>Codigo</th>
-                                    <th>Categoria</th>
+                                    <th>Tipo</th>
                                     <th>Responsable</th>
                                     </thead>
                                     <tbody>
@@ -103,7 +103,10 @@ $(document).ready(function() {
                 <div class="panel panel-default" name="user">
                     <div class="panel-heading p_libro">
                         <div class="col-md-10">
-                            <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="" style="font-size:16px">Buscar Usuario</label><input type="text" id="codigouserA"  name="codigouserA" autofocus onkeypress="buscarUser2(this)" list="listaUsuarios">
+                            <div class="input-field">
+                                <i class="fa fa-search prefix" aria-hidden="true"></i>
+                                <label for="" style="font-size:16px">Buscar Usuario</label>
+                                <input type="text" id="codigouserAa"  name="codigouserAa" autofocus onkeypress="buscarUser2(this)" list="listaUsuarios">
                             </div>              
                         </div>
                     </div>

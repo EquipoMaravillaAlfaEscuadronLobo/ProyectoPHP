@@ -63,10 +63,10 @@ include_once '../app/Conexion.php';
                     </div>
                     <!-- termina el combo de encargado   -->
                     <div class="row "  >
-                        <button class="btn btn_primary"  ><a   onclick="llamarMantenimiento() "><span aria-hidden="true" class="glyphicon glyphicon-plus">
+                        <button class="btn btn_primary" type="button"  ><a   onclick="llamarMantenimiento() "><span aria-hidden="true" class="glyphicon glyphicon-plus">
                                 </span>MANTENIMIENTO</a></button>
                         <div class="col-md-3"></div>
-                        <button class="btn btn-danger"> <i class="Medium material-icons prefix" onclick="delA()" >delete</i> </button>
+                        <button class="btn btn-danger"  type="button" > <i class="Medium material-icons prefix" onclick="delA()" >delete</i> </button>
 
 
                     </div><!-- Termina botones -->
@@ -231,7 +231,7 @@ include_once '../app/Conexion.php';
 </script>
 <script type="text/javascript">
 function llamarMantenimiento(){
-    nuevoMant(document.getElementById('codActivo').value);
+    nuevoMant(document.getElementById('codActivo').value, "no");
     return false;
 }
  
@@ -319,10 +319,12 @@ if (isset($_REQUEST["banderaActiv"])) {
                     text: "Registro actualizado con exito!",
                     type: "success",
                     confirmButtonText: "ok",
-                    closeOnConfirm: false
+                    closeOnConfirm: true
                 },
                 function () {
-                    location.href="inicio_activo.php";
+                swal.close();
+                 location.href="inicio_activo.php";
+                $("#ttest2").reload();
                     
                 });</script>';
 }

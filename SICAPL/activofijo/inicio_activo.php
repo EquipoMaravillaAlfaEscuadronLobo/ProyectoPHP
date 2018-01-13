@@ -116,7 +116,7 @@ include_once('../plantillas/pie_de_pagina.php');
     <div class="modal-footer "> 
         <div class="row">
             <div class="col-md-6 text-right">
-                <button  class="btn btn-success  " type="submit" form="ActActEAD" >
+                <button  class="btn btn-success modal-close "  type="button" onclick="">
                     <span class="glyphicon glyphicon-floppy-disk" ></span>
                     Guardar</button>
             </div>
@@ -138,16 +138,16 @@ include_once('../plantillas/pie_de_pagina.php');
                 // Mostramos un mensaje con la respuesta de PHP
                 success: function (resp) {
                     document.getElementById('FORMUL').reset();
-                    $('#nuevoEncargado').modal('close');
-                    swal("Exito", "Registro guardado con exito", "success");
-                    $("#lista_encargado").load(" #lista_encargado");//para actuaizar la datalist cuando registra
+                    $('#nuevoEncargado').modal('close');                    
+                    $("#listaeman").load(" #listaeman");//para actuaizar la datalist cuando registra
+                    swal("Exito", "Encargado guardado con exito", "success");
+                    location.reload();
                 }
             });
             return false;
         });
 
-        $('#ActActEAD').submit(function () {
-
+        $('#mant').submit(function () {
             // Enviamos el formulario usando AJAX
             $.ajax({
                 type: 'POST',
@@ -156,8 +156,10 @@ include_once('../plantillas/pie_de_pagina.php');
                 // Mostramos un mensaje con la respuesta de PHP
                 success: function (resp) {
                     // document.getElementById('ActActEAD').reset();
-                    $('#actualizarCaracteristicas').modal('close');
-                    swal("Exito", "Registro actualizado con exito", "success");
+                    $('#nuevoMant').modal('close');
+                    
+                    swal("Exito", "Activo actualizado con exito", "success");
+                    //location.reload();
                     //$("#lista_encargado").load(" #lista_encargado");//para actuaizar la datalist cuando registra
                 }
             })
@@ -197,73 +199,13 @@ include_once('../plantillas/pie_de_pagina.php');
             return false;
         });
         
-        // Interceptamos el evento submit
-        $('#ActAct').submit(function () {
-            // Enviamos el formulario usando AJAX
-           
-            $.ajax({
-                type: 'POST',
-                url: $(this).attr('action'),
-                dataType: "html",
-                data: $(this).serialize(),
-                cache: false,
-                contentType: false,
-                processData: false
-                
-                // Mostramos un mensaje con la respuesta de PHP
-                }).done( function () {
-                  
-                  swal({
-                    title: "Exito",
-                    text: "Registro actualizado con exito!",
-                    type: "success",
-                    confirmButtonText: "ok",
-                    closeOnConfirm: false
-                },
-                function () {
-                    location.href="inicio_activo.php";
-                    
-                });
-                
-
-                } 
-                       
-            )
-            return false;
-        });
+       
+        
+         
         
         
-         $(' .FORMULARI').submit(function () {
-            // Enviamos el formulario usando AJAX
-           
-            $.ajax({
-                type: 'POST',
-                url: $(this).attr('action'),
-                dataType: "html",
-                data: $(this).serialize(),
-                cache: false,
-                processData: false,
-                contentType: false
-                
-                
-                // Mostramos un mensaje con la respuesta de PHP
-                }).done( function (resp) {
-                  swal({
-                    title: "Exito",
-                    text: "Registro guardado con exito!",
-                    type: "success",
-                    confirmButtonText: "ok",
-                    closeOnConfirm: false
-                },
-                function () {
-                    location.href="inicio_activo.php";
-                    
-                });
-                  
-                } 
-            );
-            return false;
-        });
+        
+        
     });
 
 

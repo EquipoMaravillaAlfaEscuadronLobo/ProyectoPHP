@@ -152,9 +152,15 @@
         document.getElementById("btnfinalizar").disabled = false;
     }
     
-    function activar_btn_act(){
+    function activar_btn_act(valor){
          document.getElementById("btn_actualizar_prestamo").disabled = false;
          document.getElementById("btnfinalizar").disabled = false;
+         
+         if(valor=="3" || valor=="4"){alert(valor);
+                $("#observacion_pres_act").prop("required", true);
+         }else{
+              $("#observacion_pres_act").prop("required", false);
+         }
     }
     //activa el boton y evita que la fecha quede vacia
     function validarFecha() {
@@ -186,7 +192,7 @@ if (isset($_REQUEST["pas"])) {
     $libros = $_POST['codsActsA']; //son los activos pero fue mas facil comentar esto a cambiar el nombre
     $observacions = $_POST['observaciones'];//observaciones de los actiovos
     $observacion = $_POST['observacion_pres_act'];//observaciones del prestamo o usuario
-    $aciones = $_POST['accion_select']; //para acutlizar el estado del activo 
+    $aciones = $_POST['accion_select1']; //para acutlizar el estado del activo 
     $opcion = $_POST['opcion'];
     $codPrestamo = $_POST['codigoPrestamoAct'];
 //echo $usuario;

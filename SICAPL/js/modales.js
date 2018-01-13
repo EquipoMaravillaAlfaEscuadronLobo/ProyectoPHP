@@ -216,8 +216,9 @@ function nuevoPretamoAct() {
 
 }
 
-function nuevoMant(id) {
+function nuevoMant(id, valor) {
     $("#catMantAct").val("---");
+    $("#redireccionar").val(valor);
     $("#codMantAct").val("---");
     $("#tabla_activo_mantenimiento tbody").empty()//ellino el anterior
     $("#datos_encargado2 tbody").empty()//ellino el anterior

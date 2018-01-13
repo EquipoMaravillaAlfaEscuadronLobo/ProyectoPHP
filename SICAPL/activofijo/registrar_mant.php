@@ -47,6 +47,7 @@
 
 <form name="mant" id="mant" method="post" action="">
     <input type="hidden" id="pass" name="pass"/>
+    <input type="hidden" id="redireccionar" name="redireccionar" value="si"/>
     <!--  panel de activo    -->
     <div class="col-md-6">
         <div class="panel-group" id="accordion">
@@ -96,11 +97,11 @@
                             </div>
                         </div>
 
-                        <table class="table table-striped table-bordered" id="tabla_activo_mantenimiento">
+                        <table class="table table-hover" id="tabla_activo_mantenimiento">
                             <caption>Activos </caption>
                             <thead>
                             <th>Codigo</th>
-                            <th>Categoria</th>
+                            <th>Tipo</th>
                             <th>Estado</th>
                             <th>&nbsp;<input  type="hidden"  required="" id="bandera_tabla_activo_prestamo" name="bandera_tabla_activo_prestamo" /></th>
                             </thead>
@@ -144,7 +145,7 @@
                                 <td style="height:10px;">
                                     <div class="input-field col m12">
                                         <i class="fa fa-usd prefix"></i> 
-                                        <input type="text" id="costoTotal" name="CostoTotal" class="text-center validate" required="">
+                                        <input type="number"  min="0" step="any" id="costoTotal" name="CostoTotal" class="text-center validate" required="">
                                         <label for="precioUnitario" style="font-size:16px">Precio Total<small></small> </label>
                                     </div>
                                 </td>
@@ -248,7 +249,7 @@ if (isset($_REQUEST["pass"])) {
     include_once '../repositorios/repositorio_prestamoact.php';
 
     Conexion::abrir_conexion();
-
+    $red= $_POST['redireccionar'];
     $devolucionMant = $_POST['fecha_mant'];
     $devolucionMant = date_format(date_create($devolucionMant), 'Y-m-d');
     $activos = $_POST['codsActsMant'];
@@ -310,6 +311,7 @@ if (isset($_REQUEST["pass"])) {
                 echo "</script>";
             }
         }
+        if($red=="si"){
         echo "<script type='text/javascript'>";
         echo "swal({
                     title: 'Exito',
@@ -319,7 +321,7 @@ if (isset($_REQUEST["pass"])) {
                        location.href='inicio_activo.php';
                     }
                     );";
-        echo "</script>";
+        echo "</script>";}
     }
 }
 ?>

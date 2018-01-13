@@ -28,13 +28,14 @@ Conexion::abrir_conexion();
                             </div>
                         </div>
                         <div class="input-field col m3">
+                           
                             <select required="" name="admin" id="admin" >
-                                <option value="0" disabled selected>Seleccione Encargado</option>
                                 <?php
                                 
                                 Repositorio_administrador::lista_administradores2(Conexion::obtener_conexion());
                                 ?>
                             </select>
+                             <label for="idNombre" class="col-sm-4 control-labe" style="font-size: 18">Encargado</label>
                         </div>
                         <div class="col m1"></div>
                         <!-- termona el combo de encargado   -->
@@ -59,7 +60,7 @@ Conexion::abrir_conexion();
                                 include'select_categoria.php';
                                 ?>
                             </select>
-
+                             <label for="idNombre" class="col-sm-4 control-labe" style="font-size: 18">Tipo</label>
                         </div>
                         <div class="input-field col m1">
                             <input type="number"  min="1" max="500" id="cantidad" name="cantidad" placeholder="Cantidad" required="true" value="1">
@@ -71,7 +72,7 @@ Conexion::abrir_conexion();
                         <!-- termona el combo de categoria   -->
                         <div class="input-field col m5">
                             <i class="fa fa-usd prefix"></i> 
-                            <input type="text" id="precioUnitario" name="precioUnitario" class="text-center validate" required="" pattern="^@?(\w){1,15}$"  >
+                            <input type="number"  min="0" step="any" id="precioUnitario" name="precioUnitario" class="text-center validate" required=""   >
                             <label for="precioUnitario">Precio Unitario <small></small> </label>
                         </div>
                     </div>
@@ -90,6 +91,7 @@ Conexion::abrir_conexion();
                                 include'select_proveedor.php';
                                 ?>
                             </select>
+                             <label for="idNombre" class="col-sm-4 control-labe" style="font-size: 18">Proveedor</label>
                         </div>
                         <div class="input-field col m1">
                             <a class="btn btn_primary"  target="_blank" onclick="nuevaCat(2)"><span aria-hidden="true" class="glyphicon glyphicon-plus"></span></a>
@@ -203,7 +205,7 @@ Conexion::abrir_conexion();
                                             </div>
                                             <div class="row">
 
-                                                <div class="input-field col m12">
+                                                <div class="input-field col m11">
                                                     <i class="fa fa-microchip prefix"></i> 
                                                     <input type="text" id="pro" name="pro" class="text-center validate" required="" value="Sin Procesador" onclick = "if (this.value == 'Sin Procesador')
                                                                 this.value = ''" onblur="if (this.value == '')
@@ -213,9 +215,10 @@ Conexion::abrir_conexion();
                                                  </div>
                                              <div class="row">
                                                 
-                                                <div class="input-field col m12">
+                                                <div class="input-field col m11">
+                                                    <i class="fa fa-pencil-square-o prefix"></i>
                                                     <textarea id="otro" name="otro" class="materialize-textarea" style="font-size:15px"></textarea>
-                                                    <label for="textarea1" style="font-size:15px"><i class="  fa fa-pencil-square-o"></i>&nbsp Otro</label>
+                                                    <label for="textarea1" style="font-size:15px">&nbsp Otro</label>
                                                 </div>
                                             </div>
 
@@ -259,7 +262,7 @@ Conexion::abrir_conexion();
 
 <div id="nuevaCat" class="modal modal-fixed-footer" ><!-- para llamar al modal PARA REGISTRAR CATEGORIA-->
     <div class="modal-heading panel-heading text-center">
-        <i class="fa fa-sitemap prefix"></i><h4> &nbsp;Registrar categoria</h4>
+        <i class="fa fa-sitemap prefix"></i><h4> &nbsp;Registrar Tipo</h4>
     </div>
 
     <div class="modal-content ">
@@ -387,12 +390,23 @@ if (isset($_REQUEST["bandera1"])) {
     }
     
     ////esto es para la bitacora 
-   
-    $nombre_categoria = Repositorio_categoria::obtener_nombre_categoria(Conexion::obtener_conexion(),$_REQUEST["selectCat"] );
+   $idca=$_REQUEST["selectCat"];
+    $nombre_categoria = Repositorio_categoria::obtener_nombre_categoria(Conexion::obtener_conexion(),$idca);
     $accion = 'se registraron '. $cant .' item tipo ' .$nombre_categoria . ' con las siguientes características: color '
             . $_REQUEST["color"] . ', marca ' .$_REQUEST['marca']. ", dimensiones " .$_REQUEST['dimensiones']
             . ', sistema operativo ' . $_REQUEST["so"]. ", Memoria Ram " .  $_REQUEST["ram"] . ", Modelo " . $_REQUEST["modelo"]  ;
     Repositorio_Bitacora::insertar_bitacora(Conexion::obtener_conexion(), $accion);
-    
+    echo '<script>swal({
+                    title: "Exito",
+                    text: "Activo registrado con exito!",
+                    type: "success",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: true
+                },
+                function () {
+                swal.close();
+                $("#ttest1").reload();
+                    
+                });</script>';
 }
 ?>

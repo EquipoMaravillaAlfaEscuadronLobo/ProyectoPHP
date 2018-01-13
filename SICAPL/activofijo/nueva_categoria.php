@@ -15,7 +15,7 @@
                             <div class="input-field">
                                 <i class="fa fa-sitemap prefix"></i> 
                                 <label for="Titulo">Nombre</label>
-                                <input type="text" id="NombreCat" name="nameNombre"  class="text-center validate" maxlength="25" maxlength="3" required="">
+                                <input type="text" id="NombreCat" name="nameNombre" pattern="[A-Za-z]{4-28}"  class="text-center validate" maxlength="25" minlength="4" required="">
                             </div>
                         </div>
                     </div>
@@ -57,8 +57,7 @@ if (isset($_REQUEST["banderaCAtegoria"])
     $categoria->setNombre($_REQUEST["nameNombre"]);
 
     Repositorio_categoria::insertar_categoria(Conexion::obtener_conexion(), $categoria); 
-    echo '<script>swal("Excelente!", "Registro guardado con exito", "success");</script>';
-     echo '<script>recargar2();</script>';
+   
     //Conexion::cerrar_conexion();
       
         
