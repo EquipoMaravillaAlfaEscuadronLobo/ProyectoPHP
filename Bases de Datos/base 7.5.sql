@@ -322,7 +322,7 @@ CREATE TABLE `encargado_mantenimiento` (
 
 CREATE TABLE `institucion` (
   `codigo_institucion` int(11) NOT NULL,
-  `nombre` varchar(45) DEFAULT NULL
+  `nombre` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -330,26 +330,11 @@ CREATE TABLE `institucion` (
 --
 
 INSERT INTO `institucion` (`codigo_institucion`, `nombre`) VALUES
-(1, 'indi'),
-(2, 'karol'),
-(3, 'fdhdh'),
-(4, 'fdgbdfg'),
-(5, 'kjbjb'),
-(6, 'jkiuuiiuhi'),
-(7, 'dfvvdfvdfvd'),
-(8, 'sdcsdcsdc'),
-(9, ' vdv dvdvd'),
-(10, 'otra mas'),
-(11, 'dfvdfvdfvdf'),
-(12, '111111'),
-(13, 'dcvdfvdfv'),
-(14, 'wqeqweqweq'),
-(15, 'aaaaaaaaaaaaaa'),
-(16, 'kkkkkkk'),
-(17, 'bbbbbbbbjjnjnj'),
-(18, 'uuuuuuuuuuuuuu'),
-(19, 'qqqqqqqqqqqqqqqq'),
-(20, 'jklkmlkjknjknj');
+(1, 'Sin Institucion'),
+(2, 'Instituto Nacional Dr. Sarbelio Navarrete'),
+(3, 'Universidad Nacional de El Salvador'),
+(4, 'Centro escolar Presbitero Norberto Marroquí'),
+(5, 'Centro Escolar Guadalupe Cárcamo');
 
 -- --------------------------------------------------------
 
