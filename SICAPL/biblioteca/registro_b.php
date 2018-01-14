@@ -14,7 +14,7 @@ $ultimaEditorial = repositorio_editorial::ObtenerUltimo(Conexion::obtener_conexi
             <div id="collapse-libros" class="panel-collapse collapse">
                 <div class="panel-body">
                     <form action="newLibro.php" id="frmLibro" name="frmLibro" enctype="multipart/form-data" autocomplete="off" method="POST" class="librof">
-                        <input type="hidden" id="registrarL">
+                        <input type="hidden" id="registrarL" name="registrarL">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="input-field">
@@ -110,7 +110,7 @@ $ultimaEditorial = repositorio_editorial::ObtenerUltimo(Conexion::obtener_conexi
                 
                 </div>
                 <div class="panel-footer text-center">
-                    <button type="submit" class="btn btn-success" >Guardar</button>
+                    <button class="btn btn-success" form="frmLibro" >Guardar</button>
                     <button type="reset" class="btn btn-danger">Cancelar</button>
                     </form>
                 </div>
@@ -153,7 +153,7 @@ $ultimaEditorial = repositorio_editorial::ObtenerUltimo(Conexion::obtener_conexi
                                 <div class="input-field">
                                     <i class="fa fa-calendar prefix" aria-hidden="true"></i>
                                     <label for="fecha_nac" class="active">Fecha de Nacimiento</label>
-                                    <input type="text" id="fecha_nac"  required name="fecha_nac" class="form-control datepicker datepicker2 validate">
+                                    <input type="text" id="fecha_nac"  required name="fecha_nac" class="form-control datepicker datepicker2">
                                 </div>
                             </div>
 
@@ -232,7 +232,8 @@ $ultimaEditorial = repositorio_editorial::ObtenerUltimo(Conexion::obtener_conexi
 
                 </div>
                 <div class="panel-footer text-center">
-                    <button id="btn_enviar" class="btn btn-success">Guardar</button><button type="reset" class="btn btn-danger">Cancelar</button>
+                    <button id="btn_enviar" class="btn btn-success">Guardar</button>
+                    <button type="reset" class="btn btn-danger">Cancelar</button>
                     </form>
                 </div>
             </div>

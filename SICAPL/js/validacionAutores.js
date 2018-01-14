@@ -1,12 +1,4 @@
-$.validator.setDefaults({
-    submitHandler: function () {
-       
-        document.getElementById('registrarA').value="ok";    
-        document.frmAutor.submit();
-        
-        
-    }
-});
+
 
 $(document).ready(function () {
      $("#frmAutor").validate({

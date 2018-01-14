@@ -1,5 +1,5 @@
 <?php
-if(isset($_REQUEST['registrarL'])){
+if(isset($_REQUEST['registrarL'])&&$_REQUEST['registrarL']!=""){
 include_once '../app/Conexion.php';
 include_once '../modelos/Libros.php';
 include_once '../repositorios/respositorio_libros.php';
@@ -37,6 +37,6 @@ if (move_uploaded_file($_FILES['foto']['tmp_name'], $foto)) {
 echo Repositorio_libros::insertarLibros(Conexion::obtener_conexion(), $Libro, $cantidad, $autores);
 //   Conexion::cerrar_conexion();
 }else{
-    echo 0;
+    echo 5;
 }
 ?>

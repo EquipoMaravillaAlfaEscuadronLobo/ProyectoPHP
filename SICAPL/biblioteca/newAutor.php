@@ -1,5 +1,5 @@
 <?php
-
+    if(isset($_POST["registrarA"])&&$_POST["nombre"]!=""){
     include_once '../app/Conexion.php';
     include_once '../modelos/Autores.php';
     include_once '../repositorios/repositorio_autores.inc.php';
@@ -27,6 +27,8 @@
 }
 echo Repositorio_autores::insertarAutor(Conexion::obtener_conexion(), $Autor);
  //   Conexion::cerrar_conexion();
-
+    }else{
+        echo '5';
+    }
 
 ?>

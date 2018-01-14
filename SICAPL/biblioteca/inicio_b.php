@@ -67,10 +67,12 @@ include_once('../plantillas/pie_de_pagina.php');
 ?>
 <script type="text/javascript">
     $(document).ready(function () {
-
+       
         $('.librof').submit(function () {
+            
             var formData = new FormData(document.getElementById('frmLibro'));
-            $.ajax({
+            
+             $.ajax({
                 url: $(this).attr('action'),
                 type: 'POST',
                 dataType: "html",
@@ -80,26 +82,29 @@ include_once('../plantillas/pie_de_pagina.php');
                 processData: false
             }).done(function (resp) {
                 if (resp == 1) {
-                    swal("Exito", "Libro Registrado", "success")
-                            .then((value) => {
+                    swal("Exito", "Autor Registrado", "success")
+                            .then(() => {
                                 document.getElementById('frmLibro').reset();
-
-                                location.href = "inicio_b.php";
+                                location.href="inicio_b.php"
                             }
                             )
                 } else {
-                    if (resp == 0) {
-                    } else {
-                        swal("Oops", resp, "error")
-                    }
+                    if(resp==5){
+                        
+                    }else{
+                    swal("Oops", resp, "error")
                 }
+                }
+            })
             
                 return false;
             
-            })
-        })
-
+            });
+            
+        });
+            
         $('.autorf').submit(function () {
+            
             var formData = new FormData(document.getElementById('frmAutor'))
             $.ajax({
                 url: $(this).attr('action'),
@@ -112,25 +117,33 @@ include_once('../plantillas/pie_de_pagina.php');
             }).done(function (resp) {
                 if (resp == 1) {
                     swal("Exito", "Autor Registrado", "success")
-                            .then((value) => {
+                            .then(() => {
                                 document.getElementById('frmAutor').reset();
                                 recargarCombos();
                             }
                             )
                 } else {
+                    if(resp==5){
+                        
+                    }else{
                     swal("Oops", resp, "error")
+                }
                 }
             })
             return false;
-        })
-
+            
+        });
+    
         $('.editorialf').submit(function () {
-            //var codigo=$('#codigol').val();
-            // alert(codigo);
+          
             $.ajax({
                 url: $(this).attr('action'),
                 type: 'POST',
-                data: $(this).serialize()
+                dataType: "html",
+                data: $(this).serialize(),
+                cache: false,
+                contentType: false,
+                processData: true
             }).done(function (resp) {
                 if (resp == 1) {
                     swal("Exito", "Editorial Registrada", "success")
@@ -149,9 +162,9 @@ include_once('../plantillas/pie_de_pagina.php');
             })
         
             return false;
-        
+           
     })
-    })
+    });
     function recargarCombos() {
         $.ajax({
             url: 'opcionesAutores.php',

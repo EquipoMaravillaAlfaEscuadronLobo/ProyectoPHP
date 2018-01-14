@@ -19,6 +19,7 @@ class Repositorio_libros {
                 for ($i = $cantidad + 1; $i <= $a + $cantidad; $i++) {
                     $titulo = $libro->getTitulo();
                     $codigo = $libro->getCodigo_libro() . "-" . str_pad($i, 4, "0", STR_PAD_LEFT);
+                    echo $codigo."<br>";
                     $editorial = $libro->getEditoriales_codigo();
                     $publicacion = $libro->getFecha_publicacion();
                     $foto = $libro->getFoto();
