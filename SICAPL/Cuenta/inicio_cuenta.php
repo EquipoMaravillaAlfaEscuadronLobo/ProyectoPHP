@@ -6,13 +6,14 @@ include_once '../plantillas/menu.php';
 <div class="nav-content nav-pills" name="">
     <ul class="tabs tabs-transparent">
         <li class="tab">
-            <a class="active" href="#test1">
+            <a class="" href="#test1">
                 <i class="fa fa-edit" aria-hidden="true"></i> Modificar Mis Datos
             </a>
         </li>
         <li class="tab">
-            <a class="" href="#test2">
+            <a class="active" href="#test2">
                 <i class="fa fa-bell" aria-hidden="true"></i> Notificaciones
+                <span style="font-weight: bold; font-size: 15px" class="label-count">(<?php echo $numero; ?>)</span>
             </a>
         </li>
     </ul>
@@ -20,12 +21,14 @@ include_once '../plantillas/menu.php';
 </nav>
 
 <div class="col s12" id="test1">
-<?php
-include_once './editar_mis_datos.php';
-?>
-  </div>
+    <?php
+    include_once './editar_mis_datos.php';
+    ?>
+</div>
 <div class="col s12" id="test2">
-     
+    <?php
+    include_once './notificaciones.php';
+    ?>
 </div>
 
 <?php

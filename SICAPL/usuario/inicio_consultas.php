@@ -27,22 +27,5 @@
             </div>
 
         </div><!-- hasta aki cada consulta-->
-        
-        
-        
-        <div class="panel panel-primary"><!-- Desde aqui-->
-            <div class="panel-heading text-center">
-                <a data-toggle="collapse" style="font-size: 20px;font-weight: bold" data-parent="#accordion3" href="#collapse-CatEditoriales">Usuarios dados de baja</a>
-
-            </div>
-
-            <div id="collapse-CatEditoriales" class="panel-collapse collapse">
-                <div class="panel-body" >
-                    <?php include('./consultas/usuarios_baja.php'); ?>
-                </div>
-            </div>
-
-        </div><!-- hasta aki cada consulta-->
-     
-    </div>
+ </div>
 </div>

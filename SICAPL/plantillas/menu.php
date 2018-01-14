@@ -1,5 +1,10 @@
 <?php
 //session_start();
+include_once '../app/Conexion.php';
+include_once '../repositorios/repositorio_notificaciones.php';
+Conexion::abrir_conexion();
+$numero = repositorio_notificaciones::numero_notifiaciones(Conexion::obtener_conexion());
+
 ?>
 <nav class="nav-extended">
     <div class="nav-wrapper">
@@ -42,6 +47,7 @@
             <li>
                 <a href="../Cuenta/inicio_cuenta.php">
                     <i class="fa fa-wrench" aria-hidden="true"></i> Mi Cuenta
+                    <span style="font-weight: bold; font-size: 15px" class="label-count">(<?php echo $numero;?>)</span>
                 </a>
             </li>
             <li>
