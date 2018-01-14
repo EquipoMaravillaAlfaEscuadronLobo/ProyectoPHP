@@ -19,7 +19,7 @@ $lista_bitacora = Repositorio_Bitacora::lista_bitacora(Conexion::obtener_conexio
                 <thead class="">
                 <th class="text-center alert-success">N</th>
                 <th class="text-center alert-success">Administrador</th>
-                <th class="text-center alert-success">Accion</th>
+                <th class="text-center alert-success">Acción</th>
                 <th class="text-center alert-success">Fecha</th>
                 <th class="text-center alert-success">Hora</th>
 

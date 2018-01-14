@@ -20,11 +20,10 @@ $direccion = '../../foto_usuario/';
         $observaciones_activo = Repositorio_usuario::obtener_observaciones_activo(Conexion::obtener_conexion(), $lista_carnet->getCodigo_usuario());
         $observaciones_libro = Repositorio_usuario::obtener_observaciones_libro(Conexion::obtener_conexion(), $lista_carnet->getCodigo_usuario());
         
-        echo $lista_carnet->getCodigo_usuario() .'<br>';
-        echo 'observacion activo '.$observaciones_activo .'<br>';
-        echo 'observacion libro '.$observaciones_libro .'<br>';
+     
         
-        if ($observaciones_libro != '' && $observaciones_activo !='') {
+       
+            
             ?>
             <tr>
                 <td class="text-center">
@@ -36,7 +35,7 @@ $direccion = '../../foto_usuario/';
                 <td class="text-center"><?php echo $observaciones_activo ?></td>
                 <td class="text-center"><?php echo $observaciones_activo ?></td>
             </tr>
-    <?php }
+    <?php 
 }
 ?>
 

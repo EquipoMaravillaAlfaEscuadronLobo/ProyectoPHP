@@ -22,11 +22,11 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
                     </div>       
                 </div>
                 <div class="panel-body">				
-                    <table padding="20px" class="responsive-table display" id="tabla-paginada4">
+                    <table padding="20px" class="responsive-table display table-sm" id="tabla-paginada4">
                         <thead>
-                        <th style="cursor:pointer" class="text-center">Restaurar</th>
-                        <th class="text-center">Fecha</th>
-                        <th class="text-center">Hora</th>
+                        <th style="cursor:pointer" class="text-center alert-success">Restaurar</th>
+                        <th class="text-center alert-success">Fecha</th>
+                        <th class="text-center alert-success">Hora</th>
                         </thead>
                         <tbody>
                             <?php

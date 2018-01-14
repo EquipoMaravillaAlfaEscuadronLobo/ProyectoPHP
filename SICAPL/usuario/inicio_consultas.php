@@ -43,19 +43,6 @@
             </div>
 
         </div><!-- hasta aki cada consulta-->
-        
-        <div class="panel panel-primary"><!-- Desde aqui-->
-            <div class="panel-heading">
-                <a data-toggle="collapse" data-parent="#accordion3" href="#collapse-LibPres">Libros en Prestamo</a>
-
-            </div>
-
-            <div id="collapse-LibPres" class="panel-collapse collapse">
-                <div class="panel-body" >
-                    <?php include('../consultas/librosEnPrestamo.php'); ?>
-                </div>
-            </div>
-
-        </div><!-- hasta aki cada consulta-->
+     
     </div>
 </div>
