@@ -67,7 +67,7 @@ $(document).ready(function () {
         },
         messages: {
             foto: {
-               required: "REQUERIDA"
+               required: ""
             },
             nameNombre: {
                 required: "Por favor ingrese su Nombre",
