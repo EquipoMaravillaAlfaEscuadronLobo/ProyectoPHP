@@ -70,7 +70,7 @@ include_once '../repositorios/repositorio_administrador.inc.php';
                     <div class="col m1"></div>
                     <div class="input-field col m5">
                         <i class="fa fa-calendar prefix"></i> 
-                        <input type="text" id="idFecha" name="nameFecha" class="text-center datepicker2" required="">
+                        <input type="text" id="idFecha" name="nameFecha" class="text-center datepicke-cumple" required="">
                         <label for="idFecha">Fecha de Nacimiento</label>
                     </div>
                     <div class="input-field col m5">

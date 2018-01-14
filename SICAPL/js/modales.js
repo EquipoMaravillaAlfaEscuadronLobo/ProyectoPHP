@@ -46,6 +46,54 @@ $(document).ready(function () {
             });
 });
 $(document).ready(function () {
+    $('.datepicke-cumple').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 150, // Creates a dropdown of 15 years to control year,
+        today: 'Hoy',
+        clear: 'Borrar',
+        close: 'Ok',
+        format: 'dd-mm-yyyy',
+        max: new Date(1999, 10 - 1, 31),
+        closeOnSelect: true // Close upon selecting a date,
+    });
+
+    $('#fecha_dev').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 2, // Creates a dropdown of 15 years to control year,
+        today: 'Hoy',
+        clear: 'Borrar',
+        close: 'Ok',
+        format: 'dd-mm-yyyy',
+        min: new Date(),
+        closeOnSelect: true // Close upon selecting a date,
+    });
+    $('.fecha_dev').pickadate({//es clase para validar las fechas del activo fijo
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 2, // Creates a dropdown of 15 years to control year,
+        today: 'Hoy',
+        clear: 'Borrar',
+        close: 'Ok',
+        format: 'dd-mm-yyyy',
+        min: new Date(),
+        closeOnSelect: true // Close upon selecting a date,
+    });
+    $('.collapse')
+            .on('shown.bs.collapse', function () {
+                $(this).parent()
+                        .find(".fa-sort-desc")
+                        .removeClass("fa-sort-desc")
+                        .addClass("fa-sort-asc");
+            })
+            .on('hidden.bs.collapse', function () {
+                $(this)
+                        .parent()
+                        .find(".fa-sort-asc")
+                        .removeClass("fa-sort-asc")
+                        .addClass("fa-sort-desc");
+            });
+});
+
+$(document).ready(function () {
 
     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
     $('.modal').modal({

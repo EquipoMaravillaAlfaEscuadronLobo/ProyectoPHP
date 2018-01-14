@@ -555,7 +555,6 @@ class Repositorio_usuario {
         }
         return $expediente;
     }
-
 }
 
 ?>
