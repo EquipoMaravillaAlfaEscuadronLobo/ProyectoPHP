@@ -19,10 +19,9 @@ $direccion = '../../foto_usuario/';
     foreach ($lista_usuarios as $lista_carnet) {
         $observaciones_activo = Repositorio_usuario::obtener_observaciones_activo(Conexion::obtener_conexion(), $lista_carnet->getCodigo_usuario());
         $observaciones_libro = Repositorio_usuario::obtener_observaciones_libro(Conexion::obtener_conexion(), $lista_carnet->getCodigo_usuario());
-           
+        
+                
         if ($observaciones_activo !="" || $observaciones_libro!="") {
-            
-          
             ?>
             <tr>
                 <td class="text-center">
@@ -32,7 +31,7 @@ $direccion = '../../foto_usuario/';
                 <td class="text-center"><?php echo $lista_carnet->getCodigo_usuario() ?></td>
                 <td class="text-center"><?php echo $lista_carnet->getNombre() . " " . $lista_carnet->getApellido(); ?></td>
                 <td class="text-center"><?php echo $observaciones_activo ?></td>
-                <td class="text-center"><?php echo $observaciones_activo ?></td>
+                <td class="text-center"><?php echo $observaciones_libro ?></td>
             </tr>
     <?php 
 }

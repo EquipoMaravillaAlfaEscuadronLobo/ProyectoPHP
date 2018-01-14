@@ -537,7 +537,7 @@ class Repositorio_administrador {
                     closeOnConfirm: false
                 },
                 function () {
-                    location.href="../Cuenta/inicio_cuenta.php";
+                    location.href="../Cuenta/inicio_datos.php";
                     
                 });</script>';
                 } else {
@@ -549,7 +549,7 @@ class Repositorio_administrador {
                     closeOnConfirm: false
                 },
                 function () {
-                    location.href="../Cuenta/inicio_cuenta.php";
+                    location.href="../Cuenta/inicio_datos.php";
                     
                 });</script>';
                 }
@@ -563,7 +563,7 @@ class Repositorio_administrador {
                     closeOnConfirm: false
                 },
                 function () {
-                    location.href="../Cuenta/inicio_cuenta.php";
+                    location.href="../Cuenta/inicio_datos.php";
                     
                 });</script>';
 

@@ -609,7 +609,7 @@ class Repositorio_usuario {
                         FROM
                         usuarios
                         INNER JOIN prestamo_activos ON prestamo_activos.usuarios_codigo = usuarios.codigo_usuario
-                        WHERE codigo_usuario  = '$codigo'";
+                        WHERE codigo_usuario  = '$codigo' and prestamo_activos.observacion!=''";
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->execute();
                 $resultado = $sentencia->fetchAll();
@@ -636,7 +636,7 @@ class Repositorio_usuario {
                         FROM
                         usuarios
                         INNER JOIN prestamo_libros ON prestamo_libros.codigo_usuario = usuarios.codigo_usuario
-                        WHERE usuarios.codigo_usuario = '$codigo'";
+                        WHERE usuarios.codigo_usuario = '$codigo' and prestamo_libros.observaciones!=''";
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->execute();
                 $resultado = $sentencia->fetchAll();

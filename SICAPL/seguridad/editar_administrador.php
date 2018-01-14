@@ -1,4 +1,22 @@
-<form id="editar_formulario" method="post" action="" autocomplete="off" enctype="multipart/form-data">
+<?php
+$titulo1 = 'Seguridad';
+include_once '../plantillas/cabecera.php';
+include_once '../plantillas/menu.php';
+?>
+<div class="nav-content nav-pills" name="">
+    <ul class="tabs tabs-transparent">
+       
+      <li class="tab">
+            <a class="active" href="#test1">
+                <i class="fa fa-edit" aria-hidden="true"></i> Modificar Mis Datos
+            </a>
+        </li>
+    </ul>
+</div>
+</nav>
+
+<div class="col s12" id="test1">
+    <form id="editar_formulario" method="post" action="" autocomplete="off" enctype="multipart/form-data">
     <input type="hidden" name="banderaEdicion" id="banderaEliminacion"/>
     <input type="hidden" name="codigo_original" id="codigo_original"/>
     <input type="hidden" id="idSecreto" value="">
@@ -192,3 +210,12 @@ if (isset($_REQUEST["banderaEdicion"])) {
     //Conexion::cerrar_conexion();
 }
 ?>
+
+</div>
+
+
+
+
+
+
+
