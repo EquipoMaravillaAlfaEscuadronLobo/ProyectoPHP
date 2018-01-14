@@ -13,8 +13,8 @@ class Repositorio_usuario {
 
                 ini_set('date.timezone', 'America/El_Salvador');
                 $anio = date("y");
-                
-                
+
+
                 $carnet = strtoupper((substr($usuario->getNombre(), 0, 1) . substr($usuario->getApellido(), 0, 1))) . $anio . '-' . ($numero + 1);
                 $institucion = $usuario->getCodigo_institucion();
                 $nombre = $usuario->getNombre();
@@ -153,7 +153,7 @@ class Repositorio_usuario {
                         $usuario->setTelefono($fila['telefono']);
                         $usuario->setFoto($fila['foto']);
                         $usuario->setObservacion($fila['observaciones']);
-                         $usuario->setMotivo_eliminacion($fila['motivo_eliminacion']);
+                        $usuario->setMotivo_eliminacion($fila['motivo_eliminacion']);
 
                         $lista_usuarios[] = $usuario;
                     }
@@ -170,7 +170,50 @@ class Repositorio_usuario {
 
         return $lista_usuarios;
     }
-    
+
+    public static function lista_usuarios_completa($conexion) {
+        $lista_usuarios = array();
+
+        if (isset($conexion)) {
+            try {
+                $sql = "select * from usuarios";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+                        $usuario = new Usuario();
+
+                        $usuario->setApellido($fila['apellido']);
+                        $usuario->setCodigo_institucion($fila['codigo_institucion']);
+                        $usuario->setCodigo_usuario($fila['codigo_usuario']);
+                        $usuario->setCorreo($fila['correo']);
+                        $usuario->setDireccion($fila['direccion']);
+                        $usuario->setEmail($fila['correo']);
+                        $usuario->setNombre($fila['nombre']);
+                        $usuario->setSexo($fila['sexo']);
+                        $usuario->setTelefono($fila['telefono']);
+                        $usuario->setFoto($fila['foto']);
+                        $usuario->setObservacion($fila['observaciones']);
+                        $usuario->setMotivo_eliminacion($fila['motivo_eliminacion']);
+
+                        $lista_usuarios[] = $usuario;
+                    }
+                }
+            } catch (PDOException $exc) {
+                print('ERROR' . $exc->getMessage());
+            }
+        }
+//        echo   'numero de registros en lista registros'. count($lista_administradores) . '<br>';
+        //foreach ($lista_administradores as $fila ){
+        //    echo $fila ->getNombre(). "<br>";
+        //   echo '<img src="data:image/jpg;base64,<?php echo base64_encode($fila["foto"]);';
+        // }
+
+        return $lista_usuarios;
+    }
+
     public static function lista_usuarios_eliminados($conexion) {
         $lista_usuarios = array();
 
@@ -196,7 +239,7 @@ class Repositorio_usuario {
                         $usuario->setTelefono($fila['telefono']);
                         $usuario->setFoto($fila['foto']);
                         $usuario->setObservacion($fila['observaciones']);
-                         $usuario->setMotivo_eliminacion($fila['motivo_eliminacion']);
+                        $usuario->setMotivo_eliminacion($fila['motivo_eliminacion']);
 
                         $lista_usuarios[] = $usuario;
                     }
@@ -337,7 +380,7 @@ class Repositorio_usuario {
             try {
                 //echo 'hay conexion<br>';
                 //echo 'el carnet es'. $carnet;
-                $observacion = self::obtener_expediete($conexion, $carnet) . ' el usuario fue eliminado por:'. $usuario->getObservacion();
+                $observacion = self::obtener_expediete($conexion, $carnet) . ' el usuario fue eliminado por:' . $usuario->getObservacion();
                 $estado = 1;
 
                 $sql = 'UPDATE usuarios SET estado=:estado,observaciones=:observaciones,motivo_eliminacion=:motivo_eliminacion where codigo_usuario = :carnet';
@@ -527,9 +570,9 @@ class Repositorio_usuario {
         }
         return $usuario;
     }
-    
+
     public static function obtener_expediete($conexion, $codigo) {
-        $expediente= "";
+        $expediente = "";
         if (isset($conexion)) {
             try {
                 $sql = "SELECT usuarios.observaciones FROM usuarios WHERE usuarios.codigo_usuario = '$codigo'";
@@ -542,11 +585,10 @@ class Repositorio_usuario {
                     foreach ($resultado as $fila) {
                         $expediente = ($fila['0']);
                         if ($expediente == '') {
-                           $expediente = $hora . " ";
-                        }else{
-                          $expediente = ($fila['0']. " <br>" . $hora. ' ');
+                            $expediente = $hora . " ";
+                        } else {
+                            $expediente = ($fila['0'] . " <br>" . $hora . ' ');
                         }
-                         
                     }
                 }
             } catch (PDOException $exc) {
@@ -555,6 +597,61 @@ class Repositorio_usuario {
         }
         return $expediente;
     }
+
+    public static function obtener_observaciones_activo($conexion, $codigo) {
+        $expediente = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT
+                        prestamo_activos.observacion,
+                        usuarios.codigo_usuario
+                        FROM
+                        usuarios
+                        INNER JOIN prestamo_activos ON prestamo_activos.usuarios_codigo = usuarios.codigo_usuario
+                        WHERE codigo_usuario  = '$codigo'";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+                        $expediente =  $expediente . $fila['0'] . '<br>';
+                   }
+                }
+            } catch (PDOException $exc) {
+                print('ERROR' . $exc->getMessage());
+            }
+        }
+        return $expediente;
+    }
+
+    public static function obtener_observaciones_libro($conexion, $codigo) {
+        $expediente = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT
+                        prestamo_libros.observaciones
+                        FROM
+                        usuarios
+                        INNER JOIN prestamo_libros ON prestamo_libros.codigo_usuario = usuarios.codigo_usuario
+                        WHERE usuarios.codigo_usuario = '$codigo'";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+                        $expediente = $expediente . ($fila['0']) . '<br>';
+                    }
+                }
+            } catch (PDOException $exc) {
+                print('ERROR' . $exc->getMessage());
+            }
+        }
+        return $expediente;
+    }
+
 }
 
 ?>
