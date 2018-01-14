@@ -135,7 +135,7 @@ include_once '../repositorios/repositorio_administrador.inc.php';
 
                             </div>
                             <div class="file-path-wrapper">
-                                <input type="text" accept="image/*"  class="form-control file-path validate">
+                                <input type="text" accept="image/*" class="form-control file-path validate">
                             </div>
                         </div>
                     </div>

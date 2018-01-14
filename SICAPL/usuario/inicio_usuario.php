@@ -6,7 +6,7 @@ include_once '../plantillas/menu.php';
 <div class="nav-content" name="">
     <ul class="tabs tabs-transparent">
         <li class="tab">
-            <a class="" href="#test1">
+            <a class="active" href="#test1">
                 <i class="fa fa-plus" aria-hidden="true"></i>Registro
             </a>
         </li>
@@ -18,7 +18,7 @@ include_once '../plantillas/menu.php';
 
 
         <li class="tab">
-            <a href="#test3" class="active">
+            <a href="#test3" class="">
                 <i class="fa fa-list-alt" aria-hidden="true"></i> Consulta
             </a>
         </li>
