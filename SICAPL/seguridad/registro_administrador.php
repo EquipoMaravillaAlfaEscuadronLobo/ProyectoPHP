@@ -198,6 +198,8 @@ if (isset($_REQUEST["banderaRegistro"])) {
     $correlativo = Repositorio_administrador::numero_administradores(Conexion::obtener_conexion());
     $foto = $ruta .$correlativo. basename($_FILES["foto"]["name"]); ///ruta
     $foto2 = basename($_FILES["foto"]["name"]); //nombre de archivo
+    
+    echo 'esta es la puta foto '. $foto2;
 
     if (move_uploaded_file($_FILES['foto']['tmp_name'], $foto)) {
         $administrador->setFoto($correlativo.$foto2);
