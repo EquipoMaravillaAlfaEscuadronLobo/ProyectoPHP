@@ -59,7 +59,7 @@
                                         foreach ($lista_sin_actual as $filaz) {
                                             ?>
 
-                                            <option value="<?php echo $filaz->getCodigo_administrador(); ?>"><?php echo $filaz->getNombre() . ' ' . $lista->getApellido(); ?></option>
+                                            <option value="<?php echo $filaz->getCodigo_administrador(); ?>"><?php echo $filaz->getNombre() . ' ' . $filaz->getApellido(); ?></option>
                                             <?php
                                         }
                                     }

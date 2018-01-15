@@ -100,38 +100,39 @@ $i = 1;
     }
 
     .contenedor{
-        
+
         width: 750px;
         height:200px;
         /*background: #AAAADD;*/
-        
+
 
     }
-    
+
 
     .frontal{
         border-width: 1px;
         border-style: dashed;
         border-color: red;
-        margin: 10px;
-        width: 295px;
-        height: 195px;
-        margin-right: 0px;
-        background: #EEEE00; 
+      
+        width: 348px;
+        height: 218px;
+       
+        
+        background: white; 
     }
     .trasero{
         border-width: 1px;
         border-style: dashed;
         border-color: red;
-        margin: 10px;
-        width: 295px;
-        height: 195px;
-        margin-right: 0px;
-        background: #EEEE00;
+     
+        width: 348px;
+        height: 218px;
+      
+        background: white;
         position: relative;
-        top: -217px;
+        top: -220px;
         left : 420px;
-        
+
 
 
     }
@@ -154,10 +155,11 @@ $i = 1;
 
         width: 160px;
         height: 120px;
-        background: #EEEE00;
+        background: white;
         position: relative;
         left: 4px;
         top: 0px;
+        margin-left: 29px;
 
     }
 
@@ -174,7 +176,8 @@ $i = 1;
         height: 100px;
         text-align: center;
         font-size: 12px;
-        background: #388E3C;
+        background: white;
+        margin-left: 25px;
     }
 
 

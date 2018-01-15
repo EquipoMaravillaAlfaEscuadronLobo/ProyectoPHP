@@ -111,23 +111,24 @@ Conexion::abrir_conexion();
         border-width: 1px;
         border-style: dashed;
         border-color: red;
-        margin: 10px;
-        width: 295px;
-        height: 195px;
-        margin-right: 0px;
+      
+        width: 348px;
+        height: 218px;
+       
+        
         background: white; 
     }
     .trasero{
         border-width: 1px;
         border-style: dashed;
         border-color: red;
-        margin: 10px;
-        width: 295px;
-        height: 195px;
-        margin-right: 0px;
+     
+        width: 348px;
+        height: 218px;
+      
         background: white;
         position: relative;
-        top: -217px;
+        top: -220px;
         left : 420px;
 
 
@@ -156,6 +157,7 @@ Conexion::abrir_conexion();
         position: relative;
         left: 4px;
         top: 0px;
+        margin-left: 29px;
 
     }
 
@@ -173,6 +175,7 @@ Conexion::abrir_conexion();
         text-align: center;
         font-size: 12px;
         background: white;
+        margin-left: 25px;
     }
 
 

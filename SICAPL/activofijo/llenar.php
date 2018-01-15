@@ -33,7 +33,7 @@ foreach ($listado as $fila) {
                 linea = linea.concat(
                         "<tr>",
                         '<td><input type="button" class="borrar_activo_tabla_prestamo btn-sm btn-danger" value="-"/>&nbsp;&nbsp; <input type="hidden" name="codsActs[]" value="' + codigo + '"> ' + codigo + "</td>",
-                        "<td>" + tipo + "</td>",
+                        "<td><input type='hidden' name='tipoActs[]' value='" + tipo  + "'>" + tipo + "</td>",
                         "<td>" + encargado + "</td>",
                         "</tr>"
                         );

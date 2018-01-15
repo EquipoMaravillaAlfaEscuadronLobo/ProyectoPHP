@@ -187,6 +187,7 @@ $(document).ready(function() {
     include_once '../modelos/Detalles.php';
     include_once '../repositorios/repositorio_activo.php';
     include_once '../repositorios/repositorio_detalles.php';
+    include_once '../repositorios/repositorio_bitacora.php';
     Conexion::abrir_conexion();
     $listadoA = Repositorio_activo::lista_activo2(Conexion::obtener_conexion());
 
@@ -226,6 +227,7 @@ if (isset($_REQUEST["passsss"])) {
     $devolucion = $_POST['fecha_devolucion'];
     $devolucion = date_format(date_create($devolucion), 'Y-m-d');
     $libros = $_POST['codsActs'];
+    $tipo = $_POST['tipoActs'];
 //echo $usuario;
     $Prestamo = new PrestamoActivo();
     $Prestamo->setUsuario($usuario);
@@ -238,7 +240,7 @@ if (isset($_REQUEST["passsss"])) {
   
 
     if (Repositorio_prestamoact::GuardarPrestamoAct(Conexion::obtener_conexion(), $Prestamo)) {
-        //	echo "hasta aki";
+
         $prestamo1 = Repositorio_prestamoact::obtenerUltimoPact(Conexion::obtener_conexion());
         //echo $prestamo1;
         for ($i = 0; $i < $longitud; $i++) {
@@ -259,8 +261,14 @@ if (isset($_REQUEST["passsss"])) {
 //echo "alert('datos no atualizados')";
 //echo "location.href='inicio_b.php'";
                 echo "</script>";
+            }else{$activos_prestados =$activos_prestados." ". $libros[$i]." ".$tipo[$i];}
+        
+            
+            
             }
-        }
+            $accion = "se prestaron los siguientes activos ". $activos_prestados;
+            echo $accion;
+            Repositorio_Bitacora::insertar_bitacora(Conexion::obtener_conexion(), $accion);
         echo "<script type='text/javascript'>";
         echo "swal({
                     title: 'Exito',
