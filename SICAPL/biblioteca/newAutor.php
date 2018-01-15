@@ -1,5 +1,5 @@
 <?php
-    if(isset($_POST["registrarA"])&&$_POST["nombre"]!=""){
+    if(($_POST["nombre"]!="")&&($_POST["apellido"]!="")&&($_POST["fecha_nac"]!="")&&($_POST["bio"]!="")){
     include_once '../app/Conexion.php';
     include_once '../modelos/Autores.php';
     include_once '../repositorios/repositorio_autores.inc.php';

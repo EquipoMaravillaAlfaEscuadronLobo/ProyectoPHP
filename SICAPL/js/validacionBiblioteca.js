@@ -1,4 +1,12 @@
+$.validator.setDefaults({
+    submitHandler: function () {
 
+        document.getElementById('registrarL').value="ok";
+        document.frmLibro.submit();
+
+
+    }
+});
 ///////////////////////////////////////////////////////////este es para los formularios de ingresozz
 $(document).ready(function () {
     $("#frmLibro").validate({

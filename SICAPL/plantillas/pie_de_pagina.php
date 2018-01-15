@@ -18,7 +18,7 @@
 <script src="../js/jquery.inputmask.bundle.js"></script>
 <script src="../js/Mascara.js"></script>
 <script src="../js/inicializaciones.js"></script>
-<script src="../js/validacionBiblioteca.js"></script>
+<!--<script src="../js/validacionBiblioteca.js"></script>-->
 <script src="../js/validacionAutores.js"></script>
 <script src="../js/validacionEditoriales.js"></script>
 

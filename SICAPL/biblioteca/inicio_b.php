@@ -68,38 +68,19 @@ include_once('../plantillas/pie_de_pagina.php');
 <script type="text/javascript">
     $(document).ready(function () {
        
-        $('.librof').submit(function () {
-            
-            var formData = new FormData(document.getElementById('frmLibro'));
-            
-             $.ajax({
-                url: $(this).attr('action'),
-                type: 'POST',
-                dataType: "html",
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false
-            }).done(function (resp) {
-                if (resp == 1) {
-                    swal("Exito", "Autor Registrado", "success")
-                            .then(() => {
-                                document.getElementById('frmLibro').reset();
-                                location.href="inicio_b.php"
-                            }
-                            )
-                } else {
-                    if(resp==5){
-                        
-                    }else{
-                    swal("Oops", resp, "error")
-                }
-                }
-            })
-            
-                return false;
-            
-            });
+        $('#frmLibro').submit(function () {
+
+    if (document.getElementById("titulo").value != "" &&
+            document.getElementById("clasificacion").value != "" &&
+            document.getElementById("autores").value != "" &&
+            document.getElementById("cantidad").value != "" &&
+            document.getElementById("editorial").value != 0 &&
+            document.getElementById("fecha_pub").value != "" &&
+            document.getElementById("foto").value != ""){
+    document.frmLibros.submit();
+    }
+
+    });
             
         });
             
@@ -143,7 +124,7 @@ include_once('../plantillas/pie_de_pagina.php');
                 data: $(this).serialize(),
                 cache: false,
                 contentType: false,
-                processData: true
+                processData: false
             }).done(function (resp) {
                 if (resp == 1) {
                     swal("Exito", "Editorial Registrada", "success")
@@ -156,15 +137,18 @@ include_once('../plantillas/pie_de_pagina.php');
 
 
                 } else {
-                    swal("Oops", "Editorial no registrada", "error")
-
+                    if(resp==5){
+                        
+                    }else{
+                    swal("Oops", resp, "error")
+                }
                 }
             })
         
             return false;
            
     })
-    });
+    
     function recargarCombos() {
         $.ajax({
             url: 'opcionesAutores.php',

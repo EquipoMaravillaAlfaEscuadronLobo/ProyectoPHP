@@ -1,5 +1,12 @@
+<style>
+    body{
+        color: white !important;
+    }
+</style>
 <?php
-if(isset($_REQUEST['registrarL'])&&$_REQUEST['registrarL']!=""){
+include_once('../plantillas/cabecera.php');
+if(($_POST["titulo"]!="")&&($_POST["autores"]!="")&&($_POST["editorial"]!=0)&&
+    ($_POST["cantidad"]!="")&&($_POST["fecha_pub"]!="")){
 include_once '../app/Conexion.php';
 include_once '../modelos/Libros.php';
 include_once '../repositorios/respositorio_libros.php';
@@ -34,9 +41,40 @@ if (move_uploaded_file($_FILES['foto']['tmp_name'], $foto)) {
     //echo "2";
 }
 
-echo Repositorio_libros::insertarLibros(Conexion::obtener_conexion(), $Libro, $cantidad, $autores);
+if(Repositorio_libros::insertarLibros(Conexion::obtener_conexion(), $Libro, $cantidad, $autores)){
+    echo "<script>";
+    echo ' swal({
+        title: "Exito!",
+        text: "Libros Registrados desea imprimir el codigo de barras?",
+        type: "success",
+        showCancelButton: true,
+        confirmButtonClass: "btn-danger",
+        confirmButtonText: "Sí, Imprimir",
+        cancelButtonText: "No, Salir",
+        closeOnConfirm: false,
+        closeOnCancel: false
+    },
+    function (isConfirm) {
+        if (isConfirm) {
+            var url = "../reportes/imprimir_barcode.php?codigo=' . $codigo . '" ;
+
+            var a = document.createElement("a");
+            a.target = "_blank";
+            a.href = url;
+            a.click();
+        } else {
+            location.href = "inicio_b.php";
+        }
+    });';
+    echo "</script>";
+}
 //   Conexion::cerrar_conexion();
+
 }else{
     echo 5;
 }
+
+include_once('../plantillas/pie_de_pagina.php');
 ?>
+
+
