@@ -1,10 +1,18 @@
 <?php
 $titulo1 = "Inicio de Sesion";
 include_once('../plantillas/cabecera.php');
+include_once '../app/Conexion.php';
+include_once '../repositorios/repositorio_notificaciones.php';
+Conexion::abrir_conexion();
+$numero = repositorio_notificaciones::numero_notifiaciones(Conexion::obtener_conexion());
+echo " <script>  var notificaicon = '$numero'; </script>";
+
+
 ?>
 
 <div class="container login">
     <form action="" method="post">
+        <input type="hidden" name="notificacion" id="notificacion"  />
         <div class="row">
             <div class="col-md-3">
             </div>
@@ -59,7 +67,7 @@ include_once('../plantillas/cabecera.php');
                                 if (mensaje == "ENCONTRADO") {
                                     swal({
                                         title: "Exito",
-                                        text: "Sesion Iniciada Correctamente",
+                                        text: "Sesion Iniciada Correctamente" + notificaicon,
                                         type: "success"},
                                     function () {
                                         location.href = "home.php";
@@ -103,6 +111,8 @@ include_once('../plantillas/cabecera.php');
                     }
                     ;
                 </script>
+                
+               
 
                 <?php
                 include_once('../plantillas/pie_de_pagina.php');
