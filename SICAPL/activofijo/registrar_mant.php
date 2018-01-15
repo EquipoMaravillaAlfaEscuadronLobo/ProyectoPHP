@@ -45,9 +45,20 @@
 </style>
 
 
-<form name="mant" id="mant" method="post" action="">
+<form name="mant" id="mant" class="mant" method="post" action="" onsubmit="return guardar_mante()">
     <input type="hidden" id="pass" name="pass"/>
     <input type="hidden" id="redireccionar" name="redireccionar" value="si"/>
+    <input type="hidden" id="nserieEAD" name="nserieEAD">
+    <input type="hidden" id="colorEAD" name="colorEAD">
+    <input type="hidden" id="marcaEAD" name="marcaEAD">
+    <input type="hidden" id="soEAD" name="soEAD">
+    <input type="hidden" id="dimensionesEAD" name="dimensionesEAD">
+    <input type="hidden" id="ramEAD" name="ramEAD">
+    <input type="hidden" id="modeloEAD" name="modeloEAD">
+    <input type="hidden" id="ddEAD" name="ddEAD">
+    <input type="hidden" id="proEAD" name="proEAD">
+    <input type="hidden" id="otroEAD" name="otroEAD">
+    <input type="hidden" id="actualizarDetalles" name="actualizarDetalles" >
     <!--  panel de activo    -->
     <div class="col-md-6">
         <div class="panel-group" id="accordion">
@@ -103,7 +114,7 @@
                             <th>Codigo</th>
                             <th>Tipo</th>
                             <th>Estado</th>
-                            <th>&nbsp;<input  type="hidden"  required="" id="bandera_tabla_activo_prestamo" name="bandera_tabla_activo_prestamo" /></th>
+                            <th><input type="button" onclick='act_caract()' class="btn-success btn-sm "  value="Actualizar Detalles"/><input  type="hidden"  required="" id="bandera_tabla_activo_prestamo" name="bandera_tabla_activo_prestamo" /></th>
                             </thead>
                             <tbody>
 
@@ -230,6 +241,7 @@
     include_once '../modelos/Activo.php';
     include_once '../repositorios/repositorio_activo.php';
     include_once '../repositorios/repositorio_categoria.php';
+
     Conexion::abrir_conexion();
     $listadoA = Repositorio_activo::lista_activo_mantenimiento(Conexion::obtener_conexion());
 
@@ -240,41 +252,70 @@
     ?>
 
 
-<?php
-if (isset($_REQUEST["pass"])) {
+    <?php
+    if (isset($_REQUEST["pass"])) {
 
-    include_once '../app/Conexion.php';
-    include_once '../modelos/Mantenimiento.php';
-    include_once '../repositorios/repositorio_mantenimiento.php';
-    include_once '../repositorios/repositorio_prestamoact.php';
+        include_once '../app/Conexion.php';
+        include_once '../modelos/Mantenimiento.php';
+        include_once '../modelos/Detalles.php';
+        include_once '../modelos/Activo.php';
+        include_once '../repositorios/repositorio_mantenimiento.php';
+        include_once '../repositorios/repositorio_prestamoact.php';
+        include_once '../repositorios/repositorio_activo.php';
+        include_once '../repositorios/repositorio_detalles.php';
 
-    Conexion::abrir_conexion();
-    $red= $_POST['redireccionar'];
-    $devolucionMant = $_POST['fecha_mant'];
-    $devolucionMant = date_format(date_create($devolucionMant), 'Y-m-d');
-    $activos = $_POST['codsActsMant'];
-    $encargados = $_POST['codsEncMant'];
-    $acionesMant = $_POST['accion_select_mantenimiento'];
+        Conexion::abrir_conexion();
+        $actualizarDetalles = $_POST['actualizarDetalles'];
+
+        $red = $_POST['redireccionar'];
+        $devolucionMant = $_POST['fecha_mant'];
+        $devolucionMant = date_format(date_create($devolucionMant), 'Y-m-d');
+        $activos = $_POST['codsActsMant'];
+        $encargados = $_POST['codsEncMant'];
+        $acionesMant = $_POST['accion_select_mantenimiento'];
 //echo $usuario;
-    $mant = new Mantenimiento();
-    $mant->setCosto($_POST['CostoTotal']);
-    $mant->setDescripcion($_POST['descrMant']);
-    $mant->setFecha($devolucionMant);
+        $mant = new Mantenimiento();
+        $mant->setCosto($_POST['CostoTotal']);
+        $mant->setDescripcion($_POST['descrMant']);
+        $mant->setFecha($devolucionMant);
 
-    $longitud = count($activos);
-    $longitud2 = count($encargados);
+        $longitud = count($activos);
+        $longitud2 = count($encargados);
 //Recorro todos los elementos
 
 
-    if (Repositorio_mantenimiento::GuardarMantAct(Conexion::obtener_conexion(), $mant)) {
-        //	echo "hasta aki";
-        $prestamo1 = Repositorio_mantenimiento::obtenerUltimoMant(Conexion::obtener_conexion());
-        //echo $prestamo1;
-        for ($i = 0; $i < $longitud; $i++) {
-            Repositorio_prestamoact::ActualizarActivo(Conexion::obtener_conexion(), $activos[$i], $acionesMant[$i], "");
-            if (!Repositorio_mantenimiento::GuardarActivos(Conexion::obtener_conexion(), $activos[$i], $prestamo1)) {
-                echo "<script type='text/javascript'>";
-                echo 'swal({
+        if (Repositorio_mantenimiento::GuardarMantAct(Conexion::obtener_conexion(), $mant)) {
+            //	echo "hasta aki";
+            $prestamo1 = Repositorio_mantenimiento::obtenerUltimoMant(Conexion::obtener_conexion());
+            //echo $prestamo1;
+            for ($i = 0; $i < $longitud; $i++) {
+                Repositorio_prestamoact::ActualizarActivo(Conexion::obtener_conexion(), $activos[$i], $acionesMant[$i], "");
+                if ($actualizarDetalles == "si") {
+                    $detalle = new Detalles();
+                    $detalle->setCodigo_detalle($_REQUEST["codDetalleEAD"]);
+                    $detalle->setSeri($_REQUEST["nserieEAD"]);
+                    $detalle->setColor($_REQUEST["colorEAD"]);
+                    $detalle->setMarca($_REQUEST["marcaEAD"]);
+                    $detalle->setSistema($_REQUEST["soEAD"]);
+                    $detalle->setDimencione($_REQUEST["dimensionesEAD"]);
+                    $detalle->setRam($_REQUEST["ramEAD"]);
+                    $detalle->setModelo($_REQUEST["modeloEAD"]);
+                    $detalle->setMemoria($_REQUEST["ddEAD"]);
+                    $detalle->setProcesador($_REQUEST["proEAD"]);
+                    $detalle->setOtros($_REQUEST["otroEAD"]);
+
+
+
+                    $listado = Repositorio_activo::obtener_activo(Conexion::obtener_conexion(), $activos[$i]);
+                  
+                    foreach ($listado as $fila) {
+                      
+                        Repositorio_detalle::actualizar_detalle(Conexion::obtener_conexion(), $detalle, $fila['codigo_detalle']);
+                    }
+                }
+                if (!Repositorio_mantenimiento::GuardarActivos(Conexion::obtener_conexion(), $activos[$i], $prestamo1)) {
+                    echo "<script type='text/javascript'>";
+                    echo 'swal({
                     title: "Ooops",
                     text: "Mantenimiento no Registrado",
                     type: "error"},
@@ -288,13 +329,13 @@ if (isset($_REQUEST["pass"])) {
                     );';
 //echo "alert('datos no atualizados')";
 //echo "location.href='inicio_b.php'";
-                echo "</script>";
+                    echo "</script>";
+                }
             }
-        }
-        for ($i = 0; $i < $longitud2; $i++) {
-            if (!Repositorio_mantenimiento::GuardarEncargados(Conexion::obtener_conexion(), $encargados[$i], $prestamo1)) {
-                echo "<script type='text/javascript'>";
-                echo 'swal({
+            for ($i = 0; $i < $longitud2; $i++) {
+                if (!Repositorio_mantenimiento::GuardarEncargados(Conexion::obtener_conexion(), $encargados[$i], $prestamo1)) {
+                    echo "<script type='text/javascript'>";
+                    echo 'swal({
                     title: "Ooops",
                     text: "Mantenimiento no Registrado",
                     type: "error"},
@@ -308,21 +349,11 @@ if (isset($_REQUEST["pass"])) {
                     );';
 //echo "alert('datos no atualizados')";
 //echo "location.href='inicio_b.php'";
-                echo "</script>";
+                    echo "</script>";
+                }
             }
+            
         }
-        if($red=="si"){
-        echo "<script type='text/javascript'>";
-        echo "swal({
-                    title: 'Exito',
-                    text: 'Mantenimiento Registrado',
-                    type: 'success'},
-                    function(){
-                       location.href='inicio_activo.php';
-                    }
-                    );";
-        echo "</script>";}
     }
-}
-?>
+    ?>
 

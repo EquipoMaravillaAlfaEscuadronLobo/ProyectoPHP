@@ -96,7 +96,7 @@ function abrir_edicion_administrador(nombre, apellido, user, dui, fecha, email, 
     $('#edicion_administradores').modal('open');
 }
 
-function abrir_edicion_usuario(nombre, apellido, direccion, email, telefono, sexo, password, carnet,institucion) {
+function abrir_edicion_usuario(nombre, apellido, direccion, email, telefono, sexo, password, carnet, institucion) {
     $("#idSecreto").val(nombre + " " + apellido);
     $("#idCarnetE").val(carnet);
     $("#idNombreE").val(nombre);
@@ -111,12 +111,12 @@ function abrir_edicion_usuario(nombre, apellido, direccion, email, telefono, sex
         $("#idMujerE").attr("checked", "checked");
 
     }
-       var elemento=5;
+    var elemento = 5;
 
 
-     $("select#idInstitucionEf").val(institucion).attr('selected', 'selected');
+    $("select#idInstitucionEf").val(institucion).attr('selected', 'selected');
 
-    
+
 
     $('#edicion_usuario').modal('open');
 }
@@ -233,21 +233,14 @@ function nuevoMant(id, valor) {
 
 
 
-function act_caract(coda, codd, color, dimen, marca, memo, mode, otros, proce, ram, seri, siste) {
+function act_caract() {
+    var cosd = document.mant.elements["codsActsMant[]"];
+    if (typeof (cosd) === "undefined") {
+        swal("Ooops", "Tabla de activos vacía", "warning");
+    } else {
+        $('#actualizarCaracteristicas').modal('open');
+    }
 
-    $('#codActivoAD').val(coda);
-    $('#codDetalleEAD').val(codd);
-    $('#nserieEAD').val(seri);
-    $('#colorEAD').val(color);
-    $('#marcaEAD').val(marca);
-    $('#soEAD').val(siste);
-    $('#dimensionesEAD').val(dimen);
-    $('#modeloEAD').val(mode);
-    $('#proEAD').val(proce);
-    $('#otroEAD').val(otros);
-    $('#ramEAD').val(ram);
-    $('#ddEAD').val(memo);
-    $('#actualizarCaracteristicas').modal('open');
 }
 function actualizarPrestamoActivo(id) {
     $('#actPres').modal('open');
@@ -260,11 +253,11 @@ function actualizarPrestamoActivo(id) {
 
 function abrirActivo(coda, codadm, foto, estado, codd, color, dimen, marca, memo, mode, otros, proce, ram, seri, siste, admin) {
     var foto2 = "../fotoActivos/" + foto;
-    
+
     $('#codActivo').val(coda);
     $('#codDetalle').val(codd);
     //$('#adminedit').val(codadm).selected;
-   // $("select#adminedit").val(codadm).attr('selected', 'selected');
+    // $("select#adminedit").val(codadm).attr('selected', 'selected');
 
     // $('#adminedit > option[value="'+codadm+'"]').attr('selected', 'selected');
     $('#nserieE').val(seri);
@@ -276,7 +269,7 @@ function abrirActivo(coda, codadm, foto, estado, codd, color, dimen, marca, memo
     $('#proE').val(proce);
     $('#otroE').val(otros);
     $('#ramE').val(ram);
-    $('#ddE').val(memo);  
+    $('#ddE').val(memo);
     $('#codamin').val(codadm);
     $('#nadmin').val(admin);
     $('#estadoE').val(estado);

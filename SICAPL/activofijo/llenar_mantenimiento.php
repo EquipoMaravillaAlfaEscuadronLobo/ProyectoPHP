@@ -25,20 +25,7 @@ foreach ($listado as $fila) {
         var estado = "<?php echo $fila['estado']; ?>";
         var tipo = "<?php echo Repositorio_categoria::obtener_categoria(Conexion::obtener_conexion(), $fila['codigo_tipo']); ?>";
         var encargado = "<?php echo Repositorio_administrador::obtener_administrador(Conexion::obtener_conexion(), $fila['codigo_administrador'])->getNombre() . " " . Repositorio_administrador::obtener_administrador(Conexion::obtener_conexion(), $fila['codigo_administrador'])->getApellido(); ?>";
-       var onclivk = "onclick='act_caract(" +
-                '"<?php echo $fila['codigo_activo']; ?>",'+
-                '"<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getCodigo_detalle() ?>",'+
-                '"<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getColor() ?>",'+
-                '"<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getDimencione() ?>",'+
-                '"<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getMarca() ?>",'+
-                '"<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getMemoria() ?>",'+
-                '"<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getModelo() ?>",'+
-                '"<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getOtros() ?>",'+
-                '"<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getProcesador() ?>",'+
-                '"<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getRam() ?>",'+
-                '"<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getSeri() ?>",'+
-                '"<?php echo Repositorio_detalle::obtener_detalle(Conexion::obtener_conexion(), $fila['codigo_detalle'])->getSistema() ?>"'+
-                ")'";
+       
     
         if (estado == 1){
         var sel = '<div class="form-group">' +
@@ -68,7 +55,7 @@ foreach ($listado as $fila) {
                 '<td><input type="button" class="borrar_activo btn-sm btn-danger" value="-"/>&nbsp;&nbsp; <input type="hidden" name="codsActsMant[]" value="' + codigo + '"> ' + codigo + "</td>",
                 "<td>" + tipo + "</td>",
                 "<td>" + sel + "</td>",
-                ' "<td><input type="button" '+onclivk+' class="btn-success btn-sm "  value="Actualizar Detalles"/></td>',
+                ' "<td>'+encargado +'</td>',
                 "</tr>"
                 );
         $("table#tabla_activo_mantenimiento tbody").append(linea);

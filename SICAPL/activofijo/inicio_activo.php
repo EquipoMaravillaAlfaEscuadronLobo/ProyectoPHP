@@ -78,7 +78,7 @@ include_once('../plantillas/pie_de_pagina.php');
     </div>
     <div class="modal-footer">
         <div class="row">
-            <div class="col-md-6 text-right"><button id="gp" class="btn btn-success modal-action " type="button" onclick="guardar_mante()">
+            <div class="col-md-6 text-right"><button id="gp" class="btn btn-success modal-action " type="submit" form="mant" >
                     <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>
                     Guardar</button></div>
             <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>
@@ -116,7 +116,7 @@ include_once('../plantillas/pie_de_pagina.php');
     <div class="modal-footer "> 
         <div class="row">
             <div class="col-md-6 text-right">
-                <button  class="btn btn-success modal-close "  type="button" onclick="">
+                <button  class="btn btn-success "  type="button" onclick="copiarDetalles()">
                     <span class="glyphicon glyphicon-floppy-disk" ></span>
                     Guardar</button>
             </div>
@@ -141,13 +141,14 @@ include_once('../plantillas/pie_de_pagina.php');
                     $('#nuevoEncargado').modal('close');                    
                     $("#listaeman").load(" #listaeman");//para actuaizar la datalist cuando registra
                     swal("Exito", "Encargado guardado con exito", "success");
-                    location.reload();
+                   
                 }
             });
             return false;
         });
 
         $('#mant').submit(function () {
+            
             // Enviamos el formulario usando AJAX
             $.ajax({
                 type: 'POST',
@@ -155,16 +156,15 @@ include_once('../plantillas/pie_de_pagina.php');
                 data: $(this).serialize(),
                 // Mostramos un mensaje con la respuesta de PHP
                 success: function (resp) {
-                    // document.getElementById('ActActEAD').reset();
-                    $('#nuevoMant').modal('close');
                     
-                    swal("Exito", "Activo actualizado con exito", "success");
-                    //location.reload();
-                    //$("#lista_encargado").load(" #lista_encargado");//para actuaizar la datalist cuando registra
+                    $('#nuevoMant').modal('close');
+                   
                 }
-            })
+            });
             return false;
         });
+
+        
 
 
 

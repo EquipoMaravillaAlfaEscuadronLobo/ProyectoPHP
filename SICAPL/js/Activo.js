@@ -271,38 +271,45 @@ function validarTablas() {
 
     if ($('#tabla_activo_mantenimiento >tbody >tr').length == 0) {
         ok = false;
-        swal("Ooops", "Tabla de activos vacia", "warning");
+        swal("Ooops", "Tabla de activos vacía", "warning");
     } else {
         if ($('#datos_encargado2 >tbody >tr').length == 0) {
             ok = false;
-            swal("Ooops", "Tabla de encargados vacia", "warning");
+            swal("Ooops", "Tabla de encargados vacía", "warning");
         } else {
             // codigo para verificar cuantos activos fueron a manteniemieto y siguen daniados
-
-
-            var cont = 0;
-            for (var i = 0; i < sel.length; i++) {
-
-                if (sel[i].value == "3") {//verifica si hay activos con codigo de estado 3 que es el de danado
-                    cont++;
-                    ok = false;
+            if ($('#tabla_activo_mantenimiento >tbody >tr').length == 1) {
+                okk = false;
+                var op = document.getElementsByName("accion_select_mantenimiento[]")[0].value;
+                
+                if (op == 1) {//observacion_pres_act
+                    okk = true;
                 }
-            }
-            if (cont > 0) {//si hay activos con codido 3 
-                swal({
-                    title: "¿Desea continuar?",
-                    text: "Hay activos que fueron a mantenimiento y siguen dañados!",
-                    type: "warning",
-                    showCancelButton: true,
-                    cancelButtonText: "Cancelar",
-                    confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Si, continuar!",
-                    closeOnConfirm: false
-                },
-                        function () {
-                            cont = 0;
-                            document.mant.submit();
-                        });
+            } else {
+                var cont = 0;
+                for (var i = 0; i < sel.length; i++) {
+
+                    if (sel[i].value == "3") {//verifica si hay activos con codigo de estado 3 que es el de danado
+                        cont++;
+                        ok = false;
+                    }
+                }
+                if (cont > 0) {//si hay activos con codido 3 
+                    swal({
+                        title: "¿Desea continuar?",
+                        text: "Hay activos que fueron a mantenimiento y siguen dañados!",
+                        type: "warning",
+                        showCancelButton: true,
+                        cancelButtonText: "Cancelar",
+                        confirmButtonClass: "btn-danger",
+                        confirmButtonText: "Si, continuar!",
+                        closeOnConfirm: false
+                    },
+                            function () {
+                                cont = 0;
+                                document.mant.submit();
+                            });
+                }
             }
         }
     }
@@ -365,7 +372,10 @@ function recargarCombos3() {// actualiza el selec de proveedor cuando se registr
 }
 function  guardar_mante() {//ver cod de funcion en js/libros.js
     if (validarTablas()) {
-        document.mant.submit();
+        return true;
+        //document.mant.submit();
+    }else{
+        return false;
     }
 }
 
@@ -410,7 +420,7 @@ function validarTablas_reg() {
 
     if ($('#tabla_activo_prestamo >tbody >tr').length == 0) {
         ok = false;
-        swal("Ooops", "Tabla de activos vacia", "warning");
+        swal("Ooops", "Tabla de activos vacía", "warning");
     } else {
         if (document.getElementById('codigouserA').value == "no") {
             ok = false;
@@ -424,7 +434,8 @@ function validarTablas_dev() {
     var okk = true;
     // codigo para verificar no finalizar con activos en prestamo
     var sel2 = document.actualizar_prestamo_activo.elements["accion_select1[]"];//se obtiene los elementos
-    if ($('#listActivoAct >tbody >tr').length == 1) {okk = false;
+    if ($('#listActivoAct >tbody >tr').length == 1) {
+        okk = false;
         var op = document.getElementsByName("accion_select1[]")[0].value;
         if (op == 1) {//observacion_pres_act
             okk = true;
@@ -486,13 +497,33 @@ function validarTablas_dev() {
 }
 
 function copiarDetalles() {
-    document.getElementById('1').value = document.getElementById('nserieEAD').value;
-    document.getElementById('1').value = document.getElementById('nserieEAD').value;
-    document.getElementById('1').value = document.getElementById('nserieEAD').value;
-    document.getElementById('1').value = document.getElementById('nserieEAD').value;
-    document.getElementById('1').value = document.getElementById('nserieEAD').value;
-    document.getElementById('1').value = document.getElementById('nserieEAD').value;
-    document.getElementById('1').value = document.getElementById('nserieEAD').value;
+    document.getElementById('nserieEAD').value = document.getElementById('nserieEAd1').value;
+    
+    document.getElementById('colorEAD').value = document.getElementById('colorEAd1').value;
+    document.getElementById('marcaEAD').value = document.getElementById('marcaEAd1').value;
+    document.getElementById('soEAD').value = document.getElementById('soEAd1').value;
+    document.getElementById('dimensionesEAD').value = document.getElementById('dimensionesEAd1').value;
+    document.getElementById('ramEAD').value = document.getElementById('ramEAd1').value;
+    document.getElementById('modeloEAD').value = document.getElementById('modeloEAd1').value;
+    document.getElementById('ddEAD').value = document.getElementById('ddEAd1').value;
+    document.getElementById('proEAD').value = document.getElementById('proEAd1').value;
+    document.getElementById('otroEAD').value = document.getElementById('otroEAd1').value;
+    swal({
+        title: "¿Desea continuar?",
+        text: "Se actualizaran los detalles cunado registre el mantenimiento",
+        type: "warning",
+        showCancelButton: true,
+        cancelButtonText: "Cancelar",
+        confirmButtonClass: "btn-danger",
+        confirmButtonText: "Si, continuar!",
+        closeOnConfirm: true
+    },
+            function () {
+                $('#actualizarDetalles').val("si") ;
+                $('#actualizarCaracteristicas').modal('close');
+                  $('#actualizarDetalles').val("si") ;
+            });
+
 
 }
 

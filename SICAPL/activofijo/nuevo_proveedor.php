@@ -12,7 +12,7 @@
                         		<div class="input-field">
                         			<i class="fa fa-id-badge prefix" aria-hidden="true"></i>
                         			<label for="Titulo">Nombre</label>
-                        			<input type="text" id="idNombre" name="nameNombre"  class="text-center validate" required="">
+                                                <input type="text" id="idNombre" name="nameNombre"  class="text-center validate" required="" pattern="[a-zA-Z]{2,48}" title="El nombre de contener solo letrar">
                         		</div>
                         	</div>
                         </div>
@@ -21,7 +21,7 @@
                         		<div class="input-field">
                         			<i class="fa fa-home prefix" aria-hidden="true"></i>
                         			<label for="Titulo">Direccion</label>
-                        			<input type="text" id="idDirecciono" name="nameDireccion"  class="text-center validate" required="">
+                                                <input type="text" id="idDirecciono" name="nameDireccion"  class="text-center validate" minlength="10"  required="">
                         		</div>
                         	</div>
                         </div>
@@ -29,8 +29,8 @@
                         	<div class="col-md-12">
                         		<div class="input-field">
                         			<i class="fa fa-mobile prefix" aria-hidden="true"></i>
-                        			<label for="Titulo">Telefono</label>
-                        			<input type="text" id="idTelefono" name="nameTelefono"  class="text-center validate" >
+                        			<label for="idTelefono">Telefono</label>
+                                                <input type="text" id="idTelefono" name="nameTelefono"  class="text-center validate" required="">
                         		</div>
                         	</div>
                         </div>
@@ -38,8 +38,8 @@
                         	<div class="col-md-12">
                         		<div class="input-field">
                         			<i class="fa fa-at prefix" aria-hidden="true"></i>
-                        			<label for="Titulo">Correo</label>
-                        			<input type="text" id="idEmail" name="nameEmail"  class="text-center validate" >
+                        			<label for="idEmail">Correo</label>
+                                                <input type="text" id="idEmail" name="nameEmail"  class="text-center validate" required="">
                         		</div>
                         	</div>
                         </div>
