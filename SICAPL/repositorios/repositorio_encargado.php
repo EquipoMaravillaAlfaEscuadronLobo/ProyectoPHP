@@ -27,7 +27,7 @@ class Repositorio_encargado {
                 $sentencia->bindParam(':correo', $correo, PDO::PARAM_STR);
 
               $encargado_insertado = $sentencia->execute();
-             $accion = 'Se registro al siguiente encargado de mantenimiento: ' . $nombre . ", con direccion ". $direccion . ", telefono ". $telefono.", y correo ".$correo ;
+             $accion = 'Se registró al siguiente encargado de mantenimiento: ' . $nombre . ", con direccion ". $direccion . ", telefono ". $telefono.", y correo ".$correo ;
            
              
              self::insertar_bitacora($conexion, $accion);

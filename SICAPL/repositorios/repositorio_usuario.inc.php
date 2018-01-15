@@ -45,7 +45,7 @@ class Repositorio_usuario {
                 $sentencia->bindParam(':observaciones', $observaciones, PDO::PARAM_STR);
 
                 $usuario_insertado = $sentencia->execute();
-                $accion = 'se inserto al usuario ' . $nombre . ' ' . $apellido;
+                $accion = 'Se registro al usuario ' . $nombre . ' ' . $apellido;
                 self::insertar_bitacora($conexion, $accion);
 
 
@@ -334,7 +334,7 @@ class Repositorio_usuario {
                 }
 
                 $administrador_insertado = $sentencia->execute();
-                $accion = 'se actualizaron los datos del usuario ' . $nombre . " " . $apellido;
+                $accion = 'Se actualizaron los datos del usuario ' . $nombre . " " . $apellido;
 
                 self::insertar_bitacora($conexion, $accion);
 
@@ -380,7 +380,7 @@ class Repositorio_usuario {
             try {
                 //echo 'hay conexion<br>';
                 //echo 'el carnet es'. $carnet;
-                $observacion = self::obtener_expediete($conexion, $carnet) . ' el usuario fue eliminado por:' . $usuario->getObservacion();
+                $observacion = $usuario->getObservacion();
                 $estado = 1;
 
                 $sql = 'UPDATE usuarios SET estado=:estado,observaciones=:observaciones,motivo_eliminacion=:motivo_eliminacion where codigo_usuario = :carnet';
@@ -393,7 +393,7 @@ class Repositorio_usuario {
 
                 $usuario_insertado = $sentencia->execute();
 
-                $accion = "se dio de baja al usuario " . $usuario->getNombre() . ' por el siguiente motivo: ' . $observacion;
+                $accion = "Se dió de baja al usuario " . $usuario->getNombre() . ' por el siguiente motivo: ' . $observacion;
                 self::insertar_bitacora($conexion, $accion);
 
                 echo '<script>swal({

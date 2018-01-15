@@ -135,7 +135,7 @@ class Repositorio_activo {
                 $sentencia = $conexion->prepare($sql);                
                 $activo_insertado = $sentencia->execute();
                 
-                $accion = "se  actualizaron los datos del activo " . $codigo_original;
+                $accion = "Se  actualizaron los datos del activo " . $codigo_original;
                 self::insertar_bitacora($conexion, $accion);
                 
             } catch (PDOException $ex) {

@@ -261,12 +261,13 @@ if (isset($_REQUEST["passsss"])) {
 //echo "alert('datos no atualizados')";
 //echo "location.href='inicio_b.php'";
                 echo "</script>";
-            }else{$activos_prestados =$activos_prestados." ". $libros[$i]." ".$tipo[$i];}
+            }else{$activos_prestados =$activos_prestados." (". $libros[$i].") ".$tipo[$i] .'';}
         
             
             
             }
-            $accion = "se prestaron los siguientes activos ". $activos_prestados;
+            $nombre = Repositorio_Bitacora::nombre_usuario(Conexion::obtener_conexion(), $usuario);
+            $accion =  'El usuario '. $nombre.  " presto los siguientes activos ". $activos_prestados;
             echo $accion;
             Repositorio_Bitacora::insertar_bitacora(Conexion::obtener_conexion(), $accion);
         echo "<script type='text/javascript'>";

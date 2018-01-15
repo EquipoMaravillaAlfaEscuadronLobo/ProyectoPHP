@@ -11,7 +11,7 @@
 //echo $codigo;
     Conexion::abrir_conexion();
     $nombre_libro = Repositorio_Bitacora::nombre_libro(Conexion::obtener_conexion(), $codigo);
-    $accion = 'se dio de baja al libro ' .$nombre_libro  . '('. $codigo .')' . 'por el siguiente motivo: '. $motivo ;
+    $accion = 'Se dió de baja al libro ' .$nombre_libro  . '('. $codigo .')' . 'por el siguiente motivo: '. $motivo ;
     Repositorio_Bitacora::insertar_bitacora(Conexion::obtener_conexion(), $accion);
 
     echo Repositorio_libros::DarBaja(Conexion::obtener_conexion(),$codigo,$motivo);

@@ -182,6 +182,7 @@ if (isset($_REQUEST["pas"])) {
     include_once '../app/Conexion.php';
     include_once '../modelos/PrestamoAct.php';
     include_once '../repositorios/repositorio_prestamoact.php';
+    include_once '../repositorios/repositorio_bitacora.php';
 
     Conexion::abrir_conexion();
     // echo '<script language="javascript">alert("paso");</script>';
@@ -201,8 +202,10 @@ if (isset($_REQUEST["pas"])) {
     $Prestamo->setSalida($salida);
     $Prestamo->setDevolucion($devolucion);
     $longitud = count($libros);
+    $todas_las_observaciones='';
 
     if ($opcion == 2) {
+         
         if (Repositorio_prestamoact::Actualizar(Conexion::obtener_conexion(), $devolucion, $observacions, $codPrestamo)) {
             for ($i = 0; $i < $longitud; $i++) {
                 if (Repositorio_prestamoact::ActualizarActivo(Conexion::obtener_conexion(), $libros[$i], $aciones[$i], $observacions[$i])) {
@@ -216,8 +219,15 @@ if (isset($_REQUEST["pas"])) {
                     }
                     );";
                     echo "</script>";
+                
+                    
                 }
             }
+            $nombre = Repositorio_Bitacora::nombre_usuario(Conexion::obtener_conexion(), $usuario);
+            $dia = $_POST['fecha_devolucion_act'];
+            $dia = date_format(date_create($dia), 'd-m-Y');
+            $accion = 'El usuario ' . $nombre . ' actualizo su prestamo de activo fijo para el dia '. $dia;
+            Repositorio_Bitacora::insertar_bitacora(Conexion::obtener_conexion(), $accion);
         } else {
             echo "<script type='text/javascript'>";
             echo 'swal({
@@ -245,7 +255,13 @@ if (isset($_REQUEST["pas"])) {
                     );";
                     echo "</script>";
                 }
+                
             }
+            $nombre = Repositorio_Bitacora::nombre_usuario(Conexion::obtener_conexion(), $usuario);
+            $accion = 'el usario ' . $nombre . ' finalizo su prestamo de activo fijo '; 
+            Repositorio_Bitacora::insertar_bitacora(Conexion::obtener_conexion(), $accion);
+            
+            
         } else {
             echo "<script type='text/javascript'>";
             echo 'swal({

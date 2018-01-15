@@ -14,7 +14,7 @@ include_once '../app/Conexion.php';
     $codigo_usuario = Repositorio_Bitacora::codigo_usuario_por_codigo_prestamo(Conexion::obtener_conexion(), $codigo);
     $identificacion_usuario = Repositorio_Bitacora::nombre_usuario(Conexion::obtener_conexion(), $codigo_usuario);
     
-    $accion = 'el usuario ' . $identificacion_usuario . ' actualizo su prestamo a la siguiente fecha: ' . $fecha1 ;
+    $accion = 'El usuario ' . $identificacion_usuario . ' actualizó su prestamo a la siguiente fecha: ' . $fecha1 ;
     Repositorio_Bitacora::insertar_bitacora(Conexion::obtener_conexion(), $accion);
     $estadop= repositorio_prestamolib::Actualizar(Conexion::obtener_conexion(),$codigo,$fecha);
     

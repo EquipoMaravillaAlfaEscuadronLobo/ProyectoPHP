@@ -16,7 +16,7 @@ class Repositorio_categoria {
                 ///estos son alias para que PDO pueda trabajar 
                 $sentencia = $conexion->prepare($sql);
                 
-                $accion = 'se registro la siguiente tipo de activos: ' . $nombre ; 
+                $accion = 'Se registró la siguiente tipo de activos: ' . $nombre ; 
                 self::insertar_bitacora($conexion, $accion);
 
                 $sentencia->bindParam(':codigo_tipo', $codigo_cat, PDO::PARAM_STR);
@@ -131,7 +131,7 @@ class Repositorio_categoria {
                 $sentencia = $conexion->prepare($sql);
                 $administrador_insertado = $sentencia->execute();
 
-                echo 'la bitacora ha sido guardada';
+                echo 'La bitacora ha sido guardada';
             } catch (PDOException $ex) {
                 echo '<script>swal("No se puedo realizar el registro", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
                 print 'ERROR: ' . $ex->getMessage();

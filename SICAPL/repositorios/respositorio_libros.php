@@ -46,7 +46,7 @@ class Repositorio_libros {
                         $sentencia->execute();
                     }
                 }
-                $accion = "se hizo el registro de " .$a ." libros con el Titulo de " . $titulo ;
+                $accion = "Se hizo el registro de " .$a ." libros con el Titulo de " . $titulo ;
                 //echo 'la accion es ' .$accion;
                 self::insertar_bitacora($conexion, $accion);
             } catch (PDOException $ex) {

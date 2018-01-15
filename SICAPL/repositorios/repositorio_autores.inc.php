@@ -23,7 +23,7 @@ class Repositorio_autores {
                 $sentencia->bindParam(':biografia', $biografia, PDO::PARAM_STR);
                 $autor_insertado = $sentencia->execute();
                 
-                $accion = "se registro al autor " .$nombre . " " . $apellido;
+                $accion = "Se registró al autor " .$nombre . " " . $apellido;
                 self::insertar_bitacora($conexion, $accion);
                 
             } catch (PDOException $ex) {
@@ -85,7 +85,7 @@ class Repositorio_autores {
                 $sentencia->bindParam(':codigo', $codigo, PDO::PARAM_STR);
 
                 $autor_insertado = $sentencia->execute();
-                $accion = 'se actualizaron los datos del Autor '. $nombre ." ". $apellido ;
+                $accion = 'Se actualizaron los datos del Autor '. $nombre ." ". $apellido ;
                 self::insertar_bitacora($conexion, $accion);
                 
             } catch (PDOException $ex) {

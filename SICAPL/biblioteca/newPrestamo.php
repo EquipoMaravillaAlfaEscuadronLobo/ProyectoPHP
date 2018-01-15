@@ -24,7 +24,7 @@ if (Repositorio_prestamolib::GuardarPrestamo(Conexion::obtener_conexion(), $Pres
     $prestamo1 = Repositorio_prestamolib::obtenerUltimo(Conexion::obtener_conexion());
     //echo $prestamo1;
      $identificacion_usuario = Repositorio_Bitacora::nombre_usuario(Conexion::obtener_conexion(), $usuario);
-    $accion = 'el usuario '.$identificacion_usuario.' presto los siguientes libros';
+    $accion = 'El usuario '.$identificacion_usuario.' presto los siguientes libros ';
     $librosN = '';
     for ($i = 1; $i <= $libros; $i++) {
         if(isset($_POST['codigol' . $i])){

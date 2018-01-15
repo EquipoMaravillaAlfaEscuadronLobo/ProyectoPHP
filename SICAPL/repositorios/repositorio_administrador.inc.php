@@ -271,7 +271,7 @@ class Repositorio_administrador {
 
                     $administrador_insertado = $sentencia->execute();
 
-                    $accion = 'se actualizaron los datos del administrador ' . $codigo_original . "(" . $nombre . ' ' . $apellido . ")";
+                    $accion = 'Se actualizarón los datos del administrador ' . $codigo_original . "(" . $nombre . ' ' . $apellido . ")";
                     self::insertar_bitacora($conexion, $accion);
 
                     echo '<script>swal({
@@ -340,7 +340,7 @@ class Repositorio_administrador {
 
                     ////esto es para la bitacora
                     $datos_bitacora = self::obtener_administrador_actual($conexion, $codigo_eliminar);
-                    $accion = 'se dio de baja al administrador ' . $datos_bitacora->getNombre() . ' ' . $datos_bitacora->getApellido() .
+                    $accion = 'Se dió de baja al administrador ' . $datos_bitacora->getNombre() . ' ' . $datos_bitacora->getApellido() .
                             ' por el siguiente motivo: ' . $observacion;
                     self::insertar_bitacora($conexion, $accion);
 
@@ -526,7 +526,7 @@ class Repositorio_administrador {
 
                     $administrador_insertado = $sentencia->execute();
 
-                    $accion = 'el administrador ' . $nombre . ' ' . $apellido . ' actualizo sus datos';
+                    $accion = 'El administrador ' . $nombre . ' ' . $apellido . ' actualizó sus datos';
                     self::insertar_bitacora($conexion, $accion);
 
                     echo '<script>swal({
@@ -660,7 +660,7 @@ class Repositorio_administrador {
                 echo $exc->getTraceAsString();
             }
         }
-        $mensaje = 'los activos de el administrador ' . $codigo_administrador1 . " fueron transferidos a " . $codigo_administrador2;
+        $mensaje = 'Los activos de el administrador ' . $codigo_administrador1 . " fueron transferidos a " . $codigo_administrador2;
         self::insertar_bitacora($conexion, $mensaje);
 
         return $clave_actualizada;

@@ -27,7 +27,7 @@ class Repositorio_proveedor {
                 $sentencia->bindParam(':fax', $fax, PDO::PARAM_STR);
 
               $proveedor_insertado = $sentencia->execute();
-              $accion = 'se registro al siguiente proveedor:' . $nombre . ", con dirección " . $direccion . " y teléfono ". $telefono ;
+              $accion = 'Se registró al siguiente proveedor:' . $nombre . ", con dirección " . $direccion . " y teléfono ". $telefono ;
               self::insertar_bitacora($conexion, $accion);
                 
             } catch (PDOException $ex) {

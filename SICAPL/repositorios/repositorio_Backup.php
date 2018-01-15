@@ -63,7 +63,7 @@ if($result){
         if(fwrite($handle, $sql)){
             fclose($handle);
             
-            $accion = 'se ralizo una copia de seguridad de los datos del sistema';
+            $accion = 'Se ralizó una copia de seguridad de los datos del sistema';
             Conexion::abrir_conexion();
             Repositorio_Bitacora::insertar_bitacora(Conexion::obtener_conexion(), $accion);
             

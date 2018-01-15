@@ -26,7 +26,7 @@ class Repositorio_editorial {
                 $sentencia->bindParam(':telefono', $telefono, PDO::PARAM_STR);
 
                 $editorial_insertada = $sentencia->execute();
-                $accion = 'Se registro a la editorial ' .$nombre;
+                $accion = 'Se registró a la editorial ' .$nombre;
                 self::insertar_bitacora($conexion, $accion);
                 
             } catch (PDOException $ex) {
