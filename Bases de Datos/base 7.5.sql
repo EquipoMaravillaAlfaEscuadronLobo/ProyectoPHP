@@ -612,6 +612,7 @@ CREATE TABLE `usuarios` (
   `foto` longblob,
   `sexo` varchar(10) DEFAULT NULL,
   `estado` int(11) DEFAULT NULL,
+  `motivo_eliminacion` varchar(150) DEFAULT NULL,
   `observaciones` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

@@ -97,12 +97,9 @@ include_once '../repositorios/repositorio_institucion.php';
                         <div class="col-md-5">
                             <div class="file-field input-field">
                                 <div class="btn">
-                                    <span><i class="glyphicon glyphicon-picture" aria-hidden="true"></i>Foto</span>
-                                    <input type="file" id="files"  name="foto" accept="image/*">
-
+                                    <span><i class="glyphicon glyphicon-picture"></i>Foto</span>
+                                    <input type="file" id="files" name="foto" accept="image/*">
                                 </div>
-
-
                                 <div class="file-path-wrapper">
                                     <input type="text" accept="image/*"  class="form-control file-path validate">
                                 </div>
@@ -154,11 +151,11 @@ if (isset($_REQUEST["banderaRegistro"])) {
 
     $ruta = '../foto_usuario/';
     $correlativo = Repositorio_usuario::numero_de_usuarios(Conexion::obtener_conexion());
-    $foto = $ruta .$correlativo. basename($_FILES["foto"]["name"]); ///ruta
+    $foto = $ruta . $correlativo . basename($_FILES["foto"]["name"]); ///ruta
     $foto2 = basename($_FILES["foto"]["name"]); //nombre de archivo
 
     if (move_uploaded_file($_FILES['foto']['tmp_name'], $foto)) {
-        $usuario->setFoto($correlativo.$foto2);
+        $usuario->setFoto($correlativo . $foto2);
     } else {
         $usuario->setFoto("");
     }

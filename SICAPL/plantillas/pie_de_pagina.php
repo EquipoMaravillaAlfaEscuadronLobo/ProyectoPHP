@@ -18,7 +18,7 @@
 <script src="../js/jquery.inputmask.bundle.js"></script>
 <script src="../js/Mascara.js"></script>
 <script src="../js/inicializaciones.js"></script>
-<script src="../js/validacionBiblioteca.js"></script>
+<!--<script src="../js/validacionBiblioteca.js"></script>-->
 <script src="../js/validacionAutores.js"></script>
 <script src="../js/validacionEditoriales.js"></script>
 
@@ -29,7 +29,13 @@
         <script type="text/javascript" src="../js/jquery.validate.js"></script>
         <script src="../js/sweetalert.min.js"></script>
 <script src="../js/Libros.js"></script>
+<?php
+if($titulo1!="Biblioteca"){
+?>
 <script src="../js/Activo.js"></script>
+<?php
+}
+?>
 <script src="../js/foto.js"></script>
 
 </body>

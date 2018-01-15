@@ -1,5 +1,5 @@
 <?php
-
+    if(($_POST["nombre"]!="")&&($_POST["telefono"]!="")&&($_POST["direccion"]!="")&&($_POST["email"]!="")){
     include_once '../app/Conexion.php';
     include_once '../modelos/Editorial.php';
     include_once '../repositorios/repositorio_editorial.php';
@@ -20,6 +20,8 @@
 
     echo Repositorio_editorial::insertarEditorial(Conexion::obtener_conexion(), $Editorial);
  //   Conexion::cerrar_conexion();
-
+    }else{
+        echo '5';
+    }
 
 ?>

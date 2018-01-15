@@ -8,8 +8,6 @@ include_once '../../app/Conexion.php';
 include_once '../../modelos/Usuario.php';
 include_once '../../repositorios/repositorio_usuario.inc.php';
 Conexion::abrir_conexion();
-
-$i = 1;
 ?>
 
 <style type="text/css">
@@ -100,14 +98,14 @@ $i = 1;
     }
 
     .contenedor{
-        
+
         width: 750px;
         height:200px;
         /*background: #AAAADD;*/
-        
+
 
     }
-    
+
 
     .frontal{
         border-width: 1px;
@@ -131,7 +129,7 @@ $i = 1;
         position: relative;
         top: -217px;
         left : 420px;
-        
+
 
 
     }
@@ -181,15 +179,15 @@ $i = 1;
 
 
 </style>
-
-
 <page pageset="old"><!-- Etiqueta para cada pagina del reporte-->
 
-    <?php 
-    $usuario = Repositorio_usuario::usuario_seleccionado(Conexion::obtener_conexion(), $_REQUEST['carnet']);
-    foreach ($usuario as $lista) { ?>
-    
-    <div class="contenedor">
+    <?php
+    if (isset($_REQUEST['lista_usuario'])) {
+        $lista_imprimir = $_REQUEST['lista_usuario'];
+        foreach ($lista_imprimir as $key => $carnetI) {
+            $usuario = Repositorio_usuario::usuario_seleccionado(Conexion::obtener_conexion(), $carnetI);
+                foreach ($usuario as $lista) {  ?>
+                      <div class="contenedor">
 
         <div class="ib frontal">
             <p class="encabezado">CASA DE ENCUENTRO JUVENIL</p>
@@ -222,13 +220,19 @@ $i = 1;
         
     </div>
     <br>
-<?php }?>
+                <?php }
+        }
+    } else {
+        echo 'no se ha seleccionado ningun usuario';
+    }
+    ?>
+
 
 
 </page>
+
 <?php
 $html = ob_get_clean();
-
 $html2pdf = new Html2Pdf('P', 'A4', 'es', 'true', 'UTF-8');
 $html2pdf->writeHTML($html);
 $html2pdf->output('Reporte 1.pdf');

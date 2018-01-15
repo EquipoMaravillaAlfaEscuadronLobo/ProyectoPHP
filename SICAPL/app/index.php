@@ -1,10 +1,16 @@
 <?php
 $titulo1 = "Inicio de Sesion";
 include_once('../plantillas/cabecera.php');
+include_once '../app/Conexion.php';
+include_once '../repositorios/repositorio_notificaciones.php';
+Conexion::abrir_conexion();
+$numero = repositorio_notificaciones::numero_notifiaciones(Conexion::obtener_conexion());
+echo " <script>  var notificaicon = '$numero'; </script>";
 ?>
 
 <div class="container login">
     <form action="" method="post">
+        <input type="hidden" name="notificacion" id="notificacion"  />
         <div class="row">
             <div class="col-md-3">
             </div>
@@ -21,12 +27,12 @@ include_once('../plantillas/cabecera.php');
                                 <div class="col-md-3"><h4>Usuario:</h4></div>
                                 <div class="col-md-9"><input type="text" name="nombre" id="nombre" class="form-control" onkeyup="buscarAdmin()" autofocus/></div>
                             </div>
-                            <div class="row">
+                            <div class="row text-center">
                                 <div class="col-md-3"><h4>Contraseña:</h4></div>
                                 <div class="col-md-9"> 
-                                    <div class="row">
+                                    <div class="row text-center">
                                         <div class="col-md-11">
-                                            <input type="password" name="clave" id="clave" class="form-control" onkeyup="activarBoton()" disabled/>
+                                            <input type="password" name="clave" id="clave" class="form-control text-center" onkeyup="activarBoton()" disabled/>
                                         </div>
                                         <div class="col-md-1"><i id="ojo" class="fa fa-eye" aria-hidden="true"></i></div></div>
                                 </div>
@@ -57,15 +63,36 @@ include_once('../plantillas/cabecera.php');
                             $.post("iniciar.php", {clave: pass, user: user}, function (mensaje) {
 
                                 if (mensaje == "ENCONTRADO") {
-                                    swal({
-                                        title: "Exito",
-                                        text: "Sesion Iniciada Correctamente",
-                                        type: "success"},
-                                    function () {
-                                        location.href = "home.php";
-                                    }
+                                    if (notificaicon != "0") {
+                                        swal({
+                                            title: "Exito!",
+                                            text: "Sesion Iniciada Correctamente, tiene " + notificaicon + "notificaciones",
+                                            type: "success",
+                                            showCancelButton: true,
+                                            confirmButtonClass: "btn-danger",
+                                            confirmButtonText: "Ver notificaciones",
+                                            cancelButtonText: "No, Saltar",
+                                            closeOnConfirm: false,
+                                            closeOnCancel: false
+                                        },
+                                        function (isConfirm) {
+                                            if (isConfirm) {
+                                                    location.href = "../Cuenta/inicio_cuenta.php";
+                                            } else {
+                                                location.href = "./home.php";
+                                            }
+                                        });
+                                    } else {
+                                        swal({
+                                            title: "Exito",
+                                            text: "Sesion Iniciada Correctamente",
+                                            type: "success"},
+                                        function () {
+                                            location.href = "home.php";
+                                        }
 
-                                    );
+                                        );
+                                    }
 
                                 } else {
                                     swal("Oops", "Contraseña Equivocada", "error")
@@ -104,9 +131,11 @@ include_once('../plantillas/cabecera.php');
                     ;
                 </script>
 
-                <?php
-                include_once('../plantillas/pie_de_pagina.php');
-                ?>
+
+
+<?php
+include_once('../plantillas/pie_de_pagina.php');
+?>
                 <script>
                     var conteo = 0  //Definimos la Variable
 
@@ -127,3 +156,5 @@ include_once('../plantillas/cabecera.php');
                     }); //Cierre de la funcion Click
 
                 </script>
+                
+     

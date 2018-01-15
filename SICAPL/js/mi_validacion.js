@@ -11,6 +11,10 @@ $.validator.setDefaults({
 $(document).ready(function () {
     $("#FORMULARIO").validate({
         rules: {
+            foto: {
+                required: true
+              
+            },
             nameNombre: {
                 required: true,
                 minlength: 3
@@ -62,6 +66,9 @@ $(document).ready(function () {
             }
         },
         messages: {
+            foto: {
+               required: ""
+            },
             nameNombre: {
                 required: "Por favor ingrese su Nombre",
                 minlength: "El nombre debe de tener por lo menos 3 caracteres"
@@ -84,7 +91,7 @@ $(document).ready(function () {
                 equalTo: "Por favor ingrese la misma contraseña"
             },
             nameFoto: {
-                required: "por favor ingrese una foto"
+                required: ""
             },
             nameSexo: {
                 required: "Seleccione un campo"

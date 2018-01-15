@@ -4,7 +4,7 @@ include_once '../modelos/Administrador.inc.php';
 include_once '../repositorios/repositorio_administrador.inc.php';
 Conexion::abrir_conexion();
 $administradorActual = Repositorio_administrador::obtener_administrador_actual(Conexion::obtener_conexion(), $_SESSION['user']);
-$ruta =  '../foto_admi/';
+$ruta = '../foto_admi/';
 $sexo = $administradorActual->getSexo();
 ?>
 
@@ -27,11 +27,18 @@ $sexo = $administradorActual->getSexo();
             <!--inicio de panel body-->
             <div class="text-right panel-body">
                 <div class="row">
-                    <div class="col s1"></div>
-                    <div class="col s10"><img src="<?php echo $ruta . $administradorActual->getFoto(); ?>" class="presentacionXZ" alt=""></div>
-                    
+
+                    <div class="col s8">
+                        <div class="row">
+                            <div class="col s8"></div>
+                            <div class="col s2">
+                                <img src="<?php echo $ruta . $administradorActual->getFoto(); ?>" class="presentacionXZ" alt="">
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-                
+
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="input-field col m5 input-group">
@@ -99,15 +106,19 @@ $sexo = $administradorActual->getSexo();
                                     ?>
 
                                     <input type="radio" id="idHombreE"  name="NameSexoE"
-                                           class="text-center with-gap" value="0" <?php if ($sexo == "0") {
-                                        echo 'checked=""';
-                                    } ?>>
+                                           class="text-center with-gap" value="0" <?php
+                                           if ($sexo == "0") {
+                                               echo 'checked=""';
+                                           }
+                                           ?>>
                                     <label for="idHombreE">Masculino</label>
 
                                     <input type="radio" id="idMujerE" name="NameSexoE" 
-                                           class="text-center with-gap" value="1" <?php if ($sexo == "1") {
-                                        echo 'checked=""';
-                                    } ?>>
+                                           class="text-center with-gap" value="1" <?php
+                                           if ($sexo == "1") {
+                                               echo 'checked=""';
+                                           }
+                                           ?>>
                                     <label for="idMujerE">Femenino</label>
                                 </div>
                             </div>
@@ -178,26 +189,24 @@ if (isset($_REQUEST["banderaEdicion"])) {
     $administradorE->setFecha($_REQUEST['nameFechaE']);
     $verificacion = $_REQUEST['nameVerificacion'];
 
-   $ruta = '../foto_admi/';
-    $foto =$ruta.basename($_FILES["foto1"]["name"]);
-    $foto2=basename($_FILES["foto1"]["name"]);
-    if($foto2==""){
-        $foto2=$_FILES['foto1']['name'];
-        $foto ="";
-
+    $ruta = '../foto_admi/';
+    $foto = $ruta . basename($_FILES["foto1"]["name"]);
+    $foto2 = basename($_FILES["foto1"]["name"]);
+    if ($foto2 == "") {
+        $foto2 = $_FILES['foto1']['name'];
+        $foto = "";
     }
-    if($foto!=""){
-    if (move_uploaded_file($_FILES['foto1']['tmp_name'], $foto)) {
-       $administradorE->setFoto($foto2);
-      // echo "1";
-    }else{
-        $administradorE->setFoto("");
-        //echo "2";
+    if ($foto != "") {
+        if (move_uploaded_file($_FILES['foto1']['tmp_name'], $foto)) {
+            $administradorE->setFoto($foto2);
+            // echo "1";
+        } else {
+            $administradorE->setFoto("");
+            //echo "2";
+        }
+    } else {
+        $administradorE->setFoto($foto2);
     }
-}else{
-      $administradorE->setFoto($foto2);
-
-}
 
 
 //echo 'vamos bien ' .$verificacion ;

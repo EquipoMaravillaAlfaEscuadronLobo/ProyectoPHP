@@ -17,6 +17,8 @@ class Repositorio_prestamolib {
  (prestamo_libros.fecha_devolucion) as Devolucion,
  libros.codigo_libro as cl,
  GROUP_CONCAT(libros.titulo SEPARATOR ' - ') as titulo,
+ usuarios.telefono as telefono,
+ usuarios.correo as correo,
 (Select COUNT(DISTINCT libros.codigo_libro)) as cantidad
 FROM
 usuarios

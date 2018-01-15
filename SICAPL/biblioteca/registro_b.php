@@ -14,7 +14,7 @@ $ultimaEditorial = repositorio_editorial::ObtenerUltimo(Conexion::obtener_conexi
             <div id="collapse-libros" class="panel-collapse collapse">
                 <div class="panel-body">
                     <form action="newLibro.php" id="frmLibro" name="frmLibro" enctype="multipart/form-data" autocomplete="off" method="POST" class="librof">
-                        <input type="hidden" id="registrarL">
+
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="input-field">
@@ -107,10 +107,11 @@ $ultimaEditorial = repositorio_editorial::ObtenerUltimo(Conexion::obtener_conexi
                             </div>
                         </div>
 
+                
                 </div>
                 <div class="panel-footer text-center">
-                    <button type="submit" class="btn btn-success" >Guardar</button>
-                    <button type="reset" class="btn btn-danger">Cancelar</button>
+                    <button  class="btn btn-success" form="frmLibro"> <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>Guardar</button>
+                    <button type="reset" class="btn btn-danger"> <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar</button>
                     </form>
                 </div>
             </div>
@@ -120,12 +121,12 @@ $ultimaEditorial = repositorio_editorial::ObtenerUltimo(Conexion::obtener_conexi
             <div id="collapse-autores" class="panel-collapse collapse">
                 <div class="panel-body">
                     <form action="newAutor.php" class="autorf" name="frmAutor" method="post" id="frmAutor" enctype="multipart/form-data">
-                        <input type="hidden" id="registrarA">
+
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="input-field">
                                     <i class="fa fa-list-ol prefix" aria-hidden="true"></i>
-                                    <label for="codigo">Codigo</label>
+                                    <label for="codigo">C&oacute;digo</label>
                                     <input type="text" id="codigoa" required class="form-control validate" disabled value="<?php echo $ultimoAutor ?>">
                                 </div>
                             </div>
@@ -152,7 +153,7 @@ $ultimaEditorial = repositorio_editorial::ObtenerUltimo(Conexion::obtener_conexi
                                 <div class="input-field">
                                     <i class="fa fa-calendar prefix" aria-hidden="true"></i>
                                     <label for="fecha_nac" class="active">Fecha de Nacimiento</label>
-                                    <input type="text" id="fecha_nac"  required name="fecha_nac" class="form-control datepicker datepicker2 validate">
+                                    <input type="text" id="fecha_nac"  required name="fecha_nac" class="form-control datepicker datepicker2">
                                 </div>
                             </div>
 
@@ -172,8 +173,8 @@ $ultimaEditorial = repositorio_editorial::ObtenerUltimo(Conexion::obtener_conexi
                         </div>
                 </div>
                 <div class="panel-footer text-center">
-                    <button type="submit" class="btn btn-success" form="frmAutor">Guardar</button>
-                    <button type="reset" class="btn btn-danger">Cancelar</button>
+                    <button  class="btn btn-success" form="frmAutor"> <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>Guardar</button>
+                    <button type="reset" class="btn btn-danger"> <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar</button>
                     </form>
                 </div>
             </div>
@@ -183,7 +184,7 @@ $ultimaEditorial = repositorio_editorial::ObtenerUltimo(Conexion::obtener_conexi
             <div id="collapse-editoriales" class="panel-collapse collapse">
                 <div class="panel-body">
                     <form action="newEditorial.php" class="editorialf" name="frmEditoriales" id="frmEditoriales" method="post">
-                        <input type="hidden" id="registrarE">
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="input-field">
@@ -231,7 +232,8 @@ $ultimaEditorial = repositorio_editorial::ObtenerUltimo(Conexion::obtener_conexi
 
                 </div>
                 <div class="panel-footer text-center">
-                    <button id="btn_enviar" class="btn btn-success">Guardar</button><button type="reset" class="btn btn-danger">Cancelar</button>
+                    <button id="btn_enviar" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>Guardar</button>
+                    <button type="reset" class="btn btn-danger"> <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar</button>
                     </form>
                 </div>
             </div>

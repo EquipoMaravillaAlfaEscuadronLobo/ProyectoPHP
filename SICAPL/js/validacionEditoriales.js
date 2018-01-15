@@ -1,12 +1,3 @@
-$.validator.setDefaults({
-    submitHandler: function () {
-       
-        document.getElementById('registrarE').value="ok";    
-        document.frmEditoriales.submit();
-        
-        
-    }
-});
 
 $(document).ready(function () {
      $("#frmEditoriales").validate({
@@ -67,7 +58,7 @@ $(document).ready(function () {
                 minlength: "debe de poseer por lo menos 6 caracteres "
             },
             telefono:{
-               required: "favor ingrese su teléfono",
+               required: "favor ingrese un n&uacute;mero de teléfono",
                 minlength: "ingrese un numero telefónico valido"
             },
             NameNivel :{

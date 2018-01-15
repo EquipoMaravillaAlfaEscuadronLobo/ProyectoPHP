@@ -7,7 +7,7 @@ class Repositorio_administrador {
         // $administrador = new Administrador();
         if (isset($conexion)) {
             try {
-                
+
                 $codigo_administrador = $administrador->getCodigo_administrador();
                 $pasword = $administrador->getPasword();
                 $nivel = $administrador->getNivel();
@@ -21,40 +21,36 @@ class Repositorio_administrador {
                 $email = $administrador->getEmail();
                 $fecha = $administrador->getFecha();
                 $administradorExistente = self::obtener_administrador($conexion, $codigo_administrador);
-                $EmailExistente = self::obtener_email($conexion, $email);
+                $emailExistente = self::obtener_email($conexion, $email);
+                $duiExistente = self::verifica_dui($conexion, $dui);
 
-                
+                if ($administradorExistente->getCodigo_administrador() == "" || $emailExistente->getEmail() == '' || $duiExistente->getDui() == '') {
 
+                    $sql = 'INSERT INTO administradores(codigo_administrador,pasword,nivel,nombre,apellido,sexo,dui,estado,observacion,foto,email,fecha)'
+                            . ' values (:codigo_administrador,:pasword,:nivel,:nombre,:apellido,:sexo,:dui,:estado,:observacion,:foto,:email,:fecha)';
+                    ///estos son alias para que PDO pueda trabajar 
+                    $sentencia = $conexion->prepare($sql);
 
-                if ($administradorExistente->getCodigo_administrador() == "") {
-                    if ($EmailExistente->getEmail() == "") {
+                    $sentencia->bindParam(':codigo_administrador', $codigo_administrador, PDO::PARAM_STR);
+                    $sentencia->bindParam(':pasword', password_hash($pasword, PASSWORD_DEFAULT), PDO::PARAM_STR);
+                    $sentencia->bindParam(':nivel', $nivel, PDO::PARAM_INT);
+                    $sentencia->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+                    $sentencia->bindParam(':apellido', $apellido, PDO::PARAM_STR);
+                    $sentencia->bindParam(':sexo', $sexo, PDO::PARAM_BOOL);
+                    $sentencia->bindParam(':dui', $dui, PDO::PARAM_STR);
+                    $sentencia->bindParam(':estado', $estado, PDO::PARAM_STR);
+                    $sentencia->bindParam(':observacion', $observacion, PDO::PARAM_STR);
+                    $sentencia->bindParam(':email', $email, PDO::PARAM_STR);
+                    $sentencia->bindParam(':foto', $foto, PDO::PARAM_STR);
+                    $sentencia->bindParam(':fecha', $fecha, PDO::PARAM_STR);
 
+                    $administrador_insertado = $sentencia->execute();
+                    $mensaje = 'Se registro como administrador a ' . $nombre . ' ' . $apellido;
 
-                        $sql = 'INSERT INTO administradores(codigo_administrador,pasword,nivel,nombre,apellido,sexo,dui,estado,observacion,foto,email,fecha)'
-                                . ' values (:codigo_administrador,:pasword,:nivel,:nombre,:apellido,:sexo,:dui,:estado,:observacion,:foto,:email,:fecha)';
-                        ///estos son alias para que PDO pueda trabajar 
-                        $sentencia = $conexion->prepare($sql);
-
-                        $sentencia->bindParam(':codigo_administrador', $codigo_administrador, PDO::PARAM_STR);
-                        $sentencia->bindParam(':pasword', password_hash($pasword, PASSWORD_DEFAULT), PDO::PARAM_STR);
-                        $sentencia->bindParam(':nivel', $nivel, PDO::PARAM_INT);
-                        $sentencia->bindParam(':nombre', $nombre, PDO::PARAM_STR);
-                        $sentencia->bindParam(':apellido', $apellido, PDO::PARAM_STR);
-                        $sentencia->bindParam(':sexo', $sexo, PDO::PARAM_BOOL);
-                        $sentencia->bindParam(':dui', $dui, PDO::PARAM_STR);
-                        $sentencia->bindParam(':estado', $estado, PDO::PARAM_STR);
-                        $sentencia->bindParam(':observacion', $observacion, PDO::PARAM_STR);
-                        $sentencia->bindParam(':email', $email, PDO::PARAM_STR);
-                        $sentencia->bindParam(':foto', $foto, PDO::PARAM_STR);
-                        $sentencia->bindParam(':fecha', $fecha, PDO::PARAM_STR);
-
-                        $administrador_insertado = $sentencia->execute();
-                        $mensaje = 'Se registro como administrador a ' . $nombre . ' ' . $apellido;
-
-                        self::insertar_bitacora($conexion, $mensaje);
+                    self::insertar_bitacora($conexion, $mensaje);
 
 
-                        echo '<script>swal({
+                    echo '<script>swal({
                     title: "Exito",
                     text: "El registro ha sido Guardado!",
                     type: "success",
@@ -65,20 +61,29 @@ class Repositorio_administrador {
                     location.href="inicio_seguridad.php";
                     
                 });</script>';
-                    } else {
-                        echo '<script>'
-                        . 'swal("Advetencia!", "El correo que introdujo ya esta en uso, favor introdusca otro", "warning");'
-                        . '$("#idNombre").val("' . $nombre . '"); $("#idApellido").val("' . $apellido . '");'
-                        . '$("#idUser").val("' . $codigo_administrador . '"); $("#idDui").val("' . $dui . '");'
-                        . '$("#idFecha").val("' . $fecha . '"); $("#idEmail").val("' . $email . '");'
-                        . 'if ("' . $nivel . '" == "0") {$("#idRoot").attr("checked", "checked");} else {$("#idAdministrador").attr("checked", "checked");}'
-                        . 'if ("' . $sexo . '" == "Masculino") {$("#idHombre").attr("checked", "checked");} else {$("#idMujer").attr("checked", "checked");}'
-                        . '$("#idListarAdmnistrador").removeClass("active");  $("#idRegistroAdministrador").addClass("active"); '
-                        . '$("#idPass1").val("' . $pasword . '"); $("#idPass2").val("' . $pasword . '");  </script>';
-                    }
-                } else {
+                } else if ($administradorExistente->getCodigo_administrador() != '') {
                     echo '<script>'
-                    . 'swal("Advetencia!", "El nombre de usuario que introdujo ya esta en uso, favor introdusca otro", "warning");'
+                    . 'swal("Cuidado!", "El Usuario que introdujo ya esta en uso, favor introdusca otro", "warning");'
+                    . '$("#idNombre").val("' . $nombre . '"); $("#idApellido").val("' . $apellido . '");'
+                    . '$("#idUser").val("' . $codigo_administrador . '"); $("#idDui").val("' . $dui . '");'
+                    . '$("#idFecha").val("' . $fecha . '"); $("#idEmail").val("' . $email . '");'
+                    . 'if ("' . $nivel . '" == "0") {$("#idRoot").attr("checked", "checked");} else {$("#idAdministrador").attr("checked", "checked");}'
+                    . 'if ("' . $sexo . '" == "Masculino") {$("#idHombre").attr("checked", "checked");} else {$("#idMujer").attr("checked", "checked");}'
+                    . '$("#idListarAdmnistrador").removeClass("active");  $("#idRegistroAdministrador").addClass("active"); '
+                    . '$("#idPass1").val("' . $pasword . '"); $("#idPass2").val("' . $pasword . '");  </script>';
+                } else if ($duiExistente->getDui() != '') {
+                    echo '<script>'
+                    . 'swal("Cuidado!", "El dui que introdujo ya esta en uso, favor introdusca otro", "warning");'
+                    . '$("#idNombre").val("' . $nombre . '"); $("#idApellido").val("' . $apellido . '");'
+                    . '$("#idUser").val("' . $codigo_administrador . '"); $("#idDui").val("' . $dui . '");'
+                    . '$("#idFecha").val("' . $fecha . '"); $("#idEmail").val("' . $email . '");'
+                    . 'if ("' . $nivel . '" == "0") {$("#idRoot").attr("checked", "checked");} else {$("#idAdministrador").attr("checked", "checked");}'
+                    . 'if ("' . $sexo . '" == "Masculino") {$("#idHombre").attr("checked", "checked");} else {$("#idMujer").attr("checked", "checked");}'
+                    . '$("#idListarAdmnistrador").removeClass("active");  $("#idRegistroAdministrador").addClass("active"); '
+                    . '$("#idPass1").val("' . $pasword . '"); $("#idPass2").val("' . $pasword . '");  </script>';
+                } else if ($emailExistente->getEmail() != '') {
+                    echo '<script>'
+                    . 'swal("Cuidado!", "El Correo que introdujo ya esta en uso, favor introdusca otro", "warning");'
                     . '$("#idNombre").val("' . $nombre . '"); $("#idApellido").val("' . $apellido . '");'
                     . '$("#idUser").val("' . $codigo_administrador . '"); $("#idDui").val("' . $dui . '");'
                     . '$("#idFecha").val("' . $fecha . '"); $("#idEmail").val("' . $email . '");'
@@ -118,6 +123,7 @@ class Repositorio_administrador {
                     $administrador->setEmail($row["email"]);
                     $administrador->setNombre($row["nombre"]);
                     $administrador->setApellido($row["apellido"]);
+                    $administrador->setDui($row["dui"]);
                 }
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();
@@ -161,7 +167,7 @@ class Repositorio_administrador {
         }
         return $lista_administradores;
     }
-    
+
     public static function lista_administradores_para_baja($conexion, $codigo) {
         $lista_administradores = array();
 
@@ -197,7 +203,7 @@ class Repositorio_administrador {
         }
         return $lista_administradores;
     }
-    
+
     public static function actualizarClave($conexion, $codigo_administrador, $clave) {
         $clave_actualizada = false;
         if (isset($conexion)) {
@@ -212,7 +218,7 @@ class Repositorio_administrador {
         }
         return $clave_actualizada;
     }
-    
+
     public static function actualizar_administrador($conexion, $administrador, $codigo_original, $verificacion) {
         $administrador_insertado = false;
         $administrador_actual = self:: obtener_administrador_actual($conexion, $_SESSION['user']);
@@ -276,7 +282,7 @@ class Repositorio_administrador {
                     //echo '<script>'
                     //. 'swal("Alerta!", "El la contraseña que introdujo no es correcta, por lo que no se haran cambios", "warning"); </script>';
                     echo '<script>swal({
-                    title: "Advertencia!",
+                    title: "Cuidado!",
                     text: "la contraseña que introdujo no es correcta, por lo que no se haran cambios",
                     type: "warning",
                     confirmButtonText: "ok",
@@ -357,7 +363,7 @@ class Repositorio_administrador {
                 });</script>';
                 }
             } catch (PDOException $ex) {
-                echo "<script>swal('Ooops!', 'Hubo no se pudo realizar la accion', 'error');</script>";
+                echo "<script>swal('Error!', 'Hubo no se pudo realizar la accion', 'error');</script>";
 
                 print 'ERROR: ' . $ex->getMessage();
             }
@@ -492,10 +498,19 @@ class Repositorio_administrador {
                     $sentencia->bindParam(':fecha', $fecha, PDO::PARAM_STR);
                     $sentencia->bindParam(':email', $email, PDO::PARAM_STR);
                     $sentencia->bindParam(':sexo', $sexo, PDO::PARAM_STR);
-                    $sentencia->bindParam(':foto', $foto, PDO::PARAM_STR);
+
+                    if ($administrador->getFoto() == '') {
+                        $foto = $administrador_actual->getFoto();
+                        $sentencia->bindParam(':foto', $foto, PDO::PARAM_STR);
+                    } else {
+                        $foto = $administrador->getFoto();
+                        $sentencia->bindParam(':foto', $foto, PDO::PARAM_STR);
+                    }
+
+
 
                     if ($pasword == 'PASS_AC') {
-                        echo 'si la password es' . $pasword;
+
                         $pasword = $administrador_actual->getPasword();
                         $sentencia->bindParam(':pasword', $pasword, PDO::PARAM_STR);
                     } else {
@@ -520,7 +535,7 @@ class Repositorio_administrador {
                 });</script>';
                 } else {
                     echo '<script>swal({
-                    title: "Advertencia!",
+                    title: "Cuidado!",
                     text: "la contraseña que introdujo no es correcta, por lo que no se haran cambios",
                     type: "warning",
                     confirmButtonText: "ok",
@@ -536,7 +551,7 @@ class Repositorio_administrador {
                 echo '<script>swal({
                     title: "Error!",
                     text: "Por Favor intente más tarde",
-                    type: "warning",
+                    type: "error",
                     confirmButtonText: "ok",
                     closeOnConfirm: false
                 },
@@ -568,31 +583,29 @@ class Repositorio_administrador {
 
 //                echo 'la bitacora ha sido guardada';
             } catch (PDOException $ex) {
-                echo '<script>swal("No se puedo realizar el registro", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
+                echo '<script>swal("Por Favor intente mas tarde", "Favor revisar los datos e intentar nuevamente", "error");</script>';
                 print 'ERROR: ' . $ex->getMessage();
             }
         }
     }
 
     public static function numero_administradores($conexion) {
-        $total = null ;
-  
+        $total = null;
+
         if (isset($conexion)) {
             try {
                 //echo 'hay conexion';
                 $sql = "SELECT count(*) as total FROM  administradores"; ///estos son alias para que PDO pueda trabajar 
                 $sentencia = $conexion->prepare($sql);
-                $sentencia ->execute();
-                $resultado = $sentencia -> fetch();
-                
-                $total =$resultado['total'];
-                    
+                $sentencia->execute();
+                $resultado = $sentencia->fetch();
+
+                $total = $resultado['total'];
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();
             }
         }
         return $total;
-    
     }
 
     public static function verificar_pass($conexion, $verificacion) {
@@ -612,7 +625,7 @@ class Repositorio_administrador {
                 echo '<script>swal({
                     title: "Error!",
                     text: "Por Favor intente más tarde",
-                    type: "warning",
+                    type: "error",
                     confirmButtonText: "ok",
                     closeOnConfirm: false
                 },
@@ -628,7 +641,7 @@ class Repositorio_administrador {
         }
         return $respuesta;
     }
-    
+
     public static function actualizar_activos_administradir($conexion, $codigo_administrador1, $codigo_administrador2) {
         $clave_actualizada = false;
         if (isset($conexion)) {
@@ -640,10 +653,27 @@ class Repositorio_administrador {
                 echo $exc->getTraceAsString();
             }
         }
-        $mensaje = 'los activos de el administrador ' . $codigo_administrador1 . " fueron transferidos a " .$codigo_administrador2;
+        $mensaje = 'los activos de el administrador ' . $codigo_administrador1 . " fueron transferidos a " . $codigo_administrador2;
         self::insertar_bitacora($conexion, $mensaje);
-        
+
         return $clave_actualizada;
+    }
+
+    public static function verifica_dui($conexion, $dui) {
+        $administrador = new Administrador();
+        if (isset($conexion)) {
+            try {
+
+                $sql = "SELECT * FROM administradores WHERE dui='$dui'"; ///estos son alias para que PDO pueda trabajar 
+                foreach ($conexion->query($sql) as $row) {
+
+                    $administrador->setDui($row["dui"]);
+                }
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $administrador;
     }
 
 }

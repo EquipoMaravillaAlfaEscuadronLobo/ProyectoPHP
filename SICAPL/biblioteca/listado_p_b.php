@@ -37,7 +37,9 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
                                 <tr>
                                     <td><?php echo $fila['codigo'] ?></td>
                                     <td><?php echo $fila['user'] ?></td>
-                                    <td><?php echo $fila['nombre'] ?></td>
+                                    <td rel="popover" data-container="body" data-togle="popover" data-placement="top" 
+                                        title="Informaci&oacute;n de contacto:" data-content="<b>Tel&eacute;fono: </b><?php echo $fila['telefono'] ?>
+                                        <br><b>Correo: </b><?php echo $fila['correo'] ?>"><?php echo $fila['nombre'] ?></td>
                                     <td><?php echo $fila['titulo'] ?></td>
                                     <td><?php echo date_format(date_create($fila['fecha_salida']), 'd-m-Y') ?></td>
                                     <td><?php echo date_format(date_create($fila['Devolucion']), 'd-m-Y') ?></td>
@@ -117,23 +119,28 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
         }
     }
 
-    function devolucion(count, cl, cp) {
+    function devolucion(dev,count, cl, cp) {
         if (count == 1)
         {
             finalizar(cp);
         } else {
-            finalizar1(cl, cp);
+            finalizar1(cl, cp, count-1, dev);
         }
     }
-    function finalizar1(cl, cp) {
+    function finalizar1(cl, cp, count, dev) {
         swal("Seguro que desea devolver est libro", {
             buttons: {
                 cancel: "Cancelar",
-                confirm: true,
+                confirm: {
+                    text: "Confirmar",
+                    value: "confirm"
+                }
             },
             icon: "info",
         }).then(value => {
-            $.ajax({
+            switch(value){
+                case "confirm":
+                    $.ajax({
                 url: 'devolver1.php?codigop=' + cp + '&codigol=' + cl,
                 type: 'GET',
                 dataType: "html",
@@ -145,7 +152,7 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
                 if (resp == 1) {
                     swal("Exito", "Libro Devuelto", "success")
                             .then((value) => {
-                                $.post("listaFinPrestamo.php", {codigo: cp}, function (mensaje) {
+                                $.post("listaFinPrestamo.php", {codigo: cp, dev: dev, cantidad: count}, function (mensaje) {
                                     $('#finalizarPL2').html(mensaje).fadeIn();
 
                                 });
@@ -157,6 +164,11 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
 
                 }
             });
+                    break;
+                default:
+                    return false;
+                    break;
+            }
 
         })
     }

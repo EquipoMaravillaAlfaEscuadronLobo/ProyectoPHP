@@ -70,7 +70,7 @@ include_once '../repositorios/repositorio_administrador.inc.php';
                     <div class="col m1"></div>
                     <div class="input-field col m5">
                         <i class="fa fa-calendar prefix"></i> 
-                        <input type="text" id="idFecha" name="nameFecha" class="text-center datepicker2" required="">
+                        <input type="text" id="idFecha" name="nameFecha" class="text-center datepicke-cumple" required="">
                         <label for="idFecha">Fecha de Nacimiento</label>
                     </div>
                     <div class="input-field col m5">
@@ -135,7 +135,7 @@ include_once '../repositorios/repositorio_administrador.inc.php';
 
                             </div>
                             <div class="file-path-wrapper">
-                                <input type="text" accept="image/*"  class="form-control file-path validate">
+                                <input type="text" accept="image/*" class="form-control file-path validate">
                             </div>
                         </div>
                     </div>
@@ -198,6 +198,8 @@ if (isset($_REQUEST["banderaRegistro"])) {
     $correlativo = Repositorio_administrador::numero_administradores(Conexion::obtener_conexion());
     $foto = $ruta .$correlativo. basename($_FILES["foto"]["name"]); ///ruta
     $foto2 = basename($_FILES["foto"]["name"]); //nombre de archivo
+    
+    echo 'esta es la puta foto '. $foto2;
 
     if (move_uploaded_file($_FILES['foto']['tmp_name'], $foto)) {
         $administrador->setFoto($correlativo.$foto2);

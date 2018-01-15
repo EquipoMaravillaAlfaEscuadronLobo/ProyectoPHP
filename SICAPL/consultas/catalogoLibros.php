@@ -14,7 +14,8 @@
 				<th class="text-center">Editoriales</th>
 				<th class="text-center">Foto</th>
 				<th class="text-center">Fecha de Publicaci&oacute;n</th>
-                                <th class="text-center">Estado<input type="date" min="2018-01-11" value="2018-01-11"></th>
+                <th class="text-center">Estado</th>
+                <th class="text-center">C&oacute;odigo de Barras</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -23,15 +24,26 @@
                             # code...
 
                      ?>
-			<tr>
+					<tr>
 							<td class="text-center"><?php echo $fila['titulo'] ?></td>
                             <td class="text-center"><?php echo $fila['autor'] ?></td>
                             <td class="text-center"><?php echo $fila['editorial'] ?></td>
                             <td class="text-center fotosLibros"><img src="../fotoLibros/<?php echo $fila['foto'] ?>" class="fotosLibros presentacionXZ"></td>
                             <td class="text-center"><?php echo date_format(date_create($fila['fecha_publicacion']),'d-m-Y') ?></td>
-                            <?php if($fila['estado']==0){echo '<td class="alert alert-success">Disponibles';}else{echo '<td class="alert alert-danger">No Disponibles';}?></td>
-			</tr>
+                            
+                            <?php if($fila['estado']==0){
+                            	echo "<td class='alert alert-success' >Disponibles</td>";
+                            }else{
+                            	echo '<td class="alert alert-danger"  >No Disponibles</td>';
+                            }
+                            ?>
+                        	<td class="text-center"><a class="btn btn-info" href="../reportes/imprimir_barcode.php?codigo=<?php echo $fila['codigo']?>" target="_blank"><i class="fa fa-barcode" aria-hidden="true"></i>  Imprimir</a></td>
+					</tr>
 			 <?php } ?>
 		</tbody>
 	</table>
-
+<script type="text/javascript">
+	abirBarCode(codigo){
+		location.href="../reportes/imprimir_barcode?codigo="+codigo;
+	}
+</script>
