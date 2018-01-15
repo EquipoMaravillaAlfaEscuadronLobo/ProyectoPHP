@@ -40,7 +40,7 @@ void setup()
    pinMode(5,OUTPUT);
    pinMode(7,OUTPUT);
    pinMode(8,OUTPUT);
-  //Serial.begin(9600);
+  Serial.begin(9600);
   digitalWrite(10,HIGH);
   digitalWrite(10,LOW);
 
@@ -95,7 +95,8 @@ void cronometroF(struct pt *pt){
   }
  vectorCaracteres.toCharArray(led,10);
  minutos=atoi(led);
-       
+       Serial.println(minutos);
+       delay(1000);
        //Serial.println(minutos);
        if(minutos>0){
         digitalWrite(3,HIGH);
