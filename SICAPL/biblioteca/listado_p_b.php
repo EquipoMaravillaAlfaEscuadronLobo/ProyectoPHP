@@ -119,23 +119,28 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
         }
     }
 
-    function devolucion(count, cl, cp) {
+    function devolucion(dev,count, cl, cp) {
         if (count == 1)
         {
             finalizar(cp);
         } else {
-            finalizar1(cl, cp);
+            finalizar1(cl, cp, count-1, dev);
         }
     }
-    function finalizar1(cl, cp) {
+    function finalizar1(cl, cp, count, dev) {
         swal("Seguro que desea devolver est libro", {
             buttons: {
                 cancel: "Cancelar",
-                confirm: true,
+                confirm: {
+                    text: "Confirmar",
+                    value: "confirm"
+                }
             },
             icon: "info",
         }).then(value => {
-            $.ajax({
+            switch(value){
+                case "confirm":
+                    $.ajax({
                 url: 'devolver1.php?codigop=' + cp + '&codigol=' + cl,
                 type: 'GET',
                 dataType: "html",
@@ -147,7 +152,7 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
                 if (resp == 1) {
                     swal("Exito", "Libro Devuelto", "success")
                             .then((value) => {
-                                $.post("listaFinPrestamo.php", {codigo: cp}, function (mensaje) {
+                                $.post("listaFinPrestamo.php", {codigo: cp, dev: dev, cantidad: count}, function (mensaje) {
                                     $('#finalizarPL2').html(mensaje).fadeIn();
 
                                 });
@@ -159,6 +164,11 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
 
                 }
             });
+                    break;
+                default:
+                    return false;
+                    break;
+            }
 
         })
     }

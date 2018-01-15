@@ -29,7 +29,13 @@
         <script type="text/javascript" src="../js/jquery.validate.js"></script>
         <script src="../js/sweetalert.min.js"></script>
 <script src="../js/Libros.js"></script>
+<?php
+if($titulo1!="Biblioteca"){
+?>
 <script src="../js/Activo.js"></script>
+<?php
+}
+?>
 <script src="../js/foto.js"></script>
 
 </body>

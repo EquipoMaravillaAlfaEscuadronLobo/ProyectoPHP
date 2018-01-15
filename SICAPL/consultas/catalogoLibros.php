@@ -14,7 +14,7 @@
 				<th class="text-center">Editoriales</th>
 				<th class="text-center">Foto</th>
 				<th class="text-center">Fecha de Publicaci&oacute;n</th>
-                                <th class="text-center">Estado<input type="date" min="2018-01-11" value="2018-01-11"></th>
+                                <th class="text-center">Estado</th>
 			</tr>
 		</thead>
 		<tbody>

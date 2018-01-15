@@ -197,7 +197,7 @@ libros.codigo_libro ='$codigo'";
             try {
                 $sql = "SELECT
 DISTINCT usuarios.*,(case when usuarios.codigo_usuario in (select DISTINCT (prestamo_libros.codigo_usuario) from prestamo_libros where prestamo_libros.estado=0) or usuarios.codigo_usuario in (select DISTINCT (prestamo_activos.usuarios_codigo) from prestamo_activos where prestamo_activos.estado=0)  then 'si' else 'no' end) as 'esta',
-GROUP_CONCAT(prestamo_libros.observaciones SEPARATOR ' - ') as obsP
+GROUP_CONCAT(prestamo_libros.observaciones SEPARATOR '</li><li>') as obsP
  
 FROM
 usuarios
@@ -295,7 +295,7 @@ libros.codigo_libro like '%" . $codigo . "%'";
         return $resultado;
     }
 
-    public function ListaDarBaja($conexion, $codigo) {
+    public static function ListaDarBaja($conexion, $codigo) {
         $resultado = "";
         if (isset($conexion)) {
             try {
@@ -317,7 +317,7 @@ codigo_libro like '%$codigo%' and libros.estado=0;
         return $resultado;
     }
     
-    public function LibrosDadosBaja($conexion) {
+    public static function LibrosDadosBaja($conexion) {
         $resultado = "";
         if (isset($conexion)) {
             try {
@@ -347,7 +347,7 @@ titulo
         return $resultado;
     }
     
-    public function LibrosDadosBaja2($conexion, $titulo) {
+    public static function LibrosDadosBaja2($conexion, $titulo) {
         $resultado = "";
         if (isset($conexion)) {
             try {
@@ -374,7 +374,7 @@ titulo
         return $resultado;
     }
     
-    public function LibrosDanados($conexion) {
+    public static function LibrosDanados($conexion) {
         $resultado = "";
         if (isset($conexion)) {
             try {
@@ -404,7 +404,7 @@ titulo
         return $resultado;
     }
     
-    public function LibrosDanados2($conexion, $titulo) {
+    public static function LibrosDanados2($conexion, $titulo) {
         $resultado = "";
         if (isset($conexion)) {
             try {
@@ -431,7 +431,7 @@ titulo
         return $resultado;
     }
     
-    public function LibrosExtraviados($conexion) {
+    public static function LibrosExtraviados($conexion) {
         $resultado = "";
         if (isset($conexion)) {
             try {
@@ -461,7 +461,7 @@ titulo
         return $resultado;
     }
     
-    public function LibrosExtraviados2($conexion, $titulo) {
+    public static function LibrosExtraviados2($conexion, $titulo) {
         $resultado = "";
         if (isset($conexion)) {
             try {
@@ -488,7 +488,7 @@ titulo
         return $resultado;
     }
     
-    public function LibrosMasPrestados($conexion) {
+    public static function LibrosMasPrestados($conexion) {
         $resultado = "";
         if (isset($conexion)) {
             try {
@@ -516,7 +516,7 @@ veces desc
         return $resultado;
     }
     
-    public function LibrosMasPrestados2($conexion, $titulo) {
+    public static function LibrosMasPrestados2($conexion, $titulo) {
         $resultado = "";
         if (isset($conexion)) {
             try {
@@ -544,7 +544,7 @@ veces desc
         return $resultado;
     }
     
-    public function CodigoBarras($conexion) {
+    public static function CodigoBarras($conexion) {
         $resultado = "";
         if (isset($conexion)) {
             try {
@@ -558,7 +558,7 @@ veces desc
         return $resultado;
     }
     
-    public function CodigoBarras2($conexion, $titulo) {
+    public static function CodigoBarras2($conexion, $titulo) {
         $resultado = "";
         if (isset($conexion)) {
             try {
@@ -572,7 +572,7 @@ veces desc
         return $resultado;
     }
 
-    static function insertar_bitacora($conexion, $accion) {
+    public static function insertar_bitacora($conexion, $accion) {
         $administrador_insertado = false;
         if (isset($conexion)) {
             try {

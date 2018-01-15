@@ -32,7 +32,7 @@ $listado= Repositorio_prestamolib::ListaLibrosPrestamo(Conexion::obtener_conexio
             <td><?php echo $fila['cl']?></td>
             <td><?php echo $fila['titulo']?></td>
             <td>
-                <button class="btn btn-warning" onclick="devolucion('<?php echo $cantidad ?>','<?php echo $fila['cl'] ?>','<?php echo $fila[0] ?>')">
+                <button class="btn btn-warning" onclick="devolucion('<?php echo $dev ?>','<?php echo $cantidad ?>','<?php echo $fila['cl'] ?>','<?php echo $fila[0] ?>')">
                     <i class="fa fa-reply" aria-hidden="true"></i>
                 </button>
             </td>
