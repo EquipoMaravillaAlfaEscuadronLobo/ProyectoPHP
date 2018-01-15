@@ -28,18 +28,17 @@ Conexion::abrir_conexion();
                             </div>
                         </div>
                         <div class="input-field col m3">
-                           
+
                             <select required="" name="admin" id="admin" >
                                 <?php
-                                
                                 Repositorio_administrador::lista_administradores2(Conexion::obtener_conexion());
                                 ?>
                             </select>
-                             <label for="idNombre" class="col-sm-4 control-labe" style="font-size: 18">Encargado</label>
+                            <label for="idNombre" class="col-sm-5 control-labe" style="font-size: 18">Encargado</label>
                         </div>
                         <div class="col m1"></div>
                         <!-- termona el combo de encargado   -->
-                        <div class="input-field col m4">
+                        <div class="input-field col m5">
                             <i class="fa fa-calendar prefix"></i> 
                             <input type="date" id="fecha_adq" name="fecha_adq" class="datepicker2" required value="<?php echo date("d-m-Y"); ?>" > 
                             <label for="idNombre" class="col-sm-4 control-labe" style="font-size: 18">Fecha de Adquisición</label>
@@ -60,7 +59,7 @@ Conexion::abrir_conexion();
                                 include'select_categoria.php';
                                 ?>
                             </select>
-                             <label for="idNombre" class="col-sm-4 control-labe" style="font-size: 18">Tipo</label>
+                            <label for="idNombre" class="col-sm-4 control-labe" style="font-size: 18">Tipo</label>
                         </div>
                         <div class="input-field col m1">
                             <input type="number"  min="1" max="500" id="cantidad" name="cantidad" placeholder="Cantidad" required="true" value="1">
@@ -86,12 +85,12 @@ Conexion::abrir_conexion();
                         </div>
                         <div class="input-field col m3">
                             <select required="" name="selectPro" id="selectPro" class="selectPro">
-                                
+
                                 <?php
                                 include'select_proveedor.php';
                                 ?>
                             </select>
-                             <label for="idNombre" class="col-sm-4 control-labe" style="font-size: 18">Proveedor</label>
+                            <label for="idNombre" class="col-sm-4 control-labe" style="font-size: 18">Proveedor</label>
                         </div>
                         <div class="input-field col m1">
                             <a class="btn btn_primary"  target="_blank" onclick="nuevaCat(2)"><span aria-hidden="true" class="glyphicon glyphicon-plus"></span></a>
@@ -99,18 +98,18 @@ Conexion::abrir_conexion();
 
                         <!-- termina el combo de proveedor   -->
                         <!-- foto  -->
-                        <div class="col m6">
+                        <div class="col m5">
                             <div class="file-field input-field">
-                                    <div class="btn">
-                                        <span><i class="glyphicon glyphicon-picture" aria-hidden="true"></i>Foto</span>
-                                        <input type="file" id="foto" required name="foto" accept="image/*">
-                                    </div>
-
-
-                                    <div class="file-path-wrapper">
-                                        <input type="text" accept="image/*" required class="form-control file-path validate">
-                                    </div>
+                                <div class="btn">
+                                    <span><i class="glyphicon glyphicon-picture" aria-hidden="true"></i>Foto</span>
+                                    <input type="file" id="foto" required name="foto" accept="image/*">
                                 </div>
+
+
+                                <div class="file-path-wrapper">
+                                    <input type="text" accept="image/*" required class="form-control file-path validate">
+                                </div>
+                            </div>
                         </div>
                         <!-- termina foto -->
 
@@ -118,120 +117,108 @@ Conexion::abrir_conexion();
                     <div class="row">
                         <output id="list"></output>                
                     </div>
-                    <div class="row"><!--  panel de Caracteristicas   -->
 
-                        <div class="col m1"></div><!--  para dejar espacio en los lados   -->
-                        <div class="col-md-10"> <!--  div para centralizar      -->
-                            <div class="panel-group" id="accordion">
-                                <div class="panel" name="caracteristicas">
-                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion" href="#caracteristicas">Detalles  </a></div>
-                                    <div id="caracteristicas" class="panel-collapse collapse in">
-                                        <div class="panel-body">                                            
 
-                                            <div class="row">
 
-                                                <div class="input-field col m5">
-                                                    <i class="fa fa-barcode prefix"></i> 
-                                                    <input type="text" id="nserie" name="nserie" class="text-center validate" required="" value="Sin Numero de Serie" onclick = "if (this.value == 'Sin Numero de Serie')
+                    <div class="row">
+                        <div class="col m1"></div>
+                        <div class="input-field col m5">
+                            <i class="fa fa-barcode prefix"></i> 
+                            <input type="text" id="nserie" name="nserie" class="text-center validate" required="" value="Sin Numero de Serie" onclick = "if (this.value == 'Sin Numero de Serie')
                                                                 this.value = ''" onblur="if (this.value == '')
                                                                             this.value = 'Sin Numero de Serie'">
-                                                    <label for="precioUnitario">Numero de Serie <small></small> </label>
-                                                </div>
-                                                <div class="col m1"></div>
+                            <label for="precioUnitario">Numero de Serie <small></small> </label>
+                        </div>
+                     
 
-                                                <div class="input-field col m5">
-                                                    <i class="fa fa-adjust prefix"></i> 
-                                                    <input type="text" id="color" name="color" class="text-center validate" required="" >
-                                                    <label for="idEmail">Color<small></small> </label>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-
-                                                <div class="input-field col m5">
-                                                    <i class="fa fa-registered prefix"></i> 
-                                                    <input type="text" id="marca" name="marca" class="text-center validate" required="" value="Sin Marca" onclick = "if (this.value == 'Sin Marca')
+                        <div class="input-field col m5">
+                            <i class="fa fa-adjust prefix"></i> 
+                            <input type="text" id="color" name="color" class="text-center validate" required="" >
+                            <label for="idEmail">Color<small></small> </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col m1"></div>
+                        <div class="input-field col m5">
+                            <i class="fa fa-registered prefix"></i> 
+                            <input type="text" id="marca" name="marca" class="text-center validate" required="" value="Sin Marca" onclick = "if (this.value == 'Sin Marca')
                                                                 this.value = ''" onblur="if (this.value == '')
                                                                             this.value = 'Sin Marca'">
-                                                    <label for="precioUnitario">Marca <small></small> </label>
-                                                </div>
-                                                <div class="col m1"></div>
+                            <label for="precioUnitario">Marca <small></small> </label>
+                        </div>
+                      
 
-                                                <div class="input-field col m5">
-                                                    <i class="fa fa-windows prefix"></i> 
-                                                    <input type="text" id="so" name="so" class="text-center validate" required="" value="Sin Sistema Operativo" onclick = "if (this.value == 'Sin Sistema Operativo')
+                        <div class="input-field col m5">
+                            <i class="fa fa-windows prefix"></i> 
+                            <input type="text" id="so" name="so" class="text-center validate" required="" value="Sin Sistema Operativo" onclick = "if (this.value == 'Sin Sistema Operativo')
                                                                 this.value = ''" onblur="if (this.value == '')
                                                                             this.value = 'Sin Sistema Operativo'">
-                                                    <label for="idEmail">Sistema Operativo <small></small> </label>
-                                                </div>
+                            <label for="idEmail">Sistema Operativo <small></small> </label>
+                        </div>
 
-                                            </div>
-                                            <div class="row">
-
-                                                <div class="input-field col m5">
-                                                    <i class="fa fa-crop prefix"></i> 
-                                                    <input type="text" id="dimensiones" name="dimensiones" class="text-center validate" required="" value="Sin Dimenciones" onclick = "if (this.value == 'Sin Dimenciones')
+                    </div>
+                    <div class="row">
+                        <div class="col m1"></div>
+                        <div class="input-field col m5">
+                            <i class="fa fa-crop prefix"></i> 
+                            <input type="text" id="dimensiones" name="dimensiones" class="text-center validate" required="" value="Sin Dimenciones" onclick = "if (this.value == 'Sin Dimenciones')
                                                                 this.value = ''" onblur="if (this.value == '')
                                                                             this.value = 'Sin Dimenciones'">
-                                                    <label for="dimensines">Dimensiones <small></small> </label>
-                                                </div>
-                                                <div class="col m1"></div>
+                            <label for="dimensines">Dimensiones <small></small> </label>
+                        </div>
+                  
 
-                                                <div class="input-field col m5">
-                                                    <i class="fa fa-circle-o-notch prefix"></i> 
-                                                    <input type="text" id="ram" name="ram" class="text-center validate" required="" value="Sin Memoria Ram" onclick = "if (this.value == 'Sin Memoria Ram')
+                        <div class="input-field col m5">
+                            <i class="fa fa-circle-o-notch prefix"></i> 
+                            <input type="text" id="ram" name="ram" class="text-center validate" required="" value="Sin Memoria Ram" onclick = "if (this.value == 'Sin Memoria Ram')
                                                                 this.value = ''" onblur="if (this.value == '')
                                                                             this.value = 'Sin Memoria Ram'">
-                                                    <label for="dimensines">Memoria Ram <small></small> </label>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="input-field col m5">
-                                                    <i class="fa fa-laptop prefix"></i> 
-                                                    <input type="text" id="modelo" name="modelo" class="text-center validate" required="" value="Sin Modelo" onclick = "if (this.value == 'Sin Modelo')
+                            <label for="dimensines">Memoria Ram <small></small> </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col m1"></div>
+                        <div class="input-field col m5">
+                            <i class="fa fa-laptop prefix"></i> 
+                            <input type="text" id="modelo" name="modelo" class="text-center validate" required="" value="Sin Modelo" onclick = "if (this.value == 'Sin Modelo')
                                                                 this.value = ''" onblur="if (this.value == '')
                                                                             this.value = 'Sin Modelo'">
-                                                    <label for="idEmail">Modelo<small></small> </label>
-                                                </div>
+                            <label for="idEmail">Modelo<small></small> </label>
+                        </div>
 
 
-                                                <div class="col m1"></div>
-                                                <div class="input-field col m5">
-                                                    <i class="fa fa-hdd-o prefix"></i> 
-                                                    <input type="text" id="dd" name="dd" class="text-center validate" required="" value="Sin Disco Duro" onclick = "if (this.value == 'Sin Disco Duro')
+                        <div class="input-field col m5">
+                            <i class="fa fa-hdd-o prefix"></i> 
+                            <input type="text" id="dd" name="dd" class="text-center validate" required="" value="Sin Disco Duro" onclick = "if (this.value == 'Sin Disco Duro')
                                                                 this.value = ''" onblur="if (this.value == '')
                                                                             this.value = 'Sin Disco Duro'">
-                                                    <label for="idEmail">Disco Duro <small></small> </label>
-                                                </div> 
-                                            </div>
-                                            <div class="row">
-
-                                                <div class="input-field col m11">
-                                                    <i class="fa fa-microchip prefix"></i> 
-                                                    <input type="text" id="pro" name="pro" class="text-center validate" required="" value="Sin Procesador" onclick = "if (this.value == 'Sin Procesador')
+                            <label for="idEmail">Disco Duro <small></small> </label>
+                        </div> 
+                    </div>
+                    <div class="row">
+                        <div class="col m1"></div>
+                        <div class="input-field col m10">
+                            <i class="fa fa-microchip prefix"></i> 
+                            <input type="text" id="pro" name="pro" class="text-center validate" required="" value="Sin Procesador" onclick = "if (this.value == 'Sin Procesador')
                                                                 this.value = ''" onblur="if (this.value == '')
                                                                             this.value = 'Sin Procesador'">
-                                                    <label for="idEmail">Procesador <small></small> </label>
-                                                </div>
-                                                 </div>
-                                             <div class="row">
-                                                
-                                                <div class="input-field col m11">
-                                                    <i class="fa fa-pencil-square-o prefix"></i>
-                                                    <textarea id="otro" name="otro" class="materialize-textarea" style="font-size:15px"></textarea>
-                                                    <label for="textarea1" style="font-size:15px">&nbsp Otro</label>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                            <label for="idEmail">Procesador <small></small> </label>
                         </div>
-                        <div class="col m1"></div><!--  para dejar espacio en los lados   -->
+                    </div>
+                    <div class="row">
+                        <div class="col m1"></div>
+                        <div class="input-field col m10">
+                            <i class="fa fa-pencil-square-o prefix"></i>
+                            <textarea id="otro" name="otro" class="materialize-textarea" style="font-size:15px"></textarea>
+                            <label for="textarea1" style="font-size:15px">&nbsp Otro</label>
+                        </div>
+                    </div>
 
-                    </div> <!-- termina el div row de Caracteristicas     -->
+
+
+
+
+
                 </div><!-- termina div panel center-->
 
                 <div class="row">
@@ -242,7 +229,7 @@ Conexion::abrir_conexion();
                     <button  class="btn btn-success  " type="submit" form="FORMULARI" >
                         <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>
                         Guardar</button>
-                    <button type="reset" class="btn btn-danger" onclick="location.href='inicio_activo.php';">
+                    <button type="reset" class="btn btn-danger" onclick="location.href = 'inicio_activo.php';">
                         <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar
                     </button>
                 </div><!-- Termina botones -->
@@ -309,7 +296,7 @@ if (isset($_REQUEST["bandera1"])) {
     include_once '../modelos/Detalles.php';
     include_once '../modelos/Bitacora.php';
     include_once '../modelos/Categoria.php';
-    include_once '../repositorios/repositorio_activo.php';    
+    include_once '../repositorios/repositorio_activo.php';
     include_once '../repositorios/repositorio_categoria.php';
     include_once '../repositorios/repositorio_detalles.php';
     include_once '../repositorios/repositorio_bitacora.php';
@@ -332,7 +319,7 @@ if (isset($_REQUEST["bandera1"])) {
     $activo = new Activo();
     $activo->setCodigo_activo($_REQUEST["selectCat"]);
     $activo->setCodigo_administrador($_REQUEST["admin"]);
-    
+
     //DANDO FORMATO A LA FECHA
     $fecha = $_POST["fecha_adq"];
     $fecha = date_format(date_create($fecha), 'Y-m-d');
@@ -346,21 +333,19 @@ if (isset($_REQUEST["bandera1"])) {
     //para la foto
     $ruta = '../fotoActivos/';
     $foto = $ruta . basename($_FILES["foto"]["name"]);
-    
-        if (move_uploaded_file($_FILES['foto']['tmp_name'], $foto)) {
+
+    if (move_uploaded_file($_FILES['foto']['tmp_name'], $foto)) {
         $activo->setFoto($foto);
-        
     } else {
         $activo->setFoto("");
-        
     }
 
     //fin para foto
-    
+
     $activo->setEstado('1');
     $correlativo = Repositorio_activo::obtener_nactivo(Conexion::obtener_conexion(), $_REQUEST["selectCat"]);
-    if($correlativo ==""){
-        $correlativo=0;
+    if ($correlativo == "") {
+        $correlativo = 0;
     }
 
 
@@ -385,16 +370,16 @@ if (isset($_REQUEST["bandera1"])) {
         }
         //$cod=$_REQUEST["selectCat"]."-".$correlativo; 
         $activo->setCodigo_activo($cod);
-      
+
         echo Repositorio_activo::insertar_activo(Conexion::obtener_conexion(), $activo);
     }
-    
+
     ////esto es para la bitacora 
-   $idca=$_REQUEST["selectCat"];
-    $nombre_categoria = Repositorio_categoria::obtener_nombre_categoria(Conexion::obtener_conexion(),$idca);
-    $accion = 'se registraron '. $cant .' item tipo ' .$nombre_categoria . ' con las siguientes características: color '
-            . $_REQUEST["color"] . ', marca ' .$_REQUEST['marca']. ", dimensiones " .$_REQUEST['dimensiones']
-            . ', sistema operativo ' . $_REQUEST["so"]. ", Memoria Ram " .  $_REQUEST["ram"] . ", Modelo " . $_REQUEST["modelo"]  ;
+    $idca = $_REQUEST["selectCat"];
+    $nombre_categoria = Repositorio_categoria::obtener_nombre_categoria(Conexion::obtener_conexion(), $idca);
+    $accion = 'se registraron ' . $cant . ' item tipo ' . $nombre_categoria . ' con las siguientes características: color '
+            . $_REQUEST["color"] . ', marca ' . $_REQUEST['marca'] . ", dimensiones " . $_REQUEST['dimensiones']
+            . ', sistema operativo ' . $_REQUEST["so"] . ", Memoria Ram " . $_REQUEST["ram"] . ", Modelo " . $_REQUEST["modelo"];
     Repositorio_Bitacora::insertar_bitacora(Conexion::obtener_conexion(), $accion);
     echo '<script>swal({
                     title: "Exito",

@@ -8,8 +8,8 @@
     <div class="col-md-12">
         <form id="FORMULARIO2" name="FORMULARIO2" class="FORMULARIO2" method="post"  autocomplete="off" enctype="multipart/form-data" onsubmit="recargarCombos2()">
             <input type="hidden" name="banderaCAtegoria" id="banderaCAtegoria" >
-            <div class="panel">				
-                <div class="panel-body">
+           			
+      
                     <div class="row">
                         <div class="col-md-12">
                             <div class="input-field">
@@ -29,8 +29,8 @@
                         </div>
                     </div>
 
-                </div>
-            </div>
+             
+            
             
         </form>
     </div>
