@@ -20,17 +20,17 @@ class repositorio_notificaciones {
         $listado = self::ListaPrestamosAct(Conexion::obtener_conexion());
         foreach ($listado as $fila) {
             $fdev = date_create($fila['Devolucion']);
-            $hoy = new DateTime("now -2 day");
+            $hoy = new DateTime("now +2 day");
             $codigo = $fila['codigo'];
             if ($fila['estado'] == 0) {
-                if ($fdev > $hoy) {
+                if ($fdev < $hoy) {
                     $prestamo_activo++;
 //                 echo date_format($fdev, 'd-m-Y'); 
                 }
             }
         }
-        echo 'activo ' . $prestamo_activo;
-        echo ' libro ' . $prestamo_libros . ' ';
+//        echo 'activo ' . $prestamo_activo;
+//        echo ' libro ' . $prestamo_libros . ' ';
         return $prestamo_activo + $prestamo_libros;
     }
 

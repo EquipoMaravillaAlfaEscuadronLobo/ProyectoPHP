@@ -5,10 +5,7 @@ include_once('../plantillas/menu.php');
 
 ?>
 </nav>
-<?php
-echo $_SESSION["user"];
-echo $_SESSION['nivel'];
-?>
+<img src="../imagenes/libros.png" width="78%"  alt="">
 
 <?php
 include_once('../plantillas/pie_de_pagina.php');

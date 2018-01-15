@@ -5,15 +5,16 @@ include_once '../plantillas/menu.php';
 ?>
 <div class="nav-content nav-pills" name="">
     <ul class="tabs tabs-transparent">
-        <li class="tab">
-            <a class="" href="#test1">
-                <i class="fa fa-edit" aria-hidden="true"></i> Modificar Mis Datos
-            </a>
-        </li>
+       
         <li class="tab">
             <a class="active" href="#test2">
                 <i class="fa fa-bell" aria-hidden="true"></i> Notificaciones
                 <span style="font-weight: bold; font-size: 15px" class="label-count">(<?php echo $numero; ?>)</span>
+            </a>
+        </li>
+         <li class="tab">
+            <a class="" href="#test1">
+                <i class="fa fa-edit" aria-hidden="true"></i> Modificar Mis Datos
             </a>
         </li>
     </ul>

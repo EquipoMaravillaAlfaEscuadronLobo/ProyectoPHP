@@ -14,8 +14,9 @@ class Repositorio_prestamoact {
                     (prestamo_activos.fecha_salida),   
                     (movimiento_actvos.codigo_activo) as titulo, 
                     (prestamo_activos.fecha_devolucion) as Devolucion,
-                    prestamo_activos.estado as estado
-FROM usuarios 
+                    prestamo_activos.estado as estado,
+                    usuarios.codigo_usuario as carnet
+                    FROM usuarios 
                     INNER JOIN prestamo_activos ON prestamo_activos.usuarios_codigo= usuarios.codigo_usuario 
                     INNER JOIN movimiento_actvos ON movimiento_actvos.codigo_pactivo = prestamo_activos.codigo_pactivo 
                     INNER JOIN actvos ON movimiento_actvos.codigo_activo = actvos.codigo_activo
@@ -213,18 +214,17 @@ prestamo_activos.codigo_pactivo
         if (isset($conexion)) {
             try {
                 $sql = "SELECT
-movimiento_actvos.codigo_activo AS codigo,
-categoria.nombre AS tipo,
-actvos.estado as estado
-FROM
-movimiento_actvos
-INNER JOIN actvos ON movimiento_actvos.codigo_activo = actvos.codigo_activo
-INNER JOIN categoria ON actvos.codigo_tipo = categoria.codigo_tipo
-WHERE
-movimiento_actvos.codigo_pactivo = '$codigoP'
-ORDER BY
-codigo ASC
-                        ";
+                        movimiento_actvos.codigo_activo AS codigo,
+                        categoria.nombre AS tipo,
+                        actvos.estado as estado
+                        FROM
+                        movimiento_actvos
+                        INNER JOIN actvos ON movimiento_actvos.codigo_activo = actvos.codigo_activo
+                        INNER JOIN categoria ON actvos.codigo_tipo = categoria.codigo_tipo
+                        WHERE
+                        movimiento_actvos.codigo_pactivo = '$codigoP'
+                        ORDER BY
+                        codigo ASC";
                 $resultado = $conexion->query($sql);
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();
