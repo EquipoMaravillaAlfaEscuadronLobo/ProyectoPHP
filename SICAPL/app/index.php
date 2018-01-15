@@ -6,8 +6,6 @@ include_once '../repositorios/repositorio_notificaciones.php';
 Conexion::abrir_conexion();
 $numero = repositorio_notificaciones::numero_notifiaciones(Conexion::obtener_conexion());
 echo " <script>  var notificaicon = '$numero'; </script>";
-
-
 ?>
 
 <div class="container login">
@@ -65,15 +63,36 @@ echo " <script>  var notificaicon = '$numero'; </script>";
                             $.post("iniciar.php", {clave: pass, user: user}, function (mensaje) {
 
                                 if (mensaje == "ENCONTRADO") {
-                                    swal({
-                                        title: "Exito",
-                                        text: "Sesion Iniciada Correctamente" + notificaicon,
-                                        type: "success"},
-                                    function () {
-                                        location.href = "home.php";
-                                    }
+                                    if (notificaicon != "0") {
+                                        swal({
+                                            title: "Exito!",
+                                            text: "Sesion Iniciada Correctamente, tiene " + notificaicon + "notificaciones",
+                                            type: "success",
+                                            showCancelButton: true,
+                                            confirmButtonClass: "btn-danger",
+                                            confirmButtonText: "Ver notificaciones",
+                                            cancelButtonText: "No, Saltar",
+                                            closeOnConfirm: false,
+                                            closeOnCancel: false
+                                        },
+                                        function (isConfirm) {
+                                            if (isConfirm) {
+                                                    location.href = "../Cuenta/inicio_cuenta.php";
+                                            } else {
+                                                location.href = "./home.php";
+                                            }
+                                        });
+                                    } else {
+                                        swal({
+                                            title: "Exito",
+                                            text: "Sesion Iniciada Correctamente",
+                                            type: "success"},
+                                        function () {
+                                            location.href = "home.php";
+                                        }
 
-                                    );
+                                        );
+                                    }
 
                                 } else {
                                     swal("Oops", "Contraseña Equivocada", "error")
@@ -111,12 +130,12 @@ echo " <script>  var notificaicon = '$numero'; </script>";
                     }
                     ;
                 </script>
-                
-               
 
-                <?php
-                include_once('../plantillas/pie_de_pagina.php');
-                ?>
+
+
+<?php
+include_once('../plantillas/pie_de_pagina.php');
+?>
                 <script>
                     var conteo = 0  //Definimos la Variable
 
@@ -137,3 +156,5 @@ echo " <script>  var notificaicon = '$numero'; </script>";
                     }); //Cierre de la funcion Click
 
                 </script>
+                
+     
