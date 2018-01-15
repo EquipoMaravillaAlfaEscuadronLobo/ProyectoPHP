@@ -11,9 +11,9 @@ class Repositorio_prestamolib {
             try {
                 $sql = "SELECT
                                     usuarios.codigo_usuario as user,
- (CONCAT(usuarios.nombre,' ',usuarios.apellido)) as nombre,
- prestamo_libros.codigo_plibro as codigo,
- (prestamo_libros.fecha_salida),
+                                    (CONCAT(usuarios.nombre,' ',usuarios.apellido)) as nombre,
+                                    prestamo_libros.codigo_plibro as codigo,
+                                    (prestamo_libros.fecha_salida),
  (prestamo_libros.fecha_devolucion) as Devolucion,
  libros.codigo_libro as cl,
  GROUP_CONCAT(libros.titulo SEPARATOR ' - ') as titulo,

@@ -115,7 +115,7 @@ Conexion::abrir_conexion();
         width: 295px;
         height: 195px;
         margin-right: 0px;
-        background: #EEEE00; 
+        background: white; 
     }
     .trasero{
         border-width: 1px;
@@ -125,7 +125,7 @@ Conexion::abrir_conexion();
         width: 295px;
         height: 195px;
         margin-right: 0px;
-        background: #EEEE00;
+        background: white;
         position: relative;
         top: -217px;
         left : 420px;
@@ -152,7 +152,7 @@ Conexion::abrir_conexion();
 
         width: 160px;
         height: 120px;
-        background: #EEEE00;
+        background: white;
         position: relative;
         left: 4px;
         top: 0px;
@@ -172,7 +172,7 @@ Conexion::abrir_conexion();
         height: 100px;
         text-align: center;
         font-size: 12px;
-        background: #388E3C;
+        background: white;
     }
 
 

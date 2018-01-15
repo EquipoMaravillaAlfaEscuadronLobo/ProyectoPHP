@@ -101,7 +101,9 @@
                                             <tr>
                                                 <td class="text-center"><?php echo $fila['carnet']; ?></td>
 
-                                                <td class="text-center"> <?php echo $fila['nombre'] ?></td>
+                                                 <td class="text-center" rel="popover" data-container="body" data-togle="popover" data-placement="top" 
+                                                        title="Informaci&oacute;n de contacto:" data-content="<b>Tel&eacute;fono: </b><?php echo $fila['telefono'] ?>
+                                                        <br><b>Correo: </b><?php echo $fila['correo'] ?>"><?php echo $fila['nombre'] ?></td>
                                                 <td class="text-center"><?php
                                                     Conexion::abrir_conexion();
                                                     $listado1 = Repositorio_prestamoact::obtenerListActP(Conexion::obtener_conexion(), $fila['codigo']);

@@ -15,7 +15,9 @@ class Repositorio_prestamoact {
                     (movimiento_actvos.codigo_activo) as titulo, 
                     (prestamo_activos.fecha_devolucion) as Devolucion,
                     prestamo_activos.estado as estado,
-                    usuarios.codigo_usuario as carnet
+                    usuarios.codigo_usuario as carnet,
+                    usuarios.telefono as telefono,
+                    usuarios.correo as correo
                     FROM usuarios 
                     INNER JOIN prestamo_activos ON prestamo_activos.usuarios_codigo= usuarios.codigo_usuario 
                     INNER JOIN movimiento_actvos ON movimiento_actvos.codigo_pactivo = prestamo_activos.codigo_pactivo 
