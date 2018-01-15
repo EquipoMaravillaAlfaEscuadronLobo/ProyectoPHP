@@ -14,6 +14,11 @@ $i=1;
 -->
 </style>
  <style>
+            .cabecera-izquierda{
+        display: block;
+        width: 25%;
+        float: left;
+    }
             .tabla{
 
                 align-content: stretch;
@@ -92,10 +97,15 @@ $i=1;
         <table class="page_header">
             <tr>
                 <td style="width: 100%; text-align: left">
-                   <img src="../imagenes/logo.png" class="cabecera">
-                    <h1>
-                        Casa de Encuentro Juvenil <br>Verapaz, San Vicente
-                    </h1>
+                    <img src="../imagenes/logoReporte.png" class="cabecera">
+                    <img src="../imagenes/logo.png" class="cabecera-izquierda">
+
+                    <h2>
+                        Casa de Encuentro Juvenil
+                    </h2>
+                    <h3>
+                        Verapaz, San Vicente
+                    </h3>
                 </td>
             </tr>
         </table>
@@ -125,7 +135,7 @@ $i=1;
                 ?>
             <page pageset="old"><!-- Etiqueta para cada pagina del reporte-->
                
-                <br><br><br><br><br>
+                <br><br><br><br><br><br><br><br>
      <div class="tabla"><!-- Inicio Contenido del Reporte (Modificable)-->
         
         <table border="0"  align="center">

@@ -122,9 +122,7 @@ include_once('../plantillas/pie_de_pagina.php');
                 type: 'POST',
                 dataType: "html",
                 data: $(this).serialize(),
-                cache: false,
-                contentType: false,
-                processData: false
+                
             }).done(function (resp) {
                 if (resp == 1) {
                     swal("Exito", "Editorial Registrada", "success")
