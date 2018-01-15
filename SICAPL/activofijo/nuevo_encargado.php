@@ -28,8 +28,8 @@
                         <div class="col-md-12">
                             <div class="input-field">
                                 <i class="fa fa-mobile prefix" aria-hidden="true"></i>
-                                <label for="idTelefono">Telefono</label>
-                                <input type="text" id="idTelefono" name="nameTelefono" class="text-center validate" required="">
+                                <label for="idTelefono2">Telefono</label>
+                                <input type="text" id="idTelefono2" name="nameTelefono" class="text-center validate" required="">
                             </div>
                         </div>
                     </div>

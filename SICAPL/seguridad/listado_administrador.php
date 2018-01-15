@@ -17,12 +17,12 @@ $ruta =  '../foto_admi/';
             <div class="panel-body">
                 <table padding="20px" class="responsive-table table-sm display" id="data-table-simple">
                     <thead class="">
-                    <th class="text-center alert-success"></th>
-                    <th class="text-center alert-success">Nombre Completo</th>
-                    <th class="text-center alert-success">Usuario</th>
-                    <th class="text-center alert-success">Nivel</th>
-                    <th class="text-center alert-success">Foto</th>
-                    <th class="text-center alert-success"></th>
+                    <th class="text-center "></th>
+                    <th class="text-center ">Nombre Completo</th>
+                    <th class="text-center ">Usuario</th>
+                    <th class="text-center ">Nivel</th>
+                    <th class="text-center ">Foto</th>
+                    <th class="text-center "></th>
 
                     </thead>
                     <tbody>

@@ -24,8 +24,45 @@ class Repositorio_administrador {
                 $emailExistente = self::obtener_email($conexion, $email);
                 $duiExistente = self::verifica_dui($conexion, $dui);
 
-                if ($administradorExistente->getCodigo_administrador() == "" || $emailExistente->getEmail() == '' || $duiExistente->getDui() == '') {
+                echo 'administrador existente ' . $administradorExistente->getCodigo_administrador();
+                echo 'dui existente ' . $duiExistente->getDui();
+                echo 'correo existente ' . $emailExistente->getEmail();
 
+    if ($emailExistente->getEmail() != '') {
+                    echo '<script>'
+                    . 'swal("Cuidado!", "El Correo que introdujo ya esta en uso, favor introdusca otro", "warning");'
+                    . '$("#idNombre").val("' . $nombre . '"); $("#idApellido").val("' . $apellido . '");'
+                    . '$("#idUser").val("' . $codigo_administrador . '"); $("#idDui").val("' . $dui . '");'
+                    . '$("#idFecha").val("' . $fecha . '"); $("#idEmail").val("' . $email . '");'
+                    . 'if ("' . $nivel . '" == "0") {$("#idRoot").attr("checked", "checked");} else {$("#idAdministrador").attr("checked", "checked");}'
+                    . 'if ("' . $sexo . '" == "Masculino") {$("#idHombre").attr("checked", "checked");} else {$("#idMujer").attr("checked", "checked");}'
+                    . '$("#idListarAdmnistrador").removeClass("active");  $("#idRegistroAdministrador").addClass("active"); '
+                    . '$("#idPass1").val("' . $pasword . '"); $("#idPass2").val("' . $pasword . '");  </script>';
+                }
+                     if ($duiExistente->getDui() != '') {
+                    echo '<script>'
+                    . 'swal("Cuidado!", "El dui que introdujo ya esta en uso, favor introdusca otro", "warning");'
+                    . '$("#idNombre").val("' . $nombre . '"); $("#idApellido").val("' . $apellido . '");'
+                    . '$("#idUser").val("' . $codigo_administrador . '"); $("#idDui").val("' . $dui . '");'
+                    . '$("#idFecha").val("' . $fecha . '"); $("#idEmail").val("' . $email . '");'
+                    . 'if ("' . $nivel . '" == "0") {$("#idRoot").attr("checked", "checked");} else {$("#idAdministrador").attr("checked", "checked");}'
+                    . 'if ("' . $sexo . '" == "Masculino") {$("#idHombre").attr("checked", "checked");} else {$("#idMujer").attr("checked", "checked");}'
+                    . '$("#idListarAdmnistrador").removeClass("active");  $("#idRegistroAdministrador").addClass("active"); '
+                    . '$("#idPass1").val("' . $pasword . '"); $("#idPass2").val("' . $pasword . '");  </script>';
+                }
+                    if ($administradorExistente->getCodigo_administrador() != '') {
+                    echo '<script>'
+                    . 'swal("Cuidado!", "El Usuario que introdujo ya esta en uso, favor introdusca otro", "warning");'
+                    . '$("#idNombre").val("' . $nombre . '"); $("#idApellido").val("' . $apellido . '");'
+                    . '$("#idUser").val("' . $codigo_administrador . '"); $("#idDui").val("' . $dui . '");'
+                    . '$("#idFecha").val("' . $fecha . '"); $("#idEmail").val("' . $email . '");'
+                    . 'if ("' . $nivel . '" == "0") {$("#idRoot").attr("checked", "checked");} else {$("#idAdministrador").attr("checked", "checked");}'
+                    . 'if ("' . $sexo . '" == "Masculino") {$("#idHombre").attr("checked", "checked");} else {$("#idMujer").attr("checked", "checked");}'
+                    . '$("#idListarAdmnistrador").removeClass("active");  $("#idRegistroAdministrador").addClass("active"); '
+                    . '$("#idPass1").val("' . $pasword . '"); $("#idPass2").val("' . $pasword . '");  </script>';
+                }
+
+                if ($administradorExistente->getCodigo_administrador() == "" && $emailExistente->getEmail() == "" && $duiExistente->getDui() == "") {
                     $sql = 'INSERT INTO administradores(codigo_administrador,pasword,nivel,nombre,apellido,sexo,dui,estado,observacion,foto,email,fecha)'
                             . ' values (:codigo_administrador,:pasword,:nivel,:nombre,:apellido,:sexo,:dui,:estado,:observacion,:foto,:email,:fecha)';
                     ///estos son alias para que PDO pueda trabajar 
@@ -61,36 +98,6 @@ class Repositorio_administrador {
                     location.href="inicio_seguridad.php";
                     
                 });</script>';
-                } else if ($administradorExistente->getCodigo_administrador() != '') {
-                    echo '<script>'
-                    . 'swal("Cuidado!", "El Usuario que introdujo ya esta en uso, favor introdusca otro", "warning");'
-                    . '$("#idNombre").val("' . $nombre . '"); $("#idApellido").val("' . $apellido . '");'
-                    . '$("#idUser").val("' . $codigo_administrador . '"); $("#idDui").val("' . $dui . '");'
-                    . '$("#idFecha").val("' . $fecha . '"); $("#idEmail").val("' . $email . '");'
-                    . 'if ("' . $nivel . '" == "0") {$("#idRoot").attr("checked", "checked");} else {$("#idAdministrador").attr("checked", "checked");}'
-                    . 'if ("' . $sexo . '" == "Masculino") {$("#idHombre").attr("checked", "checked");} else {$("#idMujer").attr("checked", "checked");}'
-                    . '$("#idListarAdmnistrador").removeClass("active");  $("#idRegistroAdministrador").addClass("active"); '
-                    . '$("#idPass1").val("' . $pasword . '"); $("#idPass2").val("' . $pasword . '");  </script>';
-                } else if ($duiExistente->getDui() != '') {
-                    echo '<script>'
-                    . 'swal("Cuidado!", "El dui que introdujo ya esta en uso, favor introdusca otro", "warning");'
-                    . '$("#idNombre").val("' . $nombre . '"); $("#idApellido").val("' . $apellido . '");'
-                    . '$("#idUser").val("' . $codigo_administrador . '"); $("#idDui").val("' . $dui . '");'
-                    . '$("#idFecha").val("' . $fecha . '"); $("#idEmail").val("' . $email . '");'
-                    . 'if ("' . $nivel . '" == "0") {$("#idRoot").attr("checked", "checked");} else {$("#idAdministrador").attr("checked", "checked");}'
-                    . 'if ("' . $sexo . '" == "Masculino") {$("#idHombre").attr("checked", "checked");} else {$("#idMujer").attr("checked", "checked");}'
-                    . '$("#idListarAdmnistrador").removeClass("active");  $("#idRegistroAdministrador").addClass("active"); '
-                    . '$("#idPass1").val("' . $pasword . '"); $("#idPass2").val("' . $pasword . '");  </script>';
-                } else if ($emailExistente->getEmail() != '') {
-                    echo '<script>'
-                    . 'swal("Cuidado!", "El Correo que introdujo ya esta en uso, favor introdusca otro", "warning");'
-                    . '$("#idNombre").val("' . $nombre . '"); $("#idApellido").val("' . $apellido . '");'
-                    . '$("#idUser").val("' . $codigo_administrador . '"); $("#idDui").val("' . $dui . '");'
-                    . '$("#idFecha").val("' . $fecha . '"); $("#idEmail").val("' . $email . '");'
-                    . 'if ("' . $nivel . '" == "0") {$("#idRoot").attr("checked", "checked");} else {$("#idAdministrador").attr("checked", "checked");}'
-                    . 'if ("' . $sexo . '" == "Masculino") {$("#idHombre").attr("checked", "checked");} else {$("#idMujer").attr("checked", "checked");}'
-                    . '$("#idListarAdmnistrador").removeClass("active");  $("#idRegistroAdministrador").addClass("active"); '
-                    . '$("#idPass1").val("' . $pasword . '"); $("#idPass2").val("' . $pasword . '");  </script>';
                 }
             } catch (PDOException $ex) {
                 //echo '<script>swal("Advertencia!", "Favor revisar los datos e intentar nuevamente", "warning");</script>';
