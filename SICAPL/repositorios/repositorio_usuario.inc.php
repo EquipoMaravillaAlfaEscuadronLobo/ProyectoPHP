@@ -170,6 +170,7 @@ class Repositorio_usuario {
 
         return $lista_usuarios;
     }
+    
 
     public static function lista_usuarios_completa($conexion) {
         $lista_usuarios = array();
