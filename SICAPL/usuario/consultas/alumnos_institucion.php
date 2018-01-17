@@ -1,7 +1,8 @@
 <?php
 $lista_instituciones = Repositorio_institucion::lista_institucion(Conexion::obtener_conexion());
 foreach ($lista_instituciones as $otra){
-    echo 'N° '. $otra->getCodigo_institucion() ." - " . $otra->getNombre() . '<br>';
+    $cantidad_usuario = Repositorio_institucion::usuario_por_institucion(Conexion::obtener_conexion(), $otra->getCodigo_institucion());
+    echo 'N° '. $otra->getCodigo_institucion() ." - " . $otra->getNombre() ." Usuarios = ".$cantidad_usuario. '<br>';
 }
     
 
@@ -35,7 +36,7 @@ foreach ($lista_instituciones as $otra){
                     },
                     series: [{
                             type: 'pie',
-                            name: 'Genero',
+                            name: 'Usuarios',
                          data: [
                         <?php foreach ($lista_instituciones as $lista_ins){
                          $cantidad_usuario = Repositorio_institucion::usuario_por_institucion(Conexion::obtener_conexion(), $lista_ins->getCodigo_institucion());

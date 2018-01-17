@@ -25,7 +25,7 @@ $direccion = '../../foto_usuario/';
             ?>
             <tr>
                 <td class="text-center">
-                    <img class="presentacionXZ" src="../../SICAPL/foto_usuario/<?php echo $lista_carnet->getFoto(); ?> "/>
+                    <img class="presentacionXZ fotosLibros" src="../../SICAPL/foto_usuario/<?php echo $lista_carnet->getFoto(); ?> "/>
 
                 </td>
                 <td class="text-center"><?php echo $lista_carnet->getCodigo_usuario() ?></td>

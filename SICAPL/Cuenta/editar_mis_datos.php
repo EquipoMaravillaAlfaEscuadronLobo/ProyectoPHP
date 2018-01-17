@@ -83,7 +83,7 @@ $sexo = $administradorActual->getSexo();
                     <div class="col m1"></div>
                     <div class="input-field col m5">
                         <i class="fa fa-calendar prefix"></i> 
-                        <input type="text" id="idFechaE" name="nameFechaE" class="text-center datepicker2" required="" value="<?php echo $administradorActual->getFecha(); ?>">
+                        <input type="text" id="idFechaE" name="nameFechaE" class="text-center datepicke-cumple" required="" value="<?php echo $administradorActual->getFecha(); ?>">
                         <label for="idFechaE">Fecha de Nacimiento</label>
                     </div>
                     <div class="input-field col m5">

@@ -16,7 +16,7 @@ $direccion = '../../SICAPL/foto_usuario/';
     <?php foreach ($lista_usuarios as $lista_usu) { ?>
         <tr>
             <td class="text-center">
-                <img class="presentacionXZ" src="<?php echo $direccion . $lista_usu->getFoto(); ?>"/>
+                <img class="presentacionXZ fotosLibros" src="<?php echo $direccion . $lista_usu->getFoto(); ?>"/>
             </td>
 
 
