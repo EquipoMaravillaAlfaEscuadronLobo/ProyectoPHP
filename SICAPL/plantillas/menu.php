@@ -50,12 +50,7 @@ $numero = repositorio_notificaciones::numero_notifiaciones(Conexion::obtener_con
                     <span style="font-weight: bold; font-size: 15px" class="label-count">(<?php echo $numero;?>)</span>
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-info-circle" aria-hidden="true"></i>
-                    Ayuda
-                </a>
-            </li>
+            
 
             <li>
                 <a href="../sesiones/cerrar.php">
@@ -96,12 +91,7 @@ $numero = repositorio_notificaciones::numero_notifiaciones(Conexion::obtener_con
                     <i class="fa fa-wrench" aria-hidden="true"></i>  Mi Cuenta
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-info-circle" aria-hidden="true"></i>
-                    Ayuda
-                </a>
-            </li>
+            
             <li>
                 <a href="../sesiones/cerrar.php">
                     <i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar Sesion

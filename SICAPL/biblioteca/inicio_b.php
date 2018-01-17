@@ -296,4 +296,43 @@ include_once('../plantillas/pie_de_pagina.php');
     }
 </script>
 
+<script>
+                function abrirAyuda(valor){
+                    var direccion;
+                   
+                    
+                    switch(valor){
+                        case 1:
+                            direccion="../ayuda/regLibro.php";
+                            
+                         break;
+                         case 2:
+                            direccion="../ayuda/regAutor.php";
+                            
+                         break;
+                         case 3:
+                            direccion="../ayuda/regEditorial.php";
+                            
+                         break;
+                         case 4:
+                            direccion="../ayuda/listLibros.php";
+                            
+                         break;
+                         case 5:
+                            direccion="../ayuda/listAutor.php";
+                            
+                         break;
+                         case 6:
+                            direccion="../ayuda/listEditorial.php";
+                            
+                         break;
+                         case 7:
+                            direccion="../ayuda/prestamoLib.php";
+                            
+                         break;
+                    }
+                    window.open(direccion, "_blank", "toolbar=no,scrollbars=yes,resizable=no,top=0,left=500,width=700,height=600");
+                }
+</script>
+
 

@@ -37,17 +37,10 @@
                 </table>
 
 
-                 <div id="edicionAut" class="modal modal-fixed-footer nuevo">
-    <div class="modal-content modal-lg">
+                 
+    
         <?php include('frm_edit_aut.php'); ?>
-    </div>
-    <div class="modal-footer">
-    <div class="row">
-        <div class="col-md-6 text-right"><button onclick="actualizarAutor()" class="waves-effect btn btn-success">Actualizar</button></div>
-        <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger">Salir</a></div>
-        </div>
-    </div>
-</div>
+    
 
 <script type="text/javascript">
     function mostrarpdf (direccion) {

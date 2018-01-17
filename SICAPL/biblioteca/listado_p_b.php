@@ -10,10 +10,14 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
             <div class="panel">
                 <div class="panel-heading">
                     <div class="row">
-                        <div class="col-md-8"><h3>Listado de Prestamos</h3>
+                        <div class="col-md-7"><h3>Listado de Prestamos</h3>
                         </div>
                         <div class="col-md-2">  <a class="btn btn_primary"  target="_blank" onclick="abrirModal()"><span aria-hidden="true" class="glyphicon glyphicon-plus">
-                                </span>Nuevo Prestamo</a></div>
+                                </span>Nuevo Prestamo</a>
+                        </div>
+                        <div class="col-md-1">
+                            <button type="button" class="btn btn-info" id="ayuda" onclick="abrirAyuda(7)"><i class="fa fa-info-circle"></i></button>
+                        </div>
                     </div>       
                 </div>
                 <div class="panel-body">				
@@ -100,31 +104,31 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
             var ultimo = document.getElementsByName('libros');
             var conteo = ultimo.length;
             var last = ultimo[conteo - 1].id.substr(6);
-           // alert(last);
+            // alert(last);
             document.getElementById('num').value = last;
-            for(var i=1;i<=last;i++){
-               
-               if($('#codigol'+i).length != 0){
-                if(document.getElementById('codigol'+i).value===""||document.getElementById('codigouser').value===""){
-                    bandera=false;
-                    
+            for (var i = 1; i <= last; i++) {
+
+                if ($('#codigol' + i).length != 0) {
+                    if (document.getElementById('codigol' + i).value === "" || document.getElementById('codigouser').value === "") {
+                        bandera = false;
+
+                    }
                 }
             }
-                }
-                if(bandera==true){
-             document.frmPrestamoLibro.submit();
-                }else{
-                    swal("Cuidado","Campos Vacios","error");
-                }
+            if (bandera == true) {
+                document.frmPrestamoLibro.submit();
+            } else {
+                swal("Cuidado", "Campos Vacios", "error");
+            }
         }
     }
 
-    function devolucion(dev,count, cl, cp) {
+    function devolucion(dev, count, cl, cp) {
         if (count == 1)
         {
             finalizar(cp);
         } else {
-            finalizar1(cl, cp, count-1, dev);
+            finalizar1(cl, cp, count - 1, dev);
         }
     }
     function finalizar1(cl, cp, count, dev) {
@@ -138,32 +142,32 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
             },
             icon: "info",
         }).then(value => {
-            switch(value){
+            switch (value) {
                 case "confirm":
                     $.ajax({
-                url: 'devolver1.php?codigop=' + cp + '&codigol=' + cl,
-                type: 'GET',
-                dataType: "html",
-                data: {codigop: cp, codigol: cl},
-                cache: false,
-                contentType: false,
-                processData: false
-            }).done(function (resp) {
-                if (resp == 1) {
-                    swal("Exito", "Libro Devuelto", "success")
-                            .then((value) => {
-                                $.post("listaFinPrestamo.php", {codigo: cp, dev: dev, cantidad: count}, function (mensaje) {
-                                    $('#finalizarPL2').html(mensaje).fadeIn();
+                        url: 'devolver1.php?codigop=' + cp + '&codigol=' + cl,
+                        type: 'GET',
+                        dataType: "html",
+                        data: {codigop: cp, codigol: cl},
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    }).done(function (resp) {
+                        if (resp == 1) {
+                            swal("Exito", "Libro Devuelto", "success")
+                                    .then((value) => {
+                                        $.post("listaFinPrestamo.php", {codigo: cp, dev: dev, cantidad: count}, function (mensaje) {
+                                            $('#finalizarPL2').html(mensaje).fadeIn();
 
-                                });
-                            }
-                            );
-                    $("#tabla-paginada4").load("listado_p_b.php #tabla-paginada4");
-                } else {
-                    swal("Oops", resp, "error")
+                                        });
+                                    }
+                                    );
+                            $("#tabla-paginada4").load("listado_p_b.php #tabla-paginada4");
+                        } else {
+                            swal("Oops", resp, "error")
 
-                }
-            });
+                        }
+                    });
                     break;
                 default:
                     return false;
