@@ -1,9 +1,6 @@
 <?php
-//$lista_instituciones = Repositorio_institucion::lista_institucion(Conexion::obtener_conexion());
-//
-//foreach ($lista_instituciones as $lista_ins) {
-//    echo  $lista_ins->getCodigo_institucion() . " "   . $lista_ins->getNombre() . "<br>";
-//}
+$lista_instituciones = Repositorio_institucion::lista_institucion(Conexion::obtener_conexion());
+
 ?>
 <script type="text/javascript">
             $(function () {
@@ -14,7 +11,7 @@
                         plotShadow: false
                     },
                     title: {
-                        text: 'ESTE ES EL TITULO'
+                        text: ''
                     },
                     tooltip: {
                         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -36,9 +33,13 @@
                             type: 'pie',
                             name: 'Genero',
                          data: [
-                             ['Femenino: 4', 4],
-                             ['marroquin: 4', 4],
-                                ['Masculino: 3', 3],
+                        <?php foreach ($lista_instituciones as $lista_ins){
+                         $cantidad_usuario = Repositorio_institucion::usuario_por_institucion(Conexion::obtener_conexion(), $lista_ins->getCodigo_institucion());
+                        ?>     
+                        
+                        ['<?php echo $lista_ins->getNombre(). " (".$cantidad_usuario. ")" ;?>', <?php echo $cantidad_usuario ;?>],<?php } ?>
+                             
+                             
                             ],
                         }]
                 });
@@ -47,5 +48,5 @@
 
         </script>
         
-        <div id="id_grafica_institucion" style="margin-left: 30%"></div>
+        <div id="id_grafica_institucion" style="margin-left: 30%;"></div>
 
