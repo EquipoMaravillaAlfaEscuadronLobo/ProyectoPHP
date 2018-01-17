@@ -1,7 +1,7 @@
 <?php
 Conexion::abrir_conexion();
 //session_start();
-$lista_admnistradores = Repositorio_administrador::lista_administradores(Conexion::obtener_conexion(),$_SESSION['user']);
+$lista_admnistradores = Repositorio_administrador::lista_administradores_eliminados(Conexion::obtener_conexion());
 $ruta =  '../foto_admi/';
 ?>
 <div class="container">
@@ -15,7 +15,7 @@ $ruta =  '../foto_admi/';
                 </div>
             </div>
             <div class="panel-body">
-                <table padding="20px" class="responsive-table table-sm display" id="data-table-simple">
+                <table padding="20px" class="responsive-table table-sm display" id="tabla-listActivo">
                     <thead class="">
                     <th class="text-center "></th>
                     <th class="text-center ">Usuario</th>

@@ -174,6 +174,43 @@ class Repositorio_administrador {
         }
         return $lista_administradores;
     }
+    
+    public static function lista_administradores_eliminados($conexion) {
+        $lista_administradores = array();
+
+        if (isset($conexion)) {
+            try {
+                $sql = "select * from administradores where (estado = '0')";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+                        $administrador = new Administrador();
+                        $administrador->setApellido($fila['apellido']);
+                        $administrador->setCodigo_administrador($fila['codigo_administrador']);
+                        $administrador->setDui($fila['dui']);
+                        $administrador->setEstado($fila['estado']);
+                        $administrador->setFoto($fila['foto']);
+                        $administrador->setNivel($fila['nivel']);
+                        $administrador->setNombre($fila['nombre']);
+                        $administrador->setObservacion($fila['observacion']);
+                        $administrador->setPasword($fila['pasword']);
+                        $administrador->setSexo($fila['sexo']);
+                        $administrador->setFecha($fila['fecha']);
+                        $administrador->setEmail($fila['email']);
+
+                        $lista_administradores[] = $administrador;
+                    }
+                }
+            } catch (PDOException $exc) {
+                print('ERROR' . $exc->getMessage());
+            }
+        }
+        return $lista_administradores;
+    }
+    
 
     public static function lista_administradores_para_baja($conexion, $codigo) {
         $lista_administradores = array();
