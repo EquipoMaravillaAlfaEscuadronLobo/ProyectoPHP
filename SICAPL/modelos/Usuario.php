@@ -12,10 +12,21 @@ class Usuario{
     private $observacion;
     private $direccion;
     private $motivo_eliminacion;
+    private $nombre_institucion;
 
     function __construct() {
         
     }
+    function getNombre_institucion() {
+        return $this->nombre_institucion;
+    }
+
+    function setNombre_institucion($nombre_institucion) {
+        $this->nombre_institucion = $nombre_institucion;
+    }
+
+        
+    
     function getMotivo_eliminacion() {
         return $this->motivo_eliminacion;
     }

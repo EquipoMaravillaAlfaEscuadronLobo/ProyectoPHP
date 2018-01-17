@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-01-2018 a las 17:12:16
+-- Tiempo de generación: 14-01-2018 a las 19:10:36
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 7.0.9
 
@@ -75,7 +75,7 @@ CREATE TABLE `administradores` (
 --
 
 INSERT INTO `administradores` (`codigo_administrador`, `pasword`, `nivel`, `nombre`, `email`, `fecha`, `apellido`, `sexo`, `dui`, `foto`, `estado`, `observacion`) VALUES
-('admin01', '$2y$10$xC2qfFYxPbsLPtyNjO/rHuahk6Mc20G3sY3OaJxmvbI8asoQHAgg6', 0, 'Carlos', 'cartorres.95@gmail.com', '1995-11-17', 'Torres', NULL, NULL, NULL, 1, NULL);
+('admin01', '$2y$10$2rho0MAZ5MwLDYw851GwB.6eHCBN0gIKsWJboakQ6epu1IOqsjphy', 0, 'nombre', 'correo@gmail.com', '1995-11-17', 'apellido', 0, '00000000-0', 0x61646d692e706e67, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -114,119 +114,6 @@ CREATE TABLE `bitacora` (
   `accion` varchar(1000) DEFAULT NULL,
   `fecha` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `bitacora`
---
-
-INSERT INTO `bitacora` (`codigo_bitacora`, `codigo_administrador`, `accion`, `fecha`) VALUES
-(1, 'admin01', 'El administrador admin01(Carlos Torres) inició sesión', '2018-01-01 12:37:41'),
-(2, 'admin01', 'El administrador admin01(Carlos Torres) inició sesión', '2018-01-01 12:39:52'),
-(3, 'admin01', 'El administrador admin01(Carlos Torres) inició sesión', '2018-01-01 04:03:22'),
-(4, 'admin01', 'El administrador admin01  cerró sesión', '2018-01-01 04:03:25'),
-(5, 'admin01', 'El administrador admin01(Carlos Torres) inició sesión', '2018-01-01 04:04:34'),
-(6, 'admin01', 'El administrador admin01  cerró sesión', '2018-01-01 04:04:37'),
-(7, 'admin01', 'El administrador admin01(Carlos Torres) inició sesión', '2018-01-01 04:15:11'),
-(8, 'admin01', 'El administrador admin01(Carlos Torres) inició sesión', '2018-01-01 07:18:05'),
-(9, 'admin01', 'Se registro la siguiente institucion: indi', '2018-01-01 07:18:43'),
-(10, 'admin01', 'El administrador admin01(Carlos Torres) inició sesión', '2018-01-03 02:47:55'),
-(11, 'admin01', 'Se registro la siguiente institucion: karol', '2018-01-03 02:48:15'),
-(12, 'admin01', 'Se registro la siguiente institucion: fdhdh', '2018-01-03 02:49:52'),
-(13, 'admin01', 'Se registro la siguiente institucion: fdgbdfg', '2018-01-03 02:50:32'),
-(14, 'admin01', 'Se registro la siguiente institucion: kjbjb', '2018-01-03 02:52:36'),
-(15, 'admin01', 'Se registro la siguiente institucion: jkiuuiiuhi', '2018-01-03 02:53:05'),
-(16, 'admin01', 'Se registro la siguiente institucion: dfvvdfvdfvd', '2018-01-03 02:53:39'),
-(17, 'admin01', 'Se registro la siguiente institucion: sdcsdcsdc', '2018-01-03 02:54:49'),
-(18, 'admin01', 'Se registro la siguiente institucion:  vdv dvdvd', '2018-01-03 02:55:02'),
-(19, 'admin01', 'Se registro la siguiente institucion: otra mas', '2018-01-03 02:58:00'),
-(20, 'admin01', 'Se registro la siguiente institucion: dfvdfvdfvdf', '2018-01-03 02:59:11'),
-(21, 'admin01', 'Se registro la siguiente institucion: 111111', '2018-01-03 02:59:54'),
-(22, 'admin01', 'Se registro la siguiente institucion: dcvdfvdfv', '2018-01-03 03:00:25'),
-(23, 'admin01', 'Se registro la siguiente institucion: wqeqweqweq', '2018-01-03 03:01:16'),
-(24, 'admin01', 'Se registro la siguiente institucion: aaaaaaaaaaaaaa', '2018-01-03 03:08:40'),
-(25, 'admin01', 'se inserto al usuario sdfsdfsdf iuiuihuh', '2018-01-03 03:11:09'),
-(26, 'admin01', 'Se registro la siguiente institucion: kkkkkkk', '2018-01-03 03:11:18'),
-(27, 'admin01', 'Se registro la siguiente institucion: bbbbbbbbjjnjnj', '2018-01-03 03:13:16'),
-(28, 'admin01', 'Se registro la siguiente institucion: uuuuuuuuuuuuuu', '2018-01-03 03:17:49'),
-(29, 'admin01', 'Se registro la siguiente institucion: qqqqqqqqqqqqqqqq', '2018-01-03 03:18:03'),
-(30, 'admin01', 'se dio de baja al usuario sdfsdfsdf iuiuihuh por el siguiente motivo: xk si se medio la pinch gna', '2018-01-03 03:18:27'),
-(31, 'admin01', 'Se registro a la editorial Oceano', '2018-01-04 02:14:18'),
-(32, 'admin01', 'se registro al autor Alfredo Espino', '2018-01-04 02:16:06'),
-(33, 'admin01', 'se hizo el registro de 4 libros con el Titulo de Jicaras Tristes', '2018-01-04 02:19:16'),
-(34, 'admin01', 'Se editaron los datos del libro Jicaras Tristes', '2018-01-04 02:19:56'),
-(35, 'admin01', 'se actualizaron los datos del Autor Alfredo Espino', '2018-01-04 03:12:58'),
-(36, 'admin01', 'se registro al autor Miguel Angel Espino', '2018-01-04 03:15:04'),
-(37, 'admin01', 'se registro al autor Alberto Masferrer', '2018-01-04 03:16:53'),
-(38, 'admin01', 'se actualizaron los datos del Autor Miguel Angel Espino', '2018-01-04 03:17:22'),
-(39, 'admin01', 'el usuario sdfsdfsdf iuiuihuh presto los siguientes libros  Jicaras Tristes(CEJ-002-890-JI-0001-0001) Jicaras Tristes(CEJ-002-890-JI-0001-0002)', '2018-01-05 11:03:46'),
-(40, 'admin01', 'se dio de baja al libro Jicaras Tristes(CEJ-002-890-JI-0001-0001)por el siguiente motivo: Danado', '2018-01-05 11:38:47'),
-(41, 'admin01', 'se dio de baja al libro Jicaras Tristes(CEJ-002-890-JI-0001-0003)por el siguiente motivo: mojado', '2018-01-05 03:22:37'),
-(42, 'admin01', 'se registro al autor Salvador Salazar Arrue', '2018-01-05 03:33:39'),
-(43, 'admin01', 'se hizo el registro de 4 libros con el Titulo de Cuento de Barros', '2018-01-05 03:35:11'),
-(44, 'admin01', 'se dio de baja al libro Cuento de Barros(CEJ-002-390-CU-0001-0003)por el siguiente motivo: probando', '2018-01-05 03:35:36'),
-(45, 'admin01', 'El administrador admin01(Carlos Torres) inició sesión', '2018-01-06 02:17:51'),
-(46, 'admin01', 'se dio de baja al libro Cuento de Barros(CEJ-002-390-CU-0001-0004)por el siguiente motivo: Extraviado', '2018-01-06 03:15:11'),
-(47, 'admin01', 'se dio de baja al libro Cuento de Barros(CEJ-002-390-CU-0001-0002)por el siguiente motivo: undefined', '2018-01-06 03:22:17'),
-(48, 'admin01', 'se dio de baja al libro Cuento de Barros(CEJ-002-390-CU-0001-0001)por el siguiente motivo: undefined', '2018-01-06 03:30:15'),
-(49, 'admin01', 'se dio de baja al libro Jicaras Tristes(CEJ-002-890-JI-0001-0001)por el siguiente motivo: undefined', '2018-01-06 03:41:45'),
-(50, 'admin01', 'se dio de baja al libro Cuento de Barros(CEJ-002-390-CU-0001-0002)por el siguiente motivo: undefined', '2018-01-06 03:43:44'),
-(51, 'admin01', 'se dio de baja al libro Jicaras Tristes(CEJ-002-890-JI-0001-0002)por el siguiente motivo: undefined', '2018-01-06 03:50:57'),
-(52, 'admin01', 'se dio de baja al libro Jicaras Tristes(CEJ-002-890-JI-0001-0004)por el siguiente motivo: undefined', '2018-01-06 03:51:16'),
-(53, 'admin01', 'se dio de baja al libro Cuento de Barros(CEJ-002-390-CU-0001-0004)por el siguiente motivo: undefined', '2018-01-06 03:51:26'),
-(54, 'admin01', 'se dio de baja al libro Jicaras Tristes(CEJ-002-890-JI-0001-0003)por el siguiente motivo: undefined', '2018-01-06 03:52:24'),
-(55, 'admin01', 'se dio de baja al libro Jicaras Tristes(CEJ-002-890-JI-0001-0004)por el siguiente motivo: Dañado', '2018-01-06 03:53:57'),
-(56, 'admin01', 'se dio de baja al libro Cuento de Barros(CEJ-002-390-CU-0001-0003)por el siguiente motivo: undefined', '2018-01-06 04:02:36'),
-(57, 'admin01', 'se dio de baja al libro Cuento de Barros(CEJ-002-390-CU-0001-0002)por el siguiente motivo: undefined', '2018-01-06 04:03:19'),
-(58, 'admin01', 'se dio de baja al libro Jicaras Tristes(CEJ-002-890-JI-0001-0002)por el siguiente motivo: undefined', '2018-01-06 04:04:04'),
-(59, 'admin01', 'se dio de baja al libro Cuento de Barros(CEJ-002-390-CU-0001-0001)por el siguiente motivo: undefined', '2018-01-06 04:04:35'),
-(60, 'admin01', 'se dio de baja al libro Cuento de Barros(CEJ-002-390-CU-0001-0001)por el siguiente motivo: undefined', '2018-01-06 05:03:59'),
-(61, 'admin01', 'se dio de baja al libro Jicaras Tristes(CEJ-002-890-JI-0001-0001)por el siguiente motivo: undefined', '2018-01-06 05:04:32'),
-(62, 'admin01', 'se dio de baja al libro Cuento de Barros(CEJ-002-390-CU-0001-0002)por el siguiente motivo: undefined', '2018-01-06 05:06:19'),
-(63, 'admin01', 'se dio de baja al libro Jicaras Tristes(CEJ-002-890-JI-0001-0003)por el siguiente motivo: otro', '2018-01-06 05:07:28'),
-(64, 'admin01', 'se dio de baja al libro Cuento de Barros(CEJ-002-390-CU-0001-0002)por el siguiente motivo: donado', '2018-01-06 05:09:48'),
-(65, 'admin01', 'se dio de baja al libro Jicaras Tristes(CEJ-002-890-JI-0001-0002)por el siguiente motivo: Dañado', '2018-01-06 05:10:05'),
-(66, 'admin01', 'se dio de baja al libro Cuento de Barros(CEJ-002-390-CU-0001-0004)por el siguiente motivo: Extraviado', '2018-01-06 05:10:14'),
-(67, 'admin01', 'El administrador admin01(Carlos Torres) inició sesión', '2018-01-07 08:43:24'),
-(68, 'admin01', 'se dio de baja al libro Cuento de Barros(CEJ-002-390-CU-0001-0003)por el siguiente motivo: Dañado', '2018-01-07 08:47:02'),
-(69, 'admin01', 'se dio de baja al libro Cuento de Barros(CEJ-002-390-CU-0001-0001)por el siguiente motivo: Extraviado', '2018-01-07 08:47:12'),
-(70, 'admin01', 'El administrador admin01(Carlos Torres) inició sesión', '2018-01-08 09:37:39'),
-(71, 'admin01', 'se hizo el registro de 3 libros con el Titulo de Biografias', '2018-01-08 10:13:43'),
-(72, 'admin01', 'se hizo el registro de 3 libros con el Titulo de Biografias', '2018-01-08 10:13:45'),
-(73, 'admin01', 'se hizo el registro de 3 libros con el Titulo de Biografias', '2018-01-08 10:13:45'),
-(74, 'admin01', 'se hizo el registro de 3 libros con el Titulo de Biografias', '2018-01-08 10:13:45'),
-(75, 'admin01', 'Se registro la siguiente institucion: jklkmlkjknjknj', '2018-01-08 10:18:50'),
-(76, 'admin01', 'se hizo el registro de 3 libros con el Titulo de Biografias', '2018-01-08 10:22:41'),
-(77, 'admin01', 'se hizo el registro de 3 libros con el Titulo de Papirusa', '2018-01-08 10:24:57'),
-(78, 'admin01', 'se hizo el registro de 2 libros con el Titulo de otro libro', '2018-01-08 10:27:49'),
-(79, 'admin01', 'se registro al autor Hugo Aguirre', '2018-01-08 10:31:28'),
-(80, 'admin01', 'Se registro a la editorial Harday Electric ', '2018-01-08 10:32:14'),
-(81, 'admin01', 'el usuario sdfsdfsdf iuiuihuh finalizo su prestamo, con la siguiente observación: null', '2018-01-08 10:52:43'),
-(82, 'admin01', 'el usuario sdfsdfsdf iuiuihuh finalizo su prestamo, con la siguiente observación: null', '2018-01-08 10:57:43'),
-(83, 'admin01', 'el usuario sdfsdfsdf iuiuihuh finalizo su prestamo, con la siguiente observación: null', '2018-01-08 10:58:38'),
-(84, 'admin01', 'el usuario sdfsdfsdf iuiuihuh finalizo su prestamo, con la siguiente observación: null', '2018-01-08 11:05:40'),
-(85, 'admin01', 'el usuario sdfsdfsdf iuiuihuh finalizo su prestamo, con la siguiente observación: null', '2018-01-08 11:08:12'),
-(86, 'admin01', 'el usuario sdfsdfsdf iuiuihuh finalizo su prestamo, con la siguiente observación: null', '2018-01-08 11:09:50'),
-(87, 'admin01', 'el usuario sdfsdfsdf iuiuihuh finalizo su prestamo, con la siguiente observación: null', '2018-01-08 11:11:13'),
-(88, 'admin01', 'el usuario sdfsdfsdf iuiuihuh finalizo su prestamo, con la siguiente observación: null', '2018-01-08 11:11:55'),
-(89, 'admin01', 'el usuario sdfsdfsdf iuiuihuh finalizo su prestamo, con la siguiente observación: null', '2018-01-08 11:14:02'),
-(90, 'admin01', 'el usuario sdfsdfsdf iuiuihuh finalizo su prestamo, con la siguiente observación: null', '2018-01-08 11:17:23'),
-(91, 'admin01', 'el usuario sdfsdfsdf iuiuihuh finalizo su prestamo, con la siguiente observación: null', '2018-01-08 11:19:00'),
-(92, 'admin01', 'el usuario sdfsdfsdf iuiuihuh finalizo su prestamo, con la siguiente observación: null', '2018-01-08 11:19:38'),
-(93, 'admin01', 'se dio de baja al libro Biografias(CEJ-002-010-BI-0001-0006)por el siguiente motivo: ', '2018-01-08 11:30:57'),
-(94, 'admin01', 'el usuario sdfsdfsdf iuiuihuh finalizo su prestamo, con la siguiente observación: ', '2018-01-08 11:34:22'),
-(95, 'admin01', 'el usuario sdfsdfsdf iuiuihuh finalizo su prestamo, con la siguiente observación: null', '2018-01-08 11:34:54'),
-(96, 'admin01', 'el usuario sdfsdfsdf iuiuihuh finalizo su prestamo, con la siguiente observación: Sin Problemas', '2018-01-08 11:36:14'),
-(97, 'admin01', 'el usuario sdfsdfsdf iuiuihuh presto los siguientes libros  Biografias(CEJ-002-010-BI-0001-0001) ()', '2018-01-08 03:02:36'),
-(98, 'admin01', 'el usuario sdfsdfsdf iuiuihuh presto los siguientes libros  Biografias(CEJ-002-010-BI-0001-0002) Papirusa(CEJ-002-890-PA-0001-0002)', '2018-01-08 03:04:43'),
-(99, 'admin01', 'el usuario sdfsdfsdf iuiuihuh presto los siguientes libros  Jicaras Tristes(CEJ-002-890-JI-0001-0001)', '2018-01-08 03:09:41'),
-(100, 'admin01', 'El administrador admin01(Carlos Torres) inició sesión', '2018-01-09 02:15:36'),
-(101, 'admin01', 'El administrador admin01(Carlos Torres) inició sesión', '2018-01-10 09:14:50'),
-(102, 'admin01', 'El administrador admin01(Carlos Torres) inició sesión', '2018-01-10 09:38:33'),
-(103, 'admin01', 'se registro la siguiente tipo de activos: sillas', '2018-01-10 09:43:29'),
-(104, 'admin01', 'se registro al siguiente proveedor:sillitas, con dirección san vicente, el salvador y teléfono 2342-0349', '2018-01-10 09:44:12'),
-(105, 'admin01', 'se registraron 4 item tipo sillas con las siguientes características: color blancas, marca Sin Marca, dimensiones Sin Dimenciones, sistema operativo Sin Sistema Operativo, Memoria Ram Sin Memoria Ram, Modelo Sin Modelo', '2018-01-10 09:45:49'),
-(106, 'admin01', 'se hizo el registro de  libros con el Titulo de ', '2018-01-10 10:00:21'),
-(107, 'admin01', 'se dio de baja al libro Biografias(CEJ-002-010-BI-0001-0002)por el siguiente motivo: Dañado', '2018-01-10 10:02:30');
 
 -- --------------------------------------------------------
 
@@ -481,18 +368,6 @@ CREATE TABLE `movimiento_libros` (
   `codigo_plibro` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `movimiento_libros`
---
-
-INSERT INTO `movimiento_libros` (`codigo_libro`, `codigo_plibro`) VALUES
-('CEJ-002-890-JI-0001-0001', 1),
-('CEJ-002-890-JI-0001-0002', 1),
-('CEJ-002-010-BI-0001-0001', 2),
-('CEJ-002-010-BI-0001-0002', 3),
-('CEJ-002-890-PA-0001-0002', 3),
-('CEJ-002-890-JI-0001-0001', 4);
-
 -- --------------------------------------------------------
 
 --
@@ -533,16 +408,6 @@ CREATE TABLE `prestamo_libros` (
   `fecha_salida` datetime DEFAULT NULL,
   `estado` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `prestamo_libros`
---
-
-INSERT INTO `prestamo_libros` (`codigo_plibro`, `codigo_usuario`, `observaciones`, `fecha_devolucion`, `fecha_salida`, `estado`) VALUES
-(1, 'SI17-1', 'Sin Problemas', '2018-01-18', '2018-01-05 00:00:00', 1),
-(2, 'SI17-1', NULL, '2018-01-19', '2018-01-08 00:00:00', 0),
-(3, 'SI17-1', NULL, '2018-01-27', '2018-01-08 00:00:00', 0),
-(4, 'SI17-1', NULL, '2018-01-13', '2018-01-08 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -605,8 +470,33 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`codigo_usuario`, `codigo_institucion`, `nombre`, `apellido`, `telefono`, `correo`, `direccion`, `foto`, `sexo`, `estado`, `observaciones`) VALUES
-('SI17-1', 1, 'sdfsdfsdf', 'iuiuihuh', '2342-3442', 'huihi@djcc.co', 'iuihuihuihi', 0x3030302e6a7067, 'Masculino', 0, 'xk si se medio la pinch gna');
+INSERT INTO `usuarios` (`codigo_usuario`, `codigo_institucion`, `nombre`, `apellido`, `telefono`, `correo`, `direccion`, `foto`, `sexo`, `estado`, `motivo_eliminacion`, `observaciones`) VALUES
+('AC18-7', 4, 'Alex Francisco ', 'Callejas Morales', '7342-4729', 'jhutado@idomas.udea.edu.com', ' Centro Pinero Matamoros No 71', 0x3663616c6c656a612e6a7067, 'Masculino', 1, NULL, ''),
+('BM18-17', 4, 'Boris Ricardo', 'Miranda Ayala', '3844-4444', 'michael.keller@udp.cl', ' Carr. A Ojitlan No. 951-A Col. 5 De Mayo Tuxtepec', 0x3136626f7269732e6a7067, 'Masculino', 1, NULL, ''),
+('BM18-18', 5, 'Benjamin', 'Monterrosa Delgado', '7739-3933', 'vkunstmann@gmail.com', ' Avenida 3 Calle 2 Fraccionamiento Costa Verde', 0x31376d6f6e74652e6a7067, 'Masculino', 1, NULL, ''),
+('CA18-3', 5, 'Carlos Gilberto', 'Alvarez Landaverde', '7755-2235', 'dcanas@idiomas.udea.edu.co', ' Principal S/N. Temazcal. Sn.Miguel Soyaltepec', 0x326361726c6f732067696c626572742e6a7067, 'Masculino', 1, NULL, ''),
+('CM18-19', 2, 'Carlos David', 'Morales Orellana', '3840-3848', 'carmenluzlabbe@gmail.com', 'Calle Sebastian Ortiz No 690 Centro Tuxtepec', 0x31386d6f72616c65732e6a7067, 'Masculino', 1, NULL, ''),
+('CT18-25', 3, 'Carlos Antonio', 'Torres Martínez', '7484-4938', 'lorerlv@hotmail.com', ' Av.Independencia No 672 Centro Tuxtepec', 0x3234627562612e6a7067, 'Masculino', 1, NULL, ''),
+('DA18-4', 2, 'Deyvis Antonio', 'Ayala Gomez ', '7422-4421', 'julianaparis@hotmail.com', 'Av. Independencia No. 1457 Col.La Piragua Tuxtepec', 0x336465797669732e6a7067, 'Masculino', 1, NULL, ''),
+('FO18-12', 3, 'Franco Alvarado', 'Oscar Adonay', '7394-3939', 'MPULIDO@LATINMAIL.COM', 'Boulevard Benito Juarez Esq. Independencia La Piragua', 0x31316672616e636f2e6a7067, 'Masculino', 1, NULL, ''),
+('GD18-11', 1, 'Gerson Bladimir', 'Durán González', '3742-3829', 'andresiocarga@hotmail.com', ' Miguel Hidalgo No 689 Lazaro Cardenas Tuxtepec', 0x31307465746f2e6a7067, 'Masculino', 1, NULL, ''),
+('GH18-13', 2, 'Gercia Melina', 'Hernández Castillo', '8392-8382', 'yessy_39@hotmail.com', ' Av. 5 De Mayo No. 1400 Col.Centro Tuxtepec.Oax.', 0x31326772656369612e6a7067, 'Femenino', 1, NULL, ''),
+('HR18-23', 5, 'Harvin Jeffeth', 'Ramos Alvarado', '7349-3383', 'rlillo_2000@hotmail.com', ' Matamoros No 149 Centro Tuxtepec', 0x323268617276692e6a7067, 'Masculino', 1, NULL, ''),
+('JA18-1', 3, 'Jenniffer Joanna', 'Abarca', '2449-7352', 'juribe@idiomas.udea.edu.co', 'Calle Agustin Lara No. 69-B Col. Ex-Normal Tuxtepec', 0x306a6f616e612e6a7067, 'Femenino', 1, NULL, ''),
+('JA18-2', 3, 'Josué Alfredo', 'Alfaro Cruz', '7633-3332', 'hersy@epm.net.co', ' Av. Principal S/N. Temascal', 0x316a6f736520616c667265646f2e6a7067, 'Masculino', 1, NULL, ''),
+('JB18-6', 4, 'Juan Antonio', 'Bautista Peres Callejas M', '7234-0987', 'aguevara@idiomas.udea.edu.com', ' Prol. Av 5 De Mayo No 109 Maria Eugenia Tuxepec', 0x35746f6e792e6a7067, 'Masculino', 1, NULL, ''),
+('JM18-20', 1, 'Juan Carlos', 'Moz Alfaro', '7939-3838', 'escobilla3carretes@hotmail.com', ' C 1O De Mayo No 4 Ampl.Mexico Loma Bonita', 0x31396d6f7a2e6a7067, 'Masculino', 1, NULL, ''),
+('MC18-8', 2, 'Magdalena Del Carmen', 'Cordova Flores', '7349-3820', 'juandavidlopez@ubicar.com', ' Matamoros 40 Centro', 0x376d616764616c656e612e6a7067, 'Masculino', 1, NULL, ''),
+('MC18-9', 5, 'Mirian Mabel', 'Cornejo Portillo', '2349-2838', 'vivian_981@yahoo.com', 'Benito Juarez 25 Centro', 0x386d6162656c2e6a7067, 'Masculino', 1, NULL, ''),
+('MH18-14', 3, 'Marvin Josué', 'Hérnandez Diaz', '7204-3832', 'reinald_34@hotmail.com', ' Av. Libertad No. 1961 Col. La Piragua Tuxtepec', 0x31336d617276696e2e6a7067, 'Masculino', 1, NULL, ''),
+('MM18-15', 2, 'Marcos Antonio', 'Martínez Vásquez', '3744-3832', 'jferdusi@terra.com', ' Av. 5 De Mayo Esq. Matamoros No 1070 Centro Tuxtepec', 0x31346d6172636f732e6a7067, 'Masculino', 1, NULL, ''),
+('MQ18-22', 4, 'Mayra Beatriz', 'Quintanilla Guzmán', '7843-3834', 'amarantasol@gmail.com', 'Mariano Arista No 454 Centro Tuxtepec', 0x32316d617972612e6a7067, 'Masculino', 1, NULL, ''),
+('RM18-16', 3, 'Rina de la Paz', 'Melgar Peña', '7369-3833', 'verocakatalinic@hotmail.com', ' Aldama No 1212 Lazaro Cardenas Tuxtepec', 0x313572696e612e6a7067, 'Femenino', 1, NULL, ''),
+('RV18-26', 5, 'Romario Abelardo', 'Villalobos Rivas', '8493-8338', 'juanmaceratta@hotmail.com', 'Av. Independencia No 531 Centro Tuxtepec', 0x3235726f6d612e6a7067, 'Masculino', 1, NULL, ''),
+('SR18-24', 5, 'Saúl Alfredo', 'Reyes Alvarado', '8333-3993', 'flobato.c@gmail.com', 'Av. Independencia No. 608 Col.Centro Tuxtepec.Oax.', 0x32337361756c2e6a7067, 'Masculino', 1, NULL, ''),
+('VP18-21', 3, 'Verónica Concepción', 'Portillo Valladares', '8384-9984', 'glazo@mbienes.cl', ' Av. Jesus Carranza No 1651 Altos El Reposo Tuxtepec', 0x32307665726f6e6963612e6a7067, 'Masculino', 1, NULL, ''),
+('WB18-5', 5, 'William Ernesto', 'Barrera Abarca', '2234-2234', 'juanspider39@hotmail.com', ' Av. 5 De Mayo No. 551 Col.Centro Tuxtepec', 0x3477696c6c69616d206865726e6573746f2e6a7067, 'Masculino', 1, NULL, ''),
+('YC18-10', 3, 'Yanci Steeffany', 'Cubias Flores', '7394-3849', 'vivian_981@yahoo.com', 'Blvd. Benito Juarez No. 197-A Col.Oaxaca Tuxtepec', 0x3979616e63792e6a7067, 'Masculino', 1, NULL, '');
 
 --
 -- Índices para tablas volcadas

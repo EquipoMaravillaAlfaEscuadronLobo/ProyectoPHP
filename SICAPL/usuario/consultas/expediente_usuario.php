@@ -19,11 +19,10 @@ $direccion = '../../foto_usuario/';
     foreach ($lista_usuarios as $lista_carnet) {
         $observaciones_activo = Repositorio_usuario::obtener_observaciones_activo(Conexion::obtener_conexion(), $lista_carnet->getCodigo_usuario());
         $observaciones_libro = Repositorio_usuario::obtener_observaciones_libro(Conexion::obtener_conexion(), $lista_carnet->getCodigo_usuario());
-        
-     
-        
-       
+           
+        if ($observaciones_activo !="" || $observaciones_libro!="") {
             
+          
             ?>
             <tr>
                 <td class="text-center">
@@ -37,6 +36,7 @@ $direccion = '../../foto_usuario/';
             </tr>
     <?php 
 }
+ } 
 ?>
 
 </tbody>

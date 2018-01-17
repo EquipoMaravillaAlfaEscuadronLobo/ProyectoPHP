@@ -11,7 +11,7 @@ $lista_usuarios = Repositorio_usuario::lista_usuarios(Conexion::obtener_conexion
     <th class="text-center">Carnet</th>
     <th class="text-center">Nombre Completo</th>
     <th class="text-center">Telefono</th>
-    <th class="text-center">Direccion</th>
+    <th class="text-center">Institución</th>
     <th class="text-center">Correo</th>
     <th class="text-center">Foto</th>
     <th class="text-center">seleccionar</th>
@@ -28,7 +28,7 @@ $lista_usuarios = Repositorio_usuario::lista_usuarios(Conexion::obtener_conexion
             <th class="text-center"><?php echo $lista_usu->getCodigo_usuario(); ?></th>
             <td class="text-center"><?php echo $lista_usu->getNombre() . " " . $lista_usu->getApellido(); ?></td>
             <td class="text-center"><?php echo $lista_usu->getTelefono(); ?></td>
-            <td class="text-center"><?php echo $lista_usu->getDireccion(); ?></td>
+            <td class="text-center"><?php echo $lista_usu->getNombre_institucion(); ?></td>
             <td class="text-center"><?php echo $lista_usu->getEmail(); ?></td>
             <td class="text-center">
                 <img class="presentacionXZ" src="<?php echo $direccion . $lista_usu->getFoto(); ?>"/>

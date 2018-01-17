@@ -154,7 +154,8 @@ class Repositorio_usuario {
                         $usuario->setFoto($fila['foto']);
                         $usuario->setObservacion($fila['observaciones']);
                         $usuario->setMotivo_eliminacion($fila['motivo_eliminacion']);
-
+                        $nombre_institucion = self::nombre_institucion($conexion, $fila['codigo_institucion']);
+                        $usuario->setNombre_institucion($nombre_institucion);
                         $lista_usuarios[] = $usuario;
                     }
                 }
@@ -171,7 +172,6 @@ class Repositorio_usuario {
         return $lista_usuarios;
     }
     
-
     public static function lista_usuarios_completa($conexion) {
         $lista_usuarios = array();
 
@@ -382,7 +382,7 @@ class Repositorio_usuario {
                 //echo 'hay conexion<br>';
                 //echo 'el carnet es'. $carnet;
                 $observacion = $usuario->getObservacion();
-                $estado = 1;
+                $estado = 0;
 
                 $sql = 'UPDATE usuarios SET estado=:estado,observaciones=:observaciones,motivo_eliminacion=:motivo_eliminacion where codigo_usuario = :carnet';
 
@@ -651,6 +651,88 @@ class Repositorio_usuario {
             }
         }
         return $expediente;
+    }
+    
+    public static function nombre_institucion($conexion, $codigo) {
+        $nombre = '';
+
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT institucion.codigo_institucion, institucion.nombre FROM institucion WHERE codigo_institucion = '$codigo'";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+                        
+                      $nombre = $fila['1'];  
+                        
+                    }
+                }
+            } catch (PDOException $exc) {
+                print('ERROR' . $exc->getMessage());
+            }
+        }
+        return $nombre;
+    }
+    
+    public static function restaurar_usuario($conexion, $carnet ,$nombre) {
+
+        $usuario_insertado = false;
+        // $usuario = new Usuario();
+        if (isset($conexion)) {
+            try {
+                //echo 'hay conexion<br>';
+                //echo 'el carnet es'. $carnet;
+                
+                $estado = 1;
+
+                $sql = 'UPDATE usuarios SET estado=:estado,observaciones=:observaciones,motivo_eliminacion=:motivo_eliminacion where codigo_usuario = :carnet';
+
+                $observacion ='';
+                
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->bindParam(':carnet', $carnet, PDO::PARAM_STR);
+                $sentencia->bindParam(':estado', $estado, PDO::PARAM_INT);
+                $sentencia->bindParam(':observaciones', $observacion, PDO::PARAM_STR);
+                $sentencia->bindParam(':motivo_eliminacion', $observacion, PDO::PARAM_STR);
+
+                $usuario_insertado = $sentencia->execute();
+
+                $accion = "Se restauro al usuario " . $nombre ;
+                self::insertar_bitacora($conexion, $accion);
+
+                echo '<script>swal({
+                    title: "Exito",
+                    text: "El registro ha sido Eliminado con exito!",
+                    type: "success",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },
+                function () {
+                    location.href="../inicio_usuario.php";
+                    
+                });</script>';
+            } catch (PDOException $ex) {
+                //echo "<script>swal('Excelente!', 'hubo incombenientes  '$sql' ', 'success');</script>";
+                echo '<script>swal({
+                    title: "Error!",
+                    text: "Por favor intente más tarde",
+                    type: "error",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },
+                function () {
+                    location.href="../inicio_usuario.php";
+                    
+                });</script>';
+                //echo 'problemas con sql';
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        } else {
+            echo 'no hay conexion';
+        }
     }
 
 }
