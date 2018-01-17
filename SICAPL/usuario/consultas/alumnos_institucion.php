@@ -1,13 +1,11 @@
 <?php
-$titulo1 ="";
-include_once '../plantillas/cabecera.php';
-include_once '../plantillas/menu.php';
+//$lista_instituciones = Repositorio_institucion::lista_institucion(Conexion::obtener_conexion());
+//
+//foreach ($lista_instituciones as $lista_ins) {
+//    echo  $lista_ins->getCodigo_institucion() . " "   . $lista_ins->getNombre() . "<br>";
+//}
 ?>
-</nav>
-
-     
-      
-        <script type="text/javascript">
+<script type="text/javascript">
             $(function () {
                 $('#id_grafica_institucion').highcharts({
                     chart: {
@@ -29,7 +27,7 @@ include_once '../plantillas/menu.php';
                                 enabled: true,
                                 format: '<b>{point.name}</b>: {point.percentage:.1f} %',
                                 style: {
-                                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'red'
                                 }
                             }
                         }
@@ -48,10 +46,6 @@ include_once '../plantillas/menu.php';
 
 
         </script>
-    
-     
-        <div id="id_grafica_institucion" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-        <br><br>
-    <?php
-include_once './pie_de_pagina.php';
-    ?>
+        
+        <div id="id_grafica_institucion" style="margin-left: 30%"></div>
+

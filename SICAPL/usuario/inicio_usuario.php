@@ -22,13 +22,7 @@ include_once '../plantillas/menu.php';
                 <i class="fa fa-list-alt" aria-hidden="true"></i> Consulta
             </a>
         </li>
-        <li class="tab">
-            <a href="#test4">
-                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                Reporte
-            </a>
-        </li>
-
+        
     </ul>
 </div>
 </nav>
@@ -44,9 +38,7 @@ include_once '../plantillas/menu.php';
 <div class="col s12" id="test3">
    <?php include_once './inicio_consultas.php'; ?>
 </div>
-<div class="col s12" id="test4">
-    
-</div>
+
 
 
 <?php

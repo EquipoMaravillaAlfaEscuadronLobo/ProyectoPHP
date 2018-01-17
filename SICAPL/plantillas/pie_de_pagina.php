@@ -1,5 +1,11 @@
  <!--<script crossorigin="anonymous" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" src="../js/jquery.min.js"></script>-->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+            <!--tengo dudas si este jquery es importante-->
+       <!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
+            <script src="../Highcharts-4.1.5/js/highcharts.js"></script>
+        <script src="../Highcharts-4.1.5/js/exporting.js"></script>
+
+
 <!--<script src="../js/jquery-1.11.2.js"></script>
 <script type="text/javascript" src="../js/jquery.min.js"></script>-->
 <script src="../js/bootstrap.min.js"></script>

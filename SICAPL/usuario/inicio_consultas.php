@@ -40,5 +40,19 @@
             </div>
 
         </div>
+        
+        <div class="panel panel-primary"><!-- Desde aqui-->
+            <div class="panel-heading text-center">
+                <a data-toggle="collapse" style="font-size: 20px;font-weight: bold " data-parent="#accordion3" href="#collapse-institucion">Cantidad de Alumnos por Institucion</a>
+
+            </div>
+
+            <div id="collapse-institucion" class="panel-collapse collapse">
+                <div class="panel-body" >
+                    <?php include('./consultas/alumnos_institucion.php'); ?>
+                </div>
+            </div>
+
+        </div>
  </div>
 </div>
