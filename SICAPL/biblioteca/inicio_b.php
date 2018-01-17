@@ -326,6 +326,10 @@ include_once('../plantillas/pie_de_pagina.php');
                             direccion="../ayuda/listEditorial.php";
                             
                          break;
+                         case 7:
+                            direccion="../ayuda/prestamoLib.php";
+                            
+                         break;
                     }
                     window.open(direccion, "_blank", "toolbar=no,scrollbars=yes,resizable=no,top=0,left=500,width=700,height=600");
                 }

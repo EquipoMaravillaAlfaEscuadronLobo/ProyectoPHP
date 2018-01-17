@@ -84,7 +84,7 @@ $i=1;
                                padding: 2mm; 
             }
             .portada{
-                padding-top: 500px;
+                padding-top: 100px;
                 float: bottom;
                 text-align: center;
                 width: 100%;
@@ -128,47 +128,54 @@ $i=1;
                     <?php date_default_timezone_set('America/El_Salvador');echo date('d-m-Y').'('.date('H:i:s').')'?>
                 </h3>
         </div>
-       <?php
-            foreach ($listado1 as $fila1) {
-                $listado = Repositorio_libros::LibrosExtraviados2(Conexion::obtener_conexion(), $fila1['titulo']);
-                
-                ?>
-            <page pageset="old"><!-- Etiqueta para cada pagina del reporte-->
-               
-    <br><br><br><br><br><br><br><br>
-     <div class="tabla"><!-- Inicio Contenido del Reporte (Modificable)-->
+        <br><br>
         
+        
+            <!-- Etiqueta para cada pagina del reporte-->
+               
+    
+     <div class="tabla"><!-- Inicio Contenido del Reporte (Modificable)-->
         <table border="0"  align="center">
             <tr>
+                
+                
                 <th>C&oacute;digo</th>
+                
+                <th>T&iacute;tulo</th>
 
                 <th>Motivo</th>
             </tr>
+        <?php
+            foreach ($listado1 as $fila1) {
+                $listado = Repositorio_libros::LibrosDanados2(Conexion::obtener_conexion(), $fila1['titulo']);
+                
+                ?>
             <br>
             <tr class="espacio">
-                <td>&nbsp;</td><td>&nbsp;</td>
+                <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
             </tr>
             <tr class="espacio">
-                <td>&nbsp;</td><td>&nbsp;</td>
+                <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
             </tr>
             
                 <tr>
-                    <td>
-                        <b><?php echo $fila1['titulo'] ?></b>
-                    </td>
+                    
                 </tr>
                 <tr>
-                    <td><hr></td><td><hr></td>
+                    <td><hr></td><td><hr></td><td><hr></td>
                 </tr>
-                <?php
-                foreach ($listado as $fila) {
-                    ?>
+               
 
 
-                    <tr>
-                        <td><?php echo $fila['codigo'] ?></td>
+                <tr>
+                    <td><?php echo $fila1['codigo'] ?></td>
+                        <td>
+                        <?php echo $fila1['titulo'] ?>
+                        </td>
+                        
+                        
 
-                        <td><?php echo $fila['motivo'] ?></td>
+                        <td><?php echo $fila1['motivo'] ?></td>
                     </tr>
                     <?php
                 }
@@ -188,11 +195,7 @@ $i=1;
         </table>
     </div><!-- Fin Contenido del Reporte (Modificable)-->
     
-     </page>
-            <?php 
-            
-                }
-            
-            ?>
+     
+           
 
 

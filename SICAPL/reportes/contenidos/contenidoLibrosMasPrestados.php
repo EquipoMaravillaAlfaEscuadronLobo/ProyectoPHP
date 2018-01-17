@@ -8,8 +8,8 @@ $i=1;
 ?>
 <style type="text/css">
 <!--
-    table.page_header {width: 100%; border: none; background-color: #DDDDFF; border-bottom: solid 1mm #AAAADD; padding: 2mm }
-    table.page_footer {width: 100%; border: none; background-color: #DDDDFF; border-top: solid 1mm #AAAADD; padding: 2mm}
+table.page_header {width: 100%; border: none; background-color: #ff9900; border-bottom: solid 1mm #AAAADD; padding: 2mm }
+    table.page_footer {width: 100%; border: none; background-color: #ff9900; border-top: solid 1mm #AAAADD; padding: 2mm}
     .cabecera{display: block; width: 25%; float: right;}
 -->
 </style>
@@ -84,7 +84,7 @@ $i=1;
                                padding: 2mm; 
             }
             .portada{
-                padding-top: 500px;
+                padding-top: 100px;
                 float: bottom;
                 text-align: center;
                 width: 100%;
@@ -128,51 +128,53 @@ $i=1;
                     <?php date_default_timezone_set('America/El_Salvador');echo date('d-m-Y').'('.date('H:i:s').')'?>
                 </h3>
         </div>
-       <?php
-            foreach ($listado1 as $fila1) {
-                $listado = Repositorio_libros::LibrosMasPrestados2(Conexion::obtener_conexion(), $fila1['titulo']);
-                
-                ?>
-            <page pageset="old"><!-- Etiqueta para cada pagina del reporte-->
+       
+            <!-- Etiqueta para cada pagina del reporte-->
                
-                <br><br><br><br><br><br><br><br>
+                <br><br>
      <div class="tabla"><!-- Inicio Contenido del Reporte (Modificable)-->
-        
         <table border="0"  align="center">
             <tr>
-                <th>C&oacute;digo pr&eacute;stamo</th>
-
+                
+                
                 <th>C&oacute;digo Libro</th>
                 
-                <th>Veces Prestado</th>
+                <th>T&iacute;tulo</th>
+
+                <th>Veces prestado</th>
             </tr>
+            <tr>
+                    <td><hr></td><td><hr></td><td><hr></td>
+                </tr>
+        <?php
+            foreach ($listado1 as $fila1) {
+                $listado = Repositorio_libros::LibrosDanados2(Conexion::obtener_conexion(), $fila1['titulo']);
+                
+                ?>
             <br>
             <tr class="espacio">
-                <td>&nbsp;</td><td>&nbsp;</td>
+                <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
             </tr>
             <tr class="espacio">
-                <td>&nbsp;</td><td>&nbsp;</td>
+                <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
             </tr>
             
                 <tr>
-                    <td>
-                        <b><?php echo $fila1['titulo'] ?></b>
-                    </td>
+                    
                 </tr>
+                
+               
+
+
                 <tr>
-                    <td><hr></td><td><hr></td><td><hr></td>
-                </tr>
-                <?php
-                foreach ($listado as $fila) {
-                    ?>
-
-
-                    <tr>
-                        <td><?php echo $fila['codigo'] ?></td>
-
-                        <td><?php echo $fila['cl'] ?></td>
+                    <td><?php echo $fila1['cl'] ?></td>
+                        <td>
+                        <?php echo $fila1['titulo'] ?>
+                        </td>
                         
-                        <td><?php echo $fila['veces'] ?></td>
+                        
+
+                        <td><?php echo $fila1['veces'] ?></td>
                     </tr>
                     <?php
                 }
@@ -192,11 +194,7 @@ $i=1;
         </table>
     </div><!-- Fin Contenido del Reporte (Modificable)-->
     
-     </page>
-            <?php 
-            
-                }
-            
-            ?>
+     
+          
 
 
