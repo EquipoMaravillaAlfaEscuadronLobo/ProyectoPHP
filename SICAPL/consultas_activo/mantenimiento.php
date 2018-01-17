@@ -11,7 +11,7 @@ $listado = Repositorio_mantenimiento::ListaMantAct(Conexion::obtener_conexion())
     <thead class="">
 
     <th class="text-center">Encargado</th>
-    <th class="text-center">Telefono</th>
+    <th class="text-center">Teléfono</th>
     <th class="text-center">Direcci&oacuten</th>
     <th class="text-center">Fecha</th>
     <th class="text-center"></th>

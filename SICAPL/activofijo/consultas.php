@@ -25,8 +25,24 @@
                     <?php include('../consultas_activo/activosEnPrestam.php'); ?>
                 </div>
             </div>
+            
+            </div><!-- hasta aki cada consulta-->
+        
+        <div class="panel panel-primary"><!-- Desde aqui-->
+            <div class="panel-heading text-center">
+                <a data-toggle="collapse" style="font-size: 20px;font-weight: bold " data-parent="#accordion3" href="#collapse-activos-baja">Activos Dados de Baja</a>
+
+            </div>
+
+            <div id="collapse-activos-baja" class="panel-collapse collapse">
+                <div class="panel-body " >
+                    <?php include('../consultas_activo/activosBaja.php'); ?>
+                </div>
+            </div>
 
         </div><!-- hasta aki cada consulta-->
+
+        
         
         <div class="panel panel-primary"><!-- Desde aqui-->
             <div class="panel-heading text-center">
@@ -37,27 +53,14 @@
             <div id="collapse-CatAutores" class="panel-collapse collapse">
                 <div class="panel-body " >
                     <?php include('../consultas_activo/catalogoEncargados.php'); ?>
-                </div>
+                </div>activosBaja
             </div>
 
         </div><!-- hasta aki cada consulta-->
         
         
         
-        <div class="panel panel-primary"><!-- Desde aqui-->
-            <div class="panel-heading text-center">
-                <a data-toggle="collapse" style="font-size: 20px;font-weight: bold " data-parent="#accordion3" href="#collapse-CatEditoriales">Cat&aacute;logo de Editoriales</a>
-
-            </div>
-
-            <div id="collapse-CatEditoriales" class="panel-collapse collapse">
-                <div class="panel-body" >
-                    <?php include('../consultas/catalogoEditoriales.php'); ?>
-                </div>
-            </div>
-
-        </div><!-- hasta aki cada consulta-->
-        
+                
         
     </div>
 </div>

@@ -71,7 +71,7 @@ $(document).ready(function() {
                                                 title="Indique el numero correlativo del activo para agregar varios a la tabla  &#13;p. ej. 5-14, 25,95"                            "
 
                                                >
-                                        <label style="font-size:14px"  title="Indique el numero correlativo del activo para agregar varios a la tabla  &#13;p. ej. 5-14, 25" >Seleccion Multiple  <small></small> </label>
+                                        <label style="font-size:14px"  title="Indique el numero correlativo del activo para agregar varios a la tabla  &#13;p. ej. 5-14, 25" >Selección Multiple  <small></small> </label>
                                     </div>
                                     <div class="input-field col-md-offset-2 col m3 text-center"   >
                                         <button id="agrAct" class="btn-sm btn-success modal-action " type="button" onclick="javascript:agregar()"  >

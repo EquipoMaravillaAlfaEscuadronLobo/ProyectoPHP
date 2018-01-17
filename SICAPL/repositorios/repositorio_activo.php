@@ -14,7 +14,7 @@ class Repositorio_activo {
                 $codigo_detalle = $activo->getCodigo_detalle();
                 $codigo_administrador = $activo->getCodigo_administrador();
                 $estado = $activo->getEstado();
-                $observacion = $activo->getObservacion();
+                $observacion = "";
                 $foto = $activo->getFoto();
                 $fecha = $activo->getFecha_adquicision();
                 $precio = $activo->getPrecio();
@@ -34,7 +34,7 @@ class Repositorio_activo {
                 $sentencia->bindParam(':fecha', $fecha, PDO::PARAM_STR);
                 $sentencia->bindParam(':precio', $precio, PDO::PARAM_STR);
                 $sentencia->bindParam(':estado', $estado, PDO::PARAM_INT);
-                $sentencia->bindParam(':observacion', $estado, PDO::PARAM_STR);
+                $sentencia->bindParam(':observacion', $observacion, PDO::PARAM_STR);
                 $sentencia->bindParam(':foto', $foto, PDO::PARAM_STR);
 
                 $activo_insertado = $sentencia->execute();
@@ -51,6 +51,34 @@ class Repositorio_activo {
         if (isset($conexion)) {
             try {
                 $sql = "SELECT * from actvos  ORDER BY actvos.codigo_activo ASC";
+                $resultado = $conexion->query($sql);
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
+    
+    public static function lista_activo_baja($conexion) {
+        $resultado = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT
+categoria.nombre AS tipo,
+actvos.codigo_activo AS codigo,
+actvos.precio AS p,
+actvos.estado AS e,
+actvos.observacion AS o,
+(CONCAT(administradores.nombre,' ',administradores.apellido)) as nombre,
+actvos.fecha_adquicision as f
+
+FROM
+actvos
+INNER JOIN categoria ON actvos.codigo_tipo = categoria.codigo_tipo
+INNER JOIN administradores ON actvos.codigo_administrador = administradores.codigo_administrador
+WHERE
+actvos.estado = 0
+";
                 $resultado = $conexion->query($sql);
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();

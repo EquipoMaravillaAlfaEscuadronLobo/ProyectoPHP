@@ -19,7 +19,7 @@
                         <div class="col-md-12">
                             <div class="input-field">
                                 <i class="fa fa-home prefix" aria-hidden="true"></i>
-                                <label for="idDireccion">Direccion</label>
+                                <label for="idDireccion">Dirección</label>
                                 <input type="text" id="idDirecciono" min="10" name="nameDireccion"  class="text-center validate" required="">
                             </div>
                         </div>
@@ -28,7 +28,7 @@
                         <div class="col-md-12">
                             <div class="input-field">
                                 <i class="fa fa-mobile prefix" aria-hidden="true"></i>
-                                <label for="idTelefono2">Telefono</label>
+                                <label for="idTelefono2">Teléfono</label>
                                 <input type="text" id="idTelefono2" name="nameTelefono" class="text-center validate" required="">
                             </div>
                         </div>

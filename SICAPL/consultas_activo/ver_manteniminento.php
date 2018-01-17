@@ -33,8 +33,8 @@
         <caption>Encargados </caption>
         <thead>
         <th class="text-center">Nombre</th>
-        <th class="text-center">Telefono</th>
-        <th class="text-center">Direccion</th>
+        <th class="text-center">Teléfono</th>
+        <th class="text-center">Direcci&oacuten</th>
         <th class="text-center">Correo</th>
         </thead>
         <tbody></tbody>
@@ -45,7 +45,7 @@
     <table id="ver_manteniemiento_activos" class="text-center">
         <caption>Activos </caption>
         <thead>
-        <th class="text-center">Codigo</th>
+        <th class="text-center">C&oacutedigo</th>
         <th class="text-center">Tipo</th>
         </thead>
         <tbody></tbody>

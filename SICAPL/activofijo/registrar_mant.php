@@ -85,21 +85,21 @@
                                     include'select_categoria.php';
                                     ?>
                                 </select>
-                                <label style="font-size:16px">Categoria <small></small> </label>
+                                <label style="font-size:16px">Tipo <small></small> </label>
                             </div>
 
                             <div class="input-field col m3">
                                 <i class="fa fa-barcode prefix" title="Indique el numero correlativo del activo para agragar varios a la tabla &#13;p. ej. 5-14, 25"></i> 
                                 <input type="text" id="correlativoMant" name="correlativoMant" class="text-center validate" 
                                        value="---"
-                                       pattern="[0-9]"
+                                       
                                        onclick = "if (this.value == '---')
                                                    this.value = ''" 
                                        onblur="if (this.value == '')
                                                    this.value = '---'"
                                        title="Indique el numero correlativo del activo para agregar varios a la tabla  &#13;p. ej. 5-14, 25"
                                        >
-                                <label style="font-size:12px" title="Indique el numero correlativo del activo para agragar varios a la tabla&#13;p. ej. 5-14, 25">Seleccion Multiple  <small></small> </label>
+                                <label style="font-size:12px" title="Indique el numero correlativo del activo para agragar varios a la tabla&#13;p. ej. 5-14, 25">Selección Multiple  <small></small> </label>
                             </div>
 
                             <div class="input-field col-md-offset-2 col m3 text-center"   >
@@ -199,7 +199,7 @@
                             <thead>   
                             <th style="display:none;"  ></th>
                             <th>Nombre</th>
-                            <th>Telefono</th>
+                            <th>Teléfono</th>
                             <th>Direcci&oacuten</th>
                             </thead>
                             <tbody >

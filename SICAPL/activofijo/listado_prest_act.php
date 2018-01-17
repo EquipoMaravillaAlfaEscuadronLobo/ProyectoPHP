@@ -22,7 +22,7 @@ $listado = Repositorio_prestamoact::ListaPrestamosAct(Conexion::obtener_conexion
                     <th>C&oacutedigo</th>
                     <th>Usuario</th>
                     <th>Fecha Salida</th>
-                    <th>Fecha Devolucion</th>
+                    <th>Fecha Devolución</th>
                     <th>Estado</th>
                     </thead>
                     <tbody>

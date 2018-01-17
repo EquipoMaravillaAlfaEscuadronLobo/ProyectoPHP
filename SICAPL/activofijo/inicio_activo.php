@@ -62,7 +62,7 @@ include_once('../plantillas/menu.php');
    <?php include('consultas.php'); ?>
 </div>
 <div class="col s12" id="ttest6">
-
+     <?php include('reportes.php'); ?>
 </div>
 
 <?php

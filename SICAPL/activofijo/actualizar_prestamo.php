@@ -156,7 +156,7 @@
          document.getElementById("btn_actualizar_prestamo").disabled = false;
          document.getElementById("btnfinalizar").disabled = false;
          
-         if(valor=="3" || valor=="4"){alert(valor);
+         if(valor=="3" || valor=="4"){
                 $("#observacion_pres_act").prop("required", true);
          }else{
               $("#observacion_pres_act").prop("required", false);
