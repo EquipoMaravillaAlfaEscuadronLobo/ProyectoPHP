@@ -1,5 +1,9 @@
 <?php
 $lista_instituciones = Repositorio_institucion::lista_institucion(Conexion::obtener_conexion());
+foreach ($lista_instituciones as $otra){
+    echo 'N° '. $otra->getCodigo_institucion() ." - " . $otra->getNombre() . '<br>';
+}
+    
 
 ?>
 <script type="text/javascript">
@@ -37,7 +41,7 @@ $lista_instituciones = Repositorio_institucion::lista_institucion(Conexion::obte
                          $cantidad_usuario = Repositorio_institucion::usuario_por_institucion(Conexion::obtener_conexion(), $lista_ins->getCodigo_institucion());
                         ?>     
                         
-                        ['<?php echo $lista_ins->getNombre(). " (".$cantidad_usuario. ")" ;?>', <?php echo $cantidad_usuario ;?>],<?php } ?>
+                        ['<?php  echo "(N° ". $lista_ins->getCodigo_institucion() . ")";?>', <?php echo $cantidad_usuario ;?>],<?php } ?>
                              
                              
                             ],
