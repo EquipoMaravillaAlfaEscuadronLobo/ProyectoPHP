@@ -121,12 +121,13 @@ $i=1;
     </page_footer>
 </page>
         <div class="portada">
-            <h1>
-            Reporte de Libros Extraviados
+            <h5 style="text-align: right">
+                    Fecha:<?php date_default_timezone_set('America/El_Salvador');echo date('d-m-Y').' Hora:'.date('H:i:s')?>
+            </h5>
+            <h1 style="text-align: left">
+                Reporte de Libros Extraviados
         </h1>
-            <h3>
-                    <?php date_default_timezone_set('America/El_Salvador');echo date('d-m-Y').'('.date('H:i:s').')'?>
-                </h3>
+            
         </div>
         <br><br>
         

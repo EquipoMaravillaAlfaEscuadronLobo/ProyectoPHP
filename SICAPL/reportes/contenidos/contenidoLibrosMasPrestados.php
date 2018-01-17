@@ -121,12 +121,13 @@ table.page_header {width: 100%; border: none; background-color: #ff9900; border-
     </page_footer>
 </page>
         <div class="portada">
-            <h1>
+            <h5 style="text-align: right">
+                    Fecha:<?php date_default_timezone_set('America/El_Salvador');echo date('d-m-Y').' Hora:'.date('H:i:s')?>
+            </h5>
+            <h1 style="text-align: left">
                 Reporte de Libros M&aacute;s Prestados
         </h1>
-            <h3>
-                    <?php date_default_timezone_set('America/El_Salvador');echo date('d-m-Y').'('.date('H:i:s').')'?>
-                </h3>
+            
         </div>
        
             <!-- Etiqueta para cada pagina del reporte-->
