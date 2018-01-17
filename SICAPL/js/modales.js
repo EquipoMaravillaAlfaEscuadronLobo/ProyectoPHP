@@ -189,7 +189,10 @@ function abrir_eliminacion_administrador(nombre, apellido, usuario, password) {
 
     $('#eliminacion_administradores').modal('open');
 }
-function abrir_restaurar_administrador() {
+function abrir_restaurar_administrador(nombre,codigo) {
+    $("#nombreRestaurado").val(nombre);
+    $("#codigoRestaurado").val(codigo);
+    $("#codigo_restauracion").val(codigo);
     
 $('#restaurar_administrador').modal('open');
 }

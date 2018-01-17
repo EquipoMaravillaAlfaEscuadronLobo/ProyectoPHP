@@ -359,6 +359,64 @@ class Repositorio_administrador {
         }
     }
 
+    public static function restaurar_administrador($conexion, $administrador, $codigo_restaurar, $verificacion) {
+        $administrador_insertado = false;
+        $administrador_actual = self:: obtener_administrador_actual($conexion, $_SESSION['user']);
+        if (isset($conexion)) {
+            try {
+
+                if (password_verify($verificacion, $administrador_actual->getPasword())) {///esto es para saber si las contrase;a para modificar es correcta
+                    $observacion = "";
+                    $estado = $administrador->getEstado();
+
+                    $sql = 'UPDATE administradores SET observacion=:observacion, estado=:estado WHERE codigo_administrador = :codigo_eliminacion';
+                    $sentencia = $conexion->prepare($sql);
+                    $sentencia->bindParam(':observacion', $observacion, PDO::PARAM_STR);
+                    $sentencia->bindParam(':estado', $estado, PDO::PARAM_INT);
+                    $sentencia->bindParam(':codigo_eliminacion', $codigo_restaurar, PDO::PARAM_INT);
+                    $administrador_insertado = $sentencia->execute();
+
+                    ////esto es para la bitacora
+                    $datos_bitacora = self::obtener_administrador_actual($conexion, $codigo_restaurar);
+                    $accion = 'Se restauró al administrador ' . $datos_bitacora->getNombre() . ' ' . $datos_bitacora->getApellido();
+                            
+                    self::insertar_bitacora($conexion, $accion);
+
+                    ///mandamos mensaje de confirmacion
+                    echo '<script>swal({
+                    title: "Exito",
+                    text: "El registro ha sido restaurado!",
+                    type: "success",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },
+                function () {
+                    location.href="inicio_seguridad.php";
+                    
+                });</script>';
+                } else {
+                    echo '<script>swal({
+                    title: "Advertencia!",
+                    text: "La contraseña que introdujo no es correcta, por lo que no se harán combios",
+                    type: "warning",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                     },
+                 function () {
+                    location.href="inicio_seguridad.php";
+                    
+                });</script>';
+                }
+            } catch (PDOException $ex) {
+                echo "<script>swal('Error!', 'Hubo no se pudo realizar la accion', 'error');</script>";
+
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        } else {
+            echo "no hay conexion";
+        }
+    }
+    
     public static function eliminar_administrador($conexion, $administrador, $codigo_eliminar, $verificacion) {
         $administrador_insertado = false;
         $administrador_actual = self:: obtener_administrador_actual($conexion, $_SESSION['user']);

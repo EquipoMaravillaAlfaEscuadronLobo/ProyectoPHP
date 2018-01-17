@@ -29,7 +29,7 @@ $ruta =  '../foto_admi/';
                         <?php foreach ($lista_admnistradores as $lista) { ?>
                             <tr>
                                 <td class="text-center">
-                                    <button class="btn btn-success" onclick="abrir_restaurar_administrador()">
+                                    <button class="btn btn-success" onclick="abrir_restaurar_administrador('<?php echo $lista->getNombre(). " ".$lista->getApellido();?>','<?php echo $lista->getCodigo_administrador();?>')">
                                         <i class="Medium material-icons prefix">autorenew</i> 
                                     </button>
                                 </td>
