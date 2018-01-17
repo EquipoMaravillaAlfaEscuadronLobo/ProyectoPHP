@@ -217,7 +217,8 @@ class Repositorio_administrador {
 
         if (isset($conexion)) {
             try {
-                $sql = "select * from administradores where (codigo_administrador != '$codigo' AND estado = 1 )";
+                $sql = "SELECT * FROM administradores WHERE administradores.codigo_administrador != '$codigo' AND estado = '1'";
+//                echo ' el sql es ' . $sql;
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->execute();
                 $resultado = $sentencia->fetchAll();

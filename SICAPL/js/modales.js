@@ -189,6 +189,10 @@ function abrir_eliminacion_administrador(nombre, apellido, usuario, password) {
 
     $('#eliminacion_administradores').modal('open');
 }
+function abrir_restaurar_administrador() {
+    
+$('#restaurar_administrador').modal('open');
+}
 
 function abrirModal() {
     $('#nuevo').modal('open');
