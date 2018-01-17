@@ -59,7 +59,7 @@ include_once('../plantillas/menu.php');
     <?php include('listado_prest_act.php'); ?> 
 </div>
 <div class="col s12" id="ttest5">
-
+   <?php include('consultas.php'); ?>
 </div>
 <div class="col s12" id="ttest6">
 
@@ -78,7 +78,7 @@ include_once('../plantillas/pie_de_pagina.php');
     </div>
     <div class="modal-footer">
         <div class="row">
-            <div class="col-md-6 text-right"><button id="gp" class="btn btn-success modal-action " type="submit" form="mant" >
+            <div class="col-md-6 text-right"><button  class="btn btn-success " type="submit" form="mant" >
                     <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>
                     Guardar</button></div>
             <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>
@@ -148,7 +148,8 @@ include_once('../plantillas/pie_de_pagina.php');
         });
 
         $('#mant').submit(function () {
-            
+            var id= document.getElementById('eviar_mantenimiento').value;
+            var id= document.getElementById('eviar_mantenimiento').value;
             // Enviamos el formulario usando AJAX
             $.ajax({
                 type: 'POST',
@@ -157,7 +158,9 @@ include_once('../plantillas/pie_de_pagina.php');
                 // Mostramos un mensaje con la respuesta de PHP
                 success: function (resp) {
                     
+                    if(id=="si"){
                     $('#nuevoMant').modal('close');
+                    location.reload();}
                    
                 }
             });

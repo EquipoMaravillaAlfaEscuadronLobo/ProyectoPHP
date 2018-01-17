@@ -65,10 +65,13 @@ class Repositorio_encargado {
         if (isset($conexion)) {
             try {
                 $sql = "SELECT
-encargado_mantenimiento.codigo_emantenimiento as cod,
-encargado_mantenimiento.nombre as nombre,
-encargado_mantenimiento.telefono as tel
-from encargado_mantenimiento";
+encargado_mantenimiento.codigo_emantenimiento AS cod,
+encargado_mantenimiento.nombre AS nombre,
+encargado_mantenimiento.telefono AS tel,
+encargado_mantenimiento.correo as correo,
+encargado_mantenimiento.direccion as dir
+from encargado_mantenimiento
+";
                 $resultado = $conexion->query($sql);
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();

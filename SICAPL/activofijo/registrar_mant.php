@@ -47,6 +47,7 @@
 
 <form name="mant" id="mant" class="mant" method="post" action="" onsubmit="return guardar_mante()">
     <input type="hidden" id="pass" name="pass"/>
+    <input type="hidden" id="eviar_mantenimiento" name="eviar_mantenimiento" value="no"/>
     <input type="hidden" id="redireccionar" name="redireccionar" value="si"/>
     <input type="hidden" id="nserieEAD" name="nserieEAD">
     <input type="hidden" id="colorEAD" name="colorEAD">
@@ -111,7 +112,7 @@
                         <table class="table table-hover" id="tabla_activo_mantenimiento">
                             <caption>Activos </caption>
                             <thead>
-                            <th>Codigo</th>
+                            <th>C&oacutedigo</th>
                             <th>Tipo</th>
                             <th>Estado</th>
                             <th><input type="button" onclick='act_caract()' class="btn-success btn-sm "  value="Actualizar Detalles"/><input  type="hidden"  required="" id="bandera_tabla_activo_prestamo" name="bandera_tabla_activo_prestamo" /></th>
@@ -199,7 +200,7 @@
                             <th style="display:none;"  ></th>
                             <th>Nombre</th>
                             <th>Telefono</th>
-                            <th>Dirección</th>
+                            <th>Direcci&oacuten</th>
                             </thead>
                             <tbody >
 

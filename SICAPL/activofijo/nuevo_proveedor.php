@@ -37,7 +37,7 @@
                             <div class="input-field">
                                 <i class="fa fa-at prefix" aria-hidden="true"></i>
                                 <label for="idEmail">Correo</label>
-                                <input type="text" id="idEmail" name="nameEmail"  class="text-center validate" required="">
+                                <input type="email" id="idEmail" name="nameEmail"  class="text-center validate" required="">
                             </div>
                         </div>
                     </div>

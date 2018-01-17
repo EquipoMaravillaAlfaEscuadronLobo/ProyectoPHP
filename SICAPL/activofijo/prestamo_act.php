@@ -54,7 +54,7 @@ $(document).ready(function() {
                                 include'select_categoria.php';
                                 ?>
                             </select>
-                                        <label style="font-size:16px">Categoria <small></small> </label>
+                                        <label style="font-size:16px">Tipo <small></small> </label>
                                     </div>
                                    
                                    
@@ -83,7 +83,7 @@ $(document).ready(function() {
                                 <table class="table table-hover" id="tabla_activo_prestamo">
                                     <caption>Activos A Prestar</caption>
                                     <thead>
-                                    <th>Codigo</th>
+                                    <th>C&oacutedigo</th>
                                     <th>Tipo</th>
                                     <th>Responsable</th>
                                     </thead>

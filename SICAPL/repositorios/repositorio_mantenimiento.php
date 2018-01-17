@@ -9,20 +9,13 @@ class Repositorio_mantenimiento {
         $resultado = "";
         if (isset($conexion)) {
             try {
-                $sql = "SELECT  (CONCAT(usuarios.nombre,' ',usuarios.apellido)) as nombre, 
-                    prestamo_activos.codigo_pactivo as codigo, 
-                    (prestamo_activos.fecha_salida),   
-                    (movimiento_actvos.codigo_activo) as titulo, 
-                    (prestamo_activos.fecha_devolucion) as Devolucion,
-                    prestamo_activos.estado as estado
-FROM usuarios 
-                    INNER JOIN prestamo_activos ON prestamo_activos.usuarios_codigo= usuarios.codigo_usuario 
-                    INNER JOIN movimiento_actvos ON movimiento_actvos.codigo_pactivo = prestamo_activos.codigo_pactivo 
-                    INNER JOIN actvos ON movimiento_actvos.codigo_activo = actvos.codigo_activo
-GROUP BY prestamo_activos.codigo_pactivo
-ORDER BY
-estado ASC,
-Devolucion ASC
+                $sql = "SELECT
+mantenimientos.fecha as fecha,
+mantenimientos.descripcion as des,
+mantenimientos.costo as costo,
+mantenimientos.codigo_mantenimiento as cod
+FROM
+mantenimientos
 ";
                 $resultado = $conexion->query($sql);
             } catch (PDOException $ex) {
@@ -95,6 +88,24 @@ Devolucion ASC
         }
         return $autor_insertado;
     }
+    
+     public static function ListarEncargados($conexion,$codMant) {
+        $resultado = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT
+movimiento_mantenimientos.codigo_emantenimiento as codMant
+FROM
+movimiento_mantenimientos
+WHERE
+movimiento_mantenimientos.codigo_mantenimiento = '$codMant'";
+                 $resultado = $conexion->query($sql);
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
 
     public static function obtenerUltimoMant($conexion) {
         $codigo = "";
@@ -115,34 +126,20 @@ Devolucion ASC
 
     
 
-    public static function obtenerPact($conexion, $codigoPact) {
+    public static function obtenerActivos($conexion, $codigoMant) {
 
         $resultado = "";
         if (isset($conexion)) {
             try {
                 $sql = "SELECT
-categoria.nombre AS tipo,
-(CONCAT(usuarios.nombre,' ',usuarios.apellido)) AS nombre,
-usuarios.sexo AS sexo,
-usuarios.foto AS foto,
-usuarios.telefono AS tel,
-usuarios.correo AS correo,
-usuarios.direccion AS dir,
-prestamo_activos.fecha_salida AS fech_sal,
-prestamo_activos.fecha_devolucion AS fech_dev,
-movimiento_actvos.codigo_pactivo AS mov_activos,
-prestamo_activos.usuarios_codigo as carnet
+actvos.codigo_activo as cod,
+categoria.nombre as tipo
 FROM
-prestamo_activos
-INNER JOIN movimiento_actvos ON movimiento_actvos.codigo_pactivo = prestamo_activos.codigo_pactivo
-INNER JOIN actvos ON actvos.codigo_activo = movimiento_actvos.codigo_activo
+actvos
 INNER JOIN categoria ON actvos.codigo_tipo = categoria.codigo_tipo
-INNER JOIN usuarios ON prestamo_activos.usuarios_codigo = usuarios.codigo_usuario
+INNER JOIN movimiento_actvos_mant ON movimiento_actvos_mant.codigo_activo = actvos.codigo_activo
 WHERE
-prestamo_activos.codigo_pactivo = '$codigoPact'
-GROUP BY
-prestamo_activos.codigo_pactivo
-
+movimiento_actvos_mant.codigo_mantenimiento = '$codigoMant'
                         ";
                 $resultado = $conexion->query($sql);
             } catch (PDOException $ex) {

@@ -34,6 +34,39 @@ Devolucion ASC
         }
         return $resultado;
     }
+    
+      public static function ListaActPrestamos($conexion) {
+        $resultado = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT
+actvos.codigo_activo AS codigo,
+prestamo_activos.fecha_salida AS fechSal,
+prestamo_activos.fecha_devolucion AS fechaDev,
+prestamo_activos.estado AS estado,
+usuarios.codigo_institucion,
+(CONCAT(usuarios.nombre,' ',usuarios.apellido)) AS nombre,
+prestamo_activos.codigo_pactivo as codPac,
+categoria.nombre as tipo
+FROM
+actvos
+INNER JOIN movimiento_actvos ON movimiento_actvos.codigo_activo = actvos.codigo_activo
+INNER JOIN prestamo_activos ON movimiento_actvos.codigo_pactivo = prestamo_activos.codigo_pactivo
+INNER JOIN categoria ON actvos.codigo_tipo = categoria.codigo_tipo
+INNER JOIN usuarios ON prestamo_activos.usuarios_codigo = usuarios.codigo_usuario
+WHERE
+actvos.estado = 2
+ORDER BY
+estado ASC,
+fechaDev ASC
+";
+                $resultado = $conexion->query($sql);
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
 
     public static function GuardarPrestamoAct($conexion, $prestamo) {
         $autor_insertado = false;

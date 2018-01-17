@@ -339,6 +339,20 @@ function DActivo(cada, codd, password) {
     $('#Secreto').val(password);
 
     $('#DActivo').modal('open');
+}
 
+ function verMantenimiento(id, fecha, costo, des) {
+     $('#ver_fecha_mant').val(fecha);
+     $('#ver_costoTotal').val(costo);
+     $('#ver_descrMant').val(des);
+        
+    $('#ver_manteniemiento').modal('open'); 
+    $.post("../consultas_activo/llenar_ver_encargado.php", {codigo: id, }, function (mensaje) {
+        $('#listaLibros22').html(mensaje).fadeIn();
+    });
+    
+    $.post("../consultas_activo/llenar_ver_mantenimiento.php", {codigo: id, }, function (mensaje) {
+        $('#listaLibros22').html(mensaje).fadeIn();
+    });
 
 }

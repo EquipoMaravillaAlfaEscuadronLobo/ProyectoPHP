@@ -272,10 +272,12 @@ function validarTablas() {
     if ($('#tabla_activo_mantenimiento >tbody >tr').length == 0) {
         ok = false;
         swal("Ooops", "Tabla de activos vacía", "warning");
+         return ok;
     } else {
         if ($('#datos_encargado2 >tbody >tr').length == 0) {
             ok = false;
             swal("Ooops", "Tabla de encargados vacía", "warning");
+            return ok;
         } else {
             // codigo para verificar cuantos activos fueron a manteniemieto y siguen daniados
             if ($('#tabla_activo_mantenimiento >tbody >tr').length == 1) {
@@ -311,6 +313,7 @@ function validarTablas() {
                             });
                 }
             }
+            
         }
     }
     return ok;
@@ -371,10 +374,13 @@ function recargarCombos3() {// actualiza el selec de proveedor cuando se registr
     });
 }
 function  guardar_mante() {//ver cod de funcion en js/libros.js
+    
     if (validarTablas()) {
+        document.getElementById('eviar_mantenimiento').value="si"
         return true;
         //document.mant.submit();
     }else{
+        
         return false;
     }
 }

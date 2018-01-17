@@ -19,9 +19,8 @@ $listado = Repositorio_prestamoact::ListaPrestamosAct(Conexion::obtener_conexion
                 <table padding="20px" class="responsive-table display" id="tabla-paginada4">
                     <thead>
                     <th style="display:none;"  ></th>
-                    <th>Codigo</th>
+                    <th>C&oacutedigo</th>
                     <th>Usuario</th>
-                    <th>Datos</th>
                     <th>Fecha Salida</th>
                     <th>Fecha Devolucion</th>
                     <th>Estado</th>
@@ -33,18 +32,19 @@ $listado = Repositorio_prestamoact::ListaPrestamosAct(Conexion::obtener_conexion
                             $hoy = new DateTime("now");
                             $codigo = $fila['codigo'];
                             ?>
-                            <tr>
+                        <tr rel="popover" data-container="body" data-togle="popover" data-placement="top"  title="Activos"
+                                data-content="<?php
+                                    Conexion::abrir_conexion();
+                                    $listado1 = Repositorio_prestamoact::obtenerListActP(Conexion::obtener_conexion(), $fila['codigo']);
+                                    foreach ($listado1 as $fila1) {
+                                        echo $fila1['codigo'] . "<br/>";
+                                    }
+                                    ?>">
                                 <td style="display:none;"  ></td>
                                 <td><?php echo $fila['codigo']; ?></td>
 
                                 <td><?php echo $fila['nombre'] ?></td>
-                                <td><label  title="<?php
-                                    Conexion::abrir_conexion();
-                                    $listado1 = Repositorio_prestamoact::obtenerListActP(Conexion::obtener_conexion(), $fila['codigo']);
-                                    foreach ($listado1 as $fila1) {
-                                        echo $fila1['codigo'] . "&#13;";
-                                    }
-                                    ?>">Activos</label>
+                                
 
                                 </td>
                                 <td><?php echo date_format(date_create($fila['fecha_salida']), 'd-m-Y') ?></td>
