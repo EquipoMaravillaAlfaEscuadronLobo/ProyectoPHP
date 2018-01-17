@@ -10,7 +10,16 @@ $ultimaEditorial = repositorio_editorial::ObtenerUltimo(Conexion::obtener_conexi
 <div class="container">
     <div class="panel-group" id="accordion">
         <div class="panel">
-            <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion" href="#collapse-libros">Registro de Libros</a></div>
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-11">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse-libros">Registro de Libros</a>
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-info" id="ayuda" onclick="abrirAyuda(1)"><i class="fa fa-info-circle"></i></button>
+                    </div>
+                </div>
+            </div>
             <div id="collapse-libros" class="panel-collapse collapse">
                 <div class="panel-body">
                     <form action="newLibro.php" id="frmLibro" name="frmLibro" enctype="multipart/form-data" autocomplete="off" method="POST" class="librof">
@@ -117,7 +126,16 @@ $ultimaEditorial = repositorio_editorial::ObtenerUltimo(Conexion::obtener_conexi
             </div>
         </div>
         <div class="panel">
-            <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion" href="#collapse-autores">Registro de Autores</a></div>
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-11">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse-autores">Registro de Autores</a>
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-info" id="ayuda" onclick="abrirAyuda(2)"><i class="fa fa-info-circle"></i></button>
+                    </div>
+                </div>
+            </div>
             <div id="collapse-autores" class="panel-collapse collapse">
                 <div class="panel-body">
                     <form action="newAutor.php" class="autorf" name="frmAutor" method="post" id="frmAutor" enctype="multipart/form-data">
@@ -180,7 +198,17 @@ $ultimaEditorial = repositorio_editorial::ObtenerUltimo(Conexion::obtener_conexi
             </div>
         </div>
         <div class="panel">
-            <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion" href="#collapse-editoriales">Registro de Editoriales</a></div>
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-11">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-editoriales">Registro de Editoriales</a>
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-info" id="ayuda" onclick="abrirAyuda(3)"><i class="fa fa-info-circle"></i></button>
+                    </div>
+                </div>
+               
+            </div>
             <div id="collapse-editoriales" class="panel-collapse collapse">
                 <div class="panel-body">
                     <form action="newEditorial.php" class="editorialf" name="frmEditoriales" id="frmEditoriales" method="post">

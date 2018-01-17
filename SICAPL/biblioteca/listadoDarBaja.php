@@ -15,6 +15,7 @@ $listado=Repositorio_libros::ListaDarBaja(Conexion::obtener_conexion(), $codigo)
         <th>C&oacute;digo</th>
         <th>T&iacute;tulo</th>
         <th>Acci&oacute;n</th>
+        <th>C&oacute;digo de Barras</th>
         </thead>
         <tr>
         <?php
@@ -28,6 +29,7 @@ $listado=Repositorio_libros::ListaDarBaja(Conexion::obtener_conexion(), $codigo)
             <td>
                 <button class="btn btn-danger" onclick="Baja('<?php echo $fila[0] ?>')"><i class="fa fa-trash"></i></button>
             </td>
+            <td ><a class="btn btn-info" href="../reportes/imprimir_barcode.php?codigo=<?php echo $fila[0]?>" target="_blank"><i class="fa fa-barcode" aria-hidden="true"></i>  Imprimir</a></td>
         </tr>
             <?php
         }

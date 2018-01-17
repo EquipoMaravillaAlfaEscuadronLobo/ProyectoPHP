@@ -1,4 +1,4 @@
-<div class="panel">
+<div class="panel modal modal-fixed-footer nuevo" id="edicionEdi" >
             <div class="panel-heading">Modificar Editorial</div>
           
                 <div class="panel-body"><form action="ediEditorial.php" method="post" id="frmEditEditorial" name="frmEditEditorial">
@@ -48,6 +48,12 @@
                         </div>
 </form>
                 </div>
+            <div class="panel-footer">
+                <div class="row">
+        <div class="col-md-6 text-right"><button onclick="actualizarEdit()" class="waves-effect btn btn-success"><i class="fa fa-refresh"></i> Actualizar</button></div>
+        <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="fa fa-times"></i> Salir</a></div>
+        </div>
+            </div>
                 
           
         </div>
