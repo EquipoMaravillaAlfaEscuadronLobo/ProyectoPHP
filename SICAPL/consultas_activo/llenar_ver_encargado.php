@@ -19,10 +19,10 @@ foreach ($listado as $fila1) {
         var linea = "";
         linea = linea.concat(
                 "<tr>",
-                '<td class="text-center"> ' + nombre + "</td>",
-                "<td class='text-center'> " + telefono + "</td>",
-                "<td class='text-center'> " + dir + "</td>",
-                "<td class='text-center'> " + correo + "</td>",
+                '<td  > <input type="hidden" name="nombre" value="'+ nombre +'"> ' + nombre + "</td>",
+                '<td > <input type="hidden" name="tel" value="'+ telefono +'">' + telefono + "</td>",
+                '<td > <input type="hidden" name="dir" value="'+ dir +'">' + dir + "</td>",
+                '<td > <input type="hidden" name="co" value="'+ correo +'">' + correo + "</td>",
                 "</tr> "
                 );
        

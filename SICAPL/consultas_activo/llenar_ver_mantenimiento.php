@@ -16,8 +16,8 @@ foreach ($listado as $fila1) {
         var linea = "";
         linea = linea.concat(
                 "<tr>",
-                '<td class="text-center">  ' + codigo + "</td>",
-                "<td class='text-center'> " + tipo + "</td>",
+                '<td  > <input type="hidden" name="cod" value="'+ codigo +'"> ' + codigo + "</td>",
+                '<td >  <input type="hidden" name="tipo" value="'+ tipo +'">'+ tipo + "</td>",
                 "</tr>"
                 );
        

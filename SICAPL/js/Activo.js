@@ -1,12 +1,5 @@
-function printDiv(nombreDiv) {
-     var contenido= document.getElementById(nombreDiv).innerHTML;
-     var contenidoOriginal= document.body.innerHTML;
-
-     document.body.innerHTML = contenido;
-
-     window.print();
-
-     document.body.innerHTML = contenidoOriginal;
+function printDiv(historial) {
+    
 }
 function buscarUser2(valor) {
     var depto = valor.value;

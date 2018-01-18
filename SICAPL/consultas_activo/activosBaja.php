@@ -25,8 +25,8 @@
                                 
                                 <td><?php echo $fila['tipo'] ?></td>
                                 <td><?php echo $fila['nombre'] ?></td>
-                                <td><?php echo $fila['f'] ?></td>
-                                 <td><?php echo $fila['p'] ?></td>
+                                <td><?php echo date_format(date_create($fila['f']),'d-m-Y') ?></td>
+                                 <td><?php echo $fila['p'].' $' ?></td>
                                   <td><?php echo $fila['o'] ?></td>
                                 <td class="alert <?php echo 'alert-danger'; ?> " >Pendiente</td>
                             </tr>

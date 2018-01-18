@@ -189,12 +189,12 @@ function abrir_eliminacion_administrador(nombre, apellido, usuario, password) {
 
     $('#eliminacion_administradores').modal('open');
 }
-function abrir_restaurar_administrador(nombre,codigo) {
+function abrir_restaurar_administrador(nombre, codigo) {
     $("#nombreRestaurado").val(nombre);
     $("#codigoRestaurado").val(codigo);
     $("#codigo_restauracion").val(codigo);
-    
-$('#restaurar_administrador').modal('open');
+
+    $('#restaurar_administrador').modal('open');
 }
 
 function abrirModal() {
@@ -348,18 +348,63 @@ function DActivo(cada, codd, password) {
     $('#DActivo').modal('open');
 }
 
- function verMantenimiento(id, fecha, costo, des) {
-     $('#ver_fecha_mant').val(fecha);
-     $('#ver_costoTotal').val(costo);
-     $('#ver_descrMant').val(des);
-        
-    $('#ver_manteniemiento').modal('open'); 
+function verMantenimiento(id, fecha, costo, des) {
+     $("#ver_manteniemiento_encargados tbody").empty()//ellino el anterior
+      $("#ver_manteniemiento_activos tbody").empty()//ellino el anterior
+    $('#ver_fecha_mant').val(fecha);
+    $('#ver_costoTotal').val(costo);
+    $('#ver_descrMant').val(des);
+
+    $('#ver_manteniemiento').modal('open');
     $.post("../consultas_activo/llenar_ver_encargado.php", {codigo: id, }, function (mensaje) {
         $('#listaLibros22').html(mensaje).fadeIn();
     });
-    
+
     $.post("../consultas_activo/llenar_ver_mantenimiento.php", {codigo: id, }, function (mensaje) {
         $('#listaLibros22').html(mensaje).fadeIn();
     });
+
+}
+
+function verDepreciacion(cod, fecha, valor) {
+   $("#ver_depre_tab tbody").empty()//ellino el anterior
+    $('#ver_cod_depre').val(cod);
+    $('#ver_fecha_depre').val(fecha);
+    $('#ver_valor').val(valor);
+    $('#ver_depre').modal('open');
+    var fecha1 = fecha.split('-');
+    var dia = fecha1[0];
+    var mes = fecha1[1];
+    var anio = parseInt(fecha1[2]);
+    var d = valor * 0.50;
+    var vn = valor - d;
+    var linea = "";
+    if (cod.length > 1) {
+        linea = linea.concat(
+                "<tr>",
+                '<td class="text-center" ><input type="hidden" name="ani" value="'+anio+'" >' + anio + "</td>",
+                '<td class="text-center" ><input type="hidden" name="v" value="'+ valor +'" >  '+ valor +' </td>',
+                '<td class="text-center" ><input type="hidden" name="d" value="'+ d + '" >  '+ d + '</td>',
+                '<td class="text-center" ><input type="hidden" name="vn" value="' + vn +'" > ' + vn +' </td>',
+                "</tr> "
+                );
+
+        $("table#ver_depre_tab tbody").append(linea).closest("table#ver_depre_tab");
+        valor = vn;
+        vn = 0;
+        linea="";
+        linea = linea.concat(
+                                "<tr>",
+                '<td class="text-center" ><input type="hidden" name="ani2" value="'+(anio+1)+'" > ' + (anio+1) + "</td>",
+                '<td class="text-center" ><input type="hidden" name="v2" value="'+ valor +'" >  '+ valor +' </td>',
+                '<td class="text-center" ><input type="hidden" name="d2" value="'+ d + '" >  '+ d + '</td>',
+                '<td class="text-center" ><input type="hidden" name="vn2" value="' + vn +'" > ' + vn +' </td>',
+                "</tr> "
+                );
+
+        $("table#ver_depre_tab tbody").append(linea).closest("table#ver_depre_tab");
+    }
+
+
 
 }
