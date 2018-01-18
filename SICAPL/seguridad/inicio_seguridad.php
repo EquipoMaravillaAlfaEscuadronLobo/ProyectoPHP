@@ -8,18 +8,20 @@ include_once '../plantillas/menu.php';
 <div class="nav-content nav-pills" name="">
     <ul class="tabs tabs-transparent">
         <li class="tab">
-            <a class="active" href="#test1" id="idRegistroAdministrador">
+            <a class="" href="#test1" id="idRegistroAdministrador">
                 <i class="fa fa-user" aria-hidden="true"></i> Registro Administradores
             </a>
         </li>
         <li class="tab">
-            <a class="
-               " href="#test5" id="idListarAdmnistrador">
+            <a class="active" href="#test5" id="idListarAdmnistrador">
                 <i class="fa fa-edit" aria-hidden="true"></i> Editar Administradores
             </a>
         </li>
-
-
+        <li class="tab">
+            <a href="#test9" class="">
+                <i class="fa fa-trash-o" aria-hidden="true"></i> Administradores Eliminados
+            </a>
+        </li>
         <li class="tab">
             <a href="#test3" class="">
                 <i class="fa fa-compass" aria-hidden="true"></i> Bitacora
@@ -30,6 +32,7 @@ include_once '../plantillas/menu.php';
                 <i class="fa fa-save" aria-hidden="true"></i> Backup/Restaurar
             </a>
         </li>
+        
         
 
     </ul>
@@ -49,8 +52,8 @@ include_once '../plantillas/menu.php';
 <div class="col s12" id="test4">
     <?php  include_once './backup_restore.php'; ?>
 </div>
-<div class="col s12" id="test12">
-    <?php // include_once './restore.php'; ?>
+<div class="col s12" id="test9">
+    <?php include_once './administradores_eliminados.php'; ?>
 </div>
 
 <?php

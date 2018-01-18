@@ -174,13 +174,51 @@ class Repositorio_administrador {
         }
         return $lista_administradores;
     }
+    
+    public static function lista_administradores_eliminados($conexion) {
+        $lista_administradores = array();
+
+        if (isset($conexion)) {
+            try {
+                $sql = "select * from administradores where (estado = '0')";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+                        $administrador = new Administrador();
+                        $administrador->setApellido($fila['apellido']);
+                        $administrador->setCodigo_administrador($fila['codigo_administrador']);
+                        $administrador->setDui($fila['dui']);
+                        $administrador->setEstado($fila['estado']);
+                        $administrador->setFoto($fila['foto']);
+                        $administrador->setNivel($fila['nivel']);
+                        $administrador->setNombre($fila['nombre']);
+                        $administrador->setObservacion($fila['observacion']);
+                        $administrador->setPasword($fila['pasword']);
+                        $administrador->setSexo($fila['sexo']);
+                        $administrador->setFecha($fila['fecha']);
+                        $administrador->setEmail($fila['email']);
+
+                        $lista_administradores[] = $administrador;
+                    }
+                }
+            } catch (PDOException $exc) {
+                print('ERROR' . $exc->getMessage());
+            }
+        }
+        return $lista_administradores;
+    }
+    
 
     public static function lista_administradores_para_baja($conexion, $codigo) {
         $lista_administradores = array();
 
         if (isset($conexion)) {
             try {
-                $sql = "select * from administradores where (codigo_administrador != '$codigo' AND estado = 1 )";
+                $sql = "SELECT * FROM administradores WHERE administradores.codigo_administrador != '$codigo' AND estado = '1'";
+//                echo ' el sql es ' . $sql;
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->execute();
                 $resultado = $sentencia->fetchAll();
@@ -321,6 +359,64 @@ class Repositorio_administrador {
         }
     }
 
+    public static function restaurar_administrador($conexion, $administrador, $codigo_restaurar, $verificacion) {
+        $administrador_insertado = false;
+        $administrador_actual = self:: obtener_administrador_actual($conexion, $_SESSION['user']);
+        if (isset($conexion)) {
+            try {
+
+                if (password_verify($verificacion, $administrador_actual->getPasword())) {///esto es para saber si las contrase;a para modificar es correcta
+                    $observacion = "";
+                    $estado = $administrador->getEstado();
+
+                    $sql = 'UPDATE administradores SET observacion=:observacion, estado=:estado WHERE codigo_administrador = :codigo_eliminacion';
+                    $sentencia = $conexion->prepare($sql);
+                    $sentencia->bindParam(':observacion', $observacion, PDO::PARAM_STR);
+                    $sentencia->bindParam(':estado', $estado, PDO::PARAM_INT);
+                    $sentencia->bindParam(':codigo_eliminacion', $codigo_restaurar, PDO::PARAM_INT);
+                    $administrador_insertado = $sentencia->execute();
+
+                    ////esto es para la bitacora
+                    $datos_bitacora = self::obtener_administrador_actual($conexion, $codigo_restaurar);
+                    $accion = 'Se restauró al administrador ' . $datos_bitacora->getNombre() . ' ' . $datos_bitacora->getApellido();
+                            
+                    self::insertar_bitacora($conexion, $accion);
+
+                    ///mandamos mensaje de confirmacion
+                    echo '<script>swal({
+                    title: "Exito",
+                    text: "El registro ha sido restaurado!",
+                    type: "success",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                },
+                function () {
+                    location.href="inicio_seguridad.php";
+                    
+                });</script>';
+                } else {
+                    echo '<script>swal({
+                    title: "Advertencia!",
+                    text: "La contraseña que introdujo no es correcta, por lo que no se harán combios",
+                    type: "warning",
+                    confirmButtonText: "ok",
+                    closeOnConfirm: false
+                     },
+                 function () {
+                    location.href="inicio_seguridad.php";
+                    
+                });</script>';
+                }
+            } catch (PDOException $ex) {
+                echo "<script>swal('Error!', 'Hubo no se pudo realizar la accion', 'error');</script>";
+
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        } else {
+            echo "no hay conexion";
+        }
+    }
+    
     public static function eliminar_administrador($conexion, $administrador, $codigo_eliminar, $verificacion) {
         $administrador_insertado = false;
         $administrador_actual = self:: obtener_administrador_actual($conexion, $_SESSION['user']);
@@ -494,14 +590,14 @@ class Repositorio_administrador {
 
 
                 if (password_verify($verificacion, $administrador_actual->getPasword())) {///esto es para saber si las contrase;a para modificar es correcta
-                    $sql = 'UPDATE administradores SET nombre=:nombre,apellido=:apellido,pasword=:pasword,dui=:dui,nivel=:nivel, fecha=:fecha,email=:email,sexo=:sexo,foto=:foto  WHERE codigo_administrador = :codigo_original';
+                    $sql = 'UPDATE administradores SET nombre=:nombre,apellido=:apellido,pasword=:pasword,dui=:dui, fecha=:fecha,email=:email,sexo=:sexo,foto=:foto  WHERE codigo_administrador = :codigo_original';
 
                     $sentencia = $conexion->prepare($sql);
                     $sentencia->bindParam(':codigo_original', $administrador_actual->getCodigo_administrador(), PDO::PARAM_STR);
                     $sentencia->bindParam(':nombre', $nombre, PDO::PARAM_STR);
                     $sentencia->bindParam(':apellido', $apellido, PDO::PARAM_STR);
                     $sentencia->bindParam(':dui', $dui, PDO::PARAM_STR);
-                    $sentencia->bindParam(':nivel', $nivel, PDO::PARAM_STR);
+                    
                     $sentencia->bindParam(':fecha', $fecha, PDO::PARAM_STR);
                     $sentencia->bindParam(':email', $email, PDO::PARAM_STR);
                     $sentencia->bindParam(':sexo', $sexo, PDO::PARAM_STR);
@@ -531,7 +627,7 @@ class Repositorio_administrador {
 
                     echo '<script>swal({
                     title: "Exito",
-                    text: "El registro ha sido actualizado!",
+                    text: "Datos Actualizados!",
                     type: "success",
                     confirmButtonText: "ok",
                     closeOnConfirm: false

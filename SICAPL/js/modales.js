@@ -189,6 +189,13 @@ function abrir_eliminacion_administrador(nombre, apellido, usuario, password) {
 
     $('#eliminacion_administradores').modal('open');
 }
+function abrir_restaurar_administrador(nombre,codigo) {
+    $("#nombreRestaurado").val(nombre);
+    $("#codigoRestaurado").val(codigo);
+    $("#codigo_restauracion").val(codigo);
+    
+$('#restaurar_administrador').modal('open');
+}
 
 function abrirModal() {
     $('#nuevo').modal('open');
@@ -225,7 +232,7 @@ function abrirEdicionEdi(codigo, nombre, direccion, correo, telefono) {
     $('#codigoe_edit').val(codigo);
 
     $('#nombree_edit').val(nombre);
-    $('#telefonoe_edit').val(telefono);
+    $('#idTelefonoE').val(telefono);
     $('#email_edit').val(correo);
     $('#direccion_edit').val(direccion);
     $('#edicionEdi').modal('open');

@@ -31,7 +31,7 @@ $lista_usuarios = Repositorio_usuario::lista_usuarios(Conexion::obtener_conexion
             <td class="text-center"><?php echo $lista_usu->getNombre_institucion(); ?></td>
             <td class="text-center"><?php echo $lista_usu->getEmail(); ?></td>
             <td class="text-center">
-                <img class="presentacionXZ" src="<?php echo $direccion . $lista_usu->getFoto(); ?>"/>
+                <img class="presentacionXZ fotosLibros" src="<?php echo $direccion . $lista_usu->getFoto(); ?>"/>
             </td>
             <td class="text-center">
 

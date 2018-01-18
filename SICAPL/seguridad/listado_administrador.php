@@ -18,8 +18,10 @@ $ruta =  '../foto_admi/';
                 <table padding="20px" class="responsive-table table-sm display" id="data-table-simple">
                     <thead class="">
                     <th class="text-center "></th>
-                    <th class="text-center ">Nombre Completo</th>
                     <th class="text-center ">Usuario</th>
+                    <th class="text-center ">Nombre Completo</th>
+                    <th class="text-center ">DUI</th>
+                    <th class="text-center ">Correo</th>
                     <th class="text-center ">Nivel</th>
                     <th class="text-center ">Foto</th>
                     <th class="text-center "></th>
@@ -37,8 +39,11 @@ $ruta =  '../foto_admi/';
                                         <i class="Medium material-icons prefix">edit</i> 
                                     </button>
                                 </td>
-                                <td class="text-center"><?php echo $lista->getNombre() . " " . $lista->getApellido(); ?></td>
                                 <td class="text-center"><?php echo $lista->getCodigo_administrador(); ?></td>
+                                <td class="text-center"><?php echo $lista->getNombre() . " " . $lista->getApellido(); ?></td>
+                                <td class="text-center"><?php echo $lista->getDui(); ?></td>
+                                <td class="text-center"><?php echo $lista->getEmail(); ?></td>
+                                
                                 <td class="text-center"><?php
                                     if ($lista->getNivel() == '0') {
                                         echo 'Root';
@@ -47,7 +52,7 @@ $ruta =  '../foto_admi/';
                                     }
                                     ?></td>
                                 <td class="text-center">
-                                    <img src="<?php echo $ruta . $lista->getFoto(); ?>" class="presentacionXZ" alt="">
+                                    <img src="<?php echo $ruta . $lista->getFoto(); ?>" class="presentacionXZ fotosLibros" alt="">
                                 </td>
                                 <td class="text-center">
                                     <button class="btn btn-danger" onclick="abrir_eliminacion_administrador('<?php echo $lista->getNombre(); ?>',

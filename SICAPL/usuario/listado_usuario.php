@@ -11,8 +11,11 @@ $direccion = '../foto_usuario/';
             <div class="panel-heading text-center">
                 <div class="row">
 
-                    <div class="col-md-12">
+                   <div class="col-md-11">
                         <h3>Lista De Usuarios</h3>
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-info" id="ayuda" onclick="abrirAyuda(2)"><i class="fa fa-info-circle"></i></button>
                     </div>
                 </div>
             </div>
@@ -47,7 +50,7 @@ $direccion = '../foto_usuario/';
                                 <td class="text-center"><?php echo $lista_usu->getDireccion(); ?></td>
                                 <td class="text-center"><?php echo $lista_usu->getEmail(); ?></td>
                                 <td class="text-center">
-                                    <img class="presentacionXZ" src="<?php echo $direccion . $lista_usu->getFoto();?>"/>
+                                    <img class="presentacionXZ fotosLibros" src="<?php echo $direccion . $lista_usu->getFoto();?>"/>
                                 </td>
                                 <td class="text-center">
                                     <button class="btn btn-danger" onclick="abrir_eliminacion_usuario('<?php echo $lista_usu->getNombre();?>','<?php echo $lista_usu->getApellido();?>','<?php echo $lista_usu->getCodigo_usuario();?>','111111')"> 

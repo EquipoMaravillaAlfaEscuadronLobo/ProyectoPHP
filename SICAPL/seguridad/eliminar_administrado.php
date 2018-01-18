@@ -51,9 +51,10 @@
                                     <?php
                                     echo '';
                                     if ($_SESSION['seleccionado'] != NULL) {
+//                                        echo 'el seleccionado es este ' . $_SESSION['seleccionado'];
+                                        $codigo = $_SESSION['seleccionado'];
                                         
-                                        
-                                    $lista_sin_actual = Repositorio_administrador::lista_administradores_para_baja(Conexion::obtener_conexion(), $_SESSION['seleccionado']);
+                                    $lista_sin_actual = Repositorio_administrador::lista_administradores_para_baja(Conexion::obtener_conexion(), $codigo);
                                    
                                     if (($lista_sin_actual) != NULL) {
                                         foreach ($lista_sin_actual as $filaz) {

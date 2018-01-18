@@ -22,7 +22,7 @@
         <ul>
             <li><b>Modificar: </b>Bot&oacute;n de color verde con el icono de un lapiz que abre la ventana de Modificaci&oacute;n.</li><br>
             <li><b>Ver: </b>Bot&oacute;n de color celeste con el icono de un ojo que abre la ventana Ver.</li><br>
-            <li><b>Dar Baja: </b>Bot&oacute;n de color rojo con el icono de un basurero que da de baja al libro elegido.</li><br>
+            <li><b>Dar Baja: </b>Bot&oacute;n de color rojo con el icono de un basurero que da de baja al libro elegido, ubicado en la ventana Ver.</li><br>
             <li><b>Imprimir: </b>Bot&oacute;n de color celeste que abre una pesta&ntilde;a con el c&oacute;digo de barras para imprimir.</li><br>
              <li><b>Actualizar: </b>Bot&oacute;n de color verde que actualiza la informacion del libro.</li><br>
             <li><b>Salir: </b>Bot&oacute;n de color rojo que cierra la ventana de Modificaci&oacute;n.</li><br>

@@ -72,8 +72,8 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
     </div>
     <div class="modal-footer">
         <div class="row">
-            <div class="col-md-6 text-right"><button onclick="enviar()" class="waves-effect btn btn-success">Guardar</button></div>
-            <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger">Salir</a></div>
+            <div class="col-md-6 text-right"><button onclick="enviar()" class="waves-effect btn btn-success"><span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>Guardar</button></div>
+            <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger" onclick="document.frmPrestamoLibro.reset();"><span class="glyphicon glyphicon-remove" aria="hidden"></span>Salir</a></div>
         </div>
     </div>
 </div>

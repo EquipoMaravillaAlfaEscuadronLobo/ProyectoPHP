@@ -3,7 +3,7 @@ function addLibro() {
     var id = "borrar" + imagenes;
     var script = document.createElement("div");
     script.setAttribute("id", id)
-    script.innerHTML = '<div class="panel panel-default" name="libros" id="libros'+imagenes+'"><div class="panel-heading p_libro"><div class="row"><div class="col-md-10"><div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="">Buscar Libro</label><input type="text" id="codigol' + imagenes + '" name="codigol' + imagenes + '" onkeyup="buscarLibro2(this,event)" list="listaLibros"></div></div><div class="col-md-1"><a data-toggle="collapse" data-parent="#accordion" href="#libro' + imagenes + '"><i class="fa fa-sort-desc" id="despliegue" aria-hidden="true"></i></a></div><div class="col-md-1"><button type="button" onclick="eliminar(' + imagenes + ')"><i class="fa fa-minus" id="restar' + imagenes + '" aria-hidden="true"></i></button></div></div></div><div id="libro' + imagenes + '" class="panel-collapse collapse in"><div class="panel-body"><div class="row"><div class="col-md-3"><img src="../imagenes/if_book_285636.png" id="fotLib' + imagenes + '" class="presentacionXZ"></div><div class="col-md-9"><table class="table table-striped table-bordered"><tr><td width="60%"><b>Titulo:</b></td><td width="40%"><div id="titulo' + imagenes + '"></div></td></tr><tr><td><b>Autor:</b></td><td><div id="autor' + imagenes + '"></div></td></tr><tr><td><b>Fecha de Publicacion:</b></td><td><div id="fecha_pub' + imagenes + '"></div></td></tr></table></div></div></div></div></div>';
+    script.innerHTML = '<div class="panel panel-default" name="libros" id="libros'+imagenes+'"><div class="panel-heading p_libro"><div class="row"><div class="col-md-10"><div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="">Buscar Libro</label><input type="text" id="codigol' + imagenes + '" name="codigol' + imagenes + '" onkeyup="buscarLibro2(this,event)" list="listaLibros"><input type="hidden" id="codigolh'+imagenes+'" name="codigol'+imagenes+'"></div></div><div class="col-md-1"><a data-toggle="collapse" data-parent="#accordion" href="#libro' + imagenes + '"><i class="fa fa-sort-desc" id="despliegue" aria-hidden="true"></i></a></div><div class="col-md-1"><button type="button" onclick="eliminar(' + imagenes + ')"><i class="fa fa-minus" id="restar' + imagenes + '" aria-hidden="true"></i></button></div></div></div><div id="libro' + imagenes + '" class="panel-collapse collapse in"><div class="panel-body"><div class="row"><div class="col-md-3"><img src="../imagenes/if_book_285636.png" id="fotLib' + imagenes + '" class="presentacionXZ"></div><div class="col-md-9"><table class="table table-striped table-bordered"><tr><td width="60%"><b>Titulo:</b></td><td width="40%"><div id="titulo' + imagenes + '"></div></td></tr><tr><td><b>Autor:</b></td><td><div id="autor' + imagenes + '"></div></td></tr><tr><td><b>Fecha de Publicacion:</b></td><td><div id="fecha_pub' + imagenes + '"></div></td></tr></table></div></div></div></div></div>';
     var fila = document.getElementById("accordion2");
     fila.appendChild(script);
 }
@@ -37,6 +37,7 @@ function buscarLibro2(valor, event) {
     var depto = valor.value;
     var numero = valor.id.substr(7);
     //alert(numero+" "+depto);
+    document.getElementById('codigolh'+numero).value=document.getElementById('codigol'+numero).value;
     var bandera=true;
     var ultimo=document.getElementsByName("libros");
     var last =ultimo[ultimo.length-1].id.substr(6);
@@ -44,8 +45,8 @@ function buscarLibro2(valor, event) {
                if(i==numero){
                    continue;
                }
-               if($('#codigol'+i).length != 0){
-                if(document.getElementById('codigol'+i).value===depto){
+               if($('#codigolh'+i).length != 0){
+                if(document.getElementById('codigolh'+i).value===depto){
                     bandera=false;
                     
                 }
@@ -61,23 +62,32 @@ function buscarLibro2(valor, event) {
     if (event.keyCode === 13) {
         if (depto != "") {
             $.post("getLibro.php", {libro: depto, numero: numero}, function (mensaje) {
+                //swal(mensaje);
+                if(mensaje!==""){
                 $('#listaLibros2').html(mensaje).fadeIn();
+            }else{
+                swal("Atencion","Libro No disponible", "error");
+                document.getElementById('codigolh'+numero).value=document.getElementById('codigol'+numero).value="";
+            }
+                
 
 
             });
         }
+        
     }
 }
 }
 function buscarUser(valor) {
 
     var depto = valor.value;
+    document.getElementById('codigouser2').value=document.getElementById('codigouser').value;
 //var numero=valor.id.substr(7)
 //alert(valor.id);
     if (depto != "") {
         $.post("getUser.php", {libro: depto}, function (mensaje) {
             $('#listaLibros2').html(mensaje).fadeIn();
-
+            
 
         });
     }

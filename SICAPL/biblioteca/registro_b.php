@@ -105,7 +105,7 @@ $ultimaEditorial = repositorio_editorial::ObtenerUltimo(Conexion::obtener_conexi
                                 <div class="file-field input-field">
                                     <div class="btn">
                                         <span><i class="glyphicon glyphicon-picture" aria-hidden="true"></i>Foto</span>
-                                        <input type="file" id="foto" required name="foto" accept="image/*">
+                                        <input type="file" id="files" required name="foto" accept="image/*">
                                     </div>
 
 
@@ -115,12 +115,15 @@ $ultimaEditorial = repositorio_editorial::ObtenerUltimo(Conexion::obtener_conexi
                                 </div>
                             </div>
                         </div>
+                        <div class="row text-center">
+                        <output id="list"></output>                
+                    </div>
 
                 
                 </div>
                 <div class="panel-footer text-center">
                     <button  class="btn btn-success" form="frmLibro"> <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>Guardar</button>
-                    <button type="reset" class="btn btn-danger"> <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar</button>
+                    <button type="reset" class="btn btn-danger" onclick="$('#list').html('').fadeIn();"> <span class="glyphicon glyphicon-remove" aria="hidden"></span>Cancelar</button>
                     </form>
                 </div>
             </div>

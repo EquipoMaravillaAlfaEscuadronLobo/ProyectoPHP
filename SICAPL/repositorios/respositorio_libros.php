@@ -168,7 +168,7 @@ libros
 INNER JOIN movimiento_autores ON movimiento_autores.codigo_libro = libros.codigo_libro
 INNER JOIN autores ON movimiento_autores.codigo_autor = autores.codigo_autor
 WHERE
-libros.codigo_libro ='$codigo'";
+libros.codigo_libro ='$codigo' and libros.estado=0";
 
                 $resultado = $conexion->query($sql);
             } catch (PDOException $ex) {

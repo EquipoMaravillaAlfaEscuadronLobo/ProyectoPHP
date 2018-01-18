@@ -24,7 +24,7 @@
                                 <div class="input-field">
                                     <i class="fa fa-phone prefix" aria-hidden="true"></i>
                                     <label for="telefono">Telefono</label>
-                                    <input type="text" id="telefonoe_edit" name="telefonoe_edit" class="form-control" placeholder=" ">
+                                    <input type="text" id="idTelefonoE" name="telefonoe_edit" class="form-control" placeholder=" ">
                                 </div>
                             </div>
                        

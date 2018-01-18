@@ -6,12 +6,12 @@ include_once '../plantillas/menu.php';
 <div class="nav-content" name="">
     <ul class="tabs tabs-transparent">
         <li class="tab">
-            <a class="active" href="#test1">
+            <a class="" href="#test1">
                 <i class="fa fa-plus" aria-hidden="true"></i>Registro
             </a>
         </li>
         <li class="tab">
-            <a href="#test2" class="">
+            <a href="#test2" class="active">
                 <i class="fa fa-edit" aria-hidden="true"></i>  Editar Usuarios
             </a>
         </li>
@@ -95,3 +95,18 @@ function recargarCombo(){
     return false;
 }
 </script>
+<script>
+    function abrirAyuda(opcion){
+        var direccion;
+        switch(opcion){
+            case 1:
+                direccion="../ayuda/regUser.php";
+                break;
+            case 2:
+                direccion="../ayuda/listUser.php";
+                break;
+        }
+        window.open(direccion, "_blank", "toolbar=no,scrollbars=yes,resizable=no,top=0,left=500,width=700,height=600");
+    }
+</script>
+
