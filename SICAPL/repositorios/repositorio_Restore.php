@@ -4,7 +4,7 @@ include_once '../plantillas/cabecera.php';
 include_once '../plantillas/menu.php';
 include './repositorio_Connet.php';
 $restorePoint = SGBD::limpiarCadena($_REQUEST['restorePoint']);
-//echo 'EL PUNTO DE RESTAURACION ES '. $restorePoint;
+
 $sql = explode(";", file_get_contents($restorePoint));
 $totalErrors = 0;
 set_time_limit(60);
