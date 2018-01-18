@@ -59,6 +59,32 @@ class Repositorio_activo {
         return $resultado;
     }
     
+    public static function lista_activo_inventario($conexion) {
+        $resultado = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT
+categoria.nombre as tipo,
+actvos.codigo_activo as cod,
+CONCAT(proveedores.nombre,' ') as proveedor,
+CONCAT(administradores.nombre,' ',administradores.apellido) as admin,
+actvos.estado as e,
+actvos.precio as p,
+actvos.fecha_adquicision as f,
+actvos.observacion as o
+FROM
+actvos
+INNER JOIN categoria ON actvos.codigo_tipo = categoria.codigo_tipo
+INNER JOIN administradores ON actvos.codigo_administrador = administradores.codigo_administrador
+INNER JOIN proveedores ON actvos.codigo_proveedor = proveedores.codigo_proveedor";
+                $resultado = $conexion->query($sql);
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
+    
     public static function lista_activo_baja($conexion) {
         $resultado = "";
         if (isset($conexion)) {
