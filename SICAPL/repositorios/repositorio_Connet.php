@@ -1,4 +1,5 @@
 <?php
+///establecemos las variables globales que seran ocupadas por el backup y restore
 error_reporting(E_PARSE);
 //Nombre de usuario de mysql
 const USER = "root";
@@ -11,10 +12,8 @@ const PASS = "";
 //Carpeta donde se almacenaran las copias de seguridad
 //include_once '../backup/';
 const BACKUP_PATH = 'C:/Dropbox/backup/';
-/*Configuración de zona horaria de tu país para más información visita
-http://php.net/manual/es/function.date-default-timezone-set.php
-http://php.net/manual/es/timezones.php
- */
+
+//configuramos la zona horaria para que sea la de El Salvador
 date_default_timezone_set('America/El_Salvador');
 class SGBD
 {
@@ -22,11 +21,13 @@ class SGBD
     public static function sql($query)
     {
         $con = mysqli_connect(SERVER, USER, PASS, BD);
+        ///usamos esto para que sea nomenclatura latina
         mysqli_set_charset($con, "utf8");
         if (mysqli_connect_errno()) {
             printf("Conexion fallida: %s\n", mysqli_connect_error());
             exit();
         } else {
+            //empezamos haciendo el commit para guardar la base de datos
             mysqli_autocommit($con, false);
             mysqli_begin_transaction($con, MYSQLI_TRANS_START_WITH_CONSISTENT_SNAPSHOT);
             if ($consul = mysqli_query($con, $query)) {
