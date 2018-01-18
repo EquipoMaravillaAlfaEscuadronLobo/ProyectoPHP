@@ -1,5 +1,5 @@
 function printDiv(historial) {
-    
+
 }
 function buscarUser2(valor) {
     var depto = valor.value;
@@ -195,18 +195,18 @@ function llenarTactMant(valor, lista) {
         var tipo = lista[0];
 
         lista = lista[1];
-        lista = lista.split(','); //primero separo por " , "+
+        lista = lista.split(','); //primero separo por " , "
         var numero = [];
         var lista2 = [];
         var lista3 = [];
-        var cap = ""; // codigo activo prestamo
-        numero[0] = "---";
+        var cap = ""; // codigo activo prestamo -> se usa para obtener los taos del activo en elarchivo llenar.php
+        numero[0] = "---";//array que sirve para componer el codigo de los activos
         lista2[0] = "";
-        //var noDisponible = "";
+
         for (var i = 0; i < lista.length; i++) {
-            if (lista[i].length > 2) {
+            if (lista[i].length > 2) {//si es mayor que 2 puede que sea numero > a 10 o un rango con 1-9
                 lista2.push(lista[i]);
-            } else {
+            } else {//si es menor es un numer menor a 10 si se agrega directo al array de numero
                 numero.push("" + lista[i]);
             }
         }
@@ -274,7 +274,7 @@ function validarTablas() {
     if ($('#tabla_activo_mantenimiento >tbody >tr').length == 0) {
         ok = false;
         swal("Ooops", "Tabla de activos vacía", "warning");
-         return ok;
+        return ok;
     } else {
         if ($('#datos_encargado2 >tbody >tr').length == 0) {
             ok = false;
@@ -285,7 +285,7 @@ function validarTablas() {
             if ($('#tabla_activo_mantenimiento >tbody >tr').length == 1) {
                 okk = false;
                 var op = document.getElementsByName("accion_select_mantenimiento[]")[0].value;
-                
+
                 if (op == 1) {//observacion_pres_act
                     okk = true;
                 }
@@ -315,7 +315,7 @@ function validarTablas() {
                             });
                 }
             }
-            
+
         }
     }
     return ok;
@@ -376,20 +376,80 @@ function recargarCombos3() {// actualiza el selec de proveedor cuando se registr
     });
 }
 function  guardar_mante() {//ver cod de funcion en js/libros.js
-    
+
     if (validarTablas()) {
-        document.getElementById('eviar_mantenimiento').value="si"
+        document.getElementById('eviar_mantenimiento').value = "si"
         return true;
         //document.mant.submit();
-    }else{
-        
+    } else {
+
         return false;
     }
 }
 
 function agregar() {
+    //primero validamos qeu el formato sea el correcto
+    var pass = 0;//variable centinela, si no cambia de valor se envia al metodo para llenar la tabla
+    var numero = [];
+    var lista2 = [];
+    var lista3 = [];
+    var correlativo = document.getElementById("correlativo").value;
+    var lista = correlativo.split(','); //primero separo por " , "
+    if (lista.length == 1) {//si solo ingrso un numero se envia, por ejemplo si solo ingresa 5
 
-    llenarTact("---", document.getElementById("selectCatpres").value + "/" + document.getElementById("correlativo").value);
+        if (lista[0].length > 2) {
+            for (var i = 0; i < lista.length; i++) {
+                if (lista[i].length > 2) {//si es mayor que 2 puede que sea numero > a 10 o un rango con 1-9
+                    lista2.push(lista[i]);
+                } 
+            }//fin for
+            //la lista2 se llena cuando es numero grande o el correlativo lleva guion
+           
+            for (var i = 0; i < lista2.length; i++) {
+                lista3 = lista2[i].split('-'); 
+                
+                if (parseInt(lista3[0]) > parseInt(lista3[1])) {//comparo qeu el primer nimero sea mayor
+                    pass++;
+                }
+            }//fin for2
+            if (pass == 0) {
+                llenarTact("---", document.getElementById("selectCatpres").value + "/" + document.getElementById("correlativo").value);
+            } else {
+                swal("Ooops",  "\nFormato de correlativo no valido", "warning");
+            }
+        } else {
+            llenarTact("---", document.getElementById("selectCatpres").value + "/" + document.getElementById("correlativo").value);
+        }
+    } else {
+        for (var i = 0; i < lista.length; i++) {
+            if (lista[i].length > 2) {//si es mayor que 2 puede que sea numero > a 10 o un rango con 1-9
+                lista2.push(lista[i]);
+            } else {//si es menor es un numer menor a 10 si se agrega directo al array de numero
+                numero.push("" + lista[i]);
+            }
+        }//fin for
+        if (lista2.length > 0) {//for2
+            //la lista2 se llena cuando es numero grande o el correlativo lleva guion
+            for (var i = 0; i < lista2.length; i++) {
+                lista3 = lista2[i].split('-');
+               
+                if (parseInt(lista3[0]) > parseInt(lista3[1])) {//comparo qeu el primer nimero sea mayor
+                    pass++;
+                }
+            }//fin for2
+            if (pass == 0) {
+                llenarTact("---", document.getElementById("selectCatpres").value + "/" + document.getElementById("correlativo").value);
+            } else {
+                swal("Ooops", "\nFormato de correlativo no valido", "warning");
+            }
+        } else {//else2
+            //en caso que lista2 este vacia significa que solo son numeros menores que 10, ej 1,6,3
+            llenarTact("---", document.getElementById("selectCatpres").value + "/" + document.getElementById("correlativo").value);
+        }//fin else2
+
+
+    }//fin else
+
 
     return false;
 }
@@ -506,7 +566,7 @@ function validarTablas_dev() {
 
 function copiarDetalles() {
     document.getElementById('nserieEAD').value = document.getElementById('nserieEAd1').value;
-    
+
     document.getElementById('colorEAD').value = document.getElementById('colorEAd1').value;
     document.getElementById('marcaEAD').value = document.getElementById('marcaEAd1').value;
     document.getElementById('soEAD').value = document.getElementById('soEAd1').value;
@@ -527,9 +587,9 @@ function copiarDetalles() {
         closeOnConfirm: true
     },
             function () {
-                $('#actualizarDetalles').val("si") ;
+                $('#actualizarDetalles').val("si");
                 $('#actualizarCaracteristicas').modal('close');
-                  $('#actualizarDetalles').val("si") ;
+                $('#actualizarDetalles').val("si");
             });
 
 
