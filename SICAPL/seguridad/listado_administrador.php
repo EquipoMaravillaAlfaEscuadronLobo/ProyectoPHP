@@ -48,7 +48,7 @@ $ruta =  '../foto_admi/';
                                     if ($lista->getNivel() == '0') {
                                         echo 'Root';
                                     } else {
-                                        echo 'Administradro';
+                                        echo 'Administrador';
                                     }
                                     ?></td>
                                 <td class="text-center">

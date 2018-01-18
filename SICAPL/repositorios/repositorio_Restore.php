@@ -32,7 +32,7 @@ if ($totalErrors <= 0) {
 } else {
     echo '<script>swal({
                     title: "Exito",
-                    text: "algunos registros no fueron restaurados, vuelva a iniciar su sesión para continuar!",
+                    text: "Se restauro el sistema a un estado anterio, vuelva a iniciar su sesión para continuar!",
                     type: "success",
                     confirmButtonText: "ok",
                     closeOnConfirm: false
