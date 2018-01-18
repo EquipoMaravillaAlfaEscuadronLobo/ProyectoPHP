@@ -10,25 +10,31 @@ foreach ($listado as $fila) {
     ?>
     <script type="text/javascript">
 
-        document.getElementById('carnetA').innerHTML = "<?php echo $fila['codigo_usuario'] ?>";
+		document.getElementById('carnetA').innerHTML = "<?php echo $fila['codigo_usuario'] ?>";
         document.getElementById('nombreUserA').innerHTML = "<?php echo $fila['nombre'] ?>";
+
         document.getElementById('sexoA').innerHTML = "<?php echo $fila['sexo'] ?>";
-        document.getElementById('fotA').setAttribute("src", "<?php echo $fila['foto'] ?>");
-        document.getElementById('codigouserA').value="<?php echo $fila['codigo_usuario'] ?>";
-        
-     <?php 
+        document.getElementById('fotA').setAttribute("src", "../foto_usuario/<?php echo $fila['foto'] ?>")
+        document.getElementById('fotA').setAttribute("title", "Observaciones")
+        document.getElementById('fotA').setAttribute("rel", "popover")
+        document.getElementById('fotA').setAttribute("data-container", "body")
+        document.getElementById('fotA').setAttribute("data-togle", "popover")
+        document.getElementById('fotA').setAttribute("data-placement", "top")
+        document.getElementById('fotA').setAttribute("data-content", "<?php if($fila['obsP']!=""){echo "<ol><li>".$fila['obsP']."</li></ol>";}else{ echo "No tiene observaciones";} ?>")
+        <?php 
             if ($fila[11]=='si') {
          ?>
-          document.getElementById('actual_prestamo_activo').innerHTML = "<?php echo 'Prestamo Pendiente'?>";
-          $('#actual_prestamo_activo').removeClass('alert-success');
-          $('#actual_prestamo_activo').addClass('alert-danger');
+          document.getElementById('actualA').innerHTML = "<?php echo 'Prestamo Pendiente'?>";
+          $('#actualA').removeClass('alert-success');
+          $('#actualA').addClass('alert-danger');
 
         <?php 
             }else {
          ?>
-        document.getElementById('actual_prestamo_activo').innerHTML = "<?php echo 'sin Prestamos' ?>";
-        $('#actual_prestamo_activo').removeClass('alert-danger');
-        $('#actual_prestamo_activo').addClass('alert-success');
+        document.getElementById('actualA').innerHTML = "<?php echo 'sin Prestamos' ?>";
+        $('#actualA').removeClass('alert-danger');
+        $('#actualA').addClass('alert-success');
+        
         <?php } ?>
 		</script>
 
@@ -37,3 +43,11 @@ foreach ($listado as $fila) {
     }                    
                     
  ?>
+                <script>
+                    $(document).ready(function() {
+   $('[rel="popover"]').popover({
+       trigger: 'hover',
+       html: true,
+   })
+  });
+                </script>

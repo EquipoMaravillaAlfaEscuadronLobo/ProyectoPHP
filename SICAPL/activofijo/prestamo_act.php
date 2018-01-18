@@ -36,7 +36,7 @@ $(document).ready(function() {
                                 <div class="input-field">
                                     <i class="fa fa-search prefix" aria-hidden="true"></i>
                                     <label for="" style="font-size:17px">Buscar Activo</label>
-                                    <input type="text"  id="codigo" list="listaActivos" autofocus  onkeypress="buscarActivo(this)">
+                                    <input type="text"  id="codigo_bus_act" list="listaActivos" autofocus  onkeypress="buscarActivo(this)">
                                 </div>
 
                             </div>
@@ -154,7 +154,7 @@ $(document).ready(function() {
                                 <td>
                                     <b>Actual:</b>
                                 </td>
-                                <td id="actual_prestamo_activo" class="alert">
+                                <td id="actualA" class="alert">
                                     
                                 </td>
                             </tr>

@@ -1,12 +1,11 @@
-function printDiv(historial) {
 
-}
 function buscarUser2(valor) {
     var depto = valor.value;
     if (depto != "") {
         $.post("../activofijo/getUser.php", {libro: depto}, function (mensaje) {
             $('#listaLibros22').html(mensaje).fadeIn();
         });
+        document.getElementById('codigouserAa').value="";
     }
 }
 
@@ -24,11 +23,13 @@ function buscarUser2(valor) {
 //    }
 //}
 function buscarActivo(valor) {
-//alert("paso");
+    
+    
     var depto = valor.value;
     if (depto != "") {
         llenarTact(depto, "---");
     }
+    document.getElementById('codigo_bus_act').value="";
 }
 
 function buscarActivo_mantenimiento(valor) {
@@ -348,7 +349,96 @@ $(document).on('click', '.borrar_activo', function (event) {
 
 function agregarMant() {
     llenarTactMant("---", document.getElementById("selectCatMant").value + "/" + document.getElementById("correlativoMant").value);
+    //primero validamos qeu el formato sea el correcto
+    var pass = 0;//variable centinela, si no cambia de valor se envia al metodo para llenar la tabla
+    var numero = [];
+    var lista2 = [];
+    var lista3 = [];
+    var correlativo = document.getElementById("correlativoMant").value;
+    var lista = correlativo.split(','); //primero separo por " , "
+    if (lista.length == 1) {//si solo ingrso un numero se envia, por ejemplo si solo ingresa 5
 
+        if (lista[0].length > 2) {
+            for (var i = 0; i < lista.length; i++) {
+                if (lista[i].length > 2) {//si es mayor que 2 puede que sea numero > a 10 o un rango con 1-9
+                    lista2.push(lista[i]);
+                } else {
+                    if (!isNaN(lista[i])) {
+                        if (parseInt(lista[i]) > 0) {
+                        }else{pass++}
+                    }else{pass++}
+                }
+            }//fin for
+            //la lista2 se llena cuando es numero grande o el correlativo lleva guion
+
+            for (var i = 0; i < lista2.length; i++) {
+                lista3 = lista2[i].split('-');
+
+                if (parseInt(lista3[0]) > parseInt(lista3[1])) {//comparo qeu el primer nimero sea mayor
+                    pass++;
+                }else{
+                    if (!isNaN(lista3[0]) && !isNaN(lista3[1])) {
+                        if (parseInt(lista3[0]) > 0 && parseInt(lista3[1]) > 0) {
+                        }else{pass++}
+                    }else{pass++}
+                }
+            }//fin for2
+            if (pass == 0) {
+                llenarTact("---", document.getElementById("selectCatpres").value + "/" + document.getElementById("correlativo").value);
+            } else {
+                swal("Ooops", "\nFormato de correlativo no valido", "warning");
+            }
+        } else {
+            if (!isNaN(lista[0])) {
+                if (parseInt(lista[0]) > 0) {
+                    llenarTactMant("---", document.getElementById("selectCatMant").value + "/" + document.getElementById("correlativoMant").value);
+                } else {
+                    swal("Ooops", "\nFormato de correlativo no valido", "warning");
+                }
+            } else {
+                swal("Ooops", "\nFormato de correlativo no valido", "warning");
+            }
+        }
+    } else {
+        for (var i = 0; i < lista.length; i++) {
+            if (lista[i].length > 2) {//si es mayor que 2 puede que sea numero > a 10 o un rango como 1-9
+                lista2.push(lista[i]);
+            } else {
+                    if (!isNaN(lista[i])) {
+                        if (parseInt(lista[i]) > 0) {
+                        }else{pass++}
+                    }else{pass++}
+                }
+        }//fin for
+        
+        if (lista2.length > 0) {//for2
+            //la lista2 se llena cuando es numero grande o el correlativo lleva guion
+            for (var i = 0; i < lista2.length; i++) {
+                lista3 = lista2[i].split('-');
+                if (parseInt(lista3[0]) > parseInt(lista3[1])) {//comparo qeu el primer nimero sea mayor
+                    pass++;
+                }else{
+                    if (!isNaN(lista3[0]) && !isNaN(lista3[1])) {
+                        if (parseInt(lista3[0]) > 0 && parseInt(lista3[1]) > 0) {
+                        }else{pass++}
+                    }else{pass++}
+                }
+            }//fin for2
+            if (pass == 0) {
+                llenarTactMant("---", document.getElementById("selectCatMant").value + "/" + document.getElementById("correlativoMant").value);
+            } else {
+                swal("Ooops", "\nFormato de correlativo no valido", "warning");
+            }
+        } else {
+            if (pass == 0) {
+                llenarTactMant("---", document.getElementById("selectCatMant").value + "/" + document.getElementById("correlativoMant").value);
+            } else {
+                swal("Ooops", "\nFormato de correlativo no valido", "warning");
+            }
+        }
+
+
+    }//fin else
     return false;
 }
 
@@ -401,40 +491,25 @@ function agregar() {
             for (var i = 0; i < lista.length; i++) {
                 if (lista[i].length > 2) {//si es mayor que 2 puede que sea numero > a 10 o un rango con 1-9
                     lista2.push(lista[i]);
-                } 
+                } else {
+                    if (!isNaN(lista[i])) {
+                        if (parseInt(lista[i]) > 0) {
+                        }else{pass++}
+                    }else{pass++}
+                }
             }//fin for
             //la lista2 se llena cuando es numero grande o el correlativo lleva guion
-           
-            for (var i = 0; i < lista2.length; i++) {
-                lista3 = lista2[i].split('-'); 
-                
-                if (parseInt(lista3[0]) > parseInt(lista3[1])) {//comparo qeu el primer nimero sea mayor
-                    pass++;
-                }
-            }//fin for2
-            if (pass == 0) {
-                llenarTact("---", document.getElementById("selectCatpres").value + "/" + document.getElementById("correlativo").value);
-            } else {
-                swal("Ooops",  "\nFormato de correlativo no valido", "warning");
-            }
-        } else {
-            llenarTact("---", document.getElementById("selectCatpres").value + "/" + document.getElementById("correlativo").value);
-        }
-    } else {
-        for (var i = 0; i < lista.length; i++) {
-            if (lista[i].length > 2) {//si es mayor que 2 puede que sea numero > a 10 o un rango con 1-9
-                lista2.push(lista[i]);
-            } else {//si es menor es un numer menor a 10 si se agrega directo al array de numero
-                numero.push("" + lista[i]);
-            }
-        }//fin for
-        if (lista2.length > 0) {//for2
-            //la lista2 se llena cuando es numero grande o el correlativo lleva guion
+
             for (var i = 0; i < lista2.length; i++) {
                 lista3 = lista2[i].split('-');
-               
+
                 if (parseInt(lista3[0]) > parseInt(lista3[1])) {//comparo qeu el primer nimero sea mayor
                     pass++;
+                }else{
+                    if (!isNaN(lista3[0]) && !isNaN(lista3[1])) {
+                        if (parseInt(lista3[0]) > 0 && parseInt(lista3[1]) > 0) {
+                        }else{pass++}
+                    }else{pass++}
                 }
             }//fin for2
             if (pass == 0) {
@@ -442,10 +517,54 @@ function agregar() {
             } else {
                 swal("Ooops", "\nFormato de correlativo no valido", "warning");
             }
-        } else {//else2
-            //en caso que lista2 este vacia significa que solo son numeros menores que 10, ej 1,6,3
-            llenarTact("---", document.getElementById("selectCatpres").value + "/" + document.getElementById("correlativo").value);
-        }//fin else2
+        } else {
+            if (!isNaN(lista[0])) {
+                if (parseInt(lista[0]) > 0) {
+                    llenarTact("---", document.getElementById("selectCatpres").value + "/" + document.getElementById("correlativo").value);
+                } else {
+                    swal("Ooops", "\nFormato de correlativo no valido", "warning");
+                }
+            } else {
+                swal("Ooops", "\nFormato de correlativo no valido", "warning");
+            }
+        }
+    } else {
+        for (var i = 0; i < lista.length; i++) {
+            if (lista[i].length > 2) {//si es mayor que 2 puede que sea numero > a 10 o un rango como 1-9
+                lista2.push(lista[i]);
+            } else {
+                    if (!isNaN(lista[i])) {
+                        if (parseInt(lista[i]) > 0) {
+                        }else{pass++}
+                    }else{pass++}
+                }
+        }//fin for
+        
+        if (lista2.length > 0) {//for2
+            //la lista2 se llena cuando es numero grande o el correlativo lleva guion
+            for (var i = 0; i < lista2.length; i++) {
+                lista3 = lista2[i].split('-');
+                if (parseInt(lista3[0]) > parseInt(lista3[1])) {//comparo qeu el primer nimero sea mayor
+                    pass++;
+                }else{
+                    if (!isNaN(lista3[0]) && !isNaN(lista3[1])) {
+                        if (parseInt(lista3[0]) > 0 && parseInt(lista3[1]) > 0) {
+                        }else{pass++}
+                    }else{pass++}
+                }
+            }//fin for2
+            if (pass == 0) {
+                llenarTact("---", document.getElementById("selectCatpres").value + "/" + document.getElementById("correlativo").value);
+            } else {
+                swal("Ooops", "\nFormato de correlativo no valido", "warning");
+            }
+        } else {
+            if (pass == 0) {
+                llenarTact("---", document.getElementById("selectCatpres").value + "/" + document.getElementById("correlativo").value);
+            } else {
+                swal("Ooops", "\nFormato de correlativo no valido", "warning");
+            }
+        }
 
 
     }//fin else
