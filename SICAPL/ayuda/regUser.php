@@ -11,7 +11,7 @@
             <li><b>Email: </b>Compo en el que se escribe el correo electronico del usuario.</li><br>
             <li><b>Tel&eacute;fono: </b>Aqu&iacute; se debe escribir el telefono, el cu&aacute;l tiene un formato (####-####) espec&iacute;fico, del usuario a registrar.</li><br>
             <li><b>Instituci&oacute;n: </b>Campo de selecci&oacute;n &uacute;nico donde se elige la institucion en la que estudia el ususario</li><br>
-            <li><b>Sexi: </b>Elegir entre las opciones de masculino y femenino.
+            <li><b>Sexo: </b>Elegir entre las opciones de masculino y femenino.
             </li><br>
             <li><b>Foto: </b>Pide seleccionar la foto del usurio a registrar para agregar al carnet.</li><br>
             <li><b>Nueva Institucion: </b>Ubicada en una ventana emergente que se abre al presionar el bot&oacute;n "+" junto al campo de Instituci&oacute;n</li>

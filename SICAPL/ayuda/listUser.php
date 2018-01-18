@@ -23,7 +23,7 @@
             <li><b>Modificar: </b>Bot&oacute;n de color verde con el icono de un lapiz que abre la ventana de Modificaci&oacute;n.</li><br>
             <li><b>Dar Baja: </b>Bot&oacute;n de color rojo con el icono de un basurero que abre la ventana Dar Baja.</li><br>
             
-             <li><b>Actualizar: </b>Bot&oacute;n de color verde que actualiza la informacion del libro.</li><br>
+             <li><b>Actualizar: </b>Bot&oacute;n de color verde que actualiza la informacion del usuario.</li><br>
             <li><b>Salir: </b>Bot&oacute;n de color rojo que cierra la ventana de Modificaci&oacute;n.</li><br>
             <li><b>Eliminar: </b>Bot&oacute;n de color verde ubicado en la ventana Dar Baja, que realiza la acci&oacute;n de dar de baja al usuario.</li><br>
         </ul>

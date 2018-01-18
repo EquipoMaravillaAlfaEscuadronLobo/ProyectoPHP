@@ -78,7 +78,7 @@ if($result){
             
              echo '<script>swal({
                     title: "Exito",
-                    text: "Ocurrio un error inesperado al crear la copia de seguridad!",
+                    text: "Acaba de Realizarse un copia de seguridad!",
                     type: "success",
                     confirmButtonText: "ok",
                     closeOnConfirm: false
@@ -88,7 +88,7 @@ if($result){
 }else{
      echo '<script>swal({
                     title: "Exito",
-                    text: "Ocurrio un error inesperado!",
+                    text: "Acaba de Realizarse un copia de seguridad!",
                     type: "success",
                     confirmButtonText: "ok",
                     closeOnConfirm: false

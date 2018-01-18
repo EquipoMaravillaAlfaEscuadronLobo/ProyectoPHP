@@ -60,4 +60,27 @@ include_once '../plantillas/menu.php';
 include_once '../plantillas/pie_de_pagina.php';
 ?>
 
+<script>
+    
+    function abrirAyuda(opcion){
+        var direccion;
+        switch(opcion){
+            case 1:
+                direccion="../ayuda/regAdmin.php";
+                break;
+            case 2:
+                direccion="../ayuda/listAdmin.php";
+                break;
+            case 3:
+                direccion="../ayuda/listAdminBaja.php";
+                break;
+            case 4:
+                direccion="../ayuda/backup.php";
+                break;    
+        }
+        window.open(direccion, "_blank", "toolbar=no,scrollbars=yes,resizable=no,top=0,left=500,width=700,height=600");
+    }
+
+</script>
+
 

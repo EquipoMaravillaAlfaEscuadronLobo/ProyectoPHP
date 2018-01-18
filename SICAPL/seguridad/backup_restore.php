@@ -19,6 +19,9 @@ $listado = Repositorio_prestamolib::ListaPrestamos(Conexion::obtener_conexion())
                                 </span>Nuevo Backup
                             </a>
                         </div>
+                        <div class="col-md-1">
+                        <button type="button" class="btn btn-info" id="ayuda" onclick="abrirAyuda(4)"><i class="fa fa-info-circle"></i></button>
+                    </div>
                     </div>       
                 </div>
                 <div class="panel-body">				

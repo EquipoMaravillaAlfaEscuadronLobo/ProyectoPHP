@@ -10,7 +10,7 @@ const BD = "diseno1";
 const PASS = "";
 //Carpeta donde se almacenaran las copias de seguridad
 //include_once '../backup/';
-const BACKUP_PATH = "../backup/";
+const BACKUP_PATH = 'C:/Dropbox/backup/';
 /*Configuración de zona horaria de tu país para más información visita
 http://php.net/manual/es/function.date-default-timezone-set.php
 http://php.net/manual/es/timezones.php
