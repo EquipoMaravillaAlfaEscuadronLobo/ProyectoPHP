@@ -3,9 +3,9 @@
 include  '../app/Conexion.php';
 include  '../modelos/Activo.php';
 include  '../repositorios/repositorio_activo.php';
-include  'plantilla.php';
+include  'plantilla_2.php';
 Conexion::abrir_conexion();
-$listado1 = Repositorio_activo::lista_activo_inventario(Conexion::obtener_conexion()," ");
+$listado1 = Repositorio_activo::lista_activo_inventario(Conexion::obtener_conexion(), "4");
 $estado="";
 $pdf = new PDF('L');
 $pdf->AliasNbPages();

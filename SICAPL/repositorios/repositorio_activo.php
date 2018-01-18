@@ -59,8 +59,54 @@ class Repositorio_activo {
         return $resultado;
     }
     
-    public static function lista_activo_inventario($conexion) {
+    public static function lista_activo_codBarra($conexion) {
         $resultado = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT
+actvos.codigo_activo ,
+actvos.codigo_tipo as cod,
+categoria.nombre as tipo
+FROM
+actvos
+INNER JOIN categoria ON actvos.codigo_tipo = categoria.codigo_tipo
+GROUP BY
+actvos.codigo_tipo";
+                $resultado = $conexion->query($sql);
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
+    
+    public static function lista_activo_tipo($conexion, $tipo) {
+        $resultado = "";
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT
+actvos.codigo_activo as cod
+FROM
+actvos
+WHERE
+actvos.codigo_tipo ='$tipo' AND
+actvos.estado = 1";
+                $resultado = $conexion->query($sql);
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
+    
+    public static function lista_activo_inventario($conexion, $cual) {
+        $resultado = "";
+        if($cual=="3"){
+            $cual='WHERE actvos.estado = 3';
+        }
+        if($cual=="4"){
+            $cual='WHERE actvos.estado = 4';
+        }
         if (isset($conexion)) {
             try {
                 $sql = "SELECT
@@ -76,7 +122,37 @@ FROM
 actvos
 INNER JOIN categoria ON actvos.codigo_tipo = categoria.codigo_tipo
 INNER JOIN administradores ON actvos.codigo_administrador = administradores.codigo_administrador
-INNER JOIN proveedores ON actvos.codigo_proveedor = proveedores.codigo_proveedor";
+INNER JOIN proveedores ON actvos.codigo_proveedor = proveedores.codigo_proveedor
+$cual
+";
+                $resultado = $conexion->query($sql);
+            } catch (PDOException $ex) {
+                print 'ERROR: ' . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
+    
+    public static function lista_activo_mas($conexion) {
+        $resultado = "";
+        
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT
+prestamo_activos.codigo_pactivo,
+actvos.codigo_activo as cod,
+categoria.nombre as tipo,
+(select count(*) from movimiento_actvos  where movimiento_actvos.codigo_activo =cod) as veces
+FROM
+prestamo_activos
+INNER JOIN movimiento_actvos ON movimiento_actvos.codigo_pactivo = prestamo_activos.codigo_pactivo
+INNER JOIN actvos ON movimiento_actvos.codigo_activo = actvos.codigo_activo
+INNER JOIN categoria ON actvos.codigo_tipo = categoria.codigo_tipo
+GROUP BY
+cod 
+ORDER BY
+veces desc
+";
                 $resultado = $conexion->query($sql);
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();

@@ -10,7 +10,7 @@
                 $this->Cell(120,5,'Casa de Encuentro Juvenil Verapaz, San Vicente');
                 $this->Ln(2); 
                 $this->Cell(100);
-                $this->Cell(120,15,'Inventario De Activo Fijo ');
+                $this->Cell(120,15,utf8_decode('Activo Fijo Dañado'));
                 $this->Cell(-135);
                 $this->SetFont('Arial','',  10);
                 $this->Cell(15,30,'Fecha: '.date('d-m-Y'));

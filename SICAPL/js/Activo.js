@@ -1,4 +1,13 @@
+function printDiv(nombreDiv) {
+     var contenido= document.getElementById(nombreDiv).innerHTML;
+     var contenidoOriginal= document.body.innerHTML;
 
+     document.body.innerHTML = contenido;
+
+     window.print();
+
+     document.body.innerHTML = contenidoOriginal;
+}
 function buscarUser2(valor) {
     var depto = valor.value;
     if (depto != "") {

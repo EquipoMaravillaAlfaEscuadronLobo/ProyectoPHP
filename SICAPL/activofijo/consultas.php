@@ -74,7 +74,7 @@
     </div>
     <div class="modal-footer ">
         <div class="row">
-            <div class="col-md-6 text-right"><button  class="btn btn-success  " type="submit" form="FORMUL" >
+            <div class="col-md-6 text-right"><button  class="btn btn-success  " type="button" onclick="printDiv('ver_mante')" >
                     <span class="glyphicon glyphicon-floppy-disk" ></span>
                     Imprimir</button></div>
             <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Salir</a></div>
