@@ -381,7 +381,8 @@ titulo
                 $sql = "SELECT
 libros.titulo as titulo,
 libros.codigo_libro as codigo,
-libros.motivo as motivo
+libros.motivo as motivo,
+libros.fecha_publicacion as fecha
 FROM
 libros
 INNER JOIN editoriales ON libros.editoriales_codigo = editoriales.codigo_editorial

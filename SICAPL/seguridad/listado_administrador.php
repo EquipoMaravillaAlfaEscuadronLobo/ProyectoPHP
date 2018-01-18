@@ -9,10 +9,14 @@ $ruta =  '../foto_admi/';
         <div class="panel" name="libros">
             <div class="panel-heading text-center">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-11">
                         <h3>Lista De Administradores</h3>
                     </div>
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-info" id="ayuda" onclick="abrirAyuda(2)"><i class="fa fa-info-circle"></i></button>
+                    </div>
                 </div>
+                
             </div>
             <div class="panel-body">
                 <table padding="20px" class="responsive-table table-sm display" id="data-table-simple">

@@ -11,8 +11,11 @@ include_once '../repositorios/repositorio_administrador.inc.php';
             <!--inicio cabecera de panel-->
             <div class="panel-heading text-center">
                 <div class="row"> 
-                    <div class="col s12">
+                    <div class="col s11">
                         <h3>Registro De Administradores</h3>
+                    </div>
+                    <div class="col s1">
+                        <button type="button" class="btn btn-info" id="ayuda" onclick="abrirAyuda(1)"><i class="fa fa-info-circle"></i></button>
                     </div>
                 </div>
             </div>
