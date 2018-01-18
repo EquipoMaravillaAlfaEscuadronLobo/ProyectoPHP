@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-01-2018 a las 05:00:41
+-- Tiempo de generación: 18-01-2018 a las 04:20:43
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 7.0.9
 
@@ -155,9 +155,9 @@ CREATE TABLE `administradores` (
 --
 
 INSERT INTO `administradores` (`codigo_administrador`, `pasword`, `nivel`, `nombre`, `email`, `fecha`, `apellido`, `sexo`, `dui`, `foto`, `estado`, `observacion`) VALUES
-('admin01', '$2y$10$2rho0MAZ5MwLDYw851GwB.6eHCBN0gIKsWJboakQ6epu1IOqsjphy', 0, 'Carlos Antonio', 'correo@gmail.com', '10-07-1995', 'Torres Martinez', 0, '00000000-0', 0x687164656661756c742e6a7067, 1, ''),
+('admin01', '$2y$10$2rho0MAZ5MwLDYw851GwB.6eHCBN0gIKsWJboakQ6epu1IOqsjphy', 0, 'Carlos Antonio', 'correo@gmail.com', '10-07-1995', 'Torres Martinez', 0, '00000000-0', 0x61646d692e706e67, 1, ''),
 ('admin02', '$2y$10$NqXNbTcIuGPuxhOXKCWmI.6JF93lz67bPWryed1L8HIMHBfOySB6G', 1, 'Juan Gonzales', 'jose_perea@hotmail.com', '13-10-1998', 'Pérez Martínez ', 0, '10123390-0', 0x31696d616765732e6a7067, 1, 'este bicho es malo'),
-('admin03', '$2y$10$vO0ftGsgoJ2NNhZFeB9Gd.TYnTdD7uCMXU608bruY7A4dyGttMKJe', 0, 'María Inéz', 'mariac@gmail.com', '06-09-1999', 'Hernández Maradiaga', 0, '00212334-5', '', 1, 'este bicho es malo'),
+('admin03', '$2y$10$vO0ftGsgoJ2NNhZFeB9Gd.TYnTdD7uCMXU608bruY7A4dyGttMKJe', 0, 'María Inéz', 'mariac@gmail.com', '06-09-1999', 'Hernández Maradiaga', 0, '00212334-5', 0x326d617269612e6a7067, 1, 'este bicho es malo'),
 ('admin04', '$2y$10$eNWMNA1jfljetJZpteYo/umpUXpfAg/q70vuXwmm2kKUlDtqEbOSW', 1, 'Maicol Felix', 'felix@yahoo.com', '22-04-1983', 'Paniagua Cerezo', 0, '09229345-6', 0x3361646d69332e6a7067, 1, 'este bicho es malo');
 
 -- --------------------------------------------------------
@@ -380,7 +380,24 @@ INSERT INTO `bitacora` (`codigo_bitacora`, `codigo_administrador`, `accion`, `fe
 (163, 'admin03', 'El usuario Harvin Jeffeth Ramos Alvarado finalizó su prestamo, con la siguiente observación: entrego el libro el mundo y yo despues de la fecha estipulada', '2018-01-17 09:53:47'),
 (164, 'admin03', 'El usuario Gercia Melina Hernández Castillo finalizó su prestamo, con la siguiente observación: entrego el libro nito de los deberes en perfecto estado', '2018-01-17 09:54:22'),
 (165, 'admin03', 'El usuario Harvin Jeffeth Ramos Alvarado finalizó su prestamo, con la siguiente observación: entrego el libro forja de un rebelde con paginas ajadas ', '2018-01-17 09:56:13'),
-(166, 'admin03', 'Se ralizó una copia de seguridad de los datos del sistema', '2018-01-17 09:59:47');
+(166, 'admin03', 'Se ralizó una copia de seguridad de los datos del sistema', '2018-01-17 09:59:47'),
+(167, 'admin03', 'El administrador admin03  cerró sesión', '2018-01-17 10:06:17'),
+(168, 'admin02', 'El administrador admin02(Juan Gonzales Pérez Martínez ) inició sesión', '2018-01-17 10:06:28'),
+(169, 'admin02', 'El administrador admin02  cerró sesión', '2018-01-17 10:07:19'),
+(170, 'admin01', 'El administrador admin01(Carlos Antonio Torres Martinez) inició sesión', '2018-01-17 10:07:32'),
+(171, 'admin01', 'El administrador admin01  cerró sesión', '2018-01-17 10:08:10'),
+(172, 'admin02', 'El administrador admin02(Juan Gonzales Pérez Martínez ) inició sesión', '2018-01-17 10:08:18'),
+(173, 'admin02', 'El administrador Juan Gonzales Pérez Martínez  actualizó sus datos', '2018-01-17 10:08:42'),
+(174, 'admin02', 'El administrador admin02  cerró sesión', '2018-01-17 10:08:46'),
+(175, 'admin01', 'El administrador admin01(Carlos Antonio Torres Martinez) inició sesión', '2018-01-17 10:08:53'),
+(176, 'admin01', 'El administrador Carlos Antonio Torres Martinez actualizó sus datos', '2018-01-17 10:12:48'),
+(177, 'admin01', 'El administrador admin01  cerró sesión', '2018-01-17 10:12:53'),
+(178, 'admin02', 'El administrador admin02(Juan Gonzales Pérez Martínez ) inició sesión', '2018-01-17 10:13:00'),
+(179, 'admin02', 'El administrador admin02  cerró sesión', '2018-01-17 10:14:01'),
+(180, 'admin03', 'El administrador admin03(María Inéz Hernández Maradiaga) inició sesión', '2018-01-17 10:14:14'),
+(181, 'admin03', 'El administrador María Inéz Hernández Maradiaga actualizó sus datos', '2018-01-17 10:14:36'),
+(182, 'admin03', 'El administrador admin03  cerró sesión', '2018-01-17 10:14:40'),
+(183, 'admin01', 'El administrador admin01(Carlos Antonio Torres Martinez) inició sesión', '2018-01-17 10:14:48');
 
 -- --------------------------------------------------------
 
@@ -1513,7 +1530,7 @@ ALTER TABLE `autores`
 -- AUTO_INCREMENT de la tabla `bitacora`
 --
 ALTER TABLE `bitacora`
-  MODIFY `codigo_bitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
+  MODIFY `codigo_bitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=184;
 --
 -- AUTO_INCREMENT de la tabla `detalles`
 --
