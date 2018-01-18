@@ -8,6 +8,7 @@ include_once '../repositorios/repositorio_recuperacion.inc.php';
 include_once '../repositorios/repositorio_bitacora.php';
 
 $path = $_SERVER['PHP_SELF'];
+//echo $path;
 $file = dirname($path);
 //echo $_SERVER['SERVER_NAME'].$file;
 $cabeceras = 'From: SICAPL <cumples@example.com>' . "\r\n";
@@ -26,10 +27,12 @@ if($admin->getEmail()!=""){
     $string_aleatorio= sa(10);
     $url_secreta=hash('sha256',$string_aleatorio.$userName);
     $direccion=$_SERVER['SERVER_NAME'].$file.'/cambiarClave.php?u='.$url_secreta;
+    //echo $direccion;
     $peticion_generada= RepositorioRecuperacion::registrarPeticion(Conexion::obtener_conexion(), $admin->getCodigo_administrador(), $url_secreta);
     $contenido='Hola '.$admin->getNombre().' '.$admin->getApellido().'<br><br> Se a solicitado cambio de contrase&ntilde;a.<br><br>'
             . 'Para restaurar la contrase&ntilde;a, visita el siguiente enlace<br><br> <a href="'.$direccion.'">Cambiar Contrase&ntilde;a</a>'
             . '<br><br>Si esta peticion fue un error, favor de ignorar este mensaje';
+    //echo $contenido;
 if (mail($_POST['correo'], "Recuperacion de contraseña", $contenido,$cabeceras)) {
     echo "ENCONTRADO";
     

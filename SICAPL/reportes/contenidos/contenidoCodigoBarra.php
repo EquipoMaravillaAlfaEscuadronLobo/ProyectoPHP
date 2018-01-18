@@ -7,25 +7,8 @@ $listado1 = Repositorio_libros::CodigoBarras(Conexion::obtener_conexion());
 ?>
 
 <style>
-    .tabla{
-
-        align-content: stretch;
-        width: 100%;
-
-    }
-    h1 {color: #000033}
-    h2 {color: #000055}
-    h3 {color: #000077}
-    .tabla table td{
-        padding: 0;
-        margin: 0;
-        width: 450px;
-    }
-
-
-    
     .iz{
-        border: 1px black solid;
+       
         width: 500px;
         height: 100px;
         padding: 5px 5px 5px 5px;
@@ -40,15 +23,41 @@ $listado1 = Repositorio_libros::CodigoBarras(Conexion::obtener_conexion());
         padding: 5px 5px 5px 5px;
         
     }
+    .tabla{
+
+        align-content: center;
+        width: 100%;
+        margin-left: 100px;
+
+    }
+    h1 {color: #000033}
+    h2 {color: #000055}
+    h3 {color: #000077}
+    .tabla table td{
+        padding: 0;
+        margin: 0;
+        width: 700px;
+        
+        align-content: center;
+    }
+    .contenedor{
+        align-content: center;
+        text-align: center;
+        
+        
+    }
+
+
 
 </style>
+<page>
 <?php
 foreach ($listado1 as $fila1) {
     $listado = Repositorio_libros::CodigoBarras2(Conexion::obtener_conexion(), $fila1['titulo']);
     ?>
     <!-- Etiqueta para cada pagina del reporte-->
 
-
+    
         <div class="tabla"><!-- Inicio Contenido del Reporte (Modificable)-->
 
             <table border="0"  align="center" cellspacing="20">
@@ -62,7 +71,7 @@ foreach ($listado1 as $fila1) {
                 <?php
                 $i=1;
                 foreach ($listado as $fila) {
-                    if($i==1){
+                   
                     ?>
                     <tr>
                         <td>
@@ -72,21 +81,10 @@ foreach ($listado1 as $fila1) {
                         </td>                
                     </tr>
 
-                    <?php
-                    $i=2;
-                    }else{
-                        
-                        ?>
-                            <tr>
-                        <td>
-                            <div class="dr">
-                                <barcode dimension="1D" type="C128" value="<?php echo $fila['codigo_libro'] ?>" label="label" style="width:100%; height:15mm; color: #000000; font-size: 4mm"></barcode>
-                            </div>
-                        </td>                
-                    </tr>
+                   
                             <?php
-                            $i=1;
-                    }
+                           
+                    
                 }
                 ?>
 
@@ -95,9 +93,10 @@ foreach ($listado1 as $fila1) {
             </table>
         </div><!-- Fin Contenido del Reporte (Modificable)-->
 
-   
+    
     <?php
 }
 ?>
+</page>
 
 
