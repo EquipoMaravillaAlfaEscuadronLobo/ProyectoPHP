@@ -144,8 +144,8 @@ $listado = Repositorio_activo::lista_activo(Conexion::obtener_conexion());
     <div class="modal-footer ">
         <div class="row">
             <div class="col-md-6 text-right"><button id="gp" class="btn btn-success modal-action " type="submit" form="ActAct">
-                    <span class="glyphicon glyphicon-floppy-disk" ></span>
-                    Guardar</button></div>
+                    <span class="glyphicon glyphicon-refresh" ></span>
+                    Actualizar</button></div>
             <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></div>
         </div>
     </div>
