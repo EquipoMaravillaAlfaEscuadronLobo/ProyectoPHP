@@ -15,9 +15,12 @@ include_once '../repositorios/repositorio_institucion.php';
             <div class="panel" name="libros">
                 <div class="panel-heading text-center">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-11">
                             <h3>Registro De Usuarios</h3>
                         </div>
+                        <div class="col-md-1">
+                        <button type="button" class="btn btn-info" id="ayuda" onclick="abrirAyuda(1)"><i class="fa fa-info-circle"></i></button>
+                    </div>
                     </div>
                 </div>
                 <div class=" text-center panel-body">

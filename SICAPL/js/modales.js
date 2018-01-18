@@ -232,7 +232,7 @@ function abrirEdicionEdi(codigo, nombre, direccion, correo, telefono) {
     $('#codigoe_edit').val(codigo);
 
     $('#nombree_edit').val(nombre);
-    $('#telefonoe_edit').val(telefono);
+    $('#idTelefonoE').val(telefono);
     $('#email_edit').val(correo);
     $('#direccion_edit').val(direccion);
     $('#edicionEdi').modal('open');

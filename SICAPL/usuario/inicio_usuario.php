@@ -95,3 +95,18 @@ function recargarCombo(){
     return false;
 }
 </script>
+<script>
+    function abrirAyuda(opcion){
+        var direccion;
+        switch(opcion){
+            case 1:
+                direccion="../ayuda/regUser.php";
+                break;
+            case 2:
+                direccion="../ayuda/listUser.php";
+                break;
+        }
+        window.open(direccion, "_blank", "toolbar=no,scrollbars=yes,resizable=no,top=0,left=500,width=700,height=600");
+    }
+</script>
+

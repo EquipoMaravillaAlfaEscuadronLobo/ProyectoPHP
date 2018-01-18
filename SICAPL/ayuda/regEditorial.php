@@ -6,7 +6,7 @@
         <ul>
             <li><b>C&oacute;digo: </b>Este campo muestra el codigo de la editorial que se registrar&aacute;.</li><br>
             <li><b>Nombre: </b>En este campo se escribe el nombre de la editorial a registrar.</li><br>
-            <li><b>Tel&eacute;fono: </b>Aqu&iacute; se debe escribir el telefono, la cu&aacute;l tiene un formato (####-####) espec&iacute;fico, de la editorial a registrar.
+            <li><b>Tel&eacute;fono: </b>Aqu&iacute; se debe escribir el telefono, el cu&aacute;l tiene un formato (####-####) espec&iacute;fico, de la editorial a registrar.
             </li><br>
             <li><b>Email: </b>Solicita ingresar un correo electr&oacute;nico (ejemplo@correo.com) de la editorial que se registrar&aacute;.
             </li><br>

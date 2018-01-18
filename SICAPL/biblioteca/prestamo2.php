@@ -14,7 +14,8 @@
                  <div class="input-field">
                      <i class="fa fa-search prefix" aria-hidden="true"></i>
                      <label for="">Buscar Libro</label>
-                     <input type="text" id="codigol1" name="codigol1" autofocus onkeypress="buscarLibro2(this,event)" list="listaLibros">
+                     <input type="text" id="codigol1"  autofocus onkeypress="buscarLibro2(this,event)" list="listaLibros">
+                     <input type="hidden" id="codigolh1" name="codigol1">
                  </div>
 
                 </div>
@@ -68,7 +69,8 @@
                  <div class="input-field">
                      <i class="fa fa-search prefix" aria-hidden="true"></i>
                      <label for="" style="font-size:16px">Buscar Usuario</label>
-                     <input type="text" id="codigouser" name="codigouser" autofocus onkeypress="buscarUser(this)" list="listaUsuarios">
+                     <input type="text" id="codigouser"  autofocus onkeypress="buscarUser(this)" list="listaUsuarios">
+                     <input type="hidden" id="codigouser2" name="codigouser" >
                  </div>
 
                 </div>
