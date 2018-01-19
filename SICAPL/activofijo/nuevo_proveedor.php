@@ -10,7 +10,7 @@
                             <div class="input-field">
                                 <i class="fa fa-id-badge prefix" aria-hidden="true"></i>
                                 <label for="Titulo">Nombre</label>
-                                <input type="text" id="idNombre" name="nameNombre"  class="text-center validate" required="" pattern="[a-zA-Z]{2,48}" title="El nombre de contener solo letrar">
+                                <input type="text" id="idNombre" name="nameNombre"  class="text-center validate" required="">
                             </div>
                         </div>
                     </div>
