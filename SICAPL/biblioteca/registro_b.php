@@ -13,7 +13,7 @@ $ultimaEditorial = repositorio_editorial::ObtenerUltimo(Conexion::obtener_conexi
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-md-11">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse-libros">Registro de Libros</a>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-libros"><h3>Registro de Libros</h3></a>
                     </div>
                     <div class="col-md-1">
                         <button type="button" class="btn btn-info" id="ayuda" onclick="abrirAyuda(1)"><i class="fa fa-info-circle"></i></button>
@@ -97,7 +97,7 @@ $ultimaEditorial = repositorio_editorial::ObtenerUltimo(Conexion::obtener_conexi
                                 <div class="input-field">
                                     <i class="fa fa-calendar prefix" aria-hidden="true"></i>
                                     <label for="fecha_pub" class="active">Fecha de Publicacion</label>
-                                    <input type="date" class="datepicker datepicker2 " required name="fecha_pub" id="fecha_pub">
+                                    <input type="text" class="datepicker2" required name="fecha_pub" id="idFecha">
                                 </div>
                             </div>
 
@@ -132,7 +132,7 @@ $ultimaEditorial = repositorio_editorial::ObtenerUltimo(Conexion::obtener_conexi
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-md-11">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse-autores">Registro de Autores</a>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-autores"><h3>Registro de Autores</h3></a>
                     </div>
                     <div class="col-md-1">
                         <button type="button" class="btn btn-info" id="ayuda" onclick="abrirAyuda(2)"><i class="fa fa-info-circle"></i></button>
@@ -174,7 +174,7 @@ $ultimaEditorial = repositorio_editorial::ObtenerUltimo(Conexion::obtener_conexi
                                 <div class="input-field">
                                     <i class="fa fa-calendar prefix" aria-hidden="true"></i>
                                     <label for="fecha_nac" class="active">Fecha de Nacimiento</label>
-                                    <input type="text" id="fecha_nac"  required name="fecha_nac" class="form-control datepicker datepicker2">
+                                    <input type="text" id="fecha_nac"  required name="fecha_nac" class="form-control datepicke-cumple">
                                 </div>
                             </div>
 
@@ -204,7 +204,7 @@ $ultimaEditorial = repositorio_editorial::ObtenerUltimo(Conexion::obtener_conexi
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-md-11">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-editoriales">Registro de Editoriales</a>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-editoriales"><h3>Registro de Editoriales</h3></a>
                     </div>
                     <div class="col-md-1">
                         <button type="button" class="btn btn-info" id="ayuda" onclick="abrirAyuda(3)"><i class="fa fa-info-circle"></i></button>

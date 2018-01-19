@@ -23,7 +23,10 @@ td{
 th{
     text-align: center !important;
 }
-input[type="text"]{
+input{
+    text-align: center !important;
+}
+textarea{
     text-align: center !important;
 }
 .fotosLibros{
@@ -43,6 +46,7 @@ input[type="text"]{
 .panel-heading{
 	background-color: #0097a7 !important;
 	color: white !important;
+        text-align: center;
 }
 
 .panel{
