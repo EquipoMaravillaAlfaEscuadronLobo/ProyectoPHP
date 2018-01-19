@@ -17,6 +17,12 @@ footer{
    color: white;
    
 }
+td{
+    text-align:  center !important;
+}
+th{
+    text-align: center !important;
+}
 input[type="text"]{
     text-align: center !important;
 }

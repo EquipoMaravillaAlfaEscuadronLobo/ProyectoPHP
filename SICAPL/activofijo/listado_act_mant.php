@@ -18,9 +18,12 @@ $listado = Repositorio_activo::lista_activo_mantenimiento2(Conexion::obtener_con
                     <div class="row">
                         <div class="col-md-8"><h3>Listado de Activos</h3>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <a class="btn btn_primary"   onclick="nuevoMant('no','si')"><span aria-hidden="true" class="glyphicon glyphicon-plus">
                         </span>MANTENIMIENTO</a>
+                        </div>
+                        <div class="col-md-1">
+                            <button type="button" class="btn btn-info" id="ayuda" onclick="abrirAyuda(3)"><i class="fa fa-info-circle"></i></button>
                         </div>
                     </div>       
                 </div>

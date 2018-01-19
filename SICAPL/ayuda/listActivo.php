@@ -29,7 +29,7 @@
             <li><b>Dar Baja: </b>Bot&oacute;n de color rojo con el icono de un basurero ubicado en la ventana de Modificaci&oacute;n, que abre la ventana Dar Baja.</li><br>
             
              <li><b>Actualizar: </b>Bot&oacute;n de color verde que actualiza la informacion del activo.</li><br>
-            <li><b>Salir: </b>Bot&oacute;n de color rojo que cierra la ventana de Modificaci&oacute;n.</li><br>
+            <li><b>Salir: </b>Bot&oacute;n de color rojo que cierra la ventana de Modificaci&oacute;n y Dar de Baja.</li><br>
             <li><b>Eliminar: </b>Bot&oacute;n de color verde ubicado en la ventana Dar Baja, que realiza la acci&oacute;n de dar de baja al administrador.</li><br>
         </ul>
     </li>
