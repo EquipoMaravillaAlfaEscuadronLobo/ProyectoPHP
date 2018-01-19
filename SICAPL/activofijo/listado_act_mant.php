@@ -61,7 +61,7 @@ $listado = Repositorio_activo::lista_activo_mantenimiento2(Conexion::obtener_con
                                         echo " btn-warning";
                                     }
                                     if ($fila['estado'] == 3) {
-                                        echo " btn-warning";
+                                        echo " alert-warning";
                                     }
                                     ?>"
                                         style="font-size: 16px">

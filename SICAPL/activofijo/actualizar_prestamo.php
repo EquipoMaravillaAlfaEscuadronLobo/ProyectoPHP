@@ -202,34 +202,31 @@ if (isset($_REQUEST["pas"])) {
     $Prestamo->setSalida($salida);
     $Prestamo->setDevolucion($devolucion);
     $longitud = count($libros);
-    $todas_las_observaciones='';
+    $todas_las_observaciones=$observacion;
 
     if ($opcion == 2) {
          
         if (true) {
             for ($i = 0; $i < $longitud; $i++) {
                 if (Repositorio_prestamoact::ActualizarActivo(Conexion::obtener_conexion(), $libros[$i], $aciones[$i], $observacions[$i])) {
-                    $todas_las_observaciones='';
-                    echo "<script type='text/javascript'>";
-                    echo "swal({
-                    title: 'Exito',
-                    text: 'Prestamo Actualizado',
-                    type: 'success'},
-                    function(){
-                       location.href='inicio_activo.php';
-                    }
-                    );";
-                    echo "</script>";
-                
-                    
+                    $todas_las_observaciones=$todas_las_observaciones.$libros[$i].": $observacions[$i]";
+                     
                 }
             }
-            Repositorio_prestamoact::Actualizar(Conexion::obtener_conexion(), $devolucion, $observacions, $codPrestamo);
+            Repositorio_prestamoact::Actualizar(Conexion::obtener_conexion(), $devolucion, $observacions, $todas_las_observaciones);
             $nombre = Repositorio_Bitacora::nombre_usuario(Conexion::obtener_conexion(), $usuario);
             $dia = $_POST['fecha_devolucion_act'];
             $dia = date_format(date_create($dia), 'd-m-Y');
             $accion = 'El usuario ' . $nombre . ' actualizo su prestamo de activo fijo para el dia '. $dia;
             Repositorio_Bitacora::insertar_bitacora(Conexion::obtener_conexion(), $accion);
+            echo '<script language="javascript">swal({
+                    title: "Exito",
+                    text: "Prestamo Actualizado",
+                    type: "success"},
+                    function(){
+                       location.href="inicio_activo.php";
+                    }
+                    );</script>'; 
         } else {
             echo "<script type='text/javascript'>";
             echo 'swal({
@@ -243,26 +240,26 @@ if (isset($_REQUEST["pas"])) {
             echo "</script>";
         }
     } else {
-        if (Repositorio_prestamoact::Finalizar(Conexion::obtener_conexion(), $codPrestamo,$observacion)) {
+        if (true) {
             for ($i = 0; $i < $longitud; $i++) {
                 if (Repositorio_prestamoact::ActualizarActivo(Conexion::obtener_conexion(), $libros[$i], $aciones[$i], $observacions[$i])) {
-                    echo "<script type='text/javascript'>";
-                    echo "swal({
-                    title: 'Exito',
-                    text: 'Prestamo Finalizado',
-                    type: 'success'},
-                    function(){
-                       location.href='inicio_activo.php';
-                    }
-                    );";
-                    echo "</script>";
+                     $todas_las_observaciones=$todas_las_observaciones.$libros[$i].": $observacions[$i]";
+                   
                 }
                 
             }
             $nombre = Repositorio_Bitacora::nombre_usuario(Conexion::obtener_conexion(), $usuario);
             $accion = 'el usario ' . $nombre . ' finalizo su prestamo de activo fijo '; 
             Repositorio_Bitacora::insertar_bitacora(Conexion::obtener_conexion(), $accion);
-            
+            Repositorio_Bitacora::insertar_bitacora(Conexion::obtener_conexion(), $accion);
+            echo '<script language="javascript">swal({
+                    title: "Exito",
+                    text: "Prestamo Finalizado",
+                    type: "success"},
+                    function(){
+                       location.href="inicio_activo.php";
+                    }
+                    );</script>';
             
         } else {
             echo "<script type='text/javascript'>";
