@@ -44,12 +44,12 @@ $pdf->AddPage();
 $pdf->SetFont('Arial', 'B', 12);
 
 $pdf->Cell(45, 6, utf8_decode('Código'), 1, 0, 'C');
-$pdf->Cell(40, 6, utf8_decode('Título'), 1, 0, 'C');
-$pdf->Cell(80, 6, utf8_decode('Autor'), 1, 0, 'C');
+$pdf->Cell(85, 6, utf8_decode('Título'), 1, 0, 'C');
+$pdf->Cell(70, 6, utf8_decode('Autor'), 1, 0, 'C');
 
-$pdf->Cell(50, 6, utf8_decode('Editorial'), 1, 0, 'C');
-$pdf->SetFont('Arial', 'B', 10);
-$pdf->Cell(40, 6, utf8_decode('Fecha de Publicación'), 1, 0, 'C');
+$pdf->Cell(30, 6, utf8_decode('Editorial'), 1, 0, 'C');
+$pdf->SetFont('Arial', 'B', 8);
+$pdf->Cell(30, 6, utf8_decode('Fecha de Publicación'), 1, 0, 'C');
 $pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(20, 6, utf8_decode('Cantidad'), 1, 0, 'C');
 $pdf->SetFont('Arial','',  10);
@@ -62,11 +62,11 @@ foreach ($listado1 as $fila1) {
     $pdf->Ln(6); 
     
     $pdf->Cell(45, 6, $fila1['codigo'], 1, 0, 'C');
-    $pdf->Cell(40, 6, utf8_decode($fila1['titulo']), 1, 0, 'C');
-    $pdf->Cell(80, 6, utf8_decode($fila1['autor']), 1, 0, 'C');
+    $pdf->Cell(85, 6, utf8_decode($fila1['titulo']), 1, 0, 'C');
+    $pdf->Cell(70, 6, utf8_decode($fila1['autor']), 1, 0, 'C');
     
-    $pdf->Cell(50, 6, utf8_decode($fila1['editorial']), 1, 0, 'C');
-    $pdf->Cell(40, 6, date_format(date_create($fila1['fecha_publicacion']), 'd-m-Y'), 1, 0, 'C');
+    $pdf->Cell(30, 6, utf8_decode($fila1['editorial']), 1, 0, 'C');
+    $pdf->Cell(30, 6, date_format(date_create($fila1['fecha_publicacion']), 'd-m-Y'), 1, 0, 'C');
     $pdf->Cell(20, 6, utf8_decode($fila1['cantidad']), 1, 0, 'C');
 }
 
