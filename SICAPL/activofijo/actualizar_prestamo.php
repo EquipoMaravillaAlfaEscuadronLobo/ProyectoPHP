@@ -81,7 +81,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-3" >
-                            <img src="" id="fotA" class="presentacionXZ">
+                            <img src="" id="fotAA" class="presentacionXZ">
                         </div>
                         <div class="col-md-9">
                             <table class="table table-striped table-bordered">
@@ -206,9 +206,10 @@ if (isset($_REQUEST["pas"])) {
 
     if ($opcion == 2) {
          
-        if (Repositorio_prestamoact::Actualizar(Conexion::obtener_conexion(), $devolucion, $observacions, $codPrestamo)) {
+        if (true) {
             for ($i = 0; $i < $longitud; $i++) {
                 if (Repositorio_prestamoact::ActualizarActivo(Conexion::obtener_conexion(), $libros[$i], $aciones[$i], $observacions[$i])) {
+                    $todas_las_observaciones='';
                     echo "<script type='text/javascript'>";
                     echo "swal({
                     title: 'Exito',
@@ -223,6 +224,7 @@ if (isset($_REQUEST["pas"])) {
                     
                 }
             }
+            Repositorio_prestamoact::Actualizar(Conexion::obtener_conexion(), $devolucion, $observacions, $codPrestamo);
             $nombre = Repositorio_Bitacora::nombre_usuario(Conexion::obtener_conexion(), $usuario);
             $dia = $_POST['fecha_devolucion_act'];
             $dia = date_format(date_create($dia), 'd-m-Y');

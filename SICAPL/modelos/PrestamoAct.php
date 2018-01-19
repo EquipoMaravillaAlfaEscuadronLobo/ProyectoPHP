@@ -7,8 +7,16 @@ class PrestamoActivo
 	private $usuario;
 	private $salida;
 	private $devolucion;
+        private $observacion;
+        function getObservacion() {
+            return $this->observacion;
+        }
 
-	function __construct()
+        function setObservacion($observacion) {
+            $this->observacion = $observacion;
+        }
+
+        	function __construct()
 	{
 		# code...
 	}
