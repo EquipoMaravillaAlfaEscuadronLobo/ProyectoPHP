@@ -49,7 +49,7 @@ class Repositorio_autores {
         return $ultimo;
     }
 
-    public function ListaAutores($conexion) {
+    public static function ListaAutores($conexion) {
         $resultado = "";
         if (isset($conexion)) {
             try {

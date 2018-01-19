@@ -56,7 +56,7 @@ class Repositorio_libros {
         return $libro_insertado;
     }
 
-    public function ListaLibros($conexion) {
+    public static function ListaLibros($conexion) {
         $resultado = "";
         if (isset($conexion)) {
             try {
