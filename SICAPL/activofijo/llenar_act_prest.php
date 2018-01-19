@@ -25,15 +25,7 @@ foreach ($listado as $fila) {
            document.getElementById('dirAct').innerHTML = "<?php echo $fila['dir']; ?>";
            
            document.getElementById('fotAA').setAttribute("src", "../foto_usuario/<?php echo $fila['foto'] ?>")
-        document.getElementById('fotAA').setAttribute("title", "Observaciones")
-        document.getElementById('fotAA').setAttribute("rel", "popover")
-        document.getElementById('fotAA').setAttribute("data-container", "body")
-        document.getElementById('fotAA').setAttribute("data-togle", "popover")
-        document.getElementById('fotAA').setAttribute("data-placement", "top")
-        document.getElementById('fotAA').setAttribute("data-content", "<?php if($fila['obsP']!=""){echo "<ol><li>".$fila['obsP']."</li></ol>";}else{ echo "No tiene observaciones";} ?>")
        
-           
-        //document.getElementById('fotAct').setAttribute("src", "../imagenes/tipo.jpg");
         $("table#listActivoAct tbody tr").remove();
     <?php
     Conexion::abrir_conexion();
