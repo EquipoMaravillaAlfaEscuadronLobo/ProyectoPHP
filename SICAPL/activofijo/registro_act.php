@@ -306,7 +306,7 @@ if (isset($_REQUEST["bandera1"])) {
     Conexion::abrir_conexion();
     $cant = $_REQUEST['cantidad'];
 
-
+    $codigo = array();
     $detalle = new Detalles();
     $detalle->setSeri($_REQUEST["nserie"]);
     $detalle->setColor($_REQUEST["color"]);
@@ -373,8 +373,8 @@ if (isset($_REQUEST["bandera1"])) {
         }
         //$cod=$_REQUEST["selectCat"]."-".$correlativo; 
         $activo->setCodigo_activo($cod);
-
-        echo Repositorio_activo::insertar_activo(Conexion::obtener_conexion(), $activo);
+        $codigo[$i-1]=$cod;
+         Repositorio_activo::insertar_activo(Conexion::obtener_conexion(), $activo);
     }
 
     ////esto es para la bitacora 
@@ -384,8 +384,7 @@ if (isset($_REQUEST["bandera1"])) {
             . $_REQUEST["color"] . ', marca ' . $_REQUEST['marca'] . ", dimensiones " . $_REQUEST['dimensiones']
             . ', sistema operativo ' . $_REQUEST["so"] . ", Memoria Ram " . $_REQUEST["ram"] . ", Modelo " . $_REQUEST["modelo"];
     Repositorio_Bitacora::insertar_bitacora(Conexion::obtener_conexion(), $accion);
-    echo "<script>";
-    echo ' swal({
+    echo '<script language="javascript">swal({
         title: "Exito!",
         text: "Activos Registrados desea imprimir el codigo de barras?",
         type: "success",
@@ -398,16 +397,17 @@ if (isset($_REQUEST["bandera1"])) {
     },
     function (isConfirm) {
         if (isConfirm) {
-            var url = "../reportesActivo/imprimir_barcode.php?codigo=' . $codigo . '" ;
+        var arre = '.json_encode( $codigo ).';
+            var url = "../reportesActivo/imprimir_barcode.php?codigo="+arre ;
 
             var a = document.createElement("a");
             a.target = "_blank";
             a.href = url;
             a.click();
         } else {
-            location.href = "inicio_b.php";
+            location.href = "inicio_activo.php";
         }
-    });';
-    echo "</script>";
+    });</script>'; 
+    
 }
 ?>

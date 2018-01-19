@@ -11,8 +11,8 @@ foreach ($listado as $fila) {
     <script type="text/javascript">
 
 		document.getElementById('carnetA').innerHTML = "<?php echo $fila['codigo_usuario'] ?>";
-        document.getElementById('nombreUserA').innerHTML = "<?php echo $fila['nombre'] ?>";
-
+        document.getElementById('codigouserA').value = "<?php echo $fila['codigo_usuario'] ?>";
+        document.getElementById('sexoA').innerHTML = "<?php echo $fila['sexo'] ?>";
         document.getElementById('sexoA').innerHTML = "<?php echo $fila['sexo'] ?>";
         document.getElementById('fotA').setAttribute("src", "../foto_usuario/<?php echo $fila['foto'] ?>")
         document.getElementById('fotA').setAttribute("title", "Observaciones")

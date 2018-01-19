@@ -1,13 +1,10 @@
 <?php
-include_once './vendor/autoload.php';
+include_once '../reportes/vendor/autoload.php';
 
 use Spipu\Html2Pdf\Html2Pdf;
 
 ob_start();
-include_once '../app/Conexion.php';
-include_once '../modelos/Usuario.php';
-include_once '../repositorios/respositorio_libros.php';
-Conexion::abrir_conexion();
+
 
 $i = 1;
 ?>
@@ -39,8 +36,9 @@ $i = 1;
     }
     .tabla{
 
-        align-content: stretch;
+        align-content: center;
         width: 100%;
+        margin-left: 100px;
 
     }
     h1 {color: #000033}
@@ -49,9 +47,16 @@ $i = 1;
     .tabla table td{
         padding: 0;
         margin: 0;
-        width: 450px;
+        width: 700px;
+        
+        align-content: center;
     }
-
+    .contenedor{
+        align-content: center;
+        text-align: center;
+        
+        
+    }
 
 
 
@@ -61,45 +66,29 @@ $i = 1;
 <page pageset="old"><!-- Etiqueta para cada pagina del reporte-->
 
     <?php 
-    $i=1;
-    $libros = Repositorio_libros::ListaDarBaja(Conexion::obtener_conexion(), $_REQUEST['codigo']);
-    foreach ($libros as $listado) { ?>
+   
+    $cod=$_REQUEST['codigo'];
+    $longitud = count($_REQUEST['codigo']);
+    for ($i = 0; $i < $longitud; $i++) { 
+   
+        ?>
     
-    <div class="contenedor">
+    <div class="tabla">
         <table>
-            <?php
-                
-                
-                    if($i==1){
-                    ?>
+          
                     <tr>
                         <td>
-                            <div class="iz">
-                                <barcode dimension="1D" type="C128" value="<?php echo $listado['codigo_libro'] ?>" label="label" style="width:100%; height:15mm; color: #000000; font-size: 4mm"></barcode>
+                            <div>
+                                <barcode dimension="1D" type="C128" value="<?php echo $cod[$i] ?>" label="label" style="width:70%; height:15mm; color: #000000; font-size: 4mm"></barcode>
                             </div>
                         </td>                
                     </tr>
 
-                    <?php
-                    $i=2;
-                    }else{
-                        
-                        ?>
-                            <tr>
-                        <td>
-                            <div class="dr">
-                                <barcode dimension="1D" type="C128" value="<?php echo $listado['codigo_libro'] ?>" label="label" style="width:100%; height:15mm; color: #000000; font-size: 4mm"></barcode>
-                            </div>
-                        </td>                
-                    </tr>
-                            <?php
-                            $i=1;
-                    }
-                
-                ?>
+                    
+                         
         </table>
         
-        
+         <?php echo $longitud ." ".$_REQUEST['codigo'][0] ?>
         
     </div>
     <br>
@@ -113,7 +102,7 @@ $i = 1;
 <?php
 $html = ob_get_clean();
 
-$html2pdf = new Html2Pdf('L', 'A4', 'es', 'true', 'UTF-8');
+$html2pdf = new Html2Pdf('P', 'A4', 'es', 'true', 'UTF-8');
 $html2pdf->writeHTML($html);
 $html2pdf->output('Reporte 1.pdf');
 ?>
