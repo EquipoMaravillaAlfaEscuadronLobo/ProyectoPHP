@@ -218,6 +218,27 @@ include_once('../plantillas/pie_de_pagina.php');
 
 
 // ]]></script>
+<script>
+    function abrirAyuda(opcion){
+         var direccion;
+        switch(opcion){
+           
+            case 1:
+                direccion="../ayuda/listActivo.php";
+                break;
+            case 2:
+                direccion="../ayuda/regActivo.php"
+                break;
+            case 3:
+                direccion="../ayuda/regMantenimiento.php"
+                break;
+            case 4:
+                direccion="../ayuda/prestamoActivo.php"
+                break;    
+        }
+        window.open(direccion, "_blank", "toolbar=no,scrollbars=yes,resizable=no,top=0,left=500,width=700,height=600");
+    }
+</script>
 
 
 

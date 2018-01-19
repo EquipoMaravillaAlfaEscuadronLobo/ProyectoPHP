@@ -13,6 +13,9 @@ $listado = Repositorio_prestamoact::ListaPrestamosAct(Conexion::obtener_conexion
                     <div class="col-md-8"><h3>Listado de Prestamos</h3> </div>
                     <div class="col-md-2">  <a class="btn btn_primary"  target="_blank" onclick="nuevoPretamoAct()"><span aria-hidden="true" class="glyphicon glyphicon-plus">
                             </span>Nuevo Prestamo</a></div>
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-info" id="ayuda" onclick="abrirAyuda(4)"><i class="fa fa-info-circle"></i></button>
+                    </div>
                 </div>       
             </div>
             <div class="panel-body">				

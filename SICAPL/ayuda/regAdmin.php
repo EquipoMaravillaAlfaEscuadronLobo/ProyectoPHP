@@ -11,7 +11,7 @@
             
             <li><b>Dui: </b>Aqu&iacute; se debe escribir dui, el cu&aacute;l tiene un formato (########-#) espec&iacute;fico, del usuario a registrar.</li><br>
             <li><b>Contrase&ntilde;a: </b>Campo donde se debe escribir la contras&ntilde;a con la cual el usuario iniciar&aacute; sesi&oacute;n, debe tener al menso 6 caracteres</li><br>
-            <li><b>Repetir Contrase&ntilde;a: </b>Campo donde se debe repetirinfresada en el campo anterior.</li><br>
+            <li><b>Repetir Contrase&ntilde;a: </b>Campo donde se debe repetir la contrase&ntilde;a ingresada en el campo anterior.</li><br>
             <li><b>Fecha de Nacimiento: </b>Abre el calendario y debe elegir la fecha de nacimiento del nuevo administrador</li><br>
             <li><b>Email: </b>Compo en el que se escribe el correo electronico del nuevo administrador.</li><br>
             <li><b>Sexo: </b>Elegir entre las opciones de masculino y femenino.
