@@ -23,7 +23,7 @@ foreach ($listado as $fila) {
         document.getElementById('fotA').setAttribute("data-placement", "top")
         document.getElementById('fotA').setAttribute("data-content", "<?php if($fila['obsP']!=""){echo "<ol><li>".$fila['obsP']."</li></ol>";}else{ echo "No tiene observaciones";} ?>")
         <?php 
-            if ($fila[11]=='si') {
+            if ($fila['esta']=='si') {
          ?>
           document.getElementById('actualA').innerHTML = "<?php echo 'Prestamo Pendiente'?>";
           $('#actualA').removeClass('alert-success');
