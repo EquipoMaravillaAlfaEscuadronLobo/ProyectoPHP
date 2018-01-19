@@ -257,7 +257,8 @@ actvos.estado = 0
 
                 $codigo_administrador = $activo->getCodigo_administrador();
                 $foto = $activo->getFoto();
-                if($foto != ""){
+               
+                if($foto != ""){ 
                 $sql = "UPDATE  actvos set codigo_administrador='$codigo_administrador' ,foto = '$foto' where codigo_activo='$codigo_original'";
                 }else{
                 $sql = "UPDATE  actvos set codigo_administrador='$codigo_administrador'  where codigo_activo='$codigo_original'";

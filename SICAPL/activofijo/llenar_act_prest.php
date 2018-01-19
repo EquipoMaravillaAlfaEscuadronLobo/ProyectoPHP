@@ -16,6 +16,7 @@ foreach ($listado as $fila) {
         $('#codigouserActP').val("<?php echo $fila['carnet']; ?>");//para obener el codigo de usuario
         $('#fechComp').val("<?php echo date_format(date_create($fila['fech_dev']), 'd-m-Y'); ?>");
         $('#fecha_dev_act').val("<?php echo date_format(date_create($fila['fech_dev']), 'd-m-Y'); ?>");
+         $('#fechOriginal').val("<?php echo date_format(date_create($fila['fech_dev']), 'd-m-Y'); ?>");
         $('#fecha_sal_act').val("<?php echo date_format(date_create($fila['fech_sal']), 'd-m-Y'); ?>");
         document.getElementById('carnetAct').innerHTML = "<?php echo $fila['carnet']; ?>";
         document.getElementById('nombreUserAct').innerHTML = "<?php echo $fila['nombre']; ?>";

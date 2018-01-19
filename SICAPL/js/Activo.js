@@ -5,7 +5,7 @@ function buscarUser2(valor) {
         $.post("../activofijo/getUser.php", {libro: depto}, function (mensaje) {
             $('#listaLibros22').html(mensaje).fadeIn();
         });
-        document.getElementById('codigouserAa').value="";
+        document.getElementById('codigouserAa').value = "";
     }
 }
 
@@ -23,13 +23,13 @@ function buscarUser2(valor) {
 //    }
 //}
 function buscarActivo(valor) {
-    
-    
+
+
     var depto = valor.value;
     if (depto != "") {
         llenarTact(depto, "---");
     }
-    document.getElementById('codigo_bus_act').value="";
+    document.getElementById('codigo_bus_act').value = "";
 }
 
 function buscarActivo_mantenimiento(valor) {
@@ -37,7 +37,7 @@ function buscarActivo_mantenimiento(valor) {
 
     if (depto.length == 16) {
         llenarTactMant(depto, "---");
-        document.getElementById('codigo_bus_mant').value=""; 
+        document.getElementById('codigo_bus_mant').value = "";
     }
 
 }
@@ -354,8 +354,12 @@ function agregarMant() {
                 } else {
                     if (!isNaN(lista[i])) {
                         if (parseInt(lista[i]) > 0) {
-                        }else{pass++}
-                    }else{pass++}
+                        } else {
+                            pass++
+                        }
+                    } else {
+                        pass++
+                    }
                 }
             }//fin for
             //la lista2 se llena cuando es numero grande o el correlativo lleva guion
@@ -365,11 +369,15 @@ function agregarMant() {
 
                 if (parseInt(lista3[0]) > parseInt(lista3[1])) {//comparo qeu el primer nimero sea mayor
                     pass++;
-                }else{
+                } else {
                     if (!isNaN(lista3[0]) && !isNaN(lista3[1])) {
                         if (parseInt(lista3[0]) > 0 && parseInt(lista3[1]) > 0) {
-                        }else{pass++}
-                    }else{pass++}
+                        } else {
+                            pass++
+                        }
+                    } else {
+                        pass++
+                    }
                 }
             }//fin for2
             if (pass == 0) {
@@ -393,24 +401,32 @@ function agregarMant() {
             if (lista[i].length > 2) {//si es mayor que 2 puede que sea numero > a 10 o un rango como 1-9
                 lista2.push(lista[i]);
             } else {
-                    if (!isNaN(lista[i])) {
-                        if (parseInt(lista[i]) > 0) {
-                        }else{pass++}
-                    }else{pass++}
+                if (!isNaN(lista[i])) {
+                    if (parseInt(lista[i]) > 0) {
+                    } else {
+                        pass++
+                    }
+                } else {
+                    pass++
                 }
+            }
         }//fin for
-        
+
         if (lista2.length > 0) {//for2
             //la lista2 se llena cuando es numero grande o el correlativo lleva guion
             for (var i = 0; i < lista2.length; i++) {
                 lista3 = lista2[i].split('-');
                 if (parseInt(lista3[0]) > parseInt(lista3[1])) {//comparo qeu el primer nimero sea mayor
                     pass++;
-                }else{
+                } else {
                     if (!isNaN(lista3[0]) && !isNaN(lista3[1])) {
                         if (parseInt(lista3[0]) > 0 && parseInt(lista3[1]) > 0) {
-                        }else{pass++}
-                    }else{pass++}
+                        } else {
+                            pass++
+                        }
+                    } else {
+                        pass++
+                    }
                 }
             }//fin for2
             if (pass == 0) {
@@ -483,8 +499,12 @@ function agregar() {
                 } else {
                     if (!isNaN(lista[i])) {
                         if (parseInt(lista[i]) > 0) {
-                        }else{pass++}
-                    }else{pass++}
+                        } else {
+                            pass++
+                        }
+                    } else {
+                        pass++
+                    }
                 }
             }//fin for
             //la lista2 se llena cuando es numero grande o el correlativo lleva guion
@@ -494,11 +514,15 @@ function agregar() {
 
                 if (parseInt(lista3[0]) > parseInt(lista3[1])) {//comparo qeu el primer nimero sea mayor
                     pass++;
-                }else{
+                } else {
                     if (!isNaN(lista3[0]) && !isNaN(lista3[1])) {
                         if (parseInt(lista3[0]) > 0 && parseInt(lista3[1]) > 0) {
-                        }else{pass++}
-                    }else{pass++}
+                        } else {
+                            pass++
+                        }
+                    } else {
+                        pass++
+                    }
                 }
             }//fin for2
             if (pass == 0) {
@@ -522,24 +546,32 @@ function agregar() {
             if (lista[i].length > 2) {//si es mayor que 2 puede que sea numero > a 10 o un rango como 1-9
                 lista2.push(lista[i]);
             } else {
-                    if (!isNaN(lista[i])) {
-                        if (parseInt(lista[i]) > 0) {
-                        }else{pass++}
-                    }else{pass++}
+                if (!isNaN(lista[i])) {
+                    if (parseInt(lista[i]) > 0) {
+                    } else {
+                        pass++
+                    }
+                } else {
+                    pass++
                 }
+            }
         }//fin for
-        
+
         if (lista2.length > 0) {//for2
             //la lista2 se llena cuando es numero grande o el correlativo lleva guion
             for (var i = 0; i < lista2.length; i++) {
                 lista3 = lista2[i].split('-');
                 if (parseInt(lista3[0]) > parseInt(lista3[1])) {//comparo qeu el primer nimero sea mayor
                     pass++;
-                }else{
+                } else {
                     if (!isNaN(lista3[0]) && !isNaN(lista3[1])) {
                         if (parseInt(lista3[0]) > 0 && parseInt(lista3[1]) > 0) {
-                        }else{pass++}
-                    }else{pass++}
+                        } else {
+                            pass++
+                        }
+                    } else {
+                        pass++
+                    }
                 }
             }//fin for2
             if (pass == 0) {
@@ -575,8 +607,10 @@ $(document).on('click', '.borrar_activo_tabla_prestamo', function (event) {
 });
 
 function  actualizar() {
-    document.getElementById("opcion").value = 2;
-    document.actualizar_prestamo_activo.submit();
+    if (validarTablas_dev_act()) {
+        document.getElementById("opcion").value = 2;
+        document.actualizar_prestamo_activo.submit();
+    }
 }
 function  finalizar() {
     if (validarTablas_dev()) {
@@ -672,9 +706,97 @@ function validarTablas_dev() {
     return okk;
 }
 
+function validarTablas_dev_act() {
+
+    var okk = true;
+    // codigo para verificar no finalizar con activos en prestamo
+    var sel2 = document.actualizar_prestamo_activo.elements["accion_select1[]"];//se obtiene los elementos
+    if ($('#listActivoAct >tbody >tr').length == 1) {
+        okk = false;
+        var op = document.getElementsByName("accion_select1[]")[0].value;
+        if (op == 1) {//observacion_pres_act
+            swal({
+                    title: "¿Desea continuar?",
+                    text: "Finalizara el prestamo con el activo devuelto y la fecha de devolución original",
+                    type: "warning",
+                    showCancelButton: true,
+                    cancelButtonText: "Cancelar",
+                    confirmButtonClass: "btn-danger",
+                    confirmButtonText: "Si, continuar!",
+                    closeOnConfirm: false
+                },
+                        function () {
+                            okk = false;
+                            document.getElementById("fecha_sal_act").value = document.getElementById("fechOriginal").value;
+                             document.getElementById("opcion").value = 1;
+                            document.actualizar_prestamo_activo.submit();
+                        });
+        } else {
+            if (op == 3) {
+                swal({
+                    title: "¿Desea continuar?",
+                    text: "Finalizara el prestamo con el activo dañado y la fecha de devolución original",
+                    type: "warning",
+                    showCancelButton: true,
+                    cancelButtonText: "Cancelar",
+                    confirmButtonClass: "btn-danger",
+                    confirmButtonText: "Si, continuar!",
+                    closeOnConfirm: false
+                },
+                        function () {
+                            okk = false;
+                            document.getElementById("fecha_sal_act").value = document.getElementById("fechOriginal").value;
+                             document.getElementById("opcion").value = 1;
+                            document.actualizar_prestamo_activo.submit();
+                        });
+
+            } else {
+                if (op == 4) {
+                    swal({
+                        title: "¿Desea continuar?",
+                        text: "Finalizara el prestamo con el activos extrviado y la fecha de devolución original",
+                        type: "warning",
+                        showCancelButton: true,
+                        cancelButtonText: "Cancelar",
+                        confirmButtonClass: "btn-danger",
+                        confirmButtonText: "Si, continuar!",
+                        closeOnConfirm: false
+                    },
+                            function () {
+                                okk = false;
+                                document.getElementById("fecha_sal_act").value = document.getElementById("fechOriginal").value;
+                                 document.getElementById("opcion").value = 1;
+                                document.actualizar_prestamo_activo.submit();
+                            });
+                    // observacion_pres_act
+                }else{return true;}
+            }
+        }
+    } 
+    else {
+         okk = false;
+        var cont1 = 0;
+        for (var i = 0; i < sel2.length; i++) {
+            if (sel2[i].value == "2") {//verifica si hay activos con codigo de estado 2, que es el de en prestamo
+                cont1++;
+                okk = true;
+            }
+
+        }
+    }
+
+    if (cont1 == 0) {//si hay activos con codido 3 
+        swal("Ooops", "Actualizacion disponible solo cuando hay activos pendientes de devolver", "warning");
+        
+
+    }
+
+
+    return okk;
+}
+
 function copiarDetalles() {
     document.getElementById('nserieEAD').value = document.getElementById('nserieEAd1').value;
-
     document.getElementById('colorEAD').value = document.getElementById('colorEAd1').value;
     document.getElementById('marcaEAD').value = document.getElementById('marcaEAd1').value;
     document.getElementById('soEAD').value = document.getElementById('soEAd1').value;
@@ -703,3 +825,11 @@ function copiarDetalles() {
 
 }
 
+function impCod() {
+    var cod = document.getElementById('codActivo').value;
+    var url = "../reportesActivo/imprimir_barcode.php?codigo=" + cod;
+    var a = document.createElement("a");
+    a.target = "_blank";
+    a.href = url;
+    a.click();
+}

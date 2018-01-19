@@ -3,6 +3,7 @@
     <input type="hidden" name="codigouserActP" id="codigouserActP">
     <input type="hidden" name="codigoPrestamoAct" id="codigoPrestamoAct">
     <input type="hidden" name="opcion" id="opcion">
+    <input type="hidden" name="fechOriginal" id="fechOriginal">
     <input type="hidden" name="fechComp" id="fechComp">
     <div class="row ">
         <div class="col-md-7">
@@ -97,33 +98,33 @@
                                     <td><b>Sexo:</b></td>
                                     <td><div id="sexoAct"></div></td>
                                 </tr>
-                                 <tr>
+                                <tr>
                                     <td><b>Telefono:</b></td>
                                     <td><div id="telAct"></div></td>
                                 </tr>
-                                 <tr>
+                                <tr>
                                     <td><b>Correo:</b></td>
                                     <td><div id="corrAct"></div></td>
                                 </tr>
-                                 <tr>
+                                <tr>
                                     <td><b>Direccion:</b></td>
                                     <td><div id="dirAct"></div></td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                     <div class="input-field col s12">
-                            <textarea id="observacion_pres_act" name="observacion_pres_act" class="materialize-textarea"></textarea>
-                            <label for="textarea1" style="font-size:15px">Observaciones</label>
-                        </div>
+                                        <div class="input-field col s12">
+                                            <textarea id="observacion_pres_act" name="observacion_pres_act" class="materialize-textarea"></textarea>
+                                            <label for="textarea1" style="font-size:15px">Observaciones</label>
+                                        </div>
                                     </td>
                                 </tr>
-                                    
+
 
                             </table>
                         </div>
 
                     </div>
-                  
+
 
 
                 </div>
@@ -151,30 +152,38 @@
         $('select[name*=accion_select]').val(valor);
         document.getElementById("btnfinalizar").disabled = false;
     }
-    
-    function activar_btn_act(valor){
-         document.getElementById("btn_actualizar_prestamo").disabled = false;
-         document.getElementById("btnfinalizar").disabled = false;
-         
-         if(valor=="3" && valor=="4"){
-                $("#observacion_pres_act").prop("required", true);
-         }else{
-              $("#observacion_pres_act").prop("required", false);
-         }
+
+    function activar_btn_act(valor) {
+        document.getElementById("btn_actualizar_prestamo").disabled = false;
+        document.getElementById("btnfinalizar").disabled = false;
+
+        if (valor == "3" && valor == "4") {
+            $("#observacion_pres_act").prop("required", true);
+        } else {
+            $("#observacion_pres_act").prop("required", false);
+        }
     }
     //activa el boton y evita que la fecha quede vacia
     function validarFecha() {
         var feact = document.getElementById("fechComp").value;
+        var feaori = document.getElementById("fechOriginal").value;
         var feanew = document.getElementById("fecha_dev_act").value;
         if (feanew == "") {
             document.getElementById("fecha_dev_act").value = feact;
         }
+        if(feanew!=feaori){
+             document.getElementById("btn_actualizar_prestamo").disabled = false;
+            document.getElementById("btnfinalizar").disabled = true;
+        }else{
+             document.getElementById("btn_actualizar_prestamo").disabled = true;
+            document.getElementById("btnfinalizar").disabled = false;
+        }
         //alert(feanew);
 
-        document.getElementById("btn_actualizar_prestamo").disabled = false;
+       
     }
-    
-     
+
+
 </script>
 <?php
 if (isset($_REQUEST["pas"])) {
@@ -191,8 +200,8 @@ if (isset($_REQUEST["pas"])) {
     $devolucion = $_POST['fecha_devolucion_act'];
     $devolucion = date_format(date_create($devolucion), 'Y-m-d');
     $libros = $_POST['codsActsA']; //son los activos pero fue mas facil comentar esto a cambiar el nombre
-    $observacions = $_POST['observaciones'];//observaciones de los actiovos
-    $observacion = $_POST['observacion_pres_act'];//observaciones del prestamo o usuario
+    $observacions = $_POST['observaciones']; //observaciones de los actiovos
+    $observacion = $_POST['observacion_pres_act']; //observaciones del prestamo o usuario
     $aciones = $_POST['accion_select1']; //para acutlizar el estado del activo 
     $opcion = $_POST['opcion'];
     $codPrestamo = $_POST['codigoPrestamoAct'];
@@ -202,22 +211,22 @@ if (isset($_REQUEST["pas"])) {
     $Prestamo->setSalida($salida);
     $Prestamo->setDevolucion($devolucion);
     $longitud = count($libros);
-    $todas_las_observaciones=$observacion;
+    $todas_las_observaciones = $observacion;
 
     if ($opcion == 2) {
-         
+
         if (true) {
             for ($i = 0; $i < $longitud; $i++) {
                 if (Repositorio_prestamoact::ActualizarActivo(Conexion::obtener_conexion(), $libros[$i], $aciones[$i], $observacions[$i])) {
-                    $todas_las_observaciones=$todas_las_observaciones.$libros[$i].": $observacions[$i]";
-                     
+                    if ($observacions[$i] != "")
+                        $todas_las_observaciones = $todas_las_observaciones . '  ' . $libros[$i] . ": $observacions[$i].'  '";
                 }
             }
-            Repositorio_prestamoact::Actualizar(Conexion::obtener_conexion(), $devolucion, $observacions, $todas_las_observaciones);
+            Repositorio_prestamoact::Actualizar(Conexion::obtener_conexion(), $devolucion, $todas_las_observaciones, $codPrestamo);
             $nombre = Repositorio_Bitacora::nombre_usuario(Conexion::obtener_conexion(), $usuario);
             $dia = $_POST['fecha_devolucion_act'];
             $dia = date_format(date_create($dia), 'd-m-Y');
-            $accion = 'El usuario ' . $nombre . ' actualizo su prestamo de activo fijo para el dia '. $dia;
+            $accion = 'El usuario ' . $nombre . ' actualizo su prestamo de activo fijo para el dia ' . $dia;
             Repositorio_Bitacora::insertar_bitacora(Conexion::obtener_conexion(), $accion);
             echo '<script language="javascript">swal({
                     title: "Exito",
@@ -226,7 +235,7 @@ if (isset($_REQUEST["pas"])) {
                     function(){
                        location.href="inicio_activo.php";
                     }
-                    );</script>'; 
+                    );</script>';
         } else {
             echo "<script type='text/javascript'>";
             echo 'swal({
@@ -243,14 +252,12 @@ if (isset($_REQUEST["pas"])) {
         if (true) {
             for ($i = 0; $i < $longitud; $i++) {
                 if (Repositorio_prestamoact::ActualizarActivo(Conexion::obtener_conexion(), $libros[$i], $aciones[$i], $observacions[$i])) {
-                     $todas_las_observaciones=$todas_las_observaciones.$libros[$i].": $observacions[$i]";
-                   
+                    if ($observacions[$i] != "")
+                        $todas_las_observaciones = $todas_las_observaciones . '  ' . $libros[$i] . ": $observacions[$i].'  '";
                 }
-                
             }
-            $nombre = Repositorio_Bitacora::nombre_usuario(Conexion::obtener_conexion(), $usuario);
-            $accion = 'el usario ' . $nombre . ' finalizo su prestamo de activo fijo '; 
-            Repositorio_Bitacora::insertar_bitacora(Conexion::obtener_conexion(), $accion);
+            Repositorio_prestamoact::Finalizar(Conexion::obtener_conexion(), $codPrestamo, $todas_las_observaciones);
+            $accion = 'el usario ' . $nombre . ' finalizo su prestamo de activo fijo ';
             Repositorio_Bitacora::insertar_bitacora(Conexion::obtener_conexion(), $accion);
             echo '<script language="javascript">swal({
                     title: "Exito",
@@ -260,7 +267,6 @@ if (isset($_REQUEST["pas"])) {
                        location.href="inicio_activo.php";
                     }
                     );</script>';
-            
         } else {
             echo "<script type='text/javascript'>";
             echo 'swal({

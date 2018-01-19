@@ -136,20 +136,22 @@
     <div class="col-md-6">
         <div class="panel-group">
             <div class="panel panel-default" name="activo">
-                
+
                 <table class="table table-striped table-bordered" >
                     <tr>
                     <table class="table table-striped table-bordered" id="datos_mantenimiento">
                         <caption>Datos de Mantenimiento</caption>
                         <tbody>
                             <tr >
-                                <td style="height:10px;"><div class="col m12">
+                                <td class="text-left">
+                                    <div class="col m12 text-left">
                                         <div class="input-field">
                                             <i class="fa fa-calendar prefix" aria-hidden="true"></i>
                                             <label for="fecha_pub" class="active" style="font-size:16px">Fecha de Mantenimiento</label>
                                             <input type="text" value="<?php echo date("d-m-Y"); ?>" id="fecha_mant" required="" name="fecha_mant" class="form-control datepicker2" >
                                         </div>
-                                    </div></td>
+                                    </div>
+                                </td>
                                 <td style="height:10px;">
                                     <div class="input-field col m12">
                                         <i class="fa fa-usd prefix"></i> 

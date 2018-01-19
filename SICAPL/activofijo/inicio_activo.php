@@ -59,10 +59,10 @@ include_once('../plantillas/menu.php');
     <?php include('listado_prest_act.php'); ?> 
 </div>
 <div class="col s12" id="ttest5">
-   <?php include('consultas.php'); ?>
+    <?php include('consultas.php'); ?>
 </div>
 <div class="col s12" id="ttest6">
-     <?php include('reportes.php'); ?>
+    <?php include('reportes.php'); ?>
 </div>
 
 <?php
@@ -138,18 +138,26 @@ include_once('../plantillas/pie_de_pagina.php');
                 // Mostramos un mensaje con la respuesta de PHP
                 success: function (resp) {
                     document.getElementById('FORMUL').reset();
-                    $('#nuevoEncargado').modal('close');                    
+                    $('#nuevoEncargado').modal('close');
                     $("#listaeman").load(" #listaeman");//para actuaizar la datalist cuando registra
                     swal("Exito", "Encargado guardado con exito", "success");
-                   
+
                 }
             });
             return false;
         });
 
         $('#mant').submit(function () {
-            var id= document.getElementById('eviar_mantenimiento').value;
-            var id= document.getElementById('eviar_mantenimiento').value;
+            document.getElementById('nserieE').value = document.getElementById('nserieEAd1').value;
+            document.getElementById('colorE').value = document.getElementById('colorEAd1').value;
+            document.getElementById('marcaE').value = document.getElementById('marcaEAd1').value;
+            document.getElementById('soE').value = document.getElementById('soEAd1').value;
+            document.getElementById('dimensionesE').value = document.getElementById('dimensionesEAd1').value;
+            document.getElementById('ramE').value = document.getElementById('ramEAd1').value;
+            document.getElementById('modeloE').value = document.getElementById('modeloEAd1').value;
+            document.getElementById('ddE').value = document.getElementById('ddEAd1').value;
+            document.getElementById('proE').value = document.getElementById('proEAd1').value;
+            document.getElementById('otroE').value = document.getElementById('otroEAd1').value;
             // Enviamos el formulario usando AJAX
             $.ajax({
                 type: 'POST',
@@ -157,17 +165,20 @@ include_once('../plantillas/pie_de_pagina.php');
                 data: $(this).serialize(),
                 // Mostramos un mensaje con la respuesta de PHP
                 success: function (resp) {
-                    
-                    if(id=="si"){
-                    $('#nuevoMant').modal('close');
-                    location.reload();}
-                   
+
+                    if (id == "si") {
+                        $('#nuevoMant').modal('close');
+                        location.reload();
+                    }else{
+                        $('#nuevoMant').modal('close');
+                    }
+
                 }
             });
             return false;
         });
 
-        
+
 
 
 
@@ -201,14 +212,14 @@ include_once('../plantillas/pie_de_pagina.php');
             );
             return false;
         });
-        
-       
-        
-         
-        
-        
-        
-        
+
+
+
+
+
+
+
+
     });
 
 
@@ -219,22 +230,22 @@ include_once('../plantillas/pie_de_pagina.php');
 
 // ]]></script>
 <script>
-    function abrirAyuda(opcion){
-         var direccion;
-        switch(opcion){
-           
+    function abrirAyuda(opcion) {
+        var direccion;
+        switch (opcion) {
+
             case 1:
-                direccion="../ayuda/listActivo.php";
+                direccion = "../ayuda/listActivo.php";
                 break;
             case 2:
-                direccion="../ayuda/regActivo.php"
+                direccion = "../ayuda/regActivo.php"
                 break;
             case 3:
-                direccion="../ayuda/regMantenimiento.php"
+                direccion = "../ayuda/regMantenimiento.php"
                 break;
             case 4:
-                direccion="../ayuda/prestamoActivo.php"
-                break;    
+                direccion = "../ayuda/prestamoActivo.php"
+                break;
         }
         window.open(direccion, "_blank", "toolbar=no,scrollbars=yes,resizable=no,top=0,left=500,width=700,height=600");
     }

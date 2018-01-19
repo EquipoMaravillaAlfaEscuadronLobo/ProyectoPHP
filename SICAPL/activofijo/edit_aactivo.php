@@ -13,6 +13,13 @@ include_once '../app/Conexion.php';
             <input type="hidden" id="codActivo" name="codActivo">
             <input type="hidden" id="codDetalle" name="codDetalle">
             <input type="hidden" id="codamin" name="codamin">
+            
+            <div class="input-field col m8">
+                        <i class="fa fa-barcode prefix"></i> 
+                        <input type="text" id="codActivo1" style="font-size: 22px" name="codActivo1" value="" placeholder="" class="text-center " maxlength="25" minlength="3" required disabled="">
+                        <label for="idCarnetEliminado" style="font-size: 20px">Codigo de activo</label>
+                    </div>
+          
             <div class="row">
                 <div class="col-md-6">
                     <!--                    <div class="col m1"></div>-->
@@ -34,7 +41,7 @@ include_once '../app/Conexion.php';
                     <div class="row">
                         <div class="col m1"></div>
                         <div class="input-field col m6">
-                            <i class="fa fa-info-circle prefix "></i> 
+                            <i class="fa fa-user-circle prefix"></i> 
                             <input type="text" id="nadmin" name="nadmin" class="text-center validate" placeholder=""  readonly="" style="font-size: 19px"
 
                                    >
@@ -58,24 +65,18 @@ include_once '../app/Conexion.php';
                                 Repositorio_administrador::lista_administradores3(Conexion::obtener_conexion());
                                 ?>
                             </select>
+                            <label for="estadoE" style="font-size: 12px">Nuevo Encargado  <small></small> </label>
                         </div>
 
                     </div>
                     <!-- termina el combo de encargado   -->
-                    <div class="row "  >
-                        <button class="btn btn_primary" type="button"  ><a   onclick="llamarMantenimiento() "><span aria-hidden="true" class="glyphicon glyphicon-plus">
-                                </span>MANTENIMIENTO</a></button>
-                        <div class="col-md-3"></div>
-                        <button class="btn btn-danger"  type="button" > <i class="Medium material-icons prefix" onclick="delA()" >delete</i> </button>
-
-
-                    </div><!-- Termina botones -->
+                   
                     <!-- foto  -->
 
 
                     <!-- termina foto -->
                 </div><!-- col md 7 -->
-
+                
                 <div class="col-md-6">
                     <div class="file-field input-field">
                         <div class="btn">
@@ -99,7 +100,25 @@ include_once '../app/Conexion.php';
 
                 </div>
             </div><!--fin row  -->
+             <div class="row text-center"  >
+                 <div class="col-md-4">
+                        <button class="btn btn_primary" type="button"  >
+                            <a   onclick="llamarMantenimiento() ">
+                                <span aria-hidden="true" class="glyphicon glyphicon-plus">
+                                </span>MANTENIMIENTO</a>
+                        </button>
+                     </div>
+                 <div class="col-md-4">
+                     <button class="btn btn-info" id="ipm" type="button" onclick="impCod()"><i class="fa fa-barcode" aria-hidden="true"></i>  Imprimir</button>
+                 </div>
+                 <div class="col-md-4">
+                        <button class="btn btn-danger"  type="button" > 
+                            <i class="Medium material-icons prefix" onclick="delA()" >delete</i> 
+                        </button>
+                 </div>
 
+
+                    </div><!-- Termina botones -->
 
 
 
@@ -314,9 +333,10 @@ if (isset($_REQUEST["banderaActiv"])) {
     }
     Repositorio_activo::actualizar_activo(Conexion::obtener_conexion(), $activo, $_REQUEST["codActivo"]);
     Repositorio_detalle::actualizar_detalle(Conexion::obtener_conexion(), $detalle, $_REQUEST["codDetalle"]);
+   
     echo '<script>swal({
                     title: "Exito",
-                    text: "Registro actualizado con exito!",
+                    text: "Activo actualizado!",
                     type: "success",
                     confirmButtonText: "ok",
                     closeOnConfirm: true

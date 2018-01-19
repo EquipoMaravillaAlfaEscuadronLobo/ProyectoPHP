@@ -57,7 +57,7 @@ $listado = Repositorio_activo::lista_activo(Conexion::obtener_conexion());
                                                     echo "Dado de Baja";
                                                 }
                                                 if ($fila['estado'] == 2) {
-                                                    echo "Prestado";
+                                                    echo "En Prestamo";
                                                 }
                                                 if ($fila['estado'] == 3) {
                                                     echo "Dañado";
@@ -165,10 +165,10 @@ $listado = Repositorio_activo::lista_activo(Conexion::obtener_conexion());
     </div>
     <div class="modal-footer ">
         <div class="row">
-            <div class="col-md-6 text-right"><button id="gp" class="btn btn-success  " onclick="valiD()">
-                    <span class="glyphicon glyphicon-floppy-disk" aria="hidden"></span>
-                    Eliminar</button></div>
-            <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Salir</a></div>
+            <div class="col-md-6 text-right"><button id="gp" class="btn btn-danger  " type="submit" form="eliminarAct">
+                    <span class="fa fa-trash-o" aria="hidden"></span>
+                    </button></div>
+            <div class="col-md-6 text-left"><a href="#" class="modal-action modal-close waves-effect btn btn-success"><i class="glyphicon glyphicon-remove"></i> Salir</a></div>
         </div>  
     </div>
 </div>

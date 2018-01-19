@@ -310,6 +310,7 @@ function abrirActivo(coda, codadm, foto, estado, codd, color, dimen, marca, memo
     var foto2 = "../fotoActivos/" + foto;
 
     $('#codActivo').val(coda);
+    $('#codActivo1').val(coda);
     $('#codDetalle').val(codd);
     //$('#adminedit').val(codadm).selected;
     // $("select#adminedit").val(codadm).attr('selected', 'selected');
@@ -329,6 +330,9 @@ function abrirActivo(coda, codadm, foto, estado, codd, color, dimen, marca, memo
     $('#nadmin').val(admin);
     $('#estadoE').val(estado);
     document.getElementById("fotoEdActsrc").src = foto2;
+    if(estado=="En Prestamo"){
+        document.actAct.ipm.disabled=true;
+    }
     $('#editActivo').modal('open');
 
 }
@@ -336,14 +340,13 @@ function delA() {
 
     var coda = document.getElementById('codActivo').value;
     var codd = document.getElementById('codDetalle').value;
-    var secreto = "111111";
-    DActivo(coda, codd, secreto);
+    
+    DActivo(coda, codd);
 
 }
-function DActivo(cada, codd, password) {
-    $('#codDA').val(codd);
+function DActivo(cada, codd) {
+    $('#codDA').val(cada);
     $('#codD').val(cada);
-    $('#Secreto').val(password);
 
     $('#DActivo').modal('open');
 }
