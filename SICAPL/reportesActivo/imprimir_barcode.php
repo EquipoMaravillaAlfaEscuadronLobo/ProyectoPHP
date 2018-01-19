@@ -67,8 +67,8 @@ $i = 1;
 
     <?php 
    
-    $cod=$_REQUEST['codigo'];
-    $longitud = count($_REQUEST['codigo']);
+    $cod=explode(',',$_REQUEST['codigo']);
+    $longitud = count($cod);
     for ($i = 0; $i < $longitud; $i++) { 
    
         ?>
@@ -87,8 +87,7 @@ $i = 1;
                     
                          
         </table>
-        
-         <?php echo $longitud ." ".$_REQUEST['codigo'][0] ?>
+       
         
     </div>
     <br>
