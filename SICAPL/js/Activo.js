@@ -37,19 +37,8 @@ function buscarActivo_mantenimiento(valor) {
 
     if (depto.length == 16) {
         llenarTactMant(depto, "---");
+        document.getElementById('codigo_bus_mant').value=""; 
     }
-//alert("paso");
-//    var depto = valor.value;
-////var numero=valor.id.substr(7)
-////alert(valor.id);
-//
-//    if (depto != "") {
-//        $.post("../activofijo/getAct_mantenimiento.php", {libro: depto}, function (mensaje) {
-//            $('#listaLibros22').html(mensaje).fadeIn();
-//
-//
-//        });
-//    }
 
 }
 

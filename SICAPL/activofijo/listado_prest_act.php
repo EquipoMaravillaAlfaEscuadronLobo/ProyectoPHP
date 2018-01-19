@@ -32,12 +32,12 @@ $listado = Repositorio_prestamoact::ListaPrestamosAct(Conexion::obtener_conexion
                             $hoy = new DateTime("now");
                             $codigo = $fila['codigo'];
                             ?>
-                        <tr rel="popover" data-container="body" data-togle="popover" data-placement="top"  title="Activos"
+                        <tr rel="popover" data-container="body" data-togle="popover" data-placement="top"  title="Activos  Prestados"
                                 data-content="<?php
                                     Conexion::abrir_conexion();
                                     $listado1 = Repositorio_prestamoact::obtenerListActP(Conexion::obtener_conexion(), $fila['codigo']);
                                     foreach ($listado1 as $fila1) {
-                                        echo $fila1['codigo'] . "<br/>";
+                                        echo $fila1['codigo'] .' - '.$fila1['tipo']. "<br/>";
                                     }
                                     ?>">
                                 <td style="display:none;"  ></td>

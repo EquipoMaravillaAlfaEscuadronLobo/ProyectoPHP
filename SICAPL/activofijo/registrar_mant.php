@@ -67,7 +67,11 @@
                 <div class="panel-heading p_libro"><div class="row">
                         <div class="col-md-10">
 
-                            <div class="input-field"><i class="fa fa-search prefix" aria-hidden="true"></i><label for="" style="font-size:17px">Buscar Activo</label><input type="text"  id="codigo" list="listaActivosMantenimineto" autofocus  onkeypress="buscarActivo_mantenimiento(this)"></div>
+                            <div class="input-field">
+                                <i class="fa fa-search prefix" aria-hidden="true"></i>
+                                <label for="" style="font-size:17px">Buscar Activo</label>
+                                <input type="text"  id="codigo_bus_mant" list="listaActivosMantenimineto" autofocus  onkeypress="buscarActivo_mantenimiento(this)">
+                            </div>
 
                         </div>
                         <div class="col-md-2"></div>
@@ -92,7 +96,7 @@
                                 <i class="fa fa-barcode prefix" title="Indique el numero correlativo del activo para agragar varios a la tabla &#13;p. ej. 5-14, 25"></i> 
                                 <input type="text" id="correlativoMant" name="correlativoMant" class="text-center validate" 
                                        value="---"
-                                       
+
                                        onclick = "if (this.value == '---')
                                                    this.value = ''" 
                                        onblur="if (this.value == '')
@@ -132,15 +136,7 @@
     <div class="col-md-6">
         <div class="panel-group">
             <div class="panel panel-default" name="activo">
-                <div class="panel-heading p_libro"><div class="row">
-                        <div class="col-md-10">
-
-                        </div>
-                        <div class="col-md-2"></div>
-                    </div>
-                    <form id="prestamoAct" id="prestamoAct" method="post">
-
-                </div>
+                
                 <table class="table table-striped table-bordered" >
                     <tr>
                     <table class="table table-striped table-bordered" id="datos_mantenimiento">
@@ -308,9 +304,9 @@
 
 
                     $listado = Repositorio_activo::obtener_activo(Conexion::obtener_conexion(), $activos[$i]);
-                  
+
                     foreach ($listado as $fila) {
-                      
+
                         Repositorio_detalle::actualizar_detalle(Conexion::obtener_conexion(), $detalle, $fila['codigo_detalle']);
                     }
                 }
@@ -353,7 +349,6 @@
                     echo "</script>";
                 }
             }
-            
         }
     }
     ?>

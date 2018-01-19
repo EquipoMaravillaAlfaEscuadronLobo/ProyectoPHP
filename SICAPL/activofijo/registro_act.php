@@ -381,17 +381,30 @@ if (isset($_REQUEST["bandera1"])) {
             . $_REQUEST["color"] . ', marca ' . $_REQUEST['marca'] . ", dimensiones " . $_REQUEST['dimensiones']
             . ', sistema operativo ' . $_REQUEST["so"] . ", Memoria Ram " . $_REQUEST["ram"] . ", Modelo " . $_REQUEST["modelo"];
     Repositorio_Bitacora::insertar_bitacora(Conexion::obtener_conexion(), $accion);
-    echo '<script>swal({
-                    title: "Exito",
-                    text: "Activo registrado con exito!",
-                    type: "success",
-                    confirmButtonText: "ok",
-                    closeOnConfirm: true
-                },
-                function () {
-                swal.close();
-                $("#ttest1").reload();
-                    
-                });</script>';
+    echo "<script>";
+    echo ' swal({
+        title: "Exito!",
+        text: "Activos Registrados desea imprimir el codigo de barras?",
+        type: "success",
+        showCancelButton: true,
+        confirmButtonClass: "btn-danger",
+        confirmButtonText: "Sí, Imprimir",
+        cancelButtonText: "No, Salir",
+        closeOnConfirm: false,
+        closeOnCancel: false
+    },
+    function (isConfirm) {
+        if (isConfirm) {
+            var url = "../reportesActivo/imprimir_barcode.php?codigo=' . $codigo . '" ;
+
+            var a = document.createElement("a");
+            a.target = "_blank";
+            a.href = url;
+            a.click();
+        } else {
+            location.href = "inicio_b.php";
+        }
+    });';
+    echo "</script>";
 }
 ?>
