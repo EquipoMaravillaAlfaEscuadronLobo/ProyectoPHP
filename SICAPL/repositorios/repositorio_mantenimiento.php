@@ -5,7 +5,7 @@
  */
 class Repositorio_mantenimiento {
 
-    public static function ListaMantAct($conexion) {
+    public static function ListaMantAct($conexion) {//reotna una lista con los mantenimientos regisrtrados
         $resultado = "";
         if (isset($conexion)) {
             try {
@@ -25,25 +25,22 @@ mantenimientos
         return $resultado;
     }
 
-    public static function GuardarMantAct($conexion, $mant) {
+    public static function GuardarMantAct($conexion, $mant) {//inserta mantenimiento a la bae de datos
         $autor_insertado = false;
         if (isset($conexion)) {
             try {
-                $fecha=$mant->getFecha();
-                $desc=$mant->getDescripcion();
-                $costo=$mant->getCosto();
+                //asignamos valores a las nuevas variables
+                $fecha = $mant->getFecha();
+                $desc = $mant->getDescripcion();
+                $costo = $mant->getCosto();
                 $sql = 'INSERT INTO mantenimientos ( fecha, descripcion, costo)'
-                        .' VALUES (:fecha,:desc,:costo)';
+                        . ' VALUES (:fecha,:desc,:costo)';
                 ///estos son alias para que PDO pueda trabajar 
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->bindParam(':desc', $desc, PDO::PARAM_STR);
                 $sentencia->bindParam(':costo', $costo, PDO::PARAM_STR);
                 $sentencia->bindParam(':fecha', $fecha, PDO::PARAM_STR);
                 $autor_insertado = $sentencia->execute();
-
-                
-                
-                
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();
             }
@@ -52,12 +49,13 @@ mantenimientos
     }
 
     public static function GuardarActivos($conexion, $codAct, $codMant) {
+//guarda los codigos de activos que fueron a mantenimieno en la tabla de movimieno
         $autor_insertado = false;
         if (isset($conexion)) {
             try {
                 $sql = 'INSERT INTO movimiento_actvos_mant(codigo_activo, codigo_mantenimiento)'
                         . ' values (:codAct,:codMant)';
-               
+
                 ///estos son alias para que PDO pueda trabajar 
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->bindParam(':codAct', $codAct, PDO::PARAM_STR);
@@ -69,14 +67,15 @@ mantenimientos
         }
         return $autor_insertado;
     }
-    
-     public static function GuardarEncargados($conexion, $codAct, $codMant) {
+
+    public static function GuardarEncargados($conexion, $codAct, $codMant) {
+        //guarda los codigos de encargados que realizaron el mantenimieno en la tabla de movimieno
         $autor_insertado = false;
         if (isset($conexion)) {
             try {
                 $sql = 'INSERT INTO movimiento_mantenimientos(codigo_emantenimiento, codigo_mantenimiento)'
                         . ' values (:codAct,:codMant)';
-               
+
                 ///estos son alias para que PDO pueda trabajar 
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->bindParam(':codAct', $codAct, PDO::PARAM_STR);
@@ -88,8 +87,9 @@ mantenimientos
         }
         return $autor_insertado;
     }
-    
-     public static function ListarEncargados($conexion,$codMant) {
+
+    public static function ListarEncargados($conexion, $codMant) {
+//lista los codigos de encagardos que realizaron el mantenimientos segun $codMant
         $resultado = "";
         if (isset($conexion)) {
             try {
@@ -99,7 +99,7 @@ FROM
 movimiento_mantenimientos
 WHERE
 movimiento_mantenimientos.codigo_mantenimiento = '$codMant'";
-                 $resultado = $conexion->query($sql);
+                $resultado = $conexion->query($sql);
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();
             }
@@ -107,7 +107,7 @@ movimiento_mantenimientos.codigo_mantenimiento = '$codMant'";
         return $resultado;
     }
 
-    public static function obtenerUltimoMant($conexion) {
+    public static function obtenerUltimoMant($conexion) {//obtenems el ultimo codigo de mantenimiento registrado
         $codigo = "";
         $resultado = "";
         if (isset($conexion)) {
@@ -124,10 +124,8 @@ movimiento_mantenimientos.codigo_mantenimiento = '$codMant'";
         return $codigo;
     }
 
-    
-
     public static function obtenerActivos($conexion, $codigoMant) {
-
+//obtenemos los codigos de activos que fueron a mantenimiento segun el $codigoMant
         $resultado = "";
         if (isset($conexion)) {
             try {
@@ -149,33 +147,9 @@ movimiento_actvos_mant.codigo_mantenimiento = '$codigoMant'
         return $resultado;
     }
 
-    public static function obtenerListActP($conexion, $codigoP) {
+   
 
-        $resultado = "";
-        if (isset($conexion)) {
-            try {
-                $sql = "SELECT
-movimiento_actvos.codigo_activo AS codigo,
-categoria.nombre AS tipo,
-actvos.estado as estado
-FROM
-movimiento_actvos
-INNER JOIN actvos ON movimiento_actvos.codigo_activo = actvos.codigo_activo
-INNER JOIN categoria ON actvos.codigo_tipo = categoria.codigo_tipo
-WHERE
-movimiento_actvos.codigo_pactivo = '$codigoP'
-ORDER BY
-codigo ASC
-                        ";
-                $resultado = $conexion->query($sql);
-            } catch (PDOException $ex) {
-                print 'ERROR: ' . $ex->getMessage();
-            }
-        }
-
-        return $resultado;
-    }
-      public static function insertar_bitacora($conexion, $accion) {
+    public static function insertar_bitacora($conexion, $accion) {
         $administrador_insertado = false;
         if (isset($conexion)) {
             try {

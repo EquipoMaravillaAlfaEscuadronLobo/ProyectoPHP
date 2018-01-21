@@ -5,7 +5,7 @@
  */
 class Repositorio_prestamoact {
 
-    public static function ListaPrestamosAct($conexion) {
+    public static function ListaPrestamosAct($conexion) {// no la pongas quw no recuerdo para qeu esta
         $resultado = "";
         if (isset($conexion)) {
             try {
@@ -36,6 +36,7 @@ Devolucion ASC
     }
     
       public static function ListaActPrestamos($conexion) {
+//devuelve una lista de los prestamos de activos registrados ordenada segun al fecha de devolucion vencida
         $resultado = "";
         if (isset($conexion)) {
             try {
@@ -68,27 +69,19 @@ fechaDev ASC
         return $resultado;
     }
 
-    public static function GuardarPrestamoAct($conexion, $prestamo) {
+    public static function GuardarPrestamoAct($conexion, $prestamo) {//guarda prestamode activo en la base de datos
         $autor_insertado = false;
         if (isset($conexion)) {
             try {
                 $usuario = $prestamo->getUsuario();
-//echo $usuario;
                 $salida = $prestamo->getSalida();
                 $devolucion = $prestamo->getDevolucion();
                 $sql = 'INSERT INTO prestamo_activos(usuarios_codigo,fecha_salida,fecha_devolucion,estado)'
                         . ' values (:usuario,CURDATE(),:devolucion,"0")';
                 ///estos son alias para que PDO pueda trabajar 
                 $sentencia = $conexion->prepare($sql);
-
-
-
-
                 $sentencia->bindParam(':usuario', $usuario, PDO::PARAM_STR);
-                //  $sentencia->bindParam(':salida', $salida, PDO::PARAM_STR);
                 $sentencia->bindParam(':devolucion', $devolucion, PDO::PARAM_STR);
-
-
 
                 $autor_insertado = $sentencia->execute();
             } catch (PDOException $ex) {
@@ -99,17 +92,10 @@ fechaDev ASC
     }
 
     public static function GuardarActivos($conexion, $prestamo, $libro) {
+        //guarda activos de un prestamo en la tabla de movimiento
         $autor_insertado = false;
         if (isset($conexion)) {
             try {
-
-
-
-                //$usuario = $prestamo->getUsuario();
-                // $salida = $prestamo->getSalida();
-                //  $devolucion = $prestamo->getDevolucion();            
-
-
 
                 $sql = 'INSERT INTO movimiento_actvos(codigo_activo,codigo_pactivo)'
                         . ' values (:libro,:prestamo)';
@@ -132,7 +118,7 @@ fechaDev ASC
         return $autor_insertado;
     }
 
-    public static function obtenerUltimoPact($conexion) {
+    public static function obtenerUltimoPact($conexion) {//recuperamos el ultipo codigo de prestamo registrado
         $codigo = "";
         $resultado = "";
         if (isset($conexion)) {
@@ -149,7 +135,7 @@ fechaDev ASC
         return $codigo;
     }
 
-    public static function Finalizar($conexion, $codigo, $motivo) {
+    public static function Finalizar($conexion, $codigo, $motivo) {//actualiza los datos del prestamo y queda finalizado
         $libro_mod = 0;
         if (isset($conexion)) {
             try {
@@ -165,7 +151,7 @@ fechaDev ASC
         return $libro_mod;
     }
 
-    public static function Actualizar($conexion, $fecha, $observaciones, $cod) {
+    public static function Actualizar($conexion, $fecha, $observaciones, $cod) {//actualiza datos de prestamo fecha y obseraciones
         $libro_mod = 0;
         if (isset($conexion)) {
             try {
@@ -180,6 +166,7 @@ fechaDev ASC
     }
 
     public static function ActualizarActivo($conexion, $cod, $estado, $observacion) {
+        //actualiza el estdo de un activo qeu estaba en prestamo
         $libro_mod = 0;
         if (isset($conexion)) {
             try {
@@ -207,7 +194,7 @@ fechaDev ASC
     }
 
     public static function obtenerPact($conexion, $codigoPact) {
-
+//obtenemos los datos de un prestamo de activo
         $resultado = "";
         if (isset($conexion)) {
             try {
@@ -244,7 +231,7 @@ prestamo_activos.codigo_pactivo
     }
 
     public static function obtenerListActP($conexion, $codigoP) {
-
+//obtenemos la lista de codigos de activos de un prestamo
         $resultado = "";
         if (isset($conexion)) {
             try {

@@ -2,7 +2,7 @@
 
 class Repositorio_proveedor {
 
-    public static function insertar_proveedor($conexion, $proveedor) {
+    public static function insertar_proveedor($conexion, $proveedor) {//inserta proveedor en base de datos
         $proveedor_insertado = false;
         if (isset($conexion)) {
             try {
@@ -37,23 +37,9 @@ class Repositorio_proveedor {
         }
         return $proveedor_insertado;
     }
-    /*
-     public static function obtener_codigo($conexion) {
-      if (isset($conexion)) {
-            try {
-                $sql = "SELECT COUNT(proveedores.codigo_proveedor) FROM proveedores "; ///estos son alias para que PDO pueda trabajar 
-                $sentencia = $conexion->query($sql) ;
-                
-                return $sentencia+1;
-            } catch (PDOException $ex) {
-                print 'ERROR: ' . $ex->getMessage();
-            }
-        }
-        return 000;
-     }
-   */
+    
    
-    public static function lista_proveedores($conexion) {
+    public static function lista_proveedores($conexion) {//lista los proveeores registrados
         $lista_proveedores = array();
         if (isset($conexion)) {
             try {

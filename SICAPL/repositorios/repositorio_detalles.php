@@ -2,11 +2,11 @@
 
 class Repositorio_detalle {
 
-    public static function insertar_detalle($conexion, $detalle) {
+    public static function insertar_detalle($conexion, $detalle) {//insertamos detalles de activos a la base de datos
         $detalle_insertado = false;
         if (isset($conexion)) {
             try {
-
+                //asignamos los datos a nuevas variables
                 $codigo_detalle = $detalle->getCodigo_detalle();
                 $serie = $detalle->getSeri();
                 $color = $detalle->getColor();
@@ -19,7 +19,7 @@ class Repositorio_detalle {
                 $otros = $detalle->getOtros();
                 $proce = $detalle->getProcesador();
 
-
+                //
                 $sql = 'INSERT INTO detalles(codigo_detalle,serie,color,marca,modelo,ram,memoria,sistema,dimensiones,otros,procesador)'
                         . ' values (:codigo_detalle,:serie,:color,:marca,:modelo,:ram,:memoria,:sistema,:dimensiones,:otros,:proce)';
                 ///estos son alias para que PDO pueda trabajar 
@@ -35,7 +35,6 @@ class Repositorio_detalle {
                 $sentencia->bindParam(':dimensiones', $dimensiones, PDO::PARAM_STR);
                 $sentencia->bindParam(':otros', $otros, PDO::PARAM_STR);
                 $sentencia->bindParam(':proce', $proce, PDO::PARAM_STR);
-                //echo '<script>alert("'.$sentencia.'");</script>'; 
                 $detalle_insertado = $sentencia->execute();
 
             } catch (PDOException $ex) {
@@ -45,12 +44,12 @@ class Repositorio_detalle {
         }
     }
 
-    public static function obtener_ultimo_detale($conexion) {
+    public static function obtener_ultimo_detale($conexion) {//obtenermos el codigo del ultimo detalle insertado
 
         if (isset($conexion)) {
             try {
 
-                $sql = "SELECT MAX(codigo_detalle) AS id FROM detalles"; ///estos son alias para que PDO pueda trabajar 
+                $sql = "SELECT MAX(codigo_detalle) AS id FROM detalles"; 
                 foreach ($conexion->query($sql) as $row) {
                     $r = $row[0];
                 }
@@ -61,12 +60,12 @@ class Repositorio_detalle {
         }
     }
 
-    public static function obtener_detalle($conexion, $codigo_detalle) {
+    public static function obtener_detalle($conexion, $codigo_detalle) {//obtenemos los detalles de un activo
         $detalle = new Detalles();
         if (isset($conexion)) {
             try {
 
-                $sql = "SELECT * FROM detalles WHERE codigo_detalle='$codigo_detalle' "; ///estos son alias para que PDO pueda trabajar 
+                $sql = "SELECT * FROM detalles WHERE codigo_detalle='$codigo_detalle' ";  
                 foreach ($conexion->query($sql) as $row) {
                     $detalle->setCodigo_detalle($row["codigo_detalle"]);
                     $detalle->setSeri($row["serie"]);
@@ -84,16 +83,16 @@ class Repositorio_detalle {
                 print 'ERROR: ' . $ex->getMessage();
             }
         }
-        return $detalle;
+        return $detalle;//eniamos los detalles en un objeto tipo detalle
     }
 
     public static function actualizar_detalle($conexion, $detalle, $codigo_original) {
+//recibe un objeto tipo detalle y el codigo del detalle
         $detalle_insertado = false;
-        // $administrador = new Administrador();
 
         if (isset($conexion)) {
             try {
-
+                //asignamos valores a nuevas variables
                 $codigo_detalle = $detalle->getCodigo_detalle();
                 $serie = $detalle->getSeri();
                 $color = $detalle->getColor();
@@ -106,10 +105,11 @@ class Repositorio_detalle {
                 $otros = $detalle->getOtros();
                 $proce = $detalle->getProcesador();
 
-                //if ($codigo_administrador == $codigo_original) {UPDATE `detalles` SET `otros`='scs' WHERE (`codigo_detalle`='872')
-                $sql ="UPDATE detalles SET  serie=:serie,color=:color,marca=:marca,modelo=:modelo,ram=:ram,memoria=:memoria,sistema=:sistema,dimensiones=:dimensiones,otros=:otros,procesador=:proce WHERE codigo_detalle ='$codigo_original'";
+                $sql ="UPDATE detalles SET  "
+                    . "serie=:serie,color=:color,marca=:marca,modelo=:modelo,ram=:ram,memoria=:memoria,sistema=:sistema"
+                    . ",dimensiones=:dimensiones,otros=:otros,procesador=:proce WHERE codigo_detalle ='$codigo_original'";
 
-
+                ///estos son alias para que PDO pueda trabajar 
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->bindParam(':serie', $serie, PDO::PARAM_STR);
                 $sentencia->bindParam(':color', $color, PDO::PARAM_STR);
@@ -121,7 +121,6 @@ class Repositorio_detalle {
                 $sentencia->bindParam(':dimensiones', $dimensiones, PDO::PARAM_STR);
                 $sentencia->bindParam(':otros', $otros, PDO::PARAM_STR);
                 $sentencia->bindParam(':proce', $proce, PDO::PARAM_STR);
-                //echo '<script>alert("'.$sentencia.'");</script>';
                 $detalle_insertado = $sentencia->execute();
               
                                 
@@ -133,34 +132,7 @@ class Repositorio_detalle {
         }
     }
 
-    public static function eliminar_administrador($conexion, $administrador, $codigo_eliminar) {
-        $administrador_insertado = false;
-        //$administrador = new Administrador();
-
-        if (isset($conexion)) {
-            try {
-
-                $observacion = $administrador->getObservacion();
-                $estado = $administrador->getEstado();
-
-                $sql = 'UPDATE administradores SET observacion=:observacion, estado=:estado WHERE codigo_administrador = :codigo_eliminacion';
-
-                $sentencia = $conexion->prepare($sql);
-                $sentencia->bindParam(':observacion', $observacion, PDO::PARAM_STR);
-                $sentencia->bindParam(':estado', $estado, PDO::PARAM_INT);
-                $sentencia->bindParam(':codigo_eliminacion', $codigo_eliminar, PDO::PARAM_INT);
-
-                $administrador_insertado = $sentencia->execute();
-
-                echo '<script>swal("Excelente!", "Registro Eliminado con exito", "success");</script>';
-                //echo '<script>location.href="inicio_seguridad.php";</script>';
-            } catch (PDOException $ex) {
-                echo "<script>swal('Excelente!', 'hubo pedo '$sql' ', 'success');</script>";
-
-                print 'ERROR: ' . $ex->getMessage();
-            }
-        }
-    }
+    
     
     public static function insertar_bitacora($conexion, $accion) {
         $administrador_insertado = false;

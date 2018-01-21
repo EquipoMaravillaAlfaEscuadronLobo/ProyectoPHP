@@ -2,11 +2,12 @@
 
 class Repositorio_categoria {
 
-    public static function insertar_categoria($conexion, $categoria) {
+    public static function insertar_categoria($conexion, $categoria) {//para insertar una nueva categoria o tipo de activo
 
         $categoria_insertada = false;
         if (isset($conexion)) {
             try {
+                //asignamos los adtos a nuevas variables
                 $codigo_cat = $categoria->getCodigo_tipo();
                 $nombre = $categoria->getNombre();
 
@@ -16,8 +17,8 @@ class Repositorio_categoria {
                 ///estos son alias para que PDO pueda trabajar 
                 $sentencia = $conexion->prepare($sql);
                 
-                $accion = 'Se registró la siguiente tipo de activos: ' . $nombre ; 
-                self::insertar_bitacora($conexion, $accion);
+                $accion = 'Se registró la siguiente tipo de activos: ' . $nombre ; //para registrar en al bitacora
+                self::insertar_bitacora($conexion, $accion);//se envia la accion a la bitacora
 
                 $sentencia->bindParam(':codigo_tipo', $codigo_cat, PDO::PARAM_STR);
                 $sentencia->bindParam(':nombre', $nombre, PDO::PARAM_STR);
@@ -26,10 +27,11 @@ class Repositorio_categoria {
                 print 'ERROR: ' . $ex->getMessage();
             }
         }
-        return $categoria_insertada;
+        return $categoria_insertada;//retorna verdadero si se incerto correctamente el nuevo tipo de activo
     }
 
-    public static function lista_categorias($conexion) {
+    public static function lista_categorias($conexion) {//lista todos los tipos de activos registrados
+        //utilizado en el select tipo en registrar activo
         $lista_categorias = array();
 
         if (isset($conexion)) {
@@ -53,10 +55,10 @@ class Repositorio_categoria {
             }
         }
 
-        return $lista_categorias;
+        return $lista_categorias;//eviamos la lista de tipos
     }
 
-    public static function obtener_categoria($conexion, $cod) {
+    public static function obtener_categoria($conexion, $cod) {//obtenemos el nombre del tipo de activo
         $resultado = "";
         if (isset($conexion)) {
             try {
@@ -72,7 +74,7 @@ class Repositorio_categoria {
         }
     }
 
-    public static function obtener_newcod_categoria($conexion) {
+    public static function obtener_newcod_categoria($conexion) {//retorna un nuevo codigo de tipo de activo
         $resultado = "";
         if (isset($conexion)) {
             try {
@@ -80,27 +82,27 @@ class Repositorio_categoria {
                         COUNT( categoria.codigo_tipo)
                         FROM
                         categoria
-                        ";
+                        ";// obtenermos el numero de tipos registrados
 
                 foreach ($conexion->query($sql) as $row) {
                     $r = $row[0];
                 }
                 
-                if (($r / 10) < 1) {
+                if (($r / 10) < 1) {//si el numero obtenido es menor que 10 se asigna de la siguiente manera el codigo
                     $cod =  "CEJ-001-00" . ($r+1) ;
                 } else {
-                    if (($r / 10) < 10) {
+                    if (($r / 10) < 10) {//si el numero obtenido es mayor que 10 se asigna de la siguiente manera el codigo
                         $cod =  "CEJ-001-0" .($r+1) ;
                     } 
                 }
-                return $cod ;
+                return $cod ;//enviamos el codigo generado
             } catch (PDOException $ex) {
                 print 'ERROR: ' . $ex->getMessage();
             }
         }
     }
     
-    public static function obtener_nombre_categoria($conexion, $cod) {
+    public static function obtener_nombre_categoria($conexion, $cod) {//obtenemos el nombre del tipo de activo
         $resultado = "";
         if (isset($conexion)) {
             try {

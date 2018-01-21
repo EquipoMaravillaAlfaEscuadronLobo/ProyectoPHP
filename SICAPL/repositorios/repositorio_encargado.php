@@ -2,7 +2,7 @@
 
 class Repositorio_encargado {
 
-    public static function insertar_encargado($conexion, $encargado) {
+    public static function insertar_encargado($conexion, $encargado) {//inserta nuevo encarado a la base de datos
         $encargado_insertado = false;
        
         if (isset($conexion)) {
@@ -19,7 +19,7 @@ class Repositorio_encargado {
                         . ' values (:codigo_enc,:nombre, :direccion, :telefono,:correo)';
                 ///estos son alias para que PDO pueda trabajar 
                 $sentencia = $conexion->prepare($sql);
-
+///estos son alias para que PDO pueda trabajar 
                 $sentencia->bindParam(':codigo_enc', $codigo_enc, PDO::PARAM_STR);
                 $sentencia->bindParam(':nombre', $nombre, PDO::PARAM_STR);
                 $sentencia->bindParam(':direccion', $direccion, PDO::PARAM_STR);
@@ -41,11 +41,12 @@ class Repositorio_encargado {
     }
    
     public static function obtener_encargado($conexion, $codigo_encargado) {
+//obtiene datos de encargado segun el $codigo_encargado
         $encargado = new Encargado_mantenimiento();
         if (isset($conexion)) {
             try {
 
-                $sql = "SELECT * FROM encargado_mantenimiento WHERE codigo_emantenimiento='$codigo_encargado' "; ///estos son alias para que PDO pueda trabajar 
+                $sql = "SELECT * FROM encargado_mantenimiento WHERE codigo_emantenimiento='$codigo_encargado' "; 
                 foreach ($conexion->query($sql) as $row) {
                     $encargado->setCodigo_emantenimiento($row["codigo_emantenimiento"]);
                     $encargado->setNombre($row["nombre"]);
@@ -57,10 +58,10 @@ class Repositorio_encargado {
                 print 'ERROR: ' . $ex->getMessage();
             }
         }
-        return $encargado;
+        return $encargado;//retonamos los datos
     }
     
-    public static function lista_encargado($conexion) {
+    public static function lista_encargado($conexion) {//lista con los datos de los encargados
          $resultado = "";
         if (isset($conexion)) {
             try {
