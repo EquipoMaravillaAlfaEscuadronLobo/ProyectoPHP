@@ -7,10 +7,27 @@ $listado1 = Repositorio_activo::lista_activo_codBarra(Conexion::obtener_conexion
 ?>
 
 <style>
+    .iz{
+       
+        width: 500px;
+        height: 100px;
+        padding: 5px 5px 5px 5px;
+    }
+    
+    .dr{
+        /*border: 1px black solid;*/
+        width: 500px;
+        height: 100px;
+        margin-left: 540px;
+        margin-top: -133px;
+        padding: 5px 5px 5px 5px;
+        
+    }
     .tabla{
 
-        align-content: stretch;
+        align-content: center;
         width: 100%;
+        margin-left: 100px;
 
     }
     h1 {color: #000033}
@@ -19,25 +36,14 @@ $listado1 = Repositorio_activo::lista_activo_codBarra(Conexion::obtener_conexion
     .tabla table td{
         padding: 0;
         margin: 0;
-        width: 450px;
+        width: 700px;
+        
+        align-content: center;
     }
-
-
-    
-    .iz{
-        border: 1px black solid;
-        width: 500px;
-        height: 100px;
-        padding: 5px 5px 5px 5px;
-    }
-    
-    .dr{
-        border: 1px black solid;
-        width: 500px;
-        height: 100px;
-        margin-left: 540px;
-        margin-top: -133px;
-        padding: 5px 5px 5px 5px;
+    .contenedor{
+        align-content: center;
+        text-align: center;
+        
         
     }
 
@@ -62,7 +68,7 @@ foreach ($listado1 as $fila1) {
                 <?php
                 $i=1;
                 foreach ($listado as $fila) {
-                    if($i==1){
+                   
                     ?>
                     <tr>
                         <td>
@@ -72,21 +78,10 @@ foreach ($listado1 as $fila1) {
                         </td>                
                     </tr>
 
-                    <?php
-                    $i=2;
-                    }else{
-                        
-                        ?>
-                            <tr>
-                        <td>
-                            <div class="dr">
-                                <barcode dimension="1D" type="C128" value="<?php echo $fila['cod'] ?>" label="label" style="width:100%; height:15mm; color: #000000; font-size: 4mm"></barcode>
-                            </div>
-                        </td>                
-                    </tr>
+                   
                             <?php
-                            $i=1;
-                    }
+                           
+                    
                 }
                 ?>
 
@@ -94,7 +89,6 @@ foreach ($listado1 as $fila1) {
 
             </table>
         </div><!-- Fin Contenido del Reporte (Modificable)-->
-
    
     <?php
 }

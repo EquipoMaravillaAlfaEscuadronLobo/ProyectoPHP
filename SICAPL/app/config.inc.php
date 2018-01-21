@@ -3,5 +3,5 @@
 $nombre_servidor = 'localhost';
 $nombre_usuario = 'root';
 $password = '';
-$nombre_base_datos = 'diseno1';
+$nombre_base_datos = 'sicafpl';
 ?>

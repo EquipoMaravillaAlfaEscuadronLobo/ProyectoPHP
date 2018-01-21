@@ -15,7 +15,7 @@ $listado1 = Repositorio_libros::CodigoBarras(Conexion::obtener_conexion());
     }
     
     .dr{
-        border: 1px black solid;
+        /*border: 1px black solid;*/
         width: 500px;
         height: 100px;
         margin-left: 540px;

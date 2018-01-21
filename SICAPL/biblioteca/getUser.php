@@ -22,7 +22,7 @@
         document.getElementById('fot').setAttribute("data-placement", "top")
         document.getElementById('fot').setAttribute("data-content", "<?php if($fila['obsP']!=""){echo "<ol><li>".$fila['obsP']."</li></ol>";}else{ echo "No tiene observaciones";} ?>")
         <?php 
-            if ($fila[11]=='si') {
+            if ($fila['esta']=='si') {
          ?>
           document.getElementById('actual').innerHTML = "<?php echo 'Prestamo Pendiente'?>";
           $('#actual').removeClass('alert-success');
